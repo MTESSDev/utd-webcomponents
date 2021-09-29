@@ -1,0 +1,230 @@
+/*====================================================================================================
+  -10- Général                                                                                      
+/*====================================================================================================*/
+
+label {
+    font-family: OpenSans-SemiBold;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+.utd-precision {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.875rem;
+}
+
+.utd-form-group {
+    margin-bottom: 2rem;
+}
+
+.utd-form-control {
+    height: 40px;
+    display: block;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #858b93;
+    border-radius: 0;
+}
+
+input.utd-form-control:focus,
+select.utd-form-control:focus {
+    outline: 3px solid #89bce5;
+    border: 2px solid #5b6476;
+}
+
+
+/*====================================================================================================
+-Z20A- Forms (Champs largeurs)  
+====================================================================================================*/
+
+input[type="text"].utd-form-control {
+    /* On applique une largeur xl à tous les contrôles de type texte par défaut */
+    width: 528px;
+    max-width: 100%;
+}
+
+input[type="number"].utd-form-control,
+input[type="date"].utd-form-control {
+    width: auto;
+}
+
+
+/*Largeur minimale pour les champs de type date (requis car sinon sur mobile parfois beaucoup trop petit) */
+
+input[type="date"].utd-form-control {
+    min-width: 156px;
+}
+
+
+/*Le xxl n'existe pas dans les règles du SCG, c'est ajouté */
+
+input.utd-form-control.xxl {
+    width: 728px;
+}
+
+input.utd-form-control.xl {
+    width: 528px;
+}
+
+input.utd-form-control.lg {
+    width: 249px;
+}
+
+input.utd-form-control.md,
+input[type="tel"].utd-form-control {
+    width: 156px;
+}
+
+input.utd-form-control.sm {
+    width: 63px;
+}
+
+@media (max-width: 560px) {
+    input[type="text"].utd-form-control,
+    input.utd-form-control.xl {
+        width: 100%;
+    }
+}
+
+@media (max-width: 760px) {
+    input.utd-form-control.xxl {
+        width: 100%;
+    }
+}
+
+
+/*====================================================================================================
+  -60- Redéfinitions Bootstrap
+====================================================================================================*/
+
+@media (max-width: 425px) {
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 1152px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1152px;
+    }
+}
+
+
+/*====================================================================================================
+  -900- Sprites TODO analyser la pertinence de conserver dans utd-base
+====================================================================================================*/
+
+.utd-icone-svg.sm {
+    /* Icônes svg small (sm) */
+    min-width: 12px;
+    height: 12px;
+}
+
+.utd-icone-svg.md {
+    /* Icônes svg medium (md) */
+    min-width: 20px;
+    height: 20px;
+}
+
+.utd-icone-svg.lg {
+    /* Icônes svg large (large) */
+    min-width: 40px;
+    height: 40px;
+}
+
+.averti .utd-icone-svg,
+.utd-icone-svg.averti {
+    height: 28px;
+}
+
+.averti .utd-icone-svg.sm,
+.utd-icone-svg.averti.sm {
+    height: 11px;
+}
+
+.averti .utd-icone-svg.md,
+.utd-icone-svg.averti.md {
+    height: 18px;
+}
+
+.averti .utd-icone-svg.lg,
+.utd-icone-svg.averti.lg {
+    height: 35px;
+}
+
+.utd-icone-svg.fleche-droite {
+    width: 10px;
+    height: 10px;
+    min-width: 10px;
+}
+
+.utd-icone-svg.x-fermer-bleu {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+}
+
+.utd-icone-svg.x-fermer-bleu-foncee {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+}
+
+.avis.information .utd-icone-svg {
+    background-image: url(utd-sprite.svg?v=1.0#ico-information);
+}
+
+.avis.avertissement .utd-icone-svg {
+    background-image: url(utd-sprite.svg?v=1.0#ico-avertissement);
+}
+
+.avis.succes .utd-icone-svg {
+    background-image: url(utd-sprite.svg?v=1.0#ico-succes);
+}
+
+.avis.erreur .utd-icone-svg {
+    background-image: url(utd-sprite.svg?v=1.0#ico-erreur);
+}
+
+.utd-icone-svg.x-fermer-bleu {
+    background-image: url(utd-sprite.svg?v=1.0#ico-xfermer-bleu);
+}
+
+.utd-icone-svg.x-fermer-bleu-foncee {
+    background-image: url(utd-sprite.svg?v=1.0#ico-xfermer-bleu-foncee);
+}
+
+.utd-icone-svg.question {
+    background-image: url(utd-sprite.svg?v=1.0#ico-question);
+}
+
+.utd-icone-svg.plus {
+    background-image: url(utd-sprite.svg?v=1.0#ico-plus);
+}
+
+.utd-icone-svg.moins {
+    background-image: url(utd-sprite.svg?v=1.0#ico-moins);
+}

@@ -1,96 +1,109 @@
----
-page_type: sample
-languages:
-  - javascript
-  - typescript
-products:
-  - azure functions
-description: 'Apps that can be used with as a starting point for some MS Learn Modules.'
-urlFragment: 'https://github.com/MicrosoftDocs/mslearn-staticwebapp'
+*Psst — looking for a more complete solution? Check out [SvelteKit](https://kit.svelte.dev), the official framework for building web applications of all sizes, with a beautiful development experience and flexible filesystem-based routing.*
+
+*Looking for a shareable component template instead? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
+
 ---
 
-# Official Microsoft Sample
+# svelte app
 
-Follow the hands-on tutorial to [publish an Angular, React, Svelte, or Vue JavaScript app and API with Azure Static Web Apps](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/?WT.mc_id=mslearn_staticwebapp-github-jopapa).
+This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
 
-## Static Web App
+To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
 
-This repository contains apps that can be used with as a starting point for some MS Learn Modules. Because everyone has their own preference for their JavaScript frameworks/library, you can choose which one you prefer.
+```bash
+npx degit sveltejs/template svelte-app
+cd svelte-app
+```
 
-The shopping theme is used throughout the app.
+*Note that you will need to have [Node.js](https://nodejs.org) installed.*
 
-## Pre-Reqs
 
-- Familiarity with one of Angular, React, Svelte, or Vue
-- [Node.js LTS and Git](https://nodejs.org/)
-- [GitHub](https://github.com) account
-- [Visual Studio Code](https://code.visualstudio.com)
+## Get started
 
-## Contents
+Install the dependencies...
 
-The apps written in the following JavaScript frameworks/libraries:
+```bash
+cd svelte-app
+npm install
+```
 
-| folder          | Description                                                                                                 |
-| --------------- | ----------------------------------------------------------------------------------------------------------- |
-| **angular-app** | [Sample Angular app](https://github.com/MicrosoftDocs/mslearn-staticwebapp/blob/master/angular-app)         |
-| **api-starter** | [Sample Azure Functions app](https://github.com/MicrosoftDocs/mslearn-staticwebapp/blob/master/api-starter) |
-| **react-app**   | [Sample React app](https://github.com/MicrosoftDocs/mslearn-staticwebapp/blob/master/react-app)             |
-| **svelte-app**  | [Sample Svelte app](https://github.com/MicrosoftDocs/mslearn-staticwebapp/blob/master/svelte-app)           |
-| **vue-app**     | [Sample Vue app](https://github.com/MicrosoftDocs/mslearn-staticwebapp/blob/master/vue-app)                 |
+...then start [Rollup](https://rollupjs.org):
 
-## Prerequisites
+```bash
+npm run dev
+```
 
-- A GitHub account
-- [Node.js and Git](https://nodejs.org/)
-- [Visual Studio Code](https://code.visualstudio.com/?WT.mc_id=mslearn_staticwebapp-github-jopapa) installed
-- The [Azure Functions extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions?WT.mc_id=mslearn_staticwebapp-github-jopapa) installed
-- The [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local?WT.mc_id=mslearn_staticwebapp-github-jopapa) installed
+Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
 
-## Problems or Suggestions
+By default, the server will only respond to requests from localhost. To allow connections from other computers, edit the `sirv` commands in package.json to include the option `--host 0.0.0.0`.
 
-[Open an issue here](https://github.com/MicrosoftDocs/mslearn-staticwebapp/issues)
+If you're using [Visual Studio Code](https://code.visualstudio.com/) we recommend installing the official extension [Svelte for VS Code](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode). If you are using other editors you may need to install a plugin in order to get syntax highlighting and intellisense.
 
-## Resources
+## Building and running in production mode
 
-### Azure Static Web Apps
+To create an optimised version of the app:
 
-- Learn how to [Publish an Angular, React, Svelte, or Vue JavaScript app and API with Azure Static Web Apps](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api?wt.mc_id=mslearn_staticwebapp-github-jopapa)
-- [API support in Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps/apis?wt.mc_id=mslearn_staticwebapp-github-jopapa)
-- [Add an API to Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps/add-api?wt.mc_id=mslearn_staticwebapp-github-jopapa)
-- [Authentication and authorization](https://docs.microsoft.com/azure/static-web-apps/authentication-authorization?wt.mc_id=mslearn_staticwebapp-github-jopapa)
-- [Routes](https://docs.microsoft.com/azure/static-web-apps/routes?wt.mc_id=mslearn_staticwebapp-github-jopapa)
-- [Review pre-production environments](https://docs.microsoft.com/azure/static-web-apps/review-publish-pull-requests?wt.mc_id=mslearn_staticwebapp-github-jopapa)
+```bash
+npm run build
+```
 
-### Azure Functions
+You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
 
-- Learn how to [Refactor Node.js and Express APIs to Serverless APIs with Azure Functions](https://docs.microsoft.com/learn/modules/shift-nodejs-express-apis-serverless/?wt.mc_id=mslearn_staticwebapp-github-jopapa)
-- Learn about the Azure Functions [local.settings.json](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file?wt.mc_id=mslearn_staticwebapp-github-jopapa) file
-- Learn how to [Deploy to Azure Using Azure Functions](https://code.visualstudio.com/tutorials/functions-extension/getting-started?wt.mc_id=mslearn_staticwebapp-github-jopapa)
-- Sign up for a [Free Trial of Azure](https://azure.microsoft.com/free/?wt.mc_id=mslearn_staticwebapp-github-jopapa)
 
-### Visual Studio Code
+## Single-page app mode
 
-- [Azure Free Trial](https://azure.microsoft.com/free/?wt.mc_id=mslearn_staticwebapp-github-jopapa)
-- [VS Code](https://code.visualstudio.com?wt.mc_id=mslearn_staticwebapp-github-jopapa)
-- [VS Code Extension for Node on Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack&WT.mc_id=mslearn_staticwebapp-github-jopapa)
-- Azure Functions [local.settings.json](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file?WT.mc_id=mslearn_staticwebapp-github-jopapa) file
+By default, sirv will only respond to requests that match files in `public`. This is to maximise compatibility with static fileservers, allowing you to deploy your app anywhere.
 
-### Debugging Resources
+If you're building a single-page app (SPA) with multiple routes, sirv needs to be able to respond to requests for *any* path. You can make it so by editing the `"start"` command in package.json:
 
-- [Debugging Angular in VS Code](https://code.visualstudio.com/docs/nodejs/angular-tutorial?wt.mc_id=mslearn_staticwebapp-github-jopapa)
-- [Debugging React in VS Code](https://code.visualstudio.com/docs/nodejs/reactjs-tutorial?wt.mc_id=mslearn_staticwebapp-github-jopapa)
-- [Debugging Vue in VS Code](https://code.visualstudio.com/docs/nodejs/vuejs-tutorial?wt.mc_id=mslearn_staticwebapp-github-jopapa)
+```js
+"start": "sirv public --single"
+```
 
-## Contributing
+## Using TypeScript
 
-This project welcomes contributions and suggestions. Most contributions require you to agree to a
-Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
-the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
+This template comes with a script to set up a TypeScript development environment, you can run it immediately after cloning the template with:
 
-When you submit a pull request, a CLA bot will automatically determine whether you need to provide
-a CLA and decorate the PR appropriately (e.g., status check, comment). Simply follow the instructions
-provided by the bot. You will only need to do this once across all repos using our CLA.
+```bash
+node scripts/setupTypeScript.js
+```
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+Or remove the script via:
+
+```bash
+rm scripts/setupTypeScript.js
+```
+
+If you want to use `baseUrl` or `path` aliases within your `tsconfig`, you need to set up `@rollup/plugin-alias` to tell Rollup to resolve the aliases. For more info, see [this StackOverflow question](https://stackoverflow.com/questions/63427935/setup-tsconfig-path-in-svelte).
+
+## Deploying to the web
+
+### With [Vercel](https://vercel.com)
+
+Install `vercel` if you haven't already:
+
+```bash
+npm install -g vercel
+```
+
+Then, from within your project folder:
+
+```bash
+cd public
+vercel deploy --name my-project
+```
+
+### With [surge](https://surge.sh/)
+
+Install `surge` if you haven't already:
+
+```bash
+npm install -g surge
+```
+
+Then, from within your project folder:
+
+```bash
+npm run build
+surge public my-project.surge.sh
+```

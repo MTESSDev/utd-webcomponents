@@ -1,0 +1,80 @@
+/*====================================================================================================
+  -10- Général                                                                                      
+/*====================================================================================================*/
+
+*,
+::after,
+::before {
+    box-sizing: border-box
+}
+
+html {
+    overflow-y: scroll;
+}
+
+body {
+    font-family: 'OpenSans-Regular', sans-serif;
+    background-color: #fff;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--couleur-texte-base);
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-style: normal;
+    color: var(--couleur-texte-base);
+}
+
+h1 {
+    font-family: 'Roboto-Bold', sans-serif;
+    margin-bottom: 2rem;
+}
+
+h1:not(.modal-title)::after {
+    /* Bordure sous les H1 */
+    content: "";
+    display: block;
+    margin: 0;
+    width: 3rem;
+    padding-top: 0.5rem;
+    border-bottom: 4px solid;
+    border-bottom-style: solid;
+    border-bottom-color: var(--couleur-saumon);
+}
+
+h2 {
+    margin-bottom: 0.7rem;
+    font-size: 1.5rem;
+    /* SCG spécifie 24px, et aucun resizing en mobile... Sera peut-être à revoir un jour. */
+    font-family: Roboto-Bold;
+}
+
+h3 {
+    font-size: 1.3125rem;
+    /*21px*/
+    font-family: Roboto-Medium;
+}
+
+h4 {
+    font-size: 1.125rem;
+    /*18px*/
+    font-family: Roboto-Bold;
+}
+
+h5 {
+    font-size: 1rem;
+    font-family: Roboto-Bold;
+}
+
+h6 {
+    font-size: 1rem;
+    /*TODO différence SCG eux = bold... Aucune différence avec h5?*/
+    font-family: Roboto-Medium;
+}
