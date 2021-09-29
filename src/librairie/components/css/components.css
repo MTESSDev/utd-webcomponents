@@ -348,7 +348,7 @@ p:last-child {
 }
 
 .backdrop,
-utd-aide-contextuelle::part(backdrop) {
+utd-infobulle::part(backdrop) {
     /*Backdrop*/
     opacity: 0.5;
     position: fixed;
@@ -365,12 +365,12 @@ utd-aide-contextuelle::part(backdrop) {
   -40- WebComponent aide contextuelle
 ====================================================================================================*/
 
-utd-aide-contextuelle p:first-of-type {
+utd-infobulle p:first-of-type {
     /* Slot contenu */
     margin-top: 0;
 }
 
-utd-aide-contextuelle p:nth-last-of-type(2) {
+utd-infobulle p:nth-last-of-type(2) {
     /* Slot contenu */
     margin-bottom: 0;
 }
@@ -396,14 +396,14 @@ html.modale-ouverte body {
 ====================================================================================================*/
 
 .container,
-utd-aide-contextuelle::part(container) {
+utd-infobulle::part(container) {
     margin: 0 auto;
     padding-left: 16px;
     padding-right: 16px;
 }
 
 .sr-only,
-utd-aide-contextuelle::part(sr-only) {
+utd-infobulle::part(sr-only) {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -422,7 +422,7 @@ utd-aide-contextuelle::part(sr-only) {
 
 @media (max-width: 425px) {
     .container,
-    utd-aide-contextuelle::part(container) {
+    utd-infobulle::part(container) {
         max-width: 100%;
         padding-right: 8px;
         padding-left: 8px;
@@ -435,7 +435,7 @@ utd-aide-contextuelle::part(sr-only) {
 ====================================================================================================*/
 
 .utd-icone-svg,
-utd-aide-contextuelle::part(icone-svg) {
+utd-infobulle::part(icone-svg) {
     display: inline-block;
     content: "";
     background-repeat: no-repeat;

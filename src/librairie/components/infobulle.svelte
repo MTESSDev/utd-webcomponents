@@ -1,7 +1,7 @@
 <!-- 
 Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un custom element.
 -->
-<svelte:options tag="utd-aide-contextuelle" />
+<svelte:options tag="utd-infobulle" />
 
 <script>
 //  import { onMount } from "svelte";
@@ -39,7 +39,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 /*  onMount(() => {
   });*/
 
-  function afficherAide(e) {
+  function afficherModale(e) {
 
     if(e.target.getRootNode().host){
       controleRacine = e.target.getRootNode()
@@ -53,7 +53,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     afficher = true
   }
 
-  function masquerAide(e) {
+  function masquerModale(e) {
     setTimeout(() => {
       html.classList.remove("modale-ouverte"); 
     }, 500);    
@@ -62,7 +62,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
   function keydown(e) {
     if (e.key === "Escape") {
-      masquerAide(e)
+      masquerModale(e)
     }
   }
   function obtenirControleModale() {
@@ -79,9 +79,9 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
 <span>
   {#if $$slots["texte-lie"]}
-    <span class="texte-lie" on:click={afficherAide}><slot name="texte-lie" /></span>
+    <span class="texte-lie" on:click={afficherModale}><slot name="texte-lie" /></span>
   {/if}
-  <span class="conteneur-tooltip">&#xFEFF;<button type="button" on:click={afficherAide} aria-label={srTexteBoutonOuvrir} class="tooltip-toggle">
+  <span class="conteneur-tooltip">&#xFEFF;<button type="button" on:click={afficherModale} aria-label={srTexteBoutonOuvrir} class="tooltip-toggle">
       <span class="conteneur-puce">
         <span aria-hidden="true" class="puce">
           <span
@@ -95,11 +95,11 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   </span>
 
   {#if afficher}
-    <div class="backdrop" part="backdrop" on:click={masquerAide} />
+    <div class="backdrop" part="backdrop" on:click={masquerModale} />
     <span
       tabindex="-1"
       aria-labelledby={idEntete}
-      class="conteneur"
+      class="modale"
       id={idModale}
       on:keydown={keydown}
       in:fly={{ y: 200, duration: 1000 }}
@@ -120,7 +120,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
         <button
           type="button"
           class="close"
-          on:click={masquerAide}
+          on:click={masquerModale}
           aria-label={srTexteBoutonFermer}
         >
           <span
@@ -212,7 +212,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     background-image: url("/images/utd-sprite.svg?v=1.0#ico-question");
   }
 
-  .conteneur {
+  .modale {
     font-family: "OpenSans-Regular", sans-serif;
     display: block !important;
     position: fixed;
@@ -306,10 +306,6 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
   .corps .d-none {
     display: none;
-  }
-
-  .conteneur-corps {
-    margin-top: 0;
   }
 
   /* Scrollbar aide contextuelle */
