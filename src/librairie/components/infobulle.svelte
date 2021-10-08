@@ -209,7 +209,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     height: 10px;
     min-width: 10px;
     margin-left: 0;
-    background-image: url("/images/utd-sprite.svg?v=1.0#ico-question");
+    background-image: url("/images/utd-sprite-v1.0.0.svg#ico-question");
   }
 
   .modale {
@@ -273,7 +273,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   }
 
   .utd-icone-svg.x-fermer-bleu {
-    background-image: url("/images/utd-sprite.svg?v=1.0#ico-xfermer-bleu");
+    background-image: url("/images/utd-sprite-v1.0.0.svg#ico-xfermer-bleu");
     width: 16px;
     height: 16px;
     min-width: 16px;
