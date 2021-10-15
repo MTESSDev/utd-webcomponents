@@ -1,11 +1,14 @@
 export class Utils {
-    static conserverFocusElement(element) {
-        const elementsFocusables = this.obtenirElementsFocusables(element)
+    static conserverFocusElement(componentShadow, componentRoot) {
+        const elementsFocusablesShadow = Array.from(this.obtenirElementsFocusables(componentShadow))
+        const elementsFocusablesRoot = Array.from(this.obtenirElementsFocusables(componentRoot))
+        const elementsFocusables = elementsFocusablesShadow.concat(elementsFocusablesRoot)
+
         const premierElementFocusable = elementsFocusables[0];
         const dernierElementFocusable = elementsFocusables[elementsFocusables.length - 1];
         const KEYCODE_TAB = 9;
 
-        element.addEventListener('keydown', function(e) {
+        componentShadow.addEventListener('keydown', function(e) {
             let estToucheTab = (e.key === 'Tab' || e.keyCode === KEYCODE_TAB);
 
             if (!estToucheTab) {

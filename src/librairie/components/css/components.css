@@ -353,13 +353,13 @@ utd-dialog::part(backdrop) {
     /*Backdrop*/
     opacity: 0.5;
     position: fixed;
+    z-index: 1040;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
     background-color: #000;
 }
-
 
   utd-infobulle [slot="contenu"] p:first-of-type,
   utd-dialog [slot="contenu"] p:first-of-type {

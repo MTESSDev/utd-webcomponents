@@ -8,7 +8,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   import { fly } from "svelte/transition"
   import { get_current_component } from "svelte/internal"
   import { Utils } from './utils'
-  export let afficher = false
+  export let afficher = 'false'
   export let titre = ""
   export let lang = "fr"
   export let srtitre = ""
@@ -17,35 +17,40 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
   const idModale = Utils.genererId()
   const idEntete = Utils.genererId()
-  const srTexteBoutonFermer = srboutonfermer
+  const srTexteBoutonFermer = srboutonfermer  
     ? srboutonfermer
     : lang === "fr"
     ? "Fermer"
     : "Close"
-  let controleModale
+  let estModaleAffichee = afficher === 'true'
   const thisComponent = get_current_component()
   let html
+  let mounted = false
+
   onMount(() => {
     html = thisComponent.getRootNode().getElementsByTagName("html")[0]
+    mounted = true
   })
   // Watch sur la prop afficher
   $: toggleAfficher(afficher) 
 
-  function masquerModale(raisonFermeture) {
-    
-    Utils.dispatchWcEvent(thisComponent, "avantFermeture", {raisonFermeture: raisonFermeture})
-
-    setTimeout(() => {
-      html.classList.remove("modale-ouverte"); 
-      Utils.dispatchWcEvent(thisComponent, "apresFermeture", {raisonFermeture: raisonFermeture})
-    }, 500);    
-    afficher = false
+  function masquerModale(raisonFermeture) {    
+    estModaleAffichee = false
+    afficher = 'false'
+    Utils.dispatchWcEvent(thisComponent, "fermeture", {raisonFermeture: raisonFermeture})
   }
   
   // Exécuté lorsque la valeur de la prop "afficher" change
   function toggleAfficher(){
-    if(afficher){
-      html.classList.add("modale-ouverte")
+    if(mounted){
+      if(afficher === 'true'){
+        estModaleAffichee = true
+        html.classList.add("modale-ouverte")      
+      } else {
+        if(estModaleAffichee){
+          masquerModale()
+        }
+      }
     }
   }
 
@@ -61,19 +66,17 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     }
   }
 
-  function obtenirControleModale() {
-    controleModale = thisComponent.shadowRoot.getElementById(idModale)
-    return controleModale
+  function finAnimationFermeture(e) {
+    html.classList.remove("modale-ouverte")
   }
 
   function conserverFocusFenetreModale(e) {
-    const controleModale = obtenirControleModale()
     thisComponent.shadowRoot.getElementById(idEntete).focus()
-    Utils.conserverFocusElement(controleModale)
+    Utils.conserverFocusElement(thisComponent.shadowRoot.getElementById(idModale), thisComponent)
   }
 </script>
 
-{#if afficher}
+{#if estModaleAffichee}
   <div class="backdrop" part="backdrop" on:click={() => masquerModale('ClickBackdrop')} />
   <div
     tabindex="-1"
@@ -84,7 +87,8 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     on:keydown={keydown}
     in:fly={{ y: 200, duration: 1000 }}
     out:fly={{ y: 200, duration: 500 }}
-    on:outroend={conserverFocusFenetreModale()}
+    on:introend={conserverFocusFenetreModale}
+    on:outroend={finAnimationFermeture}
     aria-modal="true"
     role="dialog"
   >
@@ -131,6 +135,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       width: 100%;
       height: 100%;
       overflow-y: auto;
+      z-index:10000;
   }
 
   .conteneur {
@@ -180,10 +185,11 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   }
 */
 
-  .principal::-webkit-scrollbar-thumb {
+/*  .principal::-webkit-scrollbar-thumb {
     background-color: var(--couleur-bleu-pale);
     transition: all 0.35s;
   }
+*/
 
   .entete {
     position: relative;
@@ -256,7 +262,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
 
   @media (min-width: 992px) {
-      .conteneur.lg,.contneeur.xl {
+      .conteneur.lg,.conteneur.xl {
           max-width:800px
       }
   }

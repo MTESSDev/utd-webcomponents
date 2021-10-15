@@ -4,8 +4,9 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 <svelte:options tag="utd-infobulle" />
 
 <script>
-//  import { onMount } from "svelte";
+  import { onMount } from "svelte";
   import { fly } from "svelte/transition"
+  import { get_current_component } from "svelte/internal"  
   import { Utils } from './utils'
   export let afficher = false
   export let titre = ""
@@ -20,8 +21,8 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   const srTexteTitre = srtitre
     ? srtitre
     : lang === "fr"
-    ? "Aide à propos de "
-    : "Help about "
+    ? "Aide à propos de &nbsp;"
+    : "Help about &nbsp;"
   const srTexteBoutonOuvrir = srboutonouvrir
     ? srboutonouvrir
     : lang === "fr"
@@ -32,31 +33,20 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     : lang === "fr"
     ? "Fermer"
     : "Close"
-  let controleRacine //Correspond au shadowRoot de notre webComponent
-  let controleModale
+  const thisComponent = get_current_component()
+
   let html
 
-/*  onMount(() => {
-  });*/
+  onMount(() => {
+    html = thisComponent.getRootNode().getElementsByTagName("html")[0]
+  })
 
   function afficherModale(e) {
-
-    if(e.target.getRootNode().host){
-      controleRacine = e.target.getRootNode()
-    } else {
-      controleRacine = e.target.parentNode.shadowRoot
-    }
-
-    html = controleRacine.host.getRootNode().getElementsByTagName("html")[0]  
     html.classList.add("modale-ouverte")
-
     afficher = true
   }
 
   function masquerModale(e) {
-    setTimeout(() => {
-      html.classList.remove("modale-ouverte"); 
-    }, 500);    
     afficher = false
   }
 
@@ -65,15 +55,14 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       masquerModale(e)
     }
   }
-  function obtenirControleModale() {
-    controleModale = controleRacine.getElementById(idModale)
-    return controleModale
+
+  function finAnimationFermeture(e) {
+    html.classList.remove("modale-ouverte")
   }
 
   function conserverFocusAideContextuelle(e) {
-    const controleModale = obtenirControleModale()
-    controleRacine.getElementById(idEntete).focus()
-    Utils.conserverFocusElement(controleModale)
+    thisComponent.shadowRoot.getElementById(idEntete).focus()
+    Utils.conserverFocusElement(thisComponent.shadowRoot.getElementById(idModale), thisComponent)
   }
 </script>
 
@@ -104,13 +93,14 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       on:keydown={keydown}
       in:fly={{ y: 200, duration: 1000 }}
       out:fly={{ y: 200, duration: 500 }}
-      on:outroend={conserverFocusAideContextuelle()}
+      on:introend={conserverFocusAideContextuelle}
+      on:outroend={finAnimationFermeture}
       aria-modal="true"
       role="dialog"
     >
       <span class="entete" part="container">
         <h1 id={idEntete} tabindex="-1">
-          <span class="sr-only" part="sr-only">{srTexteTitre}</span>
+          <span class="sr-only" part="sr-only">{@html srTexteTitre}</span>
           <span>
             {#if titre}
               {titre}
@@ -227,7 +217,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     border: 1px solid #c5cad2;
     height: auto;
     overflow: hidden;
-    z-index: 1000000;
+    z-index: 10000;
     padding-top: var(--tc-24-16-val);
     padding-bottom: var(--tc-24-16-val);
   }

@@ -6,10 +6,19 @@
     })
 
     // window.addEventListener('DOMContentLoaded', () => {})
-    document.getElementById("dialogTest1").addEventListener("apresFermeture", e => {
-      alert(`Événement de fermeture modale Test1 avec les détails : ${e.detail.raisonFermeture}`)
+    document.getElementById("dialogTest1").addEventListener("fermeture", e => {
+      console.log(`Événement de fermeture modale Test1 avec les détails : ${e.detail.raisonFermeture}`)
     })
-  
+
+    document.getElementById("btnAnnuler1").addEventListener('click', () => {
+        document.getElementById('dialogTest1').setAttribute('afficher', true)
+    })
+
+    document.getElementById("btnConfirmer1").addEventListener('click', () => {
+        alert('Bravo je contrôle le code sur clic du bouton confirmer. Je vais fermer la fenêtre sur OK.')
+        document.getElementById('dialogTest1').setAttribute('afficher', false)
+    })
+
 })
 
 </script>
@@ -33,8 +42,8 @@
         </p>
     </div>
     <div slot="pied">
-        <button type="button" class="btn btn-secondaire">Annuler</button>        
-        <button type="button" class="btn btn-primaire">Confirmer</button>        
+        <button id="btnAnnuler1" type="button" class="btn btn-secondaire">Annuler</button>        
+        <button id="btnConfirmer1" type="button" class="btn btn-primaire">Confirmer</button>        
     </div>
 </utd-dialog>
 
