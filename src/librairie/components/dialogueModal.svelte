@@ -130,8 +130,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       left: 0;
       width: 100%;
       height: 100%;
-      overflow-y: hidden;
-      height: auto;
+      overflow-y: auto;
   }
 
   .conteneur {
@@ -152,13 +151,14 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   }
 
   .principal {
-    max-height: calc(100vh - 96px);
-    overflow-y: auto;
+    /*max-height: calc(100vh - 96px);*/
+    /*overflow-y: auto;*/
     padding: 0 16px 32px 0;
     width: 100%;
   }
 
   /* Scrollbar du contenu */
+  /*
   .principal::-webkit-scrollbar,
   .principal::-webkit-scrollbar-thumb,
   .principal::-webkit-scrollbar-track {
@@ -170,13 +170,15 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     margin-top: 16px;
     margin-bottom: 16px;
   }
-
+*/
+/*
   .principal::-webkit-scrollbar-button,
   .principal::-webkit-scrollbar-track-piece,
   .principal::-webkit-scrollbar-corner,
   .principal::-webkit-resizer {
     display: none;
   }
+*/
 
   .principal::-webkit-scrollbar-thumb {
     background-color: var(--couleur-bleu-pale);
@@ -237,7 +239,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
   .corps {
     line-height: 1.5rem;
-    overflow-y: auto;
+/*    overflow-y: auto;*/
     font-size: 1rem;
   }
 

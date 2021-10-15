@@ -419,7 +419,7 @@ html.modale-ouverte body {
 }
 
 html.modale-ouverte body {
-    padding-right: 17px;
+    padding-right: 15px;
     /* prendre l'espace de la scrollbar afin d'éviter un déplacement des éléments de la page */
 }
 
