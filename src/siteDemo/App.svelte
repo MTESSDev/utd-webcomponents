@@ -7,13 +7,13 @@
 <div class="container">
     <nav>
         <a href="/">Accueil</a>
-        <a href="/aidecontextuelle">Aide contextuelle</a>
-        <a href="/modal">Modal</a>
+        <a on:click|preventDefault={() => window.location.href = '/aidecontextuelle'} href="/aidecontextuelle">Aide contextuelle</a>
+        <a on:click|preventDefault={() => window.location.href = '/modal'} href="/modal">Modal</a>
     </nav>
     <main>
         <Route path="/"><Accueil /></Route>
         <Route path="/aidecontextuelle"><AideContextuelle /></Route>
-        <Route path="Modal"><Modal /></Route>
+        <Route path="modal"><Modal /></Route>
     </main>
 </div>
 

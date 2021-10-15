@@ -348,17 +348,50 @@ p:last-child {
 }
 
 .backdrop,
-utd-infobulle::part(backdrop) {
+utd-infobulle::part(backdrop),
+utd-dialog::part(backdrop) {
     /*Backdrop*/
     opacity: 0.5;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1040;
     width: 100vw;
     height: 100vh;
     background-color: #000;
 }
+
+
+  utd-infobulle [slot="contenu"] p:first-of-type,
+  utd-dialog [slot="contenu"] p:first-of-type {
+    margin-top: 0;
+  }
+
+  utd-dialog [slot="contenu"] p:last-of-type {
+    margin-bottom: 0;
+  }
+
+  utd-dialog [slot="pied"] > * {
+    margin-right: 16px;
+  }
+
+  utd-dialog [slot="pied"] > *:last-child {
+    margin-right: 0;
+  }
+
+  @media (max-width: 425px) {
+
+    utd-dialog [slot="pied"] button {
+        margin-bottom: 24px;
+        margin-right: 0;
+        width: 100%;
+    }
+
+    utd-dialog [slot="pied"] button:last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+
 
 
 /*====================================================================================================
@@ -435,7 +468,8 @@ utd-infobulle::part(sr-only) {
 ====================================================================================================*/
 
 .utd-icone-svg,
-utd-infobulle::part(icone-svg) {
+utd-infobulle::part(icone-svg),
+utd-dialog::part(icone-svg) {
     display: inline-block;
     content: "";
     background-repeat: no-repeat;

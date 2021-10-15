@@ -13,14 +13,14 @@ export class Utils {
             }
 
             const elementActif = document.activeElement.shadowRoot ? document.activeElement.shadowRoot.activeElement : document.activeElement
-
+            console.log(elementActif)
             if (e.shiftKey) /* shift + tab */ {
                 if (elementActif === premierElementFocusable) {
                     dernierElementFocusable.focus()
                     e.preventDefault()
                 }
             } else /* tab */ {
-                if (elementActif === dernierElementFocusable) {
+                if (elementsFocusables.length === 1 || elementActif === dernierElementFocusable ) {
                     premierElementFocusable.focus()
                     e.preventDefault()
                 }
@@ -36,5 +36,17 @@ export class Utils {
          */
     static genererId() {
         return Date.now().toString(36) + '-' + Math.random().toString(36).substr(2, 9);
+    }
+    /**
+     * Créé un événement custom pour un webComponent.
+     * @param {*} component Objet associé à notre composant (objet DOM).
+     * @param {*} nomEvenement Nom de l'événement. 
+     * @param {*} detailsEvenement Détails de l'événement.
+     */
+    static dispatchWcEvent = (component, nomEvenement, detailsEvenement) => {
+        component.dispatchEvent(new CustomEvent(nomEvenement, {
+            detail: detailsEvenement,
+            composed: true // propage l'événement à travers le shadow DOM (Remonte au document)
+        }))
     }
 }
