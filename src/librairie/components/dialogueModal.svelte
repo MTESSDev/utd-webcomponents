@@ -91,7 +91,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     id={idModale}
     on:click={clickModale}
     on:keydown={keydown}
-    in:fly={{ y: 200, duration: 1000 }}
+    in:fly={{ y: 200, duration: 750 }}
     out:fly={{ y: 200, duration: 500 }}
     on:introend={conserverFocusFenetreModale}
     on:outroend={finAnimationFermeture}
@@ -155,10 +155,6 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     border: 1px solid #c5cad2;
     background-color: #fff;
     margin: 2rem auto;
-  }
-
-  .conteneur.sm {
-    max-width: 300px
   }
 
   .principal {
@@ -243,7 +239,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   }
 
   .utd-icone-svg.x-fermer-bleu {
-    background-image: url("/images/utd-sprite-v1.0.0.svg#ico-xfermer-bleu");
+    background-image: url("/images/utd-sprite-v1.1.0.svg#ico-xfermer-bleu");
     width: 16px;
     height: 16px;
     min-width: 16px;
@@ -264,18 +260,5 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     .pied {
         flex-direction: column;
     }
-  }
-
-
-  @media (min-width: 992px) {
-      .conteneur.lg,.conteneur.xl {
-          max-width:800px
-      }
-  }
-
-  @media (min-width: 1200px) {
-      .conteneur.xl {
-          max-width:1140px
-      }
   }
 </style>

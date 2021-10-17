@@ -194,37 +194,37 @@ input.utd-form-control.sm {
 }
 
 .avis.information .utd-icone-svg {
-    background-image: url(utd-sprite.svg-v1.0.0#ico-information);
+    background-image: url(utd-sprite.svg-v1.1.0#ico-information);
 }
 
 .avis.avertissement .utd-icone-svg {
-    background-image: url(utd-sprite.svg-v1.0.0#ico-avertissement);
+    background-image: url(utd-sprite.svg-v1.1.0#ico-avertissement);
 }
 
 .avis.succes .utd-icone-svg {
-    background-image: url(utd-sprite.svg-v1.0.0#ico-succes);
+    background-image: url(utd-sprite.svg-v1.1.0#ico-succes);
 }
 
 .avis.erreur .utd-icone-svg {
-    background-image: url(utd-sprite.svg-v1.0.0#ico-erreur);
+    background-image: url(utd-sprite.svg-v1.1.0#ico-erreur);
 }
 
 .utd-icone-svg.x-fermer-bleu {
-    background-image: url(utd-sprite.svg-v1.0.0#ico-xfermer-bleu);
+    background-image: url(utd-sprite.svg-v1.1.0#ico-xfermer-bleu);
 }
 
 .utd-icone-svg.x-fermer-bleu-foncee {
-    background-image: url(utd-sprite.svg-v1.0.0#ico-xfermer-bleu-foncee);
+    background-image: url(utd-sprite.svg-v1.1.0#ico-xfermer-bleu-foncee);
 }
 
 .utd-icone-svg.question {
-    background-image: url(utd-sprite.svg-v1.0.0#ico-question);
+    background-image: url(utd-sprite.svg-v1.1.0#ico-question);
 }
 
 .utd-icone-svg.plus {
-    background-image: url(utd-sprite.svg-v1.0.0#ico-plus);
+    background-image: url(utd-sprite.svg-v1.1.0#ico-plus);
 }
 
 .utd-icone-svg.moins {
-    background-image: url(utd-sprite.svg-v1.0.0#ico-moins);
+    background-image: url(utd-sprite.svg-v1.1.0#ico-moins);
 }
