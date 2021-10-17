@@ -11,9 +11,8 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   export let afficher = 'false'
   export let titre = ""
   export let lang = "fr"
-  export let srtitre = ""
-  export let srboutonouvrir = ""
   export let srboutonfermer = ""
+  export let idfocus = ""
 
   const idModale = Utils.genererId()
   const idEntete = Utils.genererId()
@@ -37,6 +36,13 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   function masquerModale(raisonFermeture) {    
     estModaleAffichee = false
     afficher = 'false'
+    
+    //On redonne le focus au contrôle spécifié (normalement celui qui a initié l'affichage de la fenêtre modale)
+    const controleFocus = thisComponent.getRootNode().getElementById(idfocus)
+    if(controleFocus){
+      controleFocus.focus()
+    }
+
     Utils.dispatchWcEvent(thisComponent, "fermeture", {raisonFermeture: raisonFermeture})
   }
   
@@ -109,7 +115,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       <div class="principal">
         <div class="entete">
           <h1 id={idEntete} tabindex="-1">
-            <slot name="titre" />
+            {titre}
           </h1>
         </div>
         <div class="corps">

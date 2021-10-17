@@ -26,10 +26,7 @@
 <h1>Dialogue modal</h1>
 <button type="button" id="btnTest1" class="btn btn-primaire">Test</button>
 
-<utd-dialog id="dialogTest1">
-    <div slot="titre">
-        Éditer l'image
-    </div>
+<utd-dialog id="dialogTest1" titre="Éditer l'image" idfocus="btnTest1">
     <div slot="contenu">
         <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, magni earum ut ex totam corporis unde incidunt deserunt, dolorem voluptatum libero quia. Maiores, provident error vel veritatis itaque nemo commodi.
