@@ -418,9 +418,9 @@ html.modale-ouverte body {
     overflow: hidden;
 }
 
-html.modale-ouverte body {
+html.modale-ouverte:not(.est-mobile) body {
     padding-right: 15px;
-    /* prendre l'espace de la scrollbar afin d'éviter un déplacement des éléments de la page */
+    /* prendre l'espace de la scrollbar afin d'éviter un déplacement des éléments de la page, sauf si mobile */
 }
 
 

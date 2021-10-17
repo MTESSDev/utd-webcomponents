@@ -52,4 +52,8 @@ export class Utils {
             composed: true // propage l'événement à travers le shadow DOM (Remonte au document)
         }))
     }
+
+    static estMobile() {
+        return navigator.maxTouchPoints || 'ontouchstart' in document.documentElement
+    }
 }

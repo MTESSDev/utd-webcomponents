@@ -29,6 +29,10 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   onMount(() => {
     html = thisComponent.getRootNode().getElementsByTagName("html")[0]
     mounted = true
+
+    if(Utils.estMobile()){
+      html.classList.add("est-mobile")      
+    }
   })
   // Watch sur la prop afficher
   $: toggleAfficher(afficher) 
