@@ -21,8 +21,8 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   const srTexteTitre = srtitre
     ? srtitre
     : lang === "fr"
-    ? "Aide à propos de &nbsp;"
-    : "Help about &nbsp;"
+    ? "Aide à propos de&nbsp;"
+    : "Help about&nbsp;"
   const srTexteBoutonOuvrir = srboutonouvrir
     ? srboutonouvrir
     : lang === "fr"
