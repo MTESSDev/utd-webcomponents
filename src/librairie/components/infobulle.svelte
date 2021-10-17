@@ -91,7 +91,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       class="modale"
       id={idModale}
       on:keydown={keydown}
-      in:fly={{ y: 200, duration: 1000 }}
+      in:fly={{ y: 200, duration: 750 }}
       out:fly={{ y: 200, duration: 500 }}
       on:introend={conserverFocusAideContextuelle}
       on:outroend={finAnimationFermeture}
@@ -199,7 +199,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     height: 10px;
     min-width: 10px;
     margin-left: 0;
-    background-image: url("/images/utd-sprite-v1.1.0.svg#ico-question");
+    background-image: url("/images/utd-sprite-v1.0.0.svg#ico-question");
   }
 
   .modale {
@@ -263,7 +263,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   }
 
   .utd-icone-svg.x-fermer-bleu {
-    background-image: url("/images/utd-sprite-v1.1.0.svg#ico-xfermer-bleu");
+    background-image: url("/images/utd-sprite-v1.0.0.svg#ico-xfermer-bleu");
     width: 16px;
     height: 16px;
     min-width: 16px;
@@ -281,7 +281,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   .corps {
     display: block;
     padding: 0 1.5rem 0 0;
-    max-height: calc(33vh - (var(--tc-24-16) * 4));
+    max-height: calc(33.33333vh - (var(--tc-24-16-val) * 3) - 30px);
     overflow-y: auto;
     font-size: 1rem;
   }

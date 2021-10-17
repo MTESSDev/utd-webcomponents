@@ -239,7 +239,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   }
 
   .utd-icone-svg.x-fermer-bleu {
-    background-image: url("/images/utd-sprite-v1.1.0.svg#ico-xfermer-bleu");
+    background-image: url("/images/utd-sprite-v1.0.0.svg#ico-xfermer-bleu");
     width: 16px;
     height: 16px;
     min-width: 16px;
