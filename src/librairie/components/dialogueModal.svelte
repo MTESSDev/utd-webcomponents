@@ -24,16 +24,17 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   let estModaleAffichee = afficher === 'true'
   const thisComponent = get_current_component()
   let html
+  let body
+  let slots = []
   let mounted = false
 
   onMount(() => {
     html = thisComponent.getRootNode().getElementsByTagName("html")[0]
-    mounted = true
-
-    if(Utils.estMobile()){
-      html.classList.add("est-mobile")      
-    }
+    body = thisComponent.getRootNode().getElementsByTagName("body")[0]
+    slots = Array.from(thisComponent.querySelectorAll('[slot]'))    
+    mounted = true  
   })
+
   // Watch sur la prop afficher
   $: toggleAfficher(afficher) 
 
@@ -54,8 +55,8 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   function toggleAfficher(){
     if(mounted){
       if(afficher === 'true'){
-        estModaleAffichee = true
-        html.classList.add("modale-ouverte")      
+        Utils.ajusterInterfaceAvantAffichageModale(html, body)
+        estModaleAffichee = true       
       } else {
         if(estModaleAffichee){
           masquerModale()
@@ -77,12 +78,16 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   }
 
   function finAnimationFermeture(e) {
-    html.classList.remove("modale-ouverte")
+    Utils.ajusterInterfaceApresFermetureModale(html, body, thisComponent.shadowRoot.getElementById(idModale))
+    Utils.dispatchWcEvent(thisComponent, "apresFermeture")
   }
 
-  function conserverFocusFenetreModale(e) {
+  function ajusterModalePendantAffichage(e){
+    const modale = thisComponent.shadowRoot.getElementById(idModale)
+    Utils.ajusterInterfacePendantAffichageModale(body, modale)
+
     thisComponent.shadowRoot.getElementById(idEntete).focus()
-    Utils.conserverFocusElement(thisComponent.shadowRoot.getElementById(idModale), thisComponent)
+    Utils.conserverFocusElement(modale, thisComponent)
   }
 </script>
 
@@ -97,7 +102,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     on:keydown={keydown}
     in:fly={{ y: 200, duration: 750 }}
     out:fly={{ y: 200, duration: 500 }}
-    on:introend={conserverFocusFenetreModale}
+    on:introend={ajusterModalePendantAffichage}
     on:outroend={finAnimationFermeture}
     aria-modal="true"
     role="dialog"
@@ -125,7 +130,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
         <div class="corps">
           <slot name="contenu" />
         </div>
-        {#if $$slots["pied"]}
+        {#if Utils.slotExiste(slots, 'pied')}
           <div class="pied">
             <slot name="pied" />
           </div>    
@@ -205,7 +210,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
   .entete h1 {
     font-family: "Roboto-Bold", sans-serif;
-    font-size: var(--text-xl-val);
+    font-size: 1.5rem;
     margin: 0;
   }
 

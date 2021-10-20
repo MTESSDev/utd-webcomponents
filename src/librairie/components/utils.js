@@ -16,7 +16,6 @@ export class Utils {
             }
 
             const elementActif = document.activeElement.shadowRoot ? document.activeElement.shadowRoot.activeElement : document.activeElement
-            console.log(elementActif)
             if (e.shiftKey) /* shift + tab */ {
                 if (elementActif === premierElementFocusable) {
                     dernierElementFocusable.focus()
@@ -55,5 +54,49 @@ export class Utils {
 
     static estMobile() {
         return navigator.maxTouchPoints || 'ontouchstart' in document.documentElement
+    }
+
+    static ajusterInterfaceAvantAffichageModale(html, body) {
+        
+        if(!this.estMobile()){
+            const largeurScrollbarHtml = window.innerWidth - html.offsetWidth
+
+            if(largeurScrollbarHtml > 0){
+                html.style['padding-right'] = largeurScrollbarHtml + 'px'
+            } 
+            else {
+                const largeurScrollbarBody = window.innerWidth - body.offsetWidth
+                if(largeurScrollbarBody > 0){
+                    body.style['padding-right'] = largeurScrollbarBody + 'px'
+                } else {
+                    const largeurScrollbarModale = window.innerWidth - modale.offsetWidth
+                    if(largeurScrollbarModale > 0){
+                        body.style['padding-right'] = largeurScrollbarmodale + 'px'
+                    }     
+                }
+            }
+        }      
+
+        html.classList.add("modale-ouverte")      
+    }
+
+    static ajusterInterfacePendantAffichageModale(body, modale) {
+
+        if(!this.estMobile()){
+            const largeurScrollbarModale = window.innerWidth - modale.offsetWidth
+            if(largeurScrollbarModale > 0){
+                body.style['padding-right'] = largeurScrollbarmodale + 'px'
+            }     
+        }         
+    }
+
+    static ajusterInterfaceApresFermetureModale(html, body) {        
+        html.style.removeProperty('padding-right')
+        body.style.removeProperty('padding-right')
+        html.classList.remove("modale-ouverte")
+    }
+
+    static slotExiste(slots, nomSlot) {
+        return slots.some(s => s.slot === nomSlot)
     }
 }

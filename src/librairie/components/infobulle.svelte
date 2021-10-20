@@ -36,9 +36,11 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   const thisComponent = get_current_component()
 
   let html
+  let body
 
   onMount(() => {
     html = thisComponent.getRootNode().getElementsByTagName("html")[0]
+    body = thisComponent.getRootNode().getElementsByTagName("body")[0]
 
     if(Utils.estMobile()){
       html.classList.add("est-mobile")      
@@ -46,7 +48,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   })
 
   function afficherModale(e) {
-    html.classList.add("modale-ouverte")
+    Utils.ajusterInterfaceAvantAffichageModale(html, body)
     afficher = true
   }
 
@@ -61,7 +63,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   }
 
   function finAnimationFermeture(e) {
-    html.classList.remove("modale-ouverte")
+    Utils.ajusterInterfaceApresFermetureModale(html, body)
   }
 
   function conserverFocusAideContextuelle(e) {
