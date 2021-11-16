@@ -5,6 +5,7 @@ import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
 import css2 from 'rollup-plugin-css-porter';
+import babel from 'rollup-plugin-babel';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -30,12 +31,12 @@ function serve() {
 }
 
 export default [{
-    input: 'src/librairie.js',
+    input: 'src/utd-components.js',
     output: {
-        sourcemap: true,
+        sourcemap: false,
         format: 'iife',
         name: 'app',
-        file: 'public/build/utd-webcomponents-v1.0.0.js'
+        file: 'public/js/utd-webcomponents-v1.1.0.js'
     },
     plugins: [
         svelte({
@@ -48,12 +49,40 @@ export default [{
         // we'll extract any component CSS out into
         // a separate file - better for performance
         //        css({ output: 'bundle.css' }),
-        css2({ dest: 'public/build/utd-webcomponents-v1.0.0.css' }),
+        css2({ dest: 'public/css/utd-webcomponents-v1.1.0.css' }),
         // If you have external dependencies installed from
         // npm, you'll most likely need these plugins. In
         // some cases you'll need additional configuration -
         // consult the documentation for details:
         // https://github.com/rollup/plugins/tree/master/packages/commonjs
+
+        // compile to IE11 compatible ES5
+        babel({
+            runtimeHelpers: true,
+            extensions: [ '.js', '.mjs', '.html', '.svelte' ],
+            exclude: [ 'node_modules/@babel/**', 'node_modules/core-js/**' ],
+            presets: [
+                [
+                    '@babel/preset-env',
+                    {
+                        targets: {
+                        ie: '11'
+                        },
+                        useBuiltIns: 'usage',
+                        corejs: 3
+                    }
+                ]
+            ],
+            plugins: [
+                '@babel/plugin-syntax-dynamic-import',
+                [
+                '@babel/plugin-transform-runtime',
+                    {
+                        useESModules: true
+                    }
+                ]
+            ]
+        }),
         resolve({
             browser: true,
             dedupe: ['svelte']
@@ -67,7 +96,8 @@ export default [{
     watch: {
         clearScreen: false
     }
-}, {
+},
+{
     input: 'src/siteDemo.js',
     output: {
         sourcemap: true,

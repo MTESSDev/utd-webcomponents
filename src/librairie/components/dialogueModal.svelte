@@ -92,11 +92,11 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 </script>
 
 {#if estModaleAffichee}
-  <div class="backdrop" part="backdrop" on:click={() => masquerModale('ClickBackdrop')} />
+  <div class="utd-backdrop" on:click={() => masquerModale('ClickBackdrop')} />
   <div
     tabindex="-1"
     aria-labelledby={idEntete}
-    class="modale"
+    class="utd-dialog"
     id={idModale}
     on:click={clickModale}
     on:keydown={keydown}
@@ -117,7 +117,6 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       >
         <span
           aria-hidden="true"
-          part="icone-svg"
           class="utd-icone-svg x-fermer-bleu"
         />
       </button>
@@ -140,134 +139,6 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   </div>  
 {/if}
 
+<link rel='stylesheet' href='/css/utd-webcomponents-v1.1.0.min.css'>
 <style>
-
-  .modale {
-      position: fixed;
-      display: block;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow-y: auto;
-      z-index:10000;
-  }
-
-  .conteneur {
-    display: flex;
-    flex-direction: column;
-    max-width: 536px; /* (600 - padding de côté) */
-    position: relative;
-    width: auto;
-    padding: 0 32px;
-    box-shadow: 0 3px 12px rgba(34, 54, 84, 0.22);
-    border: 1px solid #c5cad2;
-    background-color: #fff;
-    margin: 2rem auto;
-  }
-
-  .principal {
-    /*max-height: calc(100vh - 96px);*/
-    /*overflow-y: auto;*/
-    padding: 0 16px 32px 0;
-    width: 100%;
-  }
-
-  /* Scrollbar du contenu */
-  /*
-  .principal::-webkit-scrollbar,
-  .principal::-webkit-scrollbar-thumb,
-  .principal::-webkit-scrollbar-track {
-    background: transparent;
-    border: none;
-    border-radius: 0.3125rem;
-    height: 50%;
-    width: 0.625rem;
-    margin-top: 16px;
-    margin-bottom: 16px;
-  }
-*/
-/*
-  .principal::-webkit-scrollbar-button,
-  .principal::-webkit-scrollbar-track-piece,
-  .principal::-webkit-scrollbar-corner,
-  .principal::-webkit-resizer {
-    display: none;
-  }
-*/
-
-/*  .principal::-webkit-scrollbar-thumb {
-    background-color: var(--couleur-bleu-pale);
-    transition: all 0.35s;
-  }
-*/
-
-  .entete {
-    position: relative;
-    max-width: var(--largeur-max-zone-texte);
-    margin-bottom: 24px;
-  }
-
-  .entete h1 {
-    font-family: "Roboto-Bold", sans-serif;
-    font-size: 1.5rem;
-    margin: 0;
-  }
-
-  .entete h1::after {
-    content: "";
-    display: block;
-    margin: 0;
-    width: 3rem;
-    border-bottom: 4px solid;
-    border-bottom-style: solid;
-    border-bottom-color: var(--couleur-saumon);
-  }
-
-  .entete h1:focus {
-    outline: 0;
-  }
-
-  .pied {
-    margin-top: 24px;
-  }
-
-  .close {
-    display: flex;
-    line-height: 0;
-    padding: 1rem;
-    font-size: 1rem;
-    opacity: 1;
-    background-color: transparent;
-    border: 0;
-    margin: 0 -2rem -1rem auto;
-  }
-
-  .close:hover {
-    cursor: pointer;
-  }
-
-  .utd-icone-svg.x-fermer-bleu {
-    background-image: url("/images/utd-sprite-v1.0.0.svg#ico-xfermer-bleu");
-    width: 16px;
-    height: 16px;
-    min-width: 16px;
-  }
-
-  .corps {
-    line-height: 1.5rem;
-/*    overflow-y: auto;*/
-    font-size: 1rem;
-  }
-
-  .pied {
-    display: flex;
-    justify-content: end;  
-  }
-
-  @media (max-width: 425px) {
-    .pied {
-        flex-direction: column;
-    }
-  }
 </style>

@@ -68,11 +68,6 @@ export class Utils {
                 const largeurScrollbarBody = window.innerWidth - body.offsetWidth
                 if(largeurScrollbarBody > 0){
                     body.style['padding-right'] = largeurScrollbarBody + 'px'
-                } else {
-                    const largeurScrollbarModale = window.innerWidth - modale.offsetWidth
-                    if(largeurScrollbarModale > 0){
-                        body.style['padding-right'] = largeurScrollbarmodale + 'px'
-                    }     
                 }
             }
         }      
@@ -85,7 +80,7 @@ export class Utils {
         if(!this.estMobile()){
             const largeurScrollbarModale = window.innerWidth - modale.offsetWidth
             if(largeurScrollbarModale > 0){
-                body.style['padding-right'] = largeurScrollbarmodale + 'px'
+                body.style['padding-right'] = largeurScrollbarModale + 'px'
             }     
         }         
     }

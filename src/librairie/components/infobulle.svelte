@@ -72,7 +72,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   }
 </script>
 
-<span>
+<span class="utd-infobulle">
   {#if $$slots["texte-lie"]}
     <span class="texte-lie" on:click={afficherModale}><slot name="texte-lie" /></span>
   {/if}
@@ -81,7 +81,6 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
         <span aria-hidden="true" class="puce">
           <span
             aria-hidden="true"
-            part="icone-svg"
             class="utd-icone-svg question"
           />
         </span>
@@ -90,7 +89,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   </span>
 
   {#if afficher}
-    <div class="backdrop" part="backdrop" on:click={masquerModale} />
+    <div class="utd-backdrop" on:click={masquerModale} />
     <span
       tabindex="-1"
       aria-labelledby={idEntete}
@@ -104,9 +103,9 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       aria-modal="true"
       role="dialog"
     >
-      <span class="entete" part="container">
+      <span class="container entete">
         <h1 id={idEntete} tabindex="-1">
-          <span class="sr-only" part="sr-only">{@html srTexteTitre}</span>
+          <span class="sr-only">{@html srTexteTitre}</span>
           <span>
             {#if titre}
               {titre}
@@ -121,12 +120,11 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
         >
           <span
             aria-hidden="true"
-            part="icone-svg"
             class="utd-icone-svg x-fermer-bleu"
           />
         </button>
       </span>
-      <span class="conteneur-corps" part="container">
+      <span class="container conteneur-corps">
         <span class="corps">
           {#if contenu}
             {@html contenu}
@@ -139,192 +137,6 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   {/if}
 </span>
 
+<link rel='stylesheet' href='/css/utd-webcomponents-v1.1.0.min.css'>
 <style>
-  .texte-lie:hover,
-  button:hover {
-    cursor: pointer;
-  }
-  .texte-lie {
-    background-color: #e7f1fa;
-    padding: 0 2px;
-    display: inline-block;
-    text-decoration: underline;
-    text-decoration-color: var(--couleur-piv);
-    text-underline-offset: 2px;
-  }
-
-  .conteneur-tooltip {
-    position: relative;
-    bottom: 8px;
-    left: -4px;
-    white-space: nowrap;
-  }
-  .texte-lie + .conteneur-tooltip {
-    bottom: 6px;
-    left: -6px;
-  }
-
-  button.tooltip-toggle {
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
-    min-height: 40px;
-    display: inline-block;
-    border: 0;
-    background-color: transparent;
-    position: relative;
-    padding: 0 12px;
-  }
-
-  .texte-lie + .conteneur-tooltip button.tooltip-toggle {
-    width: auto;
-    height: auto;
-    min-width: 0;
-    min-height: 0;
-    padding: 2px 4px;
-    margin-right: -10px;
-  }
-
-  button.tooltip-toggle .conteneur-puce {
-    display: block;
-    width: 16px;
-  }
-
-  button.tooltip-toggle .puce {
-    width: 16px;
-    height: 16px;
-    border-radius: 100%;
-    background-color: var(--couleur-piv);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  button.tooltip-toggle .utd-icone-svg {
-    width: 10px;
-    height: 10px;
-    min-width: 10px;
-    margin-left: 0;
-    background-image: url("/images/utd-sprite-v1.0.0.svg#ico-question");
-  }
-
-  .modale {
-    font-family: "OpenSans-Regular", sans-serif;
-    display: block !important;
-    position: fixed;
-    top: auto;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: 0;
-    width: 100%;
-    background-color: #fff;
-    box-shadow: 0 3px 12px rgba(34, 54, 84, 0.22);
-    border: 1px solid #c5cad2;
-    height: auto;
-    overflow: hidden;
-    z-index: 10000;
-    padding-top: var(--tc-24-16-val);
-    padding-bottom: var(--tc-24-16-val);
-  }
-
-  .entete {
-    position: relative;
-    display: flex;
-    align-items: center;
-    border: none;
-    max-width: var(--largeur-max-zone-texte);
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-
-  .entete h1 {
-    font-family: "Roboto-Bold", sans-serif;
-    font-size: var(--text-lg-val);
-    letter-spacing: 0;
-    max-width: 58.75rem;
-    margin: 0;
-  }
-
-  .entete h1:focus {
-    outline: 0;
-  }
-
-  .entete h1:after {
-    content: none;
-  }
-
-  .entete .close {
-    line-height: 0;
-    padding: 1rem;
-    font-size: 1rem;
-    opacity: 1;
-    background-color: transparent;
-    border: 0;
-    margin: -1rem -1rem -1rem auto;
-  }
-
-  .entete .close:hover {
-    cursor: pointer;
-  }
-
-  .utd-icone-svg.x-fermer-bleu {
-    background-image: url("/images/utd-sprite-v1.0.0.svg#ico-xfermer-bleu");
-    width: 16px;
-    height: 16px;
-    min-width: 16px;
-  }
-
-  .conteneur-corps {
-    max-width: var(--largeur-max-zone-texte);
-    border: 0;
-    line-height: 1.5rem;
-    margin: var(--tc-24-16-val) auto 0 auto !important;
-    overflow-y: auto;
-    display: block;
-  }
-
-  .corps {
-    display: block;
-    padding: 0 1.5rem 0 0;
-    max-height: calc(33.33333vh - (var(--tc-24-16-val) * 3) - 30px);
-    overflow-y: auto;
-    font-size: 1rem;
-  }
-
-  .corps p:first-of-type {
-    margin-top: 0;
-  }
-
-  .corps p:nth-last-of-type(2) {
-    margin-bottom: 0;
-  }
-
-  .corps .d-none {
-    display: none;
-  }
-
-  /* Scrollbar aide contextuelle */
-  .corps::-webkit-scrollbar,
-  .corps::-webkit-scrollbar-thumb,
-  .corps::-webkit-scrollbar-track {
-    background: transparent;
-    border: none;
-    border-radius: 0.3125rem;
-    height: 50%;
-    width: 0.625rem;
-    margin-top: 8px;
-  }
-
-  .corps::-webkit-scrollbar-button,
-  .corps::-webkit-scrollbar-track-piece,
-  .corps::-webkit-scrollbar-corner,
-  .corps::-webkit-resizer {
-    display: none;
-  }
-
-  .corps::-webkit-scrollbar-thumb {
-    background-color: var(--couleur-bleu-pale);
-    transition: all 0.35s;
-  }
 </style>

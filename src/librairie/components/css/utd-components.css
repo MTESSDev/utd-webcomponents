@@ -1,0 +1,401 @@
+/*! utd-webcomponents */
+/* Feuille de style pour les webcomponents utd. Les styles ici s'applique à ce qui est dans le ShadowDOM des components. */
+
+
+/*====================================================================================================
+  -01- Éléments généraux
+====================================================================================================*/
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.utd-backdrop {
+    /*Backdrop*/
+    opacity: 0.5;
+    position: fixed;
+    z-index: 1040;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+}
+
+/*====================================================================================================
+  -40- utd-infobulle
+====================================================================================================*/
+
+.utd-infobulle .texte-lie:hover,
+  button:hover {
+    cursor: pointer;
+}
+.utd-infobulle .texte-lie {
+    background-color: #e7f1fa;
+    padding: 0 2px;
+    display: inline-block;
+    text-decoration: underline;
+    text-decoration-color: var(--couleur-piv);
+    text-underline-offset: 2px;
+}
+
+.utd-infobulle .conteneur-tooltip {
+    position: relative;
+    bottom: 8px;
+    left: -4px;
+    white-space: nowrap;
+}
+
+.utd-infobulle .texte-lie + .conteneur-tooltip {
+    bottom: 6px;
+    left: -6px;
+}
+
+.utd-infobulle button.tooltip-toggle {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    display: inline-block;
+    border: 0;
+    background-color: transparent;
+    position: relative;
+    padding: 0 12px;
+}
+
+.utd-infobulle .texte-lie + .conteneur-tooltip button.tooltip-toggle {
+    width: auto;
+    height: auto;
+    min-width: 0;
+    min-height: 0;
+    padding: 2px 4px;
+    margin-right: -10px;
+}
+
+.utd-infobulle button.tooltip-toggle .conteneur-puce {
+    display: block;
+    width: 16px;
+}
+
+.utd-infobulle button.tooltip-toggle .puce {
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    background-color: var(--couleur-piv);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.utd-infobulle button.tooltip-toggle .utd-icone-svg {
+    background-image: url("/images/utd-sprite-v1.1.0.svg#ico-question");
+    width: 10px;
+    height: 10px;
+    min-width: 10px;
+    margin-left: 0;
+}
+
+.utd-infobulle .modale {
+    font-family: "OpenSans-Regular", sans-serif;
+    display: block !important;
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 3px 12px rgba(34, 54, 84, 0.22);
+    border: 1px solid #c5cad2;
+    height: auto;
+    overflow: hidden;
+    z-index: 10000;
+    padding-top: var(--tc-24-16-val);
+    padding-bottom: var(--tc-24-16-val);
+  }
+
+  .utd-infobulle .entete {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: none;
+    max-width: var(--largeur-max-zone-texte);
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .utd-infobulle .entete h1 {
+    font-family: "Roboto-Bold", sans-serif;
+    font-size: var(--text-lg-val);
+    letter-spacing: 0;
+    max-width: 58.75rem;
+    margin: 0;
+  }
+
+  .utd-infobulle .entete h1:focus {
+    outline: 0;
+  }
+
+  .utd-infobulle .entete h1:after {
+    content: none;
+  }
+
+  .utd-infobulle .entete .close {
+    line-height: 0;
+    padding: 1rem;
+    font-size: 1rem;
+    opacity: 1;
+    background-color: transparent;
+    border: 0;
+    margin: -1rem -1rem -1rem auto;
+  }
+
+  .utd-infobulle .entete .close:hover {
+    cursor: pointer;
+  }
+
+  .utd-infobulle .utd-icone-svg.x-fermer-bleu {
+    background-image: url("/images/utd-sprite-v1.1.0.svg#ico-xfermer-bleu");
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+  }
+
+  .utd-infobulle .conteneur-corps {
+    max-width: var(--largeur-max-zone-texte);
+    border: 0;
+    line-height: 1.5rem;
+    margin: var(--tc-24-16-val) auto 0 auto !important;
+    overflow-y: auto;
+    display: block;
+  }
+
+  .utd-infobulle .corps {
+    display: block;
+    padding: 0 1.5rem 0 0;
+    max-height: calc(33.33333vh - (var(--tc-24-16-val) * 3) - 30px);
+    overflow-y: auto;
+    font-size: 1rem;
+  }
+
+  .utd-infobulle .corps p:first-of-type {
+    margin-top: 0;
+  }
+
+  .utd-infobulle .corps p:nth-last-of-type(2) {
+    margin-bottom: 0;
+  }
+
+  .utd-infobulle .corps .d-none {
+    display: none;
+  }
+
+  /* Scrollbar aide contextuelle */
+.utd-infobulle .corps::-webkit-scrollbar,
+.utd-infobulle .corps::-webkit-scrollbar-thumb,
+.utd-infobulle .corps::-webkit-scrollbar-track {
+    background: transparent;
+    border: none;
+    border-radius: 0.3125rem;
+    height: 50%;
+    width: 0.625rem;
+    margin-top: 8px;
+}
+
+.utd-infobulle .corps::-webkit-scrollbar-button,
+.utd-infobulle .corps::-webkit-scrollbar-track-piece,
+.utd-infobulle .corps::-webkit-scrollbar-corner,
+.utd-infobulle .corps::-webkit-resizer {
+    display: none;
+}
+
+.utd-infobulle .corps::-webkit-scrollbar-thumb {
+    background-color: var(--couleur-bleu-pale);
+    transition: all 0.35s;
+}
+
+
+/*====================================================================================================
+  -50- utd-dialog
+====================================================================================================*/
+
+.utd-dialog {
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    z-index:10000;
+}
+
+.utd-dialog .conteneur {
+  display: flex;
+  flex-direction: column;
+  max-width: 536px; /* (600 - padding de côté) */
+  position: relative;
+  width: auto;
+  padding: 0 32px;
+  box-shadow: 0 3px 12px rgba(34, 54, 84, 0.22);
+  border: 1px solid #c5cad2;
+  background-color: #fff;
+  margin: 2rem auto;
+}
+
+.utd-dialog .principal {
+  padding: 0 16px 32px 0;
+  width: 100%;
+}
+
+.utd-dialog .entete {
+  position: relative;
+  max-width: var(--largeur-max-zone-texte);
+  margin-bottom: 24px;
+}
+
+.utd-dialog .entete h1 {
+  font-family: "Roboto-Bold", sans-serif;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.utd-dialog .entete h1::after {
+  content: "";
+  display: block;
+  margin: 0;
+  width: 3rem;
+  border-bottom: 4px solid;
+  border-bottom-style: solid;
+  border-bottom-color: var(--couleur-saumon);
+}
+
+.utd-dialog .entete h1:focus {
+  outline: 0;
+}
+
+.utd-dialog .pied {
+  margin-top: 24px;
+}
+
+.utd-dialog .close {
+  display: flex;
+  line-height: 0;
+  padding: 1rem;
+  font-size: 1rem;
+  opacity: 1;
+  background-color: transparent;
+  border: 0;
+  margin: 0 -2rem -1rem auto;
+}
+
+.utd-dialog .close:hover {
+  cursor: pointer;
+}
+
+.utd-dialog .utd-icone-svg.x-fermer-bleu {
+  background-image: url("/images/utd-sprite-v1.1.0.svg#ico-xfermer-bleu");
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+}
+
+.utd-dialog .corps {
+  line-height: 1.5rem;
+/*    overflow-y: auto;*/
+  font-size: 1rem;
+}
+
+.utd-dialog .pied {
+  display: flex;
+  justify-content: end;  
+}
+
+@media (max-width: 425px) {
+.utd-dialog .pied {
+      flex-direction: column;
+  }
+}
+
+
+/*====================================================================================================
+  -60- Redéfinitions Bootstrap
+====================================================================================================*/
+.container {
+    margin: 0 auto;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+@media (max-width: 425px) {
+    .container {
+        max-width: 100%;
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 1152px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1152px;
+    }
+}
+
+/*====================================================================================================
+  -900- Sprites 
+====================================================================================================*/
+.utd-icone-svg {
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% auto;
+}
+
+.utd-icone-svg.x-fermer-bleu {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+}
+.utd-icone-svg.x-fermer-bleu {
+    background-image: url(utd-sprite.svg-v1.1.0#ico-xfermer-bleu);
+}
+
+.utd-icone-svg.question {
+    background-image: url(utd-sprite.svg-v1.1.0#ico-question);
+}
+
+.utd-icone-svg.plus {
+    background-image: url(utd-sprite.svg-v1.1.0#ico-plus);
+}
+
+.utd-icone-svg.moins {
+    background-image: url(utd-sprite.svg-v1.1.0#ico-moins);
+}
