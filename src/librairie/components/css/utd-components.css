@@ -1,37 +1,167 @@
 /*! utd-webcomponents */
-/* Feuille de style pour les webcomponents utd. Les styles ici s'applique à ce qui est dans le ShadowDOM des components. */
-
 
 /*====================================================================================================
-  -01- Éléments généraux
+  -10- Slots
 ====================================================================================================*/
 
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
+[slot="contenu"] ul {
+  padding-left: 16px;
 }
 
-.utd-backdrop {
-    /*Backdrop*/
-    opacity: 0.5;
-    position: fixed;
-    z-index: 1040;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #000;
+[slot="contenu"] ul:last-child {
+  margin-bottom: 0;
 }
+
+[slot="contenu"] ul li {
+  margin-bottom: 16px;
+}
+
+[slot="contenu"] ul li:last-of-type {
+  margin-bottom: 0;
+}
+
+[slot="contenu"] p:first-of-type, .contenu p:first-of-type {
+  margin-top: 0;
+}
+
+[slot="contenu"] p:last-of-type, .contenu p:last-of-type {
+  margin-bottom: 0;
+}
+
+
+
+/*====================================================================================================*/
+/*  -35- Avis 
+/*====================================================================================================*/
+/*
+--couleur-fond-message-information: #D9E6F0;
+--couleur-fond-message-bienvenue: #D9E6F0;
+--couleur-fond-message-avertissement: #F8E69A;
+--couleur-fond-message-nouveaute: #BCDA9A;
+--couleur-fond-message-erreur: #EDBAB1;
+*/
+  .utd-avis {
+    display: flex;
+    border: 1px solid var(--couleur-filet-secondaire);
+    background-color: #fff;
+    word-break: break-word;
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+
+  .utd-avis .zone-icone {
+    display: flex;  
+    padding: 24px 8px;
+  }
+
+  .utd-avis .zone-icone .utd-icone-svg {
+      background-size: 100% auto;
+      min-width: 24px;
+      height: 24px;
+  }
+
+  .utd-avis .zone-icone, .utd-avis.information .zone-icone {
+      background-color: #D9E6F0;
+  }
+
+  .utd-avis.avertissement .zone-icone {
+      background-color: #F8E69A;
+  }
+
+  .utd-avis.succes .zone-icone {
+      background-color: #BCDA9A;
+  }
+
+  .utd-avis.erreur .zone-icone {
+      background-color: #EDBAB1;
+  }
+
+  utd-avis[type="erreur"] [slot="contenu"] ul li a {
+    color: var(--couleur-erreur);
+  }
+
+  utd-avis[type="erreur"] [slot="contenu"] ul li a:hover, utd-avis[type="erreur"] [slot="contenu"] ul li a:focus {
+    text-decoration: none;
+  }
+
+  .utd-avis .titre {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    font-family: OpenSans-Bold;
+    font-size: 14px !important;
+}
+
+  .utd-avis .contenu {
+      padding: 24px var(--tc-32-24-val) 24px 16px;
+      width: 100%;
+  }
+
+  
+  .utd-avis .contenu :last-child {
+      margin-bottom: 0;
+  }
 
 /*====================================================================================================
-  -40- utd-infobulle
+  -40- utd-accordeon
+====================================================================================================*/
+
+.utd-accordeon .entete button {
+  font-family: 'OpenSans';
+  font-size: 16px;
+  color: var(--couleur-texte-base);
+  font-weight: 600;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px 15px 15px;  
+  background-color: var(--couleur-fond-gris);
+  border: 1px solid var(--couleur-fond-gris);
+}
+
+.utd-accordeon .entete button:hover, .utd-accordeon .entete button:focus {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px 15px 15px;  
+  background-color: var(--couleur-fond-gris);
+  border: 1px solid var(--couleur-fond-gris);
+}
+
+
+.utd-accordeon .entete button:hover, .utd-accordeon.ouvert .entete button, .utd-accordeon.ouvert .contenu {
+  border: 1px solid #c4c8ce;
+}
+
+.utd-accordeon .contenu {
+  margin-left: 16px;
+  /*  transform:scaleY(0);
+  transform-origin: top;
+  transition: transform 0.25s ease;*/
+}
+
+.utd-accordeon.ouvert .contenu {
+  margin: 0;
+  border-top: 1px solid transparent!important;
+  padding: 24px 16px;
+  /*transform:scaleY(1);*/
+}
+.utd-accordeon .entete button:focus {
+  outline: 2px solid #89bce5;
+  border: 2px solid #5b6476;
+  padding: 14px 18px 14px 15px;
+  margin-left: -1px;
+  margin-bottom: 2px;
+}
+
+
+
+/* Feuille de style pour les webcomponents utd. Les styles ici s'applique à ce qui est dans le ShadowDOM des components. */
+
+/*====================================================================================================
+  -50- utd-infobulle
 ====================================================================================================*/
 
 .utd-infobulle .texte-lie:hover,
@@ -96,7 +226,7 @@
 }
 
 .utd-infobulle button.tooltip-toggle .utd-icone-svg {
-    background-image: url("/images/utd-sprite-v1.1.0.svg#ico-question");
+    background-image: url("/images/utd-sprite-v1.2.0.svg#ico-question");
     width: 10px;
     height: 10px;
     min-width: 10px;
@@ -104,7 +234,7 @@
 }
 
 .utd-infobulle .modale {
-    font-family: "OpenSans-Regular", sans-serif;
+    font-family: "OpenSans", sans-serif;
     display: block !important;
     position: fixed;
     top: auto;
@@ -164,7 +294,7 @@
   }
 
   .utd-infobulle .utd-icone-svg.x-fermer-bleu {
-    background-image: url("/images/utd-sprite-v1.1.0.svg#ico-xfermer-bleu");
+    background-image: url("/images/utd-sprite-v1.2.0.svg#ico-xfermer-bleu");
     width: 16px;
     height: 16px;
     min-width: 16px;
@@ -223,9 +353,8 @@
     transition: all 0.35s;
 }
 
-
 /*====================================================================================================
-  -50- utd-dialog
+  -60- utd-dialog
 ====================================================================================================*/
 
 .utd-dialog {
@@ -303,7 +432,7 @@
 }
 
 .utd-dialog .utd-icone-svg.x-fermer-bleu {
-  background-image: url("/images/utd-sprite-v1.1.0.svg#ico-xfermer-bleu");
+  background-image: url("/images/utd-sprite-v1.2.0.svg#ico-xfermer-bleu");
   width: 16px;
   height: 16px;
   min-width: 16px;
@@ -321,81 +450,34 @@
 }
 
 @media (max-width: 425px) {
-.utd-dialog .pied {
-      flex-direction: column;
+  .utd-dialog .pied {
+        flex-direction: column;
+    }
+  } 
+  
+ 
+
+/* Slots */
+utd-dialog [slot="pied"] > button {
+  margin-right: 32px;
+}
+
+utd-dialog [slot="pied"] > button:last-child {
+  margin-right: 0;
+}
+
+@media (max-width: 425px) {
+
+  utd-dialog [slot="pied"] button {
+      margin-bottom: 24px;
+      margin-right: 0;
+      width: 100%;
+  }
+
+  utd-dialog [slot="pied"] button:last-of-type {
+      margin-bottom: 0;
   }
 }
 
 
-/*====================================================================================================
-  -60- Redéfinitions Bootstrap
-====================================================================================================*/
-.container {
-    margin: 0 auto;
-    padding-left: 16px;
-    padding-right: 16px;
-}
 
-@media (max-width: 425px) {
-    .container {
-        max-width: 100%;
-        padding-right: 8px;
-        padding-left: 8px;
-    }
-}
-
-@media (min-width: 576px) {
-    .container {
-        max-width: 100%;
-    }
-}
-
-@media (min-width: 768px) {
-    .container {
-        max-width: 100%;
-    }
-}
-
-@media (min-width: 992px) {
-    .container {
-        max-width: 1152px;
-    }
-}
-
-@media (min-width: 1200px) {
-    .container {
-        max-width: 1152px;
-    }
-}
-
-/*====================================================================================================
-  -900- Sprites 
-====================================================================================================*/
-.utd-icone-svg {
-    display: inline-block;
-    content: "";
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100% auto;
-}
-
-.utd-icone-svg.x-fermer-bleu {
-    width: 16px;
-    height: 16px;
-    min-width: 16px;
-}
-.utd-icone-svg.x-fermer-bleu {
-    background-image: url(utd-sprite.svg-v1.1.0#ico-xfermer-bleu);
-}
-
-.utd-icone-svg.question {
-    background-image: url(utd-sprite.svg-v1.1.0#ico-question);
-}
-
-.utd-icone-svg.plus {
-    background-image: url(utd-sprite.svg-v1.1.0#ico-plus);
-}
-
-.utd-icone-svg.moins {
-    background-image: url(utd-sprite.svg-v1.1.0#ico-moins);
-}

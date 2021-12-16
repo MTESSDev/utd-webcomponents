@@ -36,7 +36,7 @@ export default [{
         sourcemap: false,
         format: 'iife',
         name: 'app',
-        file: 'public/js/utd-webcomponents-v1.1.0.js'
+        file: 'public/js/utd-webcomponents-v1.2.0.js'
     },
     plugins: [
         svelte({
@@ -49,7 +49,7 @@ export default [{
         // we'll extract any component CSS out into
         // a separate file - better for performance
         //        css({ output: 'bundle.css' }),
-        css2({ dest: 'public/css/utd-webcomponents-v1.1.0.css' }),
+        css2({ dest: 'public/css/utd-webcomponents-v1.2.0.css' }),
         // If you have external dependencies installed from
         // npm, you'll most likely need these plugins. In
         // some cases you'll need additional configuration -

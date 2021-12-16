@@ -103,7 +103,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       aria-modal="true"
       role="dialog"
     >
-      <span class="container entete">
+      <span class="utd-container entete">
         <h1 id={idEntete} tabindex="-1">
           <span class="sr-only">{@html srTexteTitre}</span>
           <span>
@@ -124,7 +124,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
           />
         </button>
       </span>
-      <span class="container conteneur-corps">
+      <span class="utd-container conteneur-corps">
         <span class="corps">
           {#if contenu}
             {@html contenu}
@@ -137,6 +137,6 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   {/if}
 </span>
 
-<link rel='stylesheet' href='/css/utd-webcomponents-v1.1.0.min.css'>
+<link rel='stylesheet' href='/css/utd-webcomponents-v1.2.0.min.css'>
 <style>
 </style>

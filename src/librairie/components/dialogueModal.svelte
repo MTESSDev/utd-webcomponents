@@ -139,6 +139,6 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   </div>  
 {/if}
 
-<link rel='stylesheet' href='/css/utd-webcomponents-v1.1.0.min.css'>
+<link rel='stylesheet' href='/css/utd-webcomponents-v1.2.0.min.css'>
 <style>
 </style>
