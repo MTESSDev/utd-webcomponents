@@ -394,7 +394,8 @@
 
 .utd-dialog .entete h1 {
   font-family: "Roboto-Bold", sans-serif;
-  font-size: 1.5rem;
+  font-size: var(--tc-24-20);
+  line-height: var(--tc-36-28);
   margin: 0;
 }
 

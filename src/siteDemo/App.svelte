@@ -108,10 +108,10 @@
             <div id="colonneDroite">
                 <main id="main">
                     <Route path="/" redirect="/base/principe" ></Route>
-                    <Route path="/base" ><Principe /></Route>
+                    <Route path="/base" redirect="/base/principe" ></Route>
                     <Route path="/base/principe" ><Principe /></Route>
                     <Route path="/base/utilisation" ><Utilisation /></Route>
-                    <Route path="/composants" ><Accordeon /></Route>
+                    <Route path="/composants" redirect="/composants/accordeon" ></Route>
                     <Route path="/composants/accordeon" ><Accordeon /></Route>
                     <Route path="/composants/avis" ><Avis /></Route>
                     <Route path="/composants/boutons" ><Boutons /></Route>

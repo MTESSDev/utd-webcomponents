@@ -2403,14 +2403,15 @@
         attr_dev(h1, "id",
         /*idEntete*/
         ctx[4]);
+        attr_dev(h1, "class", "titre-dialog");
         attr_dev(h1, "tabindex", "-1");
         add_location(h1, file$1, 124, 10, 3618);
         attr_dev(div1, "class", "entete");
         add_location(div1, file$1, 123, 8, 3586);
         attr_dev(slot, "name", "contenu");
-        add_location(slot, file$1, 129, 10, 3745);
+        add_location(slot, file$1, 129, 10, 3766);
         attr_dev(div2, "class", "corps");
-        add_location(div2, file$1, 128, 8, 3714);
+        add_location(div2, file$1, 128, 8, 3735);
         attr_dev(div3, "class", "principal");
         add_location(div3, file$1, 122, 6, 3553);
         attr_dev(div4, "class", "conteneur");
@@ -2535,9 +2536,9 @@
         div = element("div");
         slot = element("slot");
         attr_dev(slot, "name", "pied");
-        add_location(slot, file$1, 133, 12, 3875);
+        add_location(slot, file$1, 133, 12, 3896);
         attr_dev(div, "class", "pied");
-        add_location(div, file$1, 132, 10, 3843);
+        add_location(div, file$1, 132, 10, 3864);
       },
       m: function mount(target, anchor) {
         insert_dev(target, div, anchor);
@@ -2572,7 +2573,7 @@
         this.c = noop;
         attr_dev(link, "rel", "stylesheet");
         attr_dev(link, "href", "/css/utd-webcomponents-v1.2.0.min.css");
-        add_location(link, file$1, 141, 0, 3985);
+        add_location(link, file$1, 141, 0, 4006);
       },
       l: function claim(nodes) {
         throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");

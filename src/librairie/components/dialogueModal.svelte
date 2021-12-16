@@ -122,7 +122,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       </button>
       <div class="principal">
         <div class="entete">
-          <h1 id={idEntete} tabindex="-1">
+          <h1 id={idEntete} class="titre-dialog" tabindex="-1">
             {titre}
           </h1>
         </div>

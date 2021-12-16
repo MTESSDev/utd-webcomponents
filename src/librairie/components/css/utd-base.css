@@ -326,13 +326,13 @@ h1 {
 }
 
 /* Bordure sous les H1 */
-h1:not(.modal-title)::after {
+h1:not(.titre-dialog)::after {
     content: "";
     display: block;
     margin: 0;
     width: 4.8rem;
     padding-top: 0.4rem;
-    border-bottom: 4px solid var(--couleur-saumon);
+    border-bottom: 4px solid var(--couleur-saumon);    
 }
 
 
