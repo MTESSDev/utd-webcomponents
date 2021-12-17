@@ -398,7 +398,7 @@ p:last-child {
 }
 
 .d-none {
-    display: none;
+    display: none!important;
 }
 
 .sr-only {

@@ -52,7 +52,7 @@
 
                     
                     <div class="section-droite">
-                        <ul>
+                        <ul class="d-none">
                             <li><a href="/Commun/NousJoindre">Nous joindre</a></li>
                         </ul>
                     </div>
