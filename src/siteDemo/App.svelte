@@ -123,3 +123,18 @@
         
     </div>
 </div>
+<footer class="piv-bas-page">
+    <h2 id="titreMenuPiedPage" class="sr-only">Menu pied de page</h2>
+    <div class="utd-container conteneur-signature-mo">
+        <a href="https://www.mtess.gouv.qc.ca/" target="_blank" rel="noopener">
+            <img class="logo-mo" alt="Ministère du Travail, de l'Emploi et de la Solidarité sociale. Ce lien sera ouvert dans un nouvel onglet." src="/images/logo_piv_bas_page.gif">
+        </a>
+
+        <span class="copyright">
+            <a href="http://www.droitauteur.gouv.qc.ca/copyright.php" target="_blank" rel="noopener">
+                © Gouvernement du Québec,&nbsp;2021
+                <span class="sr-only">. Ce lien sera ouvert dans un nouvel onglet.</span>
+            </a>
+        </span>
+    </div>
+</footer>
