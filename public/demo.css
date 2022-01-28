@@ -213,7 +213,7 @@ header {
     display: block;
     color: #fff;
     text-decoration: none;
-    font-family: 'OpenSans', sans-serif;
+    font-family: 'OpenSans-Regular', sans-serif;
     font-size: var(--tc-18-16-val);
     border-bottom: 4px solid var(--couleur-texte-base);
     padding: 8px 8px 4px 8px;
@@ -244,7 +244,7 @@ header {
   -05- Menu secondaire
 ====================================================================================================*/
 .menu-secondaire .toggle{
-    font-family: 'OpenSans';
+    font-family: 'OpenSans-Regular';
     font-size: 16px;
     display:flex;
     justify-content: space-between;
@@ -297,8 +297,8 @@ header {
 
 
 .menu-secondaire li a.active{    
+    font-family: 'OpenSans-Bold';
     background-color: var(--couleur-bleu-pale);
-    font-weight: 700;
 }
 
 .menu-secondaire li a:active{

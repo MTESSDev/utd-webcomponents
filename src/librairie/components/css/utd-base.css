@@ -167,11 +167,11 @@
 /* open-sans-regular - latin */
 
 @font-face {
-    font-family: 'OpenSans';
+    font-family: 'OpenSans-Regular';
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: local('Open Sans Regular'), local('OpenSans-Regular'), url('/fonts/open-sans-v18-latin-regular.woff') format('woff');
+    src: local('Open Sans Regular'), local('OpenSans-Regular'), url('../fonts/open-sans-v18-latin-regular.woff') format('woff');
     /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
@@ -183,7 +183,7 @@
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'), url('/fonts/open-sans-v18-latin-600.woff') format('woff');
+    src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'), url('../fonts/open-sans-v18-latin-600.woff') format('woff');
     /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
@@ -195,181 +195,48 @@
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: local('Open Sans Bold'), local('OpenSans-Bold'), url('/fonts/open-sans-v18-latin-700.woff') format('woff');
+    src: local('Open Sans Bold'), local('OpenSans-Bold'), url('../fonts/open-sans-v18-latin-700.woff') format('woff');
     /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 
 /* Roboto - latin  non utilisé pour le moment */
 
-
+/*
 @font-face {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    src: local('Roboto'), local('Roboto-Regular'), url('../fonts/roboto-v20-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
+    src: local('Roboto'), local('Roboto-Regular'), url('../fonts/roboto-v20-latin-regular.woff') format('woff'); 
+    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ 
+}*/
 
 
 /* roboto-500 - latin */
-/*
+
 @font-face {
     font-family: 'Roboto-Medium';
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    src: local('Roboto Medium'), local('Roboto-Medium'), url('/fonts/roboto-v20-latin-500.woff') format('woff');
-    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ 
-}*/
+    src: local('Roboto Medium'), local('Roboto-Medium'), url('../fonts/roboto-v20-latin-500.woff') format('woff');
+    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
 
 
 /* roboto-700 - latin */
-/*
+
 @font-face {
     font-family: 'Roboto-Bold';
     font-style: normal;
     font-weight: 700;
     font-display: swap;
     src: local('Roboto Bold'), local('Roboto-Bold'), url('/fonts/roboto-v20-latin-700.woff') format('woff');
-    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ 
-}*/
-
-
-/*====================================================================================================
-  -02- Tailles adaptatives                                                                                  
-====================================================================================================*/
-
-@media screen and (max-width: 324px) {
-     :root {
-        --tc-8-4-val: calc(var(--tc-8-4) - var(--tc-8-4-ecart-px));
-        --tc-14-12-val: calc(var(--tc-14-12) - var(--tc-14-12-ecart-px));
-        --tc-16-4-val: calc(var(--tc-16-4) - var(--tc-16-4-ecart-px));
-        --tc-16-8-val: calc(var(--tc-16-8) - var(--tc-16-8-ecart-px));
-        --tc-18-14-val: calc(var(--tc-18-14) - var(--tc-18-14-ecart-px));
-        --tc-18-16-val: calc(var(--tc-18-16) - var(--tc-18-16-ecart-px));
-        --tc-20-16-val: calc(var(--tc-20-16) - var(--tc-20-16-ecart-px));
-        --tc-24-12-val: calc(var(--tc-24-12) - var(--tc-24-12-ecart-px));
-        --tc-24-16-val: calc(var(--tc-24-16) - var(--tc-24-16-ecart-px));
-        --tc-24-20-val: calc(var(--tc-24-20) - var(--tc-24-20-ecart-px));
-        --tc-30-24-val: calc(var(--tc-30-24) - var(--tc-30-24-ecart-px));
-        --tc-32-16-val: calc(var(--tc-32-16) - var(--tc-32-16-ecart-px));
-        --tc-32-24-val: calc(var(--tc-32-24) - var(--tc-32-24-ecart-px));
-        --tc-36-28-val: calc(var(--tc-36-28) - var(--tc-36-28-ecart-px));
-        --tc-44-32-val: calc(var(--tc-44-32) - var(--tc-44-32-ecart-px));
-        --tc-48-36-val: calc(var(--tc-48-36) - var(--tc-48-36-ecart-px));
-        --tc-48-40-val: calc(var(--tc-48-40) - var(--tc-48-40-ecart-px));
-        --tc-56-42-val: calc(var(--tc-56-42) - var(--tc-56-42-ecart-px));
-        --tc-80-72-val: calc(var(--tc-80-72) - var(--tc-80-72-ecart-px));
-    }
-    #flecheHaut {
-        right: calc(var(--position-retour-haut-page) - var(--position-retour-haut-page-ecart-px)) !important;
-    }
-}
-
-@media all and (min-width: 325px) and (max-width: 1151px) {
-     :root {
-        --tc-8-4-val: calc(var(--tc-8-4) + (var(--ratio-vw) * var(--tc-8-4-ecart)) - var(--tc-8-4-ecart-px));
-        --tc-14-12-val: calc(var(--tc-14-12) + (var(--ratio-vw) * var(--tc-14-12-ecart)) - var(--tc-14-12-ecart-px));
-        --tc-16-4-val: calc(var(--tc-16-4) + (var(--ratio-vw) * var(--tc-16-4-ecart)) - var(--tc-16-4-ecart-px));
-        --tc-16-8-val: calc(var(--tc-16-8) + (var(--ratio-vw) * var(--tc-16-8-ecart)) - var(--tc-16-8-ecart-px));
-        --tc-18-14-val: calc(var(--tc-18-14) + (var(--ratio-vw) * var(--tc-18-14-ecart)) - var(--tc-18-14-ecart-px));
-        --tc-18-16-val: calc(var(--tc-18-16) + (var(--ratio-vw) * var(--tc-18-16-ecart)) - var(--tc-18-16-ecart-px));
-        --tc-20-16-val: calc(var(--tc-20-16) + (var(--ratio-vw) * var(--tc-20-16-ecart)) - var(--tc-20-16-ecart-px));
-        --tc-24-12-val: calc(var(--tc-24-12) + (var(--ratio-vw) * var(--tc-24-12-ecart)) - var(--tc-24-12-ecart-px));
-        --tc-24-16-val: calc(var(--tc-24-16) + (var(--ratio-vw) * var(--tc-24-16-ecart)) - var(--tc-24-16-ecart-px));
-        --tc-24-20-val: calc(var(--tc-24-20) + (var(--ratio-vw) * var(--tc-24-20-ecart)) - var(--tc-24-20-ecart-px));
-        --tc-30-24-val: calc(var(--tc-30-24) + (var(--ratio-vw) * var(--tc-30-24-ecart)) - var(--tc-30-24-ecart-px));
-        --tc-32-16-val: calc(var(--tc-32-16) + (var(--ratio-vw) * var(--tc-32-16-ecart)) - var(--tc-32-16-ecart-px));
-        --tc-32-24-val: calc(var(--tc-32-24) + (var(--ratio-vw) * var(--tc-32-24-ecart)) - var(--tc-32-24-ecart-px));
-        --tc-36-28-val: calc(var(--tc-36-28) + (var(--ratio-vw) * var(--tc-36-28-ecart)) - var(--tc-36-28-ecart-px));
-        --tc-44-32-val: calc(var(--tc-44-32) + (var(--ratio-vw) * var(--tc-44-32-ecart)) - var(--tc-44-32-ecart-px));
-        --tc-48-36-val: calc(var(--tc-48-36) + (var(--ratio-vw) * var(--tc-48-36-ecart)) - var(--tc-48-36-ecart-px));
-        --tc-48-40-val: calc(var(--tc-48-40) + (var(--ratio-vw) * var(--tc-48-40-ecart)) - var(--tc-48-40-ecart-px));
-        --tc-56-42-val: calc(var(--tc-56-42) + (var(--ratio-vw) * var(--tc-56-42-ecart)) - var(--tc-56-42-ecart-px));
-        --tc-80-72-val: calc(var(--tc-80-72) + (var(--ratio-vw) * var(--tc-80-72-ecart)) - var(--tc-80-72-ecart-px));
-    }
-    #flecheHaut {
-        right: calc(var(--position-retour-haut-page) + (var(--ratio-vw) * var(--position-retour-haut-page-ecart)) - var(--position-retour-haut-page-ecart-px)) !important;
-    }
-}
-
-@media screen and (min-width: 1152px) {
-    #flecheHaut {
-        right: var(--position-retour-haut-page);
-    }
-}
-
-
-.espaceur-conteneurs {
-    height: var(--tc-48-40-val);
+    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 /*====================================================================================================
-  -03- Headers
-====================================================================================================*/
-/* TODO obtenir les marges officielles */
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    color: var(--couleur-texte-base);
-}
-
-
-h1 {
-    font-weight: bold;
-    margin-bottom: 2rem;
-    margin-top: 0;
-    font-size: var(--tc-48-36-val);
-    line-height: var(--tc-48-36-val);
-}
-
-/* Bordure sous les H1 */
-h1:not(.titre-dialog)::after {
-    content: "";
-    display: block;
-    margin: 0;
-    width: 4.8rem;
-    padding-top: 0.4rem;
-    border-bottom: 4px solid var(--couleur-saumon);    
-}
-
-
-h2 {
-    margin-top: 2.5rem;
-    margin-bottom: 0.7rem;
-    font-size: var(--tc-36-28-val);
-    line-height: var(--tc-44-32-val);
-}
-
-
-h3 {
-    margin-top: 2.7rem;
-    font-size: var(--tc-32-24-val);
-    font-weight: 500;
-    line-height: var(--tc-36-28-val);
-}
-
-h4 {
-    font-size: var(--tc-24-20-val);
-    line-height: var(--tc-36-28-val);
-}
-
-h5 {
-    font-size: var(--tc-20-16-val);
-    line-height: var(--tc-30-24-val);
-}
-
-h6 {
-    font-size: 1rem;
-    line-height: 24px;
-}
-
-/* TODO ajouter headers applicatifs */
-
-/*====================================================================================================
-  -10- Général                                                                                      
+  -01- Général                                                                                      
 /*====================================================================================================*/
 *,
 ::after,
@@ -378,13 +245,13 @@ h6 {
 }
 
 html {
+    font-size: 100%;
     overflow-y: scroll;
 }
 
 body {
-    font-family: 'OpenSans', sans-serif;
+    font-family: 'OpenSans-Regular', sans-serif;
     background-color: #fff;
-    font-weight: 400;
     line-height: 1.5;
     color: var(--couleur-texte-base);
     margin: 0;
@@ -456,6 +323,134 @@ p:last-child {
 }
 
 
+/*====================================================================================================
+  -02- Tailles adaptatives                                                                                  
+====================================================================================================*/
+
+@media screen and (max-width: 324px) {
+     :root {
+        --tc-8-4-val: calc(var(--tc-8-4) - var(--tc-8-4-ecart-px));
+        --tc-14-12-val: calc(var(--tc-14-12) - var(--tc-14-12-ecart-px));
+        --tc-16-4-val: calc(var(--tc-16-4) - var(--tc-16-4-ecart-px));
+        --tc-16-8-val: calc(var(--tc-16-8) - var(--tc-16-8-ecart-px));
+        --tc-18-14-val: calc(var(--tc-18-14) - var(--tc-18-14-ecart-px));
+        --tc-18-16-val: calc(var(--tc-18-16) - var(--tc-18-16-ecart-px));
+        --tc-20-16-val: calc(var(--tc-20-16) - var(--tc-20-16-ecart-px));
+        --tc-24-12-val: calc(var(--tc-24-12) - var(--tc-24-12-ecart-px));
+        --tc-24-16-val: calc(var(--tc-24-16) - var(--tc-24-16-ecart-px));
+        --tc-24-20-val: calc(var(--tc-24-20) - var(--tc-24-20-ecart-px));
+        --tc-30-24-val: calc(var(--tc-30-24) - var(--tc-30-24-ecart-px));
+        --tc-32-16-val: calc(var(--tc-32-16) - var(--tc-32-16-ecart-px));
+        --tc-32-24-val: calc(var(--tc-32-24) - var(--tc-32-24-ecart-px));
+        --tc-36-28-val: calc(var(--tc-36-28) - var(--tc-36-28-ecart-px));
+        --tc-44-32-val: calc(var(--tc-44-32) - var(--tc-44-32-ecart-px));
+        --tc-48-36-val: calc(var(--tc-48-36) - var(--tc-48-36-ecart-px));
+        --tc-48-40-val: calc(var(--tc-48-40) - var(--tc-48-40-ecart-px));
+        --tc-56-42-val: calc(var(--tc-56-42) - var(--tc-56-42-ecart-px));
+        --tc-80-72-val: calc(var(--tc-80-72) - var(--tc-80-72-ecart-px));
+    }
+    #flecheHaut {
+        right: calc(var(--position-retour-haut-page) - var(--position-retour-haut-page-ecart-px)) !important;
+    }
+}
+
+@media all and (min-width: 325px) and (max-width: 1151px) {
+     :root {
+        --tc-8-4-val: calc(var(--tc-8-4) + (var(--ratio-vw) * var(--tc-8-4-ecart)) - var(--tc-8-4-ecart-px));
+        --tc-14-12-val: calc(var(--tc-14-12) + (var(--ratio-vw) * var(--tc-14-12-ecart)) - var(--tc-14-12-ecart-px));
+        --tc-16-4-val: calc(var(--tc-16-4) + (var(--ratio-vw) * var(--tc-16-4-ecart)) - var(--tc-16-4-ecart-px));
+        --tc-16-8-val: calc(var(--tc-16-8) + (var(--ratio-vw) * var(--tc-16-8-ecart)) - var(--tc-16-8-ecart-px));
+        --tc-18-14-val: calc(var(--tc-18-14) + (var(--ratio-vw) * var(--tc-18-14-ecart)) - var(--tc-18-14-ecart-px));
+        --tc-18-16-val: calc(var(--tc-18-16) + (var(--ratio-vw) * var(--tc-18-16-ecart)) - var(--tc-18-16-ecart-px));
+        --tc-20-16-val: calc(var(--tc-20-16) + (var(--ratio-vw) * var(--tc-20-16-ecart)) - var(--tc-20-16-ecart-px));
+        --tc-24-12-val: calc(var(--tc-24-12) + (var(--ratio-vw) * var(--tc-24-12-ecart)) - var(--tc-24-12-ecart-px));
+        --tc-24-16-val: calc(var(--tc-24-16) + (var(--ratio-vw) * var(--tc-24-16-ecart)) - var(--tc-24-16-ecart-px));
+        --tc-24-20-val: calc(var(--tc-24-20) + (var(--ratio-vw) * var(--tc-24-20-ecart)) - var(--tc-24-20-ecart-px));
+        --tc-30-24-val: calc(var(--tc-30-24) + (var(--ratio-vw) * var(--tc-30-24-ecart)) - var(--tc-30-24-ecart-px));
+        --tc-32-16-val: calc(var(--tc-32-16) + (var(--ratio-vw) * var(--tc-32-16-ecart)) - var(--tc-32-16-ecart-px));
+        --tc-32-24-val: calc(var(--tc-32-24) + (var(--ratio-vw) * var(--tc-32-24-ecart)) - var(--tc-32-24-ecart-px));
+        --tc-36-28-val: calc(var(--tc-36-28) + (var(--ratio-vw) * var(--tc-36-28-ecart)) - var(--tc-36-28-ecart-px));
+        --tc-44-32-val: calc(var(--tc-44-32) + (var(--ratio-vw) * var(--tc-44-32-ecart)) - var(--tc-44-32-ecart-px));
+        --tc-48-36-val: calc(var(--tc-48-36) + (var(--ratio-vw) * var(--tc-48-36-ecart)) - var(--tc-48-36-ecart-px));
+        --tc-48-40-val: calc(var(--tc-48-40) + (var(--ratio-vw) * var(--tc-48-40-ecart)) - var(--tc-48-40-ecart-px));
+        --tc-56-42-val: calc(var(--tc-56-42) + (var(--ratio-vw) * var(--tc-56-42-ecart)) - var(--tc-56-42-ecart-px));
+        --tc-80-72-val: calc(var(--tc-80-72) + (var(--ratio-vw) * var(--tc-80-72-ecart)) - var(--tc-80-72-ecart-px));
+    }
+    #flecheHaut {
+        right: calc(var(--position-retour-haut-page) + (var(--ratio-vw) * var(--position-retour-haut-page-ecart)) - var(--position-retour-haut-page-ecart-px)) !important;
+    }
+}
+
+@media screen and (min-width: 1152px) {
+    #flecheHaut {
+        right: var(--position-retour-haut-page);
+    }
+}
+
+.espaceur-conteneurs {
+    height: var(--tc-48-40-val);
+}
+
+/*====================================================================================================
+  -03- Headers
+====================================================================================================*/
+/* TODO obtenir les marges officielles */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto-Bold', sans-serif;
+    font-style: normal;
+    color: var(--couleur-texte-base);
+}
+
+h1 {
+    margin-bottom: 2rem;
+    margin-top: 0;
+    font-size: var(--tc-48-36-val);
+    line-height: var(--tc-48-36-val);
+}
+
+/* Bordure sous les H1 TODO éventuellement retirer modal-title, est conservé car utilisé dans FRW et ECS à enlever lorsqu'ils auront passé à UTD */
+h1:not(.titre-dialog)::after, h1:not(.modal-title)::after {
+    content: "";
+    display: block;
+    margin: 0;
+    width: 48px;
+    padding-top: 4px;
+    border-bottom: 4px solid var(--couleur-saumon);    
+}
+
+
+h2 {
+    margin-top: 2.5rem;
+    margin-bottom: 0.7rem;
+    font-size: var(--tc-36-28-val);
+    line-height: var(--tc-44-32-val);
+}
+
+
+h3 {
+    font-family: 'Roboto-Medium';
+    margin-top: 2.7rem;
+    font-size: var(--tc-32-24-val);
+    line-height: var(--tc-36-28-val);
+}
+
+h4 {
+    font-size: var(--tc-24-20-val);
+    line-height: var(--tc-36-28-val);
+}
+
+h5 {
+    font-size: var(--tc-20-16-val);
+    line-height: var(--tc-30-24-val);
+}
+
+h6 {
+    font-size: 1rem;
+    line-height: 24px;
+}
+
+/* TODO ajouter headers applicatifs */
 
 /*====================================================================================================
   -12- Boutons
@@ -463,7 +458,6 @@ p:last-child {
 .utd-btn {
     font-family: 'OpenSans-Bold', sans-serif;
     font-size: 16px;
-    font-weight: bold;
     line-height: 24px;
     display: inline-block;
     box-sizing: border-box;
@@ -483,7 +477,6 @@ p:last-child {
 }
 
 .utd-btn.compact {
-    font-weight: 600;
     min-width: 48px;
     padding: 7px 15px;
     border: 1px solid transparent;
@@ -648,21 +641,17 @@ p:last-child {
 /*====================================================================================================
   -15- WebComponents utd (éléments en dehors des webComponents mais qui leurs sont nécessaires)
 ====================================================================================================*/
-
 html.modale-ouverte,
 html.modale-ouverte body {
     overflow: hidden;
 }
 
-
-
 /*====================================================================================================
   -20- Forms
 /*====================================================================================================*/
-
-label {
-    font-family: 'OpenSans';
-    font-weight: 600;
+/* TODO ICI s'entendre avec SCG pour graisse des libellés... Nous on préfère semiBold*/
+label, .label {
+    font-family: 'OpenSans-SemiBold';
     display: inline-block;
     margin-bottom: 4px;
 }
@@ -682,7 +671,6 @@ label {
     display: block;
     padding: .375rem .75rem;
     font-size: 1rem;
-    font-weight: 400;
     line-height: 1.5;
     background-color: #fff;
     background-clip: padding-box;
@@ -806,7 +794,7 @@ input.utd-form-control.sm {
 /* Colonne principale */
 .contenu-principal-gauche #colonneGauche, .contenu-principal-droite #colonneDroite, .page-texte {
     width: 100%;
-    max-width: 736px; 
+    max-width: var(--largeur-max-zone-texte);
 }
 
 /* Colonne secondaire */
@@ -833,7 +821,7 @@ input.utd-form-control.sm {
     }
 
     .contenu-principal-droite #colonneGauche, .contenu-principal-gauche #colonneDroite {
-        max-width: 736px; 
+        max-width: var(--largeur-max-zone-texte); 
     }
 
     .contenu-principal-gauche #colonneDroite > *:first-child, .contenu-principal-droite #colonneDroite > *:first-child {
