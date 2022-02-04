@@ -264,7 +264,7 @@ p:last-child {
     margin-bottom: 0!important;
 }
 
-.d-none {
+.utd-d-none {
     display: none!important;
 }
 
@@ -1253,10 +1253,6 @@ input.utd-form-control.sm {
 
   .utd-infobulle .corps p:nth-last-of-type(2) {
     margin-bottom: 0;
-  }
-
-  .utd-infobulle .corps .d-none {
-    display: none;
   }
 
   /* Scrollbar aide contextuelle */

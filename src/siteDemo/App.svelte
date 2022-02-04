@@ -52,7 +52,7 @@
 
                     
                     <div class="section-droite">
-                        <ul class="d-none">
+                        <ul class="utd-d-none">
                             <li><a href="/Commun/NousJoindre">Nous joindre</a></li>
                         </ul>
                     </div>
@@ -78,7 +78,7 @@
                     </ul>
                 </nav>
             </div>
-            <div class="container zone-menu-principal d-flex d-md-none">
+            <div class="container zone-menu-principal d-flex">
             </div>
         </div>
 

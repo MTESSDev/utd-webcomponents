@@ -130,7 +130,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
             {@html contenu}
           {/if}
           <slot name="contenu" />
-          <p class="d-none" />
+          <p class="utd-d-none" />
         </span>
       </span>
     </span>

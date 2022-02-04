@@ -324,10 +324,6 @@
     margin-bottom: 0;
   }
 
-  .utd-infobulle .corps .d-none {
-    display: none;
-  }
-
   /* Scrollbar aide contextuelle */
 .utd-infobulle .corps::-webkit-scrollbar,
 .utd-infobulle .corps::-webkit-scrollbar-thumb,
