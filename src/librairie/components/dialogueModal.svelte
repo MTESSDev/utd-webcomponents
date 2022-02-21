@@ -85,9 +85,20 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   function ajusterModalePendantAffichage(e){
     const modale = thisComponent.shadowRoot.getElementById(idModale)
     Utils.ajusterInterfacePendantAffichageModale(body, modale)
+    
+    //thisComponent.shadowRoot.getElementById(idModale).focus()
+    donnerfocusPremierElementFocusable(modale)
 
-    thisComponent.shadowRoot.getElementById(idEntete).focus()
     Utils.conserverFocusElement(modale, thisComponent)
+  }
+
+  function donnerfocusPremierElementFocusable(modale){
+    const elementsFocusablesShadow = Array.from(Utils.obtenirElementsFocusables(modale))
+    const elementsFocusablesRoot = Array.from(Utils.obtenirElementsFocusables(thisComponent))
+    const elementsFocusables = elementsFocusablesRoot.concat(elementsFocusablesShadow)    
+    const premierElementFocusable = elementsFocusables[0]
+    premierElementFocusable.focus()
+
   }
 </script>
 
