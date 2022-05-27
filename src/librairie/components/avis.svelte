@@ -14,7 +14,7 @@ const role = type === 'erreur' || type === 'avertissement' ? 'alert' : null
 
 </script>
 
-<div class="utd-avis {type}" {role}>
+<div class="utd-component utd-avis {type}" {role}>
   <div class="zone-icone">
     <div aria-hidden="true" class="utd-icone-svg {type}"></div>
   </div>
@@ -31,6 +31,4 @@ const role = type === 'erreur' || type === 'avertissement' ? 'alert' : null
   </div>
 </div>
 
-<link rel='stylesheet' href='/css/utd-webcomponents-v1.2.0.min.css'>
-<style>
-</style>
+<link rel='stylesheet' href='/css/utd-webcomponents-v1.3.0.min.css'>

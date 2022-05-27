@@ -38,7 +38,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   }
 </script>
 
-<div class="utd-accordeon {afficher ? 'ouvert' : ''}" >
+<div class="utd-component utd-accordeon {afficher ? 'ouvert' : ''}" >
   <div class="entete">
     <button class="" aria-controls="{idContenu}" aria-expanded="{afficher}" on:click={toggleAffichageContenu}>
       <span class="titre">
@@ -64,6 +64,4 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
 </div>
 
-<link rel='stylesheet' href='/css/utd-webcomponents-v1.2.0.min.css'>
-<style>
-</style>
+<link rel='stylesheet' href='/css/utd-webcomponents-v1.3.0.min.css'>

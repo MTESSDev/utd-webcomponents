@@ -37,15 +37,40 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
   let html
   let body
+  let slots = []
+  let htmlSlotContenu
 
   onMount(() => {
     html = thisComponent.getRootNode().getElementsByTagName("html")[0]
     body = thisComponent.getRootNode().getElementsByTagName("body")[0]
+    slots = Array.from(thisComponent.querySelectorAll('[slot]'))    
+    assignerHtmlSlotContenu()
 
     if(Utils.estMobile()){
       html.classList.add("est-mobile")      
     }
   })
+
+  /**
+   * Permet de pallier à un problème de perte de focus à l'intérieur de la modale. En effet, si on clique dans le contenu de la slot "contenu" et qu'on fait TAB, le focus
+   * tombe dans la page en dessous car le keydown est sur le body de la page (probablement car nous sommes dans une slot).
+   * Nous cachons donc le contenu de la slot, récupérons son html et l'assignons nous-même au contrôle. De cette façon nous allons nous réglons le problème et en bonus
+   * nous nous assurons d'une conformité visuelle, puisque c'est le css de notre composant qui va s'appliquer et non celui de l'application.
+   * NOTE. Le problème ne semble pas se produire avec le composant utd-dialog. On dirait que le fait que d'autres contrôles focusables sont présents empêche le problème. Je ne comprends pas vraiment.
+   */
+  function assignerHtmlSlotContenu() {
+    if(slots.length){
+      const slotContenu = thisComponent.querySelector("[slot=contenu]")
+      
+      if(slotContenu){
+        const contenuHtml = thisComponent.querySelector("[slot=contenu]").innerHTML
+        
+        if(contenuHtml){
+          htmlSlotContenu = contenuHtml
+        }
+      }     
+    }
+  }
 
   function afficherModale(e) {
     Utils.ajusterInterfaceAvantAffichageModale(html, body)
@@ -66,13 +91,13 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     Utils.ajusterInterfaceApresFermetureModale(html, body)
   }
 
-  function conserverFocusAideContextuelle(e) {
+  function conserverFocusInfobulle(e) {
     thisComponent.shadowRoot.getElementById(idEntete).focus()
     Utils.conserverFocusElement(thisComponent.shadowRoot.getElementById(idModale), thisComponent)
   }
 </script>
 
-<span class="utd-infobulle">
+<span class="utd-component utd-infobulle">
   {#if $$slots["texte-lie"]}
     <span class="texte-lie" on:click={afficherModale}><slot name="texte-lie" /></span>
   {/if}
@@ -96,16 +121,16 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       class="modale"
       id={idModale}
       on:keydown={keydown}
-      in:fly={{ y: 200, duration: 750 }}
-      out:fly={{ y: 200, duration: 500 }}
-      on:introend={conserverFocusAideContextuelle}
+      in:fly={{ y: 200, duration: 500 }}
+      out:fly={{ y: 200, duration: 250 }}
+      on:introend={conserverFocusInfobulle}
       on:outroend={finAnimationFermeture}
       aria-modal="true"
       role="dialog"
     >
       <span class="utd-container entete">
         <h1 id={idEntete} tabindex="-1">
-          <span class="sr-only">{@html srTexteTitre}</span>
+          <span class="utd-sr-only">{@html srTexteTitre}</span>
           <span>
             {#if titre}
               {titre}
@@ -126,17 +151,20 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       </span>
       <span class="utd-container conteneur-corps">
         <span class="corps">
-          {#if contenu}
-            {@html contenu}
-          {/if}
-          <slot name="contenu" />
-          <p class="utd-d-none" />
-        </span>
+          {#if Utils.slotExiste(slots, 'contenu')}
+            <slot name="contenu" class="utd-d-none"/>
+            <span>
+              {@html htmlSlotContenu}              
+            </span>
+          {:else}
+            {#if contenu}
+              {@html contenu}
+            {/if}
+          {/if}              
+          </span>
       </span>
     </span>
   {/if}
 </span>
 
-<link rel='stylesheet' href='/css/utd-webcomponents-v1.2.0.min.css'>
-<style>
-</style>
+<link rel='stylesheet' href='/css/utd-webcomponents-v1.3.0.min.css'>

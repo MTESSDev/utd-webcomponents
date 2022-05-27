@@ -4,13 +4,18 @@
     import Principe from './pages/Principe.svelte'; 
     import Utilisation from './pages/Utilisation.svelte'; 
     import Accordeon from './pages/Accordeon.svelte'; 
-    import AideContextuelle from './pages/AideContextuelle.svelte'; 
+    import Infobulle from './pages/Infobulle.svelte'; 
     import Avis from './pages/Avis.svelte'; 
     import Boutons from './pages/Boutons.svelte'; 
-    import Modal from './pages/Modal.svelte'; 
+    import HautPage from './pages/HautPage.svelte'; 
+    import Message from './pages/Message.svelte'; 
+    import Dialogue from './pages/Dialogue.svelte'; 
     import MenuSecondaire from './components/MenuSecondaire.svelte'; 
+    import Notifications from './pages/Notifications.svelte'; 
+    import TraitementEnCours from './pages/TraitementEnCours.svelte'; 
     import {router} from 'tinro';
 //    a on:click|preventDefault={() => window.location.href = '/composants/avis'}
+
 </script>
 
 <div class="conteneur-principal">
@@ -26,7 +31,7 @@
         <div id="javascriptDesactive" class="fureteur-desuet">
             <div class="utd-container" role="alert" aria-atomic="true">
                 <div class="icone">
-                    <img alt="Icône avertissement" src="/images/utd-sprite-v1.2.0.svg#ico-avertissement" width="28" height="26" aria-hidden="true">
+                    <img alt="Icône avertissement" src="/images/utd-sprite-v1.3.0.svg#ico-avertissement" width="28" height="26" aria-hidden="true">
                 </div>
                 <div class="texte">
                     Activez JavaScript dans votre navigateur pour que Système de design MTESS fonctionne correctement.
@@ -40,7 +45,7 @@
                 <div class="conteneur-sections">
                     <div class="section-gauche signature-gouvernement" lang="fr">
                         <a href="/">
-                            <img alt="Signature du gouvernement du Québec. Accédez à Système de design MTESS." src="/images/utd-sprite-v1.2.0.svg#QUEBEC_blanc">
+                            <img alt="Signature du gouvernement du Québec. Accédez à Système de design MTESS." src="/images/utd-sprite-v1.3.0.svg#QUEBEC_blanc">
                         </a>
                     </div>
                     <div class="section-centre">
@@ -66,7 +71,7 @@
         
         <div class="conteneur-menu-identification">
             <div class="utd-container zone-menu-identification">
-                <h2 id="titreMenuPrincipal" class="sr-only">Menu principal de navigation</h2>
+                <h2 id="titreMenuPrincipal" class="utd-sr-only">Menu principal de navigation</h2>
                 <nav class="menu-principal" aria-labelledby="titreMenuPrincipal">
                     <ul>
                         <li>
@@ -94,8 +99,12 @@
                                 <li><a href="/composants/accordeon" tinro-ignore use:active exact>Accordeon</a></li>
                                 <li><a href="/composants/avis" tinro-ignore use:active exact>Avis</a></li>
                                 <li><a href="/composants/boutons" tinro-ignore use:active exact>Boutons</a></li>
-                                <li><a href="/composants/aidecontextuelle" tinro-ignore use:active exact>Infobulle</a></li>
-                                <li><a href="/composants/modal" tinro-ignore use:active exact>Modal</a></li>
+                                <li><a href="/composants/dialogue" tinro-ignore use:active exact>Dialogue modal</a></li>
+                                <li><a href="/composants/hautpage" tinro-ignore use:active exact>Haut de page</a></li>
+                                <li><a href="/composants/infobulle" tinro-ignore use:active exact>Infobulle</a></li>
+                                <li><a href="/composants/message" tinro-ignore use:active exact>Message</a></li>
+                                <li><a href="/composants/notifications" tinro-ignore use:active exact>Notifications</a></li>
+                                <li><a href="/composants/traitementencours" tinro-ignore use:active exact>Traitement en cours</a></li>
                             {:else}                                    
                                 <li><a href="/base/principe" tinro-ignore use:active exact>Principe</a></li>
                                 <li><a href="/base/utilisation" tinro-ignore use:active exact>Utilisation</a></li>
@@ -115,16 +124,21 @@
                     <Route path="/composants/accordeon" ><Accordeon /></Route>
                     <Route path="/composants/avis" ><Avis /></Route>
                     <Route path="/composants/boutons" ><Boutons /></Route>
-                    <Route path="/composants/aidecontextuelle" ><AideContextuelle /></Route>
-                    <Route path="/composants/modal" ><Modal /></Route>
+                    <Route path="/composants/hautpage" ><HautPage /></Route>
+                    <Route path="/composants/infobulle" ><Infobulle /></Route>
+                    <Route path="/composants/dialogue" ><Dialogue /></Route>
+                    <Route path="/composants/message" ><Message /></Route>
+                    <Route path="/composants/notifications" ><Notifications /></Route>
+                    <Route path="/composants/traitementencours" ><TraitementEnCours /></Route>
                 </main>        
             </div>
         </div>
         
     </div>
 </div>
+<utd-hautpage id="hautPage"></utd-hautpage>
 <footer class="piv-bas-page">
-    <h2 id="titreMenuPiedPage" class="sr-only">Menu pied de page</h2>
+    <h2 id="titreMenuPiedPage" class="utd-sr-only">Menu pied de page</h2>
     <div class="utd-container conteneur-signature-mo">
         <a href="https://www.mtess.gouv.qc.ca/" target="_blank" rel="noopener">
             <img class="logo-mo" alt="Ministère du Travail, de l'Emploi et de la Solidarité sociale. Ce lien sera ouvert dans un nouvel onglet." src="/images/logo_piv_bas_page.gif">
@@ -133,7 +147,7 @@
         <span class="copyright">
             <a href="http://www.droitauteur.gouv.qc.ca/copyright.php" target="_blank" rel="noopener">
                 © Gouvernement du Québec,&nbsp;2021
-                <span class="sr-only">. Ce lien sera ouvert dans un nouvel onglet.</span>
+                <span class="utd-sr-only">. Ce lien sera ouvert dans un nouvel onglet.</span>
             </a>
         </span>
     </div>

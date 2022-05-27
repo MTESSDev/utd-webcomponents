@@ -24,7 +24,12 @@
     --tc-16-8-ecart: 8;
     /*min 8px max 16px*/
     --tc-16-8-ecart-px: calc(var(--tc-16-8-ecart) * 1px);
-
+    --utd-text-sm: 14;
+    /*max 16px min 14px*/
+    --tc-16-14: 1rem;/*16px*/    
+    --tc-16-14-ecart: 2;
+    --tc-16-14-ecart-px: calc(var(--tc-16-14-ecart) * 1px);
+    
     /*max 18px min 14px*/
     --tc-18-14: 1.125rem;/*18px*/    
     --tc-18-14-ecart: 4;
@@ -35,10 +40,25 @@
     --tc-18-16-ecart: 2;
     --tc-18-16-ecart-px: calc(var(--tc-18-16-ecart) * 1px);
 
+    /*max 18px min 17px*/
+    --tc-18-17: 1.125rem;/*18px*/    
+    --tc-18-17-ecart: 1;
+    --tc-18-17-ecart-px: calc(var(--tc-18-17-ecart) * 1px);
+    
     /*max 20px min 16px*/
     --tc-20-16: 1.25rem;/*20px*/    
     --tc-20-16-ecart: 4;
     --tc-20-16-ecart-px: calc(var(--tc-20-16-ecart) * 1px);
+
+    /*max 20px min 18px*/
+    --tc-20-18: 1.25rem;/*20px*/    
+    --tc-20-18-ecart: 2;
+    --tc-20-18-ecart-px: calc(var(--tc-20-18-ecart) * 1px);
+
+    /*max 21px min 18px*/
+    --tc-21-18: 1.313rem;/*21px*/    
+    --tc-21-18-ecart: 3;
+    --tc-21-18-ecart-px: calc(var(--tc-21-18-ecart) * 1px);
     
     /*max 24px min 12px*/
     --tc-24-12: 1.5rem;/*24px*/    
@@ -55,6 +75,16 @@
     --tc-24-20-ecart: 4;
     --tc-24-20-ecart-px: calc(var(--tc-24-20-ecart) * 1px);
 
+    /*max 24px min 21px*/
+    --tc-24-21: 1.5rem; /*21px*/
+    --tc-24-21-ecart: 3;
+    --tc-24-21-ecart-px: calc(var(--tc-24-21-ecart) * 1px);
+
+    /*max 28px min 24px*/
+    --tc-28-24: 1.75rem; /*28px*/
+    --tc-28-24-ecart: 4;
+    --tc-28-24-ecart-px: calc(var(--tc-28-24-ecart) * 1px);
+    
     /*max 30px min 24px*/
     --tc-30-24: 1.875rem; /*30px*/
     --tc-30-24-ecart: 6;
@@ -65,11 +95,21 @@
     --tc-32-16-ecart: 16;
     --tc-32-16-ecart-px: calc(var(--tc-32-16-ecart) * 1px);
 
+    /*max 32px min 22px*/
+    --tc-32-22: 2rem; /*32px*/
+    --tc-32-22-ecart: 10;
+    --tc-32-22-ecart-px: calc(var(--tc-32-22-ecart) * 1px);
+    
     /*max 32px min 24px*/
     --tc-32-24: 2rem; /*32px*/
     --tc-32-24-ecart: 8;
     --tc-32-24-ecart-px: calc(var(--tc-32-24-ecart) * 1px);
 
+    /*max 32px min 28px*/
+    --tc-32-28: 2rem; /*32px*/
+    --tc-32-28-ecart: 4;
+    --tc-32-28-ecart-px: calc(var(--tc-32-28-ecart) * 1px);
+    
     /*max 36px min 28px*/
     --tc-36-28: 2.25rem; /*36px*/
     --tc-36-28-ecart: 8;
@@ -105,15 +145,28 @@
     --tc-14-12-val: var(--tc-14-12);
     --tc-16-4-val: var(--tc-16-4);
     --tc-16-8-val: var(--tc-16-8);
+    --tc-16-14-val: var(--tc-16-14);
+    --utd-text-base: var(--tc-16-14);
     --tc-18-14-val: var(--tc-18-14);
     --tc-18-16-val: var(--tc-18-16);
+    --tc-18-17-val: var(--tc-18-17);
+    --utd-text-lg: var(--tc-18-17);
     --tc-20-16-val: var(--tc-20-16);
+    --tc-20-18-val: var(--tc-20-18);
+    --tc-21-18-val: var(--tc-21-18);
+    --utd-text-xl: var(--tc-21-18);
     --tc-24-12-val: var(--tc-24-12);
     --tc-24-16-val: var(--tc-24-16);
     --tc-24-20-val: var(--tc-24-20);
+    --utd-text-xxl: var(--tc-24-20);    
+    --tc-24-21-val: var(--tc-24-21);
+    --tc-28-24-val: var(--tc-28-24);
     --tc-30-24-val: var(--tc-30-24);
     --tc-32-16-val: var(--tc-32-16);
+    --tc-32-22-val: var(--tc-32-22);
+    --utd-text-xxxl: var(--tc-32-22);    
     --tc-32-24-val: var(--tc-32-24);
+    --tc-32-28-val: var(--tc-32-28);
     --tc-36-28-val: var(--tc-36-28);
     --tc-44-32-val: var(--tc-44-32);
     --tc-48-36-val: var(--tc-48-36);
@@ -121,11 +174,7 @@
     --tc-56-42-val: var(--tc-56-42);
     --tc-80-72-val: var(--tc-80-72);
 
-    --position-retour-haut-page: 30px;
-    --position-retour-haut-page-ecart: 15;
 
-    /*max 30px min 15px*/
-    --position-retour-haut-page-ecart-px: calc(var(--position-retour-haut-page-ecart) * 1px);
     --ratio-vw: calc((100vw - 325px) / (1152 - 325));
     --ratio-vw-piv-signature: calc((100vw - 325px) / (568 - 325));
     --largeur-logo-piv-gouv-entete: 256px;
@@ -153,8 +202,8 @@
     --couleur-avertissement: #ffcc00;
     --couleur-hover: #ecf2f7;
     --couleur-filet-secondaire: #c5cad2;
+    --couleur-bordure-tables: #dee2e6;
 }
-
 
 /*====================================================================================================
   -01- Fonts
@@ -258,17 +307,36 @@ body {
     padding: 0;
 }
 
+p {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
 
 /* Pas de margin sur un dernier paragraphe */
 p:last-child {
     margin-bottom: 0!important;
 }
 
+
+/* Listes */
+ul.utd-liste  {
+    padding-left: 20px;
+}
+  
+ul.utd-liste li {
+    margin-bottom: 16px;
+}
+  
+ul.utd-liste li:last-of-type {
+margin-bottom: 0;
+}
+  
+
 .utd-d-none {
     display: none!important;
 }
 
-.sr-only {
+.utd-sr-only, .sr-only {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -322,7 +390,6 @@ p:last-child {
     margin-bottom: 8px;
 }
 
-
 /*====================================================================================================
   -02- Tailles adaptatives                                                                                  
 ====================================================================================================*/
@@ -333,24 +400,29 @@ p:last-child {
         --tc-14-12-val: calc(var(--tc-14-12) - var(--tc-14-12-ecart-px));
         --tc-16-4-val: calc(var(--tc-16-4) - var(--tc-16-4-ecart-px));
         --tc-16-8-val: calc(var(--tc-16-8) - var(--tc-16-8-ecart-px));
+        --tc-16-14-val: calc(var(--tc-16-14) - var(--tc-16-14-ecart-px));
         --tc-18-14-val: calc(var(--tc-18-14) - var(--tc-18-14-ecart-px));
         --tc-18-16-val: calc(var(--tc-18-16) - var(--tc-18-16-ecart-px));
+        --tc-18-17-val: calc(var(--tc-18-17) - var(--tc-18-17-ecart-px));
         --tc-20-16-val: calc(var(--tc-20-16) - var(--tc-20-16-ecart-px));
+        --tc-20-18-val: calc(var(--tc-20-18) - var(--tc-20-18-ecart-px));
+        --tc-21-18-val: calc(var(--tc-21-18) - var(--tc-21-18-ecart-px));        
         --tc-24-12-val: calc(var(--tc-24-12) - var(--tc-24-12-ecart-px));
         --tc-24-16-val: calc(var(--tc-24-16) - var(--tc-24-16-ecart-px));
         --tc-24-20-val: calc(var(--tc-24-20) - var(--tc-24-20-ecart-px));
+        --tc-24-21-val: calc(var(--tc-24-21) - var(--tc-24-21-ecart-px));
+        --tc-28-24-val: calc(var(--tc-28-24) - var(--tc-28-24-ecart-px));
         --tc-30-24-val: calc(var(--tc-30-24) - var(--tc-30-24-ecart-px));
         --tc-32-16-val: calc(var(--tc-32-16) - var(--tc-32-16-ecart-px));
+        --tc-32-22-val: calc(var(--tc-32-22) - var(--tc-32-22-ecart-px));
         --tc-32-24-val: calc(var(--tc-32-24) - var(--tc-32-24-ecart-px));
+        --tc-32-28-val: calc(var(--tc-32-28) - var(--tc-32-28-ecart-px));
         --tc-36-28-val: calc(var(--tc-36-28) - var(--tc-36-28-ecart-px));
         --tc-44-32-val: calc(var(--tc-44-32) - var(--tc-44-32-ecart-px));
         --tc-48-36-val: calc(var(--tc-48-36) - var(--tc-48-36-ecart-px));
         --tc-48-40-val: calc(var(--tc-48-40) - var(--tc-48-40-ecart-px));
         --tc-56-42-val: calc(var(--tc-56-42) - var(--tc-56-42-ecart-px));
         --tc-80-72-val: calc(var(--tc-80-72) - var(--tc-80-72-ecart-px));
-    }
-    #flecheHaut {
-        right: calc(var(--position-retour-haut-page) - var(--position-retour-haut-page-ecart-px)) !important;
     }
 }
 
@@ -360,15 +432,23 @@ p:last-child {
         --tc-14-12-val: calc(var(--tc-14-12) + (var(--ratio-vw) * var(--tc-14-12-ecart)) - var(--tc-14-12-ecart-px));
         --tc-16-4-val: calc(var(--tc-16-4) + (var(--ratio-vw) * var(--tc-16-4-ecart)) - var(--tc-16-4-ecart-px));
         --tc-16-8-val: calc(var(--tc-16-8) + (var(--ratio-vw) * var(--tc-16-8-ecart)) - var(--tc-16-8-ecart-px));
+        --tc-16-14-val: calc(var(--tc-16-14) + (var(--ratio-vw) * var(--tc-16-14-ecart)) - var(--tc-16-14-ecart-px));
         --tc-18-14-val: calc(var(--tc-18-14) + (var(--ratio-vw) * var(--tc-18-14-ecart)) - var(--tc-18-14-ecart-px));
         --tc-18-16-val: calc(var(--tc-18-16) + (var(--ratio-vw) * var(--tc-18-16-ecart)) - var(--tc-18-16-ecart-px));
+        --tc-18-17-val: calc(var(--tc-18-17) + (var(--ratio-vw) * var(--tc-18-17-ecart)) - var(--tc-18-17-ecart-px));
         --tc-20-16-val: calc(var(--tc-20-16) + (var(--ratio-vw) * var(--tc-20-16-ecart)) - var(--tc-20-16-ecart-px));
+        --tc-20-18-val: calc(var(--tc-20-18) + (var(--ratio-vw) * var(--tc-20-18-ecart)) - var(--tc-20-18-ecart-px));
+        --tc-21-18-val: calc(var(--tc-21-18) + (var(--ratio-vw) * var(--tc-21-18-ecart)) - var(--tc-21-18-ecart-px));
         --tc-24-12-val: calc(var(--tc-24-12) + (var(--ratio-vw) * var(--tc-24-12-ecart)) - var(--tc-24-12-ecart-px));
         --tc-24-16-val: calc(var(--tc-24-16) + (var(--ratio-vw) * var(--tc-24-16-ecart)) - var(--tc-24-16-ecart-px));
         --tc-24-20-val: calc(var(--tc-24-20) + (var(--ratio-vw) * var(--tc-24-20-ecart)) - var(--tc-24-20-ecart-px));
+        --tc-24-21-val: calc(var(--tc-24-21) + (var(--ratio-vw) * var(--tc-24-21-ecart)) - var(--tc-24-21-ecart-px));
+        --tc-28-24-val: calc(var(--tc-28-24) + (var(--ratio-vw) * var(--tc-28-24-ecart)) - var(--tc-28-24-ecart-px));
         --tc-30-24-val: calc(var(--tc-30-24) + (var(--ratio-vw) * var(--tc-30-24-ecart)) - var(--tc-30-24-ecart-px));
         --tc-32-16-val: calc(var(--tc-32-16) + (var(--ratio-vw) * var(--tc-32-16-ecart)) - var(--tc-32-16-ecart-px));
+        --tc-32-22-val: calc(var(--tc-32-22) + (var(--ratio-vw) * var(--tc-32-22-ecart)) - var(--tc-32-22-ecart-px));
         --tc-32-24-val: calc(var(--tc-32-24) + (var(--ratio-vw) * var(--tc-32-24-ecart)) - var(--tc-32-24-ecart-px));
+        --tc-32-28-val: calc(var(--tc-32-28) + (var(--ratio-vw) * var(--tc-32-28-ecart)) - var(--tc-32-28-ecart-px));
         --tc-36-28-val: calc(var(--tc-36-28) + (var(--ratio-vw) * var(--tc-36-28-ecart)) - var(--tc-36-28-ecart-px));
         --tc-44-32-val: calc(var(--tc-44-32) + (var(--ratio-vw) * var(--tc-44-32-ecart)) - var(--tc-44-32-ecart-px));
         --tc-48-36-val: calc(var(--tc-48-36) + (var(--ratio-vw) * var(--tc-48-36-ecart)) - var(--tc-48-36-ecart-px));
@@ -376,19 +456,41 @@ p:last-child {
         --tc-56-42-val: calc(var(--tc-56-42) + (var(--ratio-vw) * var(--tc-56-42-ecart)) - var(--tc-56-42-ecart-px));
         --tc-80-72-val: calc(var(--tc-80-72) + (var(--ratio-vw) * var(--tc-80-72-ecart)) - var(--tc-80-72-ecart-px));
     }
-    #flecheHaut {
-        right: calc(var(--position-retour-haut-page) + (var(--ratio-vw) * var(--position-retour-haut-page-ecart)) - var(--position-retour-haut-page-ecart-px)) !important;
-    }
-}
-
-@media screen and (min-width: 1152px) {
-    #flecheHaut {
-        right: var(--position-retour-haut-page);
-    }
 }
 
 .espaceur-conteneurs {
     height: var(--tc-48-40-val);
+}
+
+/*====================================================================================================*/
+/* -02A- Tailles de textes adaptatives                                                                                  
+/*====================================================================================================*/
+.utd-text-xs {
+    font-size: 0.8rem; /*12.8*/
+}
+
+.utd-text-sm {
+    font-size: 0.875rem; /*14*/
+}
+
+.utd-text-base {
+    font-size: var(--tc-16-14-val);
+}
+
+.utd-text-lg {
+    font-size: var(--tc-18-17-val);
+}
+
+.utd-text-xl {
+    font-size: var(--tc-21-18-val);
+}
+
+.utd-text-xxl {
+    font-size: var(--tc-24-20-val);
+}
+
+.utd-text-xxxl {
+    font-size: var(--tc-32-22-val);
 }
 
 /*====================================================================================================
@@ -399,14 +501,15 @@ p:last-child {
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Roboto-Bold', sans-serif;
     font-style: normal;
+    font-weight: normal;
     color: var(--couleur-texte-base);
+    line-height: 1.2;
 }
 
-h1 {
-    margin-bottom: 2rem;
+h1 {    
     margin-top: 0;
-    font-size: var(--tc-48-36-val);
-    line-height: var(--tc-48-36-val);
+    margin-bottom: 1rem;
+    font-size: var(--utd-text-xxxl);
 }
 
 /* Bordure sous les H1 TODO éventuellement retirer modal-title, est conservé car utilisé dans FRW et ECS à enlever lorsqu'ils auront passé à UTD */
@@ -421,36 +524,108 @@ h1:not(.titre-dialog)::after, h1:not(.modal-title)::after {
 
 
 h2 {
-    margin-top: 2.5rem;
-    margin-bottom: 0.7rem;
-    font-size: var(--tc-36-28-val);
-    line-height: var(--tc-44-32-val);
+    margin-top: 48px;
+    margin-bottom: 16px;
+    font-size: var(--utd-text-xxl);
 }
 
 
 h3 {
     font-family: 'Roboto-Medium';
-    margin-top: 2.7rem;
-    font-size: var(--tc-32-24-val);
-    line-height: var(--tc-36-28-val);
+    margin-top: 32px; /*Quebec.ca = 24px, pas de sens, c'est moins que marge d'un paragraphe.*/
+    margin-bottom: 16px;
+    font-size: var(--utd-text-xl);
 }
 
 h4 {
-    font-size: var(--tc-24-20-val);
-    line-height: var(--tc-36-28-val);
+    font-size: var(--utd-text-lg);
+    margin-top: 32px; /*Quebec.ca = 24px, pas de sens, c'est idem que marge d'un paragraphe.*/
+    margin-bottom: 8px;
 }
 
 h5 {
-    font-size: var(--tc-20-16-val);
-    line-height: var(--tc-30-24-val);
+    font-size: 1rem;
+    margin-top: 24px; /*Quebec.ca = 16px, pas de sens, c'est moins que marge d'un paragraphe.*/
+    margin-bottom: 8px; /*Quebec.ca = 0, Il me semble que ça ne fait pas de sens...*/
 }
 
 h6 {
+    font-family: 'Roboto-Medium';
     font-size: 1rem;
-    line-height: 24px;
+    margin-top: 24px; /*Quebec.ca = 16px, pas de sens, c'est moins que marge d'un paragraphe.*/
+    margin-bottom: 8px; /*Quebec.ca = 0, Il me semble que ça ne fait pas de sens...*/
 }
 
-/* TODO ajouter headers applicatifs */
+/* TODO ajouter headers informationnels (un jour) */
+
+
+/*====================================================================================================
+  -04- Hyperliens
+====================================================================================================*/
+
+a {
+    color: var(--couleur-liens);
+    text-decoration: underline;
+}
+
+a:hover, a:focus {
+    text-decoration: none;
+    color: #3374cc;
+}
+
+/* ----- Liens externes ----- */
+
+/* Icône pour ouverture lien dans nouvelle fenêtre */
+a.utd-lien-externe[target="_blank"]:after, span.utd-lien-externe:after {
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("/images/utd-sprite-_versionUtd_.svg#ico-lien-externe");
+    margin-left: 4px;
+    width: 12px;
+    height: 12px;
+    background-size: 12px 12px;
+}
+
+/*====================================================================================================
+  -10- Traitement en cours. Overlay et spinner.
+====================================================================================================*/
+.utd-overlay {
+    background-color: #000;
+    opacity: 0.2;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99998;
+}
+
+.utd-spinner {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    border: 4px solid rgba(16, 115, 230, .3);
+    border-radius: 50%;
+    border-top-color: rgba(16, 115, 230, 1);
+    animation: spin 1.5s linear infinite;
+    -webkit-animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+
 
 /*====================================================================================================
   -12- Boutons
@@ -529,8 +704,8 @@ h6 {
 
 /* ==================== Bouton secondaire ==================== */
 .utd-btn.secondaire {
-    color: #095797;
-    border-color: #095797;
+    color: var(--couleur-liens);
+    border-color: var(--couleur-liens);
     background-color: #fff;
 }
 .utd-btn.secondaire:not([disabled]):hover {
@@ -548,7 +723,6 @@ h6 {
 .utd-btn.secondaire[disabled] {
     color: #9ca5b2;
     border-color: #9ca5b2;
-    background-color: transparent;
 }
 
 /* ==================== Boutons secondaires couleurs inversées ==================== */
@@ -590,9 +764,13 @@ h6 {
 
 /* ==================== Bouton tertiaire ==================== */
 .utd-btn.tertiaire {
-    color: #095797;
+    color: var(--couleur-liens);
     background-color: transparent;
+    display: flex;
+    align-items: center;
+    min-width: 0;
 }
+
 .utd-btn.tertiaire:not([disabled]):hover {
     text-decoration: underline;
     background-color: rgba(197, 202, 210, 0.24);
@@ -608,6 +786,16 @@ h6 {
 }
 .utd-btn.tertiaire[disabled] {
     color: #9ca5b2;
+    background-color: transparent;
+}
+
+/* Boutons tertiaires comme liens */
+.utd-btn.tertiaire.comme-lien {
+    padding: 0;
+    border: 0;
+}
+
+.utd-btn.tertiaire.comme-lien:hover, .utd-btn.tertiaire.comme-lien:focus {
     background-color: transparent;
 }
 
@@ -638,11 +826,76 @@ h6 {
     background-color: #9ca5b2;
 }
 
+/*====================================================================================================*/
+/*  -12A- Traitement en cours dans un bouton
+/*====================================================================================================*/
+button.utd-btn.utd-traitement-en-cours, input[type="submit"].utd-btn.utd-traitement-en-cours {
+    position: relative;
+    color: rgba(255, 255, 255, 0)!important; /* Ici on n'utilise pas le transparent, car comportement bizarre dans IOS */
+}
+
+/* Spinner affiché dans un bouton */
+.utd-btn .utd-spinner, input[type="submit"] .utd-spinner {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    margin: 0;
+    left: calc(50% - 16px);
+    top: calc(50% - 16px);
+}
+
+/* Spinner affiché dans un bouton compact */
+.utd-btn.compact .utd-spinner, input[type="submit"] .utd-spinner {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    margin: 0;
+    left: calc(50% - 12px);
+    top: calc(50% - 12px);
+    border-width: 3px;
+}
+
+/* Spinner bouton primaire */
+.utd-btn.primaire .utd-spinner, input[type="submit"] .utd-spinner {
+    border-color: rgba(255, 255, 255, .5);
+    border-top-color: rgba(255, 255, 255, 1);
+}
+
+.utd-btn.primaire.utd-traitement-en-cours[disabled] {
+    opacity: 1;
+    /*  color: #5F92BB;*/
+    background-color: #5F92BB;
+    border-color: #5F92BB;
+}
+
+/* Spinner bouton secondaire TODO pe éventuellement modifier la couleur du spinner d'un bouton secondaire */
+/*.utd-btn.secondaire .utd-spinner {
+    border: 4px solid rgba(134, 141, 149, .5);
+    border-top-color: rgba(134, 141, 149, 1)
+}*/
+
+.utd-btn.secondaire.utd-traitement-en-cours[disabled] {
+    opacity: 1;
+    background-color: #efefef;
+    border-color: rgba(134, 141, 149, 1);
+}
+
+button.btn[disabled] .icone-svg {
+    opacity: .5
+}
+
+/*====================================================================================================
+  -12B- Boutons désactivés
+====================================================================================================*/
+.utd-btn[disabled] .utd-icone-svg {
+    opacity: .5;
+}
+
 /*====================================================================================================
   -15- WebComponents utd (éléments en dehors des webComponents mais qui leurs sont nécessaires)
 ====================================================================================================*/
-html.modale-ouverte,
-html.modale-ouverte body {
+html.utd-modale-ouverte,
+html.utd-modale-ouverte body {
     overflow: hidden;
 }
 
@@ -744,6 +997,60 @@ input.utd-form-control.sm {
     }
 }
 
+/*====================================================================================================
+  -50- Tables
+====================================================================================================*/
+table.utd-table{
+    margin-bottom: 0;
+    background-color: #fff;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table.utd-table>thead {
+    background-color: var(--couleur-texte-base);
+    color: #fff;
+    border: 1px solid var(--couleur-texte-base);
+}
+
+table.utd-table>thead th {
+    font-family: OpenSans-Bold;
+    font-weight: normal;
+}
+
+table.utd-table thead th, table.utd-table tbody th, table.utd-table tbody td {
+    vertical-align: middle;
+    text-align: left;
+    padding: 12px;    
+}
+
+/* ----- Tables avec effet zebré ----- */
+table.utd-table.rayee tbody tr:nth-of-type(even) {
+    background-color:var(--couleur-fond-gris);
+}
+
+/* ----- Tables avec bordures de lignes ----- */
+table.utd-table.bordures-lignes tbody th, table.utd-table.bordures-lignes tbody td {
+    border-top: 1px solid var(--couleur-bordure-tables);    
+}
+
+table.utd-table.bordures-lignes>tbody, table.utd-table.bordures-lignes>tfoot {
+    border: 1px solid var(--couleur-bordure-tables);    
+}
+
+/* ----- Tables avec bordures de cellule ----- */
+table.utd-table.bordures-cellules tbody th, table.utd-table.bordures-cellules tbody td {
+    border-top: 1px solid var(--couleur-bordure-tables);    
+    border-left: 1px solid var(--couleur-bordure-tables);
+}
+
+table.utd-table.bordures-cellules tbody th:last-child, table.utd-table.bordures-cellules tbody td:last-child {
+    border-right: 1px solid var(--couleur-bordure-tables);
+}
+
+table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot {
+    border: 1px solid var(--couleur-bordure-tables);    
+}
 
 /*====================================================================================================
   -60- Layout
@@ -753,26 +1060,7 @@ input.utd-form-control.sm {
     padding-left: 16px;
     padding-right: 16px;
 }
-
-@media (max-width: 425px) {
-    .utd-container {
-        max-width: 100%;
-        padding-right: 8px;
-        padding-left: 8px;
-    }
-}
-
-@media (min-width: 576px) {
-    .utd-container {
-        max-width: 100%;
-    }
-}
-
-@media (min-width: 768px) {
-    .utd-container {
-        max-width: 100%;
-    }
-}
+/* Breakpoints de max-width 425, 576 et 768 identiques */
 
 @media (min-width: 992px) {
     .utd-container {
@@ -873,59 +1161,82 @@ input.utd-form-control.sm {
     height: 40px;
 }
 
-
-.utd-icone-svg.clipboard {
-    background-image: url(/images/utd-sprite-v1.2.0.svg#ico-clipboard);
+.utd-icone-svg.avertissement {
+    background-image: url("/images/utd-sprite-_versionUtd_.svg#ico-avertissement");
 }
 
-.utd-icone-svg.plus {
-    background-image: url(/images/utd-sprite-v1.2.0.svg#ico-plus);
+.utd-icone-svg.fleche-haut-blanche {
+    background-image: url("/images/utd-sprite-_versionUtd_.svg#ico-fleche-haut-blanche");
+}
+
+.utd-icone-svg.clipboard {
+    background-image: url("/images/utd-sprite-_versionUtd_.svg#ico-clipboard");
+}
+
+.utd-icone-svg.erreur {
+    background-image: url("/images/utd-sprite-_versionUtd_.svg#ico-erreur");
+}
+
+.utd-icone-svg.erreur-blanc {
+    background-image: url("/images/utd-sprite-_versionUtd_.svg#ico-erreur-blanc");
+}
+
+.utd-icone-svg.information {
+    background-image: url("/images/utd-sprite-_versionUtd_.svg#ico-information");
+}
+
+.utd-icone-svg.information-blanc {
+    background-image: url("/images/utd-sprite-_versionUtd_.svg#ico-information-blanc");
 }
 
 .utd-icone-svg.moins {
-    background-image: url(/images/utd-sprite-v1.2.0.svg#ico-moins);
+    background-image: url("/images/utd-sprite-_versionUtd_.svg#ico-moins");
 }
 
+.utd-icone-svg.plus {
+    background-image: url("/images/utd-sprite-_versionUtd_.svg#ico-plus");
+}
+
+.utd-icone-svg.question {
+    background-image: url("/images/utd-sprite-_versionUtd_.svg#ico-question");
+}
+
+
+.utd-icone-svg.succes {
+    background-image: url("/images/utd-sprite-_versionUtd_.svg#ico-succes");
+}
+.utd-icone-svg.succes-blanc {
+    background-image: url("/images/utd-sprite-_versionUtd_.svg#ico-succes-blanc");
+}
+
+.utd-icone-svg.x-fermer-blanc {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    background-image: url("/images/utd-sprite-_versionUtd_.svg#ico-xfermer-blanc");
+}
 .utd-icone-svg.x-fermer-bleu {
     width: 16px;
     height: 16px;
     min-width: 16px;
-}
-.utd-icone-svg.information {
-    background-image: url("/images/utd-sprite-v1.2.0.svg#ico-information");
-}
-
-.utd-icone-svg.avertissement {
-    background-image: url("/images/utd-sprite-v1.2.0.svg#ico-avertissement");
-}
-
-.utd-icone-svg.succes {
-    background-image: url("/images/utd-sprite-v1.2.0.svg#ico-succes");
-}
-
-.utd-icone-svg.erreur {
-    background-image: url("/images/utd-sprite-v1.2.0.svg#ico-erreur");
-}
-
-.utd-icone-svg.x-fermer-bleu {
-    background-image: url(/images/utd-sprite-v1.2.0.svg#ico-xfermer-bleu);
-}
-
-.utd-icone-svg.question {
-    background-image: url(/images/utd-sprite-v1.2.0.svg#ico-question);
+    background-image: url("/images/utd-sprite-_versionUtd_.svg#ico-xfermer-bleu");
 }
 
 .utd-icone-svg.chevron-bleu-piv {
-    background-image: url(/images/utd-sprite-v1.2.0.svg#ico-chevron-bleu-piv);
+    background-image: url("/images/utd-sprite-_versionUtd_.svg#ico-chevron-bleu-piv");
     width: 16px;
     min-width: 16px;
     height: 10px;
 }
 
-.utd-icone-svg.plus {
-    background-image: url(/images/utd-sprite-v1.2.0.svg#ico-plus);
-}
 
-.utd-icone-svg.moins {
-    background-image: url(/images/utd-sprite-v1.2.0.svg#ico-moins);
+
+/*====================================================================================================
+  -999- Divers
+====================================================================================================*/
+.utd-emphase{
+    background-color: var(--couleur-bleu);
+    padding: 2px 4px;
+    border-radius: 4px;
+    color: #fff;
 }

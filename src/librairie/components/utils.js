@@ -14,7 +14,7 @@ export class Utils {
             if (!estToucheTab) {
                 return
             }
-
+    
             const elementActif = document.activeElement.shadowRoot ? document.activeElement.shadowRoot.activeElement : document.activeElement
             if (e.shiftKey) /* shift + tab */ {
                 if (elementActif === premierElementFocusable) {
@@ -26,11 +26,11 @@ export class Utils {
                     premierElementFocusable.focus()
                     e.preventDefault()
                 }
-            }
+            }    
         })
     }
     static obtenirElementsFocusables(element) {
-            return element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])')
+            return element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input:not([type="hidden"]):not([disabled]), select:not([disabled])')
         }
         /**
          * Génère un id unique.
@@ -72,7 +72,7 @@ export class Utils {
             }
         }      
 
-        html.classList.add("modale-ouverte")      
+        html.classList.add("utd-modale-ouverte")      
     }
 
     static ajusterInterfacePendantAffichageModale(body, modale) {
@@ -88,10 +88,18 @@ export class Utils {
     static ajusterInterfaceApresFermetureModale(html, body) {        
         html.style.removeProperty('padding-right')
         body.style.removeProperty('padding-right')
-        html.classList.remove("modale-ouverte")
+        html.classList.remove("utd-modale-ouverte")
     }
 
     static slotExiste(slots, nomSlot) {
         return slots.some(s => s.slot === nomSlot)
+    }
+
+    /**
+     * Obtient la langue de la page courante.
+     * @returns {string} Code de langue de la page courante (fr/en).
+     */
+    static obtenirLanguePage() {
+        return document.getElementsByTagName("html")[0].getAttribute("lang") || "fr";
     }
 }

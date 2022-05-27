@@ -153,7 +153,7 @@
     return Function.toString.call(fn).indexOf("[native code]") !== -1;
   }
 
-  function _isNativeReflectConstruct$5() {
+  function _isNativeReflectConstruct$6() {
     if (typeof Reflect === "undefined" || !Reflect.construct) return false;
     if (Reflect.construct.sham) return false;
     if (typeof Proxy === "function") return true;
@@ -167,7 +167,7 @@
   }
 
   function _construct(Parent, args, Class) {
-    if (_isNativeReflectConstruct$5()) {
+    if (_isNativeReflectConstruct$6()) {
       _construct = Reflect.construct;
     } else {
       _construct = function _construct(Parent, args, Class) {
@@ -233,9 +233,9 @@
     return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray$1(arr) || _nonIterableSpread();
   }
 
-  function _createSuper$4(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$4(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+  function _createSuper$5(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$5(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-  function _isNativeReflectConstruct$4() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+  function _isNativeReflectConstruct$5() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
   function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
@@ -1117,7 +1117,7 @@
     SvelteElement = /*#__PURE__*/function (_HTMLElement) {
       _inherits(SvelteElement, _HTMLElement);
 
-      var _super2 = _createSuper$4(SvelteElement);
+      var _super2 = _createSuper$5(SvelteElement);
 
       function SvelteElement() {
         var _this3;
@@ -1390,7 +1390,7 @@
     }, {
       key: "obtenirElementsFocusables",
       value: function obtenirElementsFocusables(element) {
-        return element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
+        return element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input:not([type="hidden"]):not([disabled]), select:not([disabled])');
       }
       /**
        * Génère un id unique.
@@ -1431,7 +1431,7 @@
           }
         }
 
-        html.classList.add("modale-ouverte");
+        html.classList.add("utd-modale-ouverte");
       }
     }, {
       key: "ajusterInterfacePendantAffichageModale",
@@ -1449,7 +1449,7 @@
       value: function ajusterInterfaceApresFermetureModale(html, body) {
         html.style.removeProperty('padding-right');
         body.style.removeProperty('padding-right');
-        html.classList.remove("modale-ouverte");
+        html.classList.remove("utd-modale-ouverte");
       }
     }, {
       key: "slotExiste",
@@ -1457,6 +1457,16 @@
         return slots.some(function (s) {
           return s.slot === nomSlot;
         });
+      }
+      /**
+       * Obtient la langue de la page courante.
+       * @returns {string} Code de langue de la page courante (fr/en).
+       */
+
+    }, {
+      key: "obtenirLanguePage",
+      value: function obtenirLanguePage() {
+        return document.getElementsByTagName("html")[0].getAttribute("lang") || "fr";
       }
     }]);
 
@@ -1471,12 +1481,12 @@
     }));
   });
 
-  function _createSuper$3(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$3(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+  function _createSuper$4(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$4(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-  function _isNativeReflectConstruct$3() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-  var file$3 = "src\\librairie\\components\\accordeon.svelte"; // (45:8) {#if titre}
+  function _isNativeReflectConstruct$4() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+  var file$4 = "src\\librairie\\components\\accordeon.svelte"; // (45:8) {#if titre}
 
-  function create_if_block_2$1(ctx) {
+  function create_if_block_2$2(ctx) {
     var t;
     var block = {
       c: function create() {
@@ -1500,7 +1510,7 @@
     };
     dispatch_dev("SvelteRegisterBlock", {
       block: block,
-      id: create_if_block_2$1.name,
+      id: create_if_block_2$2.name,
       type: "if",
       source: "(45:8) {#if titre}",
       ctx: ctx
@@ -1525,8 +1535,8 @@
         t = space();
         slot = element("slot");
         attr_dev(slot, "name", "contenu");
-        add_location(slot, file$3, 59, 8, 1628);
-        add_location(div, file$3, 55, 6, 1512);
+        add_location(slot, file$4, 59, 8, 1642);
+        add_location(div, file$4, 55, 6, 1526);
       },
       m: function mount(target, anchor) {
         insert_dev(target, div, anchor);
@@ -1622,7 +1632,7 @@
     return block;
   }
 
-  function create_fragment$3(ctx) {
+  function create_fragment$4(ctx) {
     var div2;
     var div0;
     var button;
@@ -1642,7 +1652,7 @@
     var dispose;
     var if_block0 =
     /*titre*/
-    ctx[1] && create_if_block_2$1(ctx);
+    ctx[1] && create_if_block_2$2(ctx);
     var if_block1 =
     /*afficher*/
     ctx[0] && create_if_block$3(ctx);
@@ -1664,13 +1674,13 @@
         link = element("link");
         this.c = noop;
         attr_dev(slot, "name", "titre");
-        add_location(slot, file$3, 47, 8, 1292);
+        add_location(slot, file$4, 47, 8, 1306);
         attr_dev(span0, "class", "titre");
-        add_location(span0, file$3, 43, 6, 1207);
+        add_location(span0, file$4, 43, 6, 1221);
         attr_dev(span1, "class", span1_class_value = "utd-icone-svg " + (
         /*afficher*/
         ctx[0] ? 'moins' : 'plus') + " md");
-        add_location(span1, file$3, 49, 6, 1342);
+        add_location(span1, file$4, 49, 6, 1356);
         attr_dev(button, "class", "");
         attr_dev(button, "aria-controls",
         /*idContenu*/
@@ -1678,21 +1688,21 @@
         attr_dev(button, "aria-expanded",
         /*afficher*/
         ctx[0]);
-        add_location(button, file$3, 42, 4, 1093);
+        add_location(button, file$4, 42, 4, 1107);
         attr_dev(div0, "class", "entete");
-        add_location(div0, file$3, 41, 2, 1067);
+        add_location(div0, file$4, 41, 2, 1081);
         attr_dev(div1, "id",
         /*idContenu*/
         ctx[3]);
         attr_dev(div1, "class", "contenu");
-        add_location(div1, file$3, 53, 4, 1443);
-        attr_dev(div2, "class", div2_class_value = "utd-accordeon " + (
+        add_location(div1, file$4, 53, 4, 1457);
+        attr_dev(div2, "class", div2_class_value = "utd-component utd-accordeon " + (
         /*afficher*/
         ctx[0] ? 'ouvert' : ''));
-        add_location(div2, file$3, 40, 0, 1008);
+        add_location(div2, file$4, 40, 0, 1008);
         attr_dev(link, "rel", "stylesheet");
-        attr_dev(link, "href", "/css/utd-webcomponents-v1.2.0.min.css");
-        add_location(link, file$3, 66, 0, 1704);
+        attr_dev(link, "href", "/css/utd-webcomponents-v1.3.0.min.css");
+        add_location(link, file$4, 66, 0, 1718);
       },
       l: function claim(nodes) {
         throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1731,7 +1741,7 @@
           if (if_block0) {
             if_block0.p(ctx, dirty);
           } else {
-            if_block0 = create_if_block_2$1(ctx);
+            if_block0 = create_if_block_2$2(ctx);
             if_block0.c();
             if_block0.m(span0, t0);
           }
@@ -1783,7 +1793,7 @@
 
         if (!current || dirty &
         /*afficher*/
-        1 && div2_class_value !== (div2_class_value = "utd-accordeon " + (
+        1 && div2_class_value !== (div2_class_value = "utd-component utd-accordeon " + (
         /*afficher*/
         ctx[0] ? 'ouvert' : ''))) {
           attr_dev(div2, "class", div2_class_value);
@@ -1810,7 +1820,7 @@
     };
     dispatch_dev("SvelteRegisterBlock", {
       block: block,
-      id: create_fragment$3.name,
+      id: create_fragment$4.name,
       type: "component",
       source: "",
       ctx: ctx
@@ -1818,7 +1828,7 @@
     return block;
   }
 
-  function instance$3($$self, $$props, $$invalidate) {
+  function instance$4($$self, $$props, $$invalidate) {
     var _$$props$$$slots = $$props.$$slots,
         slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots;
         $$props.$$scope;
@@ -1902,7 +1912,7 @@
   var Accordeon = /*#__PURE__*/function (_SvelteElement) {
     _inherits(Accordeon, _SvelteElement);
 
-    var _super = _createSuper$3(Accordeon);
+    var _super = _createSuper$4(Accordeon);
 
     function Accordeon(options) {
       var _this;
@@ -1914,7 +1924,7 @@
         target: _this.shadowRoot,
         props: attribute_to_object(_this.attributes),
         customElement: true
-      }, instance$3, create_fragment$3, safe_not_equal, {
+      }, instance$4, create_fragment$4, safe_not_equal, {
         afficher: 0,
         titre: 1,
         lang: 5,
@@ -2028,10 +2038,10 @@
 
   customElements.define("utd-accordeon", Accordeon);
 
-  function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+  function _createSuper$3(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$3(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-  function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-  var file$2 = "src\\librairie\\components\\avis.svelte"; // (26:6) {#if contenu}
+  function _isNativeReflectConstruct$3() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+  var file$3 = "src\\librairie\\components\\avis.svelte"; // (26:6) {#if contenu}
 
   function create_if_block$2(ctx) {
     var html_tag;
@@ -2070,7 +2080,7 @@
     return block;
   }
 
-  function create_fragment$2(ctx) {
+  function create_fragment$3(ctx) {
     var div4;
     var div1;
     var div0;
@@ -2112,27 +2122,27 @@
         attr_dev(div0, "class", div0_class_value = "utd-icone-svg " +
         /*type*/
         ctx[1]);
-        add_location(div0, file$2, 18, 4, 437);
+        add_location(div0, file$3, 18, 4, 451);
         attr_dev(div1, "class", "zone-icone");
-        add_location(div1, file$2, 17, 2, 407);
+        add_location(div1, file$3, 17, 2, 421);
         attr_dev(h2, "class", "titre d-flex justify-content-between align-self-center");
-        add_location(h2, file$2, 21, 4, 547);
+        add_location(h2, file$3, 21, 4, 561);
         attr_dev(slot, "name", "contenu");
-        add_location(slot, file$2, 28, 6, 732);
+        add_location(slot, file$3, 28, 6, 746);
         attr_dev(div2, "class", "texte");
-        add_location(div2, file$2, 24, 4, 646);
+        add_location(div2, file$3, 24, 4, 660);
         attr_dev(div3, "class", "contenu zone-html");
-        add_location(div3, file$2, 20, 2, 510);
-        attr_dev(div4, "class", div4_class_value = "utd-avis " +
+        add_location(div3, file$3, 20, 2, 524);
+        attr_dev(div4, "class", div4_class_value = "utd-component utd-avis " +
         /*type*/
         ctx[1]);
         attr_dev(div4, "role",
         /*role*/
         ctx[3]);
-        add_location(div4, file$2, 16, 0, 367);
+        add_location(div4, file$3, 16, 0, 367);
         attr_dev(link, "rel", "stylesheet");
-        attr_dev(link, "href", "/css/utd-webcomponents-v1.2.0.min.css");
-        add_location(link, file$2, 33, 0, 789);
+        attr_dev(link, "href", "/css/utd-webcomponents-v1.3.0.min.css");
+        add_location(link, file$3, 33, 0, 803);
       },
       l: function claim(nodes) {
         throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2188,7 +2198,7 @@
 
         if (dirty &
         /*type*/
-        2 && div4_class_value !== (div4_class_value = "utd-avis " +
+        2 && div4_class_value !== (div4_class_value = "utd-component utd-avis " +
         /*type*/
         ctx[1])) {
           attr_dev(div4, "class", div4_class_value);
@@ -2205,7 +2215,7 @@
     };
     dispatch_dev("SvelteRegisterBlock", {
       block: block,
-      id: create_fragment$2.name,
+      id: create_fragment$3.name,
       type: "component",
       source: "",
       ctx: ctx
@@ -2213,7 +2223,7 @@
     return block;
   }
 
-  function instance$2($$self, $$props, $$invalidate) {
+  function instance$3($$self, $$props, $$invalidate) {
     var _$$props$$$slots = $$props.$$slots,
         slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots;
         $$props.$$scope;
@@ -2261,7 +2271,7 @@
   var Avis = /*#__PURE__*/function (_SvelteElement) {
     _inherits(Avis, _SvelteElement);
 
-    var _super = _createSuper$2(Avis);
+    var _super = _createSuper$3(Avis);
 
     function Avis(options) {
       var _this;
@@ -2273,7 +2283,7 @@
         target: _this.shadowRoot,
         props: attribute_to_object(_this.attributes),
         customElement: true
-      }, instance$2, create_fragment$2, safe_not_equal, {
+      }, instance$3, create_fragment$3, safe_not_equal, {
         titre: 0,
         type: 1,
         contenu: 2
@@ -2339,10 +2349,10 @@
 
   customElements.define("utd-avis", Avis);
 
-  function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+  function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-  function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-  var file$1 = "src\\librairie\\components\\dialogueModal.svelte"; // (105:0) {#if estModaleAffichee}
+  function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+  var file$2 = "src\\librairie\\components\\dialogueModal.svelte"; // (123:0) {#if estModaleAffichee}
 
   function create_if_block$1(ctx) {
     var div0;
@@ -2354,21 +2364,28 @@
     var t1;
     var div3;
     var div1;
-    var h1;
     var t2;
+    var h1;
     var t3;
+    var div1_class_value;
+    var t4;
     var div2;
     var slot;
-    var t4;
+    var t5;
     var show_if = Utils.slotExiste(
     /*slots*/
-    ctx[2], 'pied');
+    ctx[5], 'pied');
+    var div5_aria_describedby_value;
+    var div5_class_value;
     var div5_intro;
     var div5_outro;
     var current;
     var mounted;
     var dispose;
-    var if_block = show_if && create_if_block_1$1(ctx);
+    var if_block0 =
+    /*type*/
+    ctx[0] && create_if_block_2$1(ctx);
+    var if_block1 = show_if && create_if_block_1$1(ctx);
     var block = {
       c: function create() {
         div0 = element("div");
@@ -2380,53 +2397,68 @@
         t1 = space();
         div3 = element("div");
         div1 = element("div");
+        if (if_block0) if_block0.c();
+        t2 = space();
         h1 = element("h1");
-        t2 = text(
+        t3 = text(
         /*titre*/
-        ctx[0]);
-        t3 = space();
+        ctx[2]);
+        t4 = space();
         div2 = element("div");
         slot = element("slot");
-        t4 = space();
-        if (if_block) if_block.c();
+        t5 = space();
+        if (if_block1) if_block1.c();
         attr_dev(div0, "class", "utd-backdrop");
-        add_location(div0, file$1, 105, 2, 3267);
+        add_location(div0, file$2, 123, 2, 4068);
         attr_dev(span, "aria-hidden", "true");
         attr_dev(span, "class", "utd-icone-svg x-fermer-bleu");
-        add_location(span, file$1, 128, 8, 3928);
+        add_location(span, file$2, 148, 8, 4975);
         attr_dev(button, "type", "button");
         attr_dev(button, "class", "close");
         attr_dev(button, "aria-label",
         /*srTexteBoutonFermer*/
-        ctx[5]);
-        add_location(button, file$1, 122, 8, 3758);
+        ctx[9]);
+        add_location(button, file$2, 142, 8, 4805);
         attr_dev(h1, "id",
         /*idEntete*/
-        ctx[4]);
+        ctx[7]);
         attr_dev(h1, "class", "titre-dialog");
-        attr_dev(h1, "tabindex", "-1");
-        add_location(h1, file$1, 135, 10, 4112);
-        attr_dev(div1, "class", "entete");
-        add_location(div1, file$1, 134, 8, 4080);
+        add_location(h1, file$2, 158, 10, 5302);
+        attr_dev(div1, "class", div1_class_value = "entete " + (
+        /*type*/
+        ctx[0] ? 'avec-type' : ''));
+        add_location(div1, file$2, 154, 8, 5127);
         attr_dev(slot, "name", "contenu");
-        add_location(slot, file$1, 140, 10, 4260);
+        add_location(slot, file$2, 163, 10, 5449);
         attr_dev(div2, "class", "corps");
-        add_location(div2, file$1, 139, 8, 4229);
+        attr_dev(div2, "id",
+        /*idCorps*/
+        ctx[8]);
+        add_location(div2, file$2, 162, 8, 5405);
         attr_dev(div3, "class", "principal");
-        add_location(div3, file$1, 133, 6, 4047);
+        add_location(div3, file$2, 153, 6, 5094);
         attr_dev(div4, "class", "conteneur");
-        add_location(div4, file$1, 121, 4, 3725);
+        add_location(div4, file$2, 141, 4, 4772);
         attr_dev(div5, "tabindex", "-1");
         attr_dev(div5, "aria-labelledby",
         /*idEntete*/
-        ctx[4]);
-        attr_dev(div5, "class", "utd-dialog");
+        ctx[7]);
+        attr_dev(div5, "aria-describedby", div5_aria_describedby_value =
+        /*estfenetremessage*/
+        ctx[1] === 'true' ?
+        /*idCorps*/
+        ctx[8] : null);
+        attr_dev(div5, "class", div5_class_value = "utd-component utd-dialog " + (
+        /*estfenetremessage*/
+        ctx[1] === 'true' ? 'fenetre-message' : '') + " " + (
+        /*estboutonstextelong*/
+        ctx[3] === 'true' ? 'boutons-texte-long' : ''));
         attr_dev(div5, "id",
         /*idModale*/
-        ctx[3]);
+        ctx[6]);
         attr_dev(div5, "aria-modal", "true");
         attr_dev(div5, "role", "dialog");
-        add_location(div5, file$1, 106, 2, 3347);
+        add_location(div5, file$2, 124, 2, 4148);
       },
       m: function mount(target, anchor) {
         insert_dev(target, div0, anchor);
@@ -2438,53 +2470,101 @@
         append_dev(div4, t1);
         append_dev(div4, div3);
         append_dev(div3, div1);
+        if (if_block0) if_block0.m(div1, null);
+        append_dev(div1, t2);
         append_dev(div1, h1);
-        append_dev(h1, t2);
-        append_dev(div3, t3);
+        append_dev(h1, t3);
+        append_dev(div3, t4);
         append_dev(div3, div2);
         append_dev(div2, slot);
-        append_dev(div3, t4);
-        if (if_block) if_block.m(div3, null);
+        append_dev(div3, t5);
+        if (if_block1) if_block1.m(div3, null);
         current = true;
 
         if (!mounted) {
           dispose = [listen_dev(div0, "click",
           /*click_handler*/
-          ctx[15], false, false, false), listen_dev(button, "click",
+          ctx[21], false, false, false), listen_dev(button, "click",
           /*click_handler_1*/
-          ctx[16], false, false, false), listen_dev(div5, "click",
+          ctx[22], false, false, false), listen_dev(div5, "click",
           /*clickModale*/
-          ctx[8], false, false, false), listen_dev(div5, "keydown",
+          ctx[12], false, false, false), listen_dev(div5, "keydown",
           /*keydown*/
-          ctx[7], false, false, false), listen_dev(div5, "introend",
-          /*ajusterModalePendantAffichage*/
-          ctx[10], false, false, false), listen_dev(div5, "outroend",
+          ctx[11], false, false, false), listen_dev(div5, "introstart",
+          /*ajusterModaleDebutAffichage*/
+          ctx[14], false, false, false), listen_dev(div5, "introend",
+          /*ajusterModaleFinAffichage*/
+          ctx[15], false, false, false), listen_dev(div5, "outroend",
           /*finAnimationFermeture*/
-          ctx[9], false, false, false)];
+          ctx[13], false, false, false)];
           mounted = true;
         }
       },
       p: function update(ctx, dirty) {
+        if (
+        /*type*/
+        ctx[0]) {
+          if (if_block0) {
+            if_block0.p(ctx, dirty);
+          } else {
+            if_block0 = create_if_block_2$1(ctx);
+            if_block0.c();
+            if_block0.m(div1, t2);
+          }
+        } else if (if_block0) {
+          if_block0.d(1);
+          if_block0 = null;
+        }
+
         if (!current || dirty &
         /*titre*/
-        1) set_data_dev(t2,
+        4) set_data_dev(t3,
         /*titre*/
-        ctx[0]);
+        ctx[2]);
+
+        if (!current || dirty &
+        /*type*/
+        1 && div1_class_value !== (div1_class_value = "entete " + (
+        /*type*/
+        ctx[0] ? 'avec-type' : ''))) {
+          attr_dev(div1, "class", div1_class_value);
+        }
+
         if (dirty &
         /*slots*/
-        4) show_if = Utils.slotExiste(
+        32) show_if = Utils.slotExiste(
         /*slots*/
-        ctx[2], 'pied');
+        ctx[5], 'pied');
 
         if (show_if) {
-          if (if_block) ; else {
-            if_block = create_if_block_1$1(ctx);
-            if_block.c();
-            if_block.m(div3, null);
+          if (if_block1) ; else {
+            if_block1 = create_if_block_1$1(ctx);
+            if_block1.c();
+            if_block1.m(div3, null);
           }
-        } else if (if_block) {
-          if_block.d(1);
-          if_block = null;
+        } else if (if_block1) {
+          if_block1.d(1);
+          if_block1 = null;
+        }
+
+        if (!current || dirty &
+        /*estfenetremessage*/
+        2 && div5_aria_describedby_value !== (div5_aria_describedby_value =
+        /*estfenetremessage*/
+        ctx[1] === 'true' ?
+        /*idCorps*/
+        ctx[8] : null)) {
+          attr_dev(div5, "aria-describedby", div5_aria_describedby_value);
+        }
+
+        if (!current || dirty &
+        /*estfenetremessage, estboutonstextelong*/
+        10 && div5_class_value !== (div5_class_value = "utd-component utd-dialog " + (
+        /*estfenetremessage*/
+        ctx[1] === 'true' ? 'fenetre-message' : '') + " " + (
+        /*estboutonstextelong*/
+        ctx[3] === 'true' ? 'boutons-texte-long' : ''))) {
+          attr_dev(div5, "class", div5_class_value);
         }
       },
       i: function intro(local) {
@@ -2493,7 +2573,7 @@
           if (div5_outro) div5_outro.end(1);
           div5_intro = create_in_transition(div5, fly, {
             y: 200,
-            duration: 750
+            duration: 500
           });
           div5_intro.start();
         });
@@ -2503,7 +2583,7 @@
         if (div5_intro) div5_intro.invalidate();
         div5_outro = create_out_transition(div5, fly, {
           y: 200,
-          duration: 500
+          duration: 250
         });
         current = false;
       },
@@ -2511,7 +2591,8 @@
         if (detaching) detach_dev(div0);
         if (detaching) detach_dev(t0);
         if (detaching) detach_dev(div5);
-        if (if_block) if_block.d();
+        if (if_block0) if_block0.d();
+        if (if_block1) if_block1.d();
         if (detaching && div5_outro) div5_outro.end();
         mounted = false;
         run_all(dispose);
@@ -2521,11 +2602,50 @@
       block: block,
       id: create_if_block$1.name,
       type: "if",
-      source: "(105:0) {#if estModaleAffichee}",
+      source: "(123:0) {#if estModaleAffichee}",
       ctx: ctx
     });
     return block;
-  } // (143:8) {#if Utils.slotExiste(slots, 'pied')}
+  } // (156:10) {#if type}
+
+
+  function create_if_block_2$1(ctx) {
+    var span;
+    var span_class_value;
+    var block = {
+      c: function create() {
+        span = element("span");
+        attr_dev(span, "class", span_class_value = "utd-icone-svg " +
+        /*type*/
+        ctx[0]);
+        attr_dev(span, "aria-hidden", "true");
+        add_location(span, file$2, 156, 12, 5209);
+      },
+      m: function mount(target, anchor) {
+        insert_dev(target, span, anchor);
+      },
+      p: function update(ctx, dirty) {
+        if (dirty &
+        /*type*/
+        1 && span_class_value !== (span_class_value = "utd-icone-svg " +
+        /*type*/
+        ctx[0])) {
+          attr_dev(span, "class", span_class_value);
+        }
+      },
+      d: function destroy(detaching) {
+        if (detaching) detach_dev(span);
+      }
+    };
+    dispatch_dev("SvelteRegisterBlock", {
+      block: block,
+      id: create_if_block_2$1.name,
+      type: "if",
+      source: "(156:10) {#if type}",
+      ctx: ctx
+    });
+    return block;
+  } // (166:8) {#if Utils.slotExiste(slots, 'pied')}
 
 
   function create_if_block_1$1(ctx) {
@@ -2536,9 +2656,9 @@
         div = element("div");
         slot = element("slot");
         attr_dev(slot, "name", "pied");
-        add_location(slot, file$1, 144, 12, 4390);
+        add_location(slot, file$2, 167, 12, 5579);
         attr_dev(div, "class", "pied");
-        add_location(div, file$1, 143, 10, 4358);
+        add_location(div, file$2, 166, 10, 5547);
       },
       m: function mount(target, anchor) {
         insert_dev(target, div, anchor);
@@ -2552,19 +2672,19 @@
       block: block,
       id: create_if_block_1$1.name,
       type: "if",
-      source: "(143:8) {#if Utils.slotExiste(slots, 'pied')}",
+      source: "(166:8) {#if Utils.slotExiste(slots, 'pied')}",
       ctx: ctx
     });
     return block;
   }
 
-  function create_fragment$1(ctx) {
+  function create_fragment$2(ctx) {
     var t;
     var link;
     var current;
     var if_block =
     /*estModaleAffichee*/
-    ctx[1] && create_if_block$1(ctx);
+    ctx[4] && create_if_block$1(ctx);
     var block = {
       c: function create() {
         if (if_block) if_block.c();
@@ -2572,8 +2692,8 @@
         link = element("link");
         this.c = noop;
         attr_dev(link, "rel", "stylesheet");
-        attr_dev(link, "href", "/css/utd-webcomponents-v1.2.0.min.css");
-        add_location(link, file$1, 152, 0, 4500);
+        attr_dev(link, "href", "/css/utd-webcomponents-v1.3.0.min.css");
+        add_location(link, file$2, 175, 0, 5689);
       },
       l: function claim(nodes) {
         throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2590,13 +2710,13 @@
 
         if (
         /*estModaleAffichee*/
-        ctx[1]) {
+        ctx[4]) {
           if (if_block) {
             if_block.p(ctx, dirty);
 
             if (dirty &
             /*estModaleAffichee*/
-            2) {
+            16) {
               transition_in(if_block, 1);
             }
           } else {
@@ -2630,7 +2750,7 @@
     };
     dispatch_dev("SvelteRegisterBlock", {
       block: block,
-      id: create_fragment$1.name,
+      id: create_fragment$2.name,
       type: "component",
       source: "",
       ctx: ctx
@@ -2638,23 +2758,32 @@
     return block;
   }
 
-  function instance$1($$self, $$props, $$invalidate) {
+  function instance$2($$self, $$props, $$invalidate) {
     var _$$props$$$slots = $$props.$$slots,
         slots$1 = _$$props$$$slots === void 0 ? {} : _$$props$$$slots;
         $$props.$$scope;
     validate_slots('utd-dialog', slots$1, []);
     var _$$props$afficher = $$props.afficher,
         afficher = _$$props$afficher === void 0 ? 'false' : _$$props$afficher;
+    var _$$props$type = $$props.type,
+        type = _$$props$type === void 0 ? '' : _$$props$type;
+    var _$$props$estfenetreme = $$props.estfenetremessage,
+        estfenetremessage = _$$props$estfenetreme === void 0 ? 'false' : _$$props$estfenetreme;
+    var _$$props$raisonfermet = $$props.raisonfermeture,
+        raisonfermeture = _$$props$raisonfermet === void 0 ? '' : _$$props$raisonfermet;
     var _$$props$titre = $$props.titre,
-        titre = _$$props$titre === void 0 ? "" : _$$props$titre;
+        titre = _$$props$titre === void 0 ? '' : _$$props$titre;
     var _$$props$lang = $$props.lang,
-        lang = _$$props$lang === void 0 ? "fr" : _$$props$lang;
+        lang = _$$props$lang === void 0 ? 'fr' : _$$props$lang;
     var _$$props$srboutonferm = $$props.srboutonfermer,
-        srboutonfermer = _$$props$srboutonferm === void 0 ? "" : _$$props$srboutonferm;
+        srboutonfermer = _$$props$srboutonferm === void 0 ? '' : _$$props$srboutonferm;
     var _$$props$idfocus = $$props.idfocus,
-        idfocus = _$$props$idfocus === void 0 ? "" : _$$props$idfocus;
+        idfocus = _$$props$idfocus === void 0 ? '' : _$$props$idfocus;
+    var _$$props$estboutonste = $$props.estboutonstextelong,
+        estboutonstextelong = _$$props$estboutonste === void 0 ? 'false' : _$$props$estboutonste;
     var idModale = Utils.genererId();
     var idEntete = Utils.genererId();
+    var idCorps = Utils.genererId();
     var srTexteBoutonFermer = srboutonfermer ? srboutonfermer : lang === "fr" ? "Fermer" : "Close";
     var estModaleAffichee = afficher === 'true';
     var thisComponent = get_current_component();
@@ -2665,13 +2794,15 @@
     onMount(function () {
       html = thisComponent.getRootNode().getElementsByTagName("html")[0];
       body = thisComponent.getRootNode().getElementsByTagName("body")[0];
-      $$invalidate(2, slots = Array.from(thisComponent.querySelectorAll('[slot]')));
+      $$invalidate(5, slots = Array.from(thisComponent.querySelectorAll('[slot]')));
       mounted = true;
     });
 
-    function masquerModale(raisonFermeture) {
-      $$invalidate(1, estModaleAffichee = false);
-      $$invalidate(11, afficher = 'false'); //On redonne le focus au contrôle spécifié (normalement celui qui a initié l'affichage de la fenêtre modale)
+    function masquerModale(raisonFermetureModale) {
+      $$invalidate(4, estModaleAffichee = false);
+      $$invalidate(16, afficher = 'false'); //Si une raison de fermeture est reçue en param, on l'utilise sinon on prend la raison de fermeture qui est sur la modale "raisonfermeture" qui va contenir une raison de fermeture externe à la modale (ex. clic sur bouton primaire ou secondaire)
+
+      var raison = raisonFermetureModale || raisonfermeture; //On redonne le focus au contrôle spécifié (normalement celui qui a initié l'affichage de la fenêtre modale)
 
       var controleFocus = thisComponent.getRootNode().getElementById(idfocus);
 
@@ -2680,7 +2811,7 @@
       }
 
       Utils.dispatchWcEvent(thisComponent, "fermeture", {
-        raisonFermeture: raisonFermeture
+        raisonFermeture: raison
       });
     } // Exécuté lorsque la valeur de la prop "afficher" change
 
@@ -2688,8 +2819,9 @@
     function toggleAfficher() {
       if (mounted) {
         if (afficher === 'true') {
+          $$invalidate(17, raisonfermeture = '');
           Utils.ajusterInterfaceAvantAffichageModale(html, body);
-          $$invalidate(1, estModaleAffichee = true);
+          $$invalidate(4, estModaleAffichee = true);
         } else {
           if (estModaleAffichee) {
             masquerModale();
@@ -2700,13 +2832,13 @@
 
     function keydown(e) {
       if (e.key === "Escape") {
-        masquerModale('Escape');
+        masquerModale('escape');
       }
     }
 
     function clickModale(e) {
       if (e.target === e.currentTarget) {
-        masquerModale('ClickBackdrop');
+        masquerModale('clickBackdrop');
       }
     }
 
@@ -2715,41 +2847,59 @@
       Utils.dispatchWcEvent(thisComponent, "apresFermeture");
     }
 
-    function ajusterModalePendantAffichage(e) {
+    function ajusterModaleDebutAffichage(e) {
       var modale = thisComponent.shadowRoot.getElementById(idModale);
-      Utils.ajusterInterfacePendantAffichageModale(body, modale); //thisComponent.shadowRoot.getElementById(idModale).focus()
-
       donnerfocusPremierElementFocusable(modale);
       Utils.conserverFocusElement(modale, thisComponent);
     }
 
-    function donnerfocusPremierElementFocusable(modale) {
-      var elementsFocusablesShadow = Array.from(Utils.obtenirElementsFocusables(modale));
-      var elementsFocusablesRoot = Array.from(Utils.obtenirElementsFocusables(thisComponent));
-      var elementsFocusables = elementsFocusablesRoot.concat(elementsFocusablesShadow);
-      var premierElementFocusable = elementsFocusables[0];
-      premierElementFocusable.focus();
+    function ajusterModaleFinAffichage(e) {
+      var modale = thisComponent.shadowRoot.getElementById(idModale);
+      Utils.ajusterInterfacePendantAffichageModale(body, modale);
     }
 
-    var writable_props = ['afficher', 'titre', 'lang', 'srboutonfermer', 'idfocus'];
+    function donnerfocusPremierElementFocusable(modale) {
+      var premierElementFocusable = null;
+
+      if (estfenetremessage === 'true') {
+        premierElementFocusable = thisComponent.querySelector('.utd-btn.primaire');
+      }
+
+      if (!premierElementFocusable) {
+        var elementsFocusablesShadow = Array.from(Utils.obtenirElementsFocusables(modale));
+        var elementsFocusablesRoot = Array.from(Utils.obtenirElementsFocusables(thisComponent));
+        var elementsFocusables = elementsFocusablesRoot.concat(elementsFocusablesShadow);
+        premierElementFocusable = elementsFocusables[0];
+      }
+
+      premierElementFocusable.focus({
+        preventScroll: true
+      });
+    }
+
+    var writable_props = ['afficher', 'type', 'estfenetremessage', 'raisonfermeture', 'titre', 'lang', 'srboutonfermer', 'idfocus', 'estboutonstextelong'];
     Object.keys($$props).forEach(function (key) {
       if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn("<utd-dialog> was created with unknown prop '".concat(key, "'"));
     });
 
     var click_handler = function click_handler() {
-      return masquerModale('ClickBackdrop');
+      return masquerModale('clickBackdrop');
     };
 
     var click_handler_1 = function click_handler_1() {
-      return masquerModale('BoutonFermer');
+      return masquerModale('boutonFermer');
     };
 
     $$self.$$set = function ($$props) {
-      if ('afficher' in $$props) $$invalidate(11, afficher = $$props.afficher);
-      if ('titre' in $$props) $$invalidate(0, titre = $$props.titre);
-      if ('lang' in $$props) $$invalidate(12, lang = $$props.lang);
-      if ('srboutonfermer' in $$props) $$invalidate(13, srboutonfermer = $$props.srboutonfermer);
-      if ('idfocus' in $$props) $$invalidate(14, idfocus = $$props.idfocus);
+      if ('afficher' in $$props) $$invalidate(16, afficher = $$props.afficher);
+      if ('type' in $$props) $$invalidate(0, type = $$props.type);
+      if ('estfenetremessage' in $$props) $$invalidate(1, estfenetremessage = $$props.estfenetremessage);
+      if ('raisonfermeture' in $$props) $$invalidate(17, raisonfermeture = $$props.raisonfermeture);
+      if ('titre' in $$props) $$invalidate(2, titre = $$props.titre);
+      if ('lang' in $$props) $$invalidate(18, lang = $$props.lang);
+      if ('srboutonfermer' in $$props) $$invalidate(19, srboutonfermer = $$props.srboutonfermer);
+      if ('idfocus' in $$props) $$invalidate(20, idfocus = $$props.idfocus);
+      if ('estboutonstextelong' in $$props) $$invalidate(3, estboutonstextelong = $$props.estboutonstextelong);
     };
 
     $$self.$capture_state = function () {
@@ -2759,12 +2909,17 @@
         get_current_component: get_current_component,
         Utils: Utils,
         afficher: afficher,
+        type: type,
+        estfenetremessage: estfenetremessage,
+        raisonfermeture: raisonfermeture,
         titre: titre,
         lang: lang,
         srboutonfermer: srboutonfermer,
         idfocus: idfocus,
+        estboutonstextelong: estboutonstextelong,
         idModale: idModale,
         idEntete: idEntete,
+        idCorps: idCorps,
         srTexteBoutonFermer: srTexteBoutonFermer,
         estModaleAffichee: estModaleAffichee,
         thisComponent: thisComponent,
@@ -2777,21 +2932,26 @@
         keydown: keydown,
         clickModale: clickModale,
         finAnimationFermeture: finAnimationFermeture,
-        ajusterModalePendantAffichage: ajusterModalePendantAffichage,
+        ajusterModaleDebutAffichage: ajusterModaleDebutAffichage,
+        ajusterModaleFinAffichage: ajusterModaleFinAffichage,
         donnerfocusPremierElementFocusable: donnerfocusPremierElementFocusable
       };
     };
 
     $$self.$inject_state = function ($$props) {
-      if ('afficher' in $$props) $$invalidate(11, afficher = $$props.afficher);
-      if ('titre' in $$props) $$invalidate(0, titre = $$props.titre);
-      if ('lang' in $$props) $$invalidate(12, lang = $$props.lang);
-      if ('srboutonfermer' in $$props) $$invalidate(13, srboutonfermer = $$props.srboutonfermer);
-      if ('idfocus' in $$props) $$invalidate(14, idfocus = $$props.idfocus);
-      if ('estModaleAffichee' in $$props) $$invalidate(1, estModaleAffichee = $$props.estModaleAffichee);
+      if ('afficher' in $$props) $$invalidate(16, afficher = $$props.afficher);
+      if ('type' in $$props) $$invalidate(0, type = $$props.type);
+      if ('estfenetremessage' in $$props) $$invalidate(1, estfenetremessage = $$props.estfenetremessage);
+      if ('raisonfermeture' in $$props) $$invalidate(17, raisonfermeture = $$props.raisonfermeture);
+      if ('titre' in $$props) $$invalidate(2, titre = $$props.titre);
+      if ('lang' in $$props) $$invalidate(18, lang = $$props.lang);
+      if ('srboutonfermer' in $$props) $$invalidate(19, srboutonfermer = $$props.srboutonfermer);
+      if ('idfocus' in $$props) $$invalidate(20, idfocus = $$props.idfocus);
+      if ('estboutonstextelong' in $$props) $$invalidate(3, estboutonstextelong = $$props.estboutonstextelong);
+      if ('estModaleAffichee' in $$props) $$invalidate(4, estModaleAffichee = $$props.estModaleAffichee);
       if ('html' in $$props) html = $$props.html;
       if ('body' in $$props) body = $$props.body;
-      if ('slots' in $$props) $$invalidate(2, slots = $$props.slots);
+      if ('slots' in $$props) $$invalidate(5, slots = $$props.slots);
       if ('mounted' in $$props) mounted = $$props.mounted;
     };
 
@@ -2802,19 +2962,19 @@
     $$self.$$.update = function () {
       if ($$self.$$.dirty &
       /*afficher*/
-      2048) {
+      65536) {
         // Watch sur la prop afficher
         toggleAfficher();
       }
     };
 
-    return [titre, estModaleAffichee, slots, idModale, idEntete, srTexteBoutonFermer, masquerModale, keydown, clickModale, finAnimationFermeture, ajusterModalePendantAffichage, afficher, lang, srboutonfermer, idfocus, click_handler, click_handler_1];
+    return [type, estfenetremessage, titre, estboutonstextelong, estModaleAffichee, slots, idModale, idEntete, idCorps, srTexteBoutonFermer, masquerModale, keydown, clickModale, finAnimationFermeture, ajusterModaleDebutAffichage, ajusterModaleFinAffichage, afficher, raisonfermeture, lang, srboutonfermer, idfocus, click_handler, click_handler_1];
   }
 
   var DialogueModal = /*#__PURE__*/function (_SvelteElement) {
     _inherits(DialogueModal, _SvelteElement);
 
-    var _super = _createSuper$1(DialogueModal);
+    var _super = _createSuper$2(DialogueModal);
 
     function DialogueModal(options) {
       var _this;
@@ -2826,12 +2986,16 @@
         target: _this.shadowRoot,
         props: attribute_to_object(_this.attributes),
         customElement: true
-      }, instance$1, create_fragment$1, safe_not_equal, {
-        afficher: 11,
-        titre: 0,
-        lang: 12,
-        srboutonfermer: 13,
-        idfocus: 14
+      }, instance$2, create_fragment$2, safe_not_equal, {
+        afficher: 16,
+        type: 0,
+        estfenetremessage: 1,
+        raisonfermeture: 17,
+        titre: 2,
+        lang: 18,
+        srboutonfermer: 19,
+        idfocus: 20,
+        estboutonstextelong: 3
       }, null);
 
       if (options) {
@@ -2852,7 +3016,7 @@
     _createClass(DialogueModal, [{
       key: "afficher",
       get: function get() {
-        return this.$$.ctx[11];
+        return this.$$.ctx[16];
       },
       set: function set(afficher) {
         this.$$set({
@@ -2861,9 +3025,42 @@
         flush();
       }
     }, {
-      key: "titre",
+      key: "type",
       get: function get() {
         return this.$$.ctx[0];
+      },
+      set: function set(type) {
+        this.$$set({
+          type: type
+        });
+        flush();
+      }
+    }, {
+      key: "estfenetremessage",
+      get: function get() {
+        return this.$$.ctx[1];
+      },
+      set: function set(estfenetremessage) {
+        this.$$set({
+          estfenetremessage: estfenetremessage
+        });
+        flush();
+      }
+    }, {
+      key: "raisonfermeture",
+      get: function get() {
+        return this.$$.ctx[17];
+      },
+      set: function set(raisonfermeture) {
+        this.$$set({
+          raisonfermeture: raisonfermeture
+        });
+        flush();
+      }
+    }, {
+      key: "titre",
+      get: function get() {
+        return this.$$.ctx[2];
       },
       set: function set(titre) {
         this.$$set({
@@ -2874,7 +3071,7 @@
     }, {
       key: "lang",
       get: function get() {
-        return this.$$.ctx[12];
+        return this.$$.ctx[18];
       },
       set: function set(lang) {
         this.$$set({
@@ -2885,7 +3082,7 @@
     }, {
       key: "srboutonfermer",
       get: function get() {
-        return this.$$.ctx[13];
+        return this.$$.ctx[19];
       },
       set: function set(srboutonfermer) {
         this.$$set({
@@ -2896,7 +3093,7 @@
     }, {
       key: "idfocus",
       get: function get() {
-        return this.$$.ctx[14];
+        return this.$$.ctx[20];
       },
       set: function set(idfocus) {
         this.$$set({
@@ -2904,10 +3101,21 @@
         });
         flush();
       }
+    }, {
+      key: "estboutonstextelong",
+      get: function get() {
+        return this.$$.ctx[3];
+      },
+      set: function set(estboutonstextelong) {
+        this.$$set({
+          estboutonstextelong: estboutonstextelong
+        });
+        flush();
+      }
     }], [{
       key: "observedAttributes",
       get: function get() {
-        return ["afficher", "titre", "lang", "srboutonfermer", "idfocus"];
+        return ["afficher", "type", "estfenetremessage", "raisonfermeture", "titre", "lang", "srboutonfermer", "idfocus", "estboutonstextelong"];
       }
     }]);
 
@@ -2916,6 +3124,263 @@
 
   customElements.define("utd-dialog", DialogueModal);
 
+  function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+  function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+  var file$1 = "src\\librairie\\components\\hautPage.svelte";
+
+  function create_fragment$1(ctx) {
+    var div1;
+    var button;
+    var div0;
+    var span;
+    var t;
+    var link;
+    var mounted;
+    var dispose;
+    var block = {
+      c: function create() {
+        div1 = element("div");
+        button = element("button");
+        div0 = element("div");
+        span = element("span");
+        t = space();
+        link = element("link");
+        this.c = noop;
+        attr_dev(span, "aria-hidden", "true");
+        attr_dev(span, "class", "utd-icone-svg fleche-haut-blanche");
+        add_location(span, file$1, 67, 6, 1971);
+        attr_dev(div0, "class", "contenu");
+        add_location(div0, file$1, 66, 4, 1942);
+        attr_dev(button, "type", "button");
+        attr_dev(button, "class", "utd-btn primaire");
+        attr_dev(button, "title",
+        /*title*/
+        ctx[0]);
+        add_location(button, file$1, 65, 2, 1845);
+        attr_dev(div1, "class", "utd-component utd-hautpage");
+        add_location(div1, file$1, 64, 0, 1801);
+        attr_dev(link, "rel", "stylesheet");
+        attr_dev(link, "href", "/css/utd-webcomponents-v1.3.0.min.css");
+        add_location(link, file$1, 72, 0, 2085);
+      },
+      l: function claim(nodes) {
+        throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+      },
+      m: function mount(target, anchor) {
+        insert_dev(target, div1, anchor);
+        append_dev(div1, button);
+        append_dev(button, div0);
+        append_dev(div0, span);
+        insert_dev(target, t, anchor);
+        insert_dev(target, link, anchor);
+
+        if (!mounted) {
+          dispose = listen_dev(button, "click", scrollerHautPage, false, false, false);
+          mounted = true;
+        }
+      },
+      p: function update(ctx, _ref) {
+        var _ref2 = _slicedToArray(_ref, 1),
+            dirty = _ref2[0];
+
+        if (dirty &
+        /*title*/
+        1) {
+          attr_dev(button, "title",
+          /*title*/
+          ctx[0]);
+        }
+      },
+      i: noop,
+      o: noop,
+      d: function destroy(detaching) {
+        if (detaching) detach_dev(div1);
+        if (detaching) detach_dev(t);
+        if (detaching) detach_dev(link);
+        mounted = false;
+        dispose();
+      }
+    };
+    dispatch_dev("SvelteRegisterBlock", {
+      block: block,
+      id: create_fragment$1.name,
+      type: "component",
+      source: "",
+      ctx: ctx
+    });
+    return block;
+  }
+
+  function scrollerHautPage(e) {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
+  function instance$1($$self, $$props, $$invalidate) {
+    var _$$props$$$slots = $$props.$$slots,
+        slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots;
+        $$props.$$scope;
+    validate_slots('utd-hautpage', slots, []);
+    var _$$props$title = $$props.title,
+        title = _$$props$title === void 0 ? Utils.obtenirLanguePage() === 'fr' ? "Retour en haut de page." : "Return to the top of the page." : _$$props$title;
+    var _$$props$hauteurMinim = $$props.hauteurMinimaleSroll,
+        hauteurMinimaleSroll = _$$props$hauteurMinim === void 0 ? 555 : _$$props$hauteurMinim;
+    var thisComponent = get_current_component();
+    var html;
+    var controle;
+    var ticking = false;
+    onMount(function () {
+      html = thisComponent.getRootNode().getElementsByTagName("html")[0];
+      controle = thisComponent.shadowRoot.querySelector('.utd-hautpage');
+      controle.classList.add("utd-d-none");
+    });
+    window.addEventListener('scroll', function (e) {
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          gererAffichageBouton();
+          ticking = false;
+        });
+      }
+
+      ticking = true;
+    });
+
+    function gererAffichageBouton() {
+      var dureeAnimationMs = 500;
+
+      if (document.body.scrollTop > hauteurMinimaleSroll || document.documentElement.scrollTop > hauteurMinimaleSroll) {
+        if (controle.classList.contains('utd-d-none')) {
+          controle.classList.remove('utd-d-none');
+          setTimeout(function () {
+            html.setAttribute('retourhautpagevisible', 'true');
+            controle.classList.add('visible');
+          }, 10);
+        }
+      } else {
+        if (controle.classList.contains("visible")) {
+          setTimeout(function () {
+            controle.classList.add('utd-d-none');
+            html.setAttribute('retourhautpagevisible', 'false');
+          }, dureeAnimationMs);
+        }
+
+        controle.classList.remove('visible');
+      }
+    }
+
+    var writable_props = ['title', 'hauteurMinimaleSroll'];
+    Object.keys($$props).forEach(function (key) {
+      if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn("<utd-hautpage> was created with unknown prop '".concat(key, "'"));
+    });
+
+    $$self.$$set = function ($$props) {
+      if ('title' in $$props) $$invalidate(0, title = $$props.title);
+      if ('hauteurMinimaleSroll' in $$props) $$invalidate(1, hauteurMinimaleSroll = $$props.hauteurMinimaleSroll);
+    };
+
+    $$self.$capture_state = function () {
+      return {
+        onMount: onMount,
+        Utils: Utils,
+        get_current_component: get_current_component,
+        title: title,
+        hauteurMinimaleSroll: hauteurMinimaleSroll,
+        thisComponent: thisComponent,
+        html: html,
+        controle: controle,
+        ticking: ticking,
+        gererAffichageBouton: gererAffichageBouton,
+        scrollerHautPage: scrollerHautPage
+      };
+    };
+
+    $$self.$inject_state = function ($$props) {
+      if ('title' in $$props) $$invalidate(0, title = $$props.title);
+      if ('hauteurMinimaleSroll' in $$props) $$invalidate(1, hauteurMinimaleSroll = $$props.hauteurMinimaleSroll);
+      if ('html' in $$props) html = $$props.html;
+      if ('controle' in $$props) controle = $$props.controle;
+      if ('ticking' in $$props) ticking = $$props.ticking;
+    };
+
+    if ($$props && "$$inject" in $$props) {
+      $$self.$inject_state($$props.$$inject);
+    }
+
+    return [title, hauteurMinimaleSroll];
+  }
+
+  var HautPage = /*#__PURE__*/function (_SvelteElement) {
+    _inherits(HautPage, _SvelteElement);
+
+    var _super = _createSuper$1(HautPage);
+
+    function HautPage(options) {
+      var _this;
+
+      _classCallCheck(this, HautPage);
+
+      _this = _super.call(this);
+      init(_assertThisInitialized(_this), {
+        target: _this.shadowRoot,
+        props: attribute_to_object(_this.attributes),
+        customElement: true
+      }, instance$1, create_fragment$1, safe_not_equal, {
+        title: 0,
+        hauteurMinimaleSroll: 1
+      }, null);
+
+      if (options) {
+        if (options.target) {
+          insert_dev(options.target, _assertThisInitialized(_this), options.anchor);
+        }
+
+        if (options.props) {
+          _this.$set(options.props);
+
+          flush();
+        }
+      }
+
+      return _this;
+    }
+
+    _createClass(HautPage, [{
+      key: "title",
+      get: function get() {
+        return this.$$.ctx[0];
+      },
+      set: function set(title) {
+        this.$$set({
+          title: title
+        });
+        flush();
+      }
+    }, {
+      key: "hauteurMinimaleSroll",
+      get: function get() {
+        return this.$$.ctx[1];
+      },
+      set: function set(hauteurMinimaleSroll) {
+        this.$$set({
+          hauteurMinimaleSroll: hauteurMinimaleSroll
+        });
+        flush();
+      }
+    }], [{
+      key: "observedAttributes",
+      get: function get() {
+        return ["title", "hauteurMinimaleSroll"];
+      }
+    }]);
+
+    return HautPage;
+  }(SvelteElement);
+
+  customElements.define("utd-hautpage", HautPage);
+
   function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
   function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -2923,9 +3388,9 @@
   function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
   function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-  var file = "src\\librairie\\components\\infobulle.svelte"; // (76:2) {#if $$slots["texte-lie"]}
+  var file = "src\\librairie\\components\\infobulle.svelte"; // (101:2) {#if $$slots["texte-lie"]}
 
-  function create_if_block_3(ctx) {
+  function create_if_block_4(ctx) {
     var span;
     var slot;
     var mounted;
@@ -2935,9 +3400,9 @@
         span = element("span");
         slot = element("slot");
         attr_dev(slot, "name", "texte-lie");
-        add_location(slot, file, 76, 54, 2069);
+        add_location(slot, file, 101, 54, 3409);
         attr_dev(span, "class", "texte-lie");
-        add_location(span, file, 76, 4, 2019);
+        add_location(span, file, 101, 4, 3359);
       },
       m: function mount(target, anchor) {
         insert_dev(target, span, anchor);
@@ -2946,7 +3411,7 @@
         if (!mounted) {
           dispose = listen_dev(span, "click",
           /*afficherModale*/
-          ctx[8], false, false, false);
+          ctx[10], false, false, false);
           mounted = true;
         }
       },
@@ -2959,13 +3424,13 @@
     };
     dispatch_dev("SvelteRegisterBlock", {
       block: block,
-      id: create_if_block_3.name,
+      id: create_if_block_4.name,
       type: "if",
-      source: "(76:2) {#if $$slots[\\\"texte-lie\\\"]}",
+      source: "(101:2) {#if $$slots[\\\"texte-lie\\\"]}",
       ctx: ctx
     });
     return block;
-  } // (91:2) {#if afficher}
+  } // (116:2) {#if afficher}
 
 
   function create_if_block(ctx) {
@@ -2983,10 +3448,7 @@
     var t3;
     var span5;
     var span4;
-    var t4;
-    var slot;
-    var t5;
-    var p;
+    var show_if;
     var span6_intro;
     var span6_outro;
     var current;
@@ -2994,10 +3456,22 @@
     var dispose;
     var if_block0 =
     /*titre*/
-    ctx[1] && create_if_block_2(ctx);
-    var if_block1 =
-    /*contenu*/
-    ctx[2] && create_if_block_1(ctx);
+    ctx[1] && create_if_block_3(ctx);
+
+    function select_block_type(ctx, dirty) {
+      if (show_if == null || dirty &
+      /*slots*/
+      8) show_if = !!Utils.slotExiste(
+      /*slots*/
+      ctx[3], 'contenu');
+      if (show_if) return create_if_block_1;
+      if (
+      /*contenu*/
+      ctx[2]) return create_if_block_2;
+    }
+
+    var current_block_type = select_block_type(ctx, -1);
+    var if_block1 = current_block_type && current_block_type(ctx);
     var block = {
       c: function create() {
         div = element("div");
@@ -3016,50 +3490,42 @@
         span5 = element("span");
         span4 = element("span");
         if (if_block1) if_block1.c();
-        t4 = space();
-        slot = element("slot");
-        t5 = space();
-        p = element("p");
         attr_dev(div, "class", "utd-backdrop");
-        add_location(div, file, 91, 4, 2534);
-        attr_dev(span0, "class", "sr-only");
-        add_location(span0, file, 107, 10, 3054);
-        add_location(span1, file, 108, 10, 3115);
+        add_location(div, file, 116, 4, 3874);
+        attr_dev(span0, "class", "utd-sr-only");
+        add_location(span0, file, 132, 10, 4387);
+        add_location(span1, file, 133, 10, 4452);
         attr_dev(h1, "id",
         /*idEntete*/
-        ctx[4]);
+        ctx[6]);
         attr_dev(h1, "tabindex", "-1");
-        add_location(h1, file, 106, 8, 3010);
+        add_location(h1, file, 131, 8, 4343);
         attr_dev(span2, "aria-hidden", "true");
         attr_dev(span2, "class", "utd-icone-svg x-fermer-bleu");
-        add_location(span2, file, 120, 10, 3392);
+        add_location(span2, file, 145, 10, 4729);
         attr_dev(button, "type", "button");
         attr_dev(button, "class", "close");
         attr_dev(button, "aria-label",
         /*srTexteBoutonFermer*/
-        ctx[7]);
-        add_location(button, file, 114, 8, 3232);
+        ctx[9]);
+        add_location(button, file, 139, 8, 4569);
         attr_dev(span3, "class", "utd-container entete");
-        add_location(span3, file, 105, 6, 2965);
-        attr_dev(slot, "name", "contenu");
-        add_location(slot, file, 131, 10, 3691);
-        attr_dev(p, "class", "utd-d-none");
-        add_location(p, file, 132, 10, 3726);
+        add_location(span3, file, 130, 6, 4298);
         attr_dev(span4, "class", "corps");
-        add_location(span4, file, 127, 8, 3588);
+        add_location(span4, file, 152, 8, 4925);
         attr_dev(span5, "class", "utd-container conteneur-corps");
-        add_location(span5, file, 126, 6, 3534);
+        add_location(span5, file, 151, 6, 4871);
         attr_dev(span6, "tabindex", "-1");
         attr_dev(span6, "aria-labelledby",
         /*idEntete*/
-        ctx[4]);
+        ctx[6]);
         attr_dev(span6, "class", "modale");
         attr_dev(span6, "id",
         /*idModale*/
-        ctx[3]);
+        ctx[5]);
         attr_dev(span6, "aria-modal", "true");
         attr_dev(span6, "role", "dialog");
-        add_location(span6, file, 92, 4, 2593);
+        add_location(span6, file, 117, 4, 3933);
       },
       m: function mount(target, anchor) {
         insert_dev(target, div, anchor);
@@ -3070,7 +3536,7 @@
         append_dev(h1, span0);
         span0.innerHTML =
         /*srTexteTitre*/
-        ctx[5];
+        ctx[7];
         append_dev(h1, t1);
         append_dev(h1, span1);
         if (if_block0) if_block0.m(span1, null);
@@ -3081,24 +3547,20 @@
         append_dev(span6, span5);
         append_dev(span5, span4);
         if (if_block1) if_block1.m(span4, null);
-        append_dev(span4, t4);
-        append_dev(span4, slot);
-        append_dev(span4, t5);
-        append_dev(span4, p);
         current = true;
 
         if (!mounted) {
           dispose = [listen_dev(div, "click",
           /*masquerModale*/
-          ctx[9], false, false, false), listen_dev(button, "click",
+          ctx[11], false, false, false), listen_dev(button, "click",
           /*masquerModale*/
-          ctx[9], false, false, false), listen_dev(span6, "keydown",
+          ctx[11], false, false, false), listen_dev(span6, "keydown",
           /*keydown*/
-          ctx[10], false, false, false), listen_dev(span6, "introend",
-          /*conserverFocusAideContextuelle*/
-          ctx[12], false, false, false), listen_dev(span6, "outroend",
+          ctx[12], false, false, false), listen_dev(span6, "introend",
+          /*conserverFocusInfobulle*/
+          ctx[14], false, false, false), listen_dev(span6, "outroend",
           /*finAnimationFermeture*/
-          ctx[11], false, false, false)];
+          ctx[13], false, false, false)];
           mounted = true;
         }
       },
@@ -3109,7 +3571,7 @@
           if (if_block0) {
             if_block0.p(ctx, dirty);
           } else {
-            if_block0 = create_if_block_2(ctx);
+            if_block0 = create_if_block_3(ctx);
             if_block0.c();
             if_block0.m(span1, null);
           }
@@ -3118,19 +3580,16 @@
           if_block0 = null;
         }
 
-        if (
-        /*contenu*/
-        ctx[2]) {
+        if (current_block_type === (current_block_type = select_block_type(ctx, dirty)) && if_block1) {
+          if_block1.p(ctx, dirty);
+        } else {
+          if (if_block1) if_block1.d(1);
+          if_block1 = current_block_type && current_block_type(ctx);
+
           if (if_block1) {
-            if_block1.p(ctx, dirty);
-          } else {
-            if_block1 = create_if_block_1(ctx);
             if_block1.c();
-            if_block1.m(span4, t4);
+            if_block1.m(span4, null);
           }
-        } else if (if_block1) {
-          if_block1.d(1);
-          if_block1 = null;
         }
       },
       i: function intro(local) {
@@ -3139,7 +3598,7 @@
           if (span6_outro) span6_outro.end(1);
           span6_intro = create_in_transition(span6, fly, {
             y: 200,
-            duration: 750
+            duration: 500
           });
           span6_intro.start();
         });
@@ -3149,7 +3608,7 @@
         if (span6_intro) span6_intro.invalidate();
         span6_outro = create_out_transition(span6, fly, {
           y: 200,
-          duration: 500
+          duration: 250
         });
         current = false;
       },
@@ -3158,7 +3617,11 @@
         if (detaching) detach_dev(t0);
         if (detaching) detach_dev(span6);
         if (if_block0) if_block0.d();
-        if (if_block1) if_block1.d();
+
+        if (if_block1) {
+          if_block1.d();
+        }
+
         if (detaching && span6_outro) span6_outro.end();
         mounted = false;
         run_all(dispose);
@@ -3168,14 +3631,14 @@
       block: block,
       id: create_if_block.name,
       type: "if",
-      source: "(91:2) {#if afficher}",
+      source: "(116:2) {#if afficher}",
       ctx: ctx
     });
     return block;
-  } // (110:12) {#if titre}
+  } // (135:12) {#if titre}
 
 
-  function create_if_block_2(ctx) {
+  function create_if_block_3(ctx) {
     var t;
     var block = {
       c: function create() {
@@ -3199,16 +3662,16 @@
     };
     dispatch_dev("SvelteRegisterBlock", {
       block: block,
-      id: create_if_block_2.name,
+      id: create_if_block_3.name,
       type: "if",
-      source: "(110:12) {#if titre}",
+      source: "(135:12) {#if titre}",
       ctx: ctx
     });
     return block;
-  } // (129:10) {#if contenu}
+  } // (160:12) {#if contenu}
 
 
-  function create_if_block_1(ctx) {
+  function create_if_block_2(ctx) {
     var html_tag;
     var html_anchor;
     var block = {
@@ -3237,9 +3700,55 @@
     };
     dispatch_dev("SvelteRegisterBlock", {
       block: block,
+      id: create_if_block_2.name,
+      type: "if",
+      source: "(160:12) {#if contenu}",
+      ctx: ctx
+    });
+    return block;
+  } // (154:10) {#if Utils.slotExiste(slots, 'contenu')}
+
+
+  function create_if_block_1(ctx) {
+    var slot;
+    var t;
+    var span;
+    var block = {
+      c: function create() {
+        slot = element("slot");
+        t = space();
+        span = element("span");
+        attr_dev(slot, "name", "contenu");
+        attr_dev(slot, "class", "utd-d-none");
+        add_location(slot, file, 154, 12, 5011);
+        add_location(span, file, 155, 12, 5066);
+      },
+      m: function mount(target, anchor) {
+        insert_dev(target, slot, anchor);
+        insert_dev(target, t, anchor);
+        insert_dev(target, span, anchor);
+        span.innerHTML =
+        /*htmlSlotContenu*/
+        ctx[4];
+      },
+      p: function update(ctx, dirty) {
+        if (dirty &
+        /*htmlSlotContenu*/
+        16) span.innerHTML =
+        /*htmlSlotContenu*/
+        ctx[4];
+      },
+      d: function destroy(detaching) {
+        if (detaching) detach_dev(slot);
+        if (detaching) detach_dev(t);
+        if (detaching) detach_dev(span);
+      }
+    };
+    dispatch_dev("SvelteRegisterBlock", {
+      block: block,
       id: create_if_block_1.name,
       type: "if",
-      source: "(129:10) {#if contenu}",
+      source: "(154:10) {#if Utils.slotExiste(slots, 'contenu')}",
       ctx: ctx
     });
     return block;
@@ -3262,7 +3771,7 @@
     var dispose;
     var if_block0 =
     /*$$slots*/
-    ctx[13]["texte-lie"] && create_if_block_3(ctx);
+    ctx[15]["texte-lie"] && create_if_block_4(ctx);
     var if_block1 =
     /*afficher*/
     ctx[0] && create_if_block(ctx);
@@ -3284,25 +3793,25 @@
         this.c = noop;
         attr_dev(span0, "aria-hidden", "true");
         attr_dev(span0, "class", "utd-icone-svg question");
-        add_location(span0, file, 81, 10, 2355);
+        add_location(span0, file, 106, 10, 3695);
         attr_dev(span1, "aria-hidden", "true");
         attr_dev(span1, "class", "puce");
-        add_location(span1, file, 80, 8, 2305);
+        add_location(span1, file, 105, 8, 3645);
         attr_dev(span2, "class", "conteneur-puce");
-        add_location(span2, file, 79, 6, 2266);
+        add_location(span2, file, 104, 6, 3606);
         attr_dev(button, "type", "button");
         attr_dev(button, "aria-label",
         /*srTexteBoutonOuvrir*/
-        ctx[6]);
+        ctx[8]);
         attr_dev(button, "class", "tooltip-toggle");
-        add_location(button, file, 78, 42, 2154);
+        add_location(button, file, 103, 42, 3494);
         attr_dev(span3, "class", "conteneur-tooltip");
-        add_location(span3, file, 78, 2, 2114);
-        attr_dev(span4, "class", "utd-infobulle");
-        add_location(span4, file, 74, 0, 1955);
+        add_location(span3, file, 103, 2, 3454);
+        attr_dev(span4, "class", "utd-component utd-infobulle");
+        add_location(span4, file, 99, 0, 3281);
         attr_dev(link, "rel", "stylesheet");
-        attr_dev(link, "href", "/css/utd-webcomponents-v1.2.0.min.css");
-        add_location(link, file, 139, 0, 3817);
+        attr_dev(link, "href", "/css/utd-webcomponents-v1.3.0.min.css");
+        add_location(link, file, 169, 0, 5342);
       },
       l: function claim(nodes) {
         throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3326,7 +3835,7 @@
         if (!mounted) {
           dispose = listen_dev(button, "click",
           /*afficherModale*/
-          ctx[8], false, false, false);
+          ctx[10], false, false, false);
           mounted = true;
         }
       },
@@ -3336,11 +3845,11 @@
 
         if (
         /*$$slots*/
-        ctx[13]["texte-lie"]) {
+        ctx[15]["texte-lie"]) {
           if (if_block0) {
             if_block0.p(ctx, dirty);
           } else {
-            if_block0 = create_if_block_3(ctx);
+            if_block0 = create_if_block_4(ctx);
             if_block0.c();
             if_block0.m(span4, t0);
           }
@@ -3405,10 +3914,10 @@
 
   function instance($$self, $$props, $$invalidate) {
     var _$$props$$$slots = $$props.$$slots,
-        slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots;
+        slots$1 = _$$props$$$slots === void 0 ? {} : _$$props$$$slots;
         $$props.$$scope;
-    validate_slots('utd-infobulle', slots, []);
-    var $$slots = compute_slots(slots);
+    validate_slots('utd-infobulle', slots$1, []);
+    var $$slots = compute_slots(slots$1);
     var _$$props$afficher = $$props.afficher,
         afficher = _$$props$afficher === void 0 ? false : _$$props$afficher;
     var _$$props$titre = $$props.titre,
@@ -3431,14 +3940,39 @@
     var thisComponent = get_current_component();
     var html;
     var body;
+    var slots = [];
+    var htmlSlotContenu;
     onMount(function () {
       html = thisComponent.getRootNode().getElementsByTagName("html")[0];
       body = thisComponent.getRootNode().getElementsByTagName("body")[0];
+      $$invalidate(3, slots = Array.from(thisComponent.querySelectorAll('[slot]')));
+      assignerHtmlSlotContenu();
 
       if (Utils.estMobile()) {
         html.classList.add("est-mobile");
       }
     });
+    /**
+    * Permet de pallier à un problème de perte de focus à l'intérieur de la modale. En effet, si on clique dans le contenu de la slot "contenu" et qu'on fait TAB, le focus
+    * tombe dans la page en dessous car le keydown est sur le body de la page (probablement car nous sommes dans une slot).
+    * Nous cachons donc le contenu de la slot, récupérons son html et l'assignons nous-même au contrôle. De cette façon nous allons nous réglons le problème et en bonus
+    * nous nous assurons d'une conformité visuelle, puisque c'est le css de notre composant qui va s'appliquer et non celui de l'application.
+    * NOTE. Le problème ne semble pas se produire avec le composant utd-dialog. On dirait que le fait que d'autres contrôles focusables sont présents empêche le problème. Je ne comprends pas vraiment.
+    */
+
+    function assignerHtmlSlotContenu() {
+      if (slots.length) {
+        var slotContenu = thisComponent.querySelector("[slot=contenu]");
+
+        if (slotContenu) {
+          var contenuHtml = thisComponent.querySelector("[slot=contenu]").innerHTML;
+
+          if (contenuHtml) {
+            $$invalidate(4, htmlSlotContenu = contenuHtml);
+          }
+        }
+      }
+    }
 
     function afficherModale(e) {
       Utils.ajusterInterfaceAvantAffichageModale(html, body);
@@ -3459,7 +3993,7 @@
       Utils.ajusterInterfaceApresFermetureModale(html, body);
     }
 
-    function conserverFocusAideContextuelle(e) {
+    function conserverFocusInfobulle(e) {
       thisComponent.shadowRoot.getElementById(idEntete).focus();
       Utils.conserverFocusElement(thisComponent.shadowRoot.getElementById(idModale), thisComponent);
     }
@@ -3472,10 +4006,10 @@
     $$self.$$set = function ($$props) {
       if ('afficher' in $$props) $$invalidate(0, afficher = $$props.afficher);
       if ('titre' in $$props) $$invalidate(1, titre = $$props.titre);
-      if ('lang' in $$props) $$invalidate(14, lang = $$props.lang);
-      if ('srtitre' in $$props) $$invalidate(15, srtitre = $$props.srtitre);
-      if ('srboutonouvrir' in $$props) $$invalidate(16, srboutonouvrir = $$props.srboutonouvrir);
-      if ('srboutonfermer' in $$props) $$invalidate(17, srboutonfermer = $$props.srboutonfermer);
+      if ('lang' in $$props) $$invalidate(16, lang = $$props.lang);
+      if ('srtitre' in $$props) $$invalidate(17, srtitre = $$props.srtitre);
+      if ('srboutonouvrir' in $$props) $$invalidate(18, srboutonouvrir = $$props.srboutonouvrir);
+      if ('srboutonfermer' in $$props) $$invalidate(19, srboutonfermer = $$props.srboutonfermer);
       if ('contenu' in $$props) $$invalidate(2, contenu = $$props.contenu);
     };
 
@@ -3500,31 +4034,36 @@
         thisComponent: thisComponent,
         html: html,
         body: body,
+        slots: slots,
+        htmlSlotContenu: htmlSlotContenu,
+        assignerHtmlSlotContenu: assignerHtmlSlotContenu,
         afficherModale: afficherModale,
         masquerModale: masquerModale,
         keydown: keydown,
         finAnimationFermeture: finAnimationFermeture,
-        conserverFocusAideContextuelle: conserverFocusAideContextuelle
+        conserverFocusInfobulle: conserverFocusInfobulle
       };
     };
 
     $$self.$inject_state = function ($$props) {
       if ('afficher' in $$props) $$invalidate(0, afficher = $$props.afficher);
       if ('titre' in $$props) $$invalidate(1, titre = $$props.titre);
-      if ('lang' in $$props) $$invalidate(14, lang = $$props.lang);
-      if ('srtitre' in $$props) $$invalidate(15, srtitre = $$props.srtitre);
-      if ('srboutonouvrir' in $$props) $$invalidate(16, srboutonouvrir = $$props.srboutonouvrir);
-      if ('srboutonfermer' in $$props) $$invalidate(17, srboutonfermer = $$props.srboutonfermer);
+      if ('lang' in $$props) $$invalidate(16, lang = $$props.lang);
+      if ('srtitre' in $$props) $$invalidate(17, srtitre = $$props.srtitre);
+      if ('srboutonouvrir' in $$props) $$invalidate(18, srboutonouvrir = $$props.srboutonouvrir);
+      if ('srboutonfermer' in $$props) $$invalidate(19, srboutonfermer = $$props.srboutonfermer);
       if ('contenu' in $$props) $$invalidate(2, contenu = $$props.contenu);
       if ('html' in $$props) html = $$props.html;
       if ('body' in $$props) body = $$props.body;
+      if ('slots' in $$props) $$invalidate(3, slots = $$props.slots);
+      if ('htmlSlotContenu' in $$props) $$invalidate(4, htmlSlotContenu = $$props.htmlSlotContenu);
     };
 
     if ($$props && "$$inject" in $$props) {
       $$self.$inject_state($$props.$$inject);
     }
 
-    return [afficher, titre, contenu, idModale, idEntete, srTexteTitre, srTexteBoutonOuvrir, srTexteBoutonFermer, afficherModale, masquerModale, keydown, finAnimationFermeture, conserverFocusAideContextuelle, $$slots, lang, srtitre, srboutonouvrir, srboutonfermer];
+    return [afficher, titre, contenu, slots, htmlSlotContenu, idModale, idEntete, srTexteTitre, srTexteBoutonOuvrir, srTexteBoutonFermer, afficherModale, masquerModale, keydown, finAnimationFermeture, conserverFocusInfobulle, $$slots, lang, srtitre, srboutonouvrir, srboutonfermer];
   }
 
   var Infobulle = /*#__PURE__*/function (_SvelteElement) {
@@ -3547,10 +4086,10 @@
       }, instance, create_fragment, safe_not_equal, {
         afficher: 0,
         titre: 1,
-        lang: 14,
-        srtitre: 15,
-        srboutonouvrir: 16,
-        srboutonfermer: 17,
+        lang: 16,
+        srtitre: 17,
+        srboutonouvrir: 18,
+        srboutonfermer: 19,
         contenu: 2
       }, null);
 
@@ -3594,7 +4133,7 @@
     }, {
       key: "lang",
       get: function get() {
-        return this.$$.ctx[14];
+        return this.$$.ctx[16];
       },
       set: function set(lang) {
         this.$$set({
@@ -3605,7 +4144,7 @@
     }, {
       key: "srtitre",
       get: function get() {
-        return this.$$.ctx[15];
+        return this.$$.ctx[17];
       },
       set: function set(srtitre) {
         this.$$set({
@@ -3616,7 +4155,7 @@
     }, {
       key: "srboutonouvrir",
       get: function get() {
-        return this.$$.ctx[16];
+        return this.$$.ctx[18];
       },
       set: function set(srboutonouvrir) {
         this.$$set({
@@ -3627,7 +4166,7 @@
     }, {
       key: "srboutonfermer",
       get: function get() {
-        return this.$$.ctx[17];
+        return this.$$.ctx[19];
       },
       set: function set(srboutonfermer) {
         this.$$set({

@@ -13,7 +13,7 @@
     <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#5bbad5">
 
     <link rel='stylesheet' href='/demo.css'>
-    <link rel='stylesheet' href='/css/utd-webcomponents-v1.2.0.css'>
+    <link rel='stylesheet' href='/css/utd-webcomponents-v1.3.0.css'>
     <link rel='stylesheet' href='/css/atom-one-dark.min.css'>
     
 </head>
@@ -23,76 +23,11 @@
     </main>
     <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
     <script src='/build/siteDemo.js'></script>    
-
-<!--    <script src='/js/beautify-html.min.js'></script>-->
+    <script src='/js/utd-webcomponents-v1.3.0.js'></script>   
+    <script src='/js/utd-utilitaires-v1.3.0.js'></script>   
     <script>
- /*       document.querySelectorAll("code").forEach(function(element) {
-
-
-            const options = {
-
-  "max_preserve_newlines": "-1",
-  "preserve_newlines": false,
-  "keep_array_indentation": false,
-  "break_chained_methods": false,
-  "indent_scripts": "normal",
-  "brace_style": "collapse",
-  "space_before_conditional": true,
-  "unescape_strings": false,
-  "jslint_happy": false,
-  "end_with_newline": false,
-  "wrap_line_length": "0",
-  "indent_inner_html": false,
-  "comma_first": false,
-  "e4x": false,
-  "indent_empty_lines": false
-}
-
-    //On ajoute un saut de ligne devant les span. Pour une raison inconnue ils sont parfois mal formattés sinon.
-    element.innerHTML = element.innerHTML.replace(/<span/g, "\r\n<span")
-
-            element.innerHTML = html_beautify(element.innerHTML, options) 
-            element.innerHTML = element.innerHTML.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
-
-
-
-
-
-/*            const options = {
-  "indent":"auto",
-  "indent-spaces":4,
-  "wrap":300,
-  "markup":true,
-  "output-xml":true,
-  "numeric-entities":true,
-  "quote-marks":true,
-  "quote-nbsp":false,
-  "show-body-only":false,
-  "quote-ampersand":false,
-  "break-before-br":true,
-  "uppercase-tags":false,
-  "uppercase-attributes":false,
-  "drop-font-tags":true,
-  "tidy-mark":false,
-  "new-blocklevel-tags": "utd-avis"
-}
-
-
-let codeFormatte = tidy_html5(element.innerHTML, options)
-console.log(codeFormatte)
-
-codeFormatte = codeFormatte.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
-console.log(codeFormatte)
-
-element.innerHTML = codeFormatte*/
-
-//hljs.highlightElement(element);
-//const code2 = hljs.highlightAuto(codeFormatte);
-//element.innerHTML = code2.value
-  //      });
-        
-    </script>    
-    <script src='/js/utd-webcomponents-v1.2.0.js'></script>    
+      utd.ajusterAccessibiliteLiens();    
+    </script> 
 </body>
 
 </html>
