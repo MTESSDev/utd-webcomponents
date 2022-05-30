@@ -31,4 +31,4 @@ const role = type === 'erreur' || type === 'avertissement' ? 'alert' : null
   </div>
 </div>
 
-<link rel='stylesheet' href='/css/utd-webcomponents-v1.3.0.min.css'>
+<link rel='stylesheet' href='/css/utd-webcomponents.min.css'>

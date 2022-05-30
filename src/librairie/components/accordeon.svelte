@@ -64,4 +64,4 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
 </div>
 
-<link rel='stylesheet' href='/css/utd-webcomponents-v1.3.0.min.css'>
+<link rel='stylesheet' href='/css/utd-webcomponents.min.css'>

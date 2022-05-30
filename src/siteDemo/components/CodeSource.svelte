@@ -20,11 +20,15 @@
   let clipboard = null
 
   onMount(() => {
-    if(!codeSource){
+    if(codeSource){
+      if(language === 'language-javascript'){
+        codeSource = obtenirCodeSourceFormate2(codeSource)
+      } else {
+        codeSource = obtenirCodeSourceFormate(codeSource)  
+      }      
+    } else {
       controleCodeSource = document.getElementById(idElementCodeSource)
       codeSource = obtenirCodeSourceFormate(controleCodeSource.outerHTML)
-    } else {
-      codeSource = obtenirCodeSourceFormate2(codeSource)
     }
 
     setTimeout(function(){ 
