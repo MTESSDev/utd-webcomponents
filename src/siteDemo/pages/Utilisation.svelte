@@ -9,7 +9,7 @@
 <p>Attention, les fichiers doivent cependant être dans un dossier avec la structure suivante :</p>
 
 <h2>Chargement du script</h2>
-<p>Charger le script à la fin du body de la page.Test</p>
+<p>Charger le script à la fin du body de la page.Test2</p>
 
 <CodeSource codeSource="<script src='/js/utd-webcomponents.min.js'></script>">
 </CodeSource>   
