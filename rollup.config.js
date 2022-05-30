@@ -131,7 +131,12 @@ export default [{
     plugins: [
         copy({
             targets: [
-                { src: `public/css/utd-webcomponents.min.css`, dest: `dist/css`}
+                { src: `public/css/utd-webcomponents.min.css`, dest: `dist/css`},
+                {
+                    src: 'public/js/utd-webcomponents.min.js',
+                    dest: 'dist/js',
+                    transform: (contents, filename) => contents.toString().replace('/*!_VerifierSiDejaCharge_*/', "if (customElements.get('utd-infobulle')) { return true; }")
+                }
             ]
         })
     ]

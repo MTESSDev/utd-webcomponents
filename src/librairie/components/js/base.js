@@ -1,10 +1,11 @@
 
 /*! utd-webcomponents _vUtd_ */
-
 //TODO ajouter possibilité que utd reçoive les textes de langue requis. De quelle façon?
 //A- En paramètre des méthodes qui en ont besoin
 //B- Globalement via une initialisation de texte UTD qui serait faite une fois.
 
+//IMPORTANT! Laisser ce commentaire, une fois le build terminé, il sera remplacé par une condition permettant de ne pas réexécuter le script (afin d'éviter les erreurs de custom elements dejà définis qui se produisent parfois. On suppose rechargement d'un onglet ou autre.)
+/*!_VerifierSiDejaCharge_*/
 /*======================================================================================================================*/
 /* -10- FENÊTRES DE MESSAGE
 /*======================================================================================================================*/
