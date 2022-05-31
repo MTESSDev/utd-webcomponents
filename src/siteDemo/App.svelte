@@ -31,7 +31,7 @@
         <div id="javascriptDesactive" class="fureteur-desuet">
             <div class="utd-container" role="alert" aria-atomic="true">
                 <div class="icone">
-                    <img alt="Icône avertissement" src="/images/utd-sprite.svg?v=1.4.0#ico-avertissement" width="28" height="26" aria-hidden="true">
+                    <img alt="Icône avertissement" src="../images/utd-sprite.svg?v=1.4.0#ico-avertissement" width="28" height="26" aria-hidden="true">
                 </div>
                 <div class="texte">
                     Activez JavaScript dans votre navigateur pour que Système de design MTESS fonctionne correctement.
@@ -39,13 +39,13 @@
             </div>
         </div>
         </noscript>
-        <img id="pivLogoGouvernementPrint" alt="Logo du gouvernement du Québec." src="/images/quebecPrint.gif" width="199" height="60">
+        <img id="pivLogoGouvernementPrint" alt="Logo du gouvernement du Québec." src="../images/quebecPrint.gif" width="199" height="60">
         <div class="piv piv-entete">
             <div class="utd-container">
                 <div class="conteneur-sections">
                     <div class="section-gauche signature-gouvernement" lang="fr">
                         <a href="/">
-                            <img alt="Signature du gouvernement du Québec. Accédez à Système de design MTESS." src="/images/utd-sprite.svg?v=1.4.0#QUEBEC_blanc">
+                            <img alt="Signature du gouvernement du Québec. Accédez à Système de design MTESS." src="../images/utd-sprite.svg?v=1.4.0#QUEBEC_blanc">
                         </a>
                     </div>
                     <div class="section-centre">
