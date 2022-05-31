@@ -11,7 +11,7 @@
 <h2>Chargement du script</h2>
 <p>Charger le script à la fin du body de la page.</p>
 
-<CodeSource codeSource="<script src='/js/utd-webcomponents.min.js'></script>">
+<CodeSource codeSource="<script src='https://jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.4.0/dist/js/utd-webcomponents.min.js'></script>">
 </CodeSource>   
 
 <h2>Chargement du css</h2>
