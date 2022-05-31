@@ -1,9 +1,11 @@
 <script>
 </script>
 
-<h1>Accueil</h1>
+<h1>Principe</h1>
 
-<p>Contenu à venir...</p>
+<p>Composants web réutilisables pour le MTESS qui sont basés sur les règles Quebec.ca.</p>
+
+<p>Accessibles, "responsive", sans dépendance, utilisables dans tous les types de projets (.Net, Drupal, SharePoint, VueJs, etc.).</p>
 
 <style>
 </style>
