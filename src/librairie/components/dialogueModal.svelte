@@ -5,7 +5,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
 <script>
   import { onMount } from "svelte";
-  import { fly } from "svelte/transition"
+  import { fly, fade } from "svelte/transition"
   import { get_current_component } from "svelte/internal"
   import { Utils } from './utils'
   export let afficher = 'false'
@@ -116,7 +116,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       premierElementFocusable = elementsFocusables[0]
     }
 
-    premierElementFocusable.focus({preventScroll: true})
+    premierElementFocusable.focus()
   }
 </script>
 
@@ -130,7 +130,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     id={idModale}
     on:click={clickModale}
     on:keydown={keydown}
-    in:fly={{ y: 200, duration: 500 }}
+    in:fade={{ duration: 250 }}
     out:fly={{ y: 200, duration: 250 }}
     on:introstart={ajusterModaleDebutAffichage}
     on:introend={ajusterModaleFinAffichage}
