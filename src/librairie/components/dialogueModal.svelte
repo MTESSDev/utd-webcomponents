@@ -94,7 +94,10 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   function ajusterModaleDebutAffichage(e){
     const modale = thisComponent.shadowRoot.getElementById(idModale)
 
+    modale.classList.add("debut-affichage")
     donnerfocusPremierElementFocusable(modale)
+    modale.classList.remove("debut-affichage")
+    
     Utils.conserverFocusElement(modale, thisComponent)
   }
 
