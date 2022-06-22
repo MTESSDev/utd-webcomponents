@@ -97,9 +97,10 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     donnerfocusPremierElementFocusable(modale)
     
     //Le preventScroll:true dans la méthode donnerFocusPremierElementFocusable ne semble pas fonctionner sous Android (pourtant il devrait), on s'assure de rester au top de la modale.
+    //Le setTimeout est aussi nécessaire sinon ca ne passe pas... EN ATTENTE DE TROUVER MIEUX
     setTimeout(() => {
       modale.scrollTop = 0      
-    }, 100);
+    }, 250);
 
 
 
