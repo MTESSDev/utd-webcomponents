@@ -49,6 +49,8 @@ function ajouterCodedialogue1() {
 <button type="button" id="btnTest1" class="utd-btn secondaire mb-32">Afficher</button>
 <utd-dialog id="exempleDialogue1" titre="Ajout d'un problème">
     <div slot="contenu">
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet pulvinar ipsum. Donec luctus nulla scelerisque, congue nibh a, malesuada dolor. Sed mattis interdum pellentesque. Vivamus lacinia risus a justo imperdiet imperdiet at quis ligula. Cras a dictum tortor, sit amet venenatis tortor. Vestibulum aliquam elit eu venenatis laoreet. Aenean tellus enim, consectetur eu condimentum accumsan, malesuada volutpat lectus. Aliquam sit amet rhoncus mauris, a placerat mauris. Mauris neque nulla, vulputate a convallis in, imperdiet tincidunt leo.</p>
         <label for="test1">Description du problème</label>
         <input type="text" id="test1" class="utd-form-group utd-form-control"/>
 

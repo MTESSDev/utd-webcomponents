@@ -19,11 +19,11 @@
   margin-bottom: 0;
 }
 
-[slot="contenu"] p:first-of-type, .utd-component p:first-of-type, .contenu p:first-of-type {
+[slot="contenu"] p:first-child, .utd-component p:first-child, .contenu p:first-child {
   margin-top: 0;
 }
 
-[slot="contenu"] p:last-of-type, .utd-component p:last-of-type, .contenu p:last-of-type {
+[slot="contenu"] p:last-child, .utd-component p:last-child, .contenu p:last-child {
   margin-bottom: 0;
 }
 
