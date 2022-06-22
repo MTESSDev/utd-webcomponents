@@ -55,8 +55,15 @@ function ajouterCodedialogue1() {
         <label for="test1">Description du problème</label>
         <input type="text" id="test1" class="utd-form-group utd-form-control"/>
 
-        <label for="test2">Solution</label>
+        <label for="test2">Solution 1</label>
         <input type="text" id="test2" class="utd-form-control"/>
+
+        <label for="test3">Solution 2</label>
+        <input type="text" id="test3" class="utd-form-control"/>
+
+        <label for="test5">Solution 4</label>
+        <input type="text" id="test5" class="utd-form-control"/>
+
     </div>
     <div slot="pied">
         <button id="btnAnnuler1" type="button" class="utd-btn secondaire compact">Annuler</button>        
