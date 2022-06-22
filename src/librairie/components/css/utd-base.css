@@ -887,10 +887,21 @@ button.btn[disabled] .icone-svg {
 /*====================================================================================================
   -15- WebComponents utd (éléments en dehors des webComponents mais qui leurs sont nécessaires)
 ====================================================================================================*/
-html.utd-modale-ouverte,
-html.utd-modale-ouverte body {
-/*    overflow: hidden;*/
+
+@media screen and (min-width:601px) {
+    html.utd-modale-ouverte,
+    html.utd-modale-ouverte body {
+        overflow: hidden;
+    }       
 }
+
+@media screen and (max-width:600px) {
+    html.utd-modale-ouverte,
+    html.utd-modale-ouverte body {
+        position: fixed;
+    }       
+}
+
 
 /*====================================================================================================
   -20- Forms
