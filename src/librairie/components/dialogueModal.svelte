@@ -117,7 +117,9 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 //      elementsFocusables.addEventListener('focus',function(e){/*some code */}, true);
       elementsFocusables.forEach (element => {
             element.addEventListener("focus", function() {
-              scrollIntoViewIfNeeded(element)
+              setTimeout(() => {
+                scrollIntoViewIfNeeded(element)                
+              }, 250);
             });
           })    
       premierElementFocusable = elementsFocusables[0]
