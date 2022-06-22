@@ -71,8 +71,10 @@ export class Utils {
                 }
             }
         }      
-
-        html.classList.add("utd-modale-ouverte")      
+        /* On s'assure que le scroll ne changera pas une fois le body modifié avec position fixe */
+        const scrollY = window.scrollY;
+        html.classList.add("utd-modale-ouverte")
+        document.body.style.top = `-${scrollY}px`;
     }
 
     static ajusterInterfacePendantAffichageModale(body, modale) {
@@ -89,6 +91,12 @@ export class Utils {
         html.style.removeProperty('padding-right')
         body.style.removeProperty('padding-right')
         html.classList.remove("utd-modale-ouverte")
+
+        /* Repositionner l'écran où il était avant l'affichage de la modale. */    
+        const scrollY = document.body.style.top;
+        document.body.style.position = '';
+        document.body.style.top = '';
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
     }
 
     static slotExiste(slots, nomSlot) {
