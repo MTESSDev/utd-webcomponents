@@ -128,14 +128,19 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
   function scrollIntoViewIfNeeded(target) {
     // Target is outside the viewport from the bottom
+    console.log("getBoundingClientRect -> " + target.getBoundingClientRect().bottom)
+    console.log("window.innerHeight -> " + window.innerHeight)
     if (target.getBoundingClientRect().bottom > window.innerHeight) {
+        console.log("scroolIntoView(false)")
         //  The bottom of the target will be aligned to the bottom of the visible area of the scrollable ancestor.
         target.scrollIntoView(false);
     }
 
     // Target is outside the view from the top
+    console.log("getBoundingClientRect -> " + target.getBoundingClientRect().top)
     if (target.getBoundingClientRect().top < 0) {
         // The top of the target will be aligned to the top of the visible area of the scrollable ancestor
+        console.log("scroolIntoView()")
         target.scrollIntoView();
     }
 };
