@@ -115,13 +115,13 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       const elementsFocusables = elementsFocusablesRoot.concat(elementsFocusablesShadow)
       
 //      elementsFocusables.addEventListener('focus',function(e){/*some code */}, true);
-      elementsFocusables.forEach (element => {
+/*      elementsFocusables.forEach (element => {
             element.addEventListener("focus", function() {
               setTimeout(() => {
                 scrollIntoViewIfNeeded(element)                
               }, 1000);
             });
-          })    
+          })    */
 
 /*      elementsFocusables.forEach (element => {
         window.visualViewport.addEventListener('resize', function() {
