@@ -363,10 +363,6 @@ utd-accordeon {
     z-index:10000;
 }
 
-.utd-dialog.debut-affichage{
-  overflow-y:hidden;
-}
-
 .utd-dialog .conteneur {
   display: flex;
   flex-direction: column;

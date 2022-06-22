@@ -94,10 +94,11 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   function ajusterModaleDebutAffichage(e){
     const modale = thisComponent.shadowRoot.getElementById(idModale)
 
-    modale.classList.add("debut-affichage")
     donnerfocusPremierElementFocusable(modale)
-    modale.classList.remove("debut-affichage")
     
+    //Le preventScroll:true dans la méthode donnerFocusPremierElementFocusable ne semble pas fonctionner sous Android (pourtant il devrait), on s'assure de rester au top de la modale.
+    modale.scrollTop = 0
+
     Utils.conserverFocusElement(modale, thisComponent)
   }
 
@@ -120,7 +121,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       premierElementFocusable = elementsFocusables[0]
     }
 
-    premierElementFocusable.focus({preventScroll: true})
+    premierElementFocusable.focus({preventScroll: true})    
   }
 
 </script>
