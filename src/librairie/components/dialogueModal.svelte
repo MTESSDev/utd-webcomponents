@@ -94,7 +94,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   function ajusterModaleDebutAffichage(e){
     const modale = thisComponent.shadowRoot.getElementById(idModale)
 
-//    donnerfocusPremierElementFocusable(modale)
+    donnerfocusPremierElementFocusable(modale)
     Utils.conserverFocusElement(modale, thisComponent)
   }
 
@@ -113,11 +113,32 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       const elementsFocusablesShadow = Array.from(Utils.obtenirElementsFocusables(modale))
       const elementsFocusablesRoot = Array.from(Utils.obtenirElementsFocusables(thisComponent))
       const elementsFocusables = elementsFocusablesRoot.concat(elementsFocusablesShadow)
+      
+//      elementsFocusables.addEventListener('focus',function(e){/*some code */}, true);
+      elementsFocusables.forEach (element => {
+            element.addEventListener("focus", function() {
+              scrollIntoViewIfNeeded(element)
+            });
+          })    
       premierElementFocusable = elementsFocusables[0]
     }
 
     premierElementFocusable.focus({preventScroll: true})
   }
+
+  function scrollIntoViewIfNeeded(target) {
+    // Target is outside the viewport from the bottom
+    if (target.getBoundingClientRect().bottom > window.innerHeight) {
+        //  The bottom of the target will be aligned to the bottom of the visible area of the scrollable ancestor.
+        target.scrollIntoView(false);
+    }
+
+    // Target is outside the view from the top
+    if (target.getBoundingClientRect().top < 0) {
+        // The top of the target will be aligned to the top of the visible area of the scrollable ancestor
+        target.scrollIntoView();
+    }
+};
 </script>
 
 {#if estModaleAffichee}
