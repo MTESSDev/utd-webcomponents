@@ -98,12 +98,26 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     
     //Le preventScroll:true dans la méthode donnerFocusPremierElementFocusable ne semble pas fonctionner sous Android (pourtant il devrait), on s'assure de rester au top de la modale.
     //Le setTimeout est aussi nécessaire sinon ca ne passe pas... EN ATTENTE DE TROUVER MIEUX
+    
+/*    const forcerScrollTop = setInterval(() => {
+      modale.scrollTop = 0      
+    }, 50);
+
     setTimeout(() => {
       modale.scrollTop = 0      
-    }, 250);
+    }, 100);
+    setTimeout(() => {
+      modale.scrollTop = 0      
+    }, 150);
 
+    setTimeout(() => {
+      modale.scrollTop = 0      
+    }, 200);
 
-
+    setTimeout(() => {
+      modale.scrollTop = 0      
+    }, 200);
+*/
     Utils.conserverFocusElement(modale, thisComponent)
   }
 
@@ -127,6 +141,11 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     }
 
     premierElementFocusable.focus({preventScroll: true})    
+    
+    setTimeout(() => {
+      modale.scrollTop = 0      
+    }, 100);
+
     //premierElementFocusable.focus()    
   }
 
