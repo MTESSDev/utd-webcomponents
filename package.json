@@ -1,6 +1,6 @@
 {
     "name": "utd-webcomponents",
-    "version": "1.5.0",
+    "version": "1.5.1",
     "private": false,
     "scripts": {
         "build": "rollup -c",

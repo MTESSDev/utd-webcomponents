@@ -116,7 +116,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       premierElementFocusable = elementsFocusables[0]
     }
 
-    premierElementFocusable.focus()
+    premierElementFocusable.focus({preventScroll: true})
   }
 </script>
 
