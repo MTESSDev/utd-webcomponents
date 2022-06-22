@@ -888,6 +888,7 @@ button.btn[disabled] .icone-svg {
   -15- WebComponents utd (éléments en dehors des webComponents mais qui leurs sont nécessaires)
 ====================================================================================================*/
 
+/* Bloquer le scroll du background en desktop (le overflow:hidden causait des problèmes de positionnement du scroll lors du focus de champs quand le clavier mobile était affiché) */
 @media screen and (min-width:601px) {
     html.utd-modale-ouverte,
     html.utd-modale-ouverte body {
@@ -895,14 +896,13 @@ button.btn[disabled] .icone-svg {
     }       
 }
 
+/* Le position fixed permet de bloquer le scroll du background en mobile (le overflow:hidden causait des problèmes de positionnement du scroll lors du focus de champs quand le clavier mobile était affiché */
 @media screen and (max-width:600px) {
     html.utd-modale-ouverte,
     html.utd-modale-ouverte body {
-        position: fixed;
+/*        position: fixed;*/
     }       
 }
-
-
 /*====================================================================================================
   -20- Forms
 /*====================================================================================================*/
