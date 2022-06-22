@@ -124,6 +124,12 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   function ajusterModaleFinAffichage(e){
     const modale = thisComponent.shadowRoot.getElementById(idModale)
     Utils.ajusterInterfacePendantAffichageModale(body, modale)
+
+    modale.scrollTop = 0      
+/*    setTimeout(() => {
+      modale.scrollTop = 0      
+    }, 100);*/
+
   }
 
   function donnerfocusPremierElementFocusable(modale){
@@ -142,9 +148,6 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
     premierElementFocusable.focus({preventScroll: true})    
     
-    setTimeout(() => {
-      modale.scrollTop = 0      
-    }, 100);
 
     //premierElementFocusable.focus()    
   }
