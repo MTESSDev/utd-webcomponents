@@ -129,7 +129,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
 {#if estModaleAffichee}
   <div class="utd-backdrop" on:click={() => masquerModale('clickBackdrop')} />
-  <dialog
+  <div
     tabindex="-1"
     aria-labelledby={idEntete}
     aria-describedby={estfenetremessage === 'true' ? idCorps : null}
@@ -143,6 +143,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     on:introend={ajusterModaleFinAffichage}
     on:outroend={finAnimationFermeture}
     aria-modal="true"
+    role="dialog"
   >
 
     <div class="conteneur">
