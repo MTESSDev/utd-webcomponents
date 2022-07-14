@@ -873,10 +873,6 @@ button.utd-btn.utd-traitement-en-cours, input[type="submit"].utd-btn.utd-traitem
     border-color: rgba(134, 141, 149, 1);
 }
 
-button.btn[disabled] .icone-svg {
-    opacity: .5
-}
-
 /*====================================================================================================
   -12B- Boutons désactivés
 ====================================================================================================*/
