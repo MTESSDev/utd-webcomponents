@@ -5,7 +5,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
 <script>
   import { onMount } from "svelte";
-  import { fly } from "svelte/transition"
+  import { fly, fade } from "svelte/transition"
   import { get_current_component } from "svelte/internal"
   import { Utils } from './utils'
   export let afficher = 'false'
@@ -63,7 +63,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   function toggleAfficher(){
     if(mounted){
       if(afficher === 'true'){
-        raisonfermeture = ''
+        raisonfermeture = ''       
         Utils.ajusterInterfaceAvantAffichageModale(html, body)
         estModaleAffichee = true       
       } else {
@@ -95,12 +95,16 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     const modale = thisComponent.shadowRoot.getElementById(idModale)
 
     donnerfocusPremierElementFocusable(modale)
+    
     Utils.conserverFocusElement(modale, thisComponent)
   }
 
   function ajusterModaleFinAffichage(e){
     const modale = thisComponent.shadowRoot.getElementById(idModale)
     Utils.ajusterInterfacePendantAffichageModale(body, modale)
+
+    //On force un scrollTop ici car Android ne semble pas supporter le preventScroll de la méthode focus (mais selon la doc il devrait). SOLUTION EN ATTENDANT MIEUX.
+    modale.scrollTop = 0      
   }
 
   function donnerfocusPremierElementFocusable(modale){
@@ -113,11 +117,14 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       const elementsFocusablesShadow = Array.from(Utils.obtenirElementsFocusables(modale))
       const elementsFocusablesRoot = Array.from(Utils.obtenirElementsFocusables(thisComponent))
       const elementsFocusables = elementsFocusablesRoot.concat(elementsFocusablesShadow)
+      
       premierElementFocusable = elementsFocusables[0]
     }
 
-    premierElementFocusable.focus({preventScroll: true})
+    premierElementFocusable.focus({preventScroll: true})      
+    //premierElementFocusable.focus()    
   }
+
 </script>
 
 {#if estModaleAffichee}
@@ -130,7 +137,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     id={idModale}
     on:click={clickModale}
     on:keydown={keydown}
-    in:fly={{ y: 200, duration: 500 }}
+    in:fade={{ duration: 250 }}
     out:fly={{ y: 200, duration: 250 }}
     on:introstart={ajusterModaleDebutAffichage}
     on:introend={ajusterModaleFinAffichage}

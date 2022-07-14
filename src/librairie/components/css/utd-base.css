@@ -873,10 +873,6 @@ button.utd-btn.utd-traitement-en-cours, input[type="submit"].utd-btn.utd-traitem
     border-color: rgba(134, 141, 149, 1);
 }
 
-button.btn[disabled] .icone-svg {
-    opacity: .5
-}
-
 /*====================================================================================================
   -12B- Boutons désactivés
 ====================================================================================================*/
@@ -887,11 +883,21 @@ button.btn[disabled] .icone-svg {
 /*====================================================================================================
   -15- WebComponents utd (éléments en dehors des webComponents mais qui leurs sont nécessaires)
 ====================================================================================================*/
-html.utd-modale-ouverte,
-html.utd-modale-ouverte body {
-    overflow: hidden;
+
+/* Bloquer le scroll du background en desktop (le overflow:hidden causait des problèmes de positionnement du scroll lors du focus de champs quand le clavier mobile était affiché) */
+@media screen and (min-width:601px) {
+    html.utd-modale-ouverte,
+    html.utd-modale-ouverte body {
+        overflow: hidden;
+    }       
 }
 
+/* Le position fixed permet de bloquer le scroll du background en mobile (le overflow:hidden causait des problèmes de positionnement du scroll lors du focus de champs quand le clavier mobile était affiché */
+@media screen and (max-width:600px) {
+    html.utd-modale-ouverte body {
+        position: fixed;
+    }       
+}
 /*====================================================================================================
   -20- Forms
 /*====================================================================================================*/
