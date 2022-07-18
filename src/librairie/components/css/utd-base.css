@@ -517,7 +517,6 @@ h1:not(.titre-dialog)::after, h1:not(.modal-title)::after {
 
 
 h2 {
-    margin-top: 48px;
     margin-bottom: 16px;
     font-size: var(--utd-text-xxl);
 }
@@ -525,28 +524,22 @@ h2 {
 
 h3 {
     font-family: 'Roboto-Medium';
-    margin-top: 32px; /*Quebec.ca = 24px, pas de sens, c'est moins que marge d'un paragraphe.*/
     margin-bottom: 16px;
     font-size: var(--utd-text-xl);
 }
 
 h4 {
     font-size: var(--utd-text-lg);
-    margin-top: 32px; /*Quebec.ca = 24px, pas de sens, c'est idem que marge d'un paragraphe.*/
     margin-bottom: 8px;
 }
 
 h5 {
     font-size: 1rem;
-    margin-top: 24px; /*Quebec.ca = 16px, pas de sens, c'est moins que marge d'un paragraphe.*/
     margin-bottom: 8px; /*Quebec.ca = 0, Il me semble que ça ne fait pas de sens...*/
 }
 
 h6 {
     font-family: 'Roboto-Medium';
-    font-size: 1rem;
-    margin-top: 24px; /*Quebec.ca = 16px, pas de sens, c'est moins que marge d'un paragraphe.*/
-    margin-bottom: 8px; /*Quebec.ca = 0, Il me semble que ça ne fait pas de sens...*/
 }
 
 /* TODO ajouter headers informationnels (un jour) */
@@ -1074,55 +1067,55 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
 }
 
 /* ---- Layout 2 colonnes ---- */
-#conteneur2Colonnes {
+#conteneur2Colonnes.utd {
     display: flex;
 }
 
 /* Colonne principale */
-.contenu-principal-gauche #colonneGauche, .contenu-principal-droite #colonneDroite, .page-texte {
+.contenu-principal-gauche #colonneGauche.utd, .contenu-principal-droite #colonneDroite.utd, .utd-page-texte {
     width: 100%;
     max-width: var(--largeur-max-zone-texte);
 }
 
 /* Colonne secondaire */
-.contenu-principal-gauche #colonneDroite, .contenu-principal-droite #colonneGauche {
+.contenu-principal-gauche #colonneDroite.utd, .contenu-principal-droite #colonneGauche.utd {
     width: 100%;
     max-width: 288px;
 }
 
-.contenu-principal-gauche #colonneGauche > *, .contenu-principal-gauche #colonneDroite > *,
-.contenu-principal-droite #colonneGauche > *, .contenu-principal-droite #colonneDroite > * {
+.contenu-principal-gauche #colonneGauche.utd > *, .contenu-principal-gauche #colonneDroite.utd > *,
+.contenu-principal-droite #colonneGauche.utd > *, .contenu-principal-droite #colonneDroite.utd > * {
     margin-top: var(--tc-48-40-val);
 }
 
-.contenu-principal-gauche #colonneGauche > *:first-child, .contenu-principal-gauche #colonneDroite > *:first-child,
-.contenu-principal-droite #colonneGauche > *:first-child, .contenu-principal-droite #colonneDroite > *:first-child {
+.contenu-principal-gauche #colonneGauche.utd > *:first-child, .contenu-principal-gauche #colonneDroite.utd > *:first-child,
+.contenu-principal-droite #colonneGauche.utd > *:first-child, .contenu-principal-droite #colonneDroite.utd > *:first-child {
     margin-top: 0;
 }
 
 
 /* Limiter la largeur de la colonne principale en mode mobile */
 @media all and (max-width:991px) {
-    #conteneur2Colonnes {
+    #conteneur2Colonnes.utd {
         display: block;
     }
 
-    .contenu-principal-droite #colonneGauche, .contenu-principal-gauche #colonneDroite {
+    .contenu-principal-droite #colonneGauche.utd, .contenu-principal-gauche #colonneDroite.utd {
         max-width: var(--largeur-max-zone-texte); 
     }
 
-    .contenu-principal-gauche #colonneDroite > *:first-child, .contenu-principal-droite #colonneDroite > *:first-child {
+    .contenu-principal-gauche #colonneDroite.utd > *:first-child, .contenu-principal-droite #colonneDroite.utd > *:first-child {
         margin-top: var(--tc-48-40-val);
     }
 }
 
 /* Petite twist... Permet d'avoir une marge à gauche(ou à droite) afin de séparer les 2 colonnes, sera actif uniquement si la colonne de gauche (ou de droite) contient au moins un élément */
 @media screen and (min-width:992px) {
-    .contenu-principal-gauche #colonneDroite > * {
+    .contenu-principal-gauche #colonneDroite.utd > * {
         margin-left: var(--tc-32-24-val);
     }
 
-    .contenu-principal-droite #colonneGauche > * {
+    .contenu-principal-droite #colonneGauche.utd > * {
         margin-right: var(--tc-32-24-val);
     }
 }
