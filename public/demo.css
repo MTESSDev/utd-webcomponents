@@ -437,6 +437,24 @@ header {
 
 
 /*====================================================================================================
+  -14- Page "Dialogue"
+====================================================================================================*/
+.utd-btn.btn-avis {
+    position: fixed;
+    right: 0;
+    top: 200px;
+    min-width: 0;
+    padding: 9px 5px 1px 5px;
+    font-size: 14px;    
+}
+.btn-avis .texte {
+    -webkit-writing-mode: vertical-lr;
+    writing-mode: vertical-lr;    
+    transform: rotate(180deg);    
+}
+
+
+/*====================================================================================================
   -14- Entête précédées d'un accordéon et accordéons
 ====================================================================================================*/
 /* Si entête précédée d'un accordéon on augmente la marge */
