@@ -17,6 +17,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   export let srboutonfermer = ''
   export let idfocus = ''
   export let estboutonstextelong = 'false'
+  export let estaffichagelateral = 'false'
 
   const idModale = Utils.genererId()
   const idEntete = Utils.genererId()
@@ -25,7 +26,9 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     ? srboutonfermer
     : lang === "fr"
     ? "Fermer"
-    : "Close"
+    : "Close"  
+
+
   let estModaleAffichee = afficher === 'true'
   const thisComponent = get_current_component()
   let html
@@ -59,6 +62,10 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     Utils.dispatchWcEvent(thisComponent, "fermeture", {raisonFermeture: raison})
   }
   
+  function animationAffichage(node) {
+		return estaffichagelateral === 'false' ? fade(node, { duration: 250 }) : fly(node, { x: 200, duration: 250 });  
+  }
+
   // Exécuté lorsque la valeur de la prop "afficher" change
   function toggleAfficher(){
     if(mounted){
@@ -133,11 +140,11 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     tabindex="-1"
     aria-labelledby={idEntete}
     aria-describedby={estfenetremessage === 'true' ? idCorps : null}
-    class="utd-component utd-dialog {estfenetremessage === 'true' ? 'fenetre-message' : ''} {estboutonstextelong === 'true' ? 'boutons-texte-long' : ''}"
+    class="utd-component utd-dialog {estfenetremessage === 'true' ? 'fenetre-message' : ''} {estboutonstextelong === 'true' ? 'boutons-texte-long' : ''} {estaffichagelateral === 'true' ? 'affichage-lateral' : ''}"
     id={idModale}
     on:click={clickModale}
     on:keydown={keydown}
-    in:fade={{ duration: 250 }}
+    in:animationAffichage
     out:fly={{ y: 200, duration: 250 }}
     on:introstart={ajusterModaleDebutAffichage}
     on:introend={ajusterModaleFinAffichage}

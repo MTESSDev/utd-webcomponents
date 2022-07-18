@@ -79,6 +79,12 @@ function ajouterCodedialogue1() {
 {/if}   
 
 
+<h3>2- Ouverture latérale et position basée sur un autre contrôle</h3>
+<button type="button" id="btnTest2" class="utd-btn primaire btn-avis">
+    <span class="texte">Votre avis</span>
+</button>
+
+
 
 <style>
 </style>
