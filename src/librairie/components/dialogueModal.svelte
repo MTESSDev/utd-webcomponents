@@ -62,8 +62,12 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     Utils.dispatchWcEvent(thisComponent, "fermeture", {raisonFermeture: raison})
   }
   
-  function animationAffichage(node) {
+  function animationAffichageOuverture(node) {
 		return estaffichagelateral === 'false' ? fade(node, { duration: 250 }) : fly(node, { x: 200, duration: 250 });  
+  }
+
+  function animationAffichageFermeture(node) {
+		return estaffichagelateral === 'false' ? fade(node, { y: 200, duration: 250 }) : fly(node, { x: 200, duration: 250 });  
   }
 
   // Exécuté lorsque la valeur de la prop "afficher" change
@@ -144,8 +148,8 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     id={idModale}
     on:click={clickModale}
     on:keydown={keydown}
-    in:animationAffichage
-    out:fly={{ y: 200, duration: 250 }}
+    in:animationAffichageOuverture
+    out:animationAffichageFermeture
     on:introstart={ajusterModaleDebutAffichage}
     on:introend={ajusterModaleFinAffichage}
     on:outroend={finAnimationFermeture}

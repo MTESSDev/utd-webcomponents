@@ -923,7 +923,12 @@ label, .label {
     border-radius: 0;
 }
 
+textarea.utd-form-control{
+    height: auto;
+}
+
 input.utd-form-control:focus,
+textarea.utd-form-control:focus
 select.utd-form-control:focus {
     outline: 3px solid #89bce5;
     border: 2px solid #5b6476;
@@ -934,7 +939,8 @@ select.utd-form-control:focus {
 -Z20A- Forms (Champs largeurs)  
 ====================================================================================================*/
 
-input[type="text"].utd-form-control {
+input[type="text"].utd-form-control,
+textarea.utd-form-control {
     /* On applique une largeur xl à tous les contrôles de type texte par défaut */
     width: 528px;
     max-width: 100%;
@@ -955,36 +961,43 @@ input[type="date"].utd-form-control {
 
 /*Le xxl n'existe pas dans les règles du SCG, c'est ajouté */
 
-input.utd-form-control.xxl {
+input.utd-form-control.xxl,
+textarea.utd-form-control.xxl {
     width: 728px;
 }
 
-input.utd-form-control.xl {
+input.utd-form-control.xl,
+textarea.utd-form-control.xl {
     width: 528px;
 }
 
-input.utd-form-control.lg {
+input.utd-form-control.lg,
+textarea.utd-form-control.lg {
     width: 249px;
 }
 
 input.utd-form-control.md,
+textarea.utd-form-control.md,
 input[type="tel"].utd-form-control {
     width: 156px;
 }
 
-input.utd-form-control.sm {
+input.utd-form-control.sm,
+textarea.utd-form-control.sm {
     width: 63px;
 }
 
 @media (max-width: 560px) {
     input[type="text"].utd-form-control,
-    input.utd-form-control.xl {
+    input.utd-form-control.xl,
+    textarea.utd-form-control.xl {
         width: 100%;
     }
 }
 
 @media (max-width: 760px) {
-    input.utd-form-control.xxl {
+    input.utd-form-control.xxl,
+    textarea.utd-form-control.xxl {
         width: 100%;
     }
 }
