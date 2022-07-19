@@ -1690,7 +1690,7 @@ utd-accordeon {
 }
 
 @media (max-width: 425px) {
-  .utd-dialog .pied {
+  .utd-dialog:not(.boutons-inline) .pied {
       flex-direction: column;
   }
 } 
@@ -1707,19 +1707,27 @@ utd-dialog [slot="pied"] > button {
   margin-right: 32px;
 }
 
+utd-dialog [slot="pied"] > button.compact {
+  margin-right: 24px;
+}
+
 utd-dialog [slot="pied"] > button:last-child {
   margin-right: 0;
 }
 
 @media (max-width: 425px) {
 
-  utd-dialog [slot="pied"] button {
+  utd-dialog:not([estaffichageboutonsinline="true"]) [slot="pied"] button {
       margin-bottom: 24px;
       margin-right: 0;
       width: 100%;
   }
 
-  utd-dialog [slot="pied"] button:last-of-type {
+  utd-dialog:not([estaffichageboutonsinline="true"]) [slot="pied"] button.compact {
+    margin-bottom: 16px;
+  }
+
+  utd-dialog:not([estaffichageboutonsinline="true"]) [slot="pied"] button:last-of-type {
       margin-bottom: 0;
   }
 }
@@ -1842,15 +1850,15 @@ html[retourhautpagevisible="true"] .utd-notifications {
   filter: brightness(0) saturate(100%) invert(100%) sepia(93%) saturate(29%) hue-rotate(42deg) brightness(108%) contrast(107%);
 }*/
 
-.utd-notifications .notification .message p:first-child {
+.utd-notifications .notification .texte-message p:first-child {
   margin-top: 0;
 }
 
-.utd-notifications .notification .message p:last-child {
+.utd-notifications .notification .texte-message p:last-child {
   margin-bottom: 0;
 }
 
-.utd-notifications .notification.sans-titre .message {
+.utd-notifications .notification.sans-titre .texte-message {
   margin-right: 24px;
 }
 

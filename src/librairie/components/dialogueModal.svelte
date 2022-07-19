@@ -14,9 +14,10 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   export let raisonfermeture = ''
   export let titre = ''
   export let lang = 'fr'
-  export let srboutonfermer = ''
+  export let srboutonfermer = ''  
   export let idfocus = ''
   export let estboutonstextelong = 'false'
+  export let estaffichageboutonsinline = 'false'  
   export let estaffichagelateral = 'false'
 
   const idModale = Utils.genererId()
@@ -144,7 +145,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     tabindex="-1"
     aria-labelledby={idEntete}
     aria-describedby={estfenetremessage === 'true' ? idCorps : null}
-    class="utd-component utd-dialog {estfenetremessage === 'true' ? 'fenetre-message' : ''} {estboutonstextelong === 'true' ? 'boutons-texte-long' : ''} {estaffichagelateral === 'true' ? 'affichage-lateral' : ''}"
+    class="utd-component utd-dialog {estfenetremessage === 'true' ? 'fenetre-message' : ''} {estboutonstextelong === 'true' ? 'boutons-texte-long' : ''} {estaffichagelateral === 'true' ? 'affichage-lateral' : ''} {estaffichageboutonsinline === 'true' ? 'boutons-inline' : ''}"
     id={idModale}
     on:click={clickModale}
     on:keydown={keydown}
@@ -177,7 +178,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
           <h1 id={idEntete} class="titre-dialog">
             {titre}
           </h1>
-        </div>
+        </div> 
         <div class="corps" id={idCorps}>
           <slot name="contenu" />
         </div>
