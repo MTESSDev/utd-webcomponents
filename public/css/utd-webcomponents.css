@@ -923,6 +923,12 @@ label, .label {
     border-radius: 0;
 }
 
+.utd-erreur-champ {
+    display: inline-block;
+    margin-top: 8px;
+    color: var(--couleur-erreur);
+}
+
 textarea.utd-form-control{
     height: auto;
 }

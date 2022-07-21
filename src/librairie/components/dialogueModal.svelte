@@ -15,6 +15,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   export let titre = ''
   export let lang = 'fr'
   export let srboutonfermer = ''  
+  export let idfocusouverture = ''
   export let idfocus = ''
   export let estboutonstextelong = 'false'
   export let estaffichageboutonsinline = 'false'  
@@ -130,7 +131,12 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       const elementsFocusablesRoot = Array.from(Utils.obtenirElementsFocusables(thisComponent))
       const elementsFocusables = elementsFocusablesRoot.concat(elementsFocusablesShadow)
       
-      premierElementFocusable = elementsFocusables[0]
+      if(idfocusouverture){
+        const controle = elementsFocusables.find(e => e.id == idfocusouverture)        
+        premierElementFocusable = controle ? controle : elementsFocusables[0]
+      } else {
+        premierElementFocusable = elementsFocusables[0]
+      }     
     }
 
     premierElementFocusable.focus({preventScroll: true})      

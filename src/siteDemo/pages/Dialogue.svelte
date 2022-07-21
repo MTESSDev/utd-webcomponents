@@ -98,20 +98,23 @@ function ajouterCodeDialogue2() {
 {/if}   
 
 
-<h3>2- Ouverture latérale et affichage forcé des boutons sur une ligne (même en mobile)</h3>
+<h3>2- Ouverture latérale, affichage forcé des boutons sur une ligne et focus à l'ouverture sur le contrôle spécifié</h3>
 <p>Utilisez le bouton "Votre avis" à droite fin de tester.</p>
 <button type="button" id="btnVotreAvis" class="utd-btn primaire btn-avis">
     <span class="texte">Votre avis</span>
 </button>
-<utd-dialog id="dialogueVotreAvis" titre="Votre avis" estaffichagelateral="true" estaffichageboutonsinline="true">
+<utd-dialog id="dialogueVotreAvis" titre="Votre avis" estaffichagelateral="true" estaffichageboutonsinline="true" idfocusouverture="texteVotreAvis">
     <div slot="contenu">
-        <div id="texteAvantAvis" class="utd-text-sm mb-32">
-            <p>Pour toutes questions relatives à votre dossier, ou si vous avez besoin d'aide, n'hésitez pas à <a href="#NousJoindre">Nous joindre</a>.</p>
-            <p>Évitez d'inscrire des renseignements personnels. Notez que vous ne recevrez aucune réponse et que nous collectons votre avis dans le respect de votre anonymat.</p>
-        </div>
-        <textarea id="texteVotreAvis" class="utd-form-control mb-24" rows="3" placeholder="Parlez-nous de votre expérience..."/>
-        <span id="texteApresAvis" class="utd-text-sm">
-        </span>
+        <form>
+            <div id="texteAvantAvis" class="utd-text-sm mb-32">
+                <p>Pour toutes questions relatives à votre dossier, ou si vous avez besoin d'aide, n'hésitez pas à <a href="#NousJoindre">Nous joindre</a>.</p>
+                <p>Évitez d'inscrire des renseignements personnels. Notez que vous ne recevrez aucune réponse et que nous collectons votre avis dans le respect de votre anonymat.</p>
+            </div>
+            <textarea id="texteVotreAvis" class="utd-form-control" aria-describedby="erreurTexteVotreAvis" rows="3" placeholder="Parlez-nous de votre expérience..." required></textarea>
+            <span id="erreurTexteVotreAvis" class="utd-erreur-champ utd-d-none" role="status" aria-live="polite">Le champ « Votre avis » est obligatoire.</span>
+            <span id="texteApresAvis" class="utd-text-sm">
+            </span>
+        </form>
     </div>
     <div slot="pied">
         <button id="btnAnnulerAvis" type="button" class="utd-btn secondaire compact">Annuler</button>        
