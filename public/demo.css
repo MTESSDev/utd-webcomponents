@@ -1,4 +1,28 @@
 
+/*====================================================================================================*/
+/*  -00- Headers
+/*====================================================================================================*/
+h2 {
+    margin-top: 48px;
+}
+
+
+h3 {
+    margin-top: 32px; /*Quebec.ca = 24px, pas de sens, c'est moins que marge d'un paragraphe.*/
+}
+
+h4 {
+    margin-top: 32px; /*Quebec.ca = 24px, pas de sens, c'est idem que marge d'un paragraphe.*/
+}
+
+h5 {
+    margin-top: 24px; /*Quebec.ca = 16px, pas de sens, c'est moins que marge d'un paragraphe.*/
+}
+
+h6 {
+    margin-top: 24px; /*Quebec.ca = 16px, pas de sens, c'est moins que marge d'un paragraphe.*/
+}
+
 
 /*====================================================================================================*/
 /*  -01- PIV entête
@@ -409,6 +433,24 @@ header {
 .exemples-boutons .utd-btn {
     margin-right: 32px;
     margin-bottom: 32px;
+}
+
+
+/*====================================================================================================
+  -14- Page "Dialogue"
+====================================================================================================*/
+.utd-btn.btn-avis {
+    position: fixed;
+    right: 0;
+    top: 200px;
+    min-width: 0;
+    padding: 9px 5px 1px 5px;
+    font-size: 14px;    
+}
+.btn-avis .texte {
+    -webkit-writing-mode: vertical-lr;
+    writing-mode: vertical-lr;    
+    transform: rotate(180deg);    
 }
 
 

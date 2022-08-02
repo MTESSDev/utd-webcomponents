@@ -483,7 +483,7 @@ export const notification = (function () {
         }
 
         html += `
-            <div class="message">
+            <div class="texte-message">
                 ${parametres.message}
             </div>`;
 

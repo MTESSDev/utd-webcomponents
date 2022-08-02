@@ -37,6 +37,11 @@ window.addEventListener('scroll', function(e) {
 function gererAffichageBouton() {
   const dureeAnimationMs = 500;
 
+  if(html.classList.contains('utd-modale-ouverte')){
+    //Si une fenêtre modale est ouverte, on ne fait rien pour le bouton de retour haut de page
+    return
+  }
+
   if (document.body.scrollTop > hauteurMinimaleSroll || document.documentElement.scrollTop > hauteurMinimaleSroll) {
     if(controle.classList.contains('utd-d-none')){
       controle.classList.remove('utd-d-none')

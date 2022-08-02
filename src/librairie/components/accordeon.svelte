@@ -56,8 +56,9 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       <div transition:slide="{{duration:250}}">
         {#if contenu}
           {@html contenu}
+        {:else}
+          <slot name="contenu" />
         {/if}
-        <slot name="contenu" />
       </div>
       {/if}
     </div>

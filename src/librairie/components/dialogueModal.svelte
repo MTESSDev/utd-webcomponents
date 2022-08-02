@@ -14,9 +14,11 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   export let raisonfermeture = ''
   export let titre = ''
   export let lang = 'fr'
-  export let srboutonfermer = ''
+  export let srboutonfermer = ''  
   export let idfocus = ''
   export let estboutonstextelong = 'false'
+  export let estaffichageboutonsinline = 'false'  
+  export let estaffichagelateral = 'false'
 
   const idModale = Utils.genererId()
   const idEntete = Utils.genererId()
@@ -25,7 +27,9 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     ? srboutonfermer
     : lang === "fr"
     ? "Fermer"
-    : "Close"
+    : "Close"  
+
+
   let estModaleAffichee = afficher === 'true'
   const thisComponent = get_current_component()
   let html
@@ -37,7 +41,11 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     html = thisComponent.getRootNode().getElementsByTagName("html")[0]
     body = thisComponent.getRootNode().getElementsByTagName("body")[0]
     slots = Array.from(thisComponent.querySelectorAll('[slot]'))    
-    mounted = true  
+    mounted = true 
+    
+    if(Utils.estMobile()){
+      html.classList.add("est-mobile")      
+    }    
   })
 
   // Watch sur la prop afficher
@@ -59,6 +67,14 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     Utils.dispatchWcEvent(thisComponent, "fermeture", {raisonFermeture: raison})
   }
   
+  function animationAffichageOuverture(node) {
+		return estaffichagelateral === 'false' ? fade(node, { duration: 250 }) : fly(node, { x: 200, duration: 250 });  
+  }
+
+  function animationAffichageFermeture(node) {
+		return estaffichagelateral === 'false' ? fade(node, { y: 200, duration: 250 }) : fly(node, { x: 200, duration: 250 });  
+  }
+
   // Exécuté lorsque la valeur de la prop "afficher" change
   function toggleAfficher(){
     if(mounted){
@@ -133,12 +149,12 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     tabindex="-1"
     aria-labelledby={idEntete}
     aria-describedby={estfenetremessage === 'true' ? idCorps : null}
-    class="utd-component utd-dialog {estfenetremessage === 'true' ? 'fenetre-message' : ''} {estboutonstextelong === 'true' ? 'boutons-texte-long' : ''}"
+    class="utd-component utd-dialog {estfenetremessage === 'true' ? 'fenetre-message' : ''} {estboutonstextelong === 'true' ? 'boutons-texte-long' : ''} {estaffichagelateral === 'true' ? 'affichage-lateral' : ''} {estaffichageboutonsinline === 'true' ? 'boutons-inline' : ''}"
     id={idModale}
     on:click={clickModale}
     on:keydown={keydown}
-    in:fade={{ duration: 250 }}
-    out:fly={{ y: 200, duration: 250 }}
+    in:animationAffichageOuverture
+    out:animationAffichageFermeture
     on:introstart={ajusterModaleDebutAffichage}
     on:introend={ajusterModaleFinAffichage}
     on:outroend={finAnimationFermeture}
@@ -166,7 +182,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
           <h1 id={idEntete} class="titre-dialog">
             {titre}
           </h1>
-        </div>
+        </div> 
         <div class="corps" id={idCorps}>
           <slot name="contenu" />
         </div>
