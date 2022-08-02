@@ -41,7 +41,11 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     html = thisComponent.getRootNode().getElementsByTagName("html")[0]
     body = thisComponent.getRootNode().getElementsByTagName("body")[0]
     slots = Array.from(thisComponent.querySelectorAll('[slot]'))    
-    mounted = true  
+    mounted = true 
+    
+    if(Utils.estMobile()){
+      html.classList.add("est-mobile")      
+    }    
   })
 
   // Watch sur la prop afficher

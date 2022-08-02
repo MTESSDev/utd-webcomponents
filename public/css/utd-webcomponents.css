@@ -638,6 +638,7 @@ a.utd-lien-externe[target="_blank"]:after, span.utd-lien-externe:after {
 }
 
 .utd-btn.compact {
+    min-height: 40px;
     min-width: 48px;
     padding: 7px 15px;
     border: 1px solid transparent;
@@ -1707,11 +1708,11 @@ utd-dialog [slot="pied"] > button {
   margin-right: 32px;
 }
 
-utd-dialog [slot="pied"] > button.compact {
+utd-dialog [slot="pied"] > button.compact, input[type=button].compact {
   margin-right: 24px;
 }
 
-utd-dialog [slot="pied"] > button:last-child {
+utd-dialog [slot="pied"] > button:last-of-type {
   margin-right: 0;
 }
 
@@ -1870,7 +1871,7 @@ utd-hautpage {
   position: fixed;
   bottom: 90px;
   right: 32px;
-  z-index: 9999;
+  z-index: 1039;
 }
 
 .utd-hautpage {
@@ -1895,7 +1896,7 @@ utd-hautpage {
   padding: 0px;
 }
 
-html.utd-modale-ouverte utd-hautpage {
+html.utd-modale-ouverte:not(.est-mobile) utd-hautpage {
   right: 49px;
 }
 
@@ -1905,7 +1906,7 @@ html.utd-modale-ouverte utd-hautpage {
       right: 16px;
   }
 
-  html.utd-modale-ouverte utd-hautpage {
+  html.utd-modale-ouverte:not(.est-mobile) utd-hautpage {
     right: 33px;
   }
 } 
