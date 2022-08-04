@@ -638,6 +638,7 @@ a.utd-lien-externe[target="_blank"]:after, span.utd-lien-externe:after {
 }
 
 .utd-btn.compact {
+    min-height: 40px;
     min-width: 48px;
     padding: 7px 15px;
     border: 1px solid transparent;
