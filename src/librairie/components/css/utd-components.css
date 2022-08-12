@@ -509,17 +509,19 @@ utd-dialog [slot="pied"] > button:last-of-type {
   bottom: 32px;
   right: 0;
   padding: 0 32px;
-  z-index: 1111;  
+  z-index: 99999;  
   width: 100%;
   max-width: 408px;
 }
 
-html[retourhautpagevisible="true"] .utd-notifications {
+/*TODO ici à valider avec Québec.ca car pour nous avons triché dans les cas ou une fenêtre de dialogue avec backdrop est ouverte. On positionne la notification à son emplacement normal sans considérer le retour haut de page s'il est affiché.*/
+html[retourhautpagevisible="true"]:not(.utd-modale-ouverte) .utd-notifications {
   bottom: 162px;
 }
 
+/*TODO ici à valider avec Québec.ca car pour nous avons triché dans les cas ou une fenêtre de dialogue avec backdrop est ouverte. On positionne la notification à son emplacement normal sans considérer le retour haut de page s'il est affiché.*/
 @media (max-width: 768px) {
-  html[retourhautpagevisible="true"] .utd-notifications {
+  html[retourhautpagevisible="true"]:not(.utd-modale-ouverte) .utd-notifications {
     bottom: 146px;
   }
 }
@@ -527,8 +529,8 @@ html[retourhautpagevisible="true"] .utd-notifications {
 @media (max-width: 768px) {
   .utd-notifications {
     bottom: 16px;
-    padding: 0 16px;
     max-width: 376px;
+    padding: 0 16px;
   }
 } 
 
