@@ -31,7 +31,7 @@
         <div id="javascriptDesactive" class="fureteur-desuet">
             <div class="utd-container" role="alert" aria-atomic="true">
                 <div class="icone">
-                    <img alt="Icône avertissement" src="../images/utd-sprite.svg?v=1.5.1#ico-avertissement" width="28" height="26" aria-hidden="true">
+                    <img alt="Icône avertissement" src="../images/utd-sprite.svg?v=1.6.0#ico-avertissement" width="28" height="26" aria-hidden="true">
                 </div>
                 <div class="texte">
                     Activez JavaScript dans votre navigateur pour que Système de design MTESS fonctionne correctement.
@@ -45,7 +45,7 @@
                 <div class="conteneur-sections">
                     <div class="section-gauche signature-gouvernement" lang="fr">
                         <a href="/">
-                            <img alt="Signature du gouvernement du Québec. Accédez à Système de design MTESS." src="../images/utd-sprite.svg?v=1.5.1#QUEBEC_blanc">
+                            <img alt="Signature du gouvernement du Québec. Accédez à Système de design MTESS." src="../images/utd-sprite.svg?v=1.6.0#QUEBEC_blanc">
                         </a>
                     </div>
                     <div class="section-centre">
@@ -90,8 +90,8 @@
     </header>
 
     <div class="utd-container">
-        <div id="conteneur2Colonnes" class="contenu-principal-droite">
-            <div id="colonneGauche">                
+        <div id="conteneur2Colonnes" class="utd contenu-principal-droite">
+            <div id="colonneGauche" class="utd">                
                 <MenuSecondaire titre="{$router.path.indexOf('/composants') >= 0 ? 'Liste des composants' : 'Liste des éléments de base'}">
                     <div slot="contenu">
                         <ul>
@@ -114,7 +114,7 @@
                 </MenuSecondaire> 
             </div>
         
-            <div id="colonneDroite">
+            <div id="colonneDroite" class="utd">
                 <main id="main">
                     <Route path="/" redirect="/base/principe" ></Route>
                     <Route path="/base" redirect="/base/principe" ></Route>
@@ -132,8 +132,7 @@
                     <Route path="/composants/traitementencours" ><TraitementEnCours /></Route>
                 </main>        
             </div>
-        </div>
-        
+        </div>        
     </div>
 </div>
 <utd-hautpage id="hautPage"></utd-hautpage>

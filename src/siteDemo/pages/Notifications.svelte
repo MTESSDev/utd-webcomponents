@@ -41,7 +41,8 @@
     function notification2() {
         document.getElementById('test2').addEventListener('click', () => {
             const params = {
-                message: "Tu as réussi à enregistrer comme un grand.",
+                message: `<p>Tu as réussi à enregistrer.</p>
+                          <p>Tu es grand maintenant.</p>`,
                 delaiFermeture: 10000
                 };
 

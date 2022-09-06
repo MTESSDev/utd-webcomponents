@@ -1,4 +1,682 @@
-/*! utd-webcomponents v1.5.1 */
+/*! utd-webcomponents v1.6.0 */
+/*====================================================================================================
+  -10- Listes à l'intérieur de composants UTD
+====================================================================================================*/
+
+[slot="contenu"] ul, .utd-component ul {
+  padding-left: 20px;
+}
+
+[slot="contenu"] ul:last-child, .utd-component ul:last-child {
+  margin-bottom: 0;
+}
+
+[slot="contenu"] ul li, .utd-component ul li {
+  margin-bottom: 16px;
+}
+
+[slot="contenu"] ul li:last-of-type, .utd-component ul li:last-of-type {
+  margin-bottom: 0;
+}
+
+[slot="contenu"] p:first-child, .utd-component p:first-child, .contenu p:first-child {
+  margin-top: 0;
+}
+
+[slot="contenu"] p:last-child, .utd-component p:last-child, .contenu p:last-child {
+  margin-bottom: 0;
+}
+
+
+
+/*====================================================================================================*/
+/*  -35- Avis 
+/*====================================================================================================*/
+  .utd-avis {
+    display: flex;
+    border: 1px solid var(--couleur-filet-secondaire);
+    background-color: #fff;
+    word-break: break-word;
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+
+  .utd-avis .zone-icone {
+    display: flex;  
+    padding: 24px 8px;
+  }
+
+  .utd-avis .zone-icone .utd-icone-svg {
+      background-size: 100% auto;
+      min-width: 24px;
+      height: 24px;
+  }
+
+  .utd-avis .zone-icone, .utd-avis.information .zone-icone {
+      background-color: #D9E6F0;
+  }
+
+  .utd-avis.avertissement .zone-icone {
+      background-color: #F8E69A;
+  }
+
+  .utd-avis.succes .zone-icone {
+      background-color: #BCDA9A;
+  }
+
+  .utd-avis.erreur .zone-icone {
+      background-color: #EDBAB1;
+  }
+
+  utd-avis[type="erreur"] [slot="contenu"] ul li a {
+    color: var(--couleur-erreur);
+  }
+
+  utd-avis[type="erreur"] [slot="contenu"] ul li a:hover, utd-avis[type="erreur"] [slot="contenu"] ul li a:focus {
+    text-decoration: none;
+  }
+
+  .utd-avis .titre {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    font-family: 'OpenSans-Bold';
+    font-size: 14px !important;
+}
+
+  .utd-avis .contenu {
+      padding: 24px var(--tc-32-24-val) 24px 16px;
+      width: 100%;
+  }
+
+  
+  .utd-avis .contenu :last-child {
+      margin-bottom: 0;
+  }
+
+/*====================================================================================================
+  -40- utd-accordeon
+====================================================================================================*/
+utd-accordeon {
+  display: block;
+}
+
+.utd-accordeon .entete button {
+  font-family: 'OpenSans-SemiBold';
+  font-size: 16px;
+  color: var(--couleur-texte-base);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px 15px 15px;  
+  background-color: var(--couleur-fond-gris);
+  border: 1px solid var(--couleur-fond-gris);
+}
+
+.utd-accordeon .entete button:hover, .utd-accordeon .entete button:focus {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px 15px 15px;  
+  background-color: var(--couleur-fond-gris);
+  border: 1px solid var(--couleur-fond-gris);
+}
+
+
+.utd-accordeon .entete button:hover, .utd-accordeon.ouvert .entete button, .utd-accordeon.ouvert .contenu {
+  border: 1px solid #c4c8ce;
+}
+
+.utd-accordeon .contenu {
+  margin-left: 16px;
+  /*  transform:scaleY(0);
+  transform-origin: top;
+  transition: transform 0.25s ease;*/
+}
+
+.utd-accordeon.ouvert .contenu {
+  margin: 0;
+  border-top: 1px solid transparent!important;
+  padding: 24px 16px;
+  /*transform:scaleY(1);*/
+}
+.utd-accordeon .entete button:focus {
+  outline: 2px solid #89bce5;
+  border: 2px solid #5b6476;
+  padding: 14px 18px 14px 15px;
+  margin-left: -1px;
+  margin-bottom: 2px;
+}
+
+
+
+/* Feuille de style pour les webcomponents utd. Les styles ici s'applique à ce qui est dans le ShadowDOM des components. */
+
+/*====================================================================================================
+  -50- utd-infobulle
+====================================================================================================*/
+
+.utd-infobulle .texte-lie:hover,
+  button:hover {
+    cursor: pointer;
+}
+.utd-infobulle .texte-lie {
+    background-color: #e7f1fa;
+    padding: 0 2px;
+    display: inline-block;
+    text-decoration: underline;
+    text-decoration-color: var(--couleur-piv);
+    text-underline-offset: 2px;
+}
+
+.utd-infobulle .conteneur-tooltip {
+    position: relative;
+    bottom: 8px;
+    left: -4px;
+    white-space: nowrap;
+}
+
+.utd-infobulle .texte-lie + .conteneur-tooltip {
+    bottom: 6px;
+    left: -6px;
+}
+
+.utd-infobulle button.tooltip-toggle {
+    width: 40px;
+    height: 16px;
+    min-width: 40px;
+    min-height: 16px;
+    display: inline-block;
+    border: 0;
+    background-color: transparent;
+    position: relative;
+    padding: 0 12px;
+    top: 4px;
+}
+
+.utd-infobulle .texte-lie + .conteneur-tooltip button.tooltip-toggle {
+    width: auto;
+    height: auto;
+    min-width: 0;
+    min-height: 0;
+    padding: 2px 4px;
+    margin-right: -10px;
+}
+
+.utd-infobulle button.tooltip-toggle .conteneur-puce {
+    display: block;
+    width: 16px;
+}
+
+.utd-infobulle button.tooltip-toggle .puce {
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    background-color: var(--couleur-piv);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.utd-infobulle button.tooltip-toggle .utd-icone-svg {  
+  width: 10px;
+  height: 10px;
+  min-width: 10px;
+  margin-left: 0;
+}
+.utd-infobulle .modale {
+    font-family: "OpenSans-Regular", sans-serif;
+    display: block !important;
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 3px 12px rgba(34, 54, 84, 0.22);
+    border: 1px solid #c5cad2;
+    height: auto;
+    overflow: hidden;
+    z-index: 10000;
+    padding-top: var(--tc-24-16-val);
+    padding-bottom: var(--tc-24-16-val);
+    white-space: normal;
+  }
+
+  .utd-infobulle .entete {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: none;
+    max-width: var(--largeur-max-zone-texte);
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .utd-infobulle .entete h1 {
+    font-family: "Roboto-Bold", sans-serif;
+    font-size: var(--tc-20-18-val);
+    letter-spacing: 0;
+    max-width: 58.75rem;
+    margin: 0;
+    line-height: inherit;
+  }
+
+  .utd-infobulle .entete h1:focus {
+    outline: 0;
+  }
+
+  .utd-infobulle .entete h1:after {
+    content: none;
+  }
+
+  .utd-infobulle .entete .close {
+    line-height: 0;
+    padding: 1rem;
+    font-size: 1rem;
+    opacity: 1;
+    background-color: transparent;
+    border: 0;
+    margin: -1rem -1rem -1rem auto;
+  }
+
+  .utd-infobulle .entete .close:hover {
+    cursor: pointer;
+  }
+
+  .utd-infobulle .conteneur-corps {
+    max-width: var(--largeur-max-zone-texte);
+    border: 0;
+    line-height: 1.5rem;
+    margin: var(--tc-24-16-val) auto 0 auto !important;
+    overflow-y: auto;
+    display: block;
+  }
+
+  .utd-infobulle .corps {
+    display: block;
+    padding: 0 1.5rem 0 0;
+    max-height: calc(33.33333vh - (var(--tc-24-16-val) * 3) - 30px);
+    overflow-y: auto;
+    font-size: 1rem;
+  }
+
+  .utd-infobulle .corps h2, .utd-infobulle .corps h3, .utd-infobulle .corps h4, .utd-infobulle .corps h5, .utd-infobulle .corps h6 {
+    font-size: 1rem;
+  }
+
+  .utd-infobulle .corps :is(h2, h3, h4, h5, h6) {
+    font-size: 1rem;
+    line-height: inherit;
+    margin-top: 2rem;
+  }
+
+  .utd-infobulle .corps h2 {
+    font-size: var(--tc-18-16-val);
+  }
+
+  .utd-infobulle .corps :is(h2, h3, h4, h5, h6):first-child {
+    margin-top: 0;
+  }
+
+  /* Scrollbar aide contextuelle */
+.utd-infobulle .corps::-webkit-scrollbar,
+.utd-infobulle .corps::-webkit-scrollbar-thumb,
+.utd-infobulle .corps::-webkit-scrollbar-track {
+    background: transparent;
+    border: none;
+    border-radius: 0.3125rem;
+    height: 50%;
+    width: 0.625rem;
+    margin-top: 8px;
+}
+
+.utd-infobulle .corps::-webkit-scrollbar-button,
+.utd-infobulle .corps::-webkit-scrollbar-track-piece,
+.utd-infobulle .corps::-webkit-scrollbar-corner,
+.utd-infobulle .corps::-webkit-resizer {
+    display: none;
+}
+
+.utd-infobulle .corps::-webkit-scrollbar-thumb {
+    background-color: var(--couleur-bleu-pale);
+    transition: all 0.35s;
+}
+
+/*====================================================================================================
+  -60- utd-dialog
+====================================================================================================*/
+
+.utd-dialog {
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    z-index:10000;
+}
+
+.utd-dialog .conteneur {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  position: relative;
+  width: auto;
+  padding: 0 32px;
+  box-shadow: 0 3px 12px rgba(34, 54, 84, 0.22);
+  border: 1px solid #c5cad2;
+  background-color: #fff;
+  margin: 2rem auto;
+}
+
+.utd-dialog .principal {
+  padding: 0 0 32px 0;
+  width: 100%;
+}
+
+.utd-dialog .entete {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: var(--largeur-max-zone-texte);
+  margin-bottom: 24px;
+}
+
+.utd-dialog .entete .utd-icone-svg {
+  margin-right: 16px;
+}
+
+.utd-dialog .entete h1 {
+  font-family: "Roboto-Bold", sans-serif;
+  font-size: var(--tc-24-20-val);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.utd-dialog .entete.avec-type h1::after {
+  content: none!important;
+}
+
+.utd-dialog .entete h1:focus {
+  outline: 0;
+}
+
+.utd-dialog .pied {
+  margin-top: 24px;
+}
+
+.utd-dialog .close {
+  display: flex;
+  line-height: 0;
+  padding: 1rem;
+  font-size: 1rem;
+  opacity: 1;
+  background-color: transparent;
+  border: 0;
+  margin: 0 -2rem -1rem auto;
+}
+
+.utd-dialog .close:hover {
+  cursor: pointer;
+}
+
+.utd-dialog .corps {
+/*    overflow-y: auto;*/
+  font-size: 1rem;
+}
+
+.utd-dialog.fenetre-message .corps {
+  line-height: 1.5rem;
+}
+
+.utd-dialog .pied {
+  display: flex;
+  justify-content: end;  
+}
+
+@media (max-width: 425px) {
+  .utd-dialog:not(.boutons-inline) .pied {
+      flex-direction: column;
+  }
+} 
+  
+@media (max-width: 525px) {
+  .utd-dialog.boutons-texte-long .pied {
+    flex-direction: column;
+  }
+} 
+   
+
+/* Slots */
+utd-dialog [slot="pied"] > button {
+  margin-right: 32px;
+}
+
+utd-dialog [slot="pied"] > button.compact, input[type=button].compact {
+  margin-right: 24px;
+}
+
+utd-dialog [slot="pied"] > button:last-of-type {
+  margin-right: 0;
+}
+
+@media (max-width: 425px) {
+
+  utd-dialog:not([estaffichageboutonsinline="true"]) [slot="pied"] button {
+      margin-bottom: 24px;
+      margin-right: 0;
+      width: 100%;
+  }
+
+  utd-dialog:not([estaffichageboutonsinline="true"]) [slot="pied"] button.compact {
+    margin-bottom: 16px;
+  }
+
+  utd-dialog:not([estaffichageboutonsinline="true"]) [slot="pied"] button:last-of-type {
+      margin-bottom: 0;
+  }
+}
+
+/*Particularité pour les boutons avec un texte long (permet de les afficher plus tôt 525px en colonne au lieu de 425px)*/
+@media (max-width: 525px) {
+
+  utd-dialog[estboutonstextelong="true"] [slot="pied"] button {
+      margin-bottom: 24px;
+      margin-right: 0;
+      width: 100%;
+  }
+
+  utd-dialog[estboutonstextelong="true"] [slot="pied"] button:last-of-type {
+      margin-bottom: 0;
+  }
+}
+
+
+/*====================================================================================================
+  -70- utd-notifications
+====================================================================================================*/
+.utd-notifications {
+  font-family: 'OpenSans-Regular';
+  font-size: 14px;
+  position: fixed;
+  bottom: 32px;
+  right: 0;
+  padding: 0 32px;
+  z-index: 99999;  
+  width: 100%;
+  max-width: 408px;
+}
+
+/*TODO ici à valider avec Québec.ca car pour nous avons triché dans les cas ou une fenêtre de dialogue avec backdrop est ouverte. On positionne la notification à son emplacement normal sans considérer le retour haut de page s'il est affiché.*/
+html[retourhautpagevisible="true"]:not(.utd-modale-ouverte) .utd-notifications {
+  bottom: 162px;
+}
+
+/*TODO ici à valider avec Québec.ca car pour nous avons triché dans les cas ou une fenêtre de dialogue avec backdrop est ouverte. On positionne la notification à son emplacement normal sans considérer le retour haut de page s'il est affiché.*/
+@media (max-width: 768px) {
+  html[retourhautpagevisible="true"]:not(.utd-modale-ouverte) .utd-notifications {
+    bottom: 146px;
+  }
+}
+
+@media (max-width: 768px) {
+  .utd-notifications {
+    bottom: 16px;
+    max-width: 376px;
+    padding: 0 16px;
+  }
+} 
+
+
+.utd-notifications .notification {
+  position: relative;
+  font-size: inherit;
+  padding: 1rem;
+  cursor: pointer;
+  border-radius: 0;
+  -webkit-transition: opacity .5s linear;
+  -moz-transition: opacity .5s linear;
+  -ms-transition: opacity .5s linear;
+  -o-transition: opacity .5s linear;
+  transition: opacity .5s linear;
+  opacity: 0;
+  margin-bottom: 16px;
+  box-shadow: 0 3px 6px 0 rgba(34, 54, 84, 0.16);
+  color: #fff;
+  width: 100%;
+}
+
+.utd-notifications .notification:last-of-type {
+  margin-bottom: 0;
+}
+
+.utd-notifications .notification.visible {
+  opacity: 1;
+}
+
+.utd-notifications .notification.positif {
+  background-color: var(--couleur-succes);
+}
+
+.utd-notifications .notification.negatif {
+  background-color: var(--couleur-erreur);
+}
+
+.utd-notifications .notification.neutre {
+  background-color: var(--couleur-piv);
+}
+
+.utd-notifications .notification button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  min-width: 0;
+  width: auto;
+  height: auto;
+  line-height: 0;
+  padding: 18px 16px 16px 16px;
+  font-size: 1rem;
+  opacity: 1;
+  background-color: transparent;
+  border: 0;
+}
+
+.utd-notifications .notification .titre {
+  font-family: 'OpenSans-Bold';
+  margin-right: 24px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.utd-notifications .notification .titre .utd-icone-svg {
+  margin-right:8px;
+}
+
+/*.utd-notifications .notification .utd-icone-svg {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(93%) saturate(29%) hue-rotate(42deg) brightness(108%) contrast(107%);
+}*/
+
+.utd-notifications .notification .texte-message p:first-child {
+  margin-top: 0;
+}
+
+.utd-notifications .notification .texte-message p:last-child {
+  margin-bottom: 0;
+}
+
+.utd-notifications .notification.sans-titre .texte-message {
+  margin-right: 24px;
+}
+
+
+/*====================================================================================================
+  -80- utd-hautpage
+====================================================================================================*/
+utd-hautpage {
+  position: fixed;
+  bottom: 90px;
+  right: 32px;
+  z-index: 1039;
+}
+
+.utd-hautpage {
+  -webkit-transition: opacity .5s linear;
+  -moz-transition: opacity .5s linear;
+  -ms-transition: opacity .5s linear;
+  -o-transition: opacity .5s linear;
+  transition: opacity .5s linear;
+  opacity: 0;
+}
+
+.utd-hautpage.visible {
+  opacity: 1;
+}
+
+.utd-hautpage button {
+/*  display: none;*/
+  z-index: 99;
+  width: 40px;
+  height: 40px;
+  min-width: inherit;
+  padding: 0px;
+}
+
+html.utd-modale-ouverte:not(.est-mobile) utd-hautpage {
+  right: 49px;
+}
+
+
+@media (max-width: 768px) {
+  utd-hautpage {
+      right: 16px;
+  }
+
+  html.utd-modale-ouverte:not(.est-mobile) utd-hautpage {
+    right: 33px;
+  }
+} 
+
+.utd-hautpage .utd-icone-svg {
+  min-width: 25px;
+  width: 25px;
+  height: 21px;
+}
+
+.utd-hautpage .contenu {
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+/*! utd-webcomponents v1.6.0 */
 /*====================================================================================================
   -00- Variables
 ====================================================================================================*/
@@ -517,7 +1195,6 @@ h1:not(.titre-dialog)::after, h1:not(.modal-title)::after {
 
 
 h2 {
-    margin-top: 48px;
     margin-bottom: 16px;
     font-size: var(--utd-text-xxl);
 }
@@ -525,28 +1202,22 @@ h2 {
 
 h3 {
     font-family: 'Roboto-Medium';
-    margin-top: 32px; /*Quebec.ca = 24px, pas de sens, c'est moins que marge d'un paragraphe.*/
     margin-bottom: 16px;
     font-size: var(--utd-text-xl);
 }
 
 h4 {
     font-size: var(--utd-text-lg);
-    margin-top: 32px; /*Quebec.ca = 24px, pas de sens, c'est idem que marge d'un paragraphe.*/
     margin-bottom: 8px;
 }
 
 h5 {
     font-size: 1rem;
-    margin-top: 24px; /*Quebec.ca = 16px, pas de sens, c'est moins que marge d'un paragraphe.*/
     margin-bottom: 8px; /*Quebec.ca = 0, Il me semble que ça ne fait pas de sens...*/
 }
 
 h6 {
     font-family: 'Roboto-Medium';
-    font-size: 1rem;
-    margin-top: 24px; /*Quebec.ca = 16px, pas de sens, c'est moins que marge d'un paragraphe.*/
-    margin-bottom: 8px; /*Quebec.ca = 0, Il me semble que ça ne fait pas de sens...*/
 }
 
 /* TODO ajouter headers informationnels (un jour) */
@@ -574,7 +1245,7 @@ a.utd-lien-externe[target="_blank"]:after, span.utd-lien-externe:after {
     content: "";
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url("../images/utd-sprite.svg?v=1.5.1#ico-lien-externe");
+    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-lien-externe");
     margin-left: 4px;
     width: 12px;
     height: 12px;
@@ -645,6 +1316,7 @@ a.utd-lien-externe[target="_blank"]:after, span.utd-lien-externe:after {
 }
 
 .utd-btn.compact {
+    min-height: 40px;
     min-width: 48px;
     padding: 7px 15px;
     border: 1px solid transparent;
@@ -930,7 +1602,18 @@ label, .label {
     border-radius: 0;
 }
 
+.utd-erreur-champ {
+    display: inline-block;
+    margin-top: 8px;
+    color: var(--couleur-erreur);
+}
+
+textarea.utd-form-control{
+    height: auto;
+}
+
 input.utd-form-control:focus,
+textarea.utd-form-control:focus
 select.utd-form-control:focus {
     outline: 3px solid #89bce5;
     border: 2px solid #5b6476;
@@ -941,7 +1624,8 @@ select.utd-form-control:focus {
 -Z20A- Forms (Champs largeurs)  
 ====================================================================================================*/
 
-input[type="text"].utd-form-control {
+input[type="text"].utd-form-control,
+textarea.utd-form-control {
     /* On applique une largeur xl à tous les contrôles de type texte par défaut */
     width: 528px;
     max-width: 100%;
@@ -962,36 +1646,43 @@ input[type="date"].utd-form-control {
 
 /*Le xxl n'existe pas dans les règles du SCG, c'est ajouté */
 
-input.utd-form-control.xxl {
+input.utd-form-control.xxl,
+textarea.utd-form-control.xxl {
     width: 728px;
 }
 
-input.utd-form-control.xl {
+input.utd-form-control.xl,
+textarea.utd-form-control.xl {
     width: 528px;
 }
 
-input.utd-form-control.lg {
+input.utd-form-control.lg,
+textarea.utd-form-control.lg {
     width: 249px;
 }
 
 input.utd-form-control.md,
+textarea.utd-form-control.md,
 input[type="tel"].utd-form-control {
     width: 156px;
 }
 
-input.utd-form-control.sm {
+input.utd-form-control.sm,
+textarea.utd-form-control.sm {
     width: 63px;
 }
 
 @media (max-width: 560px) {
     input[type="text"].utd-form-control,
-    input.utd-form-control.xl {
+    input.utd-form-control.xl,
+    textarea.utd-form-control.xl {
         width: 100%;
     }
 }
 
 @media (max-width: 760px) {
-    input.utd-form-control.xxl {
+    input.utd-form-control.xxl,
+    textarea.utd-form-control.xxl {
         width: 100%;
     }
 }
@@ -1074,55 +1765,55 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
 }
 
 /* ---- Layout 2 colonnes ---- */
-#conteneur2Colonnes {
+#conteneur2Colonnes.utd {
     display: flex;
 }
 
 /* Colonne principale */
-.contenu-principal-gauche #colonneGauche, .contenu-principal-droite #colonneDroite, .page-texte {
+.contenu-principal-gauche #colonneGauche.utd, .contenu-principal-droite #colonneDroite.utd, .utd-page-texte {
     width: 100%;
     max-width: var(--largeur-max-zone-texte);
 }
 
 /* Colonne secondaire */
-.contenu-principal-gauche #colonneDroite, .contenu-principal-droite #colonneGauche {
+.contenu-principal-gauche #colonneDroite.utd, .contenu-principal-droite #colonneGauche.utd {
     width: 100%;
     max-width: 288px;
 }
 
-.contenu-principal-gauche #colonneGauche > *, .contenu-principal-gauche #colonneDroite > *,
-.contenu-principal-droite #colonneGauche > *, .contenu-principal-droite #colonneDroite > * {
+.contenu-principal-gauche #colonneGauche.utd > *, .contenu-principal-gauche #colonneDroite.utd > *,
+.contenu-principal-droite #colonneGauche.utd > *, .contenu-principal-droite #colonneDroite.utd > * {
     margin-top: var(--tc-48-40-val);
 }
 
-.contenu-principal-gauche #colonneGauche > *:first-child, .contenu-principal-gauche #colonneDroite > *:first-child,
-.contenu-principal-droite #colonneGauche > *:first-child, .contenu-principal-droite #colonneDroite > *:first-child {
+.contenu-principal-gauche #colonneGauche.utd > *:first-child, .contenu-principal-gauche #colonneDroite.utd > *:first-child,
+.contenu-principal-droite #colonneGauche.utd > *:first-child, .contenu-principal-droite #colonneDroite.utd > *:first-child {
     margin-top: 0;
 }
 
 
 /* Limiter la largeur de la colonne principale en mode mobile */
 @media all and (max-width:991px) {
-    #conteneur2Colonnes {
+    #conteneur2Colonnes.utd {
         display: block;
     }
 
-    .contenu-principal-droite #colonneGauche, .contenu-principal-gauche #colonneDroite {
+    .contenu-principal-droite #colonneGauche.utd, .contenu-principal-gauche #colonneDroite.utd {
         max-width: var(--largeur-max-zone-texte); 
     }
 
-    .contenu-principal-gauche #colonneDroite > *:first-child, .contenu-principal-droite #colonneDroite > *:first-child {
+    .contenu-principal-gauche #colonneDroite.utd > *:first-child, .contenu-principal-droite #colonneDroite.utd > *:first-child {
         margin-top: var(--tc-48-40-val);
     }
 }
 
 /* Petite twist... Permet d'avoir une marge à gauche(ou à droite) afin de séparer les 2 colonnes, sera actif uniquement si la colonne de gauche (ou de droite) contient au moins un élément */
 @media screen and (min-width:992px) {
-    .contenu-principal-gauche #colonneDroite > * {
+    .contenu-principal-gauche #colonneDroite.utd > * {
         margin-left: var(--tc-32-24-val);
     }
 
-    .contenu-principal-droite #colonneGauche > * {
+    .contenu-principal-droite #colonneGauche.utd > * {
         margin-right: var(--tc-32-24-val);
     }
 }
@@ -1161,68 +1852,68 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
 }
 
 .utd-icone-svg.avertissement {
-    background-image: url("../images/utd-sprite.svg?v=1.5.1#ico-avertissement");
+    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-avertissement");
 }
 
 .utd-icone-svg.fleche-haut-blanche {
-    background-image: url("../images/utd-sprite.svg?v=1.5.1#ico-fleche-haut-blanche");
+    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-fleche-haut-blanche");
 }
 
 .utd-icone-svg.clipboard {
-    background-image: url("../images/utd-sprite.svg?v=1.5.1#ico-clipboard");
+    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-clipboard");
 }
 
 .utd-icone-svg.erreur {
-    background-image: url("../images/utd-sprite.svg?v=1.5.1#ico-erreur");
+    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-erreur");
 }
 
 .utd-icone-svg.erreur-blanc {
-    background-image: url("../images/utd-sprite.svg?v=1.5.1#ico-erreur-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-erreur-blanc");
 }
 
 .utd-icone-svg.information {
-    background-image: url("../images/utd-sprite.svg?v=1.5.1#ico-information");
+    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-information");
 }
 
 .utd-icone-svg.information-blanc {
-    background-image: url("../images/utd-sprite.svg?v=1.5.1#ico-information-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-information-blanc");
 }
 
 .utd-icone-svg.moins {
-    background-image: url("../images/utd-sprite.svg?v=1.5.1#ico-moins");
+    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-moins");
 }
 
 .utd-icone-svg.plus {
-    background-image: url("../images/utd-sprite.svg?v=1.5.1#ico-plus");
+    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-plus");
 }
 
 .utd-icone-svg.question {
-    background-image: url("../images/utd-sprite.svg?v=1.5.1#ico-question");
+    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-question");
 }
 
 
 .utd-icone-svg.succes {
-    background-image: url("../images/utd-sprite.svg?v=1.5.1#ico-succes");
+    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-succes");
 }
 .utd-icone-svg.succes-blanc {
-    background-image: url("../images/utd-sprite.svg?v=1.5.1#ico-succes-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-succes-blanc");
 }
 
 .utd-icone-svg.x-fermer-blanc {
     width: 16px;
     height: 16px;
     min-width: 16px;
-    background-image: url("../images/utd-sprite.svg?v=1.5.1#ico-xfermer-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-xfermer-blanc");
 }
 .utd-icone-svg.x-fermer-bleu {
     width: 16px;
     height: 16px;
     min-width: 16px;
-    background-image: url("../images/utd-sprite.svg?v=1.5.1#ico-xfermer-bleu");
+    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-xfermer-bleu");
 }
 
 .utd-icone-svg.chevron-bleu-piv {
-    background-image: url("../images/utd-sprite.svg?v=1.5.1#ico-chevron-bleu-piv");
+    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-chevron-bleu-piv");
     width: 16px;
     min-width: 16px;
     height: 10px;
@@ -1238,672 +1929,4 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
     padding: 2px 4px;
     border-radius: 4px;
     color: #fff;
-}
-
-/*! utd-webcomponents v1.5.1 */
-/*====================================================================================================
-  -10- Listes à l'intérieur de composants UTD
-====================================================================================================*/
-
-[slot="contenu"] ul, .utd-component ul {
-  padding-left: 20px;
-}
-
-[slot="contenu"] ul:last-child, .utd-component ul:last-child {
-  margin-bottom: 0;
-}
-
-[slot="contenu"] ul li, .utd-component ul li {
-  margin-bottom: 16px;
-}
-
-[slot="contenu"] ul li:last-of-type, .utd-component ul li:last-of-type {
-  margin-bottom: 0;
-}
-
-[slot="contenu"] p:first-child, .utd-component p:first-child, .contenu p:first-child {
-  margin-top: 0;
-}
-
-[slot="contenu"] p:last-child, .utd-component p:last-child, .contenu p:last-child {
-  margin-bottom: 0;
-}
-
-
-
-/*====================================================================================================*/
-/*  -35- Avis 
-/*====================================================================================================*/
-  .utd-avis {
-    display: flex;
-    border: 1px solid var(--couleur-filet-secondaire);
-    background-color: #fff;
-    word-break: break-word;
-    font-size: 14px;
-    margin-bottom: 32px;
-  }
-
-  .utd-avis .zone-icone {
-    display: flex;  
-    padding: 24px 8px;
-  }
-
-  .utd-avis .zone-icone .utd-icone-svg {
-      background-size: 100% auto;
-      min-width: 24px;
-      height: 24px;
-  }
-
-  .utd-avis .zone-icone, .utd-avis.information .zone-icone {
-      background-color: #D9E6F0;
-  }
-
-  .utd-avis.avertissement .zone-icone {
-      background-color: #F8E69A;
-  }
-
-  .utd-avis.succes .zone-icone {
-      background-color: #BCDA9A;
-  }
-
-  .utd-avis.erreur .zone-icone {
-      background-color: #EDBAB1;
-  }
-
-  utd-avis[type="erreur"] [slot="contenu"] ul li a {
-    color: var(--couleur-erreur);
-  }
-
-  utd-avis[type="erreur"] [slot="contenu"] ul li a:hover, utd-avis[type="erreur"] [slot="contenu"] ul li a:focus {
-    text-decoration: none;
-  }
-
-  .utd-avis .titre {
-    margin: 0;
-    padding: 0;
-    line-height: 1.5;
-    font-family: 'OpenSans-Bold';
-    font-size: 14px !important;
-}
-
-  .utd-avis .contenu {
-      padding: 24px var(--tc-32-24-val) 24px 16px;
-      width: 100%;
-  }
-
-  
-  .utd-avis .contenu :last-child {
-      margin-bottom: 0;
-  }
-
-/*====================================================================================================
-  -40- utd-accordeon
-====================================================================================================*/
-utd-accordeon {
-  display: block;
-}
-
-.utd-accordeon .entete button {
-  font-family: 'OpenSans-SemiBold';
-  font-size: 16px;
-  color: var(--couleur-texte-base);
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px 15px 15px;  
-  background-color: var(--couleur-fond-gris);
-  border: 1px solid var(--couleur-fond-gris);
-}
-
-.utd-accordeon .entete button:hover, .utd-accordeon .entete button:focus {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px 15px 15px;  
-  background-color: var(--couleur-fond-gris);
-  border: 1px solid var(--couleur-fond-gris);
-}
-
-
-.utd-accordeon .entete button:hover, .utd-accordeon.ouvert .entete button, .utd-accordeon.ouvert .contenu {
-  border: 1px solid #c4c8ce;
-}
-
-.utd-accordeon .contenu {
-  margin-left: 16px;
-  /*  transform:scaleY(0);
-  transform-origin: top;
-  transition: transform 0.25s ease;*/
-}
-
-.utd-accordeon.ouvert .contenu {
-  margin: 0;
-  border-top: 1px solid transparent!important;
-  padding: 24px 16px;
-  /*transform:scaleY(1);*/
-}
-.utd-accordeon .entete button:focus {
-  outline: 2px solid #89bce5;
-  border: 2px solid #5b6476;
-  padding: 14px 18px 14px 15px;
-  margin-left: -1px;
-  margin-bottom: 2px;
-}
-
-
-
-/* Feuille de style pour les webcomponents utd. Les styles ici s'applique à ce qui est dans le ShadowDOM des components. */
-
-/*====================================================================================================
-  -50- utd-infobulle
-====================================================================================================*/
-
-.utd-infobulle .texte-lie:hover,
-  button:hover {
-    cursor: pointer;
-}
-.utd-infobulle .texte-lie {
-    background-color: #e7f1fa;
-    padding: 0 2px;
-    display: inline-block;
-    text-decoration: underline;
-    text-decoration-color: var(--couleur-piv);
-    text-underline-offset: 2px;
-}
-
-.utd-infobulle .conteneur-tooltip {
-    position: relative;
-    bottom: 8px;
-    left: -4px;
-    white-space: nowrap;
-}
-
-.utd-infobulle .texte-lie + .conteneur-tooltip {
-    bottom: 6px;
-    left: -6px;
-}
-
-.utd-infobulle button.tooltip-toggle {
-    width: 40px;
-    height: 16px;
-    min-width: 40px;
-    min-height: 16px;
-    display: inline-block;
-    border: 0;
-    background-color: transparent;
-    position: relative;
-    padding: 0 12px;
-    top: 4px;
-}
-
-.utd-infobulle .texte-lie + .conteneur-tooltip button.tooltip-toggle {
-    width: auto;
-    height: auto;
-    min-width: 0;
-    min-height: 0;
-    padding: 2px 4px;
-    margin-right: -10px;
-}
-
-.utd-infobulle button.tooltip-toggle .conteneur-puce {
-    display: block;
-    width: 16px;
-}
-
-.utd-infobulle button.tooltip-toggle .puce {
-    width: 16px;
-    height: 16px;
-    border-radius: 100%;
-    background-color: var(--couleur-piv);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.utd-infobulle button.tooltip-toggle .utd-icone-svg {  
-  width: 10px;
-  height: 10px;
-  min-width: 10px;
-  margin-left: 0;
-}
-.utd-infobulle .modale {
-    font-family: "OpenSans-Regular", sans-serif;
-    display: block !important;
-    position: fixed;
-    top: auto;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: 0;
-    width: 100%;
-    background-color: #fff;
-    box-shadow: 0 3px 12px rgba(34, 54, 84, 0.22);
-    border: 1px solid #c5cad2;
-    height: auto;
-    overflow: hidden;
-    z-index: 10000;
-    padding-top: var(--tc-24-16-val);
-    padding-bottom: var(--tc-24-16-val);
-    white-space: normal;
-  }
-
-  .utd-infobulle .entete {
-    position: relative;
-    display: flex;
-    align-items: center;
-    border: none;
-    max-width: var(--largeur-max-zone-texte);
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-
-  .utd-infobulle .entete h1 {
-    font-family: "Roboto-Bold", sans-serif;
-    font-size: var(--tc-20-18-val);
-    letter-spacing: 0;
-    max-width: 58.75rem;
-    margin: 0;
-    line-height: inherit;
-  }
-
-  .utd-infobulle .entete h1:focus {
-    outline: 0;
-  }
-
-  .utd-infobulle .entete h1:after {
-    content: none;
-  }
-
-  .utd-infobulle .entete .close {
-    line-height: 0;
-    padding: 1rem;
-    font-size: 1rem;
-    opacity: 1;
-    background-color: transparent;
-    border: 0;
-    margin: -1rem -1rem -1rem auto;
-  }
-
-  .utd-infobulle .entete .close:hover {
-    cursor: pointer;
-  }
-
-  .utd-infobulle .conteneur-corps {
-    max-width: var(--largeur-max-zone-texte);
-    border: 0;
-    line-height: 1.5rem;
-    margin: var(--tc-24-16-val) auto 0 auto !important;
-    overflow-y: auto;
-    display: block;
-  }
-
-  .utd-infobulle .corps {
-    display: block;
-    padding: 0 1.5rem 0 0;
-    max-height: calc(33.33333vh - (var(--tc-24-16-val) * 3) - 30px);
-    overflow-y: auto;
-    font-size: 1rem;
-  }
-
-  .utd-infobulle .corps h2, .utd-infobulle .corps h3, .utd-infobulle .corps h4, .utd-infobulle .corps h5, .utd-infobulle .corps h6 {
-    font-size: 1rem;
-  }
-
-  .utd-infobulle .corps :is(h2, h3, h4, h5, h6) {
-    font-size: 1rem;
-    line-height: inherit;
-    margin-top: 2rem;
-  }
-
-  .utd-infobulle .corps h2 {
-    font-size: var(--tc-18-16-val);
-  }
-
-  .utd-infobulle .corps :is(h2, h3, h4, h5, h6):first-child {
-    margin-top: 0;
-  }
-
-  /* Scrollbar aide contextuelle */
-.utd-infobulle .corps::-webkit-scrollbar,
-.utd-infobulle .corps::-webkit-scrollbar-thumb,
-.utd-infobulle .corps::-webkit-scrollbar-track {
-    background: transparent;
-    border: none;
-    border-radius: 0.3125rem;
-    height: 50%;
-    width: 0.625rem;
-    margin-top: 8px;
-}
-
-.utd-infobulle .corps::-webkit-scrollbar-button,
-.utd-infobulle .corps::-webkit-scrollbar-track-piece,
-.utd-infobulle .corps::-webkit-scrollbar-corner,
-.utd-infobulle .corps::-webkit-resizer {
-    display: none;
-}
-
-.utd-infobulle .corps::-webkit-scrollbar-thumb {
-    background-color: var(--couleur-bleu-pale);
-    transition: all 0.35s;
-}
-
-/*====================================================================================================
-  -60- utd-dialog
-====================================================================================================*/
-
-.utd-dialog {
-    position: fixed;
-    display: block;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
-    z-index:10000;
-}
-
-.utd-dialog .conteneur {
-  display: flex;
-  flex-direction: column;
-  max-width: 600px;
-  position: relative;
-  width: auto;
-  padding: 0 32px;
-  box-shadow: 0 3px 12px rgba(34, 54, 84, 0.22);
-  border: 1px solid #c5cad2;
-  background-color: #fff;
-  margin: 2rem auto;
-}
-
-.utd-dialog .principal {
-  padding: 0 0 32px 0;
-  width: 100%;
-}
-
-.utd-dialog .entete {
-  position: relative;
-  display: flex;
-  align-items: center;
-  max-width: var(--largeur-max-zone-texte);
-  margin-bottom: 24px;
-}
-
-.utd-dialog .entete .utd-icone-svg {
-  margin-right: 16px;
-}
-
-.utd-dialog .entete h1 {
-  font-family: "Roboto-Bold", sans-serif;
-  font-size: var(--tc-24-20-val);
-  line-height: 1.2;
-  margin: 0;
-}
-
-.utd-dialog .entete.avec-type h1::after {
-  content: none!important;
-}
-
-.utd-dialog .entete h1:focus {
-  outline: 0;
-}
-
-.utd-dialog .pied {
-  margin-top: 24px;
-}
-
-.utd-dialog .close {
-  display: flex;
-  line-height: 0;
-  padding: 1rem;
-  font-size: 1rem;
-  opacity: 1;
-  background-color: transparent;
-  border: 0;
-  margin: 0 -2rem -1rem auto;
-}
-
-.utd-dialog .close:hover {
-  cursor: pointer;
-}
-
-.utd-dialog .corps {
-/*    overflow-y: auto;*/
-  font-size: 1rem;
-}
-
-.utd-dialog.fenetre-message .corps {
-  line-height: 1.5rem;
-}
-
-.utd-dialog .pied {
-  display: flex;
-  justify-content: end;  
-}
-
-@media (max-width: 425px) {
-  .utd-dialog .pied {
-      flex-direction: column;
-  }
-} 
-  
-@media (max-width: 525px) {
-  .utd-dialog.boutons-texte-long .pied {
-    flex-direction: column;
-  }
-} 
-   
-
-/* Slots */
-utd-dialog [slot="pied"] > button {
-  margin-right: 32px;
-}
-
-utd-dialog [slot="pied"] > button:last-child {
-  margin-right: 0;
-}
-
-@media (max-width: 425px) {
-
-  utd-dialog [slot="pied"] button {
-      margin-bottom: 24px;
-      margin-right: 0;
-      width: 100%;
-  }
-
-  utd-dialog [slot="pied"] button:last-of-type {
-      margin-bottom: 0;
-  }
-}
-
-/*Particularité pour les boutons avec un texte long (permet de les afficher plus tôt 525px en colonne au lieu de 425px)*/
-@media (max-width: 525px) {
-
-  utd-dialog[estboutonstextelong="true"] [slot="pied"] button {
-      margin-bottom: 24px;
-      margin-right: 0;
-      width: 100%;
-  }
-
-  utd-dialog[estboutonstextelong="true"] [slot="pied"] button:last-of-type {
-      margin-bottom: 0;
-  }
-}
-
-
-/*====================================================================================================
-  -70- utd-notifications
-====================================================================================================*/
-.utd-notifications {
-  font-family: 'OpenSans-Regular';
-  font-size: 14px;
-  position: fixed;
-  bottom: 32px;
-  right: 0;
-  padding: 0 32px;
-  z-index: 1111;  
-  width: 100%;
-  max-width: 408px;
-}
-
-html[retourhautpagevisible="true"] .utd-notifications {
-  bottom: 162px;
-}
-
-@media (max-width: 768px) {
-  html[retourhautpagevisible="true"] .utd-notifications {
-    bottom: 146px;
-  }
-}
-
-@media (max-width: 768px) {
-  .utd-notifications {
-    bottom: 16px;
-    padding: 0 16px;
-    max-width: 376px;
-  }
-} 
-
-
-.utd-notifications .notification {
-  position: relative;
-  font-size: inherit;
-  padding: 1rem;
-  cursor: pointer;
-  border-radius: 0;
-  -webkit-transition: opacity .5s linear;
-  -moz-transition: opacity .5s linear;
-  -ms-transition: opacity .5s linear;
-  -o-transition: opacity .5s linear;
-  transition: opacity .5s linear;
-  opacity: 0;
-  margin-bottom: 16px;
-  box-shadow: 0 3px 6px 0 rgba(34, 54, 84, 0.16);
-  color: #fff;
-  width: 100%;
-}
-
-.utd-notifications .notification:last-of-type {
-  margin-bottom: 0;
-}
-
-.utd-notifications .notification.visible {
-  opacity: 1;
-}
-
-.utd-notifications .notification.positif {
-  background-color: var(--couleur-succes);
-}
-
-.utd-notifications .notification.negatif {
-  background-color: var(--couleur-erreur);
-}
-
-.utd-notifications .notification.neutre {
-  background-color: var(--couleur-piv);
-}
-
-.utd-notifications .notification button {
-  position: absolute;
-  right: 0;
-  top: 0;
-  min-width: 0;
-  width: auto;
-  height: auto;
-  line-height: 0;
-  padding: 18px 16px 16px 16px;
-  font-size: 1rem;
-  opacity: 1;
-  background-color: transparent;
-  border: 0;
-}
-
-.utd-notifications .notification .titre {
-  font-family: 'OpenSans-Bold';
-  margin-right: 24px;
-  display: flex;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-.utd-notifications .notification .titre .utd-icone-svg {
-  margin-right:8px;
-}
-
-/*.utd-notifications .notification .utd-icone-svg {
-  filter: brightness(0) saturate(100%) invert(100%) sepia(93%) saturate(29%) hue-rotate(42deg) brightness(108%) contrast(107%);
-}*/
-
-.utd-notifications .notification .message p:first-child {
-  margin-top: 0;
-}
-
-.utd-notifications .notification .message p:last-child {
-  margin-bottom: 0;
-}
-
-.utd-notifications .notification.sans-titre .message {
-  margin-right: 24px;
-}
-
-
-/*====================================================================================================
-  -80- utd-hautpage
-====================================================================================================*/
-utd-hautpage {
-  position: fixed;
-  bottom: 90px;
-  right: 32px;
-  z-index: 9999;
-}
-
-.utd-hautpage {
-  -webkit-transition: opacity .5s linear;
-  -moz-transition: opacity .5s linear;
-  -ms-transition: opacity .5s linear;
-  -o-transition: opacity .5s linear;
-  transition: opacity .5s linear;
-  opacity: 0;
-}
-
-.utd-hautpage.visible {
-  opacity: 1;
-}
-
-.utd-hautpage button {
-/*  display: none;*/
-  z-index: 99;
-  width: 40px;
-  height: 40px;
-  min-width: inherit;
-  padding: 0px;
-}
-
-html.utd-modale-ouverte utd-hautpage {
-  right: 49px;
-}
-
-
-@media (max-width: 768px) {
-  utd-hautpage {
-      right: 16px;
-  }
-
-  html.utd-modale-ouverte utd-hautpage {
-    right: 33px;
-  }
-} 
-
-.utd-hautpage .utd-icone-svg {
-  min-width: 25px;
-  width: 25px;
-  height: 21px;
-}
-
-.utd-hautpage .contenu {
-    display: flex;
-    justify-content: center !important;
-    align-items: center !important;
 }

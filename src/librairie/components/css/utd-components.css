@@ -442,7 +442,7 @@ utd-accordeon {
 }
 
 @media (max-width: 425px) {
-  .utd-dialog .pied {
+  .utd-dialog:not(.boutons-inline) .pied {
       flex-direction: column;
   }
 } 
@@ -459,19 +459,27 @@ utd-dialog [slot="pied"] > button {
   margin-right: 32px;
 }
 
-utd-dialog [slot="pied"] > button:last-child {
+utd-dialog [slot="pied"] > button.compact, input[type=button].compact {
+  margin-right: 24px;
+}
+
+utd-dialog [slot="pied"] > button:last-of-type {
   margin-right: 0;
 }
 
 @media (max-width: 425px) {
 
-  utd-dialog [slot="pied"] button {
+  utd-dialog:not([estaffichageboutonsinline="true"]) [slot="pied"] button {
       margin-bottom: 24px;
       margin-right: 0;
       width: 100%;
   }
 
-  utd-dialog [slot="pied"] button:last-of-type {
+  utd-dialog:not([estaffichageboutonsinline="true"]) [slot="pied"] button.compact {
+    margin-bottom: 16px;
+  }
+
+  utd-dialog:not([estaffichageboutonsinline="true"]) [slot="pied"] button:last-of-type {
       margin-bottom: 0;
   }
 }
@@ -501,17 +509,19 @@ utd-dialog [slot="pied"] > button:last-child {
   bottom: 32px;
   right: 0;
   padding: 0 32px;
-  z-index: 1111;  
+  z-index: 99999;  
   width: 100%;
   max-width: 408px;
 }
 
-html[retourhautpagevisible="true"] .utd-notifications {
+/*TODO ici à valider avec Québec.ca car pour nous avons triché dans les cas ou une fenêtre de dialogue avec backdrop est ouverte. On positionne la notification à son emplacement normal sans considérer le retour haut de page s'il est affiché.*/
+html[retourhautpagevisible="true"]:not(.utd-modale-ouverte) .utd-notifications {
   bottom: 162px;
 }
 
+/*TODO ici à valider avec Québec.ca car pour nous avons triché dans les cas ou une fenêtre de dialogue avec backdrop est ouverte. On positionne la notification à son emplacement normal sans considérer le retour haut de page s'il est affiché.*/
 @media (max-width: 768px) {
-  html[retourhautpagevisible="true"] .utd-notifications {
+  html[retourhautpagevisible="true"]:not(.utd-modale-ouverte) .utd-notifications {
     bottom: 146px;
   }
 }
@@ -519,8 +529,8 @@ html[retourhautpagevisible="true"] .utd-notifications {
 @media (max-width: 768px) {
   .utd-notifications {
     bottom: 16px;
-    padding: 0 16px;
     max-width: 376px;
+    padding: 0 16px;
   }
 } 
 
@@ -594,15 +604,15 @@ html[retourhautpagevisible="true"] .utd-notifications {
   filter: brightness(0) saturate(100%) invert(100%) sepia(93%) saturate(29%) hue-rotate(42deg) brightness(108%) contrast(107%);
 }*/
 
-.utd-notifications .notification .message p:first-child {
+.utd-notifications .notification .texte-message p:first-child {
   margin-top: 0;
 }
 
-.utd-notifications .notification .message p:last-child {
+.utd-notifications .notification .texte-message p:last-child {
   margin-bottom: 0;
 }
 
-.utd-notifications .notification.sans-titre .message {
+.utd-notifications .notification.sans-titre .texte-message {
   margin-right: 24px;
 }
 
@@ -614,7 +624,7 @@ utd-hautpage {
   position: fixed;
   bottom: 90px;
   right: 32px;
-  z-index: 9999;
+  z-index: 1039;
 }
 
 .utd-hautpage {
@@ -639,7 +649,7 @@ utd-hautpage {
   padding: 0px;
 }
 
-html.utd-modale-ouverte utd-hautpage {
+html.utd-modale-ouverte:not(.est-mobile) utd-hautpage {
   right: 49px;
 }
 
@@ -649,7 +659,7 @@ html.utd-modale-ouverte utd-hautpage {
       right: 16px;
   }
 
-  html.utd-modale-ouverte utd-hautpage {
+  html.utd-modale-ouverte:not(.est-mobile) utd-hautpage {
     right: 33px;
   }
 } 

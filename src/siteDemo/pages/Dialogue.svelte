@@ -4,11 +4,12 @@
   let mounted = false;
 
   onMount(() => {
-    ajouterCodedialogue1()
+    ajouterCodeDialogue1()
+    ajouterCodeDialogue2()
     mounted = true
 })
 
-function ajouterCodedialogue1() {
+function ajouterCodeDialogue1() {
     document.getElementById('btnTest1').addEventListener('click', () => {
         utd.dialogue.afficher('exempleDialogue1')
     })
@@ -23,6 +24,24 @@ function ajouterCodedialogue1() {
         alert('Bravo le bouton "Enregistrer" a été cliqué. Vous pouvez mettre tout votre code ici!')
         //TODO, ici tout le code que vous devez effectuer sur click du bouton
         utd.dialogue.masquer('exempleDialogue1')
+    })
+}
+
+function ajouterCodeDialogue2() {
+    document.getElementById('btnVotreAvis').addEventListener('click', () => {
+        utd.dialogue.afficher('dialogueVotreAvis')
+    })
+
+    document.getElementById("btnAnnulerAvis").addEventListener('click', () => {
+        //TODO, ici tout le code que vous devez effectuer sur click du bouton (généralement pas grand chose sur une annulation)
+        alert('Bravo le bouton "Annuler" a été cliqué. Vous pouvez mettre tout votre code ici!')
+        utd.dialogue.masquer('dialogueVotreAvis')
+    })
+
+    document.getElementById("btnEnregistrerAvis").addEventListener('click', () => {
+        alert('Bravo le bouton "Enregistrer" a été cliqué. Vous pouvez mettre tout votre code ici!')
+        //TODO, ici tout le code que vous devez effectuer sur click du bouton
+        utd.dialogue.masquer('dialogueVotreAvis')
     })
 }
 
@@ -74,7 +93,39 @@ function ajouterCodedialogue1() {
 </CodeSource>   
 
 {#if mounted}
-    <CodeSource codeSource="{ajouterCodedialogue1.toString()}" titre="Code source (js)" language="language-javascript">
+    <CodeSource codeSource="{ajouterCodeDialogue1.toString()}" titre="Code source (js)" language="language-javascript">
+    </CodeSource>   
+{/if}   
+
+
+<h3>2- Ouverture latérale, affichage forcé des boutons sur une ligne et focus à l'ouverture sur le contrôle spécifié</h3>
+<p>Utilisez le bouton "Votre avis" à droite fin de tester.</p>
+<button type="button" id="btnVotreAvis" class="utd-btn primaire btn-avis">
+    <span class="texte">Votre avis</span>
+</button>
+<utd-dialog id="dialogueVotreAvis" titre="Votre avis" estaffichagelateral="true" estaffichageboutonsinline="true" idfocusouverture="texteVotreAvis">
+    <div slot="contenu">
+        <form>
+            <div id="texteAvantAvis" class="utd-text-sm mb-32">
+                <p>Pour toutes questions relatives à votre dossier, ou si vous avez besoin d'aide, n'hésitez pas à <a href="#NousJoindre">Nous joindre</a>.</p>
+                <p>Évitez d'inscrire des renseignements personnels. Notez que vous ne recevrez aucune réponse et que nous collectons votre avis dans le respect de votre anonymat.</p>
+            </div>
+            <textarea id="texteVotreAvis" class="utd-form-control" aria-describedby="erreurTexteVotreAvis" rows="3" placeholder="Parlez-nous de votre expérience..." required></textarea>
+            <span id="erreurTexteVotreAvis" class="utd-erreur-champ utd-d-none" role="status" aria-live="polite">Le champ « Votre avis » est obligatoire.</span>
+            <span id="texteApresAvis" class="utd-text-sm">
+            </span>
+        </form>
+    </div>
+    <div slot="pied">
+        <button id="btnAnnulerAvis" type="button" class="utd-btn secondaire compact">Annuler</button>        
+        <button id="btnEnregistrerAvis" type="button" class="utd-btn primaire compact">Envoyer</button>        
+    </div>
+</utd-dialog>
+<CodeSource idElementCodeSource="dialogueVotreAvis" titre="Code source (Html)">
+</CodeSource>   
+
+{#if mounted}
+    <CodeSource codeSource="{ajouterCodeDialogue2.toString()}" titre="Code source (js)" language="language-javascript">
     </CodeSource>   
 {/if}   
 
