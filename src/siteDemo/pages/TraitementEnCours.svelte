@@ -37,7 +37,7 @@
             
             setTimeout((that) => {
                 utd.traitementEnCours.terminer(that);
-            }, 5000, this);
+            }, 55000, this);
         })
     }
 

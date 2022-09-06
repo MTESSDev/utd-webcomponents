@@ -312,15 +312,19 @@ p:last-child {
 
 
 /* Listes */
-ul.utd-liste  {
+ul.utd  {
     padding-left: 20px;
 }
   
-ul.utd-liste li {
+ul.utd li {
     margin-bottom: 16px;
 }
-  
-ul.utd-liste li:last-of-type {
+
+ul.utd ul li:first-of-type {
+    margin-top: 16px;
+}
+
+ul.utd li:last-of-type {
 margin-bottom: 0;
 }
   
@@ -864,7 +868,6 @@ button.utd-btn.utd-traitement-en-cours, input[type="submit"].utd-btn.utd-traitem
 .utd-btn.secondaire.utd-traitement-en-cours[disabled] {
     opacity: 1;
     background-color: #efefef;
-    border-color: rgba(134, 141, 149, 1);
 }
 
 /*====================================================================================================

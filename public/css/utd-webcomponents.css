@@ -1,4 +1,4 @@
-/*! utd-webcomponents v1.6.0 */
+/*! utd-webcomponents v1.6.1 */
 /*====================================================================================================
   -10- Listes à l'intérieur de composants UTD
 ====================================================================================================*/
@@ -676,7 +676,7 @@ html.utd-modale-ouverte:not(.est-mobile) utd-hautpage {
     align-items: center !important;
 }
 
-/*! utd-webcomponents v1.6.0 */
+/*! utd-webcomponents v1.6.1 */
 /*====================================================================================================
   -00- Variables
 ====================================================================================================*/
@@ -990,15 +990,19 @@ p:last-child {
 
 
 /* Listes */
-ul.utd-liste  {
+ul.utd  {
     padding-left: 20px;
 }
   
-ul.utd-liste li {
+ul.utd li {
     margin-bottom: 16px;
 }
-  
-ul.utd-liste li:last-of-type {
+
+ul.utd ul li:first-of-type {
+    margin-top: 16px;
+}
+
+ul.utd li:last-of-type {
 margin-bottom: 0;
 }
   
@@ -1245,7 +1249,7 @@ a.utd-lien-externe[target="_blank"]:after, span.utd-lien-externe:after {
     content: "";
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-lien-externe");
+    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-lien-externe");
     margin-left: 4px;
     width: 12px;
     height: 12px;
@@ -1542,7 +1546,6 @@ button.utd-btn.utd-traitement-en-cours, input[type="submit"].utd-btn.utd-traitem
 .utd-btn.secondaire.utd-traitement-en-cours[disabled] {
     opacity: 1;
     background-color: #efefef;
-    border-color: rgba(134, 141, 149, 1);
 }
 
 /*====================================================================================================
@@ -1852,68 +1855,68 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
 }
 
 .utd-icone-svg.avertissement {
-    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-avertissement");
+    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-avertissement");
 }
 
 .utd-icone-svg.fleche-haut-blanche {
-    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-fleche-haut-blanche");
+    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-fleche-haut-blanche");
 }
 
 .utd-icone-svg.clipboard {
-    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-clipboard");
+    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-clipboard");
 }
 
 .utd-icone-svg.erreur {
-    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-erreur");
+    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-erreur");
 }
 
 .utd-icone-svg.erreur-blanc {
-    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-erreur-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-erreur-blanc");
 }
 
 .utd-icone-svg.information {
-    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-information");
+    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-information");
 }
 
 .utd-icone-svg.information-blanc {
-    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-information-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-information-blanc");
 }
 
 .utd-icone-svg.moins {
-    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-moins");
+    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-moins");
 }
 
 .utd-icone-svg.plus {
-    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-plus");
+    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-plus");
 }
 
 .utd-icone-svg.question {
-    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-question");
+    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-question");
 }
 
 
 .utd-icone-svg.succes {
-    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-succes");
+    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-succes");
 }
 .utd-icone-svg.succes-blanc {
-    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-succes-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-succes-blanc");
 }
 
 .utd-icone-svg.x-fermer-blanc {
     width: 16px;
     height: 16px;
     min-width: 16px;
-    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-xfermer-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-xfermer-blanc");
 }
 .utd-icone-svg.x-fermer-bleu {
     width: 16px;
     height: 16px;
     min-width: 16px;
-    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-xfermer-bleu");
+    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-xfermer-bleu");
 }
 
 .utd-icone-svg.chevron-bleu-piv {
-    background-image: url("../images/utd-sprite.svg?v=1.6.0#ico-chevron-bleu-piv");
+    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-chevron-bleu-piv");
     width: 16px;
     min-width: 16px;
     height: 10px;
