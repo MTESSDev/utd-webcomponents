@@ -8,12 +8,20 @@
 <h3>Corrections d'anomalies</h3>
 <ul class="utd">
     <li>
+        <span>Accordéon</span>
+        <ul>
+            <li>Correction alignement texte du titre lorsqu'il est affiché sur plusieurs lignes. Ajustements mineurs avec nouvelles spécifications Quebec.ca.
+            </li>            
+        </ul>
+    </li>
+    <li>
         <span>Traitement en cours</span>
         <ul>
             <li>La méthode "debuter" ne désactivait pas le bouton cliqué si "avecOverlay" était "true". L'overlay à lui seul bloquait les clics subséquents sur le bouton pendant le traitement, mais n'empêchait pas la touche "ENTER".
             </li>            
         </ul>
     </li>
+
 </ul>
 
 <h2>1.6.0 (2022-07-19)</h2>
@@ -40,12 +48,6 @@
         </ul>
     </li>
     <li>
-        <span>Dialogue modale</span>
-        <ul>
-            <li>Correction anomalies mineures en mode mobile sur IOS et Android.</li>            
-        </ul>
-    </li>
-    <li>
         <span>Notifications</span>
         <ul>
             <li>Positionnement revu lorsque le composant "Retour haut page" est affiché. Comme la notification est temporaire, on l'affiche par dessus le bouton car sinon la notification est beaucoup top haute et ça ne fait pas de sens (même si contradictoire avec ce qui est défini dans le système de design Quebec.ca).</li>            
@@ -54,7 +56,18 @@
     </li>
 </ul>
 
-<h2>1.5.0</h2>
+<h2>1.5.1 (2022-07-14)</h2>
+<h3>Corrections d'anomalies</h3>
+<ul class="utd">
+    <li>
+        <span>Dialogue modale</span>
+        <ul>
+            <li>Correction anomalies mineures en mode mobile sur IOS et Android.</li>            
+        </ul>
+    </li>
+</ul>
+
+<h2>1.5.0 (2022-05-31)</h2>
 <p>Première version avec distribution officielle.</p>
 
 <style>
