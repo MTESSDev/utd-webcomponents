@@ -40,7 +40,7 @@
 <div class="mb-32">
     <utd-accordeon id="exempleAccordeon3" class="mb-32">
         <span slot="titre">
-            Exemple d'utilisation 3
+            Exemple d'utilisation 3 avec un titre long long long
         </span>   
         <span slot="contenu">
             <p>Ici un texte incroyable.</p>

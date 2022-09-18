@@ -288,10 +288,7 @@ export const traitementEnCours = (function () {
                     element.innerHTML += htmlTraitementEnCours;
                 }
 
-                //Si aucun overlay on désactive le bouton
-                if (!avecOverlay) {
-                    element.disabled = true;
-                }
+                element.disabled = true;
             }
             else {
                 //TODO éventuellement implanter traitement pour autres éléments que des boutons?

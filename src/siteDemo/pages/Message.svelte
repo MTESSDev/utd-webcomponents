@@ -147,7 +147,7 @@
 
 <h4>Retour</h4>
 <p>Une promesse javascript dont le résultat contiendra une chaîne de caractère contenant le raison de fermeture du message. Les valeurs possibles sont : </p>
-<ul class="utd-liste">
+<ul class="utd">
     <li><span class="utd-emphase">primaire</span>, si le bouton primaire a été cliqué.</li>
     <li><span class="utd-emphase">secondaire</span>, si le bouton secondaire a été cliqué.</li>
     <li><span class="utd-emphase">clickBackdrop</span>, si l'utilisateur a cliqué dans le backdrop afin de fermer le message.</li>

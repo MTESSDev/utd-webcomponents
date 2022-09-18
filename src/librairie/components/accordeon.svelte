@@ -47,7 +47,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
         {/if}
         <slot name="titre" />      
       </span>
-      <span class="utd-icone-svg {afficher ? 'moins' : 'plus'} md"></span>
+      <span class="utd-icone-svg {afficher ? 'moins' : 'plus'}"></span>
     </button>
   </div>
 

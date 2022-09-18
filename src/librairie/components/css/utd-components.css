@@ -101,6 +101,11 @@ utd-accordeon {
   display: block;
 }
 
+.utd-accordeon .utd-icone-svg.plus, .utd-accordeon .utd-icone-svg.moins {
+  min-width: 16px;
+  height: 16px;
+}
+
 .utd-accordeon .entete button {
   font-family: 'OpenSans-SemiBold';
   font-size: 16px;
@@ -109,24 +114,17 @@ utd-accordeon {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px 15px 15px;  
+  padding: 15px;  
   background-color: var(--couleur-fond-gris);
   border: 1px solid var(--couleur-fond-gris);
 }
-
-.utd-accordeon .entete button:hover, .utd-accordeon .entete button:focus {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px 15px 15px;  
-  background-color: var(--couleur-fond-gris);
-  border: 1px solid var(--couleur-fond-gris);
-}
-
-
 .utd-accordeon .entete button:hover, .utd-accordeon.ouvert .entete button, .utd-accordeon.ouvert .contenu {
-  border: 1px solid #c4c8ce;
+  border: 1px solid #c5cad2;
+}
+
+.utd-accordeon .entete button .titre {
+  text-align: left;
+  margin-right: 16px;
 }
 
 .utd-accordeon .contenu {
@@ -145,14 +143,8 @@ utd-accordeon {
 .utd-accordeon .entete button:focus {
   outline: 2px solid #89bce5;
   border: 2px solid #5b6476;
-  padding: 14px 18px 14px 15px;
-  margin-left: -1px;
-  margin-bottom: 2px;
+  padding: 14px 14px 14px 14px;  
 }
-
-
-
-/* Feuille de style pour les webcomponents utd. Les styles ici s'applique à ce qui est dans le ShadowDOM des components. */
 
 /*====================================================================================================
   -50- utd-infobulle

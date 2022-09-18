@@ -3,6 +3,7 @@
     import {active} from 'tinro';
     import Principe from './pages/Principe.svelte'; 
     import Utilisation from './pages/Utilisation.svelte'; 
+    import Versions from './pages/Versions.svelte'; 
     import Accordeon from './pages/Accordeon.svelte'; 
     import Infobulle from './pages/Infobulle.svelte'; 
     import Avis from './pages/Avis.svelte'; 
@@ -31,7 +32,7 @@
         <div id="javascriptDesactive" class="fureteur-desuet">
             <div class="utd-container" role="alert" aria-atomic="true">
                 <div class="icone">
-                    <img alt="Icône avertissement" src="../images/utd-sprite.svg?v=1.6.0#ico-avertissement" width="28" height="26" aria-hidden="true">
+                    <img alt="Icône avertissement" src="../images/utd-sprite.svg?v=1.6.1#ico-avertissement" width="28" height="26" aria-hidden="true">
                 </div>
                 <div class="texte">
                     Activez JavaScript dans votre navigateur pour que Système de design MTESS fonctionne correctement.
@@ -45,7 +46,7 @@
                 <div class="conteneur-sections">
                     <div class="section-gauche signature-gouvernement" lang="fr">
                         <a href="/">
-                            <img alt="Signature du gouvernement du Québec. Accédez à Système de design MTESS." src="../images/utd-sprite.svg?v=1.6.0#QUEBEC_blanc">
+                            <img alt="Signature du gouvernement du Québec. Accédez à Système de design MTESS." src="../images/utd-sprite.svg?v=1.6.1#QUEBEC_blanc">
                         </a>
                     </div>
                     <div class="section-centre">
@@ -96,6 +97,7 @@
                     <div slot="contenu">
                         <ul>
                             {#if $router.path.indexOf('/composants') >= 0}                                
+                                <li><a href="/composants/versions" tinro-ignore use:active exact>Historique des versions</a></li>
                                 <li><a href="/composants/accordeon" tinro-ignore use:active exact>Accordeon</a></li>
                                 <li><a href="/composants/avis" tinro-ignore use:active exact>Avis</a></li>
                                 <li><a href="/composants/boutons" tinro-ignore use:active exact>Boutons</a></li>
@@ -120,7 +122,8 @@
                     <Route path="/base" redirect="/base/principe" ></Route>
                     <Route path="/base/principe" ><Principe /></Route>
                     <Route path="/base/utilisation" ><Utilisation /></Route>
-                    <Route path="/composants" redirect="/composants/accordeon" ></Route>
+                    <Route path="/composants" redirect="/composants/versions" ></Route>
+                    <Route path="/composants/versions" ><Versions /></Route>
                     <Route path="/composants/accordeon" ><Accordeon /></Route>
                     <Route path="/composants/avis" ><Avis /></Route>
                     <Route path="/composants/boutons" ><Boutons /></Route>
