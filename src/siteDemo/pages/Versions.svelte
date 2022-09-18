@@ -4,7 +4,7 @@
 
 <h1>Historique des versions</h1>
 
-<h2>1.6.1</h2>
+<h2>1.6.1 (2022-09-18)</h2>
 <h3>Corrections d'anomalies</h3>
 <ul class="utd">
     <li>
