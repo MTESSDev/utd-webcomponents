@@ -98,10 +98,10 @@
                     <div slot="contenu">
                         <ul>
                             {#if $router.path.indexOf('/composants') >= 0}                                
-                                
+                                <utd-menu-secondaire-element label="Affichage de contenu" href="/base"></utd-menu-secondaire-element>
                                 <li><a href="/composants/versions" tinro-ignore use:active exact>Historique des versions</a></li>
                                 <li>
-                                    <a href="#groupe0" role="button" aria-expanded="true" aria-controls="groupe0" class=""><span class="groupe">Demande</span><span aria-hidden="true" class="utd-icone-svg md chevron-bleu-piv"></span></a>
+                                    <a href="#groupe0" role="button" aria-expanded="true" aria-controls="groupe0" class=""><span class="groupe">Affichage de contenu</span><span aria-hidden="true" class="utd-icone-svg md chevron-bleu-piv"></span></a>
                                     <ul>
                                         <li><a href="/composants/affichagecontenu/accordeon" tinro-ignore use:active >Accordeon</a></li>
                                         <li><a href="/composants/affichagecontenu/avis" tinro-ignore use:active >Avis</a></li>   

@@ -11,7 +11,7 @@
   const srTexteLabelMenu = srLabelMenu  
     ? srLabelMenu
     : lang === "fr"
-    ? "Menu principal"
+    ? "Menu secondaire"
     : "Secondary menu"
 
   function toggleAfficher(){

@@ -309,9 +309,11 @@ header {
 }
 
 .menu-secondaire li a{
-    display: block;    
+    display: flex;    
     color: var(--couleur-liens);
     text-decoration: none;
+    justify-content: space-between;
+    align-items: center;
     padding: 8px 32px 8px 24px;
 }
 
