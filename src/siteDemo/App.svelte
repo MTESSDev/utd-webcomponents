@@ -8,6 +8,7 @@
     import Infobulle from './pages/Infobulle.svelte'; 
     import Avis from './pages/Avis.svelte'; 
     import Boutons from './pages/Boutons.svelte'; 
+    import Champs from './pages/Champs.svelte'; 
     import HautPage from './pages/HautPage.svelte'; 
     import Message from './pages/Message.svelte'; 
     import Dialogue from './pages/Dialogue.svelte'; 
@@ -32,7 +33,7 @@
         <div id="javascriptDesactive" class="fureteur-desuet">
             <div class="utd-container" role="alert" aria-atomic="true">
                 <div class="icone">
-                    <img alt="Icône avertissement" src="../images/utd-sprite.svg?v=1.6.1#ico-avertissement" width="28" height="26" aria-hidden="true">
+                    <img alt="Icône avertissement" src="/images/utd-sprite.svg?v=1.6.1#ico-avertissement" width="28" height="26" aria-hidden="true">
                 </div>
                 <div class="texte">
                     Activez JavaScript dans votre navigateur pour que Système de design MTESS fonctionne correctement.
@@ -40,13 +41,13 @@
             </div>
         </div>
         </noscript>
-        <img id="pivLogoGouvernementPrint" alt="Logo du gouvernement du Québec." src="../images/quebecPrint.gif" width="199" height="60">
+        <img id="pivLogoGouvernementPrint" alt="Logo du gouvernement du Québec." src="/images/quebecPrint.gif" width="199" height="60">
         <div class="piv piv-entete">
             <div class="utd-container">
                 <div class="conteneur-sections">
                     <div class="section-gauche signature-gouvernement" lang="fr">
                         <a href="/">
-                            <img alt="Signature du gouvernement du Québec. Accédez à Système de design MTESS." src="../images/utd-sprite.svg?v=1.6.1#QUEBEC_blanc">
+                            <img alt="Signature du gouvernement du Québec. Accédez à Système de design MTESS." src="/images/utd-sprite.svg?v=1.6.1#QUEBEC_blanc">
                         </a>
                     </div>
                     <div class="section-centre">
@@ -97,16 +98,23 @@
                     <div slot="contenu">
                         <ul>
                             {#if $router.path.indexOf('/composants') >= 0}                                
+                                
                                 <li><a href="/composants/versions" tinro-ignore use:active exact>Historique des versions</a></li>
-                                <li><a href="/composants/accordeon" tinro-ignore use:active exact>Accordeon</a></li>
-                                <li><a href="/composants/avis" tinro-ignore use:active exact>Avis</a></li>
-                                <li><a href="/composants/boutons" tinro-ignore use:active exact>Boutons</a></li>
-                                <li><a href="/composants/dialogue" tinro-ignore use:active exact>Dialogue modal</a></li>
-                                <li><a href="/composants/hautpage" tinro-ignore use:active exact>Haut de page</a></li>
-                                <li><a href="/composants/infobulle" tinro-ignore use:active exact>Infobulle</a></li>
-                                <li><a href="/composants/message" tinro-ignore use:active exact>Message</a></li>
-                                <li><a href="/composants/notifications" tinro-ignore use:active exact>Notifications</a></li>
-                                <li><a href="/composants/traitementencours" tinro-ignore use:active exact>Traitement en cours</a></li>
+                                <li>
+                                    <a href="#groupe0" role="button" aria-expanded="true" aria-controls="groupe0" class=""><span class="groupe">Demande</span><span aria-hidden="true" class="utd-icone-svg md chevron-bleu-piv"></span></a>
+                                    <ul>
+                                        <li><a href="/composants/affichagecontenu/accordeon" tinro-ignore use:active >Accordeon</a></li>
+                                        <li><a href="/composants/affichagecontenu/avis" tinro-ignore use:active >Avis</a></li>   
+                                    </ul>
+                                </li>
+                                <li><a href="/composants/actions/boutons" tinro-ignore use:active >Boutons</a></li>
+                                <li><a href="/composants/actions/champs" tinro-ignore use:active >Champs</a></li>
+                                <li><a href="/composants/actions/dialogue" tinro-ignore use:active >Dialogue modal</a></li>
+                                <li><a href="/composants/navigation/hautpage" tinro-ignore use:active >Haut de page</a></li>
+                                <li><a href="/composants/affichagecontenu/infobulle" tinro-ignore use:active >Infobulle</a></li>
+                                <li><a href="/composants/actions/message" tinro-ignore use:active >Message</a></li>
+                                <li><a href="/composants/actions/notifications" tinro-ignore use:active >Notifications</a></li>
+                                <li><a href="/composants/actions/traitementencours" tinro-ignore use:active >Traitement en cours</a></li>
                             {:else}                                    
                                 <li><a href="/base/principe" tinro-ignore use:active exact>Principe</a></li>
                                 <li><a href="/base/utilisation" tinro-ignore use:active exact>Utilisation</a></li>
@@ -122,17 +130,27 @@
                     <Route path="/base" redirect="/base/principe" ></Route>
                     <Route path="/base/principe" ><Principe /></Route>
                     <Route path="/base/utilisation" ><Utilisation /></Route>
-                    <Route path="/composants" redirect="/composants/versions" ></Route>
-                    <Route path="/composants/versions" ><Versions /></Route>
-                    <Route path="/composants/accordeon" ><Accordeon /></Route>
-                    <Route path="/composants/avis" ><Avis /></Route>
-                    <Route path="/composants/boutons" ><Boutons /></Route>
-                    <Route path="/composants/hautpage" ><HautPage /></Route>
-                    <Route path="/composants/infobulle" ><Infobulle /></Route>
-                    <Route path="/composants/dialogue" ><Dialogue /></Route>
-                    <Route path="/composants/message" ><Message /></Route>
-                    <Route path="/composants/notifications" ><Notifications /></Route>
-                    <Route path="/composants/traitementencours" ><TraitementEnCours /></Route>
+                    <Route path="/composants/*">
+                        <Route path="/versions" ><Versions /></Route>
+                        <Route path="/actions/*">
+                            <Route path="/boutons" ><Boutons /></Route>
+                            <Route path="/dialogue" ><Dialogue /></Route>
+                            <Route path="/message" ><Message /></Route>                            
+                            <Route path="/notifications" ><Notifications /></Route>
+                            <Route path="/traitementencours" ><TraitementEnCours /></Route>
+                        </Route>
+                        <Route path="/affichagecontenu/*">
+                            <Route path="/accordeon" ><Accordeon /></Route>
+                            <Route path="/avis" ><Avis /></Route>
+                            <Route path="/infobulle" ><Infobulle /></Route>    
+                        </Route>
+                        <Route path="/formulaire/*">                    
+                            <Route path="/champs" ><Champs /></Route>
+                        </Route>
+                        <Route path="/navigation/*">                    
+                            <Route path="/hautpage" ><HautPage /></Route>
+                        </Route>                            
+                    </Route>
                 </main>        
             </div>
         </div>        

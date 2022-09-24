@@ -923,7 +923,7 @@ label, .label {
     line-height: 1.5;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid #858b93;
+    border: 1px solid #808A9D;
     border-radius: 0;
 }
 
@@ -940,7 +940,7 @@ textarea.utd-form-control{
 input.utd-form-control:focus,
 textarea.utd-form-control:focus
 select.utd-form-control:focus {
-    outline: 3px solid #89bce5;
+    outline: 2px solid #89bce5;
     border: 2px solid #5b6476;
 }
 
