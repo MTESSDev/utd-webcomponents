@@ -15,7 +15,7 @@
  
   onMount(() => {
     debugger;
-    possedeEnfants = !!thisComponent.querySelector('MenuSecondaireElement')
+    possedeEnfants = !!thisComponent.querySelector('utd-menu-secondaire-element')
     
   
     
