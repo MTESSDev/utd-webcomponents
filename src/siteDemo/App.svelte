@@ -117,8 +117,8 @@
                                     <utd-menu-vertical-item label="Haut de page" href="/composants/navigation/hautpage"></utd-menu-vertical-item>
                                 </utd-menu-vertical-item>
                             {:else}                                    
-                                <div role="listitem"><a href="/base/principe">Principe</a></div>
-                                <div role="listitem"><a href="/base/utilisation">Utilisation</a></div>
+                                <utd-menu-vertical-item href="/base/principe" label="Principe"></utd-menu-vertical-item>
+                                <utd-menu-vertical-item href="/base/utilisation" label="Utilisation"></utd-menu-vertical-item>
                             {/if}
                         </div>
                 </MenuSecondaire> 

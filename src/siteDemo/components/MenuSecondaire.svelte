@@ -26,7 +26,7 @@
 
 </script>
 <div class="menu-secondaire" class:visible={afficher}>
-  <button class="toggle" aria-haspopup="true"  aria-controls="{idMenu}" on:click={toggleAfficher}>
+  <button type="button" class="toggle" aria-haspopup="true" aria-controls="{idMenu}" on:click={toggleAfficher}>
     <span>{titre}</span>
     <span aria-hidden="true" class="utd-icone-svg chevron-bleu-piv"/>
     <span class="utd-sr-only">
