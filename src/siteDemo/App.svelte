@@ -96,34 +96,31 @@
             <div id="colonneGauche" class="utd">                
                 <MenuSecondaire titre="{$router.path.indexOf('/composants') >= 0 ? 'Liste des composants' : 'Liste des éléments de base'}">
                     <div slot="contenu">
-                        <ul>
                             {#if $router.path.indexOf('/composants') >= 0}                                
-                                <li><a href="/composants/versions" tinro-ignore use:active exact>Historique des versions</a></li>
-                                <utd-menu-secondaire-element label="Affichage de contenu">                                
-                                    <utd-menu-secondaire-element href="/composants/affichagecontenu/accordeon">Accordéon</utd-menu-secondaire-element>
-                                    <utd-menu-secondaire-element href="/composants/affichagecontenu/avis">Avis</utd-menu-secondaire-element>
-                                </utd-menu-secondaire-element>
-                                <li>
-                                    <a href="#groupe0" role="button" aria-expanded="true" aria-controls="groupe0" class=""><span class="groupe">Affichage de contenu</span><span aria-hidden="true" class="utd-icone-svg md chevron-bleu-piv"></span></a>
-                                    <ul>
-                                        <li><a href="/composants/affichagecontenu/accordeon" tinro-ignore use:active >Accordeon</a></li>
-                                        <li><a href="/composants/affichagecontenu/avis" tinro-ignore use:active >Avis</a></li>   
-                                    </ul>
-                                </li>
-                                <li><a href="/composants/actions/boutons" tinro-ignore use:active >Boutons</a></li>
-                                <li><a href="/composants/actions/champs" tinro-ignore use:active >Champs</a></li>
-                                <li><a href="/composants/actions/dialogue" tinro-ignore use:active >Dialogue modal</a></li>
-                                <li><a href="/composants/navigation/hautpage" tinro-ignore use:active >Haut de page</a></li>
-                                <li><a href="/composants/affichagecontenu/infobulle" tinro-ignore use:active >Infobulle</a></li>
-                                <li><a href="/composants/actions/message" tinro-ignore use:active >Message</a></li>
-                                <li><a href="/composants/actions/notifications" tinro-ignore use:active >Notifications</a></li>
-                                <li><a href="/composants/actions/traitementencours" tinro-ignore use:active >Traitement en cours</a></li>
+                                <utd-menu-vertical-item href="/composants/versions" label="Historique des versions"></utd-menu-vertical-item>
+                                <utd-menu-vertical-item label="Action">                                
+                                    <utd-menu-vertical-item label="Boutons" href="/composants/actions/boutons"></utd-menu-vertical-item>
+                                    <utd-menu-vertical-item label="Dialogue modal" href="/composants/actions/dialogue"></utd-menu-vertical-item>
+                                    <utd-menu-vertical-item label="Message" href="/composants/actions/message"></utd-menu-vertical-item>
+                                    <utd-menu-vertical-item label="Notifications" href="/composants/actions/notifications"></utd-menu-vertical-item>
+                                    <utd-menu-vertical-item label="Traitement en cours" href="/composants/actions/traitementencours"></utd-menu-vertical-item>
+                                </utd-menu-vertical-item>
+                                <utd-menu-vertical-item label="Affichage de contenu">                                
+                                    <utd-menu-vertical-item label="Accordéon" href="/composants/affichagecontenu/accordeon"></utd-menu-vertical-item>
+                                    <utd-menu-vertical-item label="Avis" href="/composants/affichagecontenu/avis"></utd-menu-vertical-item>
+                                    <utd-menu-vertical-item label="Infobulle" href="/composants/affichagecontenu/infobulle"></utd-menu-vertical-item>
+                                </utd-menu-vertical-item>
+                                <utd-menu-vertical-item label="Formulaire">    
+                                    <utd-menu-vertical-item label="Champs" href="/composants/formulaire/champs"></utd-menu-vertical-item>                            
+                                </utd-menu-vertical-item>
+                                <utd-menu-vertical-item label="Navigation">                                
+                                    <utd-menu-vertical-item label="Haut de page" href="/composants/navigation/hautpage"></utd-menu-vertical-item>
+                                </utd-menu-vertical-item>
                             {:else}                                    
-                                <li><a href="/base/principe" tinro-ignore use:active exact>Principe</a></li>
-                                <li><a href="/base/utilisation" tinro-ignore use:active exact>Utilisation</a></li>
+                                <div role="listitem"><a href="/base/principe">Principe</a></div>
+                                <div role="listitem"><a href="/base/utilisation">Utilisation</a></div>
                             {/if}
-                        </ul>
-                    </div>          
+                        </div>
                 </MenuSecondaire> 
             </div>
         
@@ -133,6 +130,7 @@
                     <Route path="/base" redirect="/base/principe" ></Route>
                     <Route path="/base/principe" ><Principe /></Route>
                     <Route path="/base/utilisation" ><Utilisation /></Route>
+                    <Route path="/composants" redirect="/composants/versions"></Route>
                     <Route path="/composants/*">
                         <Route path="/versions" ><Versions /></Route>
                         <Route path="/actions/*">
