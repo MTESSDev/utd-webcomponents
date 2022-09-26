@@ -9,10 +9,11 @@
   export let href = ''
   export let estactif = 'false'
   export let afficher = 'false'
+  export let animer = 'true'
 
   let possedeEnfants = false
   let niveau = 1
-
+  
   const thisComponent = get_current_component()
   const idSousMenu = Utils.genererId()
  
@@ -41,7 +42,9 @@
 
         if(estactif === 'true'){
           elementParent.setAttribute('estactif', 'true')
+          elementParent.setAttribute('animer', 'false')
           elementParent.setAttribute('afficher', 'true')
+          elementParent.setAttribute('animer', 'true')
         }
         elementParent = elementParent.parentElement
     }
@@ -57,7 +60,7 @@
       <span aria-hidden="true" class="utd-icone-svg chevron-bleu-piv"/>
     </a>
     {#if afficher === 'true'}
-      <div id="{idSousMenu}" role="menu" class="sous-menu" transition:slide="{{duration:250}}">
+      <div id="{idSousMenu}" role="menu" class="sous-menu" transition:slide="{{duration: animer ==='true' ? 250: 0}}">
         <slot></slot>
       </div>
     {/if}
