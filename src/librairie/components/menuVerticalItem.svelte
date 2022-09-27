@@ -65,7 +65,7 @@
       </div>
     {/if}
   {:else}
-    <a href="{href}" role="menuitem">
+    <a href="{href}" role="menuitem" aria-current="{estactif === 'true' ? 'page' : null}">
       <span>{label}</span>
     </a>    
   {/if}            
