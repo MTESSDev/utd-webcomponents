@@ -3,7 +3,7 @@
   import { onMount } from "svelte";
   import { Utils } from './utils.js'
   import { slide } from "svelte/transition"
-  import { get_current_component } from "svelte/internal"  
+  import { element, get_current_component } from "svelte/internal"  
 
   export let label = ''
   export let href = ''
@@ -29,7 +29,7 @@
 
   function toggleFocus(){
     if(focus === 'true'){
-      thisComponent.querySelector('a').focus()
+      thisComponent.shadowRoot.querySelector('a').focus()
       focus = 'false'
     }
   }
@@ -65,30 +65,109 @@
 
   function onKeyDown(e) {
     console.log(e.keyCode)
+    const parent = thisComponent.parentElement
+
     switch(e.keyCode) {
       //Flèche gauche 
       case 37:
+        if(possedeEnfants){
+          afficher = 'false'
+            
+          const menuPrecedent = thisComponent.previousElementSibling
+          if(menuPrecedent){
+            menuPrecedent.setAttribute('focus', 'true')              
+          }
+        } else {
+          if(estMenuItem(parent)){
+            parent.setAttribute('afficher', 'false')
+            parent.setAttribute('focus', 'true')
+          }
+        }
         e.preventDefault()
         break;
       //Flèche haut 
       case 38:
+        accederMenuPrecedent(true)
         e.preventDefault()
 			  break;
       //Flèche droite
       case 39:
-        if(possedeEnfants && afficher === 'false'){
-          afficher=true                            
-          thisComponent.querySelector('utd-menu-vertical-item').setAttribute('focus', 'true')
+        if(possedeEnfants){
+          if(afficher === 'false'){
+            afficher = 'true'                            
+            thisComponent.querySelector('utd-menu-vertical-item').setAttribute('focus', 'true')
+          } else {
+            accederMenuSuivant()
+          }
+        } else {
+          accederMenuSuivant()
         }
         e.preventDefault()
         break;
       //Flèche bas
       case 40:
+        accederMenuSuivant(true)
         e.preventDefault()
         break;        
 		 }
 	}
   
+  function accederMenuSuivant(doitBoucler){
+    const parent = thisComponent.parentElement
+    let prochainMenu
+
+    afficher = 'false'
+
+    if(!doitBoucler && estMenuItem(parent)){
+        parent.setAttribute('afficher', 'false')
+        prochainMenu = parent.nextElementSibling
+    } else {
+      prochainMenu = thisComponent.nextElementSibling
+    }
+
+    if(estMenuItem(prochainMenu)){            
+      prochainMenu.setAttribute('focus', 'true')
+    } else {
+      if(doitBoucler){
+        parent.querySelector('utd-menu-vertical-item').setAttribute('focus', 'true')
+      } else {
+        parent.parentElement.querySelector('utd-menu-vertical-item').setAttribute('focus', 'true')
+      }      
+    }
+  }
+
+  function accederMenuPrecedent(doitBoucler){
+    const parent = thisComponent.parentElement
+    let menuPrecedent
+
+    afficher = 'false'
+
+    if(!doitBoucler && estMenuItem(parent)){
+        parent.setAttribute('afficher', 'false')
+        menuPrecedent = parent.previousElementSibling
+    } else {
+      menuPrecedent = thisComponent.previousElementSibling
+    }
+
+    if(estMenuItem(menuPrecedent)){            
+      menuPrecedent.setAttribute('focus', 'true')
+    } else {
+      let elementDepart
+      
+      if(doitBoucler){
+        elementDepart = parent
+      } else {
+        elementDepart = parent.parentElement        
+      }      
+      const elements = elementDepart.children
+      elements[elements.length - 1].setAttribute('focus', 'true')
+    }
+  }
+
+
+  function estMenuItem(element){
+    return element && element.tagName.toLowerCase() === 'utd-menu-vertical-item'
+  }
 </script>
 <div class="utd-menu-vertical-item niv{niveau} {afficher === 'true' ? 'visible' : ''} {estactif === 'true' ? 'active' : ''}">
   {#if possedeEnfants}    
@@ -102,7 +181,7 @@
       </div>
     {/if}
   {:else}
-    <a href="{href}" role="menuitem" aria-current="{estactif === 'true' ? 'page' : null}">
+    <a href="{href}" role="menuitem" aria-current="{estactif === 'true' ? 'page' : null}" on:keydown={onKeyDown}>
       <span>{label}</span>
     </a>    
   {/if}            
