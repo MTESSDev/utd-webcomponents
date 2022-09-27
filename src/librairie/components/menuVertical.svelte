@@ -1,45 +1,41 @@
 <svelte:options tag="utd-menu-vertical" />
 <script>
   import { Utils } from '../../librairie/components/utils.js'
-  import { onMount } from "svelte";
 
   export let titre = ""
   export let lang = "fr"
-  export let srLabelMenu = ""
+  export let titrevisible = "true"
 
   let afficher = false
 
+  titre = titre || lang === 'fr' ? 'Menu secondaire' : 'Secondary menu'
+
   const idMenu = Utils.genererId()
-  const srTexteLabelMenu = srLabelMenu  
-    ? srLabelMenu
-    : lang === "fr"
-    ? "Menu secondaire"
-    : "Secondary menu"
+  const idTitreMenu = Utils.genererId()
+  const srTexteSortirMenu = lang === "fr" ? "Appuyez sur la touche Échappe pour sortir du menu." : "Press ESC key to exit menu."
 
-
-  onMount(() => {
-    console.log('mount menu secondaire')
-  })
+    //TODO implémnenter gestion langue (aller chercher dans balise html? lang=?)
+    //TODO implémenter navigation au clavier voir (https://www.w3.org/WAI/ARIA/apg/example-index/menubar/menubar-navigation et https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/menu_role)
 
   function toggleAfficher(){
     afficher = !afficher
   }
 
 </script>
-<div class="menu-secondaire" class:visible={afficher}>
-  <button type="button" class="toggle" aria-haspopup="true" aria-controls="{idMenu}" on:click={toggleAfficher}>
+<nav class="utd-menu-vertical" class:visible={afficher} aria-labelledby="{idTitreMenu}">
+  <a role="button" href="#{idMenu}" class="toggle" aria-controls="{idMenu}" on:click|preventDefault={toggleAfficher}>
     <span>{titre}</span>
     <span aria-hidden="true" class="utd-icone-svg chevron-bleu-piv"/>
     <span class="utd-sr-only">
-        Appuyez sur la touche Échappe pour sortir du menu.
+        {srTexteSortirMenu}
     </span>
-  </button>
-  <nav id={idMenu} class="utd-menu-vertical" class:visible={afficher} aria-label="{srTexteLabelMenu}">
-    <div role="menubar">
-      <slot name="contenu" />
-    </div>    
-  </nav>  
-</div>
+  </a>
+
+  <span class="titre {titrevisible === 'true' ? '' : 'utd-sr-only'}" id="{idTitreMenu}">{titre}</span>
+  <div id={idMenu} role="menu" class="menu" class:visible={afficher}>
+    <slot></slot>
+  </div>  
+</nav>
 <link rel='stylesheet' href='/css/utd-webcomponents.min.css'>
 
 <style>

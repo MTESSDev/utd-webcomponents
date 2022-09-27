@@ -10,6 +10,7 @@
   export let estactif = 'false'
   export let afficher = 'false'
   export let animer = 'true'
+  export let focus = 'false'
 
   let possedeEnfants = false
   let niveau = 1
@@ -22,6 +23,16 @@
     niveau = obtenirNiveau()
     possedeEnfants = !!thisComponent.querySelector('utd-menu-vertical-item')
   })
+
+  // Watch sur la prop focus
+  $: toggleFocus(focus) 
+
+  function toggleFocus(){
+    if(focus === 'true'){
+      thisComponent.querySelector('a').focus()
+      focus = 'false'
+    }
+  }
 
   function toggleAfficher(){
     afficher = afficher === 'true' ? 'false' : 'true'
@@ -51,11 +62,37 @@
 
     return niveau
   }
+
+  function onKeyDown(e) {
+    console.log(e.keyCode)
+    switch(e.keyCode) {
+      //Flèche gauche 
+      case 37:
+        e.preventDefault()
+        break;
+      //Flèche haut 
+      case 38:
+        e.preventDefault()
+			  break;
+      //Flèche droite
+      case 39:
+        if(possedeEnfants && afficher === 'false'){
+          afficher=true                            
+          thisComponent.querySelector('utd-menu-vertical-item').setAttribute('focus', 'true')
+        }
+        e.preventDefault()
+        break;
+      //Flèche bas
+      case 40:
+        e.preventDefault()
+        break;        
+		 }
+	}
   
 </script>
 <div class="utd-menu-vertical-item niv{niveau} {afficher === 'true' ? 'visible' : ''} {estactif === 'true' ? 'active' : ''}">
   {#if possedeEnfants}    
-    <a role="menuitem" href="{href}" aria-expanded="{afficher}" aria-controls="{idSousMenu}" on:click|preventDefault={toggleAfficher}>
+    <a role="menuitem" href="{href}" aria-expanded="{afficher}" aria-haspopup="menu" aria-controls="{idSousMenu}" on:click|preventDefault={toggleAfficher} on:keydown={onKeyDown}>
       <span>{label}</span>
       <span aria-hidden="true" class="utd-icone-svg chevron-bleu-piv"/>
     </a>

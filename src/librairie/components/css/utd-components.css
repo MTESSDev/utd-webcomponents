@@ -34,20 +34,28 @@ utd-menu-vertical{
   display: block;
 }
 
-.utd-menu-vertical .toggle{
-  font-family: 'OpenSans-Regular';
-  display:flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 0;
-  background-color: var(--couleur-bleu-pale);
-  padding: 8px;
-  width: 100%;
-  text-align: left;
-  color: var(--couleur-liens);
-}
 .utd-menu-vertical{
   border-bottom: 1px solid var(--couleur-filet-secondaire);
+  font-size: 14px;
+}
+
+.utd-menu-vertical .titre{
+  display: block;
+  font-family: OpenSans-Bold;
+  color: var(--couleur-texte-base);
+  padding: 16px 32px 16px 8px;
+}
+
+.utd-menu-vertical:not(.visible) .utd-icone-svg.chevron-bleu-piv{
+  transform: rotate(-180deg);
+}
+
+.utd-menu-vertical a.toggle{
+  display:none;
+}
+
+.utd-menu-vertical .menu{
+  display: block;
 }
 
 .utd-menu-vertical-item .sous-menu{
@@ -71,7 +79,6 @@ utd-menu-vertical{
 
 
 .utd-menu-vertical-item a{
-  font-size: 14px;
   line-height: 20px;
   display: flex;    
   color: var(--couleur-liens);
@@ -86,9 +93,9 @@ utd-menu-vertical{
 }
 
 
-.utd-menu-vertical-item.niv1 a:hover, .utd-menu-vertical-item.niv1 a:focus{    
+.utd-menu-vertical a.toggle:hover, .utd-menu-vertical-item.niv1 a:hover{    
   color: var(--couleur-liens);
-  background-color: #EDF2F7;
+  background-color: #EDF2F7!important;
 }
 
 .utd-menu-vertical-item:not(.niv1) a:hover, .utd-menu-vertical-item:not(.niv1) a:focus{    
@@ -105,32 +112,51 @@ utd-menu-vertical{
   background-color: var(--couleur-bleu-pale);
 }
 
-@media (min-width: 992px) {
-  .menu-secondaire .toggle{
-      display:none;    
-  }    
-  .menu-secondaire .menu {
-      display: block;
-  }
-
-  .menu-secondaire ul {
-      padding: 0;
-      background-color: inherit;
-  }
-
-  .menu-secondaire li a{    
-      padding: 16px 8px;
-      border-top: 1px solid var(--couleur-filet-secondaire);
-      background-color: transparent;
-  }
-      
-  .menu-secondaire li:last-child a{    
-      border-bottom: 1px solid var(--couleur-filet-secondaire);
+@media (max-width: 991px) {
+  .utd-menu-vertical{
+    border-bottom: 0;
+    background-color: var(--couleur-bleu-pale);    
+    font-size: 16px;
   }
   
-  .menu-secondaire li a:hover, .menu-secondaire li a:focus{    
-      background-color: var(--couleur-hover);
+  .utd-menu-vertical a.toggle{
+    font-family: 'OpenSans-SemiBold';
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 0;
+    text-decoration: none!important;
+    background-color: var(--couleur-bleu-pale);
+    padding: 16px 8px;
+    width: 100%;
+    text-align: left;
+    color: var(--couleur-liens);
   }
+
+  .utd-menu-vertical .titre{
+    display:none;
+  }
+  .utd-menu-vertical .menu{
+    display: none;
+  }  
+
+  .utd-menu-vertical.visible .menu{
+    display: block;
+  }
+
+  .utd-menu-vertical-item.niv1{
+    border-top: 0;
+  }
+  
+  .utd-menu-vertical-item.niv1 a, .utd-menu-vertical-item.niv2 a{
+    padding-left: 24px;    
+  }
+
+  .utd-menu-vertical a.toggle:hover, .utd-menu-vertical-item.niv1 a:hover{    
+    background-color: var(--couleur-bleu-pale)!important;
+  }
+  
+
 }
 
 
