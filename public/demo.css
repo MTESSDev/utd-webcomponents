@@ -281,58 +281,6 @@ header {
     color: var(--couleur-liens);
 }
 
-.menu-secondaire .menu{
-    display: none;
-}
-.menu-secondaire .menu.visible {
-    display: block;
-    margin-top: 0!important;    
-}
-
-.menu-secondaire:not(.visible) .utd-icone-svg.chevron-bleu-piv{
-    transform: rotate(-180deg);
-}
-
-.menu-secondaire ul{
-    list-style-type: none;
-    padding: 0 0 16px 0;
-    margin: 0;
-    background-color: var(--couleur-bleu-pale);
-}
-
-.menu-secondaire [slot="contenu"] ul {
-    padding-left: 0;
-}
-
-.menu-secondaire [slot="contenu"] ul li {
-    margin-bottom: 0;
-}
-
-.menu-secondaire li a{
-    display: flex;    
-    color: var(--couleur-liens);
-    text-decoration: none;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 32px 8px 24px;
-}
-
-.menu-secondaire li a:hover, .menu-secondaire li a:focus{    
-    background-color: var(--couleur-fond-gris);
-}
-
-
-.menu-secondaire li a.active{    
-    font-family: 'OpenSans-Bold';
-    background-color: var(--couleur-bleu-pale);
-}
-
-.menu-secondaire li a:active{
-    background-color: var(--couleur-bleu-pale);
-}
-
-
-
 @media (min-width: 992px) {
     .menu-secondaire .toggle{
         display:none;    

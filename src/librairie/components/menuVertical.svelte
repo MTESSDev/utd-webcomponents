@@ -1,3 +1,4 @@
+<svelte:options tag="utd-menu-vertical" />
 <script>
   import { Utils } from '../../librairie/components/utils.js'
   import { onMount } from "svelte";
@@ -39,7 +40,7 @@
     </div>    
   </nav>  
 </div>
-
+<link rel='stylesheet' href='/css/utd-webcomponents.min.css'>
 
 <style>
 </style>

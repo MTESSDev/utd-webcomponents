@@ -12,7 +12,6 @@
     import HautPage from './pages/HautPage.svelte'; 
     import Message from './pages/Message.svelte'; 
     import Dialogue from './pages/Dialogue.svelte'; 
-    import MenuSecondaire from './components/MenuSecondaire.svelte'; 
     import Notifications from './pages/Notifications.svelte'; 
     import TraitementEnCours from './pages/TraitementEnCours.svelte'; 
     import {router} from 'tinro';
@@ -94,34 +93,34 @@
     <div class="utd-container">
         <div id="conteneur2Colonnes" class="utd contenu-principal-droite">
             <div id="colonneGauche" class="utd">                
-                <MenuSecondaire titre="{$router.path.indexOf('/composants') >= 0 ? 'Liste des composants' : 'Liste des éléments de base'}">
+                <utd-menu-vertical titre="{$router.path.indexOf('/composants') >= 0 ? 'Liste des composants' : 'Liste des éléments de base'}">
                     <div slot="contenu">
-                            {#if $router.path.indexOf('/composants') >= 0}                                
-                                <utd-menu-vertical-item href="/composants/versions" label="Historique des versions"></utd-menu-vertical-item>
-                                <utd-menu-vertical-item label="Action">                                
-                                    <utd-menu-vertical-item label="Boutons" href="/composants/actions/boutons"></utd-menu-vertical-item>
-                                    <utd-menu-vertical-item label="Dialogue modal" href="/composants/actions/dialogue"></utd-menu-vertical-item>
-                                    <utd-menu-vertical-item label="Message" href="/composants/actions/message"></utd-menu-vertical-item>
-                                    <utd-menu-vertical-item label="Notifications" href="/composants/actions/notifications"></utd-menu-vertical-item>
-                                    <utd-menu-vertical-item label="Traitement en cours" href="/composants/actions/traitementencours"></utd-menu-vertical-item>
-                                </utd-menu-vertical-item>
-                                <utd-menu-vertical-item label="Affichage de contenu">                                
-                                    <utd-menu-vertical-item label="Accordéon" href="/composants/affichagecontenu/accordeon"></utd-menu-vertical-item>
-                                    <utd-menu-vertical-item label="Avis" href="/composants/affichagecontenu/avis"></utd-menu-vertical-item>
-                                    <utd-menu-vertical-item label="Infobulle" href="/composants/affichagecontenu/infobulle"></utd-menu-vertical-item>
-                                </utd-menu-vertical-item>
-                                <utd-menu-vertical-item label="Formulaire">    
-                                    <utd-menu-vertical-item label="Champs" href="/composants/formulaire/champs"></utd-menu-vertical-item>                            
-                                </utd-menu-vertical-item>
-                                <utd-menu-vertical-item label="Navigation">                                
-                                    <utd-menu-vertical-item label="Haut de page" href="/composants/navigation/hautpage"></utd-menu-vertical-item>
-                                </utd-menu-vertical-item>
-                            {:else}                                    
-                                <utd-menu-vertical-item href="/base/principe" label="Principe"></utd-menu-vertical-item>
-                                <utd-menu-vertical-item href="/base/utilisation" label="Utilisation"></utd-menu-vertical-item>
-                            {/if}
-                        </div>
-                </MenuSecondaire> 
+                        {#if $router.path.indexOf('/composants') >= 0}                                
+                            <utd-menu-vertical-item href="/composants/versions" label="Historique des versions"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item label="Action">                                
+                                <utd-menu-vertical-item label="Boutons" href="/composants/actions/boutons"></utd-menu-vertical-item>
+                                <utd-menu-vertical-item label="Dialogue modal" href="/composants/actions/dialogue"></utd-menu-vertical-item>
+                                <utd-menu-vertical-item label="Message" href="/composants/actions/message"></utd-menu-vertical-item>
+                                <utd-menu-vertical-item label="Notifications" href="/composants/actions/notifications"></utd-menu-vertical-item>
+                                <utd-menu-vertical-item label="Traitement en cours" href="/composants/actions/traitementencours"></utd-menu-vertical-item>
+                            </utd-menu-vertical-item>
+                            <utd-menu-vertical-item label="Affichage de contenu">                                
+                                <utd-menu-vertical-item label="Accordéon" href="/composants/affichagecontenu/accordeon"></utd-menu-vertical-item>
+                                <utd-menu-vertical-item label="Avis" href="/composants/affichagecontenu/avis"></utd-menu-vertical-item>
+                                <utd-menu-vertical-item label="Infobulle" href="/composants/affichagecontenu/infobulle"></utd-menu-vertical-item>
+                            </utd-menu-vertical-item>
+                            <utd-menu-vertical-item label="Formulaire">    
+                                <utd-menu-vertical-item label="Champs" href="/composants/formulaire/champs"></utd-menu-vertical-item>                            
+                            </utd-menu-vertical-item>
+                            <utd-menu-vertical-item label="Navigation">                                
+                                <utd-menu-vertical-item label="Haut de page" href="/composants/navigation/hautpage"></utd-menu-vertical-item>
+                            </utd-menu-vertical-item>
+                        {:else}                                    
+                            <utd-menu-vertical-item href="/base/principe" label="Principe"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item href="/base/utilisation" label="Utilisation"></utd-menu-vertical-item>
+                        {/if}
+                    </div>
+                </utd-menu-vertical> 
             </div>
         
             <div id="colonneDroite" class="utd">
