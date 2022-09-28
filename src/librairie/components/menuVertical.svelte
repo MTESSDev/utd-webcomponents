@@ -14,13 +14,16 @@
   const idTitreMenu = Utils.genererId()
   const srTexteSortirMenu = lang === "fr" ? "Appuyez sur la touche Échappe pour sortir du menu." : "Press ESC key to exit menu."
 
-    //TODO implémnenter gestion langue (aller chercher dans balise html? lang=?)
-    //TODO implémenter navigation au clavier voir (https://www.w3.org/WAI/ARIA/apg/example-index/menubar/menubar-navigation et https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/menu_role)
+
+  //TODO implémnenter gestion langue (aller chercher dans balise html? lang=?)
+  
+  // Références pour accessibilité
+  // https://www.w3.org/WAI/ARIA/apg/example-index/menubar/menubar-navigation et https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/menu_role
 
   function toggleAfficher(){
     afficher = !afficher
   }
-
+  
 </script>
 <nav class="utd-menu-vertical" class:visible={afficher} aria-labelledby="{idTitreMenu}">
   <a role="button" href="#{idMenu}" class="toggle" aria-controls="{idMenu}" on:click|preventDefault={toggleAfficher}>

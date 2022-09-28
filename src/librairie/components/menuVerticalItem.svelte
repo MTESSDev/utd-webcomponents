@@ -5,10 +5,14 @@
   import { slide } from "svelte/transition"
   import { element, get_current_component } from "svelte/internal"  
 
+  /* Propriétés "publiques" */
   export let label = ''
   export let href = ''
   export let estactif = 'false'
   export let afficher = 'false'
+
+  /* Propriétés "internes" */
+  export let indextab = '0'
   export let animer = 'true'
   export let focus = 'false'
 
@@ -63,33 +67,49 @@
     return niveau
   }
 
+  function obtenirMenuVertical(){
+    let elementParent = thisComponent.parentElement
+    
+    while (elementParent.tagName.toLowerCase() !== 'utd-menu-vertical') {
+        elementParent = elementParent.parentElement
+    }
+
+    return elementParent
+  }
+
   function onKeyDown(e) {
     console.log(e.keyCode)
     const parent = thisComponent.parentElement
 
     switch(e.keyCode) {
-      //Flèche gauche 
-      case 37:
-        if(possedeEnfants){
-          afficher = 'false'
-            
-          const menuPrecedent = thisComponent.previousElementSibling
-          if(menuPrecedent){
-            menuPrecedent.setAttribute('focus', 'true')              
-          }
-        } else {
-          if(estMenuItem(parent)){
-            parent.setAttribute('afficher', 'false')
-            parent.setAttribute('focus', 'true')
-          }
+      //ESC
+      case 27:
+        if(estMenuItem(parent)){
+          parent.setAttribute('afficher', 'false')
+          parent.setAttribute('focus', 'true')
         }
         e.preventDefault()
         break;
-      //Flèche haut 
+      //ENTER et space
+      case 13:
+      case 32:
+        if(possedeEnfants){
+          if(afficher === 'false'){
+            afficher = 'true'                            
+            thisComponent.querySelector('utd-menu-vertical-item').setAttribute('focus', 'true')
+          }          
+          e.preventDefault()
+        }
+        break;
+        //Flèche gauche et flèche haut
+      case 37:
+        accederMenuPrecedent()
+        e.preventDefault()
+        break;
       case 38:
         accederMenuPrecedent(true)
         e.preventDefault()
-			  break;
+        break;
       //Flèche droite
       case 39:
         if(possedeEnfants){
@@ -107,7 +127,7 @@
       //Flèche bas
       case 40:
         accederMenuSuivant(true)
-        e.preventDefault()
+        e.preventDefault()        
         break;        
 		 }
 	}
@@ -144,7 +164,7 @@
 
     if(!doitBoucler && estMenuItem(parent)){
         parent.setAttribute('afficher', 'false')
-        menuPrecedent = parent.previousElementSibling
+        parent.setAttribute('focus', 'true')
     } else {
       menuPrecedent = thisComponent.previousElementSibling
     }
@@ -152,14 +172,7 @@
     if(estMenuItem(menuPrecedent)){            
       menuPrecedent.setAttribute('focus', 'true')
     } else {
-      let elementDepart
-      
-      if(doitBoucler){
-        elementDepart = parent
-      } else {
-        elementDepart = parent.parentElement        
-      }      
-      const elements = elementDepart.children
+      const elements = parent.children
       elements[elements.length - 1].setAttribute('focus', 'true')
     }
   }
@@ -168,10 +181,27 @@
   function estMenuItem(element){
     return element && element.tagName.toLowerCase() === 'utd-menu-vertical-item'
   }
+
+  function onFocus(){
+    // Tab roving!!! On gère le tabindex des éléments du menu afin que seul l'élément actif puisse être focusable (via tab) de sorte qu'on gère le focus via les flèches du clavier et 
+    // un TAB provoque la sortie du menu.
+    retirerPossibiliteFocusElementsMenu()
+    thisComponent.setAttribute('indextab', '0')
+  }
+
+  function retirerPossibiliteFocusElementsMenu(){
+    const menuVertical = obtenirMenuVertical()
+    const elements = menuVertical.querySelectorAll('utd-menu-vertical-item')
+    elements.forEach(element => {
+      element.setAttribute('indextab', '-1')
+    });
+  }
+
+
 </script>
 <div class="utd-menu-vertical-item niv{niveau} {afficher === 'true' ? 'visible' : ''} {estactif === 'true' ? 'active' : ''}">
   {#if possedeEnfants}    
-    <a role="menuitem" href="{href}" aria-expanded="{afficher}" aria-haspopup="menu" aria-controls="{idSousMenu}" on:click|preventDefault={toggleAfficher} on:keydown={onKeyDown}>
+    <a role="menuitem" href="{href}" aria-expanded="{afficher}" aria-haspopup="menu" aria-controls="{idSousMenu}" tabindex="{indextab}" on:click|preventDefault={toggleAfficher} on:keydown={onKeyDown} on:focus={onFocus}>
       <span>{label}</span>
       <span aria-hidden="true" class="utd-icone-svg chevron-bleu-piv"/>
     </a>
@@ -181,7 +211,7 @@
       </div>
     {/if}
   {:else}
-    <a href="{href}" role="menuitem" aria-current="{estactif === 'true' ? 'page' : null}" on:keydown={onKeyDown}>
+    <a href="{href}" role="menuitem" aria-current="{estactif === 'true' ? 'page' : null}" tabindex="{indextab}" on:keydown={onKeyDown} on:focus={onFocus}>
       <span>{label}</span>
     </a>    
   {/if}            
