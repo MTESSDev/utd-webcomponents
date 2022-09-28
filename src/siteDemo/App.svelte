@@ -8,15 +8,15 @@
     import Infobulle from './pages/Infobulle.svelte'; 
     import Avis from './pages/Avis.svelte'; 
     import Boutons from './pages/Boutons.svelte'; 
-    import Champs from './pages/Champs.svelte'; 
+    import ChampsTexte from './pages/ChampsTexte.svelte'; 
+    import CaseCocher from './pages/CaseCocher.svelte'; 
+    import BoutonRadio from './pages/BoutonRadio.svelte'; 
     import HautPage from './pages/HautPage.svelte'; 
     import Message from './pages/Message.svelte'; 
     import Dialogue from './pages/Dialogue.svelte'; 
     import Notifications from './pages/Notifications.svelte'; 
     import TraitementEnCours from './pages/TraitementEnCours.svelte'; 
     import {router} from 'tinro';
-//    a on:click|preventDefault={() => window.location.href = '/composants/avis'}
-
 </script>
 
 <div class="conteneur-principal">
@@ -110,7 +110,9 @@
                                 <utd-menu-vertical-item label="Infobulle" href="/composants/affichagecontenu/infobulle"></utd-menu-vertical-item>
                             </utd-menu-vertical-item>
                             <utd-menu-vertical-item label="Formulaire">    
-                                <utd-menu-vertical-item label="Champs" href="/composants/formulaire/champs"></utd-menu-vertical-item>                            
+                                <utd-menu-vertical-item label="Bouton radio" href="/composants/formulaire/boutonradio"></utd-menu-vertical-item>                            
+                                <utd-menu-vertical-item label="Case à cocher" href="/composants/formulaire/casecocher"></utd-menu-vertical-item>                            
+                                <utd-menu-vertical-item label="Champs texte et autres" href="/composants/formulaire/champstexte"></utd-menu-vertical-item>                            
                             </utd-menu-vertical-item>
                             <utd-menu-vertical-item label="Navigation">                                
                                 <utd-menu-vertical-item label="Haut de page" href="/composants/navigation/hautpage"></utd-menu-vertical-item>
@@ -145,7 +147,9 @@
                             <Route path="/infobulle" ><Infobulle /></Route>    
                         </Route>
                         <Route path="/formulaire/*">                    
-                            <Route path="/champs" ><Champs /></Route>
+                            <Route path="/boutonradio" ><BoutonRadio /></Route>
+                            <Route path="/casecocher" ><CaseCocher /></Route>
+                            <Route path="/champstexte" ><ChampsTexte /></Route>
                         </Route>
                         <Route path="/navigation/*">                    
                             <Route path="/hautpage" ><HautPage /></Route>
