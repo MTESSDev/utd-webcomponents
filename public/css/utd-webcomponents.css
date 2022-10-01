@@ -938,10 +938,14 @@ label, .label {
 }
 
 /*Redéfinition de Bootstrap*/
-input.utd-form-control[type=search]{
+input.utd-form-control[type="search"]{
     outline-offset: 0;
 }
 
+/* Champs en erreur */
+.utd-form-control[aria-invalid="true"]{
+    border: 2px solid var(--couleur-erreur);
+}    
 .utd-erreur-champ {
     display: inline-block;
     margin-top: 8px;

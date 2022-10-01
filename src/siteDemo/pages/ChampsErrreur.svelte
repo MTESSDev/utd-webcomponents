@@ -30,7 +30,7 @@
     <div class="utd-form-group">
         <label for="erreur1" aria-describedby="precisionErreur1 texteErreur1">Téléphone</label>
         <span id="precisionErreur1" class="utd-precision">Si vous n’avez pas de numéro de téléphone, inscrivez le numéro d’un membre de votre famille, d’un ami ou d’un organisme.</span>
-        <input type="tel" id="erreur1" placeholder="123 456-7890" class="utd-form-control md"/>
+        <input type="tel" id="erreur1" placeholder="123 456-7890" class="utd-form-control md" aria-invalid="true"/>
         <span id="texteErreur1" role="alert" class="utd-erreur-champ">Le champ "Téléphone" est obligatoire.</span>
     </div>
 </div>
