@@ -65,7 +65,7 @@
 <CodeSource idElementCodeSource="exempleFormats">
 </CodeSource>
 
-<h3>Espace réservé</h3>
+<h2>Espace réservé</h2>
 <p>Un espace réservé (<em>placeholder</em>) permet de préciser comment saisir les informations. Il est utilisé dans les champs dont le format est particulier, comme le code postal, le numéro de téléphone ou la date.</p>
 <h3>Exemples</h3>
 <div id="exemplePlaceholder">
@@ -78,7 +78,7 @@
 </CodeSource>
 
 
-<h3>Précision</h3>
+<h2>Précision</h2>
 <CodeSource idElementCodeSource="differentsTypes">
 </CodeSource>
 

@@ -927,6 +927,11 @@ label, .label {
     border-radius: 0;
 }
 
+/*Redéfinition de Bootstrap*/
+input.utd-form-control[type=search]{
+    outline-offset: 0;
+}
+
 .utd-erreur-champ {
     display: inline-block;
     margin-top: 8px;
