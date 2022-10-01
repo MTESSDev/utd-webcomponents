@@ -31,11 +31,29 @@
 <p>Tous les champs (éléments de type "input") doivent être dans un conteneur (ex. un "div") ayant la classe <em>(utd-form-group)</em> et les champs eux-mêmes doivent avoir la classe <em>(utd-form-control)</em>.</p>
 
 
+<h2>Étiquette (label)</h2>
+<p>Style appliqué automatiquement à tous les éléments de type <em>label</em>.</p>
+
+<h3>Particularités vs. le système de design Quebec.ca</h3>
+<p>Nous utilisons la graisse semi-bold au lieu de bold.</p>
+
+<h3>Exemples</h3>
+<div id="exempleLabel">
+    <div class="utd-form-group">
+        <label for="label1">Un beau libellé de champ</label>
+        <input type="text" id="label1" class="utd-form-control"/>
+    </div>
+</div>
+
+<CodeSource idElementCodeSource="exempleLabel">
+</CodeSource>
+
 <h2>Formats disponibles</h2>
+<p>La longueur du champ doit être adaptée à la réponse requise, selon 5 formats disponibles.</p>
 <p>Utilisez les classes "sm", "md", "lg", "xl", et "xxl" afin de préciser le format des champs. Si rien n'est spécifié, le format "large" par défaut s'applique.</p>
 
 <h3>Particularités vs. le système de design Quebec.ca</h3>
-<p>Le format "extra extra-large" (<em>xxl</em>) prenant la largeur disponible à l'intérieur du conteneur du champ a été ajouté.</p>
+<p>Nous avons ajouté un format "extra extra-large" (<em>xxl</em>) prenant la largeur disponible à l'intérieur du conteneur.</p>
 
 <h3>Exemples</h3>
 <div id="exempleFormats">
@@ -60,26 +78,24 @@
         <label for="taille5">Champ "extra extra-large" (<em>xxl</em>)</label>
         <input type="text" id="taille5" class="utd-form-control xxl"/>
     </div>
-
 </div>
 <CodeSource idElementCodeSource="exempleFormats">
 </CodeSource>
 
-<h2>Espace réservé</h2>
+<h2>Espace réservé et précision</h2>
 <p>Un espace réservé (<em>placeholder</em>) permet de préciser comment saisir les informations. Il est utilisé dans les champs dont le format est particulier, comme le code postal, le numéro de téléphone ou la date.</p>
+<p>La précision permet d'ajouter certaines informations permettant de mieux comprendre ce qui doit être inscrit dans un champ. Elle s’ajoute à la suite de l’étiquette, avant le champ texte. Simplement utiliser un "span" avec la classe <em>utd-precision</em>.</p>
+<p>Lors de l'utilisation d'une précision, il est impératif d'ajouter l'attibut <em>aria-describedby</em> sur le champ afin que la précision soit lue au lecteur écran avec le libellé.</p>
 <h3>Exemples</h3>
-<div id="exemplePlaceholder">
+<div id="exemplePlaceholderPrecision">
     <div class="utd-form-group">
-        <label for="placeholder1">Code postal</label>
-        <input type="text" id="placeholder1" placeholder="A1A 1A1" class="utd-form-control md"/>
+        <label for="placeholder1" aria-describedby="precisionExemplePlaceholderPrecision">Téléphone</label>
+        <span id="precisionExemplePlaceholderPrecision" class="utd-precision">Si vous n’avez pas de numéro de téléphone, inscrivez le numéro d’un membre de votre famille, d’un ami ou d’un organisme.</span>
+        <input type="tel" id="placeholder1" placeholder="123 456-7890" class="utd-form-control md"/>
     </div>
 </div>
-<CodeSource idElementCodeSource="exemplePlaceholder">
-</CodeSource>
 
-
-<h2>Précision</h2>
-<CodeSource idElementCodeSource="differentsTypes">
+<CodeSource idElementCodeSource="exemplePlaceholderPrecision">
 </CodeSource>
 
 <h3>Différents types</h3>

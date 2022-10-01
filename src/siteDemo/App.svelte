@@ -17,6 +17,7 @@
     import Notifications from './pages/Notifications.svelte'; 
     import TraitementEnCours from './pages/TraitementEnCours.svelte'; 
     import {router} from 'tinro';
+  import ChampsErrreur from './pages/ChampsErrreur.svelte';
 </script>
 
 <div class="conteneur-principal">
@@ -112,7 +113,8 @@
                             <utd-menu-vertical-item label="Formulaire">    
                                 <utd-menu-vertical-item label="Bouton radio" href="/composants/formulaire/boutonradio"></utd-menu-vertical-item>                            
                                 <utd-menu-vertical-item label="Case à cocher" href="/composants/formulaire/casecocher"></utd-menu-vertical-item>                            
-                                <utd-menu-vertical-item label="Champs texte et autres" href="/composants/formulaire/champstexte"></utd-menu-vertical-item>                            
+                                <utd-menu-vertical-item label="Champs texte et autres" href="/composants/formulaire/champstexte"></utd-menu-vertical-item> 
+                                <utd-menu-vertical-item label="Champs (erreurs)" href="/composants/formulaire/champserreurs"></utd-menu-vertical-item>                           
                             </utd-menu-vertical-item>
                             <utd-menu-vertical-item label="Navigation">                                
                                 <utd-menu-vertical-item label="Haut de page" href="/composants/navigation/hautpage"></utd-menu-vertical-item>
@@ -150,6 +152,7 @@
                             <Route path="/boutonradio" ><BoutonRadio /></Route>
                             <Route path="/casecocher" ><CaseCocher /></Route>
                             <Route path="/champstexte" ><ChampsTexte /></Route>
+                            <Route path="/champserreurs" ><ChampsErrreur /></Route>
                         </Route>
                         <Route path="/navigation/*">                    
                             <Route path="/hautpage" ><HautPage /></Route>
