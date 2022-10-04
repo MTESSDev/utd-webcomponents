@@ -916,6 +916,10 @@ label, .label {
     margin-bottom: 2rem;
 }
 
+.utd-form-group:last-child {
+    margin-bottom: 0;
+}
+
 .utd-form-control {
     height: 40px;
     display: block;
@@ -1256,11 +1260,18 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
     background-image: url("../images/utd-sprite.svg_versionUtd_#ico-xfermer-bleu");
 }
 
-.utd-icone-svg.chevron-bleu-piv {
-    background-image: url("../images/utd-sprite.svg_versionUtd_#ico-chevron-bleu-piv");
+.utd-icone-svg.chevron-bleu-piv, .utd-icone-svg.chevron-blanc, .utd-icone-svg.chevron-bleu-texte {
     width: 16px;
     min-width: 16px;
     height: 10px;
+}
+
+.utd-icone-svg.chevron-bleu-piv {
+    background-image: url("../images/utd-sprite.svg_versionUtd_#ico-chevron-bleu-piv");
+}
+
+.utd-icone-svg.chevron-blanc {
+    background-image: url("../images/utd-sprite.svg_versionUtd_#ico-chevron-blanc");
 }
 
 

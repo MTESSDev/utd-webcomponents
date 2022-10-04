@@ -14,41 +14,88 @@
 N'existe pas sur le site de design Quebec.ca
 
 <h2>Exemples</h2>
-<h3>1- Avec attributs "titre" et "contenu"</h3>
+<h3>1- Section avec champs</h3>
 <div class="mb-32">
-    <utd-section titre="Exemple d'utilisation 1" id="exempleSection1">
-        <p>Ici un texte incroyable.</p>
-        <p>Qui peut même contenir du html.</p>
+    <utd-section titre="Véhicule principal" id="exempleSection1">
+        <div class="utd-form-group">
+            <label for="champ1a">Marque</label>
+            <input type="text" id="champ1a" class="utd-form-control"/>
+        </div>
+    
+        <div class="utd-form-group">
+            <label for="champ2a">Modèle</label>
+            <input type="text" id="champ2a" class="utd-form-control"/>
+        </div>
+    
+        <div class="utd-form-group">
+            <label for="champ3a">Numéro de série</label>
+            <input type="text" id="champ3a" class="utd-form-control"/>
+        </div>
     </utd-section>
 </div>
 <CodeSource idElementCodeSource="exempleSection1">
 </CodeSource>   
 
 
-<h3>2- Avec attribut "titre" et slot "contenu"</h3>
+<h3>2- Section avec accordéons</h3>
 <div class="mb-32">
-    <utd-section titre="Exemple d'utilisation 2" id="exempleSection2">
-        <p>Ici un texte incroyable.</p>
-        <p>Qui peut même contenir du html.</p>
+    <utd-section titre="Véhicules" id="exempleSection2">
+        <utd-accordeon titre="Véhicule principal" type="secondaire">
+            <div class="utd-form-group">
+                <label for="champ1b">Marque</label>
+                <input type="text" id="champ1b" class="utd-form-control"/>
+            </div>
+        
+            <div class="utd-form-group">
+                <label for="champ2b">Modèle</label>
+                <input type="text" id="champ2b" class="utd-form-control"/>
+            </div>
+        
+            <div class="utd-form-group">
+                <label for="champ3b">Numéro de série</label>
+                <input type="text" id="champ3b" class="utd-form-control"/>
+            </div>
+        </utd-accordeon>
+        <utd-accordeon titre="Véhicule secondaire" type="secondaire">
+            <div class="utd-form-group">
+                <label for="champ4b">Marque</label>
+                <input type="text" id="champ4b" class="utd-form-control"/>
+            </div>
+        
+            <div class="utd-form-group">
+                <label for="champ5b">Modèle</label>
+                <input type="text" id="champ5b" class="utd-form-control"/>
+            </div>
+        
+            <div class="utd-form-group">
+                <label for="champ5b">Numéro de série</label>
+                <input type="text" id="champ5b" class="utd-form-control"/>
+            </div>
+        </utd-accordeon>
     </utd-section>
 </div>
 <CodeSource idElementCodeSource="exempleSection2">
 </CodeSource>   
 
-
-<h3>3- Avec slots "titre" et "contenu"</h3>
+<h3>3- Section sans bordure</h3>
 <div class="mb-32">
-    <utd-accordeon id="exempleAccordeon3" class="mb-32">
-        <span slot="titre">
-            Exemple d'utilisation 3 avec un titre long long long
-        </span>   
-        <span slot="contenu">
-            <p>Ici un texte incroyable.</p>
-            <p>Qui peut même contenir du html.</p>
-        </span>
-    </utd-accordeon>
+    <utd-section titre="Véhicules" bordure="false" id="exempleSection2">
+        <div class="utd-form-group">
+            <label for="champ1c">Marque</label>
+            <input type="text" id="champ1c" class="utd-form-control"/>
+        </div>
+    
+        <div class="utd-form-group">
+            <label for="champ2c">Modèle</label>
+            <input type="text" id="champ2c" class="utd-form-control"/>
+        </div>
+    
+        <div class="utd-form-group">
+            <label for="champ3c">Numéro de série</label>
+            <input type="text" id="champ3c" class="utd-form-control"/>
+        </div>
+    </utd-section>
 </div>
-<CodeSource idElementCodeSource="exempleAccordeon3">
+<CodeSource idElementCodeSource="exempleSection2">
 </CodeSource>   
-
 
