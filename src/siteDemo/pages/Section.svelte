@@ -8,7 +8,7 @@
 <h1>Section</h1>
 
 <h2>Description</h2>
-<p>Le composant <strong>section</strong> permet de regrouper des informations et réduire temporairement la quantité d’information affichée sur une page. Avec cette option, la personne survole le contenu et accède plus rapidement à l’information recherchée.</p>
+<p>Le composant <strong>section</strong>  permet d'organiser le contenu en regroupant les informations en sections.</p>
 
 <h3>Référence système de design Quebec.ca</h3>
 N'existe pas sur le site de design Quebec.ca

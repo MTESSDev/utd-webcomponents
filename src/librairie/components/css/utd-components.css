@@ -233,6 +233,10 @@ utd-accordeon {
   display: block;
 }
 
+utd-accordeon + utd-accordeon{
+  margin-top: 16px;
+}
+
 .utd-accordeon .utd-icone-svg.plus, .utd-accordeon .utd-icone-svg.moins {
   min-width: 16px;
   height: 16px;
@@ -283,11 +287,10 @@ utd-accordeon {
 ====================================================================================================*/
 utd-section {
   display: block;
-  margin-bottom: 32px;
 }
 
-utd-section:last-child {
-  margin-bottom: 0;
+utd-section + utd-section {
+  margin-top: 16px;
 }
 
 .utd-section:not(.ouvert) .utd-icone-svg {
