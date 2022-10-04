@@ -79,7 +79,7 @@ N'existe pas sur le site de design Quebec.ca
 
 <h3>3- Section sans bordure</h3>
 <div class="mb-32">
-    <utd-section titre="Véhicules" bordure="false" id="exempleSection2">
+    <utd-section titre="Véhicules" bordure="false" id="exempleSection3">
         <div class="utd-form-group">
             <label for="champ1c">Marque</label>
             <input type="text" id="champ1c" class="utd-form-control"/>
@@ -96,6 +96,32 @@ N'existe pas sur le site de design Quebec.ca
         </div>
     </utd-section>
 </div>
-<CodeSource idElementCodeSource="exempleSection2">
+<CodeSource idElementCodeSource="exempleSection3">
+</CodeSource>   
+
+
+<h3>4- Section non extensible</h3>
+<div class="mb-32">
+    <utd-section titre="Informations personnelles" extensible="false" id="exempleSection4">
+        <p>Le mot de passe est associé à votre compte clicSÉQUR - Citoyens.</p>
+        <p>
+            <a href="#">Modifiez votre mot de passe</a>
+        </p>
+    </utd-section>
+</div>
+
+<CodeSource idElementCodeSource="exempleSection4">
+</CodeSource>   
+
+<h3>5- Section non extensible sans bordure</h3>
+<div class="mb-32">
+    <utd-section titre="Informations personnelles" extensible="false" bordure="false" id="exempleSection5">
+        <p>Le mot de passe est associé à votre compte clicSÉQUR - Citoyens.</p>
+        <p>
+            <a href="#">Modifiez votre mot de passe</a>
+        </p>
+    </utd-section>
+</div>
+<CodeSource idElementCodeSource="exempleSection5">
 </CodeSource>   
 

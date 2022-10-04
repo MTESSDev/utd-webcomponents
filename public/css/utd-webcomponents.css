@@ -297,7 +297,7 @@ utd-section + utd-section {
   transform: rotate(180deg);
 }
 
-.utd-section .entete button {
+.utd-section:not(.extensible) .entete, .utd-section .entete button {
   font-family: 'OpenSans-SemiBold';
   font-size: 16px;
   color: var(--couleur-texte-base);
@@ -311,7 +311,7 @@ utd-section + utd-section {
   color: #fff;
 }
 
-.utd-section.bordure.ouvert .contenu {
+.utd-section.bordure:not(.extensible) .contenu, .utd-section.bordure.ouvert .contenu {
   border: 1px solid var(--couleur-filet-secondaire);
   border-top: 0;
 }
