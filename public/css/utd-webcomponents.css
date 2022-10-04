@@ -1771,7 +1771,7 @@ label, .label {
     margin-bottom: 2rem;
 }
 
-.utd-form-group:last-child {
+utd-accordeon .utd-form-group:last-child, utd-section .utd-form-group:last-child {
     margin-bottom: 0;
 }
 
