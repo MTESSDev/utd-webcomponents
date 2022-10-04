@@ -263,6 +263,12 @@ utd-accordeon + utd-accordeon{
   margin-right: 16px;
 }
 
+.utd-accordeon .entete h2.titre, .utd-accordeon .entete h3.titre, .utd-accordeon .entete h4.titre, .utd-accordeon .entete h5.titre {
+  font-family: OpenSans-SemiBold;
+  font-size: 16px;
+  margin: 0;
+}
+
 .utd-accordeon .contenu {
   margin-left: 16px;
   /*  transform:scaleY(0);
@@ -319,6 +325,13 @@ utd-section + utd-section {
 .utd-section .entete button .titre {
   text-align: left;
   margin-right: 16px;
+}
+
+.utd-section .entete h2.titre, .utd-section .entete h3.titre, .utd-section .entete h4.titre, .utd-section .entete h5.titre {
+  color: #fff;
+  font-family: OpenSans-SemiBold;
+  font-size: 16px;
+  margin: 0;
 }
 
 .utd-section .contenu > div{

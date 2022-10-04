@@ -1,6 +1,6 @@
 {
     "name": "utd-webcomponents",
-    "version": "1.6.1",
+    "version": "1.7.0",
     "private": false,
     "scripts": {
         "build": "rollup -c",
@@ -18,7 +18,7 @@
         "rollup-plugin-terser": "^7.0.0",
         "rollup-plugin-css-porter": "1.0.2",
         "rollup-plugin-copy": "3.4.0",
-        "svelte": "^3.0.0",
+        "svelte": "^3.49.0",
         "tinro": "^0.6.7",
         "highlight.js": "^11.3.1",
         "js-beautify": "^1.14.0",

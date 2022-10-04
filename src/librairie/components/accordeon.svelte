@@ -9,6 +9,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   export let reduit = "true"
   export let titre = ""
   export let contenu = ""
+  export let tagTitre = "h2"
 
   const idEntete = Utils.genererId()
   const idContenu = 'corps' + idEntete
@@ -20,27 +21,29 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
 <div class="utd-component utd-accordeon {reduit === 'false' ? 'ouvert' : ''}" >
   <div class="entete">
-    <button type="button" class="" aria-controls="{idContenu}" aria-expanded="{reduit === 'false'}" on:click={toggleAffichageContenu}>
-      <span class="titre">
-        {#if titre}
-          {titre}
-        {/if}
-        <slot name="titre" />      
-      </span>
-      <span class="utd-icone-svg {reduit === 'false' ? 'moins' : 'plus'}"></span>
-    </button>
+    <svelte:element this={tagTitre} class="titre"> 
+      <button type="button" class="" aria-controls="{idContenu}" aria-expanded="{reduit === 'false'}" on:click={toggleAffichageContenu}>
+        <span class="titre">
+          {#if titre}
+            {titre}
+          {/if}
+          <slot name="titre" />      
+        </span>
+        <span class="utd-icone-svg {reduit === 'false' ? 'moins' : 'plus'}"></span>
+      </button>
+    </svelte:element>       
   </div>
 
     <div id="{idContenu}" class="contenu" >
       {#if reduit === 'false'}
-      <div transition:slide="{{duration:250}}">
+        <div transition:slide="{{duration:250}}">
         {#if contenu}
           {@html contenu}
         {:else}
           <slot/>  
           <slot name="contenu" />
         {/if}
-      </div>
+        </div>
       {/if}
     </div>
 

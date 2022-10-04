@@ -10,6 +10,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   export let reduit = "true"
   export let titre = ""
   export let bordure = "true"
+  export let tagTitre = "h2"
 
   const idEntete = Utils.genererId()
   const idContenu = 'corps' + idEntete
@@ -22,22 +23,22 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 <div class="utd-component utd-section {extensible === 'true' ? 'extensible' : ''} {reduit === 'false' ? 'ouvert' : ''} {bordure === 'true' ? 'bordure' : ''}" >
   <div class="entete">
     {#if extensible === 'true'}
+    <svelte:element this={tagTitre} class="titre"> 
       <button type="button" class="" aria-controls="{idContenu}" aria-expanded="{reduit === 'false'}" on:click={toggleAffichageContenu}>
-        <span class="titre">
           {#if titre}
             {titre}
           {/if}
-          <slot name="titre" />      
-        </span>
-        <span class="utd-icone-svg chevron-blanc"></span>
+          <slot name="titre" />            
+        <span class="utd-icone-svg chevron-blanc"></span>        
       </button>
+    </svelte:element> 
     {:else}
-      <span class="titre">
+      <svelte:element this={tagTitre} class="titre"> 
         {#if titre}
           {titre}
         {/if}
         <slot name="titre" />      
-      </span>
+      </svelte:element> 
     {/if}
 
   </div>
