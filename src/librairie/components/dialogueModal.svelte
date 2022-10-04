@@ -190,6 +190,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
           </h1>
         </div> 
         <div class="corps" id={idCorps}>
+          <slot/>
           <slot name="contenu" />
         </div>
         {#if Utils.slotExiste(slots, 'pied')}

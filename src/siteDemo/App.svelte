@@ -6,6 +6,7 @@
     import Versions from './pages/Versions.svelte'; 
     import Accordeon from './pages/Accordeon.svelte'; 
     import Infobulle from './pages/Infobulle.svelte'; 
+    import Section from './pages/Section.svelte'; 
     import Avis from './pages/Avis.svelte'; 
     import Boutons from './pages/Boutons.svelte'; 
     import ChampsTexte from './pages/ChampsTexte.svelte'; 
@@ -109,6 +110,7 @@
                                 <utd-menu-vertical-item label="Accordéon" href="/composants/affichagecontenu/accordeon"></utd-menu-vertical-item>
                                 <utd-menu-vertical-item label="Avis" href="/composants/affichagecontenu/avis"></utd-menu-vertical-item>
                                 <utd-menu-vertical-item label="Infobulle" href="/composants/affichagecontenu/infobulle"></utd-menu-vertical-item>
+                                <utd-menu-vertical-item label="Section" href="/composants/affichagecontenu/section"></utd-menu-vertical-item>
                             </utd-menu-vertical-item>
                             <utd-menu-vertical-item label="Formulaire">    
                                 <utd-menu-vertical-item label="Bouton radio" href="/composants/formulaire/boutonradio"></utd-menu-vertical-item>                            
@@ -147,6 +149,7 @@
                             <Route path="/accordeon" ><Accordeon /></Route>
                             <Route path="/avis" ><Avis /></Route>
                             <Route path="/infobulle" ><Infobulle /></Route>    
+                            <Route path="/section" ><Section /></Route>    
                         </Route>
                         <Route path="/formulaire/*">                    
                             <Route path="/boutonradio" ><BoutonRadio /></Route>
