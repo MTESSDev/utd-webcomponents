@@ -15,14 +15,22 @@
 
 <h2>Exemples</h2>
 
-<h3>1- Input (text, number, date, tel, email, url) </h3>
-<div class="" id="exemple1">
-    
-    <div class="utd-form-group">
-        <label for="champ1">Champ type "text"</label>
-        <input type="text" id="champ1" class="utd-form-control"/>
+<h3>1- Radio </h3>
+<div class="" id="exemple1">    
+    <div class="utd-form-group radio">
+        <label for="html">
+            <input type="radio" id="html" name="fav_language" value="HTML">                
+            HTML
+        </label>               
+        <label for="css">
+            <input type="radio" id="css" name="fav_language" value="CSS">
+            CSS
+        </label>               
+        <label for="javascript">
+            <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+            JavaScript
+        </label>
     </div>
-
 </div>
 <CodeSource idElementCodeSource="exemple1">
 </CodeSource>
