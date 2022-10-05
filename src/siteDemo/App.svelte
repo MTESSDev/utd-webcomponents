@@ -18,7 +18,7 @@
     import Notifications from './pages/Notifications.svelte'; 
     import TraitementEnCours from './pages/TraitementEnCours.svelte'; 
     import {router} from 'tinro';
-  import ChampsErrreur from './pages/ChampsErrreur.svelte';
+  import ChampsErreur from './pages/ChampsErreur.svelte';
 </script>
 
 <div class="conteneur-principal">
@@ -155,7 +155,7 @@
                             <Route path="/boutonradio" ><BoutonRadio /></Route>
                             <Route path="/casecocher" ><CaseCocher /></Route>
                             <Route path="/champstexte" ><ChampsTexte /></Route>
-                            <Route path="/champserreurs" ><ChampsErrreur /></Route>
+                            <Route path="/champserreurs" ><ChampsErreur /></Route>
                         </Route>
                         <Route path="/navigation/*">                    
                             <Route path="/hautpage" ><HautPage /></Route>

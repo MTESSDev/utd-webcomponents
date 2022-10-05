@@ -16,24 +16,52 @@
 <h2>Exemples</h2>
 
 <h3>1- Radio </h3>
-<div class="" id="exemple1">    
+<div id="exemple1">    
     <div class="utd-form-group radio">
-        <label for="html">
-            <input type="radio" id="html" name="fav_language" value="HTML">                
-            HTML
-        </label>               
-        <label for="css">
-            <input type="radio" id="css" name="fav_language" value="CSS">
-            CSS
-        </label>               
-        <label for="javascript">
-            <input type="radio" id="javascript" name="fav_language" value="JavaScript">
-            JavaScript
-        </label>
+        <span class="label" id="personnagePrefere">Quel est votre personnage préféré ?</span>
+        <div role="radiogroup" aria-labelledby="personnagePrefere">
+            <label>
+                <input type="radio" name="persoPrefere" value="Marty">                
+                Marty MacFly
+            </label>               
+            <label>
+                <input type="radio" name="persoPrefere" value="Forrest">
+                Forrest Gump
+            </label>               
+            <label>
+                <input type="radio" name="persoPrefere" value="Vader">
+                Darth Vador
+            </label>    
+        </div>
     </div>
 </div>
 <CodeSource idElementCodeSource="exemple1">
 </CodeSource>
 
+<h3>2- Champ en erreur </h3>
+<div id="exemple2">    
+    <div class="utd-form-group radio">
+        <span class="label" id="personnagePrefere2">Quel est votre personnage préféré ?</span>
+        <span id="precision2" class="utd-precision">Faites confiance à votre instinct.</span>        
+        <div role="radiogroup" aria-labelledby="personnagePrefere2" aria-describedby="precision2 texteErreur2" aria-required="true" aria-invalid="true">
+            <label>
+                <input type="radio" name="persoPrefere2" value="Marty">                
+                Marty MacFly
+            </label>               
+            <label>
+                <input type="radio" name="persoPrefere2" value="Forrest">
+                Forrest Gump
+            </label>               
+            <label>
+                <input type="radio" name="persoPrefere2" value="Vader">
+                Darth Vador
+            </label>    
+        </div>
+        <span id="texteErreur2" role="alert" class="utd-erreur-champ">Le champ "Quel est votre personnage préféré ?" est obligatoire.</span>        
+    </div>
+</div>
+
+<CodeSource idElementCodeSource="exemple2">
+</CodeSource>
 
 
