@@ -12,7 +12,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   export let bordure = "true"
   export let tagtitre = "h2"
 
-  const idEntete = Utils.genererId()
+  const idEntete = Utils.genererId() 
   const idContenu = 'corps' + idEntete
 
   //TODO éventuellement déterminer automatiquement le niveau de header via un script? 
