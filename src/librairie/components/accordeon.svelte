@@ -9,7 +9,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   export let reduit = "true"
   export let titre = ""
   export let contenu = ""
-  export let tagTitre = "h2"
+  export let tagtitre = "h2"
 
   const idEntete = Utils.genererId()
   const idContenu = 'corps' + idEntete
@@ -21,7 +21,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
 <div class="utd-component utd-accordeon {reduit === 'false' ? 'ouvert' : ''}" >
   <div class="entete">
-    <svelte:element this={tagTitre} class="titre"> 
+    <svelte:element this={tagtitre} class="titre"> 
       <button type="button" class="" aria-controls="{idContenu}" aria-expanded="{reduit === 'false'}" on:click={toggleAffichageContenu}>
         <span class="titre">
           {#if titre}

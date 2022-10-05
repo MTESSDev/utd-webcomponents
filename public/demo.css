@@ -355,12 +355,20 @@ header {
 }
 
 .code-source pre {
-    margin: 0;
+    margin-top: -16px;
+    margin-bottom: -32px;
 }
 
-.code-source code {
+.code-source pre code.hljs{
     min-height: 78px;
+    padding: 0 16px;
 }
+
+/* Pour raison inconnue depuis le passage à SVELTE 3.49, la ère ligne de code est toujours décalée. On patch ici... */
+.code-source code > *:first-child {
+    margin-left: -70px;
+}
+
 
 .code-source .zone-copie {
     display: flex;

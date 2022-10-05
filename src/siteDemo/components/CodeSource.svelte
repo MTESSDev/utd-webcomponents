@@ -28,7 +28,7 @@
       }      
     } else {
       controleCodeSource = document.getElementById(idElementCodeSource)
-      codeSource = obtenirCodeSourceFormate(controleCodeSource.outerHTML)
+      codeSource = obtenirCodeSourceFormate(controleCodeSource.innerHTML)
     }
 
     setTimeout(function(){ 
@@ -60,6 +60,7 @@
       "indent-spaces":4,
       "wrap":300,
       "markup":true,
+      "preserve-newlines": true,
       "output-xml":true,
       "numeric-entities":true,
       "quote-marks":true,
@@ -75,11 +76,14 @@
     }
 
     let codeSource = code
+    //Ajout de sauts de ligne sur certaines balises afin d'avoir un plus beau formatage
     codeSource = codeSource.replace(/<span/g, "\r\n<span")
     codeSource = codeSource.replace(/<button/g, "\r\n<button")
+    codeSource = codeSource.replace(/<div/g, "\r\n<div")
+    codeSource = codeSource.replace(/<label/g, "\r\n<label")
+    codeSource = codeSource.replace(/<input/g, "\r\n<intput")
 
-    codeSource = html_beautify(codeSource, options) 
-    return codeSource.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+    return nettoyerCode(html_beautify(codeSource, options))
   }
 
   function obtenirCodeSourceFormate2(code) {
@@ -104,9 +108,11 @@
 
     let codeSource = code
 
-    codeSource = js_beautify(codeSource) 
-    return codeSource.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+    return nettoyerCode(js_beautify(codeSource))    
+  }
 
+  function nettoyerCode(code) {
+    return code.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
   }
 </script>
 

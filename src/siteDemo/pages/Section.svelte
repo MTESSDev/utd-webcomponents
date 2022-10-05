@@ -126,3 +126,14 @@ N'existe pas sur le site de design Quebec.ca
 <CodeSource idElementCodeSource="exempleSection5">
 </CodeSource>   
 
+<h3>6- Section ouverte par défaut et titre h3</h3>
+<div class="mb-32">
+    <utd-section titre="Informations personnelles" reduit="false" tagtitre="h3" id="exempleSection6">
+        <p>Le mot de passe est associé à votre compte clicSÉQUR - Citoyens.</p>
+        <p>
+            <a href="#">Modifiez votre mot de passe</a>
+        </p>
+    </utd-section>
+</div>
+<CodeSource idElementCodeSource="exempleSection6">
+</CodeSource>   
