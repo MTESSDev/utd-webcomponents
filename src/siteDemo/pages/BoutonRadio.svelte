@@ -43,7 +43,7 @@
     <div class="utd-form-group radio">
         <span class="label" id="personnagePrefere2">Quel est votre personnage préféré ?</span>
         <span id="precision2" class="utd-precision">Faites confiance à votre instinct.</span>        
-        <div role="radiogroup" aria-labelledby="personnagePrefere2" aria-describedby="precision2 texteErreur2" aria-required="true" aria-invalid="true">
+        <div role="radiogroup" aria-labelledby="personnagePrefere2" aria-describedby="precision2 texteErreur2" aria-required="true">
             <label>
                 <input type="radio" name="persoPrefere2" value="Marty">                
                 Marty MacFly
