@@ -929,7 +929,12 @@ utd-accordeon .utd-form-group:last-child, utd-section .utd-form-group:last-child
 .utd-form-group.radio label{
     display: block;
     margin-bottom: 24px;
+    font-family: OpenSans-Regular;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.2;
 }
+
 
 .utd-form-group.radio *, .utd-form-group.radio *:before, .utd-form-group.radio *:after {
     box-sizing: border-box;
