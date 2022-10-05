@@ -16,8 +16,8 @@ N'existe pas sur le site de design Quebec.ca
 
 <h2>Exemples</h2>
 <h3>1- Section avec champs</h3>
-<div class="mb-32">
-    <utd-section titre="Véhicule principal" id="exempleSection1">
+<div class="mb-32" id="exempleSection1">
+    <utd-section titre="Véhicule principal">
         <div class="utd-form-group">
             <label for="champ1a">Marque</label>
             <input type="text" id="champ1a" class="utd-form-control"/>
@@ -39,8 +39,8 @@ N'existe pas sur le site de design Quebec.ca
 
 
 <h3>2- Section avec accordéons</h3>
-<div class="mb-32">
-    <utd-section titre="Véhicules" id="exempleSection2">
+<div class="mb-32" id="exempleSection2">
+    <utd-section titre="Véhicules">
         <utd-accordeon titre="Véhicule principal" type="secondaire">
             <div class="utd-form-group">
                 <label for="champ1b">Marque</label>
@@ -79,8 +79,8 @@ N'existe pas sur le site de design Quebec.ca
 </CodeSource>   
 
 <h3>3- Section sans bordure</h3>
-<div class="mb-32">
-    <utd-section titre="Véhicules" bordure="false" id="exempleSection3">
+<div class="mb-32" id="exempleSection3">
+    <utd-section titre="Véhicules" bordure="false">
         <div class="utd-form-group">
             <label for="champ1c">Marque</label>
             <input type="text" id="champ1c" class="utd-form-control"/>
@@ -102,8 +102,8 @@ N'existe pas sur le site de design Quebec.ca
 
 
 <h3>4- Section non extensible</h3>
-<div class="mb-32">
-    <utd-section titre="Informations personnelles" extensible="false" id="exempleSection4">
+<div class="mb-32" id="exempleSection4">
+    <utd-section titre="Informations personnelles" extensible="false">
         <p>Le mot de passe est associé à votre compte clicSÉQUR - Citoyens.</p>
         <p>
             <a href="#">Modifiez votre mot de passe</a>
@@ -115,8 +115,8 @@ N'existe pas sur le site de design Quebec.ca
 </CodeSource>   
 
 <h3>5- Section non extensible sans bordure</h3>
-<div class="mb-32">
-    <utd-section titre="Informations personnelles" extensible="false" bordure="false" id="exempleSection5">
+<div class="mb-32" id="exempleSection5">
+    <utd-section titre="Informations personnelles" extensible="false" bordure="false">
         <p>Le mot de passe est associé à votre compte clicSÉQUR - Citoyens.</p>
         <p>
             <a href="#">Modifiez votre mot de passe</a>
@@ -127,8 +127,8 @@ N'existe pas sur le site de design Quebec.ca
 </CodeSource>   
 
 <h3>6- Section ouverte par défaut et titre h3</h3>
-<div class="mb-32">
-    <utd-section titre="Informations personnelles" reduit="false" tagtitre="h3" id="exempleSection6">
+<div class="mb-32" id="exempleSection6">
+    <utd-section titre="Informations personnelles" reduit="false" tagtitre="h3">
         <p>Le mot de passe est associé à votre compte clicSÉQUR - Citoyens.</p>
         <p>
             <a href="#">Modifiez votre mot de passe</a>

@@ -153,9 +153,14 @@ export const message = (function () {
      * @param {Promise} resolve Résolution de promesse.
      */
     function definirEvenementFermeture(fenetreMessage, resolve) {
-        fenetreMessage.addEventListener("fermeture", e => {        
+        fenetreMessage.addEventListener("fermeture", e => {       
             resolve(e.detail.raisonFermeture);
-            fenetreMessage.parentElement.remove();
+            
+            //setTimeout ici afin de s'assurer que svelte a terminé son traitement avant de retirer le compsant du DOM
+            setTimeout(() => {
+                fenetreMessage.parentElement.remove();    
+            });  
+            
         });
     }
 

@@ -15,21 +15,19 @@
 
 <h2>Exemples</h2>
 <h3>1- Avec attributs "titre" et "contenu"</h3>
-<div class="mb-32">
-    <utd-accordeon titre="Exemple d'utilisation 1" id="exempleAccordeon1" contenu="<p>Ici un texte incroyable.</p><p>Qui peut même contenir du html.</p>">
+<div class="mb-32" id="exempleAccordeon1">
+    <utd-accordeon titre="Exemple d'utilisation 1" contenu="<p>Ici un texte incroyable.</p><p>Qui peut même contenir du html.</p>">
     </utd-accordeon>
 </div>
 <CodeSource idElementCodeSource="exempleAccordeon1">
 </CodeSource>   
 
 
-<h3>2- Avec attribut "titre" et slot "contenu"</h3>
-<div class="mb-32">
-    <utd-accordeon titre="Exemple d'utilisation 2" id="exempleAccordeon2">
-        <span slot="contenu">
-            <p>Ici un texte incroyable.</p>
-            <p>Qui peut même contenir du html.</p>
-        </span>
+<h3>2- Avec attribut "titre" et slot "contenu" (défaut)</h3>
+<div class="mb-32" id="exempleAccordeon2">
+    <utd-accordeon titre="Exemple d'utilisation 2">
+        <p>Ici un texte incroyable.</p>
+        <p>Qui peut même contenir du html.</p>
     </utd-accordeon>
 </div>
 <CodeSource idElementCodeSource="exempleAccordeon2">
@@ -37,8 +35,8 @@
 
 
 <h3>3- Avec slots "titre" et "contenu"</h3>
-<div class="mb-32">
-    <utd-accordeon id="exempleAccordeon3" class="mb-32">
+<div class="mb-32" id="exempleAccordeon3">
+    <utd-accordeon class="mb-32">
         <span slot="titre">
             Exemple d'utilisation 3 avec un titre long long long
         </span>   

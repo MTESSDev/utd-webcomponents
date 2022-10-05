@@ -11,19 +11,19 @@
 
 function ajouterCodeDialogue1() {
     document.getElementById('btnTest1').addEventListener('click', () => {
-        utd.dialogue.afficher('exempleDialogue1')
+        utd.dialogue.afficher('dialogue1')
     })
 
     document.getElementById("btnAnnuler1").addEventListener('click', () => {
         //TODO, ici tout le code que vous devez effectuer sur click du bouton (généralement pas grand chose sur une annulation)
         alert('Bravo le bouton "Annuler" a été cliqué. Vous pouvez mettre tout votre code ici!')
-        utd.dialogue.masquer('exempleDialogue1')
+        utd.dialogue.masquer('dialogue1')
     })
 
     document.getElementById("btnEnregistrer1").addEventListener('click', () => {
         alert('Bravo le bouton "Enregistrer" a été cliqué. Vous pouvez mettre tout votre code ici!')
         //TODO, ici tout le code que vous devez effectuer sur click du bouton
-        utd.dialogue.masquer('exempleDialogue1')
+        utd.dialogue.masquer('dialogue1')
     })
 }
 
@@ -65,30 +65,31 @@ function ajouterCodeDialogue2() {
 
 <h2>Exemples</h2>
 <h3>1- Ouverture par le biais d'un bouton</h3>
-<button type="button" id="btnTest1" class="utd-btn secondaire mb-32">Afficher</button>
-<utd-dialog id="exempleDialogue1" titre="Ajout d'un problème">
-    <div slot="contenu">
+<div id="exempleDialogue1">
+    <button type="button" id="btnTest1" class="utd-btn secondaire mb-32">Afficher</button>
+    <utd-dialog id="dialogue1" titre="Ajout d'un problème">
+        <div slot="contenu">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet pulvinar ipsum. Donec luctus nulla scelerisque, congue nibh a, malesuada dolor. Sed mattis interdum pellentesque. Vivamus lacinia risus a justo imperdiet imperdiet at quis ligula. Cras a dictum tortor, sit amet venenatis tortor. Vestibulum aliquam elit eu venenatis laoreet. Aenean tellus enim, consectetur eu condimentum accumsan, malesuada volutpat lectus. Aliquam sit amet rhoncus mauris, a placerat mauris. Mauris neque nulla, vulputate a convallis in, imperdiet tincidunt leo.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet pulvinar ipsum. Donec luctus nulla scelerisque, congue nibh a, malesuada dolor. Sed mattis interdum pellentesque. Vivamus lacinia risus a justo imperdiet imperdiet at quis ligula. Cras a dictum tortor, sit amet venenatis tortor. Vestibulum aliquam elit eu venenatis laoreet. Aenean tellus enim, consectetur eu condimentum accumsan, malesuada volutpat lectus. Aliquam sit amet rhoncus mauris, a placerat mauris. Mauris neque nulla, vulputate a convallis in, imperdiet tincidunt leo.</p>
+            <label for="test1">Description du problème</label>
+            <input type="text" id="test1" class="utd-form-group utd-form-control"/>
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet pulvinar ipsum. Donec luctus nulla scelerisque, congue nibh a, malesuada dolor. Sed mattis interdum pellentesque. Vivamus lacinia risus a justo imperdiet imperdiet at quis ligula. Cras a dictum tortor, sit amet venenatis tortor. Vestibulum aliquam elit eu venenatis laoreet. Aenean tellus enim, consectetur eu condimentum accumsan, malesuada volutpat lectus. Aliquam sit amet rhoncus mauris, a placerat mauris. Mauris neque nulla, vulputate a convallis in, imperdiet tincidunt leo.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet pulvinar ipsum. Donec luctus nulla scelerisque, congue nibh a, malesuada dolor. Sed mattis interdum pellentesque. Vivamus lacinia risus a justo imperdiet imperdiet at quis ligula. Cras a dictum tortor, sit amet venenatis tortor. Vestibulum aliquam elit eu venenatis laoreet. Aenean tellus enim, consectetur eu condimentum accumsan, malesuada volutpat lectus. Aliquam sit amet rhoncus mauris, a placerat mauris. Mauris neque nulla, vulputate a convallis in, imperdiet tincidunt leo.</p>
-        <label for="test1">Description du problème</label>
-        <input type="text" id="test1" class="utd-form-group utd-form-control"/>
+            <label for="test2">Solution 1</label>
+            <input type="text" id="test2" class="utd-form-group utd-form-control"/>
 
-        <label for="test2">Solution 1</label>
-        <input type="text" id="test2" class="utd-form-group utd-form-control"/>
+            <label for="test3">Solution 2</label>
+            <input type="text" id="test3" class="utd-form-group utd-form-control"/>
 
-        <label for="test3">Solution 2</label>
-        <input type="text" id="test3" class="utd-form-group utd-form-control"/>
+            <label for="test5">Solution 4</label>
+            <input type="text" id="test5" class="utd-form-control"/>
 
-        <label for="test5">Solution 4</label>
-        <input type="text" id="test5" class="utd-form-control"/>
-
-    </div>
-    <div slot="pied">
-        <button id="btnAnnuler1" type="button" class="utd-btn secondaire compact">Annuler</button>        
-        <button id="btnEnregistrer1" type="button" class="utd-btn primaire compact">Enregistrer</button>        
-    </div>
-</utd-dialog>
+        </div>
+        <div slot="pied">
+            <button id="btnAnnuler1" type="button" class="utd-btn secondaire compact">Annuler</button>        
+            <button id="btnEnregistrer1" type="button" class="utd-btn primaire compact">Enregistrer</button>        
+        </div>
+    </utd-dialog>
+</div>
 <CodeSource idElementCodeSource="exempleDialogue1" titre="Code source (Html)">
 </CodeSource>   
 
@@ -100,36 +101,37 @@ function ajouterCodeDialogue2() {
 
 <h3>2- Ouverture latérale, affichage forcé des boutons sur une ligne et focus à l'ouverture sur le contrôle spécifié</h3>
 <p>Utilisez le bouton "Votre avis" à droite fin de tester.</p>
-<button type="button" id="btnVotreAvis" class="utd-btn primaire btn-avis">
-    <span class="texte">Votre avis</span>
-</button>
-<utd-dialog id="dialogueVotreAvis" titre="Votre avis" estaffichagelateral="true" estaffichageboutonsinline="true" idfocusouverture="texteVotreAvis">
-    <div slot="contenu">
-        <form>
-            <div id="texteAvantAvis" class="utd-text-sm mb-32">
-                <p>Pour toutes questions relatives à votre dossier, ou si vous avez besoin d'aide, n'hésitez pas à <a href="#NousJoindre">Nous joindre</a>.</p>
-                <p>Évitez d'inscrire des renseignements personnels. Notez que vous ne recevrez aucune réponse et que nous collectons votre avis dans le respect de votre anonymat.</p>
-            </div>
-            <textarea id="texteVotreAvis" class="utd-form-control" aria-describedby="erreurTexteVotreAvis" rows="3" placeholder="Parlez-nous de votre expérience..." required></textarea>
-            <span id="erreurTexteVotreAvis" class="utd-erreur-champ utd-d-none" role="status" aria-live="polite">Le champ « Votre avis » est obligatoire.</span>
-            <span id="texteApresAvis" class="utd-text-sm">
-            </span>
-        </form>
-    </div>
-    <div slot="pied">
-        <button id="btnAnnulerAvis" type="button" class="utd-btn secondaire compact">Annuler</button>        
-        <button id="btnEnregistrerAvis" type="button" class="utd-btn primaire compact">Envoyer</button>        
-    </div>
-</utd-dialog>
-<CodeSource idElementCodeSource="dialogueVotreAvis" titre="Code source (Html)">
+<div id="exempleDialogueVotreAvis">
+    <button type="button" id="btnVotreAvis" class="utd-btn primaire btn-avis">
+        <span class="texte">Votre avis</span>
+    </button>
+    <utd-dialog id="dialogueVotreAvis" titre="Votre avis" estaffichagelateral="true" estaffichageboutonsinline="true" idfocusouverture="texteVotreAvis">
+        <div slot="contenu">
+            <form>
+                <div id="texteAvantAvis" class="utd-text-sm mb-32">
+                    <p>Pour toutes questions relatives à votre dossier, ou si vous avez besoin d'aide, n'hésitez pas à <a href="#NousJoindre">Nous joindre</a>.</p>
+                    <p>Évitez d'inscrire des renseignements personnels. Notez que vous ne recevrez aucune réponse et que nous collectons votre avis dans le respect de votre anonymat.</p>
+                </div>
+                <textarea id="texteVotreAvis" class="utd-form-control" aria-describedby="erreurTexteVotreAvis" rows="3" placeholder="Parlez-nous de votre expérience..." required></textarea>
+                <span id="erreurTexteVotreAvis" class="utd-erreur-champ utd-d-none" role="status" aria-live="polite">Le champ « Votre avis » est obligatoire.</span>
+                <span id="texteApresAvis" class="utd-text-sm">
+                </span>
+            </form>
+        </div>
+        <div slot="pied">
+            <button id="btnAnnulerAvis" type="button" class="utd-btn secondaire compact">Annuler</button>        
+            <button id="btnEnregistrerAvis" type="button" class="utd-btn primaire compact">Envoyer</button>        
+        </div>
+    </utd-dialog>
+</div>
+
+<CodeSource idElementCodeSource="exempleDialogueVotreAvis" titre="Code source (Html)">
 </CodeSource>   
 
 {#if mounted}
     <CodeSource codeSource="{ajouterCodeDialogue2.toString()}" titre="Code source (js)" language="language-javascript">
     </CodeSource>   
 {/if}   
-
-
 
 <style>
 </style>

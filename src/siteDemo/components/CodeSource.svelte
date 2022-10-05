@@ -10,6 +10,7 @@
   export let idElementCodeSource = ""
   export let codeSource = ""
   export let language = "language-html"
+  export let outerhtml = "false"
 
   let controleCodeSource = null  
   let estSuccesCopie = false
@@ -28,7 +29,7 @@
       }      
     } else {
       controleCodeSource = document.getElementById(idElementCodeSource)
-      codeSource = obtenirCodeSourceFormate(controleCodeSource.innerHTML)
+      codeSource = obtenirCodeSourceFormate(outerhtml === 'true' ? controleCodeSource.outerHTML : controleCodeSource.innerHTML)
     }
 
     setTimeout(function(){ 
