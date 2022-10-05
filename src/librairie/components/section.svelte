@@ -3,7 +3,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 -->
 <svelte:options tag="utd-section" />
 
-<script>
+<script> 
   import { slide } from "svelte/transition"
   import { Utils } from './utils'
   export let extensible = "true"
