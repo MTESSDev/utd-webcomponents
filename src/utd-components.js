@@ -1,6 +1,7 @@
 export * from  './librairie/components/js/base.js'
 export * from '../src/librairie/components/accordeon.svelte'
 export * from '../src/librairie/components/avis.svelte'
+export * from '../src/librairie/components/champForm.svelte'
 export * from '../src/librairie/components/dialogueModal.svelte'
 export * from '../src/librairie/components/hautPage.svelte'
 export * from '../src/librairie/components/infobulle.svelte'

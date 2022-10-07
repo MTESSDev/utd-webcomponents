@@ -99,49 +99,50 @@
 </CodeSource>
 
 <h3>Différents types</h3>
+<form novalidate>
+    <div id="differentsTypes">
+        
+        <div class="utd-form-group">
+            <label for="champ1">Champ type "text"</label>
+            <input type="text" id="champ1" class="utd-form-control"/>
+        </div>
 
-<div id="differentsTypes">
-    
-    <div class="utd-form-group">
-        <label for="champ1">Champ type "text"</label>
-        <input type="text" id="champ1" class="utd-form-control"/>
-    </div>
+        <div class="utd-form-group">
+            <label for="champ2">Champ type "number"</label>
+            <input type="number" id="champ2" class="utd-form-control"/>
+        </div>
 
-    <div class="utd-form-group">
-        <label for="champ2">Champ type "number"</label>
-        <input type="number" id="champ2" class="utd-form-control"/>
-    </div>
+        <div class="utd-form-group">
+            <label for="champ3">Champ type "date"</label>
+            <input type="date" id="champ3" class="utd-form-control"/>
+        </div>
 
-    <div class="utd-form-group">
-        <label for="champ3">Champ type "date"</label>
-        <input type="date" id="champ3" class="utd-form-control"/>
-    </div>
+        <div class="utd-form-group">
+            <label for="champ4">Champ type "url"</label>
+            <input type="url" id="champ4" class="utd-form-control"/>
+        </div>
 
-    <div class="utd-form-group">
-        <label for="champ4">Champ type "url"</label>
-        <input type="url" id="champ4" class="utd-form-control"/>
-    </div>
+        <div class="utd-form-group">
+            <label for="champ5">Champ type "tel"</label>
+            <input type="tel" id="champ5" class="utd-form-control"/>
+        </div>
 
-    <div class="utd-form-group">
-        <label for="champ5">Champ type "tel"</label>
-        <input type="tel" id="champ5" class="utd-form-control"/>
-    </div>
+        <div class="utd-form-group">
+            <label for="champ6">Champ type "email"</label>
+            <input type="email" id="champ6" class="utd-form-control"/>
+        </div>
 
-    <div class="utd-form-group">
-        <label for="champ6">Champ type "email"</label>
-        <input type="email" id="champ6" class="utd-form-control"/>
-    </div>
+        <div class="utd-form-group">
+            <label for="champ7">Champ type "password"</label>
+            <input type="password" id="champ7" class="utd-form-control"/>
+        </div>
 
-    <div class="utd-form-group">
-        <label for="champ7">Champ type "password"</label>
-        <input type="password" id="champ7" class="utd-form-control"/>
+        <div class="utd-form-group">
+            <label for="champ8">Champ type "search"</label>
+            <input type="search" id="champ8" class="utd-form-control"/>
+        </div>
     </div>
-
-    <div class="utd-form-group">
-        <label for="champ8">Champ type "search"</label>
-        <input type="search" id="champ8" class="utd-form-control"/>
-    </div>
-</div>
+</form>
 <CodeSource idElementCodeSource="differentsTypes">
 </CodeSource>
 

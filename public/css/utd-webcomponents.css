@@ -333,6 +333,16 @@ margin-bottom: 0;
     display: none!important;
 }
 
+.utd-d-inline{
+    display: inline!important;
+}
+.utd-d-inline-block{
+    display: inline-block!important;
+}
+.utd-d-block{
+    display: block!important;
+}
+
 .utd-sr-only, .sr-only {
     position: absolute;
     width: 1px;
@@ -365,12 +375,28 @@ margin-bottom: 0;
     margin-bottom: 32px;
 }
 
+.mr-32 {
+    margin-right: 32px;
+}
+
+.ml-32 {
+    margin-left: 32px;
+}
+
 .mt-24 {
     margin-top: 24px;
 }
 
 .mb-24 {
     margin-bottom: 24px;
+}
+
+.mr-24 {
+    margin-right: 24px;
+}
+
+.ml-24 {
+    margin-left: 24px;
 }
 .mt-16 {
     margin-top: 16px;
@@ -379,12 +405,28 @@ margin-bottom: 0;
 .mb-16 {
     margin-bottom: 16px;
 }
+.mr-16 {
+    margin-right: 16px;
+}
+
+.ml-16 {
+    margin-left: 16px;
+}
+
 .mt-8 {
     margin-top: 8px;
 }
 
 .mb-8 {
     margin-bottom: 8px;
+}
+
+.mr-8 {
+    margin-right: 8px;
+}
+
+.ml-8 {
+    margin-left: 8px;
 }
 
 /*====================================================================================================
@@ -666,11 +708,13 @@ a.utd-lien-externe[target="_blank"]:after, span.utd-lien-externe:after {
     border-color: var(--couleur-bouton-primaire);
     background-color: var(--couleur-bouton-primaire);
     box-shadow: 0 1px 4px rgba(34, 54, 84, 0.16);
+    text-decoration: none;
 }
 
 .utd-btn.primaire:not([disabled]):hover {
     border-color: #156bb2;
     background-color: #156bb2;
+    text-decoration: none;
 }
 
 .utd-btn.primaire:not([disabled]):focus  {
@@ -678,6 +722,7 @@ a.utd-lien-externe[target="_blank"]:after, span.utd-lien-externe:after {
     background-color: #156bb2;
     box-shadow: 0 2px 8px rgba(34, 54, 84, 0.16), 0 0 0 2px #4a98d9;
     outline: 0;
+    text-decoration: none;
 }
 
 .utd-btn.primaire:active {
@@ -905,6 +950,14 @@ label, .label {
     margin-bottom: 4px;
 }
 
+.utd-icone-champ-requis {
+    font-size: 1rem;
+    vertical-align: top;
+    font-family: OpenSans-Bold;
+    color: var(--couleur-erreur);
+    margin-left: 2px;
+}
+
 .utd-precision {
     display: block;
     margin-bottom: 4px;
@@ -1014,7 +1067,7 @@ input.utd-form-control[type="search"]{
     outline-offset: 0;
 }
 
-/* Champs en erreur */
+/* Champs en erreur TODO */
 .utd-form-control[aria-invalid="true"]{
     border: 2px solid var(--couleur-erreur);
 }    
@@ -1029,7 +1082,7 @@ textarea.utd-form-control{
 }
 
 input.utd-form-control:focus,
-textarea.utd-form-control:focus
+textarea.utd-form-control:focus,
 select.utd-form-control:focus {
     outline: 2px solid #89bce5;
     border: 2px solid #5b6476;
@@ -1196,17 +1249,6 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
     width: 100%;
     max-width: 288px;
 }
-
-.contenu-principal-gauche #colonneGauche.utd > *, .contenu-principal-gauche #colonneDroite.utd > *,
-.contenu-principal-droite #colonneGauche.utd > *, .contenu-principal-droite #colonneDroite.utd > * {
-    margin-top: var(--tc-48-40-val);
-}
-
-.contenu-principal-gauche #colonneGauche.utd > *:first-child, .contenu-principal-gauche #colonneDroite.utd > *:first-child,
-.contenu-principal-droite #colonneGauche.utd > *:first-child, .contenu-principal-droite #colonneDroite.utd > *:first-child {
-    margin-top: 0;
-}
-
 
 /* Limiter la largeur de la colonne principale en mode mobile */
 @media all and (max-width:991px) {

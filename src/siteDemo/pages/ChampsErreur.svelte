@@ -7,6 +7,12 @@
 
 <h1>Champs (erreurs)</h1>
 
+<utd-champ-form obligatoire="true" precision="Si vous n’avez pas de numéro de téléphone, inscrivez le numéro d’un membre de votre famille, d’un ami ou d’un organisme." >
+    <label for="telephone">Téléphone</label>
+    <input type="tel" id="telephone" placeholder="123 456-7890" class="utd-form-control md"/>
+</utd-champ-form>
+
+
 <h2>Description</h2>
 <p>Une erreur dans un champ est indiquée par un contour rouge et un message contextuel placé sous le champ.</p>
 
@@ -20,7 +26,7 @@
     </div>
 </utd-avis>
 <p>Une erreur dans un champ doit être signalée via un span de classe utd-erreur-champ, et ayant le role alert. Ce span doit être placé sous le champ en erreur.</p>
-<p>L'attribut aria-describedby du libellé associé au champ en erreur doit également contenir l'id du contrôle contenant le message d'erreur afin que le message soit lu au lecteur écran avec le libellé lors de l'accès au champ.</p>
+<p>L'attribut aria-describedby du champ en erreur doit également contenir l'id du contrôle contenant le message d'erreur afin que le message soit lu au lecteur écran avec le libellé lors de l'accès au champ.</p>
 
 <h3>Particularités vs. le système de design Quebec.ca</h3>
 <p>La bordure rouge est de 2px au lieu de 3px et la graisse pour le message d'erreur est normale au lieu de bold.</p>
@@ -29,13 +35,12 @@
 <h4>1- Champ texte</h4>
 <div id="exempleErreur1">
     <div class="utd-form-group">
-        <label for="erreur1">Téléphone</label>
+        <label for="erreur1">Téléphone</label><span class="utd-icone-champ-requis">&nbsp;*</span>
         <span id="precisionErreur1" class="utd-precision">Si vous n’avez pas de numéro de téléphone, inscrivez le numéro d’un membre de votre famille, d’un ami ou d’un organisme.</span>
         <input type="tel" id="erreur1" placeholder="123 456-7890" class="utd-form-control md" aria-required="true" aria-describedby="precisionErreur1 texteErreur1"/>
         <span id="texteErreur1" role="alert" class="utd-erreur-champ">Le champ "Téléphone" est obligatoire.</span>
     </div>
 </div>
-
 
 <CodeSource idElementCodeSource="exempleErreur1">
 </CodeSource>

@@ -24,7 +24,7 @@ const role = type === 'erreur' || type === 'avertissement' ? 'alert' : null
     </h2>
     <div class="texte">
       {#if contenu}
-        {@html contenu}
+        {@html contenu}      
       {/if}
       <slot name="contenu" />
     </div>
