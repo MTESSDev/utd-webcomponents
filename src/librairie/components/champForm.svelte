@@ -31,10 +31,7 @@
       gererChamp()
       gererLabel()
       gererChampObligatoire()
-
-      if(precision){
-        ajouterPrecision()
-      }
+      gererPrecision()
     }
 
     
@@ -52,6 +49,7 @@
   // https://www.w3.org/WAI/ARIA/apg/example-index/menubar/menubar-navigation, https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/menu_role et https://usability.yale.edu/web-accessibility/articles/focus-keyboard-operability
 
   $: gererChampObligatoire(obligatoire) 
+  $: gererPrecision(precision) 
 // { }   ||
 
   function gererChamp() { 
@@ -106,29 +104,59 @@
       }    
     }     
   }
-  function ajouterPrecision(){
+  function gererPrecision(){
+    if(!mounted){
+      return
+    }
+   
     if(label){
       elementPrecision = thisComponent.querySelector(".utd-precision")
 
-      if(elementPrecision){
-        elementPrecision.id = elementPrecision.id || idPrecision
-      }
-      else{
-        const span = document.createElement('span')
-        span.classList.add("utd-precision")
-        span.id = idPrecision
-        span.innerText = precision
-        elementPrecision = span
+      if(precision){
+        if(elementPrecision){
+          elementPrecision.id = elementPrecision.id || idPrecision
+        }
+        else{
+          const span = document.createElement('span')
+          span.classList.add("utd-precision")
+          span.id = idPrecision
+          span.innerText = precision
+          elementPrecision = span
 
-        const indicateurObligatoire = thisComponent.querySelector(".utd-icone-champ-requis")
-        if(indicateurObligatoire){
-          indicateurObligatoire.after(elementPrecision)
-        } else {
-          label.after(elementPrecision)
-        }          
-      }
-      elementChamp.setAttribute('aria-describedby', elementPrecision.id)
+          const indicateurObligatoire = thisComponent.querySelector(".utd-icone-champ-requis")
+          if(indicateurObligatoire){
+            indicateurObligatoire.after(elementPrecision)
+          } else {
+            label.after(elementPrecision)
+          }          
+        }
+        ajusterChampAriaDescribedBy('ajout', elementPrecision.id)
+      } else {
+        if(elementPrecision){
+          elementPrecision.remove()
+        }
+        //On retire la précision du aria-describedby
+        ajusterChampAriaDescribedBy('retrait', elementPrecision.id)
+      } 
+    }   
+  }
+  function ajusterChampAriaDescribedBy(operation = 'ajout', valeur){
+    
+    const valeurActuelle = elementChamp.getAttribute('aria-describedby')
+    let nouvelleValeur = ''
+
+    if(operation === 'ajout'){
+      nouvelleValeur = valeurActuelle + valeurActuelle.indexOf(valeur) >= 0 ? '' : valeur
+    } else {
+      nouvelleValeur = valeurActuelle.replace(valeur, '')
     }
+
+    if(nouvelleValeur.trim()){
+      elementChamp.setAttribute('aria-describedby', nouvelleValeur.trim())
+    } else {
+      elementChamp.removeAttribute('aria-describedby')
+    } 
+    
   }
 
   function gererChampObligatoire(){
