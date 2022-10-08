@@ -12,6 +12,10 @@
     <input type="tel" id="telephone" placeholder="123 456-7890" class="utd-form-control md"/>
 </utd-champ-form>
 
+<utd-champ-form obligatoire="true" libelle="Téléphone" format="md" precision="Indiquez le numéro de téléphone de l'établissement concerné." >
+    <input type="tel" placeholder="123 456-7890"/>
+</utd-champ-form>
+
 
 <h2>Description</h2>
 <p>Une erreur dans un champ est indiquée par un contour rouge et un message contextuel placé sous le champ.</p>

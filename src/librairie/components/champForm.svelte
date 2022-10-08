@@ -5,30 +5,43 @@
   import { onMount } from "svelte";
   export let obligatoire = "false"
   export let invalide = "false" 
+  export let format = null
   export let libelle = ""
   export let precision = ""
   export let messageErreur = ""
 
   let label = null
   let mounted = false
+  let typeChamp = null
+  let elementChamp = null
+  let elementPrecision = null
+  const idChamp = Utils.genererId()
   const idPrecision = Utils.genererId()
-  const idTitreMenu = Utils.genererId()
   const texteObligatoire = "Obligatoire."
   const thisComponent = get_current_component()
   
   
   onMount(() => {
 //    html = thisComponent.getRootNode().getElementsByTagName("html")[0]
-    label = thisComponent.querySelector("label")
-
+    typeChamp = obtenirTypeChamp()
     mounted = true
 
-    gererChampObligatoire()
+    if(typeChamp){ 
+     
+      gererChamp()
+      gererLabel()
+      gererChampObligatoire()
+
+      if(precision){
+        ajouterPrecision()
+      }
+    }
 
     
-    if(precision){
-      ajouterPrecision()
-    }
+
+    
+
+    
 //    slots = Array.from(thisComponent.querySelectorAll('[slot]'))    
 //    mounted = true 
   })
@@ -39,25 +52,82 @@
   // https://www.w3.org/WAI/ARIA/apg/example-index/menubar/menubar-navigation, https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/menu_role et https://usability.yale.edu/web-accessibility/articles/focus-keyboard-operability
 
   $: gererChampObligatoire(obligatoire) 
+// { }   ||
 
+  function gererChamp() { 
+    elementChamp.id = elementChamp.id || idChamp
+    if(typeChamp === 'standard' || typeChamp === 'select' || typeChamp === 'textarea') { 
+      elementChamp.classList.add('utd-form-control')
 
+      if(format){ 
+        elementChamp.classList.add(format)
+      }
+    } 
+  }
+
+  function obtenirTypeChamp(){ 
+    const input = thisComponent.querySelector("input")
+   
+    if(input){ 
+      elementChamp = input
+      const type = input.getAttribute("type")
+
+      if(type === 'radio' || type === 'checkbox'){ 
+        return type
+      } else if(type === 'button' || type === 'submit'){ 
+        return null
+      } else { 
+        return 'standard'
+      } 
+    } else if(thisComponent.querySelector("textarea")){
+        elementChamp = thisComponent.querySelector("textarea")
+        return 'standard'
+    } else if(thisComponent.querySelector("select")){ 
+       elementChamp = thisComponent.querySelector("select") 
+       return 'select'
+    } else  {
+      return null
+    }  
+  }
+  function gererLabel(){
+    label = thisComponent.querySelector("label")
+
+    if(label){
+      //Le label existe déjà. On s'assure qu'il est bien lié au champ.
+        label.setAttribute('for', elementChamp.id)
+    } else {
+      //Aucun label, mais un attribut libelle est spécifié. On doit donc ajouter le label et l'associer au champ.
+      if(libelle){
+        const element = document.createElement('label')
+        element.innerText = libelle
+        element.setAttribute('for', elementChamp.id)
+        thisComponent.prepend(element)
+        label = element
+      }    
+    }     
+  }
   function ajouterPrecision(){
     if(label){
-      const nodePrecision = thisComponent.querySelector(".utd-precision")
+      elementPrecision = thisComponent.querySelector(".utd-precision")
 
-      if(!nodePrecision){
+      if(elementPrecision){
+        elementPrecision.id = elementPrecision.id || idPrecision
+      }
+      else{
         const span = document.createElement('span')
         span.classList.add("utd-precision")
         span.id = idPrecision
         span.innerText = precision
+        elementPrecision = span
 
         const indicateurObligatoire = thisComponent.querySelector(".utd-icone-champ-requis")
         if(indicateurObligatoire){
-          indicateurObligatoire.after(span)
+          indicateurObligatoire.after(elementPrecision)
         } else {
-          label.after(span)
+          label.after(elementPrecision)
         }          
       }
+      elementChamp.setAttribute('aria-describedby', elementPrecision.id)
     }
   }
 
@@ -78,10 +148,16 @@
         }
       } else {
         if(indicateurObligatoire){
-          indicateurObligatoire.parentElement.remove()
+          indicateurObligatoire.remove()
         }
       }      
     }
+
+    if(obligatoire === 'true') { 
+      elementChamp.setAttribute('aria-required', 'true')
+    } else  { 
+      elementChamp.removeAttribute('aria-required')
+    } 
   }
   
 </script>
