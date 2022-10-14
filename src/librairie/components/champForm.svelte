@@ -142,7 +142,7 @@
   }
   function ajusterChampAriaDescribedBy(operation = 'ajout', valeur){
     
-    const valeurActuelle = elementChamp.getAttribute('aria-describedby')
+    const valeurActuelle = elementChamp.getAttribute('aria-describedby') || ''
     let nouvelleValeur = ''
 
     if(operation === 'ajout'){
