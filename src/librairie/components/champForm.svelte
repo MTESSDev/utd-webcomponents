@@ -200,6 +200,7 @@
       elementErreur = thisComponent.querySelector(".utd-erreur-champ")
     }
 
+    //TODO gérer aria-describedby pour l'erreur avec ajusterChampAriaDescribedBy. Si elementErreur pas d'id on doit lui assigné celui généré
     if(invalide === 'true') { 
       elementChamp.setAttribute('aria-invalid', 'true')
 
@@ -211,7 +212,7 @@
         elementErreur = span
         elementChamp.after(elementErreur)
       }
-      
+
       elementErreur.classList.remove('utd-d-none')
     } else  { 
       elementChamp.removeAttribute('aria-invalid')
