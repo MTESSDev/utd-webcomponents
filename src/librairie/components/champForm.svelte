@@ -8,15 +8,17 @@
   export let format = null
   export let libelle = ""
   export let precision = ""
-  export let messageErreur = ""
+  export let messageerreur = ""
 
   let label = null
   let mounted = false
   let typeChamp = null
   let elementChamp = null
   let elementPrecision = null
+  let elementErreur = null
   const idChamp = Utils.genererId()
   const idPrecision = Utils.genererId()
+  const idErreur = Utils.genererId()
   const texteObligatoire = "Obligatoire."
   const thisComponent = get_current_component()
   
@@ -32,6 +34,7 @@
       gererLabel()
       gererChampObligatoire()
       gererPrecision()
+      gererErreur()
     }
 
     
@@ -50,6 +53,7 @@
 
   $: gererChampObligatoire(obligatoire) 
   $: gererPrecision(precision) 
+  $: gererErreur(invalide) 
 // { }   ||
 
   function gererChamp() { 
@@ -187,17 +191,34 @@
       elementChamp.removeAttribute('aria-required')
     } 
   }
-  
+  function gererErreur(){
+    if(!mounted){
+      return
+    }
+
+    if(invalide === 'true') { 
+      elementChamp.setAttribute('aria-invalid', 'true')
+
+      const span = document.createElement('span')
+      span.classList.add("utd-erreur-champ")
+      span.id = idErreur
+      span.innerText = messageerreur
+      elementErreur = span
+
+      elementChamp.after(elementErreur)
+
+    } else  { 
+      elementChamp.removeAttribute('aria-invalid')
+      if(elementErreur){
+        elementErreur.remove()
+      }
+    } 
+  }
 </script>
 
 
 <div class="utd-form-group">
   <slot/>
-  {#if invalide && messageErreur}
-  <span id="texteErreur1" role="alert" class="utd-erreur-champ">{messageErreur}</span>
-  {/if}
-
-  
 </div>
 
 

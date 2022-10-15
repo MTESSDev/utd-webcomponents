@@ -10,9 +10,10 @@
 <utd-champ-form obligatoire="true" precision="Si vous n’avez pas de numéro de téléphone, inscrivez le numéro d’un membre de votre famille, d’un ami ou d’un organisme." >
     <label for="telephone">Téléphone</label>
     <input type="tel" id="telephone" placeholder="123 456-7890" class="utd-form-control md"/>
+    <span class="utd-erreur-champ" id="telephoneErreur">Le champ "Téléphone" est obligatoire.</span>
 </utd-champ-form>
 
-<utd-champ-form obligatoire="true" libelle="Téléphone" format="md" precision="Indiquez le numéro de téléphone de l'établissement concerné." >
+<utd-champ-form obligatoire="true" libelle="Téléphone" format="md" precision="Indiquez le numéro de téléphone de l'établissement concerné." messageerreur="Le champ &#34;Téléphone&#34; est obligatoire.">
     <input type="tel" placeholder="123 456-7890"/>
 </utd-champ-form>
 
