@@ -196,21 +196,27 @@
       return
     }
 
+    if(!elementErreur){
+      elementErreur = thisComponent.querySelector(".utd-erreur-champ")
+    }
+
     if(invalide === 'true') { 
       elementChamp.setAttribute('aria-invalid', 'true')
 
-      const span = document.createElement('span')
-      span.classList.add("utd-erreur-champ")
-      span.id = idErreur
-      span.innerText = messageerreur
-      elementErreur = span
-
-      elementChamp.after(elementErreur)
-
+      if(!elementErreur){
+        const span = document.createElement('span')
+        span.classList.add("utd-erreur-champ")
+        span.id = idErreur
+        span.innerText = messageerreur
+        elementErreur = span
+        elementChamp.after(elementErreur)
+      }
+      
+      elementErreur.classList.remove('utd-d-none')
     } else  { 
       elementChamp.removeAttribute('aria-invalid')
       if(elementErreur){
-        elementErreur.remove()
+        elementErreur.classList.add('utd-d-none')
       }
     } 
   }
