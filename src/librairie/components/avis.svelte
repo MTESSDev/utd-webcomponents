@@ -19,7 +19,7 @@ const role = type === 'erreur' || type === 'avertissement' ? 'alert' : null
     <div aria-hidden="true" class="utd-icone-svg {type}"></div>
   </div>
   <div class="contenu zone-html">
-    <h2 class="titre d-flex justify-content-between align-self-center">
+    <h2 class="titre">
       {titre}
     </h2>
     <div class="texte">

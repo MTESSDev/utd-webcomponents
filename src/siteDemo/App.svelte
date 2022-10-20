@@ -86,7 +86,7 @@
                     </ul>
                 </nav>
             </div>
-            <div class="container zone-menu-principal d-flex">
+            <div class="container zone-menu-principal">
             </div>
         </div>
 
