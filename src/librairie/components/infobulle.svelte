@@ -23,16 +23,8 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     : lang === "fr"
     ? "Aide à propos de&nbsp;"
     : "Help about&nbsp;"
-  const srTexteBoutonOuvrir = srboutonouvrir
-    ? srboutonouvrir
-    : lang === "fr"
-    ? "Afficher l'aide contextuelle"
-    : "Show help about"
-  const srTexteBoutonFermer = srboutonfermer
-    ? srboutonfermer
-    : lang === "fr"
-    ? "Fermer"
-    : "Close"
+  const srTexteDefautBoutonOuvrir =  lang === "fr" ? "Afficher l'aide contextuelle" : "Show help about"
+  const srTexteDefautBoutonFermer =  lang === "fr" ? "Fermer" : "Close"
   const thisComponent = get_current_component()
 
   let html
@@ -101,7 +93,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   {#if $$slots["texte-lie"]}
     <span class="texte-lie" on:click={afficherModale}><slot name="texte-lie" /></span>
   {/if}
-  <span class="conteneur-tooltip">&#xFEFF;<button type="button" on:click={afficherModale} aria-label={srTexteBoutonOuvrir} class="tooltip-toggle">
+  <span class="conteneur-tooltip">&#xFEFF;<button type="button" on:click={afficherModale} aria-label={srboutonouvrir || srTexteDefautBoutonOuvrir} class="tooltip-toggle">
       <span class="conteneur-puce">
         <span aria-hidden="true" class="puce">
           <span
@@ -141,7 +133,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
           type="button"
           class="close"
           on:click={masquerModale}
-          aria-label={srTexteBoutonFermer}
+          aria-label={srboutonfermer || srTexteDefautBoutonFermer}
         >
           <span
             aria-hidden="true"

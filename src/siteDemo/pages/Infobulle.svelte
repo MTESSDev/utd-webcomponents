@@ -71,7 +71,7 @@
 <h3>5- Utilisation avec attributs avancés (srTitre, srBoutonFermer)</h3>
 <div id="exempleInfobulle5">
     <label for="test5">Une question de test bidon</label>
-    <utd-infobulle titre="Type de demande" srTitre="Aide personnalisée" srboutonfermer="Fermer la fenêtre">
+    <utd-infobulle titre="Type de demande" srTitre="Aide personnalisée" srboutonouvrir="Afficher l'aide contextuelle (test)" srboutonfermer="Fermer la fenêtre">
         <div slot="contenu">
             <p>Banana Boat3!</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, magni earum ut ex totam corporis unde incidunt deserunt, dolorem voluptatum libero quia. Maiores, provident error vel veritatis itaque nemo commodi.</p>
