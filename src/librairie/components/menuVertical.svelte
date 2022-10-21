@@ -2,13 +2,11 @@
 <script>
   import { Utils } from '../../librairie/components/utils.js'
 
-  export let titre = ""
+  export let titre = lang === 'fr' ? 'Menu secondaire' : 'Secondary menu'
   export let lang = "fr"
   export let titrevisible = "true"
 
   let afficher = false
-
-  titre = titre || lang === 'fr' ? 'Menu secondaire' : 'Secondary menu'
 
   const idMenu = Utils.genererId()
   const idTitreMenu = Utils.genererId()

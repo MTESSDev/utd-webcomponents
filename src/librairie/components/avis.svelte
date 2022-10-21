@@ -9,12 +9,9 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   export let type = "information"
   export let contenu = ""
 
-const role = type === 'erreur' || type === 'avertissement' ? 'alert' : null
-
-
 </script>
 
-<div class="utd-component utd-avis {type}" {role}>
+<div class="utd-component utd-avis {type}" role="{type === 'erreur' || type === 'avertissement' ? 'alert' : null}">
   <div class="zone-icone">
     <div aria-hidden="true" class="utd-icone-svg {type}"></div>
   </div>
