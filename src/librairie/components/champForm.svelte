@@ -37,19 +37,12 @@
       gererErreur()
     }
 
-    
-
-    
-
-    
 //    slots = Array.from(thisComponent.querySelectorAll('[slot]'))    
 //    mounted = true 
   })
 
   //TODO implémnenter gestion langue (aller chercher dans balise html? lang=?)
   
-  // Références pour accessibilité
-  // https://www.w3.org/WAI/ARIA/apg/example-index/menubar/menubar-navigation, https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/menu_role et https://usability.yale.edu/web-accessibility/articles/focus-keyboard-operability
 
   $: gererChampObligatoire(obligatoire) 
   $: gererPrecision(precision) 
@@ -211,6 +204,8 @@
         span.innerText = messageerreur
         elementErreur = span
         elementChamp.after(elementErreur)
+
+        ajusterChampAriaDescribedBy('ajout', elementErreur.id)
       }
 
       elementErreur.classList.remove('utd-d-none')
@@ -218,6 +213,7 @@
       elementChamp.removeAttribute('aria-invalid')
       if(elementErreur){
         elementErreur.classList.add('utd-d-none')
+        ajusterChampAriaDescribedBy('retrait', elementErreur.id)
       }
     } 
   }
