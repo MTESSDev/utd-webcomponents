@@ -115,8 +115,8 @@
                             <utd-menu-vertical-item label="Formulaire">    
                                 <utd-menu-vertical-item label="Bouton radio" href="/composants/formulaire/boutonradio"></utd-menu-vertical-item>                            
                                 <utd-menu-vertical-item label="Case à cocher" href="/composants/formulaire/casecocher"></utd-menu-vertical-item>                            
-                                <utd-menu-vertical-item label="Champs texte et autres" href="/composants/formulaire/champstexte"></utd-menu-vertical-item> 
-                                <utd-menu-vertical-item label="Champs (erreurs)" href="/composants/formulaire/champserreurs"></utd-menu-vertical-item>                           
+                                <utd-menu-vertical-item label="Champs texte et autres (Gestion manuelle)" href="/composants/formulaire/champstexte"></utd-menu-vertical-item> 
+                                <utd-menu-vertical-item label="Champs texte et autres (Gestion automatique)" href="/composants/formulaire/champserreurs"></utd-menu-vertical-item>                           
                             </utd-menu-vertical-item>
                             <utd-menu-vertical-item label="Navigation">                                
                                 <utd-menu-vertical-item label="Haut de page" href="/composants/navigation/hautpage"></utd-menu-vertical-item>

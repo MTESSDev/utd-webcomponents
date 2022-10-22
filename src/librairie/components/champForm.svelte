@@ -17,6 +17,7 @@
   let elementPrecision = null
   let elementErreur = null
   const idChamp = Utils.genererId()
+  const idParentUtd = Utils.genererId()
   const idPrecision = Utils.genererId()
   const idErreur = Utils.genererId()
   const texteObligatoire = "Obligatoire."
@@ -51,6 +52,11 @@
 
   function gererChamp() { 
     elementChamp.id = elementChamp.id || idChamp
+
+    const idUtd = thisComponent.id || idParentUtd
+    elementChamp.setAttribute('idutd', idUtd)
+    thisComponent.id = idUtd
+
     if(typeChamp === 'standard' || typeChamp === 'select' || typeChamp === 'textarea') { 
       elementChamp.classList.add('utd-form-control')
 
@@ -143,7 +149,7 @@
     let nouvelleValeur = ''
 
     if(operation === 'ajout'){
-      nouvelleValeur = valeurActuelle + valeurActuelle.indexOf(valeur) >= 0 ? '' : valeur
+      nouvelleValeur = valeurActuelle + (valeurActuelle.indexOf(valeur) >= 0 ? '' : ' ' + valeur)
     } else {
       nouvelleValeur = valeurActuelle.replace(valeur, '')
     }
@@ -168,7 +174,7 @@
         if(!indicateurObligatoire){
           const span = document.createElement('span')
           span.classList.add("utd-icone-champ-requis")
-          span.innerHTML = `<span aria-hidden="true">&nbsp;*</span><span class="utd-sr-only">&nbsp;${texteObligatoire}</span>`
+          span.innerHTML = `&nbsp;*`
           label.after(span)
         }
       } else {
@@ -193,7 +199,6 @@
       elementErreur = thisComponent.querySelector(".utd-erreur-champ")
     }
 
-    //TODO gérer aria-describedby pour l'erreur avec ajusterChampAriaDescribedBy. Si elementErreur pas d'id on doit lui assigné celui généré
     if(invalide === 'true') { 
       elementChamp.setAttribute('aria-invalid', 'true')
 
@@ -204,10 +209,8 @@
         span.innerText = messageerreur
         elementErreur = span
         elementChamp.after(elementErreur)
-
-        ajusterChampAriaDescribedBy('ajout', elementErreur.id)
       }
-
+      ajusterChampAriaDescribedBy('ajout', elementErreur.id)
       elementErreur.classList.remove('utd-d-none')
     } else  { 
       elementChamp.removeAttribute('aria-invalid')

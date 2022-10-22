@@ -84,14 +84,46 @@
 
 <h2>Espace réservé et précision</h2>
 <p>Un espace réservé (<em>placeholder</em>) permet de préciser comment saisir les informations. Il est utilisé dans les champs dont le format est particulier, comme le code postal, le numéro de téléphone ou la date.</p>
-<p>La précision permet d'ajouter certaines informations permettant de mieux comprendre ce qui doit être inscrit dans un champ. Elle s’ajoute à la suite de l’étiquette, avant le champ texte. Simplement utiliser un "span" avec la classe <em>utd-precision</em>.</p>
-<p>Lors de l'utilisation d'une précision, il est impératif d'ajouter l'attibut <em>aria-describedby</em> sur le champ afin que la précision soit lue au lecteur écran avec le libellé.</p>
+<p>La précision quant à elle permet d'ajouter certaines informations permettant de mieux comprendre ce qui doit être inscrit dans un champ. Elle s’ajoute à la suite de l’étiquette, avant le champ texte. Simplement utiliser un "span" avec la classe <em>utd-precision</em>.</p>
+<p>Lors de l'utilisation d'une précision, il est impératif d'ajouter l'attribut <em>aria-describedby</em> sur le champ afin que la précision soit lue au lecteur écran avec le libellé.</p>
 <h3>Exemples</h3>
 <div id="exemplePlaceholderPrecision">
     <div class="utd-form-group">
         <label for="placeholder1" aria-describedby="precisionExemplePlaceholderPrecision">Téléphone</label>
         <span id="precisionExemplePlaceholderPrecision" class="utd-precision">Si vous n’avez pas de numéro de téléphone, inscrivez le numéro d’un membre de votre famille, d’un ami ou d’un organisme.</span>
         <input type="tel" id="placeholder1" placeholder="123 456-7890" class="utd-form-control md"/>
+    </div>
+</div>
+
+<CodeSource idElementCodeSource="exemplePlaceholderPrecision">
+</CodeSource>
+
+<h2>Champs obligatoires</h2>
+<p>La composante est constituée de deux éléments : la mention et l'astérisque.</p>
+<p>La mention s’affiche sous le titre du formulaire avec la phrase : « Les champs suivis d'un * sont obligatoires ». Elle doit toujours être présente dès que la tâche dépasse 2 champs de formulaire.</p>
+<p>L’astérisque est placé à la fin de l’étiquette de chacun des champs obligatoires. Il est toujours en rouge pour que l'utilisateur puisse repérer rapidement quel champ est obligatoire.</p>
+<h3>Exemples</h3>
+<div id="exempleErreur">
+    <div class="utd-form-group">
+        <label for="tel1" aria-describedby="tel1Precision">Téléphone</label>
+        <span class="utd-icone-champ-requis" aria-hidden="true">&nbsp;*</span>
+        <span id="tel1Precision" class="utd-precision">Si vous n’avez pas de numéro de téléphone, inscrivez le numéro d’un membre de votre famille, d’un ami ou d’un organisme.</span>
+        <input type="tel" id="tel1" placeholder="123 456-7890"  aria-required="true" class="utd-form-control md"/>
+    </div>
+</div>
+<h2>Erreurs</h2>
+<p>Une erreur dans un champ texte est indiquée par un contour rouge et un message contextuel placé sous le champ.</p>
+<p>Il suffit d'utiliser un span avec la classe "utd-erreur-champ". Ce span doit obligatoirement avoir un id.</p>
+<p>L'attribut <em>aria-describedby</em> de l'élément doit contenir l'id du span contenant le message d'erreur, ainsi que l'id de la précision s'il y en a une afin que le message d'erreur (ainsi que la précision le cas échéant) soit lu au lecteur écran avec le libellé.</p>
+<p>L'attribut <em>aria-invalid</em> doit avoir la valeur "true".</p>
+<h3>Exemples</h3>
+<div id="exempleErreur">
+    <div class="utd-form-group">
+        <label for="tel2" aria-describedby="tel2Precision tel2Erreur">Téléphone</label>
+        <span class="utd-icone-champ-requis" aria-hidden="true">&nbsp;*</span>
+        <span id="tel2Precision" class="utd-precision">Si vous n’avez pas de numéro de téléphone, inscrivez le numéro d’un membre de votre famille, d’un ami ou d’un organisme.</span>
+        <input type="tel" id="tel2" placeholder="123 456-7890"  aria-required="true" aria-invalid="true" class="utd-form-control md"/>
+        <span class="utd-erreur-champ" id="tel2Erreur">Le champ "Téléphone" est obligatoire.</span>
     </div>
 </div>
 
