@@ -125,13 +125,7 @@
           span.id = idPrecision
           span.innerText = precision
           elementPrecision = span
-
-          const indicateurObligatoire = thisComponent.querySelector(".utd-icone-champ-requis")
-          if(indicateurObligatoire){
-            indicateurObligatoire.after(elementPrecision)
-          } else {
-            label.after(elementPrecision)
-          }          
+          label.after(elementPrecision)  
         }
         ajusterChampAriaDescribedBy('ajout', elementPrecision.id)
       } else {
@@ -174,8 +168,8 @@
         if(!indicateurObligatoire){
           const span = document.createElement('span')
           span.classList.add("utd-icone-champ-requis")
-          span.innerHTML = `&nbsp;*`
-          label.after(span)
+          span.innerHTML = `*`
+          label.append(span)
         }
       } else {
         if(indicateurObligatoire){

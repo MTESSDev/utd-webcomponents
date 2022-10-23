@@ -946,8 +946,12 @@ button.utd-btn.utd-traitement-en-cours, input[type="submit"].utd-btn.utd-traitem
 /* TODO ICI s'entendre avec SCG pour graisse des libellés... Nous on préfère semiBold*/
 label, .label {
     font-family: 'OpenSans-SemiBold';
-    display: inline-block;
+    display: ;
     margin-bottom: 4px;
+}
+
+.utd-form-group > label .utd-icone-champ-requis , .utd-form-group > .label .utd-icone-champ-requis {
+    margin-left: 0;
 }
 
 .utd-icone-champ-requis {
@@ -955,7 +959,8 @@ label, .label {
     vertical-align: top;
     font-family: OpenSans-Bold;
     color: var(--couleur-erreur);
-    margin-left: 2px;
+    margin-left:6px;
+    display: inline-block;
 }
 
 .utd-precision {
