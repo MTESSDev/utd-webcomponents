@@ -105,7 +105,9 @@
 <h3>Exemples</h3>
 <div id="exempleErreur">
     <div class="utd-form-group">
-        <label for="tel1" aria-describedby="tel1Precision">Téléphone<span class="utd-icone-champ-requis" aria-hidden="true">*</span>
+        <label for="tel1" aria-describedby="tel1Precision">
+            <span>Téléphone</span>
+            <span class="utd-icone-champ-requis" aria-hidden="true">*</span>
         </label>
         <span id="tel1Precision" class="utd-precision">Si vous n’avez pas de numéro de téléphone, inscrivez le numéro d’un membre de votre famille, d’un ami ou d’un organisme.</span>
         <input type="tel" id="tel1" placeholder="123 456-7890"  aria-required="true" class="utd-form-control md"/>
@@ -120,7 +122,7 @@
 <div id="exempleErreur">
     <div class="utd-form-group">
         <label for="tel2" aria-describedby="tel2Precision tel2Erreur">
-            Téléphone
+            <span>Téléphone</span>
             <span class="utd-icone-champ-requis" aria-hidden="true">*</span>
         </label>
         <span id="tel2Precision" class="utd-precision">Si vous n’avez pas de numéro de téléphone, inscrivez le numéro d’un membre de votre famille, d’un ami ou d’un organisme.</span>
