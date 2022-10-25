@@ -5,7 +5,7 @@
 <style type="text/css">
 </style>
 
-<h1>Champ obligatoie</h1>
+<h1>Champ obligatoire</h1>
 
 <utd-tablematieres selecteurancres="#main h2">
 </utd-tablematieres>
