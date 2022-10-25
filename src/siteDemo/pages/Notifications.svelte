@@ -19,7 +19,7 @@
 
     function obtenirTableauParametres() {
         return [
-            {nom: "type", type: "String (Optionnel)", description: `Type de notification. Valeurs possibles : <span class="utd-emphase">positif</span> (Défaut), <span class="utd-emphase">negatif</span>, <span class="utd-emphase">neutre</span>.`},
+            {nom: "type", type: "String (Optionnel)", description: `Type de notification. Valeurs possibles : <span class="utd-utd-emphase-gris">positif</span> (Défaut), <span class="utd-utd-emphase-gris">negatif</span>, <span class="utd-utd-emphase-gris">neutre</span>.`},
             {nom: "titre", type: "String (Optionnel)", description: `Titre de la notification.`},
             {nom: "message", type: "String", description: `Texte de la notification.`},
             {nom: "delaiFermeture", type: "Number (Optionnel)", description: `Délai de fermeture de la notification (en millisecondes). Défaut 5000.`},

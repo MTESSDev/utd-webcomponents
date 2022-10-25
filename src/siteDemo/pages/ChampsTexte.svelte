@@ -31,11 +31,11 @@
 
 
 <h2>Notions de base</h2>
-<p>Tous les champs (éléments de type "input") doivent être dans un conteneur (ex. un "div") ayant la classe <em>(utd-form-group)</em> et les champs eux-mêmes doivent avoir la classe <em>(utd-form-control)</em>.</p>
+<p>Un champ de type &lt;input&gt; doit posséder la classe <span class="utd-emphase-gris">utd-form-control</span> et être dans un conteneur (ex. un &lt;div&gt;) ayant la classe <span class="utd-emphase-gris">utd-form-group</span> (sauf le dernier champ d'une page).</p>
 
 
 <h2>Étiquette (label)</h2>
-<p>Style appliqué automatiquement à tous les éléments de type <em>label</em>.</p>
+<p>Style appliqué automatiquement à tous les éléments &lt;label&gt;.</p>
 
 <h3>Particularités vs. le système de design Quebec.ca</h3>
 <p>Nous utilisons la graisse semi-bold au lieu de bold.</p>
@@ -53,10 +53,10 @@
 
 <h2>Formats disponibles</h2>
 <p>La longueur du champ doit être adaptée à la réponse requise, selon 5 formats disponibles.</p>
-<p>Utilisez les classes "sm", "md", "lg", "xl", et "xxl" afin de préciser le format des champs. Si rien n'est spécifié, le format "large" par défaut s'applique.</p>
+<p>Utilisez les classes <span class="utd-emphase-gris">sm</span>, <span class="utd-emphase-gris">md</span>, <span class="utd-emphase-gris">lg</span>, <span class="utd-emphase-gris">xl</span>, et <span class="utd-emphase-gris">xxl</span> afin de préciser le format des champs. Si rien n'est spécifié, le format "large" par défaut s'applique.</p>
 
 <h3>Particularités vs. le système de design Quebec.ca</h3>
-<p>Nous avons ajouté un format "extra extra-large" (<em>xxl</em>) prenant la largeur disponible à l'intérieur du conteneur.</p>
+<p>Nous avons ajouté un format "extra extra-large" <span class="utd-emphase-gris">xxl</span> prenant la largeur disponible à l'intérieur du conteneur.</p>
 
 <h3>Exemples</h3>
 <div id="exempleFormats">
@@ -87,52 +87,14 @@
 
 <h2>Espace réservé et précision</h2>
 <p>Un espace réservé (<em>placeholder</em>) permet de préciser comment saisir les informations. Il est utilisé dans les champs dont le format est particulier, comme le code postal, le numéro de téléphone ou la date.</p>
-<p>La précision quant à elle permet d'ajouter certaines informations permettant de mieux comprendre ce qui doit être inscrit dans un champ. Elle s’ajoute à la suite de l’étiquette, avant le champ texte. Simplement utiliser un "span" avec la classe <em>utd-precision</em>.</p>
-<p>Lors de l'utilisation d'une précision, il est impératif d'ajouter l'attribut <em>aria-describedby</em> sur le champ afin que la précision soit lue au lecteur écran avec le libellé.</p>
+<p>La précision quant à elle permet d'ajouter certaines informations permettant de mieux comprendre ce qui doit être inscrit dans un champ. Elle s’ajoute à la suite de l’étiquette, avant le champ texte. Simplement utiliser un &lt;span&gt; avec la classe <span class="utd-emphase-gris">utd-precision</span>.</p>
+<p>Lors de l'utilisation d'une précision, il est impératif d'ajouter l'attribut <span class="utd-emphase-gris">aria-describedby</span> sur le champ afin que la précision soit lue au lecteur écran avec le libellé.</p>
 <h3>Exemples</h3>
 <div id="exemplePlaceholderPrecision">
     <div class="utd-form-group">
         <label for="placeholder1" aria-describedby="precisionExemplePlaceholderPrecision">Téléphone</label>
         <span id="precisionExemplePlaceholderPrecision" class="utd-precision">Si vous n’avez pas de numéro de téléphone, inscrivez le numéro d’un membre de votre famille, d’un ami ou d’un organisme.</span>
         <input type="tel" id="placeholder1" placeholder="123 456-7890" class="utd-form-control md"/>
-    </div>
-</div>
-
-<CodeSource idElementCodeSource="exemplePlaceholderPrecision">
-</CodeSource>
-
-<h2>Champs obligatoires</h2>
-<p>La composante est constituée de deux éléments : la mention et l'astérisque.</p>
-<p>La mention s’affiche sous le titre du formulaire avec la phrase : « Les champs suivis d'un * sont obligatoires ». Elle doit toujours être présente dès que la tâche dépasse 2 champs de formulaire.</p>
-<p>L’astérisque est placé à la fin de l’étiquette de chacun des champs obligatoires. Il est toujours en rouge pour que l'utilisateur puisse repérer rapidement quel champ est obligatoire.</p>
-<p>L’attribut <em>aria-required</em> doit être spécifié avec la valeur "true" afin d'indiquer au lecteur écran que le champ est obligatoire.</p>
-<p>Il serait possible d'utiliser l'attribut HTML5 <em>required</em>, cependant dès qu'on accède à un champ <em>required</em>, le lecteur écran indique que le champ est invalide s'il est vide, et ce même si le champ n'a pas encore été touché.</p>
-<h3>Exemples</h3>
-<div id="exempleErreur">
-    <div class="utd-form-group">
-        <label for="tel1" aria-describedby="tel1Precision">
-            <span>Téléphone</span>
-            <span class="utd-icone-champ-requis" aria-hidden="true">*</span>
-        </label>
-        <span id="tel1Precision" class="utd-precision">Si vous n’avez pas de numéro de téléphone, inscrivez le numéro d’un membre de votre famille, d’un ami ou d’un organisme.</span>
-        <input type="tel" id="tel1" placeholder="123 456-7890"  aria-required="true" class="utd-form-control md"/>
-    </div>
-</div>
-<h2>Erreurs</h2>
-<p>Une erreur dans un champ texte est indiquée par un contour rouge et un message contextuel placé sous le champ.</p>
-<p>Il suffit d'utiliser un span avec la classe "utd-erreur-champ". Ce span doit obligatoirement avoir un id.</p>
-<p>L'attribut <em>aria-describedby</em> de l'élément doit contenir l'id du span contenant le message d'erreur, ainsi que l'id de la précision s'il y en a une afin que le message d'erreur (ainsi que la précision le cas échéant) soit lu au lecteur écran avec le libellé.</p>
-<p>L'attribut <em>aria-invalid</em> doit avoir la valeur "true".</p>
-<h3>Exemples</h3>
-<div id="exempleErreur">
-    <div class="utd-form-group">
-        <label for="tel2" aria-describedby="tel2Precision tel2Erreur">
-            <span>Téléphone</span>
-            <span class="utd-icone-champ-requis" aria-hidden="true">*</span>
-        </label>
-        <span id="tel2Precision" class="utd-precision">Si vous n’avez pas de numéro de téléphone, inscrivez le numéro d’un membre de votre famille, d’un ami ou d’un organisme.</span>
-        <input type="tel" id="tel2" placeholder="123 456-7890"  aria-required="true" aria-invalid="true" class="utd-form-control md"/>
-        <span class="utd-erreur-champ" id="tel2Erreur">Le champ "Téléphone" est obligatoire.</span>
     </div>
 </div>
 

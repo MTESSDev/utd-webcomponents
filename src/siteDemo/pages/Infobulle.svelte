@@ -19,7 +19,7 @@
 <h2>Exemples</h2>
 
 <h3>1- Utilisation dans un paragraphe sans mot lié</h3>
-<p>Le contenu doit être fourni via l'attribut <span class="utd-emphase">contenu</span>.</p>
+<p>Le contenu doit être fourni via l'attribut <span class="utd-emphase-gris">contenu</span>.</p>
 <div id="exempleInfobulle1"  class="mb-32">
     <p>
         Ici un texte plus ou moins important. Aucun mot lié directement à l'aide contextuelle (cas de figure limite qui ne devrait pas se produire souvent)
@@ -32,7 +32,7 @@
 </CodeSource>   
 
 <h3>2- Utilisation à l'intérieur d'un paragraphe avec mot lié</h3>
-<p>Le contenu doit être fourni via l'attribut <span class="utd-emphase">contenu</span> et le mot lié est dans la slot <span class="utd-emphase">texte-lie</span>.</p>
+<p>Le contenu doit être fourni via l'attribut <span class="utd-emphase-gris">contenu</span> et le mot lié est dans la slot <span class="utd-emphase-gris">texte-lie</span>.</p>
 <div id="exempleInfobulle2" class="mb-32">
     <p>Un texte incroyable avec un mot très important, à savoir
         <utd-infobulle titre="Banane" contenu="<p>1. Fruit allongé, un peu incurvé, vert ou jaune, groupé en grappes dites « régimes » sur le bananier, et qui contient, sous une peau épaisse aisée à détacher, une pulpe amylacée nutritive et savoureuse de consistance fondante.</p><p>2. Populaire. Décoration, galon.</p><p>3. Populaire. Injure familière adressée à quelqu'un dont on souligne la bêtise, la naïveté.</p>">

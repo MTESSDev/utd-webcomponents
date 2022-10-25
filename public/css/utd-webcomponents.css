@@ -1091,7 +1091,7 @@ html.utd-modale-ouverte:not(.est-mobile) utd-hautpage {
     --couleur-bouton-primaire: #095797;
     --couleur-bleu-pale: #DAE6F0;
     --couleur-orange: #cf4b00;
-    --couleur-saumon: #F09686;
+    --couleur-saumon: #E58271;
     --couleur-primaire-entete-soulignee: var(--couleur-saumon);
     --couleur-texte-base: #223654;
     --couleur-texte-gris-pale: #6A778A;
@@ -1102,6 +1102,32 @@ html.utd-modale-ouverte:not(.est-mobile) utd-hautpage {
     --couleur-hover: #ecf2f7;
     --couleur-filet-secondaire: #c5cad2;
     --couleur-bordure-tables: #dee2e6;
+
+
+    /* Couleurs du système de design Quebec.ca*/
+    --gris-pale: #F1F1F2;
+    --gris-clair: #C5CAD2;
+    --gris: #8893A2;
+    --gris-moyen: #6B778A;
+    --gris-fonce: #4E5662;
+    --bleu-pale: #DAE6F0;
+    --bleu-clair: #4A98D9;
+    --bleu: #1479CC;
+    --bleu-piv: #095797;
+    --bleu-moyen: #19406C;
+    --bleu-fonce: #223654;
+    --rose-pale: #FFDBD6;
+    --rose: #E58271;
+    --rouge: #CB381F;
+    --rose-fonce: #692519;
+    --vert-pale: #D7F0BB;
+    --vert: #4F813D;
+    --vert-fonce: #2C4024;
+    --jaune-pale: #F8E69A;
+    --jaune: #E0AD03;
+    --jaune-fonce: #AD781C;
+
+
 }
 
 /*====================================================================================================
@@ -1844,7 +1870,7 @@ button.utd-btn.utd-traitement-en-cours, input[type="submit"].utd-btn.utd-traitem
 /* TODO ICI s'entendre avec SCG pour graisse des libellés... Nous on préfère semiBold*/
 label, .label {
     font-family: 'OpenSans-SemiBold';
-    display: ;
+    display: inline-block;
     margin-bottom: 4px;
 }
 
@@ -2298,3 +2324,11 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
     border-radius: 4px;
     color: #fff;
 }
+
+.utd-emphase-gris{
+    background-color: var(--gris-fonce);
+    padding: 2px 4px;
+    border-radius: 4px;
+    color: #fff;
+}
+

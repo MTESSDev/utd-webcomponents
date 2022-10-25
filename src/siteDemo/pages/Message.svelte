@@ -19,7 +19,7 @@
 
     function obtenirTableauParametres() {
         return [
-            {nom: "type", type: "String (Optionnel)", description: `Valeurs possibles : <span class="utd-emphase">avertissement</span>, <span class="utd-emphase">succes</span>, <span class="utd-emphase">erreur</span>.`},
+            {nom: "type", type: "String (Optionnel)", description: `Valeurs possibles : <span class="utd-utd-emphase-gris">avertissement</span>, <span class="utd-utd-emphase-gris">succes</span>, <span class="utd-utd-emphase-gris">erreur</span>.`},
             {nom: "titre", type: "String", description: `Titre du message.`},
             {nom: "corps", type: "String", description: `Corps du message.`},
             {nom: "texteBoutonPrimaire", type: "String", description: `Texte du bouton primaire. Si non spécifié, le bouton primaire n'est pas affiché.`},
@@ -152,11 +152,11 @@
 <h4>Retour</h4>
 <p>Une promesse javascript dont le résultat contiendra une chaîne de caractère contenant le raison de fermeture du message. Les valeurs possibles sont : </p>
 <ul class="utd">
-    <li><span class="utd-emphase">primaire</span>, si le bouton primaire a été cliqué.</li>
-    <li><span class="utd-emphase">secondaire</span>, si le bouton secondaire a été cliqué.</li>
-    <li><span class="utd-emphase">clickBackdrop</span>, si l'utilisateur a cliqué dans le backdrop afin de fermer le message.</li>
-    <li><span class="utd-emphase">boutonFermer</span>, si l'utilisateur a cliqué sur le bouton "Fermer (X)" afin de fermer le message.</li>
-    <li><span class="utd-emphase">escape</span>, si l'utilisateur appuyé sur la touche "ESC" afin de fermer le message.</li>
+    <li><span class="utd-utd-emphase-gris">primaire</span>, si le bouton primaire a été cliqué.</li>
+    <li><span class="utd-utd-emphase-gris">secondaire</span>, si le bouton secondaire a été cliqué.</li>
+    <li><span class="utd-utd-emphase-gris">clickBackdrop</span>, si l'utilisateur a cliqué dans le backdrop afin de fermer le message.</li>
+    <li><span class="utd-utd-emphase-gris">boutonFermer</span>, si l'utilisateur a cliqué sur le bouton "Fermer (X)" afin de fermer le message.</li>
+    <li><span class="utd-utd-emphase-gris">escape</span>, si l'utilisateur appuyé sur la touche "ESC" afin de fermer le message.</li>
 </ul>
 
 <h2>Exemples</h2>

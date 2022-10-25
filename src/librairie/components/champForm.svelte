@@ -16,11 +16,12 @@
   let elementChamp = null
   let elementPrecision = null
   let elementErreur = null
+  let idElementErreur = null
+
   const idChamp = Utils.genererId()
   const idParentUtd = Utils.genererId()
-  const idPrecision = Utils.genererId()
-  const idErreur = Utils.genererId()
-  const texteObligatoire = "Obligatoire."
+  const idPrecisionInitial = Utils.genererId()
+  const idErreurInitial = Utils.genererId()
   const thisComponent = get_current_component()
   
   
@@ -111,29 +112,34 @@
     if(!mounted){
       return
     }
-   
+
     if(label){
       elementPrecision = thisComponent.querySelector(".utd-precision")
 
       if(precision){
         if(elementPrecision){
-          elementPrecision.id = elementPrecision.id || idPrecision
+          elementPrecision.id = elementPrecision.id || idPrecisionInitial
         }
         else{
           const span = document.createElement('span')
           span.classList.add("utd-precision")
-          span.id = idPrecision
+          span.id = idPrecisionInitial
           span.innerText = precision
           elementPrecision = span
           label.after(elementPrecision)  
         }
         ajusterChampAriaDescribedBy('ajout', elementPrecision.id)
       } else {
+        //Pas de précision en paramètre
         if(elementPrecision){
-          elementPrecision.remove()
+          //Contrôle précision dans le HTML
+          elementPrecision.id = elementPrecision.id || idPrecisionInitial
+          ajusterChampAriaDescribedBy('ajout', elementPrecision.id)
         }
-        //On retire la précision du aria-describedby
-        ajusterChampAriaDescribedBy('retrait', elementPrecision.id)
+        else {
+          //Pas de contrôle de précision dans le html, on retire la précision du aria-describedby
+          ajusterChampAriaDescribedBy('retrait', elementPrecision.id)
+        }
       } 
     }   
   }
@@ -189,29 +195,32 @@
       return
     }
 
-    if(!elementErreur){
-      elementErreur = thisComponent.querySelector(".utd-erreur-champ")
-    }
+    elementErreur = thisComponent.querySelector(".utd-erreur-champ")
 
     if(invalide === 'true') { 
       elementChamp.setAttribute('aria-invalid', 'true')
 
-      if(!elementErreur){
+      if(elementErreur){
+        elementErreur.id = elementErreur.id || idErreurInitial
+      }
+      else {
         const span = document.createElement('span')
         span.classList.add("utd-erreur-champ")
-        span.id = idErreur
+        span.id = idErreurInitial
         span.innerText = messageerreur
         elementErreur = span
         elementChamp.after(elementErreur)
       }
+      idElementErreur = elementErreur.id
       ajusterChampAriaDescribedBy('ajout', elementErreur.id)
       elementErreur.classList.remove('utd-d-none')
     } else  { 
       elementChamp.removeAttribute('aria-invalid')
       if(elementErreur){
         elementErreur.classList.add('utd-d-none')
-        ajusterChampAriaDescribedBy('retrait', elementErreur.id)
       }
+
+      ajusterChampAriaDescribedBy('retrait', idElementErreur)
     } 
   }
 </script>

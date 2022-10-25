@@ -18,7 +18,9 @@
     import Notifications from './pages/Notifications.svelte'; 
     import TraitementEnCours from './pages/TraitementEnCours.svelte'; 
     import {router} from 'tinro';
-  import ChampsErreur from './pages/ChampsErreur.svelte';
+    import ChampsAutomatique from './pages/ChampsAutomatique.svelte';
+    import ChampObligatoire from './pages/ChampObligatoire.svelte';
+  import ChampErreur from './pages/ChampErreur.svelte';
 </script>
 
 <div class="conteneur-principal">
@@ -115,8 +117,10 @@
                             <utd-menu-vertical-item label="Formulaire">    
                                 <utd-menu-vertical-item label="Bouton radio" href="/composants/formulaire/boutonradio"></utd-menu-vertical-item>                            
                                 <utd-menu-vertical-item label="Case à cocher" href="/composants/formulaire/casecocher"></utd-menu-vertical-item>                            
-                                <utd-menu-vertical-item label="Champs texte et autres (Gestion manuelle)" href="/composants/formulaire/champstexte"></utd-menu-vertical-item> 
-                                <utd-menu-vertical-item label="Champs texte et autres (Gestion automatique)" href="/composants/formulaire/champserreurs"></utd-menu-vertical-item>                           
+                                <utd-menu-vertical-item label="Champs obligatoires" href="/composants/formulaire/champobligatoire"></utd-menu-vertical-item> 
+                                <utd-menu-vertical-item label="Champs texte et autres" href="/composants/formulaire/champstexte"></utd-menu-vertical-item> 
+                                <utd-menu-vertical-item label="Champs (Gestion automatique)" href="/composants/formulaire/champsautomatique"></utd-menu-vertical-item>                           
+                                <utd-menu-vertical-item label="Erreurs" href="/composants/formulaire/champerreur"></utd-menu-vertical-item>                                 
                             </utd-menu-vertical-item>
                             <utd-menu-vertical-item label="Navigation">                                
                                 <utd-menu-vertical-item label="Haut de page" href="/composants/navigation/hautpage"></utd-menu-vertical-item>
@@ -154,8 +158,10 @@
                         <Route path="/formulaire/*">                    
                             <Route path="/boutonradio" ><BoutonRadio /></Route>
                             <Route path="/casecocher" ><CaseCocher /></Route>
+                            <Route path="/champobligatoire" ><ChampObligatoire /></Route>
                             <Route path="/champstexte" ><ChampsTexte /></Route>
-                            <Route path="/champserreurs" ><ChampsErreur /></Route>
+                            <Route path="/champsautomatique" ><ChampsAutomatique /></Route>
+                            <Route path="/champerreur" ><ChampErreur /></Route>
                         </Route>
                         <Route path="/navigation/*">                    
                             <Route path="/hautpage" ><HautPage /></Route>
