@@ -7,6 +7,9 @@
 
 <h1>Bouton radio</h1>
 
+<utd-tablematieres selecteurancres="#main h2">
+</utd-tablematieres>
+
 <h2>Description</h2>
 <p>Le <strong>bouton radio</strong>, ou case d’option, permet à l’utilisateur de choisir une seule option dans une liste.</p>
 

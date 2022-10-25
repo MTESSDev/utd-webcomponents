@@ -53,6 +53,10 @@ function ajouterCodeDialogue2() {
 </script>
 
 <h1>Dialogue modal</h1>
+
+<utd-tablematieres selecteurancres="#main h2">
+</utd-tablematieres>
+
 <h2>Description</h2>
 <p>Le <strong>dialogue modal</strong> est une boîte qui se superpose au contenu de la page, en plein centre, à la suite d’une action déclenchée directement par l’utilisateur. Il sert à communiquer de l’information contextuelle.</p>
 <p>Lorsque le dialogue modal est activé, l’arrière-plan de la page devient plus sombre pour qu’il soit en évidence.</p>

@@ -128,6 +128,10 @@
 </script>
 
 <h1>Message</h1>
+
+<utd-tablematieres selecteurancres="#main h2">
+</utd-tablematieres>
+
 <h2>Description</h2>
 <p>Il s'agit du composant <strong>dialogue d’alerte</strong> du système de design Quebec.ca.</p>
 <p>Il apparaît lorsqu’une action immédiate est requise. Le dialogue d’alerte contient un message ainsi qu’un ou plusieurs boutons d’action. </p>

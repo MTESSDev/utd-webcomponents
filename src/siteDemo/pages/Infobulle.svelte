@@ -4,6 +4,9 @@
 
 <h1>Infobulle</h1>
 
+<utd-tablematieres selecteurancres="#main h2">
+</utd-tablematieres>
+
 <h2>Description</h2>
 <p>L<strong>’infobulle</strong> est utilisée pour fournir des informations contextuelles liées à un élément particulier.</p>
 

@@ -7,6 +7,9 @@
 
 <h1>Accordéon</h1>
 
+<utd-tablematieres selecteurancres="#main h2">
+</utd-tablematieres>
+
 <h2>Description</h2>
 <p>L’<strong>accordéon</strong> permet de réduire temporairement la quantité d’information affichée sur une page. Avec cette option, la personne survole le contenu et accède plus rapidement à l’information recherchée.</p>
 

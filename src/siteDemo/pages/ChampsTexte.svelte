@@ -7,6 +7,9 @@
 
 <h1>Champs texte et autres</h1>
 
+<utd-tablematieres selecteurancres="#main h2">
+</utd-tablematieres>
+
 <utd-avis>
     <div slot="contenu">
         <p>Tout ce qui est décrit dans cette page s'applique également aux champs de type "number", "date", "tel", "email", "password", "url" et "search"</p>
@@ -102,6 +105,8 @@
 <p>La composante est constituée de deux éléments : la mention et l'astérisque.</p>
 <p>La mention s’affiche sous le titre du formulaire avec la phrase : « Les champs suivis d'un * sont obligatoires ». Elle doit toujours être présente dès que la tâche dépasse 2 champs de formulaire.</p>
 <p>L’astérisque est placé à la fin de l’étiquette de chacun des champs obligatoires. Il est toujours en rouge pour que l'utilisateur puisse repérer rapidement quel champ est obligatoire.</p>
+<p>L’attribut <em>aria-required</em> doit être spécifié avec la valeur "true" afin d'indiquer au lecteur écran que le champ est obligatoire.</p>
+<p>Il serait possible d'utiliser l'attribut HTML5 <em>required</em>, cependant dès qu'on accède à un champ <em>required</em>, le lecteur écran indique que le champ est invalide s'il est vide, et ce même si le champ n'a pas encore été touché.</p>
 <h3>Exemples</h3>
 <div id="exempleErreur">
     <div class="utd-form-group">

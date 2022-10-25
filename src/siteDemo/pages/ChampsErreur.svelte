@@ -33,6 +33,9 @@
 
 <h1>Champs (erreurs)</h1>
 
+<utd-tablematieres selecteurancres="#main h2">
+</utd-tablematieres>
+
 <utd-champ-form id="tel1" obligatoire="true" precision="Si vous n’avez pas de numéro de téléphone, inscrivez le numéro d’un membre de votre famille, d’un ami ou d’un organisme." >
     <label for="telephone">Téléphone</label>
     <input type="tel" id="telephone" placeholder="123 456-7890" class="utd-form-control md" on:blur={validerChamp1}/>

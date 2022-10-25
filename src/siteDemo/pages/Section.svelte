@@ -7,6 +7,9 @@
 
 <h1>Section</h1>
 
+<utd-tablematieres selecteurancres="#main h2">
+</utd-tablematieres>
+
 <h2>Description</h2>
 <p>Le composant <strong>section</strong> permet d'organiser le contenu en regroupant les informations en sections principales ou en blocs d'informations.</p>
 <p>Selon les besoins, cette section peut être extensible ou non, et avoir une bordure ou non pour regrouper son contenu.</p>

@@ -4,6 +4,9 @@
 
 <h1>Historique des versions</h1>
 
+<utd-tablematieres selecteurancres="#main h2">
+</utd-tablematieres>
+
 <h2>1.6.1 (2022-09-18)</h2>
 <h3>Corrections d'anomalies</h3>
 <ul class="utd">
