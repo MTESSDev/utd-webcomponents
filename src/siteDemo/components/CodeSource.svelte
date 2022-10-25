@@ -83,7 +83,7 @@
 //    codeSource = codeSource.replace(/<div/g, "\r\n<div")
     codeSource = codeSource.replace(/<label/g, "\r\n<label")
 //    codeSource = codeSource.replace(/<input/g, "\r\n<input")
-
+    codeSource = codeSource.replace(/<sl><\/sl>/g, "\r\n")
     return nettoyerCode(html_beautify(codeSource, options))
   }
 

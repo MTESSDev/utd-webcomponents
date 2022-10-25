@@ -48,7 +48,7 @@
 <h3>2- Gestion automatique (la plus simple)</h3>
 <p>Exemple de gestion complète à sa plus simple expression.</p>
 <div id="exemple2">
-    <utd-champ-form obligatoire="true" libelle="Téléphone" format="md" invalide="true" precision="Indiquez le numéro de téléphone de l'établissement concerné." messageerreur="Le champ «Téléphone» est obligatoire.">
+    <utd-champ-form obligatoire="true" libelle="Téléphone" format="md" invalide="true" precision="Indiquez le numéro de téléphone de l'établissement concerné." messageerreur="Le champ «Téléphone» est obligatoire."><sl></sl>
         <input type="tel" placeholder="123 456-7890"/>
     </utd-champ-form>
 </div>
