@@ -1004,74 +1004,6 @@ utd-accordeon .utd-form-group:last-child, utd-section .utd-form-group:last-child
     margin-bottom: 0;
 }
 
-/* Boutons radio */
-
-.utd-form-group.radio label{
-    margin-top: 24px;
-    font-family: OpenSans-Regular;
-    font-size: 16px;
-    font-weight: normal;
-    line-height: 1.2;
-    display: grid;
-    grid-template-columns: 16px auto;
-    gap: 8px;    
-}
-
-.utd-form-group.radio .label, .utd-form-group.radio .utd-precision{
-    margin-bottom: 0;
-}
-
-.utd-form-group.radio .utd-precision{
-    margin-top: 4px;
-}
-
-.utd-form-group.radio input[type="radio"]{
-    -webkit-appearance: none;
-    appearance: none;
-
-    /* Pour iOS < 15 retire background:gradient */
-    background-color: #fff;  
-
-    margin: 1px 0 0 0!important;
-    width: 16px;
-    height: 16px;
-    border: 1px solid #808a9d;
-    border-radius: 50%;   
-    display: grid; 
-    place-content: center;
-    outline-offset: 0;
-}
-
-.utd-form-group.radio input[type="radio"]:focus{
-    border: 2px solid #5b6476;
-    outline: 2px solid #89bce5;
-}
-
-.utd-form-group.radio input[type="radio"]::before {
-    content: "";
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    transform: scale(0);
-    transition: 120ms transform ease-in-out;
-    box-shadow: inset 10px 10px var(--couleur-bleu);
-  }
-
-
-  .utd-form-group.radio input[type="radio"]:checked::before {
-    transform: scale(1);
-  }
-/*  .utd-form-group.radio input[type="radio"]:checked::before {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='-4.5 -4.5 8 8'%3e%3ccircle r='3' fill='%231479cc'/%3e%3c/svg%3e");
-  }*/
-
-
-.utd-form-group.radio *, .utd-form-group.radio *:before, .utd-form-group.radio *:after {
-    box-sizing: border-box;
-}
-
-
-
 .utd-form-control {
     height: 40px;
     display: block;
@@ -1186,6 +1118,147 @@ textarea.utd-form-control.sm {
         width: 100%;
     }
 }
+
+/*====================================================================================================
+  -20B- Boutons radio
+  Référence https://moderncss.dev/pure-css-custom-styled-radio-buttons/
+/*====================================================================================================*/
+.utd-form-group.radio label{
+    margin-top: 24px;
+    font-family: OpenSans-Regular;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.2;
+    display: grid;
+    grid-template-columns: 16px auto;
+    gap: 8px;    
+}
+
+.utd-form-group.radio .label, .utd-form-group.radio .utd-precision{
+    margin-bottom: 0;
+}
+
+.utd-form-group.radio .utd-precision{
+    margin-top: 4px;
+}
+
+.utd-form-group.radio input[type="radio"]{
+    -webkit-appearance: none;
+    appearance: none;
+
+    /* Pour iOS < 15 retire background:gradient */
+    background-color: #fff;  
+
+    margin: 1px 0 0 0!important;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #808a9d;
+    border-radius: 50%;   
+    display: grid; 
+    place-content: center;
+    outline-offset: 0;
+}
+
+.utd-form-group.radio input[type="radio"]:focus{
+    border: 2px solid #5b6476;
+    outline: 2px solid #89bce5;
+}
+
+.utd-form-group.radio input[type="radio"]::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 10px 10px var(--couleur-bleu);
+  }
+
+
+  .utd-form-group.radio input[type="radio"]:checked::before {
+    transform: scale(1);
+  }
+/*  .utd-form-group.radio input[type="radio"]:checked::before {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='-4.5 -4.5 8 8'%3e%3ccircle r='3' fill='%231479cc'/%3e%3c/svg%3e");
+  }*/
+
+
+.utd-form-group.radio *, .utd-form-group.radio *:before, .utd-form-group.radio *:after {
+    box-sizing: border-box;
+}
+
+/*====================================================================================================
+  -20C- Checkbox
+  Référence https://moderncss.dev/pure-css-custom-checkbox-style
+/*====================================================================================================*/
+.utd-form-group.checkbox label{
+    margin-top: 24px;
+    font-family: OpenSans-Regular;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.2;
+    display: grid;
+    grid-template-columns: 16px auto;
+    gap: 8px;    
+}
+
+.utd-form-group.checkbox .label, .utd-form-group.checkbox .utd-precision{
+    margin-bottom: 0;
+}
+
+.utd-form-group.checkbox .utd-precision{
+    margin-top: 4px;
+}
+
+.utd-form-group.checkbox input[type="checkbox"]{
+    -webkit-appearance: none;
+    appearance: none;
+
+    /* Pour iOS < 15 retire background:gradient */
+    background-color: #fff;  
+
+    margin: 1px 0 0 0!important;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #808a9d;
+    border-radius: 0;   
+    display: grid; 
+    place-content: center;
+    outline-offset: 0;
+}
+
+.utd-form-group.checkbox input[type="checkbox"]:focus{
+    border: 2px solid #5b6476;
+    outline: 2px solid #89bce5;
+}
+
+.utd-form-group.checkbox input[type="checkbox"]::before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 14px 14px var(--couleur-bleu);
+  }
+
+
+  .utd-form-group.checkbox input[type="checkbox"]:checked::before {
+    transform: scale(1);
+  }
+/*  .utd-form-group.checkbox input[type="radio"]:checked::before {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='-4.5 -4.5 8 8'%3e%3ccircle r='3' fill='%231479cc'/%3e%3c/svg%3e");
+  }*/
+
+
+.utd-form-group.checkbox *, .utd-form-group.checkbox *:before, .utd-form-group.checkbox *:after {
+    box-sizing: border-box;
+}
+
+
+
+
+
+
 
 /*====================================================================================================
   -50- Tables
@@ -1706,19 +1779,14 @@ utd-accordeon + utd-accordeon{
   margin: 0;
 }
 
-.utd-accordeon .contenu {
-  margin-left: 16px;
-  /*  transform:scaleY(0);
-  transform-origin: top;
-  transition: transform 0.25s ease;*/
+.utd-accordeon .contenu .conteneur {
+  padding: 24px 16px;
 }
 
-.utd-accordeon.ouvert .contenu {
-  margin: 0;
-  border-top: 1px solid transparent!important;
-  padding: 24px 16px;
-  /*transform:scaleY(1);*/
+.utd-accordeon .contenu {
+  border: 1px solid transparent;
 }
+
 .utd-accordeon .entete button:focus {
   outline: 2px solid #89bce5;
   border: 2px solid #5b6476;

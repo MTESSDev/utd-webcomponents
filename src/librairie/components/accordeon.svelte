@@ -36,13 +36,13 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
     <div id="{idContenu}" class="contenu" >
       {#if reduit === 'false'}
-        <div transition:slide="{{duration:250}}">
-        {#if contenu}
-          {@html contenu}
-        {:else}
-          <slot/>  
-          <slot name="contenu" />
-        {/if}
+        <div class="conteneur" transition:slide="{{duration:250}}">
+          {#if contenu}
+            {@html contenu}
+          {:else}
+            <slot/>  
+            <slot name="contenu" />
+          {/if}
         </div>
       {/if}
     </div>

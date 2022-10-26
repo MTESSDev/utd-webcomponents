@@ -269,19 +269,14 @@ utd-accordeon + utd-accordeon{
   margin: 0;
 }
 
-.utd-accordeon .contenu {
-  margin-left: 16px;
-  /*  transform:scaleY(0);
-  transform-origin: top;
-  transition: transform 0.25s ease;*/
+.utd-accordeon .contenu .conteneur {
+  padding: 24px 16px;
 }
 
-.utd-accordeon.ouvert .contenu {
-  margin: 0;
-  border-top: 1px solid transparent!important;
-  padding: 24px 16px;
-  /*transform:scaleY(1);*/
+.utd-accordeon .contenu {
+  border: 1px solid transparent;
 }
+
 .utd-accordeon .entete button:focus {
   outline: 2px solid #89bce5;
   border: 2px solid #5b6476;
