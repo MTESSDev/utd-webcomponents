@@ -62,6 +62,7 @@
       "wrap":300,
       "markup":true,
       "preserve-newlines": true,
+      "max_preserve_newlines": 1,
       "output-xml":true,
       "numeric-entities":true,
       "quote-marks":true,
@@ -73,17 +74,31 @@
       "uppercase-attributes":false,
       "drop-font-tags":true,
       "tidy-mark":false,
-      "new-blocklevel-tags": "utd-avis"
     }
 
     let codeSource = code
+
+    const tagsUtd = [... new Set(codeSource.match(/<utd-.[^<]*>/gi))]
+    tagsUtd.forEach((tag) => {
+      codeSource = codeSource.replace(tag, tag + "\r\n")
+    })
+
+    const divs = [... new Set(codeSource.match(/<div.[^<]*>/gi))]
+    divs.forEach((tag) => {
+      codeSource = codeSource.replace(tag, tag + "\r\n")
+    })
+
     //Ajout de sauts de ligne sur certaines balises afin d'avoir un plus beau formatage
 //    codeSource = codeSource.replace(/<span/g, "\r\n<span")
-    codeSource = codeSource.replace(/<button/g, "\r\n<button")
+    codeSource = codeSource.replace(/<\/span>/g, "</span>\r\n")
+    /*    codeSource = codeSource.replace(/<button/g, "\r\n<button")*/
 //    codeSource = codeSource.replace(/<div/g, "\r\n<div")
-    codeSource = codeSource.replace(/<label/g, "\r\n<label")
+    codeSource = codeSource.replace(/<\/label>/g, "</label>\r\n")
 //    codeSource = codeSource.replace(/<input/g, "\r\n<input")
-    codeSource = codeSource.replace(/<sl><\/sl>/g, "\r")
+
+
+
+//    codeSource = codeSource.replace(/<sl><\/sl>/g, "\r")
     return nettoyerCode(html_beautify(codeSource, options))
   }
 
