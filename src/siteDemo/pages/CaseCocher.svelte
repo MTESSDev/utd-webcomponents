@@ -22,14 +22,14 @@
 <div id="exemple1">    
     <div class="utd-form-group radio">
         <span class="label" id="personnagePrefere">Quel est votre personnage préféré ?</span>
-        <div role="group" aria-labelledby="personnagePrefere">
+        <div role="radiogroup" aria-labelledby="personnagePrefere">
             <label>
                 <input type="radio" name="persoPrefere" value="Marty">                
                 Marty MacFly
             </label>               
             <label>
                 <input type="radio" name="persoPrefere" value="Forrest">
-                Forrest Gump
+                Forrest Gump asdfasfd asdf asdf sdf sdf sdf df d sd dsad sdfadsfasdfdfsd sdf asdf asdf saddsaf dsa sdaf dsaf adsf asdf asdfasdf dsaf
             </label>               
             <label>
                 <input type="radio" name="persoPrefere" value="Vader">
@@ -46,10 +46,10 @@
     <div class="utd-form-group checkbox">
         <span class="label" id="personnagePrefere2">Quels sont vos personnages préférés ?</span>
         <span id="precision2" class="utd-precision">Faites confiance à votre instinct.</span>        
-        <div role="group" aria-labelledby="personnagePrefere2" aria-describedby="precision2 texteErreur2" aria-required="true">
+        <div role="group" aria-labelledby="personnagePrefere2" aria-describedby="personnagePrefere2 precision2 texteErreur2">
             <label>
                 <input type="checkbox" name="persoPrefere2" value="Marty">                
-                Marty MacFly
+                <span>Marty MacFly</span>
             </label>               
             <label>
                 <input type="checkbox" name="persoPrefere2" value="Forrest">

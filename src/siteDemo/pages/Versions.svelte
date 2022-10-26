@@ -7,6 +7,34 @@
 <utd-tablematieres selecteurancres="#main h2">
 </utd-tablematieres>
 
+<h2>1.7.0 (2022-??-??)</h2>
+<h3>Améliorations</h3>
+<ul class="utd">
+    <li>Ajout du nouveau composant "Table des matières".</li>
+    <li>
+        <span>Champs de formulaires</span>
+        <ul>
+            <li>Ajout des styles pour les champs de formulaire.
+            </li>            
+            <li>Ajout du composant "utd-champ-form" qui permet d'encapsuler les champs de formulaires afin de simplifier grandement leur utilisation. Il prend notamment en charge la gestion du label, de la précision, du champ requis, du message d'erreur et évidemment de tous les attributs requis pour l'accessibilité.
+            </li>            
+        </ul>
+    </li>
+
+</ul>
+
+<h3>Corrections d'anomalies</h3>
+<ul class="utd">
+    <li>
+        <span>Accordéon</span>
+        <ul>
+            <li>Correction de l'animation de fermeture. Il y avait un décalage du contenu pendant qu'il disparaîssait.
+            </li>            
+        </ul>
+    </li>
+</ul>
+
+
 <h2>1.6.1 (2022-09-18)</h2>
 <h3>Corrections d'anomalies</h3>
 <ul class="utd">
