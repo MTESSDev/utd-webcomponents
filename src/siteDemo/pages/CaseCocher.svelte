@@ -18,30 +18,20 @@
 
 <h2>Exemples</h2>
 
-<h3>1- Checkbox (seul)</h3>
+<h3>1- Seul</h3>
 <div id="exemple1">    
-    <div class="utd-form-group radio">
-        <span class="label" id="personnagePrefere">Quel est votre personnage préféré ?</span>
-        <div role="radiogroup" aria-labelledby="personnagePrefere">
-            <label>
-                <input type="radio" name="persoPrefere" value="Marty">                
-                Marty MacFly
-            </label>               
-            <label>
-                <input type="radio" name="persoPrefere" value="Forrest">
-                Forrest Gump asdfasfd asdf asdf sdf sdf sdf df d sd dsad sdfadsfasdfdfsd sdf asdf asdf saddsaf dsa sdaf dsaf adsf asdf asdfasdf dsaf
-            </label>               
-            <label>
-                <input type="radio" name="persoPrefere" value="Vader">
-                Darth Vador
-            </label>    
-        </div>
+    <div class="utd-form-group checkbox">
+        <label>
+            <input type="checkbox" name="rempliFormulaire" value="formulaireRempliAutre">
+            Je n'ai pas rempli moi même ce formulaire
+        </label>         
+        <span id="texteErreur1" role="alert" class="utd-erreur-champ">Le champ "Quels sont vos personnages préférés ?" est obligatoire.</span>                      
     </div>
 </div>
 <CodeSource idElementCodeSource="exemple1">
 </CodeSource>
 
-<h3>2- Checkbox (liste) </h3>
+<h3>2- Liste </h3>
 <div id="exemple2">    
     <div class="utd-form-group checkbox">
         <span class="label" id="personnagePrefere2">Quels sont vos personnages préférés ?</span>
@@ -76,8 +66,27 @@
 </CodeSource>
 
 
-<h3>3- Avec wrapper "utd-champ" </h3>
+<h3>3- Seul (Avec wrapper "utd-champ-form")</h3>
 <div id="exemple3">    
+    <utd-champ-form obligatoire="true" invalide="true" messageerreur="Le champ «J'ai pris connaissance des directives» est obligatoire.">
+        <label>
+            <input type="checkbox" name="rempliFormulaire" value="formulaireRempliAutre">
+            J'ai pris connaissance des directives
+        </label>               
+    </utd-champ-form>
+</div>
+
+<CodeSource idElementCodeSource="exemple3">
+</CodeSource>
+
+<h3>4- Liste (Avec wrapper "utd-champ-form")</h3>
+<div id="exemple3">    
+    <utd-champ-form obligatoire="true" invalide="true" messageerreur="Le champ «J'ai pris connaissance des directives» est obligatoire.">
+        <label>
+            <input type="checkbox" name="rempliFormulaire" value="formulaireRempliAutre">
+            J'ai pris connaissance des directives
+        </label>               
+    </utd-champ-form>
 </div>
 
 <CodeSource idElementCodeSource="exemple3">
