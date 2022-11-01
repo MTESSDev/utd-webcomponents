@@ -976,10 +976,6 @@ label, .label {
     margin-bottom: 4px;
 }
 
-.utd-form-group > label .utd-icone-champ-requis , .utd-form-group > .label .utd-icone-champ-requis {
-    margin-left: 0;
-}
-
 .utd-icone-champ-requis {
     font-size: 1rem;
     vertical-align: top;
@@ -998,6 +994,8 @@ label, .label {
 
 .utd-form-group {
     margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
 }
 
 utd-accordeon .utd-form-group:last-child, utd-section .utd-form-group:last-child {
@@ -1035,9 +1033,14 @@ input.utd-form-control[type="search"]{
     border: 2px solid var(--couleur-erreur);
 }    
 .utd-erreur-champ {
-    display: inline-block;
+    display: block;
     margin-top: 8px;
     color: var(--couleur-erreur);
+}
+
+/* Une erreur qui est immédiatement après un label (ex. un checkbox-seul) */
+label + .utd-erreur-champ{
+    margin-top: 4px;
 }
 
 textarea.utd-form-control{
@@ -1123,10 +1126,6 @@ textarea.utd-form-control.sm {
   -20B- Boutons radio
   Référence https://moderncss.dev/pure-css-custom-styled-radio-buttons/
 /*====================================================================================================*/
-.utd-form-group div[role="radiogroup"]{
-    display: flex;
-    flex-direction: column;
-}
 .utd-form-group.radio label{
     margin-top: 16px;
     font-family: OpenSans-Regular;
@@ -1134,7 +1133,6 @@ textarea.utd-form-control.sm {
     font-weight: normal;
     line-height: 1.2;
     display: flex;
-    gap: 8px;    
     margin-right: auto;
     padding: 8px;
     margin-left: -8px;
@@ -1156,7 +1154,7 @@ textarea.utd-form-control.sm {
     /* Pour iOS < 15 retire background:gradient */
     background-color: #fff;  
 
-    margin: 1px 0 0 0!important;
+    margin: 1px 8px 0 0!important;
     width: 16px;
     min-width: 16px;
     height: 16px;
@@ -1203,24 +1201,23 @@ textarea.utd-form-control.sm {
   -20C- Checkbox
   Référence https://moderncss.dev/pure-css-custom-checkbox-style
 /*====================================================================================================*/
-.utd-form-group.checkbox div[role="group"]{
-    display: flex;
-    flex-direction: column;
-}
-
 .utd-form-group.checkbox label{
     font-family: OpenSans-Regular;
     font-size: 16px;
     font-weight: normal;
     line-height: 1.2;
     display: flex;
-    gap: 8px;    
     padding: 8px;
     margin: 4px auto 0 -8px;
 }
 
 .utd-form-group.checkbox label:first-of-type{
     margin-top: 12px;
+}
+
+/* checkbox-seul */
+.utd-form-group.checkbox label:first-of-type:last-of-type{
+    font-family: 'OpenSans-SemiBold';
 }
 
 .utd-form-group.checkbox .label, .utd-form-group.checkbox .utd-precision{
@@ -1231,14 +1228,14 @@ textarea.utd-form-control.sm {
     margin-top: 4px;
 }
 
-.utd-form-group.checkbox input[type="checkbox"]{
+.utd-form-group.checkbox input[type="checkbox"] {
     -webkit-appearance: none;
     appearance: none;
 
     /* Pour iOS < 15 retire background:gradient */
     background-color: #fff;  
     position: relative;
-    margin: 1px 0 0 0!important;
+    margin: 1px 8px 0 0!important;
     width: 16px;
     min-width: 16px;
     height: 16px;

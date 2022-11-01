@@ -13,6 +13,7 @@
   let label = null
   let mounted = false
   let typeChamp = null
+  let elementIndicateurObligatoire = null
   let elementChamp = null
   let elementPrecision = null
   let elementErreur = null
@@ -27,15 +28,23 @@
   
   onMount(() => {
 //    html = thisComponent.getRootNode().getElementsByTagName("html")[0]
+    
+
     typeChamp = obtenirTypeChamp()
+    console.log(typeChamp)
     mounted = true
 
     if(typeChamp){ 
-     
+
+      wrapperControles() 
       gererChamp()
       gererLabel()
       gererChampObligatoire()
-      gererPrecision()
+
+      if(typeChamp !== 'checkbox-seul'){
+        gererPrecision()
+      }   
+
       gererErreur()
     }
 
@@ -50,6 +59,20 @@
   $: gererPrecision(precision) 
   $: gererErreur(invalide) 
 // { }   ||
+
+  function wrapperControles(){
+    const wrapper = document.createElement('div')    
+    
+    const classeType = typeChamp === 'checkbox-seul' ? 'checkbox' : typeChamp
+    wrapper.classList.add('utd-form-group', classeType)
+
+    thisComponent.childNodes.forEach((element) => {
+      wrapper.append(element)  
+    })
+    
+    thisComponent.prepend(wrapper)
+  }
+
 
   function gererChamp() { 
     elementChamp.id = elementChamp.id || idChamp
@@ -74,11 +97,16 @@
       elementChamp = input
       const type = input.getAttribute("type")
 
-      if(type === 'radio' || type === 'checkbox'){ 
+      if(type === 'radio'){ 
         return type
-      } else if(type === 'button' || type === 'submit'){ 
+      } 
+      else if(type === 'checkbox'){ 
+        return thisComponent.querySelectorAll("input").length > 1 ? 'checkbox' : 'checkbox-seul'
+      }
+      else if(type === 'button' || type === 'submit'){ 
         return null
-      } else { 
+      }
+      else { 
         return 'standard'
       } 
     } else if(thisComponent.querySelector("textarea")){
@@ -168,15 +196,17 @@
     }
 
     if(label){
-      const indicateurObligatoire = thisComponent.querySelector(".utd-icone-champ-requis")
+      elementIndicateurObligatoire = thisComponent.querySelector(".utd-icone-champ-requis")
 
       if(obligatoire === 'true'){        
-        if(!indicateurObligatoire){
+        if(!elementIndicateurObligatoire){
           const span = document.createElement('span')
           span.classList.add("utd-icone-champ-requis")
           span.innerHTML = `*`
-          label.append(span)
+          elementIndicateurObligatoire = span
+          label.append(elementIndicateurObligatoire)
         }
+        elementIndicateurObligatoire.setAttribute('aria-hidden', 'true')
       } else {
         if(indicateurObligatoire){
           indicateurObligatoire.remove()
@@ -191,6 +221,57 @@
     } 
   }
   function gererErreur(){
+    if(!mounted){
+      return
+    }
+
+    elementErreur = thisComponent.querySelector(".utd-erreur-champ")
+
+    if(invalide === 'true') { 
+
+      if(elementErreur){
+        elementErreur.id = elementErreur.id || idErreurInitial
+      }
+      else {
+        const span = document.createElement('span')
+        span.classList.add("utd-erreur-champ")
+        span.id = idErreurInitial
+        span.innerText = messageerreur
+        elementErreur = span
+
+        if(typeChamp === 'checkbox-seul'){
+          label.after(elementErreur)
+        } else {
+          elementChamp.after(elementErreur)
+        }        
+      }
+      idElementErreur = elementErreur.id
+      
+//      elementPrecision.classList.add('utd-d-none')
+
+      elementChamp.setAttribute('aria-invalid', 'true')
+
+
+      ajusterChampAriaDescribedBy('ajout', elementErreur.id)
+
+/*    setTimeout(()=>{
+        TODO remettre la precision sr-only visible
+        ajusterChampAriaDescribedBy('ajout', elementPrecision.id)
+      },50)  */
+
+      elementErreur.classList.remove('utd-d-none')
+    } else  { 
+      elementChamp.removeAttribute('aria-invalid')
+      if(elementErreur){
+        elementErreur.classList.add('utd-d-none')
+      }
+      setTimeout(()=>{
+        ajusterChampAriaDescribedBy('retrait', idElementErreur)
+      },50)        
+    }    
+  }
+
+  function gererErreurCheckboxRadio(){
     if(!mounted){
       return
     }
@@ -223,12 +304,13 @@
       ajusterChampAriaDescribedBy('retrait', idElementErreur)
     } 
   }
+  
 </script>
 
 
-<div class="utd-form-group">
-  <slot/>
-</div>
+
+<slot/>
+
 
 
 <link rel='stylesheet' href='/css/utd-webcomponents.min.css'>
