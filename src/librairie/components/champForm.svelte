@@ -25,8 +25,15 @@
   const idErreurInitial = Utils.genererId()
   const thisComponent = get_current_component()
   
+  /* ===========================================================================================
+    RÉFÉRENCES
   
-  onMount(() => {
+    - Liste de boutons radio et checkbox
+      https://blog.tenon.io/accessible-validation-of-checkbox-and-radiobutton-groups/
+
+  =============================================================================================*/
+
+  onMount(() => {    
 //    html = thisComponent.getRootNode().getElementsByTagName("html")[0]
     
 
@@ -53,6 +60,9 @@
   })
 
   //TODO implémnenter gestion langue (aller chercher dans balise html? lang=?)
+
+  //TODO wrapper les checkbox (liste) et radio dans un div role="group" avec le aria-labelledby
+  //TODO modifier champUtd afin que precision et message erreur soient dans le label... pas de describedby pour liste radio et checkbox||
   
 
   $: gererChampObligatoire(obligatoire) 
@@ -68,6 +78,9 @@
 
     thisComponent.childNodes.forEach((element) => {
       wrapper.append(element)  
+      if(typeChamp === 'radio' || typeChamp === 'checkbox'){
+        wrapper.setAttribute('role', 'group')
+      }
     })
     
     thisComponent.prepend(wrapper)
@@ -182,10 +195,16 @@
       nouvelleValeur = valeurActuelle.replace(valeur, '')
     }
 
+
+    const controle = elementChamp
+    if(type === 'radio' || type === 'checkbox'){
+//      controle = 
+    } 
+
     if(nouvelleValeur.trim()){
-      elementChamp.setAttribute('aria-describedby', nouvelleValeur.trim())
+      controle.setAttribute('aria-describedby', nouvelleValeur.trim())
     } else {
-      elementChamp.removeAttribute('aria-describedby')
+      controle.removeAttribute('aria-describedby')
     } 
     
   }
@@ -247,17 +266,17 @@
       }
       idElementErreur = elementErreur.id
       
-//      elementPrecision.classList.add('utd-d-none')
+      const descByAvant = elementChamp.getAttribute('aria-describedby')
 
+      elementChamp.setAttribute('aria-describedby', elementErreur.id)
       elementChamp.setAttribute('aria-invalid', 'true')
 
-
-      ajusterChampAriaDescribedBy('ajout', elementErreur.id)
-
-/*    setTimeout(()=>{
-        TODO remettre la precision sr-only visible
-        ajusterChampAriaDescribedBy('ajout', elementPrecision.id)
-      },50)  */
+      //setTimeout nécessaire pour lecteur écran
+      if(descByAvant){
+        setTimeout(()=>{
+          elementChamp.setAttribute('aria-describedby', `${descByAvant} ${idElementErreur}`)
+        }, 100)  
+      }
 
       elementErreur.classList.remove('utd-d-none')
     } else  { 
