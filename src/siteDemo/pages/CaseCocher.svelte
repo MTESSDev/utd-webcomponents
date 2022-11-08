@@ -5,18 +5,38 @@
 
     onMount(() => {
         ajouterCodeExemple3()
+        ajouterCodeExemple4()
         mounted = true
     })
 
     function ajouterCodeExemple3() {
         const controleUtd = document.getElementById('utdChamp3')
-        controleUtd.querySelector('input').addEventListener('blur', (event) => {
-            if(controleUtd.querySelector('input:checked')){
-                controleUtd.setAttribute('invalide', 'false')
-            } else {
-                controleUtd.setAttribute('invalide', 'true')
-            }
+
+        controleUtd.querySelector('input').addEventListener(() => {
+            ['blur', 'change'].forEach((event) => {
+                if(controleUtd.querySelector('input:checked')){
+                    controleUtd.setAttribute('invalide', 'false')
+                } else {
+                    controleUtd.setAttribute('invalide', 'true')
+                }
+            })
         })
+    }
+
+    function ajouterCodeExemple4() {
+        const controleUtd = document.getElementById('utdChamp4')
+        controleUtd.querySelectorAll('input').forEach((controle) => {
+            ['blur', 'change'].forEach((event) => {
+                controle.addEventListener(event, () => {
+                    if(controleUtd.querySelector('input:checked')){
+                        debbuger
+                        controleUtd.setAttribute('invalide', 'false')
+                    } else {
+                        controleUtd.setAttribute('invalide', 'true')
+                    }
+                })
+            })
+        })  
     }
 
 </script>
@@ -41,8 +61,9 @@
 <div id="exemple1">    
     <div class="utd-form-group checkbox">
         <label>
-            <input type="checkbox" name="rempliFormulaire1" value="PrisConnaissanceDirectives" aria-invalid="true" aria-describedby="texteErreur1">
+            <input type="checkbox" name="rempliFormulaire1" value="PrisConnaissanceDirectives" aria-required="true" aria-invalid="true" aria-describedby="texteErreur1">
             Je n'ai pas rempli moi même ce formulaire
+            <span class="utd-icone-champ-requis" aria-hidden="true">*</span>
         </label>         
         <span id="texteErreur1" class="utd-erreur-champ">Le champ "Quels sont vos personnages préférés ?" est obligatoire.</span>                      
     </div>
@@ -53,7 +74,10 @@
 <h3>2- Liste </h3>
 <div id="exemple2">    
     <div class="utd-form-group checkbox" role="group" aria-labelledby="personnagePrefere2 precision2 texteErreur2">
-        <span class="label" id="personnagePrefere2">Quels sont vos personnages préférés ?</span>
+        <span class="label" id="personnagePrefere2">Quels sont vos personnages préférés ?
+            <span class="utd-icone-champ-requis" aria-hidden="true">*</span>
+            <span class="utd-sr-only">&nbsp;Obligatoire.</span>
+        </span>        
         <span id="precision2" class="utd-precision">Faites confiance à votre instinct.</span>        
         <label>
             <input type="checkbox" name="persoPrefere2" value="Marty">                
@@ -99,7 +123,7 @@
 
 <h3>4- Liste (Avec wrapper "utd-champ-form")</h3>
 <div id="exemple4">    
-    <utd-champ-form obligatoire="true" libelle="Quels sont vos personnages préférés ?" invalide="true" messageerreur="Le champ «Quels sont vos personnages préférés ?» est obligatoire.">
+    <utd-champ-form id="utdChamp4" obligatoire="true" libelle="Quels sont vos personnages préférés ?" messageerreur="Le champ «Quels sont vos personnages préférés ?» est obligatoire.">
         <label>
             <input type="checkbox" name="persoPrefere2" value="Marty">                
             <span>Marty MacFly</span>

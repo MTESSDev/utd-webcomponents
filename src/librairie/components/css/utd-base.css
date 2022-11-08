@@ -1126,6 +1126,10 @@ textarea.utd-form-control.sm {
   -20B- Boutons radio
   Référence https://moderncss.dev/pure-css-custom-styled-radio-buttons/
 /*====================================================================================================*/
+.utd-form-group.radio .label{
+    display: flex;
+}
+
 .utd-form-group.radio label{
     margin-top: 16px;
     font-family: OpenSans-Regular;
@@ -1201,6 +1205,10 @@ textarea.utd-form-control.sm {
   -20C- Checkbox
   Référence https://moderncss.dev/pure-css-custom-checkbox-style
 /*====================================================================================================*/
+.utd-form-group.checkbox .label{
+    display: flex;
+}
+
 .utd-form-group.checkbox label{
     font-family: OpenSans-Regular;
     font-size: 16px;

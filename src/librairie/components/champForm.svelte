@@ -10,9 +10,10 @@
   export let precision = ""
   export let messageerreur = ""
 
-  let label = null
   let mounted = false
   let typeChamp = null
+  let elementLabel = null
+  let elementWrapper = null
   let elementIndicateurObligatoire = null
   let elementChamp = null
   let elementPrecision = null
@@ -21,6 +22,7 @@
 
   const idChamp = Utils.genererId()
   const idParentUtd = Utils.genererId()
+  const idLabelInitial = Utils.genererId()
   const idPrecisionInitial = Utils.genererId()
   const idErreurInitial = Utils.genererId()
   const thisComponent = get_current_component()
@@ -71,19 +73,19 @@
 // { }   ||
 
   function wrapperControles(){
-    const wrapper = document.createElement('div')    
+    elementWrapper = document.createElement('div')    
     
     const classeType = typeChamp === 'checkbox-seul' ? 'checkbox' : typeChamp
-    wrapper.classList.add('utd-form-group', classeType)
+    elementWrapper.classList.add('utd-form-group', classeType)
 
     thisComponent.childNodes.forEach((element) => {
-      wrapper.append(element)  
+      elementWrapper.append(element)  
       if(typeChamp === 'radio' || typeChamp === 'checkbox'){
-        wrapper.setAttribute('role', 'group')
+        elementWrapper.setAttribute('role', 'group')
       }
     })
     
-    thisComponent.prepend(wrapper)
+    thisComponent.prepend(elementWrapper)
   }
 
 
@@ -133,28 +135,55 @@
     }  
   }
   function gererLabel(){
-    label = thisComponent.querySelector("label")
 
-    if(label){
+    if(estGroupeControles()){
+      elementLabel = thisComponent.querySelector(".label")
+    } else {
+      elementLabel = thisComponent.querySelector("label")
+    }
+    
+
+    if(elementLabel){
       //Le label existe déjà. On s'assure qu'il est bien lié au champ.
-        label.setAttribute('for', elementChamp.id)
+      if(!estGroupeControles()){
+        elementLabel.setAttribute('for', elementChamp.id)
+      } else {
+        if(!elementLabel.id){
+          elementLabel.id = idLabelInitial
+        }
+        ajusterChampAriaDescribedBy('ajout', elementLabel.id)
+      }  
+      
     } else {
       //Aucun label, mais un attribut libelle est spécifié. On doit donc ajouter le label et l'associer au champ.
       if(libelle){
-        const element = document.createElement('label')
+        
+        let element
+
+        if(estGroupeControles()){
+          element = document.createElement('span')
+          element.classList.add('label')
+          element.id = idLabelInitial
+          ajusterChampAriaDescribedBy('ajout', element.id)
+        } else {
+          element = document.createElement('label')
+          element.setAttribute('for', elementChamp.id)
+        }
+
         element.innerText = libelle
-        element.setAttribute('for', elementChamp.id)
-        thisComponent.prepend(element)
-        label = element
+        
+        elementWrapper.prepend(element)
+        elementLabel = element
       }    
     }     
   }
+
   function gererPrecision(){
     if(!mounted){
       return
     }
 
-    if(label){
+    if(elementLabel){
       elementPrecision = thisComponent.querySelector(".utd-precision")
 
       if(precision){
@@ -167,7 +196,7 @@
           span.id = idPrecisionInitial
           span.innerText = precision
           elementPrecision = span
-          label.after(elementPrecision)  
+          elementLabel.after(elementPrecision)  
         }
         ajusterChampAriaDescribedBy('ajout', elementPrecision.id)
       } else {
@@ -179,14 +208,21 @@
         }
         else {
           //Pas de contrôle de précision dans le html, on retire la précision du aria-describedby
-          ajusterChampAriaDescribedBy('retrait', elementPrecision.id)
+          ajusterChampAriaDescribedBy('retrait', idPrecisionInitial)
         }
       } 
     }   
   }
   function ajusterChampAriaDescribedBy(operation = 'ajout', valeur){
     
-    const valeurActuelle = elementChamp.getAttribute('aria-describedby') || ''
+    const attribut = estGroupeControles() ? 'aria-labelledby' : 'aria-describedby'
+
+    let controle = elementChamp
+    if(estGroupeControles()){
+      controle = elementWrapper
+    } 
+
+    const valeurActuelle = controle.getAttribute(attribut) || ''
     let nouvelleValeur = ''
 
     if(operation === 'ajout'){
@@ -195,18 +231,11 @@
       nouvelleValeur = valeurActuelle.replace(valeur, '')
     }
 
-
-    const controle = elementChamp
-    if(type === 'radio' || type === 'checkbox'){
-//      controle = 
-    } 
-
     if(nouvelleValeur.trim()){
-      controle.setAttribute('aria-describedby', nouvelleValeur.trim())
+      controle.setAttribute(attribut, nouvelleValeur.trim())
     } else {
-      controle.removeAttribute('aria-describedby')
-    } 
-    
+      controle.removeAttribute(attribut)
+    }     
   }
 
   function gererChampObligatoire(){
@@ -214,7 +243,7 @@
       return
     }
 
-    if(label){
+    if(elementLabel){
       elementIndicateurObligatoire = thisComponent.querySelector(".utd-icone-champ-requis")
 
       if(obligatoire === 'true'){        
@@ -223,7 +252,7 @@
           span.classList.add("utd-icone-champ-requis")
           span.innerHTML = `*`
           elementIndicateurObligatoire = span
-          label.append(elementIndicateurObligatoire)
+          elementLabel.append(elementIndicateurObligatoire)
         }
         elementIndicateurObligatoire.setAttribute('aria-hidden', 'true')
       } else {
@@ -233,7 +262,7 @@
       }      
     }
 
-    if(obligatoire === 'true') { 
+    if(obligatoire === 'true' && !estGroupeControles()) { 
       elementChamp.setAttribute('aria-required', 'true')
     } else  { 
       elementChamp.removeAttribute('aria-required')
@@ -243,6 +272,11 @@
     if(!mounted){
       return
     }
+
+    let controle = elementChamp
+    if(estGroupeControles()){
+      controle = elementWrapper
+    } 
 
     elementErreur = thisComponent.querySelector(".utd-erreur-champ")
 
@@ -259,34 +293,46 @@
         elementErreur = span
 
         if(typeChamp === 'checkbox-seul'){
-          label.after(elementErreur)
+          elementLabel.after(elementErreur)
         } else {
-          elementChamp.after(elementErreur)
+          if(estGroupeControles()){
+            elementWrapper.append(elementErreur)
+          } else {
+            elementChamp.after(elementErreur)
+          }          
         }        
       }
       idElementErreur = elementErreur.id
       
-      const descByAvant = elementChamp.getAttribute('aria-describedby')
+      const attribut = estGroupeControles() ? 'aria-labelledby' : 'aria-describedby'
+      const descByAvant = controle.getAttribute(attribut)
 
-      elementChamp.setAttribute('aria-describedby', elementErreur.id)
-      elementChamp.setAttribute('aria-invalid', 'true')
+      controle.setAttribute(attribut, elementErreur.id)
+      
+      if(!estGroupeControles()){
+        controle.setAttribute('aria-invalid', 'true')        
+      }
 
       //setTimeout nécessaire pour lecteur écran
       if(descByAvant){
         setTimeout(()=>{
-          elementChamp.setAttribute('aria-describedby', `${descByAvant} ${idElementErreur}`)
+          controle.setAttribute(attribut, `${descByAvant} ${idElementErreur}`)
         }, 100)  
       }
 
       elementErreur.classList.remove('utd-d-none')
     } else  { 
-      elementChamp.removeAttribute('aria-invalid')
+      controle.removeAttribute('aria-invalid')
+
       if(elementErreur){
         elementErreur.classList.add('utd-d-none')
       }
-      setTimeout(()=>{
-        ajusterChampAriaDescribedBy('retrait', idElementErreur)
-      },50)        
+
+      if(idElementErreur){
+        setTimeout(()=>{
+          ajusterChampAriaDescribedBy('retrait', idElementErreur)
+        },100)        
+      }
     }    
   }
 
@@ -324,6 +370,9 @@
     } 
   }
   
+  function estGroupeControles(){
+    return typeChamp === 'checkbox' || typeChamp === 'radio'
+  }
 </script>
 
 
