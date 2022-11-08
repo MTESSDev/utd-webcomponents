@@ -11,16 +11,13 @@
 
     function ajouterCodeExemple3() {
         const controleUtd = document.getElementById('utdChamp3')
-
-        controleUtd.querySelector('input').addEventListener(() => {
+        controleUtd.querySelectorAll('input').forEach((controle) => {
             ['blur', 'change'].forEach((event) => {
-                if(controleUtd.querySelector('input:checked')){
-                    controleUtd.setAttribute('invalide', 'false')
-                } else {
-                    controleUtd.setAttribute('invalide', 'true')
-                }
+                controle.addEventListener(event, () => {
+                    controleUtd.setAttribute('invalide', !controleUtd.querySelector('input:checked'))
+                })
             })
-        })
+        })  
     }
 
     function ajouterCodeExemple4() {
@@ -28,12 +25,7 @@
         controleUtd.querySelectorAll('input').forEach((controle) => {
             ['blur', 'change'].forEach((event) => {
                 controle.addEventListener(event, () => {
-                    if(controleUtd.querySelector('input:checked')){
-                        debbuger
-                        controleUtd.setAttribute('invalide', 'false')
-                    } else {
-                        controleUtd.setAttribute('invalide', 'true')
-                    }
+                    controleUtd.setAttribute('invalide', !controleUtd.querySelector('input:checked'))
                 })
             })
         })  
@@ -118,37 +110,46 @@
     </utd-champ-form>
 </div>
 
-<CodeSource idElementCodeSource="exemple3">
+<CodeSource idElementCodeSource="exemple3" titre="Code source (HTML)">
 </CodeSource>
+{#if mounted}
+    <CodeSource codeSource="{ajouterCodeExemple3.toString()}" titre="Code source (js)" language="language-javascript">
+    </CodeSource>   
+{/if} 
+
 
 <h3>4- Liste (Avec wrapper "utd-champ-form")</h3>
 <div id="exemple4">    
-    <utd-champ-form id="utdChamp4" obligatoire="true" libelle="Quels sont vos personnages préférés ?" messageerreur="Le champ «Quels sont vos personnages préférés ?» est obligatoire.">
+    <utd-champ-form id="utdChamp4" obligatoire="true" libelle="Quels sont vos personnages préférés ?" precision="Faites confiance à votre instinct." messageerreur="Le champ «Quels sont vos personnages préférés ?» est obligatoire.">
         <label>
-            <input type="checkbox" name="persoPrefere2" value="Marty">                
+            <input type="checkbox" name="persoPrefere4" value="Marty">                
             <span>Marty MacFly</span>
         </label>               
         <label>
-            <input type="checkbox" name="persoPrefere2" value="Forrest">
+            <input type="checkbox" name="persoPrefere4" value="Forrest">
             Forrest Gump
         </label>               
         <label>
-            <input type="checkbox" name="persoPrefere2" value="Vader">
+            <input type="checkbox" name="persoPrefere4" value="Vader">
             Darth Vador
         </label>    
         <label>
-            <input type="checkbox" name="persoPrefere2" value="Fonzi">
+            <input type="checkbox" name="persoPrefere4" value="Fonzi">
             Fonzi
         </label>    
         <label>
-            <input type="checkbox" name="persoPrefere2" value="CaptainAmerica">
+            <input type="checkbox" name="persoPrefere4" value="CaptainAmerica">
             Captain America
         </label>    
     </utd-champ-form>
 </div>
 
-<CodeSource idElementCodeSource="exemple4">
+<CodeSource idElementCodeSource="exemple4" titre="Code source (HTML)">
 </CodeSource>
 
+{#if mounted}
+    <CodeSource codeSource="{ajouterCodeExemple4.toString()}" titre="Code source (js)" language="language-javascript">
+    </CodeSource>   
+{/if} 
 
 

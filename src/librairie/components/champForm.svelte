@@ -63,9 +63,7 @@
 
   //TODO implémnenter gestion langue (aller chercher dans balise html? lang=?)
 
-  //TODO wrapper les checkbox (liste) et radio dans un div role="group" avec le aria-labelledby
-  //TODO modifier champUtd afin que precision et message erreur soient dans le label... pas de describedby pour liste radio et checkbox||
-  
+  //TODO ajouter texte obligatoire/required à la fin du label en sr only pour les champs liste checkbox et radio  
 
   $: gererChampObligatoire(obligatoire) 
   $: gererPrecision(precision) 
