@@ -3,6 +3,9 @@
   import { Utils } from './utils.js'
   import { get_current_component } from "svelte/internal"
   import { onMount } from "svelte";
+
+
+
   export let obligatoire = "false"
   export let invalide = "false" 
   export let format = null
@@ -15,6 +18,7 @@
   let elementLabel = null
   let elementWrapper = null
   let elementIndicateurObligatoire = null
+  let elementObligatoireTexte = null
   let elementChamp = null
   let elementPrecision = null
   let elementErreur = null
@@ -26,6 +30,7 @@
   const idPrecisionInitial = Utils.genererId()
   const idErreurInitial = Utils.genererId()
   const thisComponent = get_current_component()
+  const texteSrChampObligatoire = Utils.obtenirLanguePage() === 'fr' ? ' obligatoire ' : ' required '
   
   /* ===========================================================================================
     RÉFÉRENCES
@@ -35,12 +40,8 @@
 
   =============================================================================================*/
 
-  onMount(() => {    
-//    html = thisComponent.getRootNode().getElementsByTagName("html")[0]
-    
-
+  onMount(() => {      
     typeChamp = obtenirTypeChamp()
-    console.log(typeChamp)
     mounted = true
 
     if(typeChamp){ 
@@ -56,19 +57,11 @@
 
       gererErreur()
     }
-
-//    slots = Array.from(thisComponent.querySelectorAll('[slot]'))    
-//    mounted = true 
   })
-
-  //TODO implémnenter gestion langue (aller chercher dans balise html? lang=?)
-
-  //TODO ajouter texte obligatoire/required à la fin du label en sr only pour les champs liste checkbox et radio  
 
   $: gererChampObligatoire(obligatoire) 
   $: gererPrecision(precision) 
   $: gererErreur(invalide) 
-// { }   ||
 
   function wrapperControles(){
     elementWrapper = document.createElement('div')    
@@ -242,20 +235,37 @@
     }
 
     if(elementLabel){
+
       elementIndicateurObligatoire = thisComponent.querySelector(".utd-icone-champ-requis")
+      elementObligatoireTexte = thisComponent.querySelector(".texte-obligatoire")
 
       if(obligatoire === 'true'){        
+
+        if(estGroupeControles()){
+          //Pour les listes de checkbox et radio (groupes de contrôles), on doit ajouter un texte hors écran afin d'indiquer que le champ est obligatoire (aria-required ne fonctionne pas pour ces types de champs).
+          elementObligatoireTexte = thisComponent.querySelector(".texte-obligatoire")
+          if(!elementObligatoireTexte){
+            elementObligatoireTexte = document.createElement('span')
+            elementObligatoireTexte.classList.add("texte-obligatoire","utd-sr-only")
+            elementObligatoireTexte.innerHTML = texteSrChampObligatoire 
+            elementLabel.append(elementObligatoireTexte)
+          }
+        }        
+
         if(!elementIndicateurObligatoire){
-          const span = document.createElement('span')
-          span.classList.add("utd-icone-champ-requis")
-          span.innerHTML = `*`
-          elementIndicateurObligatoire = span
+          elementIndicateurObligatoire = document.createElement('span')
+          elementIndicateurObligatoire.classList.add("utd-icone-champ-requis")
+          elementIndicateurObligatoire.innerHTML = `*`
           elementLabel.append(elementIndicateurObligatoire)
         }
         elementIndicateurObligatoire.setAttribute('aria-hidden', 'true')
       } else {
-        if(indicateurObligatoire){
-          indicateurObligatoire.remove()
+        if(elementIndicateurObligatoire){
+          elementIndicateurObligatoire.remove()
+        }
+
+        if(elementObligatoireTexte){
+          elementObligatoireTexte.remove()
         }
       }      
     }
@@ -266,6 +276,7 @@
       elementChamp.removeAttribute('aria-required')
     } 
   }
+
   function gererErreur(){
     if(!mounted){
       return

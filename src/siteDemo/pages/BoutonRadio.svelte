@@ -18,30 +18,34 @@
 
 <h2>Exemples</h2>
 
-<h3>1- Radio </h3>
+<h3>1- Gestion manuelle</h3>
 <div id="exemple1">    
     <div class="utd-form-group radio">
-        <span class="label" id="personnagePrefere">Quel est votre personnage préféré ?</span>
-        <div role="radiogroup" aria-labelledby="personnagePrefere">
+        <span class="label" id="personnagePrefere1">Quel est votre personnage préféré ?</span>
+        <span id="precision1" class="utd-precision">Faites confiance à votre instinct.</span>        
+        <div role="radiogroup" aria-labelledby="personnagePrefere1" aria-describedby="precision1 texteErreur1" aria-required="true">
             <label>
-                <input type="radio" name="persoPrefere" value="Marty">                
+                <input type="radio" name="persoPrefere1" value="Marty">                
                 Marty MacFly
             </label>               
             <label>
-                <input type="radio" name="persoPrefere" value="Forrest">
+                <input type="radio" name="persoPrefere1" value="Forrest">
                 Forrest Gump
             </label>               
             <label>
-                <input type="radio" name="persoPrefere" value="Vader">
+                <input type="radio" name="persoPrefere1" value="Vader">
                 Darth Vador
             </label>    
         </div>
+        <span id="texteErreur1" role="alert" class="utd-erreur-champ">Le champ «Quel est votre personnage préféré ?» est obligatoire.</span>        
     </div>
 </div>
+
 <CodeSource idElementCodeSource="exemple1">
 </CodeSource>
 
-<h3>2- Champ en erreur </h3>
+
+<h3>2- Gestion automatique (Avec wrapper "utd-champ-form")</h3>
 <div id="exemple2">    
     <div class="utd-form-group radio">
         <span class="label" id="personnagePrefere2">Quel est votre personnage préféré ?</span>
@@ -65,32 +69,5 @@
 </div>
 
 <CodeSource idElementCodeSource="exemple2">
-</CodeSource>
-
-
-<h3>3- Avec wrapper "utd-champ" </h3>
-<div id="exemple3">    
-    <div class="utd-form-group radio">
-        <span class="label" id="personnagePrefere2">Quel est votre personnage préféré ?</span>
-        <span id="precision2" class="utd-precision">Faites confiance à votre instinct.</span>        
-        <div role="radiogroup" aria-labelledby="personnagePrefere2" aria-describedby="precision2 texteErreur2" aria-required="true">
-            <label>
-                <input type="radio" name="persoPrefere2" value="Marty">                
-                Marty MacFly
-            </label>               
-            <label>
-                <input type="radio" name="persoPrefere2" value="Forrest">
-                Forrest Gump
-            </label>               
-            <label>
-                <input type="radio" name="persoPrefere2" value="Vader">
-                Darth Vador
-            </label>    
-        </div>
-        <span id="texteErreur2" role="alert" class="utd-erreur-champ">Le champ "Quel est votre personnage préféré ?" est obligatoire.</span>        
-    </div>
-</div>
-
-<CodeSource idElementCodeSource="exemple3">
 </CodeSource>
 

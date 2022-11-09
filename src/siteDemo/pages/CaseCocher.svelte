@@ -49,7 +49,7 @@
 
 <h2>Exemples</h2>
 
-<h3>1- Seul</h3>
+<h3>1- Seul (gestion manuelle)</h3>
 <div id="exemple1">    
     <div class="utd-form-group checkbox">
         <label>
@@ -63,12 +63,12 @@
 <CodeSource idElementCodeSource="exemple1">
 </CodeSource>
 
-<h3>2- Liste </h3>
+<h3>2- Liste (gestion manuelle)</h3>
 <div id="exemple2">    
     <div class="utd-form-group checkbox" role="group" aria-labelledby="personnagePrefere2 precision2 texteErreur2">
         <span class="label" id="personnagePrefere2">Quels sont vos personnages préférés ?
             <span class="utd-icone-champ-requis" aria-hidden="true">*</span>
-            <span class="utd-sr-only">&nbsp;Obligatoire.</span>
+            <span class="texte-obligatoire utd-sr-only"> obligatoire </span>
         </span>        
         <span id="precision2" class="utd-precision">Faites confiance à votre instinct.</span>        
         <label>
@@ -99,8 +99,7 @@
 <CodeSource idElementCodeSource="exemple2">
 </CodeSource>
 
-
-<h3>3- Seul (Avec wrapper "utd-champ-form")</h3>
+<h3>3- Seul (Gestion automatique avec wrapper "utd-champ-form")</h3>
 <div id="exemple3">    
     <utd-champ-form id="utdChamp3" obligatoire="true" messageerreur="Le champ «J'ai pris connaissance des directives» est obligatoire.">
         <label>
@@ -117,8 +116,7 @@
     </CodeSource>   
 {/if} 
 
-
-<h3>4- Liste (Avec wrapper "utd-champ-form")</h3>
+<h3>4- Liste (Gestion automatique avec wrapper "utd-champ-form")</h3>
 <div id="exemple4">    
     <utd-champ-form id="utdChamp4" obligatoire="true" libelle="Quels sont vos personnages préférés ?" precision="Faites confiance à votre instinct." messageerreur="Le champ «Quels sont vos personnages préférés ?» est obligatoire.">
         <label>
