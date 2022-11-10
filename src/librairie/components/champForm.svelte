@@ -71,7 +71,10 @@
 
     thisComponent.childNodes.forEach((element) => {
       elementWrapper.append(element)  
-      if(typeChamp === 'radio' || typeChamp === 'checkbox'){
+      if(typeChamp === 'radio'){
+        elementWrapper.setAttribute('role', 'radiogroup')
+      }
+      if(typeChamp === 'checkbox'){
         elementWrapper.setAttribute('role', 'group')
       }
     })
@@ -136,13 +139,13 @@
 
     if(elementLabel){
       //Le label existe déjà. On s'assure qu'il est bien lié au champ.
-      if(!estGroupeControles()){
-        elementLabel.setAttribute('for', elementChamp.id)
-      } else {
+      if(estGroupeControles()){
         if(!elementLabel.id){
           elementLabel.id = idLabelInitial
         }
         ajusterChampAriaDescribedBy('ajout', elementLabel.id)
+      } else {
+        elementLabel.setAttribute('for', elementChamp.id)
       }  
       
     } else {
@@ -155,7 +158,7 @@
           element = document.createElement('span')
           element.classList.add('label')
           element.id = idLabelInitial
-          ajusterChampAriaDescribedBy('ajout', element.id)
+          ajusterChampAriaDescribedBy('ajout', element.id, typeChamp === 'radio' ? 'aria-labelledby' : null)
         } else {
           element = document.createElement('label')
           element.setAttribute('for', elementChamp.id)
@@ -204,9 +207,15 @@
       } 
     }   
   }
-  function ajusterChampAriaDescribedBy(operation = 'ajout', valeur){
+  function ajusterChampAriaDescribedBy(operation = 'ajout', valeur, aria){
     
-    const attribut = estGroupeControles() ? 'aria-labelledby' : 'aria-describedby'
+    let attribut
+
+    if(aria){
+      attribut = aria
+    } else {
+      attribut = typeChamp === 'checkbox' ? 'aria-labelledby' : 'aria-describedby'
+    }
 
     let controle = elementChamp
     if(estGroupeControles()){
@@ -241,8 +250,8 @@
 
       if(obligatoire === 'true'){        
 
-        if(estGroupeControles()){
-          //Pour les listes de checkbox et radio (groupes de contrôles), on doit ajouter un texte hors écran afin d'indiquer que le champ est obligatoire (aria-required ne fonctionne pas pour ces types de champs).
+        if(typeChamp === 'checkbox'){
+          //Pour les listes de checkbox, on doit ajouter un texte hors écran afin d'indiquer que le champ est obligatoire (aria-required ne fonctionne pas pour ces types de champs).
           elementObligatoireTexte = thisComponent.querySelector(".texte-obligatoire")
           if(!elementObligatoireTexte){
             elementObligatoireTexte = document.createElement('span')
@@ -270,10 +279,19 @@
       }      
     }
 
-    if(obligatoire === 'true' && !estGroupeControles()) { 
-      elementChamp.setAttribute('aria-required', 'true')
+    if(obligatoire === 'true' && typeChamp !== 'checkbox') { 
+      if(typeChamp === 'radio'){
+        elementWrapper.setAttribute('aria-required', 'true')
+      } else {
+        elementChamp.setAttribute('aria-required', 'true')
+      }
     } else  { 
-      elementChamp.removeAttribute('aria-required')
+      if(typeChamp === 'radio'){
+        elementWrapper.removeAttribute('aria-required')
+      } else {
+        elementChamp.removeAttribute('aria-required')
+      }
+
     } 
   }
 
@@ -313,12 +331,12 @@
       }
       idElementErreur = elementErreur.id
       
-      const attribut = estGroupeControles() ? 'aria-labelledby' : 'aria-describedby'
+      const attribut = typeChamp === 'checkbox' ? 'aria-labelledby' : 'aria-describedby'
       const descByAvant = controle.getAttribute(attribut)
 
       controle.setAttribute(attribut, elementErreur.id)
       
-      if(!estGroupeControles()){
+      if(typeChamp !== 'checkbox'){
         controle.setAttribute('aria-invalid', 'true')        
       }
 

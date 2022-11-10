@@ -2024,15 +2024,13 @@ textarea.utd-form-control.sm {
 }
 
 .utd-form-group.radio label{
-    margin-top: 16px;
     font-family: OpenSans-Regular;
     font-size: 16px;
     font-weight: normal;
     line-height: 1.2;
     display: flex;
-    margin-right: auto;
     padding: 8px;
-    margin-left: -8px;
+    margin: 8px auto 0 -8px;
 }
 
 .utd-form-group.radio .label, .utd-form-group.radio .utd-precision{

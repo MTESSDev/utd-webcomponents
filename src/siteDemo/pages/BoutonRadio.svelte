@@ -1,5 +1,24 @@
 <script>
     import CodeSource from '../components/CodeSource.svelte'; 
+    import { onMount } from 'svelte';
+    let mounted = false;
+
+    onMount(() => {
+        ajouterCodeExemple2()
+        mounted = true
+    })
+
+    function ajouterCodeExemple2() {
+        const controleUtd = document.getElementById('utdChamp2')
+        controleUtd.querySelectorAll('input').forEach((controle) => {
+            ['blur', 'change'].forEach((event) => {
+                controle.addEventListener(event, () => {
+                    controleUtd.setAttribute('invalide', !controleUtd.querySelector('input:checked'))
+                })
+            })
+        })  
+    }
+
 </script>
 
 <style type="text/css">
@@ -20,23 +39,21 @@
 
 <h3>1- Gestion manuelle</h3>
 <div id="exemple1">    
-    <div class="utd-form-group radio">
+    <div class="utd-form-group radio" role="radiogroup" aria-labelledby="personnagePrefere1" aria-describedby="precision1 texteErreur1" aria-required="true">
         <span class="label" id="personnagePrefere1">Quel est votre personnage préféré ?</span>
         <span id="precision1" class="utd-precision">Faites confiance à votre instinct.</span>        
-        <div role="radiogroup" aria-labelledby="personnagePrefere1" aria-describedby="precision1 texteErreur1" aria-required="true">
-            <label>
-                <input type="radio" name="persoPrefere1" value="Marty">                
-                Marty MacFly
-            </label>               
-            <label>
-                <input type="radio" name="persoPrefere1" value="Forrest">
-                Forrest Gump
-            </label>               
-            <label>
-                <input type="radio" name="persoPrefere1" value="Vader">
-                Darth Vador
-            </label>    
-        </div>
+        <label>
+            <input type="radio" name="persoPrefere1" value="Marty">                
+            Marty MacFly
+        </label>               
+        <label>
+            <input type="radio" name="persoPrefere1" value="Forrest">
+            Forrest Gump
+        </label>               
+        <label>
+            <input type="radio" name="persoPrefere1" value="Vader">
+            Darth Vador
+        </label>    
         <span id="texteErreur1" role="alert" class="utd-erreur-champ">Le champ «Quel est votre personnage préféré ?» est obligatoire.</span>        
     </div>
 </div>
@@ -47,25 +64,20 @@
 
 <h3>2- Gestion automatique (Avec wrapper "utd-champ-form")</h3>
 <div id="exemple2">    
-    <div class="utd-form-group radio">
-        <span class="label" id="personnagePrefere2">Quel est votre personnage préféré ?</span>
-        <span id="precision2" class="utd-precision">Faites confiance à votre instinct.</span>        
-        <div role="radiogroup" aria-labelledby="personnagePrefere2" aria-describedby="precision2 texteErreur2" aria-required="true">
-            <label>
-                <input type="radio" name="persoPrefere2" value="Marty">                
-                Marty MacFly
-            </label>               
-            <label>
-                <input type="radio" name="persoPrefere2" value="Forrest">
-                Forrest Gump
-            </label>               
-            <label>
-                <input type="radio" name="persoPrefere2" value="Vader">
-                Darth Vador
-            </label>    
-        </div>
-        <span id="texteErreur2" role="alert" class="utd-erreur-champ">Le champ "Quel est votre personnage préféré ?" est obligatoire.</span>        
-    </div>
+    <utd-champ-form id="utdChamp2" obligatoire="true" libelle="Quel est votre personnage préféré ?" precision="Faites confiance à votre instinct." messageerreur="Le champ «Quel est votre personnage préféré ?» est obligatoire.">
+        <label>
+            <input type="radio" name="persoPrefere2" value="Marty">                
+            Marty MacFly
+        </label>               
+        <label>
+            <input type="radio" name="persoPrefere2" value="Forrest">
+            Forrest Gump
+        </label>               
+        <label>
+            <input type="radio" name="persoPrefere2" value="Vader">
+            Darth Vador
+        </label>    
+    </utd-champ-form>
 </div>
 
 <CodeSource idElementCodeSource="exemple2">
