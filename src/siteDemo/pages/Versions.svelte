@@ -4,13 +4,14 @@
 
 <h1>Historique des versions</h1>
 
-<utd-tablematieres selecteurancres="#main h2">
-</utd-tablematieres>
+<utd-menuancres selecteurancres="#main h2">
+</utd-menuancres>
 
 <h2>1.7.0 (2022-??-??)</h2>
 <h3>Améliorations</h3>
 <ul class="utd">
-    <li>Ajout du nouveau composant "Table des matières".</li>
+    <li>Ajout du composant "Menu vertical".</li>
+    <li>Ajout du composant "Menu d'ancres".</li>
     <li>
         <span>Champs de formulaires</span>
         <ul>
@@ -20,7 +21,6 @@
             </li>            
         </ul>
     </li>
-
 </ul>
 
 <h3>Corrections d'anomalies</h3>

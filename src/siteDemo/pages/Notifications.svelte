@@ -99,8 +99,8 @@
 
 <h1>Notifications</h1>
 
-<utd-tablematieres selecteurancres="#main h2">
-</utd-tablematieres>
+<utd-menuancres selecteurancres="#main h2">
+</utd-menuancres>
 
 <h2>Description</h2>
 <p>Il s'agit du composant <strong>notification contextuelle</strong> du système de design Quebec.ca.</p>

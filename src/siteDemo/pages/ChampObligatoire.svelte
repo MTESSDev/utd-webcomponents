@@ -7,8 +7,8 @@
 
 <h1>Champ obligatoire</h1>
 
-<utd-tablematieres selecteurancres="#main h2">
-</utd-tablematieres>
+<utd-menuancres selecteurancres="#main h2">
+</utd-menuancres>
 
 <h2>Description</h2>
 <p>La composante est constituée de deux éléments : la mention et l'astérisque.</p>

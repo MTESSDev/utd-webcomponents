@@ -21,6 +21,7 @@
     import ChampsAutomatique from './pages/ChampsAutomatique.svelte';
     import ChampObligatoire from './pages/ChampObligatoire.svelte';
   import ChampErreur from './pages/ChampErreur.svelte';
+  import MenuVertical from './pages/MenuVertical.svelte';
 </script>
 
 <div class="conteneur-principal">
@@ -97,39 +98,38 @@
     <div class="utd-container">
         <div id="conteneur2Colonnes" class="utd contenu-principal-droite">
             <div id="colonneGauche" class="utd">                
-                <utd-menu-vertical titrevisible="false" titre="{$router.path.indexOf('/composants') >= 0 ? 'Composants' : 'Éléments de base'}" srtitre="{$router.path.indexOf('/composants') >= 0 ? 'Menu composants' : 'Menu éléments de base'}">
-                    <div class="contenu">
-                        {#if $router.path.indexOf('/composants') >= 0}                                
-                            <utd-menu-vertical-item href="/composants/versions" label="Historique des versions"></utd-menu-vertical-item>
-                            <utd-menu-vertical-item label="Action">                                
-                                <utd-menu-vertical-item label="Boutons" href="/composants/actions/boutons"></utd-menu-vertical-item>
-                                <utd-menu-vertical-item label="Dialogue modal" href="/composants/actions/dialogue"></utd-menu-vertical-item>
-                                <utd-menu-vertical-item label="Message" href="/composants/actions/message"></utd-menu-vertical-item>
-                                <utd-menu-vertical-item label="Notifications" href="/composants/actions/notifications"></utd-menu-vertical-item>
-                                <utd-menu-vertical-item label="Traitement en cours" href="/composants/actions/traitementencours"></utd-menu-vertical-item>
-                            </utd-menu-vertical-item>
-                            <utd-menu-vertical-item label="Affichage de contenu">                                
-                                <utd-menu-vertical-item label="Accordéon" href="/composants/affichagecontenu/accordeon"></utd-menu-vertical-item>
-                                <utd-menu-vertical-item label="Avis" href="/composants/affichagecontenu/avis"></utd-menu-vertical-item>
-                                <utd-menu-vertical-item label="Infobulle" href="/composants/affichagecontenu/infobulle"></utd-menu-vertical-item>
-                                <utd-menu-vertical-item label="Section" href="/composants/affichagecontenu/section"></utd-menu-vertical-item>
-                            </utd-menu-vertical-item>
-                            <utd-menu-vertical-item label="Formulaire">    
-                                <utd-menu-vertical-item label="Bouton radio" href="/composants/formulaire/boutonradio"></utd-menu-vertical-item>                            
-                                <utd-menu-vertical-item label="Case à cocher" href="/composants/formulaire/casecocher"></utd-menu-vertical-item>                            
-                                <utd-menu-vertical-item label="Champs obligatoires" href="/composants/formulaire/champobligatoire"></utd-menu-vertical-item> 
-                                <utd-menu-vertical-item label="Champs texte et autres" href="/composants/formulaire/champstexte"></utd-menu-vertical-item> 
-                                <utd-menu-vertical-item label="Champs (Gestion automatique)" href="/composants/formulaire/champsautomatique"></utd-menu-vertical-item>                           
-                                <utd-menu-vertical-item label="Erreurs" href="/composants/formulaire/champerreur"></utd-menu-vertical-item>                                 
-                            </utd-menu-vertical-item>
-                            <utd-menu-vertical-item label="Navigation">                                
-                                <utd-menu-vertical-item label="Haut de page" href="/composants/navigation/hautpage"></utd-menu-vertical-item>
-                            </utd-menu-vertical-item>
-                        {:else}                                    
-                            <utd-menu-vertical-item href="/base/principe" label="Principe"></utd-menu-vertical-item>
-                            <utd-menu-vertical-item href="/base/utilisation" label="Utilisation"></utd-menu-vertical-item>
-                        {/if}
-                    </div>
+                <utd-menu-vertical id="menuVertical" titrevisible="false" titre="{$router.path.indexOf('/composants') >= 0 ? 'Composants' : 'Éléments de base'}" srtitre="{$router.path.indexOf('/composants') >= 0 ? 'Menu composants' : 'Menu éléments de base'}">
+                    {#if $router.path.indexOf('/composants') >= 0}                                
+                        <utd-menu-vertical-item href="/composants/versions" label="Historique des versions"></utd-menu-vertical-item>
+                        <utd-menu-vertical-item label="Action">                                
+                            <utd-menu-vertical-item label="Boutons" href="/composants/actions/boutons"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item label="Dialogue modal" href="/composants/actions/dialogue"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item label="Message" href="/composants/actions/message"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item label="Notifications" href="/composants/actions/notifications"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item label="Traitement en cours" href="/composants/actions/traitementencours"></utd-menu-vertical-item>
+                        </utd-menu-vertical-item>
+                        <utd-menu-vertical-item label="Affichage de contenu">                                
+                            <utd-menu-vertical-item label="Accordéon" href="/composants/affichagecontenu/accordeon"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item label="Avis" href="/composants/affichagecontenu/avis"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item label="Infobulle" href="/composants/affichagecontenu/infobulle"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item label="Section" href="/composants/affichagecontenu/section"></utd-menu-vertical-item>
+                        </utd-menu-vertical-item>
+                        <utd-menu-vertical-item label="Formulaire">    
+                            <utd-menu-vertical-item label="Bouton radio" href="/composants/formulaire/boutonradio"></utd-menu-vertical-item>                            
+                            <utd-menu-vertical-item label="Case à cocher" href="/composants/formulaire/casecocher"></utd-menu-vertical-item>                            
+                            <utd-menu-vertical-item label="Champs obligatoires" href="/composants/formulaire/champobligatoire"></utd-menu-vertical-item> 
+                            <utd-menu-vertical-item label="Champs texte et autres" href="/composants/formulaire/champstexte"></utd-menu-vertical-item> 
+                            <utd-menu-vertical-item label="Champs (Gestion automatique)" href="/composants/formulaire/champsautomatique"></utd-menu-vertical-item>                           
+                            <utd-menu-vertical-item label="Erreurs" href="/composants/formulaire/champerreur"></utd-menu-vertical-item>                                 
+                        </utd-menu-vertical-item>
+                        <utd-menu-vertical-item label="Navigation">                                
+                            <utd-menu-vertical-item label="Haut de page" href="/composants/navigation/hautpage"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item label="Menu vertical" href="/composants/navigation/menuvertical"></utd-menu-vertical-item>
+                        </utd-menu-vertical-item>
+                    {:else}                                    
+                        <utd-menu-vertical-item href="/base/principe" label="Principe"></utd-menu-vertical-item>
+                        <utd-menu-vertical-item href="/base/utilisation" label="Utilisation"></utd-menu-vertical-item>
+                    {/if}
                 </utd-menu-vertical> 
             </div>
         
@@ -165,6 +165,7 @@
                         </Route>
                         <Route path="/navigation/*">                    
                             <Route path="/hautpage" ><HautPage /></Route>
+                            <Route path="/menuvertical" ><MenuVertical /></Route>
                         </Route>                            
                     </Route>
                 </main>        

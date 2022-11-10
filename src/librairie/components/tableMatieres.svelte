@@ -1,7 +1,7 @@
 <!-- 
 Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un custom element.
 -->
-<svelte:options tag="utd-tablematieres" />
+<svelte:options tag="utd-menuancres" />
 
 <script>
 import { onMount } from "svelte";
@@ -32,7 +32,7 @@ function obtenirAncres() {
 </script>
 
 {#if ancres && ancres.length}
-  <div class="utd-component utd-tablematieres">
+  <div class="utd-component utd-menuancres">
     <h2 id="titreTableMatieres">{titre}</h2>
     <nav aria-describedby="titreTableMatieres">
       <ul>

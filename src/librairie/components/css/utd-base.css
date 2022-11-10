@@ -1140,6 +1140,9 @@ textarea.utd-form-control.sm {
     margin: 8px auto 0 -8px;
 }
 
+.utd-form-group.radio label:first-of-type{
+    margin-top: 16px;
+}
 .utd-form-group.radio .label, .utd-form-group.radio .utd-precision{
     margin-bottom: 0;
 }
@@ -1527,6 +1530,7 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
     padding: 2px 4px;
     border-radius: 4px;
     color: #fff;
+    white-space: nowrap;
 }
 
 .utd-emphase-gris{

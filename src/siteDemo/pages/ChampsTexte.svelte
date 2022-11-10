@@ -7,8 +7,8 @@
 
 <h1>Champs texte et autres</h1>
 
-<utd-tablematieres selecteurancres="#main h2">
-</utd-tablematieres>
+<utd-menuancres selecteurancres="#main h2">
+</utd-menuancres>
 
 <utd-avis>
     <div slot="contenu">

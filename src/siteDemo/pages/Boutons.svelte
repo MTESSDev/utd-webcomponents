@@ -7,8 +7,8 @@
 
 <h1>Boutons</h1>
 
-<utd-tablematieres selecteurancres="#main h2">
-</utd-tablematieres>
+<utd-menuancres selecteurancres="#main h2">
+</utd-menuancres>
 
 <h2>Description</h2>
 <p>Les <strong>boutons</strong> indiquent les actions qui peuvent être exécutées sur une page. Le libellé d’un bouton annonce l'action qui se produit lorsque l'utilisateur interagit avec celui-ci.&nbsp;</p>

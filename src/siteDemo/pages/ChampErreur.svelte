@@ -7,8 +7,8 @@
 
 <h1>Erreurs</h1>
 
-<utd-tablematieres selecteurancres="#main h2">
-</utd-tablematieres>
+<utd-menuancres selecteurancres="#main h2">
+</utd-menuancres>
 
 <h2>Description</h2>
 <p>Une erreur dans un champ est indiquée par un contour rouge (excepté pour les cases à cocher et boutons radio) et un message contextuel placé sous le champ.</p>

@@ -532,9 +532,9 @@ utd-section + utd-section {
 }
 
 /*====================================================================================================
-  -51- utd-tablematieres
+  -51- utd-menuancres
 ====================================================================================================*/
-.utd-tablematieres {
+.utd-menuancres {
   padding: 2rem 1rem;
   background-color: var(--couleur-fond-gris);
   margin-bottom: 32px;
@@ -542,22 +542,22 @@ utd-section + utd-section {
   border-bottom: 1px solid var(--couleur-filet-secondaire);
 }
 
-.utd-tablematieres h2 {
+.utd-menuancres h2 {
   font-size: 1rem;
   font-family: OpenSans-Bold;
   margin: 0;
 }
 
-.utd-tablematieres ul {
+.utd-menuancres ul {
   list-style-type: none;
   padding: 0;
 }
 
-.utd-tablematieres a {
+.utd-menuancres a {
   text-decoration: none;
 }
 
-.utd-tablematieres a:focus, .utd-tablematieres a:hover  {
+.utd-menuancres a:focus, .utd-menuancres a:hover  {
   text-decoration: underline;
 }
 
@@ -2033,6 +2033,9 @@ textarea.utd-form-control.sm {
     margin: 8px auto 0 -8px;
 }
 
+.utd-form-group.radio label:first-of-type{
+    margin-top: 16px;
+}
 .utd-form-group.radio .label, .utd-form-group.radio .utd-precision{
     margin-bottom: 0;
 }
