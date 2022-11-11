@@ -9,7 +9,7 @@
   export let format = null
   export let libelle = ""
   export let precision = ""
-  export let messageerreur = ""
+  export let messageErreur = ""
 
   let mounted = false
   let typeChamp = null
@@ -60,7 +60,7 @@
   $: gererLabel(libelle) 
   $: gererChampObligatoire(obligatoire) 
   $: gererPrecision(precision) 
-  $: gererErreur(messageerreur)
+  $: gererErreur(messageErreur)
   $: gererErreur(invalide) 
 
   function wrapperControles(){
@@ -331,8 +331,8 @@
         }        
       }
       
-      if(messageerreur){
-        elementErreur.innerText = messageerreur
+      if(messageErreur){
+        elementErreur.innerText = messageErreur
       }
       
       idElementErreur = elementErreur.id      
@@ -360,8 +360,8 @@
       if(elementErreur){
         elementErreur.classList.add('utd-d-none')
 
-        if(messageerreur){
-          elementErreur.innerText = messageerreur
+        if(messageErreur){
+          elementErreur.innerText = messageErreur
         }
       }
 

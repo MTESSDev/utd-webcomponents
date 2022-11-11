@@ -48,7 +48,7 @@
 <h3>2- Gestion automatique (la plus simple)</h3>
 <p>Exemple de gestion complète à sa plus simple expression.</p>
 <div id="exemple2">
-    <utd-champ-form obligatoire="true" libelle="Téléphone" format="md" invalide="true" precision="Indiquez le numéro de téléphone de l'établissement concerné." messageerreur="Le champ «Téléphone» est obligatoire.">
+    <utd-champ-form obligatoire="true" libelle="Téléphone" format="md" invalide="true" precision="Indiquez le numéro de téléphone de l'établissement concerné." message-erreur="Le champ «Téléphone» est obligatoire.">
         <input type="tel" placeholder="123 456-7890"/>
     </utd-champ-form>
 </div>
@@ -61,7 +61,7 @@
 <p>Comme exemple 2, mais ici on a spécifié nous même un label via le html.</p>
 <p>À noter que l'attribut <span class="utd-emphase-gris">for</span> n'est pas spécifié pour le label. Il sera ajouté automatiquement comme tout le reste!</p>
 <div id="exemple3">
-    <utd-champ-form obligatoire="true" format="md" invalide="true" precision="Indiquez le numéro de téléphone de l'établissement concerné." messageerreur="Le champ «Téléphone» est obligatoire.">
+    <utd-champ-form obligatoire="true" format="md" invalide="true" precision="Indiquez le numéro de téléphone de l'établissement concerné." message-erreur="Le champ «Téléphone» est obligatoire.">
         <label>Téléphone</label>
         <input type="tel" id="telephone3" placeholder="123 456-7890"/>
     </utd-champ-form>
@@ -75,7 +75,7 @@
 <p>Comme exemple 3, mais ici nous spécifions l'attribut for du label et une précision via le html.</p>
 <p>Noter l'attribut <span class="utd-emphase-gris">aria-describedby</span> du contrôle qui est bien associé à notre précision, même si nous n'avions pas spécifié d'id pour cette dernière.</p>
 <div id="exemple4">
-    <utd-champ-form obligatoire="true" format="md" invalide="true" messageerreur="Le champ «Téléphone» est obligatoire.">
+    <utd-champ-form obligatoire="true" format="md" invalide="true" message-erreur="Le champ «Téléphone» est obligatoire.">
         <label for="telephone4">Téléphone</label>
         <span class="utd-precision">Indiquez le numéro de téléphone de l'établissement concerné.</span>        
         <input type="tel" id="telephone4" placeholder="123 456-7890"/>
@@ -93,7 +93,7 @@
         <label for="telephone5">Téléphone</label>
         <span class="utd-precision" id="precision5">Indiquez le numéro de téléphone de l'établissement concerné.</span>        
         <input type="tel" id="telephone5" placeholder="123 456-7890"/>
-        <span class="utd-erreur-champ">Le champ "Téléphone" est obligatoire.</span>
+        <span class="utd-erreur-champ">Le champ «Téléphone» est obligatoire.</span>
     </utd-champ-form>
 </div>
 
@@ -106,7 +106,7 @@
 <p>À noter que le présent exemple est très basique et vérifie uniquement que le champ contient une valeur ou non.</p>
 
 <div id="exemple6">
-    <utd-champ-form id="telephone6" obligatoire="true" libelle="Téléphone" format="md" invalide="false" precision="Indiquez le numéro de téléphone de l'établissement concerné." messageerreur="Le champ &#34;Téléphone&#34; est obligatoire.">
+    <utd-champ-form id="telephone6" obligatoire="true" libelle="Téléphone" format="md" invalide="false" precision="Indiquez le numéro de téléphone de l'établissement concerné." message-erreur="Le champ &#34;Téléphone&#34; est obligatoire.">
         <input type="tel" placeholder="123 456-7890"/>
     </utd-champ-form>
 </div>

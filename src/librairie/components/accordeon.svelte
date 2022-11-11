@@ -9,7 +9,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   export let reduit = "true"
   export let titre = ""
   export let contenu = ""
-  export let tagtitre = "h2"
+  export let tagTitre = "h2"
 
   const idEntete = Utils.genererId()
   const idContenu = 'corps' + idEntete
@@ -17,11 +17,13 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   function toggleAffichageContenu(){
     reduit =  reduit === 'true' ? 'false' : 'true'
   }
+
+  //TODO trouver le moyen d'obtenir le niveau de titre par défaut...
 </script>
 
 <div class="utd-component utd-accordeon {reduit === 'false' ? 'ouvert' : ''}" >
   <div class="entete">
-    <svelte:element this={tagtitre} class="titre"> 
+    <svelte:element this={tagTitre} class="titre"> 
       <button type="button" class="" aria-controls="{idContenu}" aria-expanded="{reduit === 'false'}" on:click={toggleAffichageContenu}>
         <span class="titre">
           {#if titre}
