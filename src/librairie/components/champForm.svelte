@@ -4,8 +4,6 @@
   import { get_current_component } from "svelte/internal"
   import { onMount } from "svelte";
 
-
-
   export let obligatoire = "false"
   export let invalide = "false" 
   export let format = null

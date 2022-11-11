@@ -401,7 +401,7 @@ header {
     position: fixed;
     right: 0;
     top: 200px;
-    min-width: 0;
+    min-width: 40px;
     padding: 9px 5px 1px 5px;
     font-size: 14px;    
 }

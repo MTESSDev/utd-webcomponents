@@ -5,7 +5,6 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
 <script>
   export let titre = ""
-//   export let lang = "fr"
   export let type = "information"
   export let contenu = ""
 
