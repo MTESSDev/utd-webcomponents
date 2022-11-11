@@ -79,7 +79,7 @@
         <div class="conteneur-menu-identification">
             <div class="utd-container zone-menu-identification">
                 <h2 id="titreMenuPrincipal" class="utd-sr-only">Menu principal de navigation</h2>
-                <nav class="menu-principal" aria-libelleledby="titreMenuPrincipal">
+                <nav class="menu-principal" aria-labelledby="titreMenuPrincipal">
                     <ul>
                         <li>
                             <a href="/base" use:active>Base</a>
