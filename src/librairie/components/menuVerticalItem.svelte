@@ -6,15 +6,15 @@
   import { element, get_current_component } from "svelte/internal"  
 
   /* Propriétés "publiques" */
-  export let label = ''
+  export let libelle = ''
   export let href = ''
-  export let estactif = 'false'
   export let afficher = 'false'
 
   /* Propriétés "internes" */
   export let indextab = '0'
   export let animer = 'true'
   export let focus = 'false'
+  export let actif = 'false'
 
   let possedeEnfants = false
   let niveau = 1
@@ -23,7 +23,7 @@
   const idSousMenu = Utils.genererId()
  
   onMount(() => {
-    estactif = estElementActif()
+    actif = estElementActif()
     niveau = obtenirNiveau()
     possedeEnfants = !!thisComponent.querySelector('utd-menu-vertical-item')
   })
@@ -55,8 +55,8 @@
     while (elementParent.tagName.toLowerCase() === 'utd-menu-vertical-item') {
         ++niveau
 
-        if(estactif === 'true'){
-          elementParent.setAttribute('estactif', 'true')
+        if(actif === 'true'){
+          elementParent.setAttribute('actif', 'true')
           elementParent.setAttribute('animer', 'false')
           elementParent.setAttribute('afficher', 'true')
           elementParent.setAttribute('animer', 'true')
@@ -199,10 +199,10 @@
 
 
 </script>
-<div class="utd-menu-vertical-item niv{niveau} {afficher === 'true' ? 'visible' : ''} {estactif === 'true' ? 'active' : ''}">
+<div class="utd-menu-vertical-item niv{niveau} {afficher === 'true' ? 'visible' : ''} {actif === 'true' ? 'active' : ''}">
   {#if possedeEnfants}    
     <a role="menuitem" href="{href}" aria-expanded="{afficher}" aria-haspopup="menu" aria-controls="{idSousMenu}" tabindex="{indextab}" on:click|preventDefault={toggleAfficher} on:keydown={onKeyDown} on:focus={onFocus}>
-      <span>{label}</span>
+      <span>{libelle}</span>
       <span aria-hidden="true" class="utd-icone-svg chevron-bleu-piv"/>
     </a>
     {#if afficher === 'true'}
@@ -211,8 +211,8 @@
       </div>
     {/if}
   {:else}
-    <a href="{href}" role="menuitem" aria-current="{estactif === 'true' ? 'page' : null}" tabindex="{indextab}" on:keydown={onKeyDown} on:focus={onFocus}>
-      <span>{label}</span>
+    <a href="{href}" role="menuitem" aria-current="{actif === 'true' ? 'page' : null}" tabindex="{indextab}" on:keydown={onKeyDown} on:focus={onFocus}>
+      <span>{libelle}</span>
     </a>    
   {/if}            
 </div>

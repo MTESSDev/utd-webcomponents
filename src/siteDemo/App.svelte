@@ -41,7 +41,7 @@
                     <img alt="Icône avertissement" src="/images/utd-sprite.svg?v=1.7.0#ico-avertissement" width="28" height="26" aria-hidden="true">
                 </div>
                 <div class="texte">
-                    Activez JavaScript dans votre navigateur pour que Système de design MTESS fonctionne correctement.
+                    Activez JavaScript dans votre navigateur pour que Système de design MESS fonctionne correctement.
                 </div>
             </div>
         </div>
@@ -52,12 +52,12 @@
                 <div class="conteneur-sections">
                     <div class="section-gauche signature-gouvernement" lang="fr">
                         <a href="/">
-                            <img alt="Signature du gouvernement du Québec. Accédez à Système de design MTESS." src="/images/utd-sprite.svg?v=1.7.0#QUEBEC_blanc">
+                            <img alt="Signature du gouvernement du Québec. Accédez à Système de design MESS." src="/images/utd-sprite.svg?v=1.7.0#QUEBEC_blanc">
                         </a>
                     </div>
                     <div class="section-centre">
                         <a href="/" class="titre-site">
-                            <span>Système de design MTESS</span>
+                            <span>Système de design MESS</span>
                             <span class="description"></span>
                         </a>
                     </div>
@@ -70,7 +70,7 @@
                     </div>
                 </div>
                 <div class="titre-site mobile">
-                    <span>Système de design MTESS</span>
+                    <span>Système de design MESS</span>
                 </div>
             </div>
         </div>
@@ -79,7 +79,7 @@
         <div class="conteneur-menu-identification">
             <div class="utd-container zone-menu-identification">
                 <h2 id="titreMenuPrincipal" class="utd-sr-only">Menu principal de navigation</h2>
-                <nav class="menu-principal" aria-labelledby="titreMenuPrincipal">
+                <nav class="menu-principal" aria-libelleledby="titreMenuPrincipal">
                     <ul>
                         <li>
                             <a href="/base" use:active>Base</a>
@@ -101,36 +101,36 @@
             <div id="colonneGauche" class="utd">                
                 <utd-menu-vertical id="menuVertical" titrevisible="false" titre="{$router.path.indexOf('/composants') >= 0 ? 'Composants' : 'Éléments de base'}" srtitre="{$router.path.indexOf('/composants') >= 0 ? 'Menu composants' : 'Menu éléments de base'}">
                     {#if $router.path.indexOf('/composants') >= 0}                                
-                        <utd-menu-vertical-item href="/composants/versions" label="Historique des versions"></utd-menu-vertical-item>
-                        <utd-menu-vertical-item label="Action">                                
-                            <utd-menu-vertical-item label="Boutons" href="/composants/actions/boutons"></utd-menu-vertical-item>
-                            <utd-menu-vertical-item label="Dialogue modal" href="/composants/actions/dialogue"></utd-menu-vertical-item>
-                            <utd-menu-vertical-item label="Message" href="/composants/actions/message"></utd-menu-vertical-item>
-                            <utd-menu-vertical-item label="Notifications" href="/composants/actions/notifications"></utd-menu-vertical-item>
-                            <utd-menu-vertical-item label="Traitement en cours" href="/composants/actions/traitementencours"></utd-menu-vertical-item>
+                        <utd-menu-vertical-item href="/composants/versions" libelle="Historique des versions"></utd-menu-vertical-item>
+                        <utd-menu-vertical-item libelle="Action">                                
+                            <utd-menu-vertical-item libelle="Boutons" href="/composants/actions/boutons"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item libelle="Dialogue modal" href="/composants/actions/dialogue"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item libelle="Message" href="/composants/actions/message"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item libelle="Notifications" href="/composants/actions/notifications"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item libelle="Traitement en cours" href="/composants/actions/traitementencours"></utd-menu-vertical-item>
                         </utd-menu-vertical-item>
-                        <utd-menu-vertical-item label="Affichage de contenu">                                
-                            <utd-menu-vertical-item label="Accordéon" href="/composants/affichagecontenu/accordeon"></utd-menu-vertical-item>
-                            <utd-menu-vertical-item label="Avis" href="/composants/affichagecontenu/avis"></utd-menu-vertical-item>
-                            <utd-menu-vertical-item label="Infobulle" href="/composants/affichagecontenu/infobulle"></utd-menu-vertical-item>
-                            <utd-menu-vertical-item label="Section" href="/composants/affichagecontenu/section"></utd-menu-vertical-item>
+                        <utd-menu-vertical-item libelle="Affichage de contenu">                                
+                            <utd-menu-vertical-item libelle="Accordéon" href="/composants/affichagecontenu/accordeon"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item libelle="Avis" href="/composants/affichagecontenu/avis"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item libelle="Infobulle" href="/composants/affichagecontenu/infobulle"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item libelle="Section" href="/composants/affichagecontenu/section"></utd-menu-vertical-item>
                         </utd-menu-vertical-item>
-                        <utd-menu-vertical-item label="Formulaire">    
-                            <utd-menu-vertical-item label="Bouton radio" href="/composants/formulaire/boutonradio"></utd-menu-vertical-item>                            
-                            <utd-menu-vertical-item label="Case à cocher" href="/composants/formulaire/casecocher"></utd-menu-vertical-item>                            
-                            <utd-menu-vertical-item label="Champs obligatoires" href="/composants/formulaire/champobligatoire"></utd-menu-vertical-item> 
-                            <utd-menu-vertical-item label="Champs texte et autres" href="/composants/formulaire/champstexte"></utd-menu-vertical-item> 
-                            <utd-menu-vertical-item label="Champs (Gestion automatique)" href="/composants/formulaire/champsautomatique"></utd-menu-vertical-item>                           
-                            <utd-menu-vertical-item label="Erreurs" href="/composants/formulaire/champerreur"></utd-menu-vertical-item>                                 
+                        <utd-menu-vertical-item libelle="Formulaire">    
+                            <utd-menu-vertical-item libelle="Bouton radio" href="/composants/formulaire/boutonradio"></utd-menu-vertical-item>                            
+                            <utd-menu-vertical-item libelle="Case à cocher" href="/composants/formulaire/casecocher"></utd-menu-vertical-item>                            
+                            <utd-menu-vertical-item libelle="Champs obligatoires" href="/composants/formulaire/champobligatoire"></utd-menu-vertical-item> 
+                            <utd-menu-vertical-item libelle="Champs texte et autres" href="/composants/formulaire/champstexte"></utd-menu-vertical-item> 
+                            <utd-menu-vertical-item libelle="Champs (Gestion automatique)" href="/composants/formulaire/champsautomatique"></utd-menu-vertical-item>                           
+                            <utd-menu-vertical-item libelle="Erreurs" href="/composants/formulaire/champerreur"></utd-menu-vertical-item>                                 
                         </utd-menu-vertical-item>
-                        <utd-menu-vertical-item label="Navigation">                                
-                            <utd-menu-vertical-item label="Haut de page" href="/composants/navigation/hautpage"></utd-menu-vertical-item>
-                            <utd-menu-vertical-item label="Menu d'ancres" href="/composants/navigation/menuancres"></utd-menu-vertical-item>
-                            <utd-menu-vertical-item label="Menu vertical" href="/composants/navigation/menuvertical"></utd-menu-vertical-item>
+                        <utd-menu-vertical-item libelle="Navigation">                                
+                            <utd-menu-vertical-item libelle="Haut de page" href="/composants/navigation/hautpage"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item libelle="Menu d'ancres" href="/composants/navigation/menuancres"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item libelle="Menu vertical" href="/composants/navigation/menuvertical"></utd-menu-vertical-item>
                         </utd-menu-vertical-item>
                     {:else}                                    
-                        <utd-menu-vertical-item href="/base/principe" label="Principe"></utd-menu-vertical-item>
-                        <utd-menu-vertical-item href="/base/utilisation" label="Utilisation"></utd-menu-vertical-item>
+                        <utd-menu-vertical-item href="/base/principe" libelle="Principe"></utd-menu-vertical-item>
+                        <utd-menu-vertical-item href="/base/utilisation" libelle="Utilisation"></utd-menu-vertical-item>
                     {/if}
                 </utd-menu-vertical> 
             </div>
@@ -181,7 +181,7 @@
     <h2 id="titreMenuPiedPage" class="utd-sr-only">Menu pied de page</h2>
     <div class="utd-container conteneur-signature-mo">
         <a href="https://www.mtess.gouv.qc.ca/" target="_blank" rel="noopener">
-            <img class="logo-mo" alt="Ministère du Travail, de l'Emploi et de la Solidarité sociale. Ce lien sera ouvert dans un nouvel onglet." src="/images/logo_piv_bas_page.gif">
+            <img class="logo-mo" alt="Ministère de l'Emploi et de la Solidarité sociale. Ce lien sera ouvert dans un nouvel onglet." src="/images/logo_piv_bas_page.png" width="210" height="81">
         </a>
 
         <span class="copyright">
