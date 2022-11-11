@@ -8,8 +8,8 @@
 
 <h1>Haut de page</h1>
 
-<utd-menuancres selecteur="#main h2">
-</utd-menuancres>
+<utd-menu-ancres selecteur="#main h2">
+</utd-menu-ancres>
 
 <h2>Description</h2>
 <p>Le bouton <strong> haut de page</strong> permet de remonter rapidement au haut de la page.</p>

@@ -7,8 +7,8 @@
 
 <h1>Avis</h1>
 
-<utd-menuancres selecteur="#main h2">
-</utd-menuancres>
+<utd-menu-ancres selecteur="#main h2">
+</utd-menu-ancres>
 
 <h2>Description</h2>
 <p>Les <strong>avis</strong> sont des messages contextuels qui peuvent s’afficher sur une page ou sur plusieurs pages d’un même sujet.</p>

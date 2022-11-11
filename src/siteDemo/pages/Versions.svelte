@@ -4,8 +4,8 @@
 
 <h1>Historique des versions</h1>
 
-<utd-menuancres selecteur="#main h2">
-</utd-menuancres>
+<utd-menu-ancres selecteur="#main h2">
+</utd-menu-ancres>
 
 <h2>1.7.0 (2022-??-??)</h2>
 <h3>Améliorations</h3>

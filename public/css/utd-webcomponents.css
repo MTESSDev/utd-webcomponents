@@ -533,9 +533,9 @@ utd-section + utd-section {
 }
 
 /*====================================================================================================
-  -51- utd-menuancres
+  -51- utd-menu-ancres
 ====================================================================================================*/
-.utd-menuancres {
+.utd-menu-ancres {
   padding: 2rem 1rem;
   background-color: var(--couleur-fond-gris);
   margin-bottom: 32px;
@@ -543,22 +543,22 @@ utd-section + utd-section {
   border-bottom: 1px solid var(--couleur-filet-secondaire);
 }
 
-.utd-menuancres h2 {
+.utd-menu-ancres h2 {
   font-size: 1rem;
   font-family: OpenSans-Bold;
   margin: 0;
 }
 
-.utd-menuancres ul {
+.utd-menu-ancres ul {
   list-style-type: none;
   padding: 0;
 }
 
-.utd-menuancres a {
+.utd-menu-ancres a {
   text-decoration: none;
 }
 
-.utd-menuancres a:focus, .utd-menuancres a:hover  {
+.utd-menu-ancres a:focus, .utd-menu-ancres a:hover  {
   text-decoration: underline;
 }
 

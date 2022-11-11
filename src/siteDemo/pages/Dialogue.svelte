@@ -54,8 +54,8 @@ function ajouterCodeDialogue2() {
 
 <h1>Dialogue modal</h1>
 
-<utd-menuancres selecteur="#main h2">
-</utd-menuancres>
+<utd-menu-ancres selecteur="#main h2">
+</utd-menu-ancres>
 
 <h2>Description</h2>
 <p>Le <strong>dialogue modal</strong> est une boîte qui se superpose au contenu de la page, en plein centre, à la suite d’une action déclenchée directement par l’utilisateur. Il sert à communiquer de l’information contextuelle.</p>

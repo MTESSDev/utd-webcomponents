@@ -8,8 +8,8 @@
 
 <h1>Menu d'ancres</h1>
 
-<utd-menuancres id="exempleMenuAncres" selecteur="#main h2">
-</utd-menuancres>
+<utd-menu-ancres id="exempleMenuAncres" selecteur="#main h2">
+</utd-menu-ancres>
 
 <h2>Description</h2>
 <p>Menu d'ancres placé généralement au début d'une page. On le voit ici au début de la zone de contenu de la page "Dans cette page:". Il est généré à partir du selecteur css fourni.</p>

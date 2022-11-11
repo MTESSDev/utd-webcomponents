@@ -8,8 +8,8 @@
 
 <h1>Menu vertical</h1>
 
-<utd-menuancres selecteur="#main h2">
-</utd-menuancres>
+<utd-menu-ancres selecteur="#main h2">
+</utd-menu-ancres>
 
 <h2>Description</h2>
 <p>Menu vertical à deux niveaux. Il est généré à partir de deux composants, soit <span class="utd-emphase-gris">utd-menu-vertical</span> et <span class="utd-emphase-gris">utd-menu-vertical-item</span>.</p>

@@ -7,8 +7,8 @@
 
 <h1>Section</h1>
 
-<utd-menuancres selecteur="#main h2">
-</utd-menuancres>
+<utd-menu-ancres selecteur="#main h2">
+</utd-menu-ancres>
 
 <h2>Description</h2>
 <p>Le composant <strong>section</strong> permet d'organiser le contenu en regroupant les informations en sections principales ou en blocs d'informations.</p>
