@@ -99,7 +99,7 @@
 
 <h1>Notifications</h1>
 
-<utd-menuancres selecteurancres="#main h2">
+<utd-menuancres selecteur="#main h2">
 </utd-menuancres>
 
 <h2>Description</h2>

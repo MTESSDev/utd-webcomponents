@@ -22,6 +22,7 @@
     import ChampObligatoire from './pages/ChampObligatoire.svelte';
   import ChampErreur from './pages/ChampErreur.svelte';
   import MenuVertical from './pages/MenuVertical.svelte';
+  import MenuAncres from './pages/MenuAncres.svelte';
 </script>
 
 <div class="conteneur-principal">
@@ -124,6 +125,7 @@
                         </utd-menu-vertical-item>
                         <utd-menu-vertical-item label="Navigation">                                
                             <utd-menu-vertical-item label="Haut de page" href="/composants/navigation/hautpage"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item label="Menu d'ancres" href="/composants/navigation/menuancres"></utd-menu-vertical-item>
                             <utd-menu-vertical-item label="Menu vertical" href="/composants/navigation/menuvertical"></utd-menu-vertical-item>
                         </utd-menu-vertical-item>
                     {:else}                                    
@@ -165,6 +167,7 @@
                         </Route>
                         <Route path="/navigation/*">                    
                             <Route path="/hautpage" ><HautPage /></Route>
+                            <Route path="/menuancres" ><MenuAncres /></Route>
                             <Route path="/menuvertical" ><MenuVertical /></Route>
                         </Route>                            
                     </Route>

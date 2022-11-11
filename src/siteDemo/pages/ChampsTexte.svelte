@@ -7,7 +7,7 @@
 
 <h1>Champs texte et autres</h1>
 
-<utd-menuancres selecteurancres="#main h2">
+<utd-menuancres selecteur="#main h2">
 </utd-menuancres>
 
 <utd-avis>

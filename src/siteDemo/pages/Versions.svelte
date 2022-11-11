@@ -4,14 +4,15 @@
 
 <h1>Historique des versions</h1>
 
-<utd-menuancres selecteurancres="#main h2">
+<utd-menuancres selecteur="#main h2">
 </utd-menuancres>
 
 <h2>1.7.0 (2022-??-??)</h2>
 <h3>Améliorations</h3>
 <ul class="utd">
-    <li>Ajout du composant "Menu vertical".</li>
-    <li>Ajout du composant "Menu d'ancres".</li>
+    <li>Ajout du composant <a href="/composants/navigation/menuvertical">Menu vertical</a>.</li>
+    <li>Ajout du composant <a href="/composants/navigation/menuancres">Menu d'ancres</a>.</li>
+    <li>Ajout du composant <a href="/composants/affichagecontenu/section">Sections</a>.</li>
     <li>
         <span>Champs de formulaires</span>
         <ul>

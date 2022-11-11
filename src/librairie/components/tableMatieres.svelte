@@ -8,7 +8,7 @@ import { onMount } from "svelte";
 import { Utils } from "./utils"
 
 export let titre = Utils.obtenirLanguePage() === 'fr' ? "Dans cette page :" : "On this page:"
-export let selecteurancres = '.ancre'
+export let selecteur = '.ancre'
 
 let ancres
 
@@ -17,7 +17,7 @@ onMount(() => {
 })
 
 function obtenirAncres() {
-  const ancres = document.querySelectorAll(selecteurancres)
+  const ancres = document.querySelectorAll(selecteur)
 
   //Ajouter un id aux ancres qui n'en n'auraient pas
   ancres.forEach((ancre) => {
