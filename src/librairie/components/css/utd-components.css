@@ -253,6 +253,7 @@ utd-accordeon + utd-accordeon{
   padding: 15px;  
   background-color: var(--couleur-fond-gris);
   border: 1px solid var(--couleur-fond-gris);
+  margin: 0;
 }
 .utd-accordeon .entete button:hover, .utd-accordeon.ouvert .entete button, .utd-accordeon.ouvert .contenu {
   border: 1px solid #c5cad2;

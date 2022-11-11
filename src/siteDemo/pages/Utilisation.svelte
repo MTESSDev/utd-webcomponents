@@ -24,7 +24,7 @@
 
 <h2>Intégration dans un projet (Copie locale des fichiers)</h2>
 <p>Vous pouvez rappatrier les fichiers dans votre solution afin de pouvoir les fusionner avec les vôtres histoire de diminuer le nombre de fichiers.</p>
-<p>Attention, si vous copiez les fichiers dans votre projet, les fichiers doivent cependant respecter la structure définie dans de dossier "dest" disponible dans la release.</p>
+<p>Attention, si vous copiez les fichiers dans votre projet, les fichiers doivent cependant respecter la structure définie dans de dossier "dist" disponible dans la release.</p>
 
 <p><a href="https://github.com/MTESSDev/utd-webcomponents/releases" target="_blank">Consulter les releases et télécharger les fichiers requis</a></p>
 
