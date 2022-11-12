@@ -101,7 +101,7 @@
 
 <h3>3- Seul (Gestion automatique avec wrapper "utd-champ-form")</h3>
 <div id="exemple3">    
-    <utd-champ-form id="utdChamp3" obligatoire="true" messageerreur="Le champ «J'ai pris connaissance des directives» est obligatoire.">
+    <utd-champ-form id="utdChamp3" obligatoire="true" message-erreur="Le champ «J'ai pris connaissance des directives» est obligatoire.">
         <label>
             <input type="checkbox" name="rempliFormulaire3" value="PrisConnaissanceDirectives">
             J'ai pris connaissance des directives
@@ -118,7 +118,7 @@
 
 <h3>4- Liste (Gestion automatique avec wrapper "utd-champ-form")</h3>
 <div id="exemple4">    
-    <utd-champ-form id="utdChamp4" obligatoire="true" libelle="Quels sont vos personnages préférés ?" precision="Faites confiance à votre instinct." messageerreur="Le champ «Quels sont vos personnages préférés ?» est obligatoire.">
+    <utd-champ-form id="utdChamp4" obligatoire="true" libelle="Quels sont vos personnages préférés ?" precision="Faites confiance à votre instinct." message-erreur="Le champ «Quels sont vos personnages préférés ?» est obligatoire.">
         <label>
             <input type="checkbox" name="persoPrefere4" value="Marty">                
             <span>Marty MacFly</span>

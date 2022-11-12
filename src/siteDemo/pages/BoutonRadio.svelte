@@ -64,7 +64,7 @@
 
 <h3>2- Gestion automatique (Avec wrapper "utd-champ-form")</h3>
 <div id="exemple2">    
-    <utd-champ-form id="utdChamp2" obligatoire="true" libelle="Quel est votre personnage préféré ?" precision="Faites confiance à votre instinct." messageerreur="Le champ «Quel est votre personnage préféré ?» est obligatoire.">
+    <utd-champ-form id="utdChamp2" obligatoire="true" libelle="Quel est votre personnage préféré ?" precision="Faites confiance à votre instinct." message-erreur="Le champ «Quel est votre personnage préféré ?» est obligatoire.">
         <label>
             <input type="radio" name="persoPrefere2" value="Marty">                
             Marty MacFly
