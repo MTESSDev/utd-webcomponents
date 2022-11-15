@@ -11,7 +11,7 @@
   export let codeSource = ""
   export let language = "language-html"
   export let outerhtml = "false"
-  export let breakAfter = []
+  export let breakAfter = ""
 
   let controleCodeSource = null  
   let estSuccesCopie = false
@@ -89,21 +89,27 @@
       codeSource = codeSource.replace(tag, tag + "\r\n")
     })
 
-    breakAfter.forEach((tag) =>{
+    const ba = breakAfter.replace(/\s/g,'').split(",")
+    ba.forEach((tag) =>{
       const regEx = new RegExp(`<\/${tag}>`, "g");
       codeSource = codeSource.replace(regEx, `</${tag}>\r\n`)
     })
 
     //Ajout de sauts de ligne sur certaines balises afin d'avoir un plus beau formatage
-//    codeSource = codeSource.replace(/<span/g, "\r\n<span")
-//    codeSource = codeSource.replace(/<\/span>/g, "</span>\r\n")
-    /*    codeSource = codeSource.replace(/<button/g, "\r\n<button")*/
-//    codeSource = codeSource.replace(/<div/g, "\r\n<div")
-//    codeSource = codeSource.replace(/<\/label>/g, "</label>\r\n")
-//    codeSource = codeSource.replace(/<input/g, "\r\n<input")
+    codeSource = codeSource.replace(/<span/g, "\r\n<span")
+    codeSource = codeSource.replace(/<\/span>/g, "</span>\r\n")
+    codeSource = codeSource.replace(/<button/g, "\r\n<button")
+    codeSource = codeSource.replace(/<div/g, "\r\n<div")
+    codeSource = codeSource.replace(/<label/g, "\r\n<label")
+    codeSource = codeSource.replace(/<\/label>/g, "</label>\r\n")
+    codeSource = codeSource.replace(/<input/g, "\r\n<input")
 
-
-
+    codeSource = codeSource.replace(/\r\n\r\n/g, "\r\n")
+    codeSource = codeSource.replace(/\r\n\s\r\n/g, "\r\n")
+    codeSource = codeSource.replace(/\r\n\r\n/g, "\r\n")
+    codeSource = codeSource.replace(/\r\n<\/utd-menu-vertical-item>/g, "</utd-menu-vertical-item>")
+    codeSource = codeSource.replace(/\r\n<\/utd-menu-ancres>/g, "</utd-menu-ancres>")
+    codeSource = codeSource.replace(/\r\n<\/utd-hautpage>/g, "</utd-hautpage>")
 //    codeSource = codeSource.replace(/<sl><\/sl>/g, "\r")
     return nettoyerCode(html_beautify(codeSource, options))
   }
