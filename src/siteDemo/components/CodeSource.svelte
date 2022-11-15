@@ -104,12 +104,16 @@
     codeSource = codeSource.replace(/<\/label>/g, "</label>\r\n")
     codeSource = codeSource.replace(/<input/g, "\r\n<input")
 
-    codeSource = codeSource.replace(/\r\n\r\n/g, "\r\n")
-    codeSource = codeSource.replace(/\r\n\s\r\n/g, "\r\n")
-    codeSource = codeSource.replace(/\r\n\r\n/g, "\r\n")
     codeSource = codeSource.replace(/\r\n<\/utd-menu-vertical-item>/g, "</utd-menu-vertical-item>")
     codeSource = codeSource.replace(/\r\n<\/utd-menu-ancres>/g, "</utd-menu-ancres>")
     codeSource = codeSource.replace(/\r\n<\/utd-hautpage>/g, "</utd-hautpage>")
+
+    codeSource = codeSource.replace(/\r\n\r\n/g, "\r\n")
+    codeSource = codeSource.replace(/\r\n\s\r\n/g, "\r\n")
+    codeSource = codeSource.replace(/\r\n\r\n/g, "\r\n")      
+    codeSource = codeSource.replace(/\r\n\r\n/g, "\r\n")
+
+    console.log(codeSource)
 //    codeSource = codeSource.replace(/<sl><\/sl>/g, "\r")
     return nettoyerCode(html_beautify(codeSource, options))
   }
