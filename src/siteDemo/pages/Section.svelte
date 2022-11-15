@@ -131,7 +131,7 @@ N'existe pas sur le site de design Quebec.ca
 
 <h3>6- Section ouverte par défaut et titre h3</h3>
 <div class="mb-32" id="exempleSection6">
-    <utd-section titre="Informations personnelles" reduit="false" tagtitre="h3">
+    <utd-section titre="Informations personnelles" reduit="false" tag-titre="h3">
         <p>Le mot de passe est associé à votre compte clicSÉQUR - Citoyens.</p>
         <p>
             <a href="#">Modifiez votre mot de passe</a>

@@ -4,7 +4,7 @@
 
   export let titre = lang === 'fr' ? 'Menu secondaire' : 'Secondary menu'
   export let lang = "fr"
-  export let titrevisible = "true"
+  export let titreVisible = "true"
 
   let afficher = false
 
@@ -32,7 +32,7 @@
     </span>
   </a>
 
-  <span class="titre {titrevisible === 'true' ? '' : 'utd-sr-only'}" id="{idTitreMenu}">{titre}</span>
+  <span class="titre {titreVisible === 'true' ? '' : 'utd-sr-only'}" id="{idTitreMenu}">{titre}</span>
   <div id={idMenu} role="menu" class="menu" class:visible={afficher}>
     <slot></slot>
   </div>  
