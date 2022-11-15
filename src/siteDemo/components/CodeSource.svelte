@@ -11,6 +11,7 @@
   export let codeSource = ""
   export let language = "language-html"
   export let outerhtml = "false"
+  export let breakAfter = []
 
   let controleCodeSource = null  
   let estSuccesCopie = false
@@ -86,6 +87,11 @@
     const divs = [... new Set(codeSource.match(/<div.[^<]*>/gi))]
     divs.forEach((tag) => {
       codeSource = codeSource.replace(tag, tag + "\r\n")
+    })
+
+    breakAfter.forEach((tag) =>{
+      const regEx = new RegExp(`<\/${tag}>`, "g");
+      codeSource = codeSource.replace(regEx, `</${tag}>\r\n`)
     })
 
     //Ajout de sauts de ligne sur certaines balises afin d'avoir un plus beau formatage

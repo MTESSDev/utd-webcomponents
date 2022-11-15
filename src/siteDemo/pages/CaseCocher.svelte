@@ -54,10 +54,10 @@
     <div class="utd-form-group checkbox">
         <label>
             <input type="checkbox" name="rempliFormulaire1" value="PrisConnaissanceDirectives" aria-required="true" aria-invalid="true" aria-describedby="texteErreur1">
-            Je n'ai pas rempli moi même ce formulaire
+            J'ai pris connaissance des directives
             <span class="utd-icone-champ-requis" aria-hidden="true">*</span>
         </label>         
-        <span id="texteErreur1" class="utd-erreur-champ">Le champ "Quels sont vos personnages préférés ?" est obligatoire.</span>                      
+        <span id="texteErreur1" class="utd-erreur-champ">Le champ «J'ai pris connaissance des directives» est obligatoire.</span>                      
     </div>
 </div>
 <CodeSource idElementCodeSource="exemple1">
@@ -92,7 +92,7 @@
             Captain America
         </label>    
 
-        <span id="texteErreur2" class="utd-erreur-champ">Le champ "Quels sont vos personnages préférés ?" est obligatoire.</span>        
+        <span id="texteErreur2" class="utd-erreur-champ">Le champ «Quels sont vos personnages préférés ?» est obligatoire.</span>        
     </div>
 </div>
 

@@ -28,7 +28,7 @@
     <button type="button" class="utd-btn primaire compact arrondi">Compact et arrondi</button>
     <button type="button" class="utd-btn primaire" disabled>Inactif</button>
 </div>
-<CodeSource idElementCodeSource="exempleBoutons1">
+<CodeSource idElementCodeSource="exempleBoutons1" breakAfter="button">
 </CodeSource>
 
 
