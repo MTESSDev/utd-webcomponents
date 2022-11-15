@@ -43,16 +43,13 @@
         <span class="label" id="personnagePrefere1">Quel est votre personnage préféré ?</span>
         <span id="precision1" class="utd-precision">Faites confiance à votre instinct.</span>        
         <label>
-            <input type="radio" name="persoPrefere1" value="Marty">                
-            Marty MacFly
+            <input type="radio" name="persoPrefere1" value="Marty">Marty MacFly
         </label>               
         <label>
-            <input type="radio" name="persoPrefere1" value="Forrest">
-            Forrest Gump
+            <input type="radio" name="persoPrefere1" value="Forrest">Forrest Gump
         </label>               
         <label>
-            <input type="radio" name="persoPrefere1" value="Vader">
-            Darth Vador
+            <input type="radio" name="persoPrefere1" value="Vader">Darth Vador
         </label>    
         <span id="texteErreur1" role="alert" class="utd-erreur-champ">Le champ «Quel est votre personnage préféré ?» est obligatoire.</span>        
     </div>
@@ -66,16 +63,13 @@
 <div id="exemple2">    
     <utd-champ-form id="utdChamp2" obligatoire="true" libelle="Quel est votre personnage préféré ?" precision="Faites confiance à votre instinct." message-erreur="Le champ «Quel est votre personnage préféré ?» est obligatoire.">
         <label>
-            <input type="radio" name="persoPrefere2" value="Marty">                
-            Marty MacFly
+            <input type="radio" name="persoPrefere2" value="Marty">Marty MacFly
         </label>               
         <label>
-            <input type="radio" name="persoPrefere2" value="Forrest">
-            Forrest Gump
+            <input type="radio" name="persoPrefere2" value="Forrest">Forrest Gump
         </label>               
         <label>
-            <input type="radio" name="persoPrefere2" value="Vader">
-            Darth Vador
+            <input type="radio" name="persoPrefere2" value="Vader">Darth Vador
         </label>    
     </utd-champ-form>
 </div>

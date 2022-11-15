@@ -76,20 +76,16 @@
             <span>Marty MacFly</span>
         </label>               
         <label>
-            <input type="checkbox" name="persoPrefere2" value="Forrest">
-            Forrest Gump
+            <input type="checkbox" name="persoPrefere2" value="Forrest">Forrest Gump
         </label>               
         <label>
-            <input type="checkbox" name="persoPrefere2" value="Vader">
-            Darth Vador
+            <input type="checkbox" name="persoPrefere2" value="Vader">Darth Vador
         </label>    
         <label>
-            <input type="checkbox" name="persoPrefere2" value="Fonzi">
-            Fonzi
+            <input type="checkbox" name="persoPrefere2" value="Fonzi">Fonzi
         </label>    
         <label>
-            <input type="checkbox" name="persoPrefere2" value="CaptainAmerica">
-            Captain America
+            <input type="checkbox" name="persoPrefere2" value="CaptainAmerica">Captain America
         </label>    
 
         <span id="texteErreur2" class="utd-erreur-champ">Le champ «Quels sont vos personnages préférés ?» est obligatoire.</span>        
@@ -124,20 +120,16 @@
             <span>Marty MacFly</span>
         </label>               
         <label>
-            <input type="checkbox" name="persoPrefere4" value="Forrest">
-            Forrest Gump
+            <input type="checkbox" name="persoPrefere4" value="Forrest">Forrest Gump
         </label>               
         <label>
-            <input type="checkbox" name="persoPrefere4" value="Vader">
-            Darth Vador
+            <input type="checkbox" name="persoPrefere4" value="Vader">Darth Vador
         </label>    
         <label>
-            <input type="checkbox" name="persoPrefere4" value="Fonzi">
-            Fonzi
+            <input type="checkbox" name="persoPrefere4" value="Fonzi">Fonzi
         </label>    
         <label>
-            <input type="checkbox" name="persoPrefere4" value="CaptainAmerica">
-            Captain America
+            <input type="checkbox" name="persoPrefere4" value="CaptainAmerica">Captain America
         </label>    
     </utd-champ-form>
 </div>

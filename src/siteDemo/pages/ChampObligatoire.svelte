@@ -23,9 +23,9 @@
 <h3>Exemple 1</h3>
 <div id="exempleChampObligatoire">
     <div class="utd-form-group">
-        <label for="tel1" aria-describedby="tel1Precision">Téléphone<span class="utd-icone-champ-requis" aria-hidden="true">*</span></label>
+        <label for="tel1">Téléphone<span class="utd-icone-champ-requis" aria-hidden="true">*</span></label>
         <span id="tel1Precision" class="utd-precision">Si vous n’avez pas de numéro de téléphone, inscrivez le numéro d’un membre de votre famille, d’un ami ou d’un organisme.</span>
-        <input type="tel" id="tel1" placeholder="123 456-7890" aria-required="true" class="utd-form-control md"/>
+        <input type="tel" id="tel1" placeholder="123 456-7890" aria-required="true" aria-describedby="tel1Precision" class="utd-form-control md"/>
     </div>
 </div>
 <CodeSource idElementCodeSource="exempleChampObligatoire">
