@@ -13,7 +13,7 @@
 
     function obtenirTableauParametres() {
         return [
-            {nom: "format", type: "String (Optionnel)", description: `Taille du champ. <a href="/composants/formulaire/champstexte#formatsDisponibles">Valeurs possibles :</a> <span class="utd-emphase-gris">sm</span>, <span class="utd-emphase-gris">md</span>, <span class="utd-emphase-gris">lg</span>, <span class="utd-emphase-gris">xl</span>, <span class="utd-emphase-gris">xxl</span>.`},
+            {nom: "format", type: "String (Optionnel)", description: `Taille du champ. Valeurs possibles : <span class="utd-emphase-gris">sm</span>, <span class="utd-emphase-gris">md</span>, <span class="utd-emphase-gris">lg</span>, <span class="utd-emphase-gris">xl</span>, <span class="utd-emphase-gris">xxl</span>.`},
             {nom: "obligatoire", type: "String (Optionnel)", description: `Indique si le champ est obligatoire ou non.`},
             {nom: "libelle", type: "String (Optionnel)", description: `Libellé du champ.`},
             {nom: "precision", type: "String (Optionnel)", description: `Précision du champ.`},
@@ -125,7 +125,7 @@
 <p>À noter que le présent exemple est très basique et vérifie uniquement que le champ contient une valeur ou non.</p>
 
 <div id="exemple6">
-    <utd-champ-form id="telephone6" obligatoire="true" libelle="Téléphone" format="md" invalide="false" precision="Indiquez le numéro de téléphone de l'établissement concerné." message-erreur="Le champ &#34;Téléphone&#34; est obligatoire.">
+    <utd-champ-form id="telephone6" obligatoire="true" libelle="Téléphone" format="md" invalide="false" precision="Indiquez le numéro de téléphone de l'établissement concerné." message-erreur="Le champ «Téléphone» est obligatoire.">
         <input type="tel" placeholder="123 456-7890"/>
     </utd-champ-form>
 </div>

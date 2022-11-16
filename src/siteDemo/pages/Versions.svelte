@@ -7,7 +7,7 @@
 <utd-menu-ancres selecteur="#main h2">
 </utd-menu-ancres>
 
-<h2>1.7.0 (2022-??-??)</h2>
+<h2>1.7.0 (2022-11-??)</h2>
 <h3>Améliorations</h3>
 <ul class="utd">
     <li>Ajout du composant <a href="/composants/navigation/menuvertical">Menu vertical</a>.</li>
