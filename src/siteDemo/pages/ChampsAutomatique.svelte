@@ -1,12 +1,27 @@
 <script>
     import CodeSource from '../components/CodeSource.svelte'; 
     import { onMount } from 'svelte';
+    import TableauParams from '../components/TableauParams.svelte'; 
     let mounted = false;
+    let tableauParametres = [];
 
     onMount(() => {
+        tableauParametres = obtenirTableauParametres();
         ajouterCodeExemple6()
         mounted = true
     })
+
+    function obtenirTableauParametres() {
+        return [
+            {nom: "format", type: "String (Optionnel)", description: `Taille du champ. <a href="/composants/formulaire/champstexte#formatsDisponibles">Valeurs possibles :</a> <span class="utd-emphase-gris">sm</span>, <span class="utd-emphase-gris">md</span>, <span class="utd-emphase-gris">lg</span>, <span class="utd-emphase-gris">xl</span>, <span class="utd-emphase-gris">xxl</span>.`},
+            {nom: "obligatoire", type: "String (Optionnel)", description: `Indique si le champ est obligatoire ou non.`},
+            {nom: "libelle", type: "String (Optionnel)", description: `Libellé du champ.`},
+            {nom: "precision", type: "String (Optionnel)", description: `Précision du champ.`},
+            {nom: "invalide", type: "Boolean (Optionnel)", description: `Indique si la valeur du champ est invalide ou non. Si invalide le message d'erreur est affiché et le visuel d'erreur est appliqué.`},
+            {nom: "message-erreur", type: "String (Optionnel)", description: `Le message d'erreur à affiher (visible uniquement si invalide="true").`}
+        ];
+    }
+
 
     function ajouterCodeExemple6() {
         const controleUtd = document.getElementById('telephone6')
@@ -28,6 +43,10 @@
 <p>Il est possible de grandement simplifier à différents niveaux le code requis pour les champs en utilisant le contrôle <span class="utd-emphase-gris">utd-champ-form</span>.</p>
 <p>En effet, il prend en charge la gestion du label, de la précision, du champ requis, du message d'erreur et évidemment de tous les attributs requis pour l'accessibilité.</p>
 <p>Il est possible de tout spécifier via des attributs du contrôle <span class="utd-emphase-gris">utd-champ-form</span>, ou bien via du html traditionnel et tous va être bien ficelé (ex. label for, les attributs aria, la précision, le message d'erreur, etc.)</p>
+
+<h2>Attributs du contrôle</h2>
+<TableauParams parametres="{tableauParametres}">
+</TableauParams>
 
 <h2>Exemples</h2>
 <p>Tous les exemples utilisent le cas de figure le plus complexe, i.e. un champ obligatoire, avec précision et message d'erreur.</p>

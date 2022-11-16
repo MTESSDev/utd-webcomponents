@@ -12,7 +12,7 @@
 
 <utd-avis>
     <div slot="contenu">
-        <p>Tout ce qui est décrit dans cette page s'applique également aux champs de type "number", "date", "tel", "email", "password", "url" et "search"</p>
+        <p>Tout ce qui est décrit dans cette page s'applique également aux champs de type "number", "date", "tel", "email", "password", "url" et "search".</p>
     </div>
 </utd-avis>
 
@@ -51,7 +51,7 @@
 <CodeSource idElementCodeSource="exempleLabel">
 </CodeSource>
 
-<h2>Formats disponibles</h2>
+<h2 id="formatsDisponibles">Formats disponibles</h2>
 <p>La longueur du champ doit être adaptée à la réponse requise, selon 5 formats disponibles.</p>
 <p>Utilisez les classes <span class="utd-emphase-gris">sm</span>, <span class="utd-emphase-gris">md</span>, <span class="utd-emphase-gris">lg</span>, <span class="utd-emphase-gris">xl</span>, et <span class="utd-emphase-gris">xxl</span> afin de préciser le format des champs. Si rien n'est spécifié, le format "large" par défaut s'applique.</p>
 
