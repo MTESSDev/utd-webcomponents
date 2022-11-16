@@ -1,5 +1,35 @@
 <script>
     import CodeSource from '../components/CodeSource.svelte'; 
+    import { onMount } from 'svelte';
+    import TableauParams from '../components/TableauParams.svelte'; 
+    import TableauSlots from '../components/TableauSlots.svelte'; 
+
+    let tableauParametres = [];
+    let tableauSlots = [];
+
+    onMount(() => {
+        tableauParametres = obtenirTableauParametres();
+        tableauSlots = obtenirTableauSlots();
+    })
+
+
+    function obtenirTableauParametres() {
+        return [
+            {nom: "reduit", type: "Boolean (Optionnel)", description: `Indique si l'accordéon doit être réduit ou développé. Défaut "true" (réduit).`},    
+            {nom: "titre", type: "String (Optionnel)", description: `Titre affiché dans l'entête de l'accordéon.`},
+            {nom: "tag-titre", type: "String (Optionnel)", description: `Balise html à utiliser pour le titre de l'entête. Défaut "h2".`},
+            {nom: "contenu", type: "String (Optionnel)", description: `Texte à afficher dans la zone de contenu de l'accordéon.`}
+
+        ];
+    }
+
+    function obtenirTableauSlots() {
+        return [
+            {nom: "défaut", description: `<p>Slot par défaut. Aucun nom à fournir.</p><p>Contenu html entre les balises du contrôle. Est injecté dans la zone de contenu de l'accordéon.</p>`},
+            {nom: "titre", description: `Contenu html injecté dans l'entête de l'accordéon. Exemple d'utilisation : Ajout d'une icône à gauche du titre.`}            
+        ];
+    }
+
 </script>
 
 <style type="text/css">
@@ -15,6 +45,15 @@
 
 <h3>Référence système de design Quebec.ca</h3>
 <a href="https://design.quebec.ca/composantes/affichage-de-contenu/accordeon" target="_blank">Voir les spécifications sur le site de design Quebec.ca</a>
+
+<h2>Attributs disponibles</h2>
+<TableauParams parametres="{tableauParametres}">
+</TableauParams>
+
+<h2>Slots disponibles</h2>
+<TableauSlots parametres="{tableauSlots}">
+</TableauSlots>
+
 
 <h2>Exemples</h2>
 <h3>1- Avec attributs "titre" et "contenu"</h3>

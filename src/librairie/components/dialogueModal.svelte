@@ -10,16 +10,16 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   import { Utils } from './utils'
   export let afficher = 'false'
   export let type = ''
-  export let estfenetremessage = 'false'
-  export let raisonfermeture = ''
+  export let estfenetremessage = 'false' //Privée (utilisée dans notre plugin message)
+  export let raisonFermeture = '' //Privée (utilisée dans notre plugin message)
   export let titre = ''
   export let lang = 'fr'
   export let srBoutonFermer = lang === "fr" ? "Fermer" : "Close"  
-  export let idfocusouverture = ''
-  export let idfocus = ''
-  export let estboutonstextelong = 'false'
-  export let estaffichageboutonsinline = 'false'  
-  export let estaffichagelateral = 'false'
+  export let idFocusOuverture = ''
+  export let idFocusFermeture = ''
+  export let boutonsTexteLong = 'false'
+  export let forcerBoutonsInline = 'false'  
+  export let affichageLateral = 'false'
 
   const idModale = Utils.genererId()
   const idEntete = Utils.genererId()
@@ -50,11 +50,11 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     estModaleAffichee = false
     afficher = 'false'
 
-    //Si une raison de fermeture est reçue en param, on l'utilise sinon on prend la raison de fermeture qui est sur la modale "raisonfermeture" qui va contenir une raison de fermeture externe à la modale (ex. clic sur bouton primaire ou secondaire)
-    const raison = raisonFermetureModale || raisonfermeture
+    //Si une raison de fermeture est reçue en param, on l'utilise sinon on prend la raison de fermeture qui est sur la modale "raisonFermeture" qui va contenir une raison de fermeture externe à la modale (ex. clic sur bouton primaire ou secondaire)
+    const raison = raisonFermetureModale || raisonFermeture
 
     //On redonne le focus au contrôle spécifié (normalement celui qui a initié l'affichage de la fenêtre modale)
-    const controleFocus = thisComponent.getRootNode().getElementById(idfocus)
+    const controleFocus = thisComponent.getRootNode().getElementById(idFocusFermeture)
     if(controleFocus){
       controleFocus.focus()
     }
@@ -63,18 +63,18 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   }
   
   function animationAffichageOuverture(node) {
-		return estaffichagelateral === 'false' ? fade(node, { duration: 250 }) : fly(node, { x: 200, duration: 250 });  
+		return affichageLateral === 'false' ? fade(node, { duration: 250 }) : fly(node, { x: 200, duration: 250 });  
   }
 
   function animationAffichageFermeture(node) {
-		return estaffichagelateral === 'false' ? fade(node, { y: 200, duration: 250 }) : fly(node, { x: 200, duration: 250 });  
+		return affichageLateral === 'false' ? fade(node, { y: 200, duration: 250 }) : fly(node, { x: 200, duration: 250 });  
   }
 
   // Exécuté lorsque la valeur de la prop "afficher" change
   function toggleAfficher(){
     if(mounted){
       if(afficher === 'true'){
-        raisonfermeture = ''       
+        raisonFermeture = ''       
         Utils.ajusterInterfaceAvantAffichageModale(html, body)
         estModaleAffichee = true       
       } else {
@@ -129,8 +129,8 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       const elementsFocusablesRoot = Array.from(Utils.obtenirElementsFocusables(thisComponent))
       const elementsFocusables = elementsFocusablesRoot.concat(elementsFocusablesShadow)
       
-      if(idfocusouverture){
-        const controle = elementsFocusables.find(e => e.id == idfocusouverture)        
+      if(idFocusOuverture){
+        const controle = elementsFocusables.find(e => e.id == idFocusOuverture)        
         premierElementFocusable = controle ? controle : elementsFocusables[0]
       } else {
         premierElementFocusable = elementsFocusables[0]
@@ -149,7 +149,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     tabindex="-1"
     aria-labelledby={idEntete}
     aria-describedby={estfenetremessage === 'true' ? idCorps : null}
-    class="utd-component utd-dialog {estfenetremessage === 'true' ? 'fenetre-message' : ''} {estboutonstextelong === 'true' ? 'boutons-texte-long' : ''} {estaffichagelateral === 'true' ? 'affichage-lateral' : ''} {estaffichageboutonsinline === 'true' ? 'boutons-inline' : ''}"
+    class="utd-component utd-dialog {estfenetremessage === 'true' ? 'fenetre-message' : ''} {boutonsTexteLong === 'true' ? 'boutons-texte-long' : ''} {affichageLateral === 'true' ? 'affichage-lateral' : ''} {forcerBoutonsInline === 'true' ? 'boutons-inline' : ''}"
     id={idModale}
     on:click={clickModale}
     on:keydown={keydown}

@@ -27,7 +27,7 @@
 
     function obtenirTableauSlots() {
         return [
-            {nom: "défaut", description: `<p>Slot par défaut. Aucun nom à fournir.</p><p>Contenu html entre les balises du contrôle. Utilisé lorsqu'on veut gérer manuellement en partie (ex. Un libellé, un contrôle, une précision, un message d'erreur.)</p>`},
+            {nom: "défaut", description: `<p>Slot par défaut. Aucun nom à fournir.</p><p>Contenu html entre les balises du contrôle. Utilisé lorsqu'on veut gérer manuellement en partie (ex. Un libellé, un contrôle, une précision, un message d'erreur.)</p>`}
         ];
     }
 

@@ -1,13 +1,43 @@
 <script>
   import { onMount } from 'svelte';
   import CodeSource from '../components/CodeSource.svelte'; 
+  import TableauParams from '../components/TableauParams.svelte'; 
+  import TableauSlots from '../components/TableauSlots.svelte'; 
+
   let mounted = false;
+  let tableauParametres = [];
+  let tableauSlots = [];
 
   onMount(() => {
+    tableauParametres = obtenirTableauParametres();
+    tableauSlots = obtenirTableauSlots();
+
     ajouterCodeDialogue1()
     ajouterCodeDialogue2()
     mounted = true
 })
+
+function obtenirTableauParametres() {
+    return [
+        {nom: "afficher", type: "Boolean (Optionnel)", description: `Permet de spécifier si la fenêtre modale doit être affichée ou non.`},
+        {nom: "type", type: "String (Optionnel)", description: `Type de la fenêtre modale (icône). Valeurs possibles : <span class="utd-emphase-gris">information</span>, <span class="utd-emphase-gris">avertissement</span>, <span class="utd-emphase-gris">succes</span>, <span class="utd-emphase-gris">erreur</span>.`},
+        {nom: "titre", type: "String (Optionnel)", description: `Titre de la fenêtre modale.`},
+        {nom: "lang", type: "String (Optionnel)", description: `Langue du contrôle. Utilisé pour les textes par défaut. Valeurs possibles "fr" et "en". Défaut : "fr".`},
+        {nom: "sr-bouton-fermer", type: "String (Optionnel)", description: `Texte lecteur écran seulement du bouton permettant de fermer la fenêtre modale.`},
+        {nom: "id-focus-ouverture", type: "String (Optionnel)", description: `Id du contrôle auquel on veut forcer le focus une fois la fenêtre modale affichée si le comportement pas défaut ne convient pas.`},
+        {nom: "id-focus-fermeture", type: "String (Optionnel)", description: `Id du contrôle auquel on veut forcer le focus à la fermeture de la fenêtre modale si le comportement par défaut ne convient pas. Par défaut le contrôle redonne le focus à l'élément qui à ouvert la fenêtre modale (ex. un bouton).`},
+        {nom: "boutons-texte-long", type: "Boolean (Optionnel)", description: `Affiche les boutons à partir de 525px et moins sous forme de colonne (au lieu du 425px normal).`},        
+        {nom: "forcer-boutons-inline", type: "Boolean (Optionnel)", description: `Force l'affichage des boutons en mode inline (ne vont pas s'afficher en colonne à 425px et moins).`},
+        {nom: "affichage-lateral", type: "Boolean (Optionnel)", description: `Indique si une animation d'ouverture latérale (droite vers la gauche) est utilisée pour l'affichage de la fenêtre modale.`}
+    ];
+}
+
+function obtenirTableauSlots() {
+    return [
+        {nom: "défaut", description: `<p>Slot par défaut. Aucun nom à fournir.</p><p>Contenu html entre les balises du contrôle. Est injecté dans la zone de contenu de la fenêtre modale.</p>`},
+        {nom: "pied", description: `Contenu html injecté dans le pied de la fenêtre modale (généralement des boutons).`}            
+    ];
+}
 
 function ajouterCodeDialogue1() {
     document.getElementById('btnTest1').addEventListener('click', () => {
@@ -67,6 +97,14 @@ function ajouterCodeDialogue2() {
 <h3>Particularités vs. le système de design Quebec.ca</h3>
 <p>Le composant <strong>dialogue d'alerte</strong> a été remplacé par notre composant <strong><a href="/composants/message">message</a></strong> (seulement le nom est différent, il a les mêmes caractéristiques).</p>
 
+<h2>Attributs disponibles</h2>
+<TableauParams parametres="{tableauParametres}">
+</TableauParams>
+
+<h2>Slots disponibles</h2>
+<TableauSlots parametres="{tableauSlots}">
+</TableauSlots>
+
 <h2>Exemples</h2>
 <h3>1- Ouverture par le biais d'un bouton</h3>
 <div id="exempleDialogue1">
@@ -109,7 +147,7 @@ function ajouterCodeDialogue2() {
     <button type="button" id="btnVotreAvis" class="utd-btn primaire btn-avis">
         <span class="texte">Votre avis</span>
     </button>
-    <utd-dialog id="dialogueVotreAvis" titre="Votre avis" estaffichagelateral="true" estaffichageboutonsinline="true" idfocusouverture="texteVotreAvis" sr-bouton-fermer="Exemple modification texte hors écran du bouton fermer.">
+    <utd-dialog id="dialogueVotreAvis" titre="Votre avis" affichage-lateral="true" forcer-boutons-inline="true" id-focus-ouverture="texteVotreAvis" sr-bouton-fermer="Exemple modification texte hors écran du bouton fermer.">
         <div slot="contenu">
             <form>
                 <div id="texteAvantAvis" class="utd-text-sm mb-32">

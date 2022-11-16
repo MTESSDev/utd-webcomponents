@@ -685,17 +685,17 @@ utd-dialog [slot="pied"] > button:last-of-type {
 
 @media (max-width: 425px) {
 
-  utd-dialog:not([estaffichageboutonsinline="true"]) [slot="pied"] button {
+  utd-dialog:not([forcer-boutons-inline="true"]) [slot="pied"] button {
       margin-bottom: 24px;
       margin-right: 0;
       width: 100%;
   }
 
-  utd-dialog:not([estaffichageboutonsinline="true"]) [slot="pied"] button.compact {
+  utd-dialog:not([forcer-boutons-inline="true"]) [slot="pied"] button.compact {
     margin-bottom: 16px;
   }
 
-  utd-dialog:not([estaffichageboutonsinline="true"]) [slot="pied"] button:last-of-type {
+  utd-dialog:not([forcer-boutons-inline="true"]) [slot="pied"] button:last-of-type {
       margin-bottom: 0;
   }
 }
@@ -703,13 +703,13 @@ utd-dialog [slot="pied"] > button:last-of-type {
 /*Particularité pour les boutons avec un texte long (permet de les afficher plus tôt 525px en colonne au lieu de 425px)*/
 @media (max-width: 525px) {
 
-  utd-dialog[estboutonstextelong="true"] [slot="pied"] button {
+  utd-dialog[boutons-texte-long="true"] [slot="pied"] button {
       margin-bottom: 24px;
       margin-right: 0;
       width: 100%;
   }
 
-  utd-dialog[estboutonstextelong="true"] [slot="pied"] button:last-of-type {
+  utd-dialog[boutons-texte-long="true"] [slot="pied"] button:last-of-type {
       margin-bottom: 0;
   }
 }

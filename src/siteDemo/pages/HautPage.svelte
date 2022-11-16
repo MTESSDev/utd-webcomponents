@@ -1,8 +1,21 @@
 <script>
   import { onMount } from 'svelte';
   import CodeSource from '../components/CodeSource.svelte'; 
+  import TableauParams from '../components/TableauParams.svelte'; 
+
+  let tableauParametres = [];
+
   onMount(() => {
+      tableauParametres = obtenirTableauParametres();
   })
+
+  function obtenirTableauParametres() {
+      return [
+          {nom: "title", type: "String (Optionnel)", description: `Texte affiché au survol du bouton. Défaut "Retour en haut de page.", "Return to the top of the page."`},
+          {nom: "hauteur-minimale-scroll", type: "Number (Optionnel)", description: `Hauteur (en px) minimale de défilement avant que le bouton soit affiché. Défaut 555.`},
+      ];
+  }
+
 
 </script>
 
@@ -16,6 +29,10 @@
 
 <h3>Référence système de design Quebec.ca</h3>
 <a href="https://design.quebec.ca/composantes/navigation/haut-de-page" target="_blank">Voir les spécifications sur le site de design Quebec.ca</a>
+
+<h2>Attributs disponibles</h2>
+<TableauParams parametres="{tableauParametres}">
+</TableauParams>
 
 <h2>Exemple</h2>
 <p>Défiler la page vers le bas afin de voir le contrôle <strong>haut de page</strong> en bas à droite de la page.</p>

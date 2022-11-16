@@ -1,5 +1,35 @@
 <script>
     import CodeSource from '../components/CodeSource.svelte'; 
+    import { onMount } from 'svelte';
+    import TableauParams from '../components/TableauParams.svelte'; 
+    import TableauSlots from '../components/TableauSlots.svelte'; 
+
+    let tableauParametres = [];
+    let tableauSlots = [];
+
+    onMount(() => {
+        tableauParametres = obtenirTableauParametres();
+        tableauSlots = obtenirTableauSlots();
+    })
+
+
+    function obtenirTableauParametres() {
+        return [
+            {nom: "extensible", type: "Boolean (Optionnel)", description: `Indique si la section doit être extensible ou non. Défaut "true" (extensible).`},        
+            {nom: "reduit", type: "Boolean (Optionnel)", description: `Indique si la section doit être réduite ou développée. Défaut "true" (réduite).`},    
+            {nom: "bordure", type: "Boolean (Optionnel)", description: `Indique si la section doit être affichée avec bordure ou non. Défaut "true" (avec bordure).`},    
+            {nom: "titre", type: "String (Optionnel)", description: `Titre affiché dans l'entête de la section.`},
+            {nom: "tag-titre", type: "String (Optionnel)", description: `Balise html à utiliser pour le titre de l'entête. Défaut "h2".`}
+        ];
+    }
+
+    function obtenirTableauSlots() {
+        return [
+            {nom: "défaut", description: `<p>Slot par défaut. Aucun nom à fournir.</p><p>Contenu html entre les balises du contrôle. Est injecté dans la zone de contenu de la section.</p>`},
+            {nom: "titre", description: `Contenu html injecté dans l'entête de la section. Exemple d'utilisation : Ajout d'une icône à gauche du titre.`}            
+        ];
+    }
+
 </script>
 
 <style type="text/css">
@@ -16,6 +46,15 @@
 
 <h3>Référence système de design Quebec.ca</h3>
 N'existe pas sur le site de design Quebec.ca
+
+<h2>Attributs disponibles</h2>
+<TableauParams parametres="{tableauParametres}">
+</TableauParams>
+
+<h2>Slots disponibles</h2>
+<TableauSlots parametres="{tableauSlots}">
+</TableauSlots>
+
 
 <h2>Exemples</h2>
 <h3>1- Section avec champs</h3>

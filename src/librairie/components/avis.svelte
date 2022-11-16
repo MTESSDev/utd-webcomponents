@@ -22,6 +22,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       {#if contenu}
         {@html contenu}      
       {/if}
+      <slot />
       <slot name="contenu" />
     </div>
   </div>
