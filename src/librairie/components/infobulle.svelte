@@ -11,9 +11,9 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   export let afficher = false
   export let titre = ""
   export let lang = "fr"
-  export let srtitre = lang === "fr" ? "Aide à propos de&nbsp;" : "Help about&nbsp;"
-  export let srboutonouvrir = lang === "fr" ? "Afficher l'aide contextuelle" : "Show help about"
-  export let srboutonfermer = lang === "fr" ? "Fermer" : "Close"
+  export let srTitre = lang === "fr" ? "Aide à propos de&nbsp;" : "Help about&nbsp;"
+  export let srBoutonOuvrir = lang === "fr" ? "Afficher l'aide contextuelle" : "Show help about"
+  export let srBoutonFermer = lang === "fr" ? "Fermer" : "Close"
   export let contenu = ""
 
   const idModale = Utils.genererId()
@@ -86,7 +86,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   {#if $$slots["texte-lie"]}
     <span class="texte-lie" on:click={afficherModale}><slot name="texte-lie" /></span>
   {/if}
-  <span class="conteneur-tooltip">&#xFEFF;<button type="button" on:click={afficherModale} aria-label={srboutonouvrir} class="tooltip-toggle">
+  <span class="conteneur-tooltip">&#xFEFF;<button type="button" on:click={afficherModale} aria-label={srBoutonOuvrir} class="tooltip-toggle">
       <span class="conteneur-puce">
         <span aria-hidden="true" class="puce">
           <span
@@ -115,7 +115,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     >
       <span class="utd-container entete">
         <h1 id={idEntete} tabindex="-1">
-          <span class="utd-sr-only">{@html srtitre}</span>
+          <span class="utd-sr-only">{@html srTitre}</span>
           <span>
             {#if titre}
               {titre}
@@ -126,7 +126,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
           type="button"
           class="close"
           on:click={masquerModale}
-          aria-label={srboutonfermer}
+          aria-label={srBoutonFermer}
         >
           <span
             aria-hidden="true"

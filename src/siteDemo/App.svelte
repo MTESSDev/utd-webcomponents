@@ -99,7 +99,7 @@
     <div class="utd-container">
         <div id="conteneur2Colonnes" class="utd contenu-principal-droite">
             <div id="colonneGauche" class="utd">                
-                <utd-menu-vertical id="menuVertical" titre-visible="false" titre="{$router.path.indexOf('/composants') >= 0 ? 'Composants' : 'Éléments de base'}" srtitre="{$router.path.indexOf('/composants') >= 0 ? 'Menu composants' : 'Menu éléments de base'}">
+                <utd-menu-vertical id="menuVertical" titre-visible="false" titre="{$router.path.indexOf('/composants') >= 0 ? 'Composants' : 'Éléments de base'}" sr-titre="{$router.path.indexOf('/composants') >= 0 ? 'Menu composants' : 'Menu éléments de base'}">
                     {#if $router.path.indexOf('/composants') >= 0}                                
                         <utd-menu-vertical-item href="/composants/versions" libelle="Historique des versions"></utd-menu-vertical-item>
                         <utd-menu-vertical-item libelle="Action">                                

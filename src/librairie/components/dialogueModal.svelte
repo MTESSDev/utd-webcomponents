@@ -14,7 +14,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   export let raisonfermeture = ''
   export let titre = ''
   export let lang = 'fr'
-  export let srboutonfermer = lang === "fr" ? "Fermer" : "Close"  
+  export let srBoutonFermer = lang === "fr" ? "Fermer" : "Close"  
   export let idfocusouverture = ''
   export let idfocus = ''
   export let estboutonstextelong = 'false'
@@ -167,7 +167,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
         type="button"
         class="close"
         on:click={() => masquerModale('boutonFermer')}
-        aria-label={srboutonfermer}
+        aria-label={srBoutonFermer}
       >
         <span
           aria-hidden="true"

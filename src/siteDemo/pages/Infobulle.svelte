@@ -1,5 +1,35 @@
 <script>
     import CodeSource from '../components/CodeSource.svelte'; 
+    import { onMount } from 'svelte';
+    import TableauParams from '../components/TableauParams.svelte'; 
+    import TableauSlots from '../components/TableauSlots.svelte'; 
+
+    let tableauParametres = [];
+    let tableauSlots = [];
+
+    onMount(() => {
+        tableauParametres = obtenirTableauParametres();
+        tableauSlots = obtenirTableauSlots();
+    })
+
+    function obtenirTableauParametres() {
+        return [
+            {nom: "titre", type: "String (Optionnel)", description: `Titre affiché dans la feuille associée à l'infobulle.`},
+            {nom: "lang", type: "String (Optionnel)", description: `Langue du contrôle. Utilisé pour les textes par défaut. Valeurs possibles "fr" et "en". Défaut : "fr".`},
+            {nom: "sr-titre", type: "String (Optionnel)", description: `Texte lecteur écran seulement en préfixe au titre affiché dans la feuille associée à l'infobulle. Défaut : "Aide concernant " et "Help about ".`},
+            {nom: "sr-bouton-ouvrir", type: "String (Optionnel)", description: `Texte lecteur écran seulement du bouton permettant d'ouvrir l'infobulle.`},
+            {nom: "sr-bouton-fermer", type: "String (Optionnel)", description: `Texte lecteur écran seulement du bouton permettant de fermer l'infobulle.`},
+            {nom: "contenu", type: "String (Optionnel)", description: `Texte à afficher dans la zone de contenu de l'infobulle.`}
+        ];
+    }
+
+    function obtenirTableauSlots() {
+        return [
+            {nom: "contenu", description: `Texte à afficher dans la zone de contenu de l'infobulle.`},
+            {nom: "texte-lie", description: `Texte lié à l'infobulle (affiché en bleu pâle juste avant l'infobulle.`}
+        ];
+    }
+
 </script>
 
 <h1>Infobulle</h1>
@@ -15,6 +45,15 @@
 
 <h3>Particularités vs. le système de design Quebec.ca</h3>
 <p>Notre composant prend toujours l'aspect feuille, i.e. l'infobulle est toujours affichée au bas de la page et jamais à côté du bouton qui lui est associé.</p>
+
+<h2>Attributs disponibles</h2>
+<TableauParams parametres="{tableauParametres}">
+</TableauParams>
+
+<h2>Slots disponibles</h2>
+<TableauSlots parametres="{tableauSlots}">
+</TableauSlots>
+
 
 <h2>Exemples</h2>
 
@@ -71,10 +110,10 @@
 </CodeSource>   
 
 
-<h3>5- Utilisation avec attributs avancés (srTitre, srBoutonFermer)</h3>
+<h3>5- Utilisation avec attributs avancés (sr-titre, sr-bouton-ouvrir et sr-bouton-fermer)</h3>
 <div id="exempleInfobulle5">
     <label for="test5">Une question de test bidon</label>
-    <utd-infobulle titre="Type de demande" srTitre="Aide personnalisée" srboutonouvrir="Afficher l'aide contextuelle (test)" srboutonfermer="Fermer la fenêtre">
+    <utd-infobulle titre="Type de demande" sr-titre="Aide personnalisée" sr-bouton-ouvrir="Afficher l'aide contextuelle (test)" sr-bouton-fermer="Fermer la fenêtre">
         <div slot="contenu">
             <p>Banana Boat3!</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, magni earum ut ex totam corporis unde incidunt deserunt, dolorem voluptatum libero quia. Maiores, provident error vel veritatis itaque nemo commodi.</p>

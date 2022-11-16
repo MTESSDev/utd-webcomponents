@@ -2,11 +2,14 @@
     import CodeSource from '../components/CodeSource.svelte'; 
     import { onMount } from 'svelte';
     import TableauParams from '../components/TableauParams.svelte'; 
+    import TableauSlots from '../components/TableauSlots.svelte'; 
     let mounted = false;
     let tableauParametres = [];
+    let tableauSlots = [];
 
     onMount(() => {
         tableauParametres = obtenirTableauParametres();
+        tableauSlots = obtenirTableauSlots();
         ajouterCodeExemple6()
         mounted = true
     })
@@ -18,7 +21,13 @@
             {nom: "libelle", type: "String (Optionnel)", description: `Libellé du champ.`},
             {nom: "precision", type: "String (Optionnel)", description: `Précision du champ.`},
             {nom: "invalide", type: "Boolean (Optionnel)", description: `Indique si la valeur du champ est invalide ou non. Si invalide le message d'erreur est affiché et le visuel d'erreur est appliqué.`},
-            {nom: "message-erreur", type: "String (Optionnel)", description: `Le message d'erreur à affiher (visible uniquement si invalide="true").`}
+            {nom: "message-erreur", type: "String (Optionnel)", description: `Le message d'erreur à afficher (visible uniquement si invalide="true").`}
+        ];
+    }
+
+    function obtenirTableauSlots() {
+        return [
+            {nom: "défaut", description: `<p>Slot par défaut. Aucun nom à fournir.</p><p>Contenu html entre les balises du contrôle. Utilisé lorsqu'on veut gérer manuellement en partie (ex. Un libellé, un contrôle, une précision, un message d'erreur.)</p>`},
         ];
     }
 
@@ -44,9 +53,13 @@
 <p>En effet, il prend en charge la gestion du label, de la précision, du champ requis, du message d'erreur et évidemment de tous les attributs requis pour l'accessibilité.</p>
 <p>Il est possible de tout spécifier via des attributs du contrôle <span class="utd-emphase-gris">utd-champ-form</span>, ou bien via du html traditionnel et tous va être bien ficelé (ex. label for, les attributs aria, la précision, le message d'erreur, etc.)</p>
 
-<h2>Attributs du contrôle</h2>
+<h2>Attributs disponibles</h2>
 <TableauParams parametres="{tableauParametres}">
 </TableauParams>
+
+<h2>Slots disponibles</h2>
+<TableauSlots parametres="{tableauSlots}">
+</TableauSlots>
 
 <h2>Exemples</h2>
 <p>Tous les exemples utilisent le cas de figure le plus complexe, i.e. un champ obligatoire, avec précision et message d'erreur.</p>

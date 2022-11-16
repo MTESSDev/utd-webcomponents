@@ -29,8 +29,30 @@
     <li>
         <span>Accordéon</span>
         <ul>
-            <li>Correction de l'animation de fermeture. Il y avait un décalage du contenu pendant qu'il disparaîssait.
-            </li>            
+            <li>Correction de l'animation de fermeture. Il y avait un décalage du contenu pendant qu'il disparaîssait.</li>            
+        </ul>
+    </li>
+</ul>
+
+<h3>Breaking changes</h3>
+<ul class="utd">
+    <li>
+        <span>Infobulle</span>
+        <ul>
+            <li>Attribut renommé. srtitre devient sr-titre.</li>            
+            <li>Attribut renommé. srboutonfermer devient sr-bouton-fermer.</li>            
+            <li>Attribut renommé. srboutonouvrir devient sr-bouton-ouvrir.</li>            
+        </ul>
+    </li>
+    <li>
+        <span>Dialogue modal</span>
+        <ul>
+            <li>Attribut renommé. srboutonfermer devient sr-bouton-fermer.</li>            
+            <li>Attribut renommé. id-focusouverture devient id-focus-ouverture.</li>            
+            <li>Attribut renommé. idfocus devient id-focus-fermerture.</li>            
+            <li>Attribut renommé. estboutonstextelong devient boutons-textelong.</li>            
+            <li>Attribut renommé. estaffichageboutonsinline devient forcer-boutons-inline.</li>            
+            <li>Attribut renommé. estaffichagelateral devient affichage-lateral.</li>            
         </ul>
     </li>
 </ul>

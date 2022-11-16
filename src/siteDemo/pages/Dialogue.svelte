@@ -109,7 +109,7 @@ function ajouterCodeDialogue2() {
     <button type="button" id="btnVotreAvis" class="utd-btn primaire btn-avis">
         <span class="texte">Votre avis</span>
     </button>
-    <utd-dialog id="dialogueVotreAvis" titre="Votre avis" estaffichagelateral="true" estaffichageboutonsinline="true" idfocusouverture="texteVotreAvis">
+    <utd-dialog id="dialogueVotreAvis" titre="Votre avis" estaffichagelateral="true" estaffichageboutonsinline="true" idfocusouverture="texteVotreAvis" sr-bouton-fermer="Exemple modification texte hors écran du bouton fermer.">
         <div slot="contenu">
             <form>
                 <div id="texteAvantAvis" class="utd-text-sm mb-32">
