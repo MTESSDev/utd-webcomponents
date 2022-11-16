@@ -150,7 +150,7 @@
 </TableauParams>
 
 <h4>Retour</h4>
-<p>Une promesse javascript dont le résultat contiendra une chaîne de caractère contenant le raison de fermeture du message. Les valeurs possibles sont : </p>
+<p>Une promesse javascript dont le résultat contient une chaîne de caractères contenant le raison de fermeture du message. Les valeurs possibles sont : </p>
 <ul class="utd">
     <li><span class="utd-utd-emphase-gris">primaire</span>, si le bouton primaire a été cliqué.</li>
     <li><span class="utd-utd-emphase-gris">secondaire</span>, si le bouton secondaire a été cliqué.</li>

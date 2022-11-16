@@ -37,7 +37,7 @@
     <div class="utd-form-group">
         <label for="tel1">Téléphone<span class="utd-icone-champ-requis" aria-hidden="true">*</span></label>
         <span id="tel1Precision" class="utd-precision">Indiquez le numéro de téléphone de l'établissement concerné.</span>
-        <input type="tel" id="tel1" placeholder="123 456-7890"  aria-required="true" aria-invalid="true" aria-describedby="tel1Precision tel1Erreur" class="utd-form-control md"/>
+        <input type="tel" id="tel1" placeholder="123 456-7890" aria-required="true" aria-invalid="true" aria-describedby="tel1Precision tel1Erreur" class="utd-form-control md"/>
         <span class="utd-erreur-champ" id="tel1Erreur">Le champ «Téléphone» est obligatoire.</span>
     </div>
 </div>
