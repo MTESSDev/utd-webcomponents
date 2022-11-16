@@ -106,9 +106,9 @@ export const message = (function () {
      */
     function ajouterControle(parametres) {
     //    var classeIcone = obtenirClasseIcone(parametres.type);
-
+        const type = parametres.type ? ` type="${parametres.type}" ` : ''
         let html = `
-        <utd-dialog titre="${parametres.titre}" idfocus="${parametres.idControleFocusFermeture}" estfenetremessage="true" estboutonstextelong="${parametres.estBoutonsTexteLong}" type="${parametres.type}" >
+        <utd-dialog titre="${parametres.titre}" idfocus="${parametres.idControleFocusFermeture}" estfenetremessage="true" estboutonstextelong="${parametres.estBoutonsTexteLong}" ${type}>
             <div slot="contenu">
                 ${parametres.corps}
             </div>
