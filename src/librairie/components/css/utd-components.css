@@ -3,27 +3,27 @@
   -10- Listes à l'intérieur de composants UTD
 ====================================================================================================*/
 
-[slot] ul, .utd-component ul {
+utd-accordeon ul, utd-dialog ul, utd-avis ul, utd-section ul, utd-infobulle ul, .utd-component ul {
   padding-left: 20px;
 }
 
-[slot] ul:last-child, .utd-component ul:last-child {
+utd-accordeon ul:last-child, utd-dialog ul:last-child, utd-avis ul:last-child, utd-section ul:last-child, utd-infobulle ul:last-child, .utd-component ul:last-child {
   margin-bottom: 0;
 }
 
-[slot] ul li, .utd-component ul li {
+utd-accordeon ul li, utd-dialog ul li, utd-avis ul li, utd-section ul li, utd-infobulle ul li, .utd-component ul li {
   margin-bottom: 16px;
 }
 
-[slot] ul li:last-of-type, .utd-component ul li:last-of-type {
+utd-accordeon ul li:last-of-type, utd-dialog ul li:last-of-type, utd-avis ul li:last-of-type, utd-section ul li:last-of-type, utd-infobulle ul li:last-of-type, .utd-component ul li:last-of-type {
   margin-bottom: 0;
 }
 
-[slot] p:first-child, .utd-component p:first-child, .contenu p:first-child {
+utd-accordeon p:first-child, utd-dialog p:first-child, utd-avis ul p:first-child, utd-section ul p:first-child, utd-infobulle ul p:first-child, .utd-component p:first-child, .utd-component .contenu p:first-child {
   margin-top: 0;
 }
 
-[slot] p:last-child, .utd-component p:last-child, .contenu p:last-child {
+utd-accordeon p:last-child, utd-dialog p:last-child, utd-avis ul p:last-child, utd-section ul p:last-child, utd-infobulle ul p:last-child, .utd-component p:last-child, .utd-component .contenu p:last-child {
   margin-bottom: 0;
 }
 
@@ -200,11 +200,11 @@ utd-menu-vertical{
       background-color: #EDBAB1;
   }
 
-  utd-avis[type="erreur"] [slot] ul li a {
+  utd-avis[type="erreur"] ul li a {
     color: var(--couleur-erreur);
   }
 
-  utd-avis[type="erreur"] [slot] ul li a:hover, utd-avis[type="erreur"] [slot] ul li a:focus {
+  utd-avis[type="erreur"] ul li a:hover, utd-avis[type="erreur"] ul li a:focus {
     text-decoration: none;
   }
 

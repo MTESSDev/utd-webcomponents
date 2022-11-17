@@ -10,10 +10,9 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   import { Utils } from './utils'
   export let afficher = false
   export let titre = ""
-  export let lang = "fr"
-  export let srTitre = lang === "fr" ? "Aide à propos de&nbsp;" : "Help about&nbsp;"
-  export let srBoutonOuvrir = lang === "fr" ? "Afficher l'aide contextuelle" : "Show help about"
-  export let srBoutonFermer = lang === "fr" ? "Fermer" : "Close"
+  export let srTitre = Utils.obtenirLanguePage() === "fr" ? "Aide à propos de&nbsp;" : "Help about&nbsp;"
+  export let srBoutonOuvrir = Utils.obtenirLanguePage() === "fr" ? "Afficher l'aide contextuelle" : "Show help about"
+  export let srBoutonFermer = Utils.obtenirLanguePage() === "fr" ? "Fermer" : "Close"
   export let contenu = ""
 
   const idModale = Utils.genererId()

@@ -22,7 +22,7 @@
 
     function obtenirTableauSlots() {
         return [
-            {nom: "contenu", description: `Texte à afficher dans la zone de contenu de l'infobulle.`}
+            {nom: "défaut", description: `<p>Slot par défaut. Aucun nom à fournir.</p><p>Contenu html entre les balises du contrôle. Est injecté dans la zone de contenu de l'avis.</p>`},
         ];
     }
 </script>
@@ -60,17 +60,15 @@
 <CodeSource idElementCodeSource="exempleInformation1">
 </CodeSource>   
 
-<h4>2- Avec slot "contenu"</h4>
+<h4>2- Avec slot par défaut</h4>
 <div id="exempleInformation2">
     <utd-avis titre="L’aide financière qui peut être accordée tient compte de votre situation familiale.">
-        <div slot="contenu">
-            <span>Est considérée comme votre conjoint (même si elle est absente temporairement) :</span>
-            <ul>
-                <li>la personne qui habite avec vous et avec qui vous êtes marié ou uni civilement;</li>
-                <li>la personne qui habite avec vous et qui est l’autre parent d’au moins un de vos enfants;</li>
-                <li>la personne majeure qui vit maritalement avec vous et qui, à un moment donné, a habité avec vous pendant une période d’au moins un an.</li>
-            </ul>
-        </div>
+        <span>Est considérée comme votre conjoint (même si elle est absente temporairement) :</span>
+        <ul>
+            <li>la personne qui habite avec vous et avec qui vous êtes marié ou uni civilement;</li>
+            <li>la personne qui habite avec vous et qui est l’autre parent d’au moins un de vos enfants;</li>
+            <li>la personne majeure qui vit maritalement avec vous et qui, à un moment donné, a habité avec vous pendant une période d’au moins un an.</li>
+        </ul>
     </utd-avis>    
 </div>
 <CodeSource idElementCodeSource="exempleInformation2">
@@ -86,17 +84,15 @@
 
 
 
-<h4>4- Avec slot "contenu"</h4>
+<h4>4- Avec slot par défaut</h4>
 <div id="exempleAvertissement2">
     <utd-avis type="avertissement" titre="Les informations suivantes pourraient vous sauver la vie.">
-        <div slot="contenu">
-            <span>Certains faits importants à savoir à propos de Chuck Norris :</span>
-            <ul>
-                <li>Un jour Chuck Norris a eu un zero en latin, depuis c'est une langue morte;</li>
-                <li>Chuck Norris a déjà compté jusqu'à l'infini. Deux fois;</li>
-                <li>C'est Chuck Norris qui a décidé que toute phrase se terminait par un poing;</li>
-            </ul>
-        </div>
+        <span>Certains faits importants à savoir à propos de Chuck Norris :</span>
+        <ul>
+            <li>Un jour Chuck Norris a eu un zero en latin, depuis c'est une langue morte;</li>
+            <li>Chuck Norris a déjà compté jusqu'à l'infini. Deux fois;</li>
+            <li>C'est Chuck Norris qui a décidé que toute phrase se terminait par un poing;</li>
+        </ul>
     </utd-avis>    
 </div>
 <CodeSource idElementCodeSource="exempleAvertissement2">
@@ -111,17 +107,15 @@
 </CodeSource>
 
 
-<h4>6- Avec slot "contenu"</h4>
+<h4>6- Avec slot par défaut</h4>
 <div id="exempleSucces2">
     <utd-avis type="succes" titre="Chuck Norris a été élu être humain le plus extraordinaire de tous les temps.">
-        <div slot="contenu">
-            <span>Certains faits importants à savoir à propos de Chuck Norris :</span>
-            <ul>
-                <li>Un jour Chuck Norris a eu un zero en latin, depuis c'est une langue morte;</li>
-                <li>Chuck Norris a déjà compté jusqu'à l'infini. Deux fois;</li>
-                <li>C'est Chuck Norris qui a décidé que toute phrase se terminait par un poing;</li>
-            </ul>
-        </div>
+        <span>Certains faits importants à savoir à propos de Chuck Norris :</span>
+        <ul>
+            <li>Un jour Chuck Norris a eu un zero en latin, depuis c'est une langue morte;</li>
+            <li>Chuck Norris a déjà compté jusqu'à l'infini. Deux fois;</li>
+            <li>C'est Chuck Norris qui a décidé que toute phrase se terminait par un poing;</li>
+        </ul>
     </utd-avis>    
 </div>
 <CodeSource idElementCodeSource="exempleSucces2">
@@ -136,22 +130,20 @@
 <CodeSource idElementCodeSource="exempleErreur1">
 </CodeSource>
 
-<h4>8- Avec slot "contenu"</h4>
+<h4>8- Avec slot par défaut</h4>
 <div id="exempleErreur2">
     <utd-avis type="erreur" titre="Des erreurs sont présentes dans le formulaire.">
-        <div slot="contenu">
-            <ul>
-                <li>
-                    <a href="#">Le champ « Nom de famille » est obligatoire.</a>
-                </li>
-                <li>
-                    <a href="#">Le champ « Prénom » est obligatoire.</a>
-                </li>
-                <li>
-                    <a href="#">Le champ « Numéro de dossier » est obligatoire.</a>
-                </li>
-            </ul>
-        </div>
+        <ul>
+            <li>
+                <a href="#">Le champ « Nom de famille » est obligatoire.</a>
+            </li>
+            <li>
+                <a href="#">Le champ « Prénom » est obligatoire.</a>
+            </li>
+            <li>
+                <a href="#">Le champ « Numéro de dossier » est obligatoire.</a>
+            </li>
+        </ul>
     </utd-avis>    
 </div>
 <CodeSource idElementCodeSource="exempleErreur2">

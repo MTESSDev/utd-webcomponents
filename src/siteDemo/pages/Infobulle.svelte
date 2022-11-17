@@ -15,7 +15,6 @@
     function obtenirTableauParametres() {
         return [
             {nom: "titre", type: "String (Optionnel)", description: `Titre affiché dans la feuille associée à l'infobulle.`},
-            {nom: "lang", type: "String (Optionnel)", description: `Langue du contrôle. Utilisé pour les textes par défaut. Valeurs possibles "fr" et "en". Défaut : "fr".`},
             {nom: "sr-titre", type: "String (Optionnel)", description: `Texte lecteur écran seulement en préfixe au titre affiché dans la feuille associée à l'infobulle. Défaut : "Aide concernant " et "Help about ".`},
             {nom: "sr-bouton-ouvrir", type: "String (Optionnel)", description: `Texte lecteur écran seulement du bouton permettant d'ouvrir l'infobulle.`},
             {nom: "sr-bouton-fermer", type: "String (Optionnel)", description: `Texte lecteur écran seulement du bouton permettant de fermer l'infobulle.`},

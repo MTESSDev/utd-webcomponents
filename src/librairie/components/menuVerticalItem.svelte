@@ -3,14 +3,14 @@
   import { onMount } from "svelte";
   import { Utils } from './utils.js'
   import { slide } from "svelte/transition"
-  import { element, get_current_component } from "svelte/internal"  
+  import { get_current_component } from "svelte/internal"  
 
   /* Propriétés "publiques" */
   export let libelle = ''
   export let href = ''
-  export let afficher = 'false'
 
   /* Propriétés "internes" */
+  export let afficher = 'false'
   export let indextab = '0'
   export let animer = 'true'
   export let focus = 'false'

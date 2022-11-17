@@ -2,15 +2,14 @@
 <script>
   import { Utils } from '../../librairie/components/utils.js'
 
-  export let titre = lang === 'fr' ? 'Menu secondaire' : 'Secondary menu'
-  export let lang = "fr"
+  export let titre = Utils.obtenirLanguePage() === 'fr' ? 'Menu secondaire' : 'Secondary menu'
   export let titreVisible = "true"
 
   let afficher = false
 
   const idMenu = Utils.genererId()
   const idTitreMenu = Utils.genererId()
-  const srTexteSortirMenu = lang === "fr" ? "Appuyez sur la touche Échappe pour sortir du menu." : "Press ESC key to exit menu."
+  const srTexteSortirMenu = Utils.obtenirLanguePage() === "fr" ? "Appuyez sur la touche Échappe pour sortir du menu." : "Press ESC key to exit menu."
 
 
   //TODO implémnenter gestion langue (aller chercher dans balise html? lang=?)

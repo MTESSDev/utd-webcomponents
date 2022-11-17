@@ -65,7 +65,7 @@
 </CodeSource>   
 
 
-<h3>2- Avec attribut "titre", slot "contenu" et tag-titre h5</h3>
+<h3>2- Avec attribut "titre", slot par défaut et tag-titre h5</h3>
 <div class="mb-32" id="exempleAccordeon2">
     <utd-accordeon titre="Exemple d'utilisation 2" tag-titre="h5">
         <p>Dans cet exemple, le niveau de titre de l'accordéon a été forcé à "h5" au lieu de la valeur par défaut "h2" via l'attribut <span class="utd-emphase-gris">tag-titre</span>.</p>
@@ -75,16 +75,14 @@
 </CodeSource>   
 
 
-<h3>3- Avec slots "titre" et "contenu"</h3>
+<h3>3- Avec slots "titre" et slot par défaut</h3>
 <div class="mb-32" id="exempleAccordeon3">
     <utd-accordeon class="mb-32">
         <span slot="titre">
             Exemple d'utilisation 3 avec un titre long long long long long long long long long long long long long long long long long long
         </span>   
-        <span slot="contenu">
-            <p>Ici un texte incroyable.</p>
-            <p>Qui peut même contenir du html.</p>
-        </span>
+        <p>Ici un texte incroyable.</p>
+        <p>Qui peut même contenir du html.</p>
     </utd-accordeon>
 </div>
 <CodeSource idElementCodeSource="exempleAccordeon3">

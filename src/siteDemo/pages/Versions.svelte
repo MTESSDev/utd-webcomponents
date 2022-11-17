@@ -1,5 +1,4 @@
 <script>
-    import CodeSource from '../components/CodeSource.svelte'; 
 </script>
 
 <h1>Historique des versions</h1>
@@ -10,9 +9,10 @@
 <h2>1.7.0 (2022-11-??)</h2>
 <h3>Améliorations</h3>
 <ul class="utd">
-    <li>Ajout du composant <a href="/composants/navigation/menuvertical">Menu vertical</a>.</li>
-    <li>Ajout du composant <a href="/composants/navigation/menuancres">Menu d'ancres</a>.</li>
-    <li>Ajout du composant <a href="/composants/affichagecontenu/section">Sections</a>.</li>
+    <li>Bonification importante de la documentation (attributs et slots)</li>
+    <li>Ajout du composant <a href="/composants/navigation/menuvertical">Menu vertical</a></li>
+    <li>Ajout du composant <a href="/composants/navigation/menuancres">Menu d'ancres</a></li>
+    <li>Ajout du composant <a href="/composants/affichagecontenu/section">Sections</a></li>
     <li>
         <span>Champs de formulaires</span>
         <ul>

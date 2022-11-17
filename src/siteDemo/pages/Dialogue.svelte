@@ -22,7 +22,6 @@ function obtenirTableauParametres() {
         {nom: "afficher", type: "Boolean (Optionnel)", description: `Permet de spécifier si la fenêtre modale doit être affichée ou non.`},
         {nom: "type", type: "String (Optionnel)", description: `Type de la fenêtre modale (icône). Valeurs possibles : <span class="utd-emphase-gris">information</span>, <span class="utd-emphase-gris">avertissement</span>, <span class="utd-emphase-gris">succes</span>, <span class="utd-emphase-gris">erreur</span>.`},
         {nom: "titre", type: "String (Optionnel)", description: `Titre de la fenêtre modale.`},
-        {nom: "lang", type: "String (Optionnel)", description: `Langue du contrôle. Utilisé pour les textes par défaut. Valeurs possibles "fr" et "en". Défaut : "fr".`},
         {nom: "sr-bouton-fermer", type: "String (Optionnel)", description: `Texte lecteur écran seulement du bouton permettant de fermer la fenêtre modale.`},
         {nom: "id-focus-ouverture", type: "String (Optionnel)", description: `Id du contrôle auquel on veut forcer le focus une fois la fenêtre modale affichée si le comportement pas défaut ne convient pas.`},
         {nom: "id-focus-fermeture", type: "String (Optionnel)", description: `Id du contrôle auquel on veut forcer le focus à la fermeture de la fenêtre modale si le comportement par défaut ne convient pas. Par défaut le contrôle redonne le focus à l'élément qui à ouvert la fenêtre modale (ex. un bouton).`},
@@ -110,22 +109,19 @@ function ajouterCodeDialogue2() {
 <div id="exempleDialogue1">
     <button type="button" id="btnTest1" class="utd-btn secondaire mb-32">Afficher</button>
     <utd-dialog id="dialogue1" titre="Ajout d'un problème">
-        <div slot="contenu">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet pulvinar ipsum. Donec luctus nulla scelerisque, congue nibh a, malesuada dolor. Sed mattis interdum pellentesque. Vivamus lacinia risus a justo imperdiet imperdiet at quis ligula. Cras a dictum tortor, sit amet venenatis tortor. Vestibulum aliquam elit eu venenatis laoreet. Aenean tellus enim, consectetur eu condimentum accumsan, malesuada volutpat lectus. Aliquam sit amet rhoncus mauris, a placerat mauris. Mauris neque nulla, vulputate a convallis in, imperdiet tincidunt leo.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet pulvinar ipsum. Donec luctus nulla scelerisque, congue nibh a, malesuada dolor. Sed mattis interdum pellentesque. Vivamus lacinia risus a justo imperdiet imperdiet at quis ligula. Cras a dictum tortor, sit amet venenatis tortor. Vestibulum aliquam elit eu venenatis laoreet. Aenean tellus enim, consectetur eu condimentum accumsan, malesuada volutpat lectus. Aliquam sit amet rhoncus mauris, a placerat mauris. Mauris neque nulla, vulputate a convallis in, imperdiet tincidunt leo.</p>
-            <label for="test1">Description du problème</label>
-            <input type="text" id="test1" class="utd-form-group utd-form-control"/>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet pulvinar ipsum. Donec luctus nulla scelerisque, congue nibh a, malesuada dolor. Sed mattis interdum pellentesque. Vivamus lacinia risus a justo imperdiet imperdiet at quis ligula. Cras a dictum tortor, sit amet venenatis tortor. Vestibulum aliquam elit eu venenatis laoreet. Aenean tellus enim, consectetur eu condimentum accumsan, malesuada volutpat lectus. Aliquam sit amet rhoncus mauris, a placerat mauris. Mauris neque nulla, vulputate a convallis in, imperdiet tincidunt leo.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet pulvinar ipsum. Donec luctus nulla scelerisque, congue nibh a, malesuada dolor. Sed mattis interdum pellentesque. Vivamus lacinia risus a justo imperdiet imperdiet at quis ligula. Cras a dictum tortor, sit amet venenatis tortor. Vestibulum aliquam elit eu venenatis laoreet. Aenean tellus enim, consectetur eu condimentum accumsan, malesuada volutpat lectus. Aliquam sit amet rhoncus mauris, a placerat mauris. Mauris neque nulla, vulputate a convallis in, imperdiet tincidunt leo.</p>
+        <label for="test1">Description du problème</label>
+        <input type="text" id="test1" class="utd-form-group utd-form-control"/>
 
-            <label for="test2">Solution 1</label>
-            <input type="text" id="test2" class="utd-form-group utd-form-control"/>
+        <label for="test2">Solution 1</label>
+        <input type="text" id="test2" class="utd-form-group utd-form-control"/>
 
-            <label for="test3">Solution 2</label>
-            <input type="text" id="test3" class="utd-form-group utd-form-control"/>
+        <label for="test3">Solution 2</label>
+        <input type="text" id="test3" class="utd-form-group utd-form-control"/>
 
-            <label for="test5">Solution 4</label>
-            <input type="text" id="test5" class="utd-form-control"/>
-
-        </div>
+        <label for="test5">Solution 4</label>
+        <input type="text" id="test5" class="utd-form-control"/>
         <div slot="pied">
             <button id="btnAnnuler1" type="button" class="utd-btn secondaire compact">Annuler</button>        
             <button id="btnEnregistrer1" type="button" class="utd-btn primaire compact">Enregistrer</button>        
@@ -148,18 +144,16 @@ function ajouterCodeDialogue2() {
         <span class="texte">Votre avis</span>
     </button>
     <utd-dialog id="dialogueVotreAvis" titre="Votre avis" affichage-lateral="true" forcer-boutons-inline="true" id-focus-ouverture="texteVotreAvis" sr-bouton-fermer="Exemple modification texte hors écran du bouton fermer.">
-        <div slot="contenu">
-            <form>
-                <div id="texteAvantAvis" class="utd-text-sm mb-32">
-                    <p>Pour toutes questions relatives à votre dossier, ou si vous avez besoin d'aide, n'hésitez pas à <a href="#NousJoindre">Nous joindre</a>.</p>
-                    <p>Évitez d'inscrire des renseignements personnels. Notez que vous ne recevrez aucune réponse et que nous collectons votre avis dans le respect de votre anonymat.</p>
-                </div>
-                <textarea id="texteVotreAvis" class="utd-form-control" aria-describedby="erreurTexteVotreAvis" rows="3" placeholder="Parlez-nous de votre expérience..." required></textarea>
-                <span id="erreurTexteVotreAvis" class="utd-erreur-champ utd-d-none" role="status" aria-live="polite">Le champ « Votre avis » est obligatoire.</span>
-                <span id="texteApresAvis" class="utd-text-sm">
-                </span>
-            </form>
-        </div>
+        <form>
+            <div id="texteAvantAvis" class="utd-text-sm mb-32">
+                <p>Pour toutes questions relatives à votre dossier, ou si vous avez besoin d'aide, n'hésitez pas à <a href="#NousJoindre">Nous joindre</a>.</p>
+                <p>Évitez d'inscrire des renseignements personnels. Notez que vous ne recevrez aucune réponse et que nous collectons votre avis dans le respect de votre anonymat.</p>
+            </div>
+            <textarea id="texteVotreAvis" class="utd-form-control" aria-describedby="erreurTexteVotreAvis" rows="3" placeholder="Parlez-nous de votre expérience..." required></textarea>
+            <span id="erreurTexteVotreAvis" class="utd-erreur-champ utd-d-none" role="status" aria-live="polite">Le champ « Votre avis » est obligatoire.</span>
+            <span id="texteApresAvis" class="utd-text-sm">
+            </span>
+        </form>
         <div slot="pied">
             <button id="btnAnnulerAvis" type="button" class="utd-btn secondaire compact">Annuler</button>        
             <button id="btnEnregistrerAvis" type="button" class="utd-btn primaire compact">Envoyer</button>        

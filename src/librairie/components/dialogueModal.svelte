@@ -13,8 +13,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   export let estfenetremessage = 'false' //Privée (utilisée dans notre plugin message)
   export let raisonFermeture = '' //Privée (utilisée dans notre plugin message)
   export let titre = ''
-  export let lang = 'fr'
-  export let srBoutonFermer = lang === "fr" ? "Fermer" : "Close"  
+  export let srBoutonFermer = Utils.obtenirLanguePage() === "fr" ? "Fermer" : "Close"  
   export let idFocusOuverture = ''
   export let idFocusFermeture = ''
   export let boutonsTexteLong = 'false'
