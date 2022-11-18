@@ -4,12 +4,24 @@
     let mounted = false;
 
     onMount(() => {
-        ajouterCodeExemple2()
+        ajouterCodeExemple3()
+        ajouterCodeExemple4()
         mounted = true
     })
 
-    function ajouterCodeExemple2() {
-        const controleUtd = document.getElementById('utdChamp2')
+    function ajouterCodeExemple3() {
+        const controleUtd = document.getElementById('utdChamp3')
+        controleUtd.querySelectorAll('input').forEach((controle) => {
+            ['blur', 'change'].forEach((event) => {
+                controle.addEventListener(event, () => {
+                    controleUtd.setAttribute('invalide', !controleUtd.querySelector('input:checked'))
+                })
+            })
+        })  
+    }
+
+    function ajouterCodeExemple4() {
+        const controleUtd = document.getElementById('utdChamp4')
         controleUtd.querySelectorAll('input').forEach((controle) => {
             ['blur', 'change'].forEach((event) => {
                 controle.addEventListener(event, () => {
@@ -43,13 +55,16 @@
         <span class="label" id="personnagePrefere1">Quel est votre personnage préféré ?</span>
         <span id="precision1" class="utd-precision">Faites confiance à votre instinct.</span>        
         <label>
-            <input type="radio" name="persoPrefere1" value="Marty">Marty MacFly
+            <input type="radio" name="persoPrefere1" value="Marty">
+            <span>Marty MacFly</span>
         </label>               
         <label>
-            <input type="radio" name="persoPrefere1" value="Forrest">Forrest Gump
+            <input type="radio" name="persoPrefere1" value="Forrest">
+            <span>Forrest Gump</span>
         </label>               
         <label>
-            <input type="radio" name="persoPrefere1" value="Vader">Darth Vador
+            <input type="radio" name="persoPrefere1" value="Vader">
+            <span>Darth Vador</span>
         </label>    
         <span id="texteErreur1" role="alert" class="utd-erreur-champ">Le champ «Quel est votre personnage préféré ?» est obligatoire.</span>        
     </div>
@@ -58,22 +73,69 @@
 <CodeSource idElementCodeSource="exemple1">
 </CodeSource>
 
-
-<h3>2- Gestion automatique (Avec wrapper "utd-champ-form")</h3>
+<h3>2- Gestion manuelle (affichage compact)</h3>
 <div id="exemple2">    
-    <utd-champ-form id="utdChamp2" obligatoire="true" libelle="Quel est votre personnage préféré ?" precision="Faites confiance à votre instinct." message-erreur="Le champ «Quel est votre personnage préféré ?» est obligatoire.">
+    <div class="utd-form-group radio compact" role="radiogroup" aria-labelledby="personnagePrefere2" aria-describedby="precision2 texteErreur2" aria-required="true">
+        <span class="label" id="personnagePrefere2">Quel est votre personnage préféré ?</span>
+        <span id="precision2" class="utd-precision">Faites confiance à votre instinct.</span>        
         <label>
-            <input type="radio" name="persoPrefere2" value="Marty">Marty MacFly
+            <input type="radio" name="persoPrefere2" value="Marty">
+            <span>Marty MacFly</span>
         </label>               
         <label>
-            <input type="radio" name="persoPrefere2" value="Forrest">Forrest Gump
+            <input type="radio" name="persoPrefere2" value="Forrest">
+            <span>Forrest Gump</span>            
         </label>               
         <label>
-            <input type="radio" name="persoPrefere2" value="Vader">Darth Vador
+            <input type="radio" name="persoPrefere2" value="Vader">
+            <span>Darth Vador</span>            
         </label>    
-    </utd-champ-form>
+        <span id="texteErreur2" role="alert" class="utd-erreur-champ">Le champ «Quel est votre personnage préféré ?» est obligatoire.</span>        
+    </div>
 </div>
 
 <CodeSource idElementCodeSource="exemple2">
 </CodeSource>
 
+
+<h3>3- Gestion automatique (Avec wrapper "utd-champ-form")</h3>
+<div id="exemple3">    
+    <utd-champ-form id="utdChamp3" obligatoire="true" libelle="Quel est votre personnage préféré ?" precision="Faites confiance à votre instinct." message-erreur="Le champ «Quel est votre personnage préféré ?» est obligatoire.">
+        <label>
+            <input type="radio" disabled name="persoPrefere3" value="Marty">
+            <span>Marty MacFly</span>            
+        </label>               
+        <label>
+            <input type="radio" name="persoPrefere3" value="Forrest">
+            <span>Forrest Gump</span>            
+        </label>               
+        <label>
+            <input type="radio" name="persoPrefere3" value="Vader">
+            <span>Darth Vador</span>            
+        </label>    
+    </utd-champ-form>
+</div>
+
+<CodeSource idElementCodeSource="exemple3">
+</CodeSource>
+
+<h3>4- Gestion automatique (Avec wrapper "utd-champ-form" affichage compact)</h3>
+<div id="exemple4">    
+    <utd-champ-form id="utdChamp4" format="compact" obligatoire="true" libelle="Quel est votre personnage préféré ?" precision="Faites confiance à votre instinct." message-erreur="Le champ «Quel est votre personnage préféré ?» est obligatoire.">
+        <label>
+            <input type="radio" name="persoPrefere4" value="Marty">
+            <span>Marty MacFly</span>            
+        </label>               
+        <label>
+            <input type="radio" disabled name="persoPrefere4" value="Forrest">
+            <span>Forrest Gump</span>            
+        </label>               
+        <label>
+            <input type="radio" name="persoPrefere4" value="Vader">
+            <span>Darth Vador</span> 
+        </label>    
+    </utd-champ-form>
+</div>
+
+<CodeSource idElementCodeSource="exemple4">
+</CodeSource>

@@ -16,7 +16,7 @@
 
     function obtenirTableauParametres() {
         return [
-            {nom: "format", type: "String (Optionnel)", description: `Taille du champ. Valeurs possibles : <span class="utd-emphase-gris">sm</span>, <span class="utd-emphase-gris">md</span>, <span class="utd-emphase-gris">lg</span>, <span class="utd-emphase-gris">xl</span>, <span class="utd-emphase-gris">xxl</span>.`},
+            {nom: "format", type: "String (Optionnel)", description: `Taille du champ. Valeurs possibles : <span class="utd-emphase-gris">sm</span>, <span class="utd-emphase-gris">md</span>, <span class="utd-emphase-gris">lg</span>, <span class="utd-emphase-gris">xl</span>, <span class="utd-emphase-gris">xxl</span>. Pour les cases à cocher et boutons radios, la variante de format possible est : <span class="utd-emphase-gris">compact</span>.`},
             {nom: "obligatoire", type: "String (Optionnel)", description: `Indique si le champ est obligatoire ou non.`},
             {nom: "libelle", type: "String (Optionnel)", description: `Libellé du champ.`},
             {nom: "precision", type: "String (Optionnel)", description: `Précision du champ.`},

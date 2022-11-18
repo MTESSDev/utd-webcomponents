@@ -1124,7 +1124,7 @@ textarea.utd-form-control.sm {
 
 /*====================================================================================================
   -20B- Boutons radio
-  Référence https://moderncss.dev/pure-css-custom-styled-radio-buttons/
+  Inspiré de https://moderncss.dev/pure-css-custom-styled-radio-buttons/
 /*====================================================================================================*/
 .utd-form-group.radio .label{
     display: flex;
@@ -1137,12 +1137,17 @@ textarea.utd-form-control.sm {
     line-height: 1.2;
     display: flex;
     padding: 8px;
-    margin: 8px auto 0 -8px;
+    margin: 0 auto 0 -8px;
 }
 
 .utd-form-group.radio label:first-of-type{
     margin-top: 16px;
 }
+
+.utd-form-group.radio.compact label:first-of-type{
+    margin-top: 8px;
+}
+
 .utd-form-group.radio .label, .utd-form-group.radio .utd-precision{
     margin-bottom: 0;
 }
@@ -1159,39 +1164,70 @@ textarea.utd-form-control.sm {
     /* Pour iOS < 15 retire background:gradient */
     background-color: #fff;  
 
+    margin: -3px 8px 0 0!important;
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    min-height: 24px;
+    outline: 0!important;
+}
+
+.utd-form-group.radio.compact input[type="radio"]{
     margin: 1px 8px 0 0!important;
     width: 16px;
     min-width: 16px;
     height: 16px;
     min-height: 16px;
-    outline: 0!important;
+}
+
+.utd-form-group.radio input[type="radio"]:checked::before{
+    border-color: var(--couleur-bleu);
 }
 
 .utd-form-group.radio input[type="radio"]:focus::before{
-    border: 2px solid #5b6476;
-    outline: 2px solid #89bce5;
+    border-width: 3px;
+    border-color: var(--couleur-texte-base);
+    outline: 2px solid var(--bleu-clair);
 }
 
 .utd-form-group.radio input[type="radio"]::before {
     content: "";
     position: absolute;
-    border: 1px solid #808a9d;
-    width: 16px;
-    height: 16px;
+    border: 2px solid var(--couleur-texte-base);
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
   }
+
+  .utd-form-group.radio.compact input[type="radio"]::before {
+    border-width: 1px;
+    width: 16px;
+    height: 16px;
+  }
+  
+  .utd-form-group.radio.compact input[type="radio"]:focus::before{
+    border-width: 2px;
+  }
+
 
   .utd-form-group.radio input[type="radio"]::after {
     content: "";
     position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 10px;
-    height: 10px;
+    top: 5px;
+    left: 5px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
     transform: scale(0);
     transition: 120ms transform ease-in-out;
     background-color: var(--couleur-bleu);
+  }
+
+  .utd-form-group.radio.compact input[type="radio"]::after {
+    top: 3px;
+    left: 3px;
+    width: 10px;
+    height: 10px;
   }
 
   .utd-form-group.radio input[type="radio"]:checked::after {
@@ -1202,9 +1238,23 @@ textarea.utd-form-control.sm {
     box-sizing: border-box;
 }
 
+  /* Radios désactivés */
+  .utd-form-group.radio input[type="radio"][disabled]::before{
+    border-color: var(--gris-clair);
+  }
+
+  .utd-form-group.radio input[type="radio"][disabled]::after{
+    background-color: var(--gris);
+  }
+
+  .utd-form-group.radio input[type="radio"][disabled] ~ *{
+    color: var(--gris);
+  }
+
+
 /*====================================================================================================
   -20C- Checkbox
-  Référence https://moderncss.dev/pure-css-custom-checkbox-style
+  Inspiré de https://moderncss.dev/pure-css-custom-checkbox-style
 /*====================================================================================================*/
 .utd-form-group.checkbox .label{
     display: flex;

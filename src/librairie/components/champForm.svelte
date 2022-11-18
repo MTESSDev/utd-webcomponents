@@ -78,7 +78,11 @@
         elementWrapper.setAttribute('role', 'group')
       }
     })
-    
+
+    if(format){ 
+      elementWrapper.classList.add(format)
+    }
+
     thisComponent.prepend(elementWrapper)
   }
 
