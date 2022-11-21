@@ -185,7 +185,7 @@ utd-menu-vertical{
   }
 
   .utd-avis .zone-icone, .utd-avis.information .zone-icone {
-      background-color: #D9E6F0;
+      background-color: var(--bleu-pale);      
   }
 
   .utd-avis.avertissement .zone-icone {
@@ -193,11 +193,11 @@ utd-menu-vertical{
   }
 
   .utd-avis.succes .zone-icone {
-      background-color: #BCDA9A;
+      background-color: var(--vert-pale);
   }
 
   .utd-avis.erreur .zone-icone {
-      background-color: #EDBAB1;
+      background-color: var(--rose-pale);
   }
 
   utd-avis[type="erreur"] ul li a {

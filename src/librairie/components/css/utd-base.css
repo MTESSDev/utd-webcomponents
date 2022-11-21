@@ -865,15 +865,15 @@ a.utd-lien-externe[target="_blank"]:after, span.utd-lien-externe:after {
 /* ==================== Bouton avertissement ==================== */
 .utd-btn.avertissement {
     color: #fff;
-    border-color: #cb381f;
-    background-color: #cb381f;
+    border-color: var(--rouge);
+    background-color: var(--rouge);
 }
 .utd-btn.avertissement:not([disabled]):hover {
     border-color: #b52e16;
     background-color: #b52e16;
 }
 .utd-btn.avertissement:not([disabled]):focus {
-    border-color: #223654;
+    border-color: var(--bleu-fonce);
     background-color: #b52e16;
     box-shadow: 0 0 0 2px #4a98d9;
     outline: 0;
