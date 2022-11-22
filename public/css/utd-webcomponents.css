@@ -1136,8 +1136,12 @@ textarea.utd-form-control.sm {
     font-weight: normal;
     line-height: 1.2;
     display: flex;
-    padding: 8px;
+    padding: 10px 8px;
     margin: 0 auto 0 -8px;
+}
+
+.utd-form-group.radio.compact label{
+    padding: 8px;
 }
 
 .utd-form-group.radio label:first-of-type{
@@ -1266,12 +1270,20 @@ textarea.utd-form-control.sm {
     font-weight: normal;
     line-height: 1.2;
     display: flex;
+    padding: 10px 8px;
+    margin: 0 auto 0 -8px;
+}
+
+.utd-form-group.checkbox.compact label{
     padding: 8px;
-    margin: 4px auto 0 -8px;
 }
 
 .utd-form-group.checkbox label:first-of-type{
-    margin-top: 12px;
+    margin-top: 16px;
+}
+
+.utd-form-group.checkbox.compact label:first-of-type{
+    margin-top: 8px;
 }
 
 /* checkbox-seul */
@@ -1294,27 +1306,52 @@ textarea.utd-form-control.sm {
     /* Pour iOS < 15 retire background:gradient */
     background-color: #fff;  
     position: relative;
+    margin: -3px 8px 0 0!important;
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    min-height: 24px;
+    border-radius: 0;   
+    outline: 0!important;
+}
+
+.utd-form-group.checkbox.compact input[type="checkbox"]{
     margin: 1px 8px 0 0!important;
     width: 16px;
     min-width: 16px;
     height: 16px;
     min-height: 16px;
-    border-radius: 0;   
-    outline: 0!important;
 }
 
-.utd-form-group.checkbox input[type="checkbox"]:focus:before{
-    border: 2px solid #5b6476;
-    outline: 2px solid #89bce5;
+.utd-form-group.checkbox input[type="checkbox"]:checked::before{
+    border-color: var(--couleur-bleu);
 }
+
+.utd-form-group.checkbox input[type="checkbox"]:focus::before{
+    border-width: 3px;
+    border-color: var(--couleur-texte-base);
+    outline: 2px solid var(--bleu-clair);
+}
+
+
+.utd-form-group.checkbox.compact input[type="checkbox"]::before {
+    border-width: 1px;
+    width: 16px;
+    height: 16px;
+  }
+  
+.utd-form-group.checkbox.compact input[type="checkbox"]:focus::before{
+border-width: 2px;
+}
+
 
 .utd-form-group.checkbox input[type="checkbox"]::after {
     content: "";
     position: absolute;
-    top: 1px;
-    left: 1px;
-    width: 14px;
-    height: 14px;
+    top: 4px;
+    left: 4px;
+    width: 16px;
+    height: 16px;
     transform: scale(0);
     transition: 120ms transform ease-in-out;
     -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M8.76,56.2c-6.38-6.34,3.26-16,9.64-9.69L38,65.88,80.56,23.29c6.38-6.38,16.07,3.32,9.69,9.69L42.84,80.37a6.83,6.83,0,0,1-9.65,0Z"/></svg>');
@@ -1322,12 +1359,19 @@ textarea.utd-form-control.sm {
     background-color: #fff;
 }
 
+.utd-form-group.checkbox.compact input[type="checkbox"]::after {
+    top: 1px;
+    left: 1px;
+    width: 14px;
+    height: 14px;
+}
+
 .utd-form-group.checkbox input[type="checkbox"]::before {
     content: "";
     position: absolute;
-    width: 16px;
-    height: 16px;
-    border: 1px solid #808a9d;
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--couleur-texte-base);
 }
 
 .utd-form-group.checkbox input[type="checkbox"]:checked::before {
@@ -1341,6 +1385,20 @@ textarea.utd-form-control.sm {
 .utd-form-group.checkbox *, .utd-form-group.checkbox *:before, .utd-form-group.checkbox *:after {
     box-sizing: border-box;
 }
+
+  /* Checkbox désactivés */
+  .utd-form-group.checkbox input[type="checkbox"][disabled]::before{
+    border-color: var(--gris-clair);
+  }
+
+  .utd-form-group.checkbox input[type="checkbox"][disabled]::after{
+    background-color: var(--gris);
+  }
+
+  .utd-form-group.checkbox input[type="checkbox"][disabled] ~ *{
+    color: var(--gris);
+  }
+
 
 /*====================================================================================================
   -50- Tables

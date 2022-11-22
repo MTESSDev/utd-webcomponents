@@ -92,9 +92,9 @@
 <h3>Exemples</h3>
 <div id="exemplePlaceholderPrecision">
     <div class="utd-form-group">
-        <label for="placeholder1" aria-describedby="precisionExemplePlaceholderPrecision">Téléphone</label>
+        <label for="placeholder1">Téléphone</label>
         <span id="precisionExemplePlaceholderPrecision" class="utd-precision">Si vous n’avez pas de numéro de téléphone, inscrivez le numéro d’un membre de votre famille, d’un ami ou d’un organisme.</span>
-        <input type="tel" id="placeholder1" placeholder="123 456-7890" class="utd-form-control md"/>
+        <input type="tel" id="placeholder1" placeholder="123 456-7890" aria-describedby="precisionExemplePlaceholderPrecision" class="utd-form-control md"/>
     </div>
 </div>
 
