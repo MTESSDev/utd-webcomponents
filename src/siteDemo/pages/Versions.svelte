@@ -1,8 +1,63 @@
 <script>
-    import CodeSource from '../components/CodeSource.svelte'; 
 </script>
 
 <h1>Historique des versions</h1>
+
+<utd-menu-ancres selecteur="#main h2">
+</utd-menu-ancres>
+
+<h2>1.7.0 (2022-11-??)</h2>
+<h3>Améliorations</h3>
+<ul class="utd">
+    <li>Bonification importante de la documentation (attributs et slots)</li>
+    <li>Ajout du composant <a href="/composants/navigation/menuvertical">Menu vertical</a></li>
+    <li>Ajout du composant <a href="/composants/navigation/menuancres">Menu d'ancres</a></li>
+    <li>Ajout du composant <a href="/composants/affichagecontenu/section">Sections</a></li>
+    <li>Mise à jour des couleurs du composant <a href="/composants/affichagecontenu/section">Avis</a></li>
+    <li>
+        <span>Champs de formulaires</span>
+        <ul>
+            <li>Ajout des styles pour les champs de formulaire.
+            </li>            
+            <li>Ajout du composant "utd-champ-form" qui permet d'encapsuler les champs de formulaires afin de simplifier grandement leur utilisation. Il prend notamment en charge la gestion du label, de la précision, du champ requis, du message d'erreur et évidemment de tous les attributs requis pour l'accessibilité.
+            </li>            
+        </ul>
+    </li>
+</ul>
+
+<h3>Corrections d'anomalies</h3>
+<ul class="utd">
+    <li>
+        <span>Accordéon</span>
+        <ul>
+            <li>Correction de l'animation de fermeture. Il y avait un décalage du contenu pendant qu'il disparaîssait.</li>            
+        </ul>
+    </li>
+</ul>
+
+<h3>Breaking changes</h3>
+<ul class="utd">
+    <li>
+        <span>Infobulle</span>
+        <ul>
+            <li>Attribut renommé. srtitre devient sr-titre.</li>            
+            <li>Attribut renommé. srboutonfermer devient sr-bouton-fermer.</li>            
+            <li>Attribut renommé. srboutonouvrir devient sr-bouton-ouvrir.</li>            
+        </ul>
+    </li>
+    <li>
+        <span>Dialogue modal</span>
+        <ul>
+            <li>Attribut renommé. srboutonfermer devient sr-bouton-fermer.</li>            
+            <li>Attribut renommé. id-focusouverture devient id-focus-ouverture.</li>            
+            <li>Attribut renommé. idfocus devient id-focus-fermerture.</li>            
+            <li>Attribut renommé. estboutonstextelong devient boutons-textelong.</li>            
+            <li>Attribut renommé. estaffichageboutonsinline devient forcer-boutons-inline.</li>            
+            <li>Attribut renommé. estaffichagelateral devient affichage-lateral.</li>            
+        </ul>
+    </li>
+</ul>
+
 
 <h2>1.6.1 (2022-09-18)</h2>
 <h3>Corrections d'anomalies</h3>

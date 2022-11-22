@@ -80,6 +80,9 @@
 
 <h1>Traitement en cours</h1>
 
+<utd-menu-ancres selecteur="#main h2">
+</utd-menu-ancres>
+
 <h2>Description</h2>
 <p>Permet de gérer la notion de traitement en cours dans une interface. Un visuel (spinner) est affiché sur le bouton ayant initié le traitement et il est possible de bloquer l'interface (overlay).</p>
 <p>Effectue également une notification au lecteur écran afin d'aviser que le traitement est débuté ou terminé.</p>

@@ -6,17 +6,23 @@
     import Versions from './pages/Versions.svelte'; 
     import Accordeon from './pages/Accordeon.svelte'; 
     import Infobulle from './pages/Infobulle.svelte'; 
+    import Section from './pages/Section.svelte'; 
     import Avis from './pages/Avis.svelte'; 
     import Boutons from './pages/Boutons.svelte'; 
+    import ChampsTexte from './pages/ChampsTexte.svelte'; 
+    import CaseCocher from './pages/CaseCocher.svelte'; 
+    import BoutonRadio from './pages/BoutonRadio.svelte'; 
     import HautPage from './pages/HautPage.svelte'; 
     import Message from './pages/Message.svelte'; 
     import Dialogue from './pages/Dialogue.svelte'; 
-    import MenuSecondaire from './components/MenuSecondaire.svelte'; 
     import Notifications from './pages/Notifications.svelte'; 
     import TraitementEnCours from './pages/TraitementEnCours.svelte'; 
     import {router} from 'tinro';
-//    a on:click|preventDefault={() => window.location.href = '/composants/avis'}
-
+    import ChampsAutomatique from './pages/ChampsAutomatique.svelte';
+    import ChampObligatoire from './pages/ChampObligatoire.svelte';
+  import ChampErreur from './pages/ChampErreur.svelte';
+  import MenuVertical from './pages/MenuVertical.svelte';
+  import MenuAncres from './pages/MenuAncres.svelte';
 </script>
 
 <div class="conteneur-principal">
@@ -32,26 +38,26 @@
         <div id="javascriptDesactive" class="fureteur-desuet">
             <div class="utd-container" role="alert" aria-atomic="true">
                 <div class="icone">
-                    <img alt="Icône avertissement" src="../images/utd-sprite.svg?v=1.6.1#ico-avertissement" width="28" height="26" aria-hidden="true">
+                    <img alt="Icône avertissement" src="/images/utd-sprite.svg?v=1.7.0#ico-avertissement" width="28" height="26" aria-hidden="true">
                 </div>
                 <div class="texte">
-                    Activez JavaScript dans votre navigateur pour que Système de design MTESS fonctionne correctement.
+                    Activez JavaScript dans votre navigateur pour que Système de design MESS fonctionne correctement.
                 </div>
             </div>
         </div>
         </noscript>
-        <img id="pivLogoGouvernementPrint" alt="Logo du gouvernement du Québec." src="../images/quebecPrint.gif" width="199" height="60">
+        <img id="pivLogoGouvernementPrint" alt="Logo du gouvernement du Québec." src="/images/quebecPrint.gif" width="199" height="60">
         <div class="piv piv-entete">
             <div class="utd-container">
                 <div class="conteneur-sections">
                     <div class="section-gauche signature-gouvernement" lang="fr">
                         <a href="/">
-                            <img alt="Signature du gouvernement du Québec. Accédez à Système de design MTESS." src="../images/utd-sprite.svg?v=1.6.1#QUEBEC_blanc">
+                            <img alt="Signature du gouvernement du Québec. Accédez à Système de design MESS." src="/images/utd-sprite.svg?v=1.7.0#QUEBEC_blanc">
                         </a>
                     </div>
                     <div class="section-centre">
                         <a href="/" class="titre-site">
-                            <span>Système de design MTESS</span>
+                            <span>Système de design MESS</span>
                             <span class="description"></span>
                         </a>
                     </div>
@@ -64,7 +70,7 @@
                     </div>
                 </div>
                 <div class="titre-site mobile">
-                    <span>Système de design MTESS</span>
+                    <span>Système de design MESS</span>
                 </div>
             </div>
         </div>
@@ -84,7 +90,7 @@
                     </ul>
                 </nav>
             </div>
-            <div class="container zone-menu-principal d-flex">
+            <div class="container zone-menu-principal">
             </div>
         </div>
 
@@ -93,27 +99,40 @@
     <div class="utd-container">
         <div id="conteneur2Colonnes" class="utd contenu-principal-droite">
             <div id="colonneGauche" class="utd">                
-                <MenuSecondaire titre="{$router.path.indexOf('/composants') >= 0 ? 'Liste des composants' : 'Liste des éléments de base'}">
-                    <div slot="contenu">
-                        <ul>
-                            {#if $router.path.indexOf('/composants') >= 0}                                
-                                <li><a href="/composants/versions" tinro-ignore use:active exact>Historique des versions</a></li>
-                                <li><a href="/composants/accordeon" tinro-ignore use:active exact>Accordeon</a></li>
-                                <li><a href="/composants/avis" tinro-ignore use:active exact>Avis</a></li>
-                                <li><a href="/composants/boutons" tinro-ignore use:active exact>Boutons</a></li>
-                                <li><a href="/composants/dialogue" tinro-ignore use:active exact>Dialogue modal</a></li>
-                                <li><a href="/composants/hautpage" tinro-ignore use:active exact>Haut de page</a></li>
-                                <li><a href="/composants/infobulle" tinro-ignore use:active exact>Infobulle</a></li>
-                                <li><a href="/composants/message" tinro-ignore use:active exact>Message</a></li>
-                                <li><a href="/composants/notifications" tinro-ignore use:active exact>Notifications</a></li>
-                                <li><a href="/composants/traitementencours" tinro-ignore use:active exact>Traitement en cours</a></li>
-                            {:else}                                    
-                                <li><a href="/base/principe" tinro-ignore use:active exact>Principe</a></li>
-                                <li><a href="/base/utilisation" tinro-ignore use:active exact>Utilisation</a></li>
-                            {/if}
-                        </ul>
-                    </div>          
-                </MenuSecondaire> 
+                <utd-menu-vertical id="menuVertical" titre-visible="false" titre="{$router.path.indexOf('/composants') >= 0 ? 'Composants' : 'Éléments de base'}" sr-titre="{$router.path.indexOf('/composants') >= 0 ? 'Menu composants' : 'Menu éléments de base'}">
+                    {#if $router.path.indexOf('/composants') >= 0}                                
+                        <utd-menu-vertical-item href="/composants/versions" libelle="Historique des versions"></utd-menu-vertical-item>
+                        <utd-menu-vertical-item libelle="Action">                                
+                            <utd-menu-vertical-item libelle="Boutons" href="/composants/actions/boutons"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item libelle="Dialogue modal" href="/composants/actions/dialogue"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item libelle="Message" href="/composants/actions/message"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item libelle="Notifications" href="/composants/actions/notifications"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item libelle="Traitement en cours" href="/composants/actions/traitementencours"></utd-menu-vertical-item>
+                        </utd-menu-vertical-item>
+                        <utd-menu-vertical-item libelle="Affichage de contenu">                                
+                            <utd-menu-vertical-item libelle="Accordéon" href="/composants/affichagecontenu/accordeon"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item libelle="Avis" href="/composants/affichagecontenu/avis"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item libelle="Infobulle" href="/composants/affichagecontenu/infobulle"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item libelle="Section" href="/composants/affichagecontenu/section"></utd-menu-vertical-item>
+                        </utd-menu-vertical-item>
+                        <utd-menu-vertical-item libelle="Formulaire">    
+                            <utd-menu-vertical-item libelle="Bouton radio" href="/composants/formulaire/boutonradio"></utd-menu-vertical-item>                            
+                            <utd-menu-vertical-item libelle="Case à cocher" href="/composants/formulaire/casecocher"></utd-menu-vertical-item>                            
+                            <utd-menu-vertical-item libelle="Champs obligatoires" href="/composants/formulaire/champobligatoire"></utd-menu-vertical-item> 
+                            <utd-menu-vertical-item libelle="Champs texte et autres" href="/composants/formulaire/champstexte"></utd-menu-vertical-item> 
+                            <utd-menu-vertical-item libelle="Champs (Gestion automatique)" href="/composants/formulaire/champsautomatique"></utd-menu-vertical-item>                           
+                            <utd-menu-vertical-item libelle="Erreurs" href="/composants/formulaire/champerreur"></utd-menu-vertical-item>                                 
+                        </utd-menu-vertical-item>
+                        <utd-menu-vertical-item libelle="Navigation">                                
+                            <utd-menu-vertical-item libelle="Haut de page" href="/composants/navigation/hautpage"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item libelle="Menu d'ancres" href="/composants/navigation/menuancres"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item libelle="Menu vertical" href="/composants/navigation/menuvertical"></utd-menu-vertical-item>
+                        </utd-menu-vertical-item>
+                    {:else}                                    
+                        <utd-menu-vertical-item href="/base/principe" libelle="Principe"></utd-menu-vertical-item>
+                        <utd-menu-vertical-item href="/base/utilisation" libelle="Utilisation"></utd-menu-vertical-item>
+                    {/if}
+                </utd-menu-vertical> 
             </div>
         
             <div id="colonneDroite" class="utd">
@@ -122,17 +141,36 @@
                     <Route path="/base" redirect="/base/principe" ></Route>
                     <Route path="/base/principe" ><Principe /></Route>
                     <Route path="/base/utilisation" ><Utilisation /></Route>
-                    <Route path="/composants" redirect="/composants/versions" ></Route>
-                    <Route path="/composants/versions" ><Versions /></Route>
-                    <Route path="/composants/accordeon" ><Accordeon /></Route>
-                    <Route path="/composants/avis" ><Avis /></Route>
-                    <Route path="/composants/boutons" ><Boutons /></Route>
-                    <Route path="/composants/hautpage" ><HautPage /></Route>
-                    <Route path="/composants/infobulle" ><Infobulle /></Route>
-                    <Route path="/composants/dialogue" ><Dialogue /></Route>
-                    <Route path="/composants/message" ><Message /></Route>
-                    <Route path="/composants/notifications" ><Notifications /></Route>
-                    <Route path="/composants/traitementencours" ><TraitementEnCours /></Route>
+                    <Route path="/composants" redirect="/composants/versions"></Route>
+                    <Route path="/composants/*">
+                        <Route path="/versions" ><Versions /></Route>
+                        <Route path="/actions/*">
+                            <Route path="/boutons" ><Boutons /></Route>
+                            <Route path="/dialogue" ><Dialogue /></Route>
+                            <Route path="/message" ><Message /></Route>                            
+                            <Route path="/notifications" ><Notifications /></Route>
+                            <Route path="/traitementencours" ><TraitementEnCours /></Route>
+                        </Route>
+                        <Route path="/affichagecontenu/*">
+                            <Route path="/accordeon" ><Accordeon /></Route>
+                            <Route path="/avis" ><Avis /></Route>
+                            <Route path="/infobulle" ><Infobulle /></Route>    
+                            <Route path="/section" ><Section /></Route>    
+                        </Route>
+                        <Route path="/formulaire/*">                    
+                            <Route path="/boutonradio" ><BoutonRadio /></Route>
+                            <Route path="/casecocher" ><CaseCocher /></Route>
+                            <Route path="/champobligatoire" ><ChampObligatoire /></Route>
+                            <Route path="/champstexte" ><ChampsTexte /></Route>
+                            <Route path="/champsautomatique" ><ChampsAutomatique /></Route>
+                            <Route path="/champerreur" ><ChampErreur /></Route>
+                        </Route>
+                        <Route path="/navigation/*">                    
+                            <Route path="/hautpage" ><HautPage /></Route>
+                            <Route path="/menuancres" ><MenuAncres /></Route>
+                            <Route path="/menuvertical" ><MenuVertical /></Route>
+                        </Route>                            
+                    </Route>
                 </main>        
             </div>
         </div>        
@@ -143,7 +181,7 @@
     <h2 id="titreMenuPiedPage" class="utd-sr-only">Menu pied de page</h2>
     <div class="utd-container conteneur-signature-mo">
         <a href="https://www.mtess.gouv.qc.ca/" target="_blank" rel="noopener">
-            <img class="logo-mo" alt="Ministère du Travail, de l'Emploi et de la Solidarité sociale. Ce lien sera ouvert dans un nouvel onglet." src="/images/logo_piv_bas_page.gif">
+            <img class="logo-mo" alt="Ministère de l'Emploi et de la Solidarité sociale. Ce lien sera ouvert dans un nouvel onglet." src="/images/logo_piv_bas_page.png" width="210" height="81">
         </a>
 
         <span class="copyright">

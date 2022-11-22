@@ -1,6 +1,6 @@
-# Système de design MTESS
+# Système de design MESS
 
-Composants web réutilisables pour le MTESS qui sont basés sur les règles Quebec.ca.
+Composants web réutilisables pour le MESS qui sont basés sur les règles Quebec.ca.
 
 Accessibles, "responsive", aucune dépendance, utilisables dans tous les types de projets (.Net, Drupal, SharePoint, VueJs, etc.).
 

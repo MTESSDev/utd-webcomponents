@@ -10,6 +10,8 @@
   export let idElementCodeSource = ""
   export let codeSource = ""
   export let language = "language-html"
+  export let outerhtml = "false"
+  export let breakAfter = ""
 
   let controleCodeSource = null  
   let estSuccesCopie = false
@@ -28,7 +30,7 @@
       }      
     } else {
       controleCodeSource = document.getElementById(idElementCodeSource)
-      codeSource = obtenirCodeSourceFormate(controleCodeSource.outerHTML)
+      codeSource = obtenirCodeSourceFormate(outerhtml === 'true' ? controleCodeSource.outerHTML : controleCodeSource.innerHTML)
     }
 
     setTimeout(function(){ 
@@ -60,26 +62,62 @@
       "indent-spaces":4,
       "wrap":300,
       "markup":true,
+//      "preserve-newlines": true,
+      "preserve-newlines": false,
+      "max_preserve_newlines": 1,
       "output-xml":true,
       "numeric-entities":true,
       "quote-marks":true,
       "quote-nbsp":false,
       "show-body-only":false,
       "quote-ampersand":false,
-      "break-before-br":true,
+//      "break-before-br":true,
+      "break-before-br":false,
       "uppercase-tags":false,
       "uppercase-attributes":false,
       "drop-font-tags":true,
       "tidy-mark":false,
-      "new-blocklevel-tags": "utd-avis"
     }
 
     let codeSource = code
-    codeSource = codeSource.replace(/<span/g, "\r\n<span")
-    codeSource = codeSource.replace(/<button/g, "\r\n<button")
 
-    codeSource = html_beautify(codeSource, options) 
-    return codeSource.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+    const tagsUtd = [... new Set(codeSource.match(/<utd-.[^<]*>/gi))]
+    tagsUtd.forEach((tag) => {
+      codeSource = codeSource.replace(tag, tag + "\r\n")
+    })
+
+    const divs = [... new Set(codeSource.match(/<div.[^<]*>/gi))]
+    divs.forEach((tag) => {
+      codeSource = codeSource.replace(tag, tag + "\r\n")
+    })
+
+    const ba = breakAfter.replace(/\s/g,'').split(",")
+    ba.forEach((tag) =>{
+      const regEx = new RegExp(`<\/${tag}>`, "g");
+      codeSource = codeSource.replace(regEx, `</${tag}>\r\n`)
+    })
+
+    //Ajout de sauts de ligne sur certaines balises afin d'avoir un plus beau formatage
+    codeSource = codeSource.replace(/<span/g, "\r\n<span")
+    codeSource = codeSource.replace(/<\/span>/g, "</span>\r\n")
+    codeSource = codeSource.replace(/<button/g, "\r\n<button")
+    codeSource = codeSource.replace(/<div/g, "\r\n<div")
+    codeSource = codeSource.replace(/<label/g, "\r\n<label")
+    codeSource = codeSource.replace(/<\/label>/g, "</label>\r\n")
+    codeSource = codeSource.replace(/<input/g, "\r\n<input")
+
+    codeSource = codeSource.replace(/\r\n<\/utd-menu-vertical-item>/g, "</utd-menu-vertical-item>")
+    codeSource = codeSource.replace(/\r\n<\/utd-menu-ancres>/g, "</utd-menu-ancres>")
+    codeSource = codeSource.replace(/\r\n<\/utd-hautpage>/g, "</utd-hautpage>")
+
+    codeSource = codeSource.replace(/\r\n\r\n/g, "\r\n")
+    codeSource = codeSource.replace(/\r\n\s\r\n/g, "\r\n")
+    codeSource = codeSource.replace(/\r\n\r\n/g, "\r\n")      
+    codeSource = codeSource.replace(/\r\n\r\n/g, "\r\n")
+
+    console.log(codeSource)
+//    codeSource = codeSource.replace(/<sl><\/sl>/g, "\r")
+    return nettoyerCode(html_beautify(codeSource, options))
   }
 
   function obtenirCodeSourceFormate2(code) {
@@ -104,9 +142,11 @@
 
     let codeSource = code
 
-    codeSource = js_beautify(codeSource) 
-    return codeSource.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+    return nettoyerCode(js_beautify(codeSource))    
+  }
 
+  function nettoyerCode(code) {
+    return code.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
   }
 </script>
 

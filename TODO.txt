@@ -1,0 +1,2 @@
+Infobulle
+Lors de l'utilisation avec un libellé de champ, conserver l'infobulle avec le dernier mot si le label doit être sur plusieurs lignes

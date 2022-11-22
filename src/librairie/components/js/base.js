@@ -64,7 +64,7 @@ export const message = (function () {
         boutons.forEach(btn => {
             btn.addEventListener("click", function() {
                 const raison = this.getAttribute('raison-fermeture');
-                fenetreMessage.setAttribute('raisonfermeture', raison);
+                fenetreMessage.setAttribute('raison-fermeture', raison);
                 fenetreMessage.setAttribute('afficher', 'false');
             });    
         });
@@ -106,9 +106,9 @@ export const message = (function () {
      */
     function ajouterControle(parametres) {
     //    var classeIcone = obtenirClasseIcone(parametres.type);
-
+        const type = parametres.type ? ` type="${parametres.type}" ` : ''
         let html = `
-        <utd-dialog titre="${parametres.titre}" idfocus="${parametres.idControleFocusFermeture}" estfenetremessage="true" estboutonstextelong="${parametres.estBoutonsTexteLong}" type="${parametres.type}" >
+        <utd-dialog titre="${parametres.titre}" id-focus-fermeture="${parametres.idControleFocusFermeture}" estfenetremessage="true" boutons-texte-long="${parametres.estBoutonsTexteLong}" ${type}>
             <div slot="contenu">
                 ${parametres.corps}
             </div>
@@ -153,9 +153,14 @@ export const message = (function () {
      * @param {Promise} resolve Résolution de promesse.
      */
     function definirEvenementFermeture(fenetreMessage, resolve) {
-        fenetreMessage.addEventListener("fermeture", e => {        
+        fenetreMessage.addEventListener("fermeture", e => {       
             resolve(e.detail.raisonFermeture);
-            fenetreMessage.parentElement.remove();
+            
+            //setTimeout ici afin de s'assurer que svelte a terminé son traitement avant de retirer le compsant du DOM
+            setTimeout(() => {
+                fenetreMessage.parentElement.remove();    
+            });  
+            
         });
     }
 
@@ -192,7 +197,7 @@ export const dialogue = (function () {
             dialogue.setAttribute('afficher', 'true');    
 
             if(idControleFocusFermeture){
-                dialogue.setAttribute('idfocus', idControleFocusFermeture);    
+                dialogue.setAttribute('id-focus-fermeture', idControleFocusFermeture);    
             }   
         } else {
             console.error(`utd.dialogue.afficher -> Contrôle utd-dialog "${dialogue}" non trouvé.`);
@@ -211,7 +216,7 @@ export const dialogue = (function () {
         if(dialogue){
             dialogue.setAttribute('afficher', 'false');    
 
-            const idFocus = dialogue.getAttribute('idfocus');
+            const idFocus = dialogue.getAttribute('id-focus-fermeture');
 
             if(idFocus){
                 const controleFocus = document.getElementById(idFocus);

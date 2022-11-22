@@ -1,4 +1,4 @@
-/*! utd-webcomponents v1.6.1 */
+/*! utd-webcomponents v1.7.0 */
 /*====================================================================================================
   -00- Variables
 ====================================================================================================*/
@@ -193,7 +193,7 @@
     --couleur-bouton-primaire: #095797;
     --couleur-bleu-pale: #DAE6F0;
     --couleur-orange: #cf4b00;
-    --couleur-saumon: #F09686;
+    --couleur-saumon: #E58271;
     --couleur-primaire-entete-soulignee: var(--couleur-saumon);
     --couleur-texte-base: #223654;
     --couleur-texte-gris-pale: #6A778A;
@@ -204,6 +204,32 @@
     --couleur-hover: #ecf2f7;
     --couleur-filet-secondaire: #c5cad2;
     --couleur-bordure-tables: #dee2e6;
+
+
+    /* Couleurs du système de design Quebec.ca*/
+    --gris-pale: #F1F1F2;
+    --gris-clair: #C5CAD2;
+    --gris: #8893A2;
+    --gris-moyen: #6B778A;
+    --gris-fonce: #4E5662;
+    --bleu-pale: #DAE6F0;
+    --bleu-clair: #4A98D9;
+    --bleu: #1479CC;
+    --bleu-piv: #095797;
+    --bleu-moyen: #19406C;
+    --bleu-fonce: #223654;
+    --rose-pale: #FFDBD6;
+    --rose: #E58271;
+    --rouge: #CB381F;
+    --rose-fonce: #692519;
+    --vert-pale: #D7F0BB;
+    --vert: #4F813D;
+    --vert-fonce: #2C4024;
+    --jaune-pale: #F8E69A;
+    --jaune: #E0AD03;
+    --jaune-fonce: #AD781C;
+
+
 }
 
 /*====================================================================================================
@@ -333,6 +359,16 @@ margin-bottom: 0;
     display: none!important;
 }
 
+.utd-d-inline{
+    display: inline!important;
+}
+.utd-d-inline-block{
+    display: inline-block!important;
+}
+.utd-d-block{
+    display: block!important;
+}
+
 .utd-sr-only, .sr-only {
     position: absolute;
     width: 1px;
@@ -365,12 +401,28 @@ margin-bottom: 0;
     margin-bottom: 32px;
 }
 
+.mr-32 {
+    margin-right: 32px;
+}
+
+.ml-32 {
+    margin-left: 32px;
+}
+
 .mt-24 {
     margin-top: 24px;
 }
 
 .mb-24 {
     margin-bottom: 24px;
+}
+
+.mr-24 {
+    margin-right: 24px;
+}
+
+.ml-24 {
+    margin-left: 24px;
 }
 .mt-16 {
     margin-top: 16px;
@@ -379,12 +431,28 @@ margin-bottom: 0;
 .mb-16 {
     margin-bottom: 16px;
 }
+.mr-16 {
+    margin-right: 16px;
+}
+
+.ml-16 {
+    margin-left: 16px;
+}
+
 .mt-8 {
     margin-top: 8px;
 }
 
 .mb-8 {
     margin-bottom: 8px;
+}
+
+.mr-8 {
+    margin-right: 8px;
+}
+
+.ml-8 {
+    margin-left: 8px;
 }
 
 /*====================================================================================================
@@ -571,7 +639,7 @@ a.utd-lien-externe[target="_blank"]:after, span.utd-lien-externe:after {
     content: "";
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-lien-externe");
+    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-lien-externe");
     margin-left: 4px;
     width: 12px;
     height: 12px;
@@ -666,11 +734,13 @@ a.utd-lien-externe[target="_blank"]:after, span.utd-lien-externe:after {
     border-color: var(--couleur-bouton-primaire);
     background-color: var(--couleur-bouton-primaire);
     box-shadow: 0 1px 4px rgba(34, 54, 84, 0.16);
+    text-decoration: none;
 }
 
 .utd-btn.primaire:not([disabled]):hover {
     border-color: #156bb2;
     background-color: #156bb2;
+    text-decoration: none;
 }
 
 .utd-btn.primaire:not([disabled]):focus  {
@@ -678,6 +748,7 @@ a.utd-lien-externe[target="_blank"]:after, span.utd-lien-externe:after {
     background-color: #156bb2;
     box-shadow: 0 2px 8px rgba(34, 54, 84, 0.16), 0 0 0 2px #4a98d9;
     outline: 0;
+    text-decoration: none;
 }
 
 .utd-btn.primaire:active {
@@ -794,15 +865,15 @@ a.utd-lien-externe[target="_blank"]:after, span.utd-lien-externe:after {
 /* ==================== Bouton avertissement ==================== */
 .utd-btn.avertissement {
     color: #fff;
-    border-color: #cb381f;
-    background-color: #cb381f;
+    border-color: var(--rouge);
+    background-color: var(--rouge);
 }
 .utd-btn.avertissement:not([disabled]):hover {
     border-color: #b52e16;
     background-color: #b52e16;
 }
 .utd-btn.avertissement:not([disabled]):focus {
-    border-color: #223654;
+    border-color: var(--bleu-fonce);
     background-color: #b52e16;
     box-shadow: 0 0 0 2px #4a98d9;
     outline: 0;
@@ -905,32 +976,71 @@ label, .label {
     margin-bottom: 4px;
 }
 
+.utd-icone-champ-requis {
+    font-size: 1rem;
+    vertical-align: top;
+    font-family: OpenSans-Bold;
+    color: var(--couleur-erreur);
+    margin-left:6px;
+    display: inline-block;
+}
+
 .utd-precision {
     display: block;
     margin-bottom: 4px;
-    font-size: 0.875rem;
+    font-size: 14px;
+    line-height: 1.2;
 }
 
 .utd-form-group {
     margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+utd-accordeon .utd-form-group:last-child, utd-section .utd-form-group:last-child {
+    margin-bottom: 0;
 }
 
 .utd-form-control {
     height: 40px;
     display: block;
-    padding: .375rem .75rem;
+    padding: 8px;
+    color: var(--couleur-texte-base);
     font-size: 1rem;
     line-height: 1.5;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid #858b93;
+    border: 1px solid #808A9D;
     border-radius: 0;
 }
+.utd-form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #647287;
+    opacity: 1; /* Firefox */
+}
+  
+.utd-form-control::-ms-input-placeholder { /* Microsoft Edge */
+    color: #647287;
+}
 
+/*Redéfinition de Bootstrap*/
+input.utd-form-control[type="search"]{
+    outline-offset: 0;
+}
+
+/* Champs en erreur TODO */
+.utd-form-control[aria-invalid="true"]{
+    border: 2px solid var(--couleur-erreur);
+}    
 .utd-erreur-champ {
-    display: inline-block;
+    display: block;
     margin-top: 8px;
     color: var(--couleur-erreur);
+}
+
+/* Une erreur qui est immédiatement après un label (ex. un checkbox-seul) */
+label + .utd-erreur-champ{
+    margin-top: 4px;
 }
 
 textarea.utd-form-control{
@@ -938,9 +1048,9 @@ textarea.utd-form-control{
 }
 
 input.utd-form-control:focus,
-textarea.utd-form-control:focus
+textarea.utd-form-control:focus,
 select.utd-form-control:focus {
-    outline: 3px solid #89bce5;
+    outline: 2px solid #89bce5;
     border: 2px solid #5b6476;
 }
 
@@ -973,7 +1083,7 @@ input[type="date"].utd-form-control {
 
 input.utd-form-control.xxl,
 textarea.utd-form-control.xxl {
-    width: 728px;
+    width: 100%;
 }
 
 input.utd-form-control.xl,
@@ -1011,6 +1121,284 @@ textarea.utd-form-control.sm {
         width: 100%;
     }
 }
+
+/*====================================================================================================
+  -20B- Boutons radio
+  Inspiré de https://moderncss.dev/pure-css-custom-styled-radio-buttons/
+/*====================================================================================================*/
+.utd-form-group.radio .label{
+    display: flex;
+}
+
+.utd-form-group.radio label{
+    font-family: OpenSans-Regular;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.2;
+    display: flex;
+    padding: 10px 8px;
+    margin: 0 auto 0 -8px;
+}
+
+.utd-form-group.radio.compact label{
+    padding: 8px;
+}
+
+.utd-form-group.radio label:first-of-type{
+    margin-top: 16px;
+}
+
+.utd-form-group.radio.compact label:first-of-type{
+    margin-top: 8px;
+}
+
+.utd-form-group.radio .label, .utd-form-group.radio .utd-precision{
+    margin-bottom: 0;
+}
+
+.utd-form-group.radio .utd-precision{
+    margin-top: 4px;
+}
+
+.utd-form-group.radio input[type="radio"]{
+    -webkit-appearance: none;
+    appearance: none;
+    position: relative;
+
+    /* Pour iOS < 15 retire background:gradient */
+    background-color: #fff;  
+
+    margin: -3px 8px 0 0!important;
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    min-height: 24px;
+    outline: 0!important;
+}
+
+.utd-form-group.radio.compact input[type="radio"]{
+    margin: 1px 8px 0 0!important;
+    width: 16px;
+    min-width: 16px;
+    height: 16px;
+    min-height: 16px;
+}
+
+.utd-form-group.radio input[type="radio"]:checked::before{
+    border-color: var(--couleur-bleu);
+}
+
+.utd-form-group.radio input[type="radio"]:focus::before{
+    border-width: 3px;
+    border-color: var(--couleur-texte-base);
+    outline: 2px solid var(--bleu-clair);
+}
+
+.utd-form-group.radio input[type="radio"]::before {
+    content: "";
+    position: absolute;
+    border: 2px solid var(--couleur-texte-base);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+  }
+
+  .utd-form-group.radio.compact input[type="radio"]::before {
+    border-width: 1px;
+    width: 16px;
+    height: 16px;
+  }
+  
+  .utd-form-group.radio.compact input[type="radio"]:focus::before{
+    border-width: 2px;
+  }
+
+
+  .utd-form-group.radio input[type="radio"]::after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    background-color: var(--couleur-bleu);
+  }
+
+  .utd-form-group.radio.compact input[type="radio"]::after {
+    top: 3px;
+    left: 3px;
+    width: 10px;
+    height: 10px;
+  }
+
+  .utd-form-group.radio input[type="radio"]:checked::after {
+    transform: scale(1);
+  }
+
+.utd-form-group.radio *, .utd-form-group.radio *:before, .utd-form-group.radio *:after {
+    box-sizing: border-box;
+}
+
+  /* Radios désactivés */
+  .utd-form-group.radio input[type="radio"][disabled]::before{
+    border-color: var(--gris-clair);
+  }
+
+  .utd-form-group.radio input[type="radio"][disabled]::after{
+    background-color: var(--gris);
+  }
+
+  .utd-form-group.radio input[type="radio"][disabled] ~ *{
+    color: var(--gris);
+  }
+
+
+/*====================================================================================================
+  -20C- Checkbox
+  Inspiré de https://moderncss.dev/pure-css-custom-checkbox-style
+/*====================================================================================================*/
+.utd-form-group.checkbox .label{
+    display: flex;
+}
+
+.utd-form-group.checkbox label{
+    font-family: OpenSans-Regular;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.2;
+    display: flex;
+    padding: 10px 8px;
+    margin: 0 auto 0 -8px;
+}
+
+.utd-form-group.checkbox.compact label{
+    padding: 8px;
+}
+
+.utd-form-group.checkbox label:first-of-type{
+    margin-top: 16px;
+}
+
+.utd-form-group.checkbox.compact label:first-of-type{
+    margin-top: 8px;
+}
+
+/* checkbox-seul */
+.utd-form-group.checkbox label:first-of-type:last-of-type{
+    font-family: 'OpenSans-SemiBold';
+}
+
+.utd-form-group.checkbox .label, .utd-form-group.checkbox .utd-precision{
+    margin-bottom: 0;
+}
+
+.utd-form-group.checkbox .utd-precision{
+    margin-top: 4px;
+}
+
+.utd-form-group.checkbox input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+
+    /* Pour iOS < 15 retire background:gradient */
+    background-color: #fff;  
+    position: relative;
+    margin: -3px 8px 0 0!important;
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    min-height: 24px;
+    border-radius: 0;   
+    outline: 0!important;
+}
+
+.utd-form-group.checkbox.compact input[type="checkbox"]{
+    margin: 1px 8px 0 0!important;
+    width: 16px;
+    min-width: 16px;
+    height: 16px;
+    min-height: 16px;
+}
+
+.utd-form-group.checkbox input[type="checkbox"]:checked::before{
+    border-color: var(--couleur-bleu);
+}
+
+.utd-form-group.checkbox input[type="checkbox"]:focus::before{
+    border-width: 3px;
+    border-color: var(--couleur-texte-base);
+    outline: 2px solid var(--bleu-clair);
+}
+
+
+.utd-form-group.checkbox.compact input[type="checkbox"]::before {
+    border-width: 1px;
+    width: 16px;
+    height: 16px;
+  }
+  
+.utd-form-group.checkbox.compact input[type="checkbox"]:focus::before{
+border-width: 2px;
+}
+
+
+.utd-form-group.checkbox input[type="checkbox"]::after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 16px;
+    height: 16px;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M8.76,56.2c-6.38-6.34,3.26-16,9.64-9.69L38,65.88,80.56,23.29c6.38-6.38,16.07,3.32,9.69,9.69L42.84,80.37a6.83,6.83,0,0,1-9.65,0Z"/></svg>');
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M8.76,56.2c-6.38-6.34,3.26-16,9.64-9.69L38,65.88,80.56,23.29c6.38-6.38,16.07,3.32,9.69,9.69L42.84,80.37a6.83,6.83,0,0,1-9.65,0Z"/></svg>');
+    background-color: #fff;
+}
+
+.utd-form-group.checkbox.compact input[type="checkbox"]::after {
+    top: 1px;
+    left: 1px;
+    width: 14px;
+    height: 14px;
+}
+
+.utd-form-group.checkbox input[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--couleur-texte-base);
+}
+
+.utd-form-group.checkbox input[type="checkbox"]:checked::before {
+    background-color: var(--couleur-bleu);
+}
+
+.utd-form-group.checkbox input[type="checkbox"]:checked::after {
+    transform: scale(1);
+}
+
+.utd-form-group.checkbox *, .utd-form-group.checkbox *:before, .utd-form-group.checkbox *:after {
+    box-sizing: border-box;
+}
+
+  /* Checkbox désactivés */
+  .utd-form-group.checkbox input[type="checkbox"][disabled]::before{
+    border-color: var(--gris-clair);
+  }
+
+  .utd-form-group.checkbox input[type="checkbox"][disabled]::after{
+    background-color: var(--gris);
+  }
+
+  .utd-form-group.checkbox input[type="checkbox"][disabled] ~ *{
+    color: var(--gris);
+  }
+
 
 /*====================================================================================================
   -50- Tables
@@ -1106,17 +1494,6 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
     max-width: 288px;
 }
 
-.contenu-principal-gauche #colonneGauche.utd > *, .contenu-principal-gauche #colonneDroite.utd > *,
-.contenu-principal-droite #colonneGauche.utd > *, .contenu-principal-droite #colonneDroite.utd > * {
-    margin-top: var(--tc-48-40-val);
-}
-
-.contenu-principal-gauche #colonneGauche.utd > *:first-child, .contenu-principal-gauche #colonneDroite.utd > *:first-child,
-.contenu-principal-droite #colonneGauche.utd > *:first-child, .contenu-principal-droite #colonneDroite.utd > *:first-child {
-    margin-top: 0;
-}
-
-
 /* Limiter la largeur de la colonne principale en mode mobile */
 @media all and (max-width:991px) {
     #conteneur2Colonnes.utd {
@@ -1177,71 +1554,78 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
 }
 
 .utd-icone-svg.avertissement {
-    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-avertissement");
+    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-avertissement");
 }
 
 .utd-icone-svg.fleche-haut-blanche {
-    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-fleche-haut-blanche");
+    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-fleche-haut-blanche");
 }
 
 .utd-icone-svg.clipboard {
-    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-clipboard");
+    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-clipboard");
 }
 
 .utd-icone-svg.erreur {
-    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-erreur");
+    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-erreur");
 }
 
 .utd-icone-svg.erreur-blanc {
-    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-erreur-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-erreur-blanc");
 }
 
 .utd-icone-svg.information {
-    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-information");
+    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-information");
 }
 
 .utd-icone-svg.information-blanc {
-    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-information-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-information-blanc");
 }
 
 .utd-icone-svg.moins {
-    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-moins");
+    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-moins");
 }
 
 .utd-icone-svg.plus {
-    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-plus");
+    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-plus");
 }
 
 .utd-icone-svg.question {
-    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-question");
+    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-question");
 }
 
 
 .utd-icone-svg.succes {
-    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-succes");
+    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-succes");
 }
 .utd-icone-svg.succes-blanc {
-    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-succes-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-succes-blanc");
 }
 
 .utd-icone-svg.x-fermer-blanc {
     width: 16px;
     height: 16px;
     min-width: 16px;
-    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-xfermer-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-xfermer-blanc");
 }
 .utd-icone-svg.x-fermer-bleu {
     width: 16px;
     height: 16px;
     min-width: 16px;
-    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-xfermer-bleu");
+    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-xfermer-bleu");
 }
 
-.utd-icone-svg.chevron-bleu-piv {
-    background-image: url("../images/utd-sprite.svg?v=1.6.1#ico-chevron-bleu-piv");
+.utd-icone-svg.chevron-bleu-piv, .utd-icone-svg.chevron-blanc, .utd-icone-svg.chevron-bleu-texte {
     width: 16px;
     min-width: 16px;
     height: 10px;
+}
+
+.utd-icone-svg.chevron-bleu-piv {
+    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-chevron-bleu-piv");
+}
+
+.utd-icone-svg.chevron-blanc {
+    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-chevron-blanc");
 }
 
 
@@ -1254,35 +1638,176 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
     padding: 2px 4px;
     border-radius: 4px;
     color: #fff;
+    white-space: nowrap;
 }
 
-/*! utd-webcomponents v1.6.1 */
+.utd-emphase-gris{
+    background-color: var(--gris-fonce);
+    padding: 2px 4px;
+    border-radius: 4px;
+    color: #fff;
+}
+
+
+/*! utd-webcomponents v1.7.0 */
 /*====================================================================================================
   -10- Listes à l'intérieur de composants UTD
 ====================================================================================================*/
 
-[slot="contenu"] ul, .utd-component ul {
+utd-accordeon ul, utd-dialog ul, utd-avis ul, utd-section ul, utd-infobulle ul, .utd-component ul {
   padding-left: 20px;
 }
 
-[slot="contenu"] ul:last-child, .utd-component ul:last-child {
+utd-accordeon ul:last-child, utd-dialog ul:last-child, utd-avis ul:last-child, utd-section ul:last-child, utd-infobulle ul:last-child, .utd-component ul:last-child {
   margin-bottom: 0;
 }
 
-[slot="contenu"] ul li, .utd-component ul li {
+utd-accordeon ul li, utd-dialog ul li, utd-avis ul li, utd-section ul li, utd-infobulle ul li, .utd-component ul li {
   margin-bottom: 16px;
 }
 
-[slot="contenu"] ul li:last-of-type, .utd-component ul li:last-of-type {
+utd-accordeon ul li:last-of-type, utd-dialog ul li:last-of-type, utd-avis ul li:last-of-type, utd-section ul li:last-of-type, utd-infobulle ul li:last-of-type, .utd-component ul li:last-of-type {
   margin-bottom: 0;
 }
 
-[slot="contenu"] p:first-child, .utd-component p:first-child, .contenu p:first-child {
+utd-accordeon p:first-child, utd-dialog p:first-child, utd-avis ul p:first-child, utd-section ul p:first-child, utd-infobulle ul p:first-child, .utd-component p:first-child, .utd-component .contenu p:first-child {
   margin-top: 0;
 }
 
-[slot="contenu"] p:last-child, .utd-component p:last-child, .contenu p:last-child {
+utd-accordeon p:last-child, utd-dialog p:last-child, utd-avis ul p:last-child, utd-section ul p:last-child, utd-infobulle ul p:last-child, .utd-component p:last-child, .utd-component .contenu p:last-child {
   margin-bottom: 0;
+}
+
+/*====================================================================================================
+  -15- Menu vertical
+====================================================================================================*/
+utd-menu-vertical{
+  display: block;
+}
+
+.utd-menu-vertical{
+  border-bottom: 1px solid var(--couleur-filet-secondaire);
+  font-size: 14px;
+}
+
+.utd-menu-vertical .titre{
+  display: block;
+  font-family: OpenSans-Bold;
+  color: var(--couleur-texte-base);
+  padding: 16px 32px 16px 8px;
+}
+
+.utd-menu-vertical:not(.visible) .utd-icone-svg.chevron-bleu-piv{
+  transform: rotate(-180deg);
+}
+
+.utd-menu-vertical a.toggle{
+  display:none;
+}
+
+.utd-menu-vertical .menu{
+  display: block;
+}
+
+.utd-menu-vertical-item .sous-menu{
+  display: none;
+}
+.utd-menu-vertical-item.visible .sous-menu {
+  display: block;
+}
+
+.utd-menu-vertical-item.niv1 {
+  border-top: 1px solid var(--couleur-filet-secondaire);
+}
+
+.utd-menu-vertical-item.niv1:not(.visible) .utd-icone-svg.chevron-bleu-piv{
+  transform: rotate(-180deg);
+}
+
+.utd-menu-vertical-item.niv1 .sous-menu {
+  padding: 8px 32px 8px 24px;
+}
+
+
+.utd-menu-vertical-item a{
+  line-height: 20px;
+  display: flex;    
+  color: var(--couleur-liens);
+  text-decoration: none;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 8px;
+}
+
+.utd-menu-vertical-item:not(.niv1) a {
+  padding: 8px 0;
+}
+
+
+.utd-menu-vertical a.toggle:hover, .utd-menu-vertical-item.niv1 a:hover{    
+  color: var(--couleur-liens);
+  background-color: #EDF2F7!important;
+}
+
+.utd-menu-vertical-item:not(.niv1) a:hover, .utd-menu-vertical-item:not(.niv1) a:focus{    
+  color: var(--couleur-liens);
+  text-decoration: underline;
+}
+
+
+.utd-menu-vertical-item.active a{    
+  font-family: 'OpenSans-Bold';
+}
+
+.utd-menu-vertical-item.active.niv1 a{    
+  background-color: var(--couleur-bleu-pale);
+}
+
+@media (max-width: 991px) {
+  .utd-menu-vertical{
+    border-bottom: 0;
+    background-color: var(--couleur-bleu-pale);    
+    font-size: 16px;
+  }
+  
+  .utd-menu-vertical a.toggle{
+    font-family: 'OpenSans-SemiBold';
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 0;
+    text-decoration: none!important;
+    background-color: var(--couleur-bleu-pale);
+    padding: 16px 8px;
+    width: 100%;
+    text-align: left;
+    color: var(--couleur-liens);
+  }
+
+  .utd-menu-vertical .titre{
+    display:none;
+  }
+  .utd-menu-vertical .menu{
+    display: none;
+  }  
+
+  .utd-menu-vertical.visible .menu{
+    display: block;
+  }
+
+  .utd-menu-vertical-item.niv1{
+    border-top: 0;
+  }
+  
+  .utd-menu-vertical-item.niv1 a, .utd-menu-vertical-item.niv2 a{
+    padding-left: 24px;    
+  }
+
+  .utd-menu-vertical a.toggle:hover, .utd-menu-vertical-item.niv1 a:hover{    
+    background-color: var(--couleur-bleu-pale)!important;
+  }
+  
+
 }
 
 
@@ -1311,7 +1836,7 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
   }
 
   .utd-avis .zone-icone, .utd-avis.information .zone-icone {
-      background-color: #D9E6F0;
+      background-color: var(--bleu-pale);      
   }
 
   .utd-avis.avertissement .zone-icone {
@@ -1319,18 +1844,18 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
   }
 
   .utd-avis.succes .zone-icone {
-      background-color: #BCDA9A;
+      background-color: var(--vert-pale);
   }
 
   .utd-avis.erreur .zone-icone {
-      background-color: #EDBAB1;
+      background-color: var(--rose-pale);
   }
 
-  utd-avis[type="erreur"] [slot="contenu"] ul li a {
+  utd-avis[type="erreur"] ul li a {
     color: var(--couleur-erreur);
   }
 
-  utd-avis[type="erreur"] [slot="contenu"] ul li a:hover, utd-avis[type="erreur"] [slot="contenu"] ul li a:focus {
+  utd-avis[type="erreur"] ul li a:hover, utd-avis[type="erreur"] ul li a:focus {
     text-decoration: none;
   }
 
@@ -1359,6 +1884,10 @@ utd-accordeon {
   display: block;
 }
 
+utd-accordeon + utd-accordeon{
+  margin-top: 16px;
+}
+
 .utd-accordeon .utd-icone-svg.plus, .utd-accordeon .utd-icone-svg.moins {
   min-width: 16px;
   height: 16px;
@@ -1375,6 +1904,7 @@ utd-accordeon {
   padding: 15px;  
   background-color: var(--couleur-fond-gris);
   border: 1px solid var(--couleur-fond-gris);
+  margin: 0;
 }
 .utd-accordeon .entete button:hover, .utd-accordeon.ouvert .entete button, .utd-accordeon.ouvert .contenu {
   border: 1px solid #c5cad2;
@@ -1385,23 +1915,80 @@ utd-accordeon {
   margin-right: 16px;
 }
 
-.utd-accordeon .contenu {
-  margin-left: 16px;
-  /*  transform:scaleY(0);
-  transform-origin: top;
-  transition: transform 0.25s ease;*/
+.utd-accordeon .entete h2.titre, .utd-accordeon .entete h3.titre, .utd-accordeon .entete h4.titre, .utd-accordeon .entete h5.titre {
+  font-family: OpenSans-SemiBold;
+  font-size: 16px;
+  margin: 0;
 }
 
-.utd-accordeon.ouvert .contenu {
-  margin: 0;
-  border-top: 1px solid transparent!important;
+.utd-accordeon .contenu .conteneur {
   padding: 24px 16px;
-  /*transform:scaleY(1);*/
 }
+
+.utd-accordeon .contenu {
+  border: 1px solid transparent;
+}
+
 .utd-accordeon .entete button:focus {
   outline: 2px solid #89bce5;
   border: 2px solid #5b6476;
   padding: 14px 14px 14px 14px;  
+}
+
+/*====================================================================================================
+  -41- utd-section
+====================================================================================================*/
+utd-section {
+  display: block;
+}
+
+utd-section + utd-section {
+  margin-top: 16px;
+}
+
+.utd-section:not(.ouvert) .utd-icone-svg {
+  transform: rotate(180deg);
+}
+
+.utd-section:not(.extensible) .entete, .utd-section .entete button {
+  font-family: 'OpenSans-SemiBold';
+  font-size: 16px;
+  color: var(--couleur-texte-base);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;  
+  border: 1px solid transparent;
+  background-color: var(--couleur-bouton-primaire);
+  color: #fff;
+}
+
+.utd-section.bordure:not(.extensible) .contenu, .utd-section.bordure.ouvert .contenu {
+  border: 1px solid var(--couleur-filet-secondaire);
+  border-top: 0;
+}
+
+.utd-section .entete button .titre {
+  text-align: left;
+  margin-right: 16px;
+}
+
+.utd-section .entete h2.titre, .utd-section .entete h3.titre, .utd-section .entete h4.titre, .utd-section .entete h5.titre {
+  color: #fff;
+  font-family: OpenSans-SemiBold;
+  font-size: 16px;
+  margin: 0;
+}
+
+.utd-section .contenu > div{
+  padding: 24px 16px;
+}
+
+.utd-section .entete button:focus {
+  outline: 2px solid #89bce5!important;
+  border: 2px solid #5b6476!important;
+  padding: 14px;  
 }
 
 /*====================================================================================================
@@ -1597,6 +2184,36 @@ utd-accordeon {
 }
 
 /*====================================================================================================
+  -51- utd-menu-ancres
+====================================================================================================*/
+.utd-menu-ancres {
+  padding: 2rem 1rem;
+  background-color: var(--couleur-fond-gris);
+  margin-bottom: 32px;
+  border-top: 1px solid var(--couleur-filet-secondaire);
+  border-bottom: 1px solid var(--couleur-filet-secondaire);
+}
+
+.utd-menu-ancres h2 {
+  font-size: 1rem;
+  font-family: OpenSans-Bold;
+  margin: 0;
+}
+
+.utd-menu-ancres ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.utd-menu-ancres a {
+  text-decoration: none;
+}
+
+.utd-menu-ancres a:focus, .utd-menu-ancres a:hover  {
+  text-decoration: underline;
+}
+
+/*====================================================================================================
   -60- utd-dialog
 ====================================================================================================*/
 
@@ -1719,17 +2336,17 @@ utd-dialog [slot="pied"] > button:last-of-type {
 
 @media (max-width: 425px) {
 
-  utd-dialog:not([estaffichageboutonsinline="true"]) [slot="pied"] button {
+  utd-dialog:not([forcer-boutons-inline="true"]) [slot="pied"] button {
       margin-bottom: 24px;
       margin-right: 0;
       width: 100%;
   }
 
-  utd-dialog:not([estaffichageboutonsinline="true"]) [slot="pied"] button.compact {
+  utd-dialog:not([forcer-boutons-inline="true"]) [slot="pied"] button.compact {
     margin-bottom: 16px;
   }
 
-  utd-dialog:not([estaffichageboutonsinline="true"]) [slot="pied"] button:last-of-type {
+  utd-dialog:not([forcer-boutons-inline="true"]) [slot="pied"] button:last-of-type {
       margin-bottom: 0;
   }
 }
@@ -1737,13 +2354,13 @@ utd-dialog [slot="pied"] > button:last-of-type {
 /*Particularité pour les boutons avec un texte long (permet de les afficher plus tôt 525px en colonne au lieu de 425px)*/
 @media (max-width: 525px) {
 
-  utd-dialog[estboutonstextelong="true"] [slot="pied"] button {
+  utd-dialog[boutons-texte-long="true"] [slot="pied"] button {
       margin-bottom: 24px;
       margin-right: 0;
       width: 100%;
   }
 
-  utd-dialog[estboutonstextelong="true"] [slot="pied"] button:last-of-type {
+  utd-dialog[boutons-texte-long="true"] [slot="pied"] button:last-of-type {
       margin-bottom: 0;
   }
 }

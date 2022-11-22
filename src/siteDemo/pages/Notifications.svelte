@@ -19,7 +19,7 @@
 
     function obtenirTableauParametres() {
         return [
-            {nom: "type", type: "String (Optionnel)", description: `Type de notification. Valeurs possibles : <span class="utd-emphase">positif</span> (Défaut), <span class="utd-emphase">negatif</span>, <span class="utd-emphase">neutre</span>.`},
+            {nom: "type", type: "String (Optionnel)", description: `Type de notification. Valeurs possibles : <span class="utd-emphase-gris">positif</span> (Défaut), <span class="utd-emphase-gris">negatif</span>, <span class="utd-emphase-gris">neutre</span>.`},
             {nom: "titre", type: "String (Optionnel)", description: `Titre de la notification.`},
             {nom: "message", type: "String", description: `Texte de la notification.`},
             {nom: "delaiFermeture", type: "Number (Optionnel)", description: `Délai de fermeture de la notification (en millisecondes). Défaut 5000.`},
@@ -98,6 +98,10 @@
 </script>
 
 <h1>Notifications</h1>
+
+<utd-menu-ancres selecteur="#main h2">
+</utd-menu-ancres>
+
 <h2>Description</h2>
 <p>Il s'agit du composant <strong>notification contextuelle</strong> du système de design Quebec.ca.</p>
 <p>La notification contextuelle affiche un message temporaire qui apparaît à la suite d’une interaction humaine.</p>
