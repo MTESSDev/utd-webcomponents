@@ -1629,6 +1629,11 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
 }
 
 
+.utd-icone-svg.chevron-blanc {
+    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-chevron-blanc");
+}
+
+
 
 /*====================================================================================================
   -999- Divers
@@ -2015,29 +2020,8 @@ utd-section + utd-section {
     white-space: nowrap;
 }
 
-.utd-infobulle .texte-lie + .conteneur-tooltip {
-    bottom: 6px;
-    left: -6px;
-}
-
-.utd-infobulle button.tooltip-toggle {
-    width: 40px;
-    height: 16px;
-    min-width: 40px;
-    min-height: 16px;
-    display: inline-block;
-    border: 0;
-    background-color: transparent;
-    position: relative;
-    padding: 0 12px;
-    top: 4px;
-}
-
-.utd-infobulle .texte-lie + .conteneur-tooltip button.tooltip-toggle {
-    width: auto;
-    height: auto;
-    min-width: 0;
-    min-height: 0;
+.utd-emphase-gris{
+    background-color: var(--gris-fonce);
     padding: 2px 4px;
     margin-right: -10px;
 }
@@ -2537,8 +2521,3 @@ html.utd-modale-ouverte:not(.est-mobile) utd-hautpage {
   height: 21px;
 }
 
-.utd-hautpage .contenu {
-    display: flex;
-    justify-content: center !important;
-    align-items: center !important;
-}
