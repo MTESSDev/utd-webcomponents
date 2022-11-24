@@ -10,7 +10,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
 </script>
 
-<div class="utd-component utd-avis {type}" role="{type === 'erreur' || type === 'avertissement' ? 'alert' : null}">
+<div class="utd-component utd-avis {type}" tabindex="0">
   <div class="zone-icone">
     <div aria-hidden="true" class="utd-icone-svg {type}"></div>
   </div>

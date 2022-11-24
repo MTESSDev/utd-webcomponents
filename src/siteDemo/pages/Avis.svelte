@@ -125,7 +125,7 @@
 <h3>Avis erreur</h3>
 <h4>7- Avec attribut "contenu"</h4>
 <div id="exempleErreur1">
-    <utd-avis type="erreur" titre="Votre demande d'inscription a été reçue." contenu="Votre code de confirmation sera envoyé par courriel."></utd-avis>
+    <utd-avis type="erreur" titre="Une erreur est survenue pendant le traitement de votre demande d'inscription." contenu="Veuillez contacter le bureau régional et demander le formulaire A38."></utd-avis>
 </div>
 <CodeSource idElementCodeSource="exempleErreur1">
 </CodeSource>
