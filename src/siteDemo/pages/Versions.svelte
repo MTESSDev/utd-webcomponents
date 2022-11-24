@@ -13,7 +13,7 @@
     <li>Ajout du composant <a href="/composants/navigation/menuvertical">Menu vertical</a></li>
     <li>Ajout du composant <a href="/composants/navigation/menuancres">Menu d'ancres</a></li>
     <li>Ajout du composant <a href="/composants/affichagecontenu/section">Sections</a></li>
-    <li>Mise à jour des couleurs du composant <a href="/composants/affichagecontenu/section">Avis</a></li>
+    <li>Composant <a href="/composants/affichagecontenu/section">Avis</a> mise à jour des couleurs et maintenant focusable</li>
     <li>
         <span>Champs de formulaires</span>
         <ul>

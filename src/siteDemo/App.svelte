@@ -23,13 +23,19 @@
   import ChampErreur from './pages/ChampErreur.svelte';
   import MenuVertical from './pages/MenuVertical.svelte';
   import MenuAncres from './pages/MenuAncres.svelte';
+
+  //Patch afin de faire fonctionner le bouton "Passer au contenu"
+  function accederContenuPrincipal(){
+    window.location.href = window.location.href + '#main'
+  }
+
 </script>
 
-<div class="conteneur-principal">
-    <header role="banner">
+<div class="conteneur-principal">    
+    <header>
         <div class="conteneur-passer-contenu">
             <div class="passer-contenu">
-                <a href="#main" class="passer-contenu">Passer au contenu</a>
+                <a href="#main" on:click={accederContenuPrincipal} class="passer-contenu">Passer au contenu</a>
             </div>   
         </div>
 
@@ -38,7 +44,7 @@
         <div id="javascriptDesactive" class="fureteur-desuet">
             <div class="utd-container" role="alert" aria-atomic="true">
                 <div class="icone">
-                    <img alt="Icône avertissement" src="/images/utd-sprite.svg?v=1.7.0#ico-avertissement" width="28" height="26" aria-hidden="true">
+                    <img alt="Icône avertissement" src="/images/utd-sprite.svg?v=1.7.1#ico-avertissement" width="28" height="26" aria-hidden="true">
                 </div>
                 <div class="texte">
                     Activez JavaScript dans votre navigateur pour que Système de design MESS fonctionne correctement.
@@ -52,7 +58,7 @@
                 <div class="conteneur-sections">
                     <div class="section-gauche signature-gouvernement" lang="fr">
                         <a href="/">
-                            <img alt="Signature du gouvernement du Québec. Accédez à Système de design MESS." src="/images/utd-sprite.svg?v=1.7.0#QUEBEC_blanc">
+                            <img alt="Signature du gouvernement du Québec. Accédez à Système de design MESS." src="/images/utd-sprite.svg?v=1.7.1#QUEBEC_blanc">
                         </a>
                     </div>
                     <div class="section-centre">
