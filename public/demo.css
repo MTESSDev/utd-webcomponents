@@ -68,8 +68,9 @@ h6 {
     white-space: inherit;
     border: inherit;
     color: #fff;
-    padding: 0.3rem;
+    padding: 4px;
     border: 1px solid #fff;
+    background-color: var(--couleur-piv);
 }
 
 

@@ -26,7 +26,13 @@
 
   //Patch afin de faire fonctionner le bouton "Passer au contenu"
   function accederContenuPrincipal(){
-    window.location.href = window.location.href + '#main'
+    const urlActuelle = location.href.replace(location.hash,"")
+    const urlContenuPrincipal = urlActuelle + '#main' 
+
+    if(location.href === urlContenuPrincipal){
+        location.href = urlActuelle + '#main2'
+    } 
+    location.href = urlContenuPrincipal
   }
 
 </script>
