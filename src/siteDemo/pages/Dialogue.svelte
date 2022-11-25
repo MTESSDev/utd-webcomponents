@@ -14,6 +14,7 @@
 
     ajouterCodeDialogue1()
     ajouterCodeDialogue2()
+    ajouterCodeDialogue3()
     mounted = true
 })
 
@@ -45,12 +46,10 @@ function ajouterCodeDialogue1() {
 
     document.getElementById("btnAnnuler1").addEventListener('click', () => {
         //TODO, ici tout le code que vous devez effectuer sur click du bouton (généralement pas grand chose sur une annulation)
-        alert('Bravo le bouton "Annuler" a été cliqué. Vous pouvez mettre tout votre code ici!')
         utd.dialogue.masquer('dialogue1')
     })
 
     document.getElementById("btnEnregistrer1").addEventListener('click', () => {
-        alert('Bravo le bouton "Enregistrer" a été cliqué. Vous pouvez mettre tout votre code ici!')
         //TODO, ici tout le code que vous devez effectuer sur click du bouton
         utd.dialogue.masquer('dialogue1')
     })
@@ -71,6 +70,22 @@ function ajouterCodeDialogue2() {
         alert('Bravo le bouton "Enregistrer" a été cliqué. Vous pouvez mettre tout votre code ici!')
         //TODO, ici tout le code que vous devez effectuer sur click du bouton
         utd.dialogue.masquer('dialogueVotreAvis')
+    })
+}
+
+function ajouterCodeDialogue3() {
+    document.getElementById('btnTest3').addEventListener('click', () => {
+        utd.dialogue.afficher('dialogue3')
+    })
+
+    document.getElementById("btnAnnuler3").addEventListener('click', () => {
+        //TODO, ici tout le code que vous devez effectuer sur click du bouton (généralement pas grand chose sur une annulation)
+        utd.dialogue.masquer('dialogue3')
+    })
+
+    document.getElementById("btnConfirmer3").addEventListener('click', () => {
+        //TODO, ici tout le code que vous devez effectuer sur click du bouton
+        utd.dialogue.masquer('dialogue3')
     })
 }
 
@@ -160,12 +175,33 @@ function ajouterCodeDialogue2() {
         </div>
     </utd-dialog>
 </div>
-
 <CodeSource idElementCodeSource="exempleDialogueVotreAvis" titre="Code source (Html)">
 </CodeSource>   
 
 {#if mounted}
     <CodeSource codeSource="{ajouterCodeDialogue2.toString()}" titre="Code source (js)" language="language-javascript">
+    </CodeSource>   
+{/if}   
+
+<h2>Exemples</h2>
+<h3>3- Focus à l'élément spécifié à l'ouverture</h3>
+<div id="exempleDialogue3">
+    <button type="button" id="btnTest3" class="utd-btn secondaire mb-32">Afficher</button>
+    <utd-dialog id="dialogue3" titre="Essais focus" id-focus-ouverture="titreModale3">
+        <h2 id="titreModale3" tabindex="-1">Un sous titre qui doit être lu à l'ouverture</h2>
+        <p>Un texte incroyable qui ne sert pas à grand chose.</p>
+        <p>Un autre texte incroyable qui ne sert pas à grand chose.</p>
+        <div slot="pied">
+            <button id="btnAnnuler3" type="button" class="utd-btn secondaire compact">Annuler</button>        
+            <button id="btnConfirmer3" type="button" class="utd-btn primaire compact">Confirmer</button>        
+        </div>
+    </utd-dialog>
+</div>
+<CodeSource idElementCodeSource="exempleDialogue3" titre="Code source (Html)">
+</CodeSource>   
+
+{#if mounted}
+    <CodeSource codeSource="{ajouterCodeDialogue3.toString()}" titre="Code source (js)" language="language-javascript">
     </CodeSource>   
 {/if}   
 

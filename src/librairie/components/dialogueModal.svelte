@@ -124,14 +124,19 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     } 
     
     if(!premierElementFocusable) {
-      const elementsFocusablesShadow = Array.from(Utils.obtenirElementsFocusables(modale))
-      const elementsFocusablesRoot = Array.from(Utils.obtenirElementsFocusables(thisComponent))
-      const elementsFocusables = elementsFocusablesRoot.concat(elementsFocusablesShadow)
-      
+          
       if(idFocusOuverture){
-        const controle = elementsFocusables.find(e => e.id == idFocusOuverture)        
-        premierElementFocusable = controle ? controle : elementsFocusables[0]
-      } else {
+        const controleFocusOuverture = document.getElementById(idFocusOuverture)
+        if(controleFocusOuverture){
+          premierElementFocusable = controleFocusOuverture
+        }
+      }
+
+      if(!premierElementFocusable) {
+        const elementsFocusablesShadow = Array.from(Utils.obtenirElementsFocusables(modale))
+        const elementsFocusablesRoot = Array.from(Utils.obtenirElementsFocusables(thisComponent))
+        const elementsFocusables = elementsFocusablesRoot.concat(elementsFocusablesShadow)
+
         premierElementFocusable = elementsFocusables[0]
       }     
     }
