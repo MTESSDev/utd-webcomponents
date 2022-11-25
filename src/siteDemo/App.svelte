@@ -24,7 +24,7 @@
   import MenuVertical from './pages/MenuVertical.svelte';
   import MenuAncres from './pages/MenuAncres.svelte';
 
-  //Patch afin de faire fonctionner le bouton "Passer au contenu"
+  //Patch afin de faire fonctionner le bouton "Passer au contenu", semble y avoir un problème avec le router tinro
   function accederContenuPrincipal(){
     const urlActuelle = location.href.replace(location.hash,"")
     const urlContenuPrincipal = urlActuelle + '#main' 
