@@ -6,6 +6,29 @@
 <utd-menu-ancres selecteur="#main h2">
 </utd-menu-ancres>
 
+
+<h2>1.7.1 (2022-11-28)</h2>
+<h3>Améliorations</h3>
+<ul class="utd">
+    <li>Composant <a href="/composants/actions/dialogue">Dialogue</a>, si aucun contrôle de saisie présent dans la fenêtre de dialogue et que le paramètre "id-focus-ouverture" n'est pas spécifié, le focus est donné automatiquement au bouton primaire (comme pour un message).</li>
+</ul>
+
+<h3>Corrections d'anomalies</h3>
+<ul class="utd">
+    <li>
+        <span>Notification</span>
+        <ul>
+            <li>Corrections accessibilité. Ajout espace forcé au lecteur écran entre titre et contenu. Le bouton de fermeture ne fait plus partie de l'alerte qui est lu au lecteur écran.</li>            
+        </ul>
+    </li>
+    <li>
+        <span>Déploiement</span>
+        <ul>
+            <li>Retrait d'un répertoire "node_modules" qui était inclu dans le code source de la solution.</li>            
+        </ul>
+    </li>
+</ul>
+
 <h2>1.7.0 (2022-11-24)</h2>
 <h3>Améliorations</h3>
 <ul class="utd">

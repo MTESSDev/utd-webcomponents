@@ -103,6 +103,10 @@ export class Utils {
         return slots.some(s => s.slot === nomSlot)
     }
 
+    static obtenirSlot(slots, nomSlot) {
+        return slots.find(s => s.slot === nomSlot)
+    }
+
     /**
      * Obtient la langue de la page courante.
      * @returns {string} Code de langue de la page courante (fr/en).

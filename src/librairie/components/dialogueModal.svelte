@@ -117,14 +117,17 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     modale.scrollTop = 0      
   }
 
+  function estBouton(element) {
+    const tag = element.tagName.toLowerCase()
+    return tag === 'button' || element.getAttribute('type') === 'submit'
+  }
+
   function donnerfocusPremierElementFocusable(modale){
     let premierElementFocusable = null
     if(estfenetremessage === 'true'){
       premierElementFocusable = thisComponent.querySelector('.utd-btn.primaire')
-    } 
-    
-    if(!premierElementFocusable) {
-          
+    } else {
+
       if(idFocusOuverture){
         const controleFocusOuverture = document.getElementById(idFocusOuverture)
         if(controleFocusOuverture){
@@ -138,9 +141,27 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
         const elementsFocusables = elementsFocusablesRoot.concat(elementsFocusablesShadow)
 
         premierElementFocusable = elementsFocusables[0]
+
+        //On force le mode "fenêtre de message" si le premier élément focusable est un bouton de la slot "pied"
+        if(estBouton(premierElementFocusable)){
+          const slotPied = Utils.obtenirSlot(slots, 'pied')
+          if(slotPied){
+            const boutonsSlotPied = slotPied.querySelectorAll('button, input[type="submit"]')
+            
+            if(boutonsSlotPied.length){                          
+              for (let i = 0; i < boutonsSlotPied.length - 1; i++) {
+                if (boutonsSlotPied[i] === premierElementFocusable) {
+                  premierElementFocusable = thisComponent.querySelector('.utd-btn.primaire') || premierElementFocusable
+                  estfenetremessage = true
+                  break; 
+                }                
+              }
+            }
+          }          
+        }
       }     
     }
-
+    
     premierElementFocusable.focus({preventScroll: true})      
     //premierElementFocusable.focus()    
   }
@@ -150,7 +171,6 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 {#if estModaleAffichee}
   <div class="utd-backdrop" on:click={() => masquerModale('clickBackdrop')} />
   <div
-    tabindex="-1"
     aria-labelledby={idEntete}
     aria-describedby={estfenetremessage === 'true' ? idCorps : null}
     class="utd-component utd-dialog {estfenetremessage === 'true' ? 'fenetre-message' : ''} {boutonsTexteLong === 'true' ? 'boutons-texte-long' : ''} {affichageLateral === 'true' ? 'affichage-lateral' : ''} {forcerBoutonsInline === 'true' ? 'boutons-inline' : ''}"
