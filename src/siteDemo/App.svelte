@@ -1,6 +1,7 @@
 <script>
     import {Route} from 'tinro'; 
     import {active} from 'tinro';
+    import { onMount } from "svelte";
     import Principe from './pages/Principe.svelte'; 
     import Utilisation from './pages/Utilisation.svelte'; 
     import Versions from './pages/Versions.svelte'; 
@@ -20,12 +21,19 @@
     import {router} from 'tinro';
     import ChampsAutomatique from './pages/ChampsAutomatique.svelte';
     import ChampObligatoire from './pages/ChampObligatoire.svelte';
-  import ChampErreur from './pages/ChampErreur.svelte';
-  import MenuVertical from './pages/MenuVertical.svelte';
-  import MenuAncres from './pages/MenuAncres.svelte';
+    import ChampErreur from './pages/ChampErreur.svelte';
+    import MenuVertical from './pages/MenuVertical.svelte';
+    import MenuAncres from './pages/MenuAncres.svelte';
 
-  //Patch afin de faire fonctionner le bouton "Passer au contenu", semble y avoir un problème avec le router tinro
-  function accederContenuPrincipal(){
+    onMount(() => {  
+        document.getElementById('pivEntete').addEventListener("clickLien", () => {       
+            accederContenuPrincipal()
+        })
+    })
+
+
+    //Patch afin de faire fonctionner le bouton "Passer au contenu", semble y avoir un problème avec le router tinro
+    function accederContenuPrincipal(){
     const urlActuelle = location.href.replace(location.hash,"")
     const urlContenuPrincipal = urlActuelle + '#main' 
 
@@ -33,17 +41,24 @@
         location.href = urlActuelle + '#main2'
     } 
     location.href = urlContenuPrincipal
-  }
+    }
 
 </script>
 
 <div class="conteneur-principal">    
     <header>
-        <div class="conteneur-passer-contenu">
-            <div class="passer-contenu">
-                <a href="#main" on:click={accederContenuPrincipal} class="passer-contenu">Passer au contenu</a>
-            </div>   
-        </div>
+
+        <utd-piv-entete id="pivEntete" titre-site1="Système de design MESS" titre-site2="Un petit test" url-langue-alternative2="#" url-nous-joindre2="#" alt-logo="Signature du gouvernement du Québec. Accédez à Système de design MESS.">
+<!--            <div slot="boutonRecherche">
+                <button type="button">RD</button>
+            </div>
+            <div slot="boutonRechercheMobile">
+                <button type="button">RM</button>
+            </div>
+            <div slot="zoneRecherche">
+                <div><input type="text"/></div>
+            </div>            -->
+        </utd-piv-entete>
 
         <!--Javascript désactivé-->
         <noscript>
@@ -58,34 +73,9 @@
             </div>
         </div>
         </noscript>
-        <img id="pivLogoGouvernementPrint" alt="Logo du gouvernement du Québec." src="/images/quebecPrint.gif" width="199" height="60">
-        <div class="piv piv-entete">
-            <div class="utd-container">
-                <div class="conteneur-sections">
-                    <div class="section-gauche signature-gouvernement" lang="fr">
-                        <a href="/">
-                            <img alt="Signature du gouvernement du Québec. Accédez à Système de design MESS." src="/images/utd-sprite.svg?v=1.7.1#QUEBEC_blanc">
-                        </a>
-                    </div>
-                    <div class="section-centre">
-                        <a href="/" class="titre-site">
-                            <span>Système de design MESS</span>
-                            <span class="description"></span>
-                        </a>
-                    </div>
 
-                    
-                    <div class="section-droite">
-                        <ul class="utd-d-none">
-                            <li><a href="/Commun/NousJoindre">Nous joindre</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="titre-site mobile">
-                    <span>Système de design MESS</span>
-                </div>
-            </div>
-        </div>
+        <img id="pivLogoGouvernementPrint" alt="Logo du gouvernement du Québec." src="/images/quebecPrint.gif" width="199" height="60">
+        
 
         
         <div class="conteneur-menu-identification">

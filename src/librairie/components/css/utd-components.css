@@ -1,4 +1,202 @@
 /*! utd-webcomponents _vUtd_ */
+
+
+/*====================================================================================================*/
+/*  -01- PIV entête
+/*====================================================================================================*/
+.utd-piv-entete {
+  background-color: var(--couleur-piv);
+  color: #fff;
+}
+
+.utd-piv-entete a {
+  color: #fff;
+}
+
+.utd-piv-entete a:hover, .utd-piv-entete a:focus {
+  color: #fff;
+}
+
+.utd-conteneur-passer-contenu {
+  position: absolute;
+  width: 100%;
+}
+
+.utd-passer-contenu {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+.utd-passer-contenu a {
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.utd-passer-contenu a:focus {
+  width: inherit;
+  height: inherit;
+  overflow: inherit;
+  clip: inherit;
+  white-space: inherit;
+  border: inherit;
+  color: #fff;
+  padding: 4px;
+  border: 1px solid #fff;
+  background-color: var(--couleur-piv);
+}
+
+.utd-piv-entete .conteneur-sections{
+  display: flex;
+  justify-content: space-between;
+}
+
+.utd-piv-entete .signature-gouvernement {
+  margin-right: 24px;
+
+}
+
+.utd-piv-entete .signature-gouvernement a {
+  display: block;
+}
+
+.utd-piv-entete .signature-gouvernement img{
+  height: 72px;
+  width: 198px;
+}
+
+
+@media screen and (max-width:403px) {
+
+  .utd-piv-entete .signature-gouvernement img {
+      width: 128px;
+      height: 48px;
+  }
+
+}
+
+.utd-piv-entete .section-centre {
+  width: 100%;
+}
+
+#pivLogoGouvernementPrint {
+  display: none;
+}
+
+/* ========== Section du centre ==========*/
+.utd-piv-entete .section-centre {
+  display: flex;
+  align-items: center;
+}
+
+.utd-piv-entete .titre-site {
+  font-family: Roboto-Medium;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  /*margin-top: 3px;  Pas dans charte graphique... permet d'aligner parfaitement avec drapeau*/
+}
+
+.utd-piv-entete .titre-site:hover, .utd-piv-entete .titre-site:focus  {
+  text-decoration: underline;
+}
+
+.utd-piv-entete .zone-titre-recherche {
+  display:none;
+  padding-bottom: 8px;
+}
+
+.utd-piv-entete .titre-site .description {
+  font-size: 16px;
+}
+
+
+/* ========== Section droite ==========*/
+.utd-piv-entete .section-droite {
+  min-width: 160px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.utd-piv-entete .section-droite ul {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  list-style: none;
+  padding: 0 0 0 0.5rem;
+  margin: 0;
+  height: 100%;
+}
+
+.utd-piv-entete .section-droite ul a {
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.utd-piv-entete .section-droite ul a:hover,
+.utd-piv-entete .section-droite ul a:focus {
+  text-decoration: underline;
+}
+
+.utd-piv-entete .section-droite ul li:first-child {
+  padding-bottom: 0.7rem;
+}
+
+.utd-piv-entete .section-droite ul li:last-child {
+  padding-bottom: 0;
+}
+
+.utd-piv-entete .bouton-recherche {
+  min-width: 32px;
+  min-height: 32px;
+}
+
+.utd-piv-entete .section-droite .bouton-recherche {
+  margin-right: 16px;
+}
+
+@media screen and (max-width:767px) {
+  
+  .utd-piv-entete .section-droite{
+    min-width: 130px;
+  }
+
+  .utd-piv-entete .section-droite .bouton-recherche{
+    display: none;
+  }
+
+  .utd-piv-entete .signature-gouvernement img{
+    margin-left: -3px;
+  }
+
+  .utd-piv-entete .titre-site {
+      display: none;
+  }
+
+  .utd-piv-entete .zone-titre-recherche {
+      display: flex;
+      justify-content: space-between;
+  }
+  
+  .utd-piv-entete .zone-titre-recherche .titre-site {
+    display: flex;
+  }
+}
+
+utd-piv-entete [slot="zoneRecherche"] > *:first-child {
+  padding: 8px 0 24px 0;
+}
+
+header {
+  margin-bottom: var(--tc-48-40-val);
+}
+
+
 /*====================================================================================================
   -10- Listes à l'intérieur de composants UTD
 ====================================================================================================*/
