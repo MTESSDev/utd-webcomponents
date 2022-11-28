@@ -427,8 +427,6 @@ export const notification = (function () {
             zoneNotifications = document.createElement('div');
             zoneNotifications.id = 'utdZoneNotifications';
             zoneNotifications.classList.add('utd-notifications')
-            zoneNotifications.setAttribute('role', 'alert');
-            zoneNotifications.setAttribute('aria-atomic', 'true');
             document.body.appendChild(zoneNotifications);    
         }
 
@@ -472,14 +470,16 @@ export const notification = (function () {
             <button type="button">
                 <span class="utd-sr-only">${parametres.texteBoutonFermer}</span>
                 <span class="utd-icone-svg x-fermer-blanc" aria-hidden="true"></span>
-            </button>`
+            </button>
+            <div role="alert">`
+        
             
         if(possedeTitre){
             const classeIcone = obtenirClasseIcone(parametres.type)
             html += `
                 <div class="titre">
                     <span class="utd-icone-svg ${classeIcone} md" aria-hidden="true"></span>
-                    <span class="texte">${parametres.titre}</span>
+                    <span class="texte">${parametres.titre}&nbsp;</span>
                 </div>            
             `
         }
@@ -487,7 +487,7 @@ export const notification = (function () {
         html += `
             <div class="texte-message">
                 ${parametres.message}
-            </div>`;
+            </div></div>`;
 
         return html;
     }

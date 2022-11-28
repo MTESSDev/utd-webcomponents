@@ -28,6 +28,15 @@ utd-accordeon p:last-child, utd-dialog p:last-child, utd-avis ul p:last-child, u
 }
 
 /*====================================================================================================
+  -10A- Headers à l'intérieur de composants UTD
+====================================================================================================*/
+utd-accordeon h3:first-of-type, utd-accordeon h4:first-of-type, utd-accordeon h5:first-of-type, utd-accordeon h6:first-of-type {
+  margin-top: 0;
+}
+
+
+
+/*====================================================================================================
   -15- Menu vertical
 ====================================================================================================*/
 utd-menu-vertical{
@@ -264,7 +273,7 @@ utd-accordeon + utd-accordeon{
   margin-right: 16px;
 }
 
-.utd-accordeon .entete h2.titre, .utd-accordeon .entete h3.titre, .utd-accordeon .entete h4.titre, .utd-accordeon .entete h5.titre {
+.utd-accordeon .entete h2.titre, utd-accordeon [slot="titre"] h2, .utd-accordeon .entete h3.titre, utd-accordeon [slot="titre"] h3, .utd-accordeon .entete h4.titre, utd-accordeon [slot="titre"] h4, .utd-accordeon .entete h5.titre, utd-accordeon [slot="titre"] h5, .utd-accordeon .entete h6.titre, utd-accordeon [slot="titre"] h6 {
   font-family: OpenSans-SemiBold;
   font-size: 16px;
   margin: 0;

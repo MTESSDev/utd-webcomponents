@@ -14,6 +14,8 @@
 
     ajouterCodeDialogue1()
     ajouterCodeDialogue2()
+    ajouterCodeDialogue3()
+    ajouterCodeDialogue4()
     mounted = true
 })
 
@@ -45,12 +47,10 @@ function ajouterCodeDialogue1() {
 
     document.getElementById("btnAnnuler1").addEventListener('click', () => {
         //TODO, ici tout le code que vous devez effectuer sur click du bouton (généralement pas grand chose sur une annulation)
-        alert('Bravo le bouton "Annuler" a été cliqué. Vous pouvez mettre tout votre code ici!')
         utd.dialogue.masquer('dialogue1')
     })
 
     document.getElementById("btnEnregistrer1").addEventListener('click', () => {
-        alert('Bravo le bouton "Enregistrer" a été cliqué. Vous pouvez mettre tout votre code ici!')
         //TODO, ici tout le code que vous devez effectuer sur click du bouton
         utd.dialogue.masquer('dialogue1')
     })
@@ -71,6 +71,38 @@ function ajouterCodeDialogue2() {
         alert('Bravo le bouton "Enregistrer" a été cliqué. Vous pouvez mettre tout votre code ici!')
         //TODO, ici tout le code que vous devez effectuer sur click du bouton
         utd.dialogue.masquer('dialogueVotreAvis')
+    })
+}
+
+function ajouterCodeDialogue3() {
+    document.getElementById('btnTest3').addEventListener('click', () => {
+        utd.dialogue.afficher('dialogue3')
+    })
+
+    document.getElementById("btnAnnuler3").addEventListener('click', () => {
+        //TODO, ici tout le code que vous devez effectuer sur click du bouton (généralement pas grand chose sur une annulation)
+        utd.dialogue.masquer('dialogue3')
+    })
+
+    document.getElementById("btnConfirmer3").addEventListener('click', () => {
+        //TODO, ici tout le code que vous devez effectuer sur click du bouton
+        utd.dialogue.masquer('dialogue3')
+    })
+}
+
+function ajouterCodeDialogue4() {
+    document.getElementById('btnTest4').addEventListener('click', () => {
+        utd.dialogue.afficher('dialogue4')
+    })
+
+    document.getElementById("btnAnnuler4").addEventListener('click', () => {
+        //TODO, ici tout le code que vous devez effectuer sur click du bouton (généralement pas grand chose sur une annulation)
+        utd.dialogue.masquer('dialogue4')
+    })
+
+    document.getElementById("btnConfirmer4").addEventListener('click', () => {
+        //TODO, ici tout le code que vous devez effectuer sur click du bouton
+        utd.dialogue.masquer('dialogue4')
     })
 }
 
@@ -103,6 +135,11 @@ function ajouterCodeDialogue2() {
 <h2>Slots disponibles</h2>
 <TableauSlots parametres="{tableauSlots}">
 </TableauSlots>
+
+<h2>Accessibilité</h2>
+<p>Les <a href="https://www.w3.org/WAI/ARIA/apg/example-index/dialog-modal/dialog">règles du W3C relatives aux dialogues</a> sont suivies à la lettre.</p>
+<p>Il semble que l'implémentation dans NVDA provoque la lecture du titre de la modale au lecteur écran deux fois.</p>
+<p>Il s'agit malgré tout de la meilleure solution possible, et il semble qu'il n'y a malheureusement rien à faire.</p>
 
 <h2>Exemples</h2>
 <h3>1- Ouverture par le biais d'un bouton</h3>
@@ -160,7 +197,6 @@ function ajouterCodeDialogue2() {
         </div>
     </utd-dialog>
 </div>
-
 <CodeSource idElementCodeSource="exempleDialogueVotreAvis" titre="Code source (Html)">
 </CodeSource>   
 
@@ -169,5 +205,48 @@ function ajouterCodeDialogue2() {
     </CodeSource>   
 {/if}   
 
+<h3>3- Focus à l'élément spécifié à l'ouverture</h3>
+<div id="exempleDialogue3">
+    <button type="button" id="btnTest3" class="utd-btn secondaire mb-32">Afficher</button>
+    <utd-dialog id="dialogue3" titre="Essais focus" id-focus-ouverture="contenuModale3">        
+        <div id="contenuModale3" tabindex="-1">
+            <p>Un texte incroyable qui ne sert pas à grand chose.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet pulvinar ipsum. Donec luctus nulla scelerisque, congue nibh a, malesuada dolor. Sed mattis interdum pellentesque. Vivamus lacinia risus a justo imperdiet imperdiet at quis ligula. Cras a dictum tortor, sit amet venenatis tortor. Vestibulum aliquam elit eu venenatis laoreet. Aenean tellus enim, consectetur eu condimentum accumsan, malesuada volutpat lectus. Aliquam sit amet rhoncus mauris, a placerat mauris. Mauris neque nulla, vulputate a convallis in, imperdiet tincidunt leo.</p>        
+            <p>Un autre texte incroyable qui ne sert pas à grand chose.</p>    
+        </div>
+        <div slot="pied">
+            <button id="btnAnnuler3" type="button" class="utd-btn secondaire compact">Annuler</button>        
+            <button id="btnConfirmer3" type="button" class="utd-btn primaire compact">Confirmer</button>        
+        </div>
+    </utd-dialog>
+</div>
+<CodeSource idElementCodeSource="exempleDialogue3" titre="Code source (Html)">
+</CodeSource>   
+
+{#if mounted}
+    <CodeSource codeSource="{ajouterCodeDialogue3.toString()}" titre="Code source (js)" language="language-javascript">
+    </CodeSource>   
+{/if}   
+
+<h3>4- Modale sans contrôle de saisie (mode "fenêtre de message" est activé)</h3>
+<div id="exempleDialogue4">
+    <button type="button" id="btnTest4" class="utd-btn secondaire mb-32">Afficher</button>
+    <utd-dialog id="dialogue4" titre="Essais focus">        
+        <p>Un texte incroyable qui ne sert pas à grand chose.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet pulvinar ipsum. Donec luctus nulla scelerisque, congue nibh a, malesuada dolor. Sed mattis interdum pellentesque. Vivamus lacinia risus a justo imperdiet imperdiet at quis ligula. Cras a dictum tortor, sit amet venenatis tortor. Vestibulum aliquam elit eu venenatis laoreet. Aenean tellus enim, consectetur eu condimentum accumsan, malesuada volutpat lectus. Aliquam sit amet rhoncus mauris, a placerat mauris. Mauris neque nulla, vulputate a convallis in, imperdiet tincidunt leo.</p>        
+        <p>Un autre texte incroyable qui ne sert pas à grand chose.</p>    
+        <div slot="pied">
+            <button id="btnAnnuler4" type="button" class="utd-btn secondaire compact">Annuler</button>        
+            <button id="btnConfirmer4" type="button" class="utd-btn primaire compact">Confirmer</button>        
+        </div>
+    </utd-dialog>
+</div>
+<CodeSource idElementCodeSource="exempleDialogue4" titre="Code source (Html)">
+</CodeSource>   
+
+{#if mounted}
+    <CodeSource codeSource="{ajouterCodeDialogue4.toString()}" titre="Code source (js)" language="language-javascript">
+    </CodeSource>   
+{/if}   
 <style>
 </style>

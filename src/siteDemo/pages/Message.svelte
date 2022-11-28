@@ -159,6 +159,12 @@
     <li><span class="utd-emphase-gris">escape</span>, si l'utilisateur appuyé sur la touche "ESC" afin de fermer le message.</li>
 </ul>
 
+<h2>Accessibilité</h2>
+<p>Les <a href="https://www.w3.org/WAI/ARIA/apg/example-index/dialog-modal/dialog">règles du W3C relatives aux dialogues de type "messages"</a> sont suivies à la lettre.</p>
+<p>Il semble que l'implémentation dans NVDA provoque la lecture du titre de la modale au lecteur écran deux fois (une au début et une à la fin). Le libellé du bouton qui reçoit le focus est également lu deux fois.</p>
+<p>Il serait possible de donner le focus au texte du message, mais dans ce cas c'est un bout du texte du message qui serait lu deux fois. Dans tous les cas le titre de la modale est lu deux fois.</p>
+<p>On préfère donc donner le focus au bouton même si son libellé est lu deux fois. Il s'agit malgré tout de la meilleure solution possible, et il semble qu'il n'y a malheureusement rien à faire.</p>
+
 <h2>Exemples</h2>
 <h3>1- Message de type avertissement avec 2 boutons</h3>
 <button type="button" id="btnTest1" class="utd-btn secondaire mb-16">Test 1</button>

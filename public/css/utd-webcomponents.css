@@ -1,4 +1,4 @@
-/*! utd-webcomponents v1.7.0 */
+/*! utd-webcomponents v1.7.1 */
 /*====================================================================================================
   -00- Variables
 ====================================================================================================*/
@@ -639,7 +639,7 @@ a.utd-lien-externe[target="_blank"]:after, span.utd-lien-externe:after {
     content: "";
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-lien-externe");
+    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-lien-externe");
     margin-left: 4px;
     width: 12px;
     height: 12px;
@@ -1554,64 +1554,64 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
 }
 
 .utd-icone-svg.avertissement {
-    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-avertissement");
+    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-avertissement");
 }
 
 .utd-icone-svg.fleche-haut-blanche {
-    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-fleche-haut-blanche");
+    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-fleche-haut-blanche");
 }
 
 .utd-icone-svg.clipboard {
-    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-clipboard");
+    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-clipboard");
 }
 
 .utd-icone-svg.erreur {
-    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-erreur");
+    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-erreur");
 }
 
 .utd-icone-svg.erreur-blanc {
-    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-erreur-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-erreur-blanc");
 }
 
 .utd-icone-svg.information {
-    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-information");
+    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-information");
 }
 
 .utd-icone-svg.information-blanc {
-    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-information-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-information-blanc");
 }
 
 .utd-icone-svg.moins {
-    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-moins");
+    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-moins");
 }
 
 .utd-icone-svg.plus {
-    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-plus");
+    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-plus");
 }
 
 .utd-icone-svg.question {
-    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-question");
+    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-question");
 }
 
 
 .utd-icone-svg.succes {
-    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-succes");
+    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-succes");
 }
 .utd-icone-svg.succes-blanc {
-    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-succes-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-succes-blanc");
 }
 
 .utd-icone-svg.x-fermer-blanc {
     width: 16px;
     height: 16px;
     min-width: 16px;
-    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-xfermer-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-xfermer-blanc");
 }
 .utd-icone-svg.x-fermer-bleu {
     width: 16px;
     height: 16px;
     min-width: 16px;
-    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-xfermer-bleu");
+    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-xfermer-bleu");
 }
 
 .utd-icone-svg.chevron-bleu-piv, .utd-icone-svg.chevron-blanc, .utd-icone-svg.chevron-bleu-texte {
@@ -1621,11 +1621,11 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
 }
 
 .utd-icone-svg.chevron-bleu-piv {
-    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-chevron-bleu-piv");
+    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-chevron-bleu-piv");
 }
 
 .utd-icone-svg.chevron-blanc {
-    background-image: url("../images/utd-sprite.svg?v=1.7.0#ico-chevron-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-chevron-blanc");
 }
 
 
@@ -1649,7 +1649,7 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
 }
 
 
-/*! utd-webcomponents v1.7.0 */
+/*! utd-webcomponents v1.7.1 */
 /*====================================================================================================
   -10- Listes à l'intérieur de composants UTD
 ====================================================================================================*/
@@ -1677,6 +1677,15 @@ utd-accordeon p:first-child, utd-dialog p:first-child, utd-avis ul p:first-child
 utd-accordeon p:last-child, utd-dialog p:last-child, utd-avis ul p:last-child, utd-section ul p:last-child, utd-infobulle ul p:last-child, .utd-component p:last-child, .utd-component .contenu p:last-child {
   margin-bottom: 0;
 }
+
+/*====================================================================================================
+  -10A- Headers à l'intérieur de composants UTD
+====================================================================================================*/
+utd-accordeon h3:first-of-type, utd-accordeon h4:first-of-type, utd-accordeon h5:first-of-type, utd-accordeon h6:first-of-type {
+  margin-top: 0;
+}
+
+
 
 /*====================================================================================================
   -15- Menu vertical
@@ -1915,7 +1924,7 @@ utd-accordeon + utd-accordeon{
   margin-right: 16px;
 }
 
-.utd-accordeon .entete h2.titre, .utd-accordeon .entete h3.titre, .utd-accordeon .entete h4.titre, .utd-accordeon .entete h5.titre {
+.utd-accordeon .entete h2.titre, utd-accordeon [slot="titre"] h2, .utd-accordeon .entete h3.titre, utd-accordeon [slot="titre"] h3, .utd-accordeon .entete h4.titre, utd-accordeon [slot="titre"] h4, .utd-accordeon .entete h5.titre, utd-accordeon [slot="titre"] h5, .utd-accordeon .entete h6.titre, utd-accordeon [slot="titre"] h6 {
   font-family: OpenSans-SemiBold;
   font-size: 16px;
   margin: 0;
