@@ -24,6 +24,7 @@
     import ChampErreur from './pages/ChampErreur.svelte';
     import MenuVertical from './pages/MenuVertical.svelte';
     import MenuAncres from './pages/MenuAncres.svelte';
+    import PivEntete from './pages/PivEntete.svelte';
 
     onMount(() => {  
         document.getElementById('pivEntete').addEventListener("clickLien", () => {       
@@ -48,7 +49,7 @@
 <div class="conteneur-principal">    
     <header>
 
-        <utd-piv-entete id="pivEntete" titre-site1="Système de design MESS" titre-site2="Un petit test" url-langue-alternative2="#" url-nous-joindre2="#" alt-logo="Signature du gouvernement du Québec. Accédez à Système de design MESS.">
+        <utd-piv-entete id="pivEntete" titre-site1="Système de design MESS" alt-logo="Signature du gouvernement du Québec. Accédez à Système de design MESS.">
 <!--            <div slot="boutonRecherche">
                 <button type="button">RD</button>
             </div>
@@ -130,6 +131,10 @@
                             <utd-menu-vertical-item libelle="Menu d'ancres" href="/composants/navigation/menuancres"></utd-menu-vertical-item>
                             <utd-menu-vertical-item libelle="Menu vertical" href="/composants/navigation/menuvertical"></utd-menu-vertical-item>
                         </utd-menu-vertical-item>
+                        <utd-menu-vertical-item libelle="PIV">                                
+                            <utd-menu-vertical-item libelle="Entête" href="/composants/piv/piventete"></utd-menu-vertical-item>
+                        </utd-menu-vertical-item>
+
                     {:else}                                    
                         <utd-menu-vertical-item href="/base/principe" libelle="Principe"></utd-menu-vertical-item>
                         <utd-menu-vertical-item href="/base/utilisation" libelle="Utilisation"></utd-menu-vertical-item>
@@ -172,6 +177,10 @@
                             <Route path="/menuancres" ><MenuAncres /></Route>
                             <Route path="/menuvertical" ><MenuVertical /></Route>
                         </Route>                            
+                        <Route path="/piv/*">                    
+                            <Route path="/piventete" ><PivEntete /></Route>
+                        </Route>                            
+
                     </Route>
                 </main>        
             </div>
