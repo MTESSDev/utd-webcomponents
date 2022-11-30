@@ -191,7 +191,16 @@
     </div>
 </div>
 <utd-hautpage id="hautPage"></utd-hautpage>
-<footer class="utd">
-    <h2 id="titreMenuPiedPage" class="utd-sr-only">Menu pied de page</h2>
+<footer class="utd">    
+    <utd-pied-page-site id="piedPageSite">
+        <div slot="liensBase">
+            <ul>
+                <li><a href="/en/Commun/ContenuEdite/pageAccessibilite">Accessibility</a></li>
+                <li><a href="/en/Commun/ContenuEdite/pagePolitiquesConditionsUtilisations">Policy and terms of use</a></li>
+                <li><a href="/en/Commun/ContenuEdite/pageInformerSurClicSequr">Learn more about clicSÉQUR – Citoyens</a></li>
+                <li><a href="/en/Commun/FAQ">FAQ</a></li>
+            </ul>
+        </div>
+    </utd-pied-page-site>
     <utd-piv-pied-page id="pivPiedPage"></utd-piv-pied-page>
 </footer>

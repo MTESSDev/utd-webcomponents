@@ -224,6 +224,45 @@ footer.utd{
   text-decoration: underline;
 }
 
+/*====================================================================================================
+  -03- Pied de page site
+====================================================================================================*/
+
+utd-pied-page-site{
+  display: block;
+  background-color: var(--couleur-texte-base);
+  padding: 40px 16px;
+}
+
+utd-pied-page-site a {
+  font-size: 14px;
+  text-decoration: none;
+  color: #fff;
+}
+
+utd-pied-page-site ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;  
+}
+
+utd-pied-page-site ul li {
+  display: inline-block;
+  padding: 8px 16px;
+  margin-right: 8px;
+}
+
+utd-pied-page-site ul li:last-of-type {
+  margin-right: 0;
+}
+
+utd-pied-page-site a:hover, utd-pied-page-site a:focus {
+  color: #fff;
+  text-decoration: underline;
+}
 
 /*====================================================================================================
   -10- Listes à l'intérieur de composants UTD
