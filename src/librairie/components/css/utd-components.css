@@ -198,6 +198,34 @@ header {
 
 
 /*====================================================================================================
+  -02- PIV bas de page
+====================================================================================================*/
+footer.utd{
+  margin-top: var(--tc-80-72-val);
+}
+
+.utd-piv-pied-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.utd-piv-pied-page .logo-mo {
+  display: block;
+}
+
+.utd-piv-pied-page .copyright a {
+  color: var(--couleur-liens);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.utd-piv-pied-page .copyright a:hover, .utd-piv-pied-page .copyright a:focus  {
+  text-decoration: underline;
+}
+
+
+/*====================================================================================================
   -10- Listes à l'intérieur de composants UTD
 ====================================================================================================*/
 

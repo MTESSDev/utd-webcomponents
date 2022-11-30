@@ -6,8 +6,16 @@
 <utd-menu-ancres selecteur="#main h2">
 </utd-menu-ancres>
 
-
 <utd-accordeon reduit="false">
+    <div slot="titre"><h2>1.7.2 (2022-12-??)</h2></div>
+    <h3>Améliorations</h3>
+    <ul class="utd">
+        <li>Ajout du composant <a href="/composants/piv/piventete">Piv entête</a></li>
+        <li>Ajout du composant <a href="/composants/piv/pivpiedpage">Piv pied page</a></li>
+    </ul>    
+</utd-accordeon>
+
+<utd-accordeon>
     <div slot="titre"><h2>1.7.1 (2022-11-28)</h2></div>
     <h3>Améliorations</h3>
     <ul class="utd">

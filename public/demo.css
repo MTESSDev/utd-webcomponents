@@ -130,34 +130,6 @@ h6 {
     }
 }
 
-
-/*====================================================================================================
-  -06- PIV bas de page
-====================================================================================================*/
-.piv-bas-page {
-    margin-top: var(--tc-80-72-val);
-}
-
-.piv-bas-page .conteneur-signature-mo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.piv-bas-page .logo-mo {
-    display: block;
-}
-
-.piv-bas-page .copyright a {
-    color: var(--couleur-liens);
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.piv-bas-page .copyright a:hover, .piv-bas-page .copyright a:focus  {
-    text-decoration: underline;
-}
-
 /*====================================================================================================
   -10- Layout
 ====================================================================================================*/

@@ -25,6 +25,7 @@
     import MenuVertical from './pages/MenuVertical.svelte';
     import MenuAncres from './pages/MenuAncres.svelte';
     import PivEntete from './pages/PivEntete.svelte';
+  import PivPiedPage from './pages/PivPiedPage.svelte';
 
     onMount(() => {  
         document.getElementById('pivEntete').addEventListener("clickLien", () => {       
@@ -133,6 +134,7 @@
                         </utd-menu-vertical-item>
                         <utd-menu-vertical-item libelle="PIV">                                
                             <utd-menu-vertical-item libelle="Entête" href="/composants/piv/piventete"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item libelle="Pied de page" href="/composants/piv/pivPiedPage"></utd-menu-vertical-item>
                         </utd-menu-vertical-item>
 
                     {:else}                                    
@@ -179,6 +181,7 @@
                         </Route>                            
                         <Route path="/piv/*">                    
                             <Route path="/piventete" ><PivEntete /></Route>
+                            <Route path="/pivPiedPage" ><PivPiedPage /></Route>
                         </Route>                            
 
                     </Route>
@@ -188,18 +191,7 @@
     </div>
 </div>
 <utd-hautpage id="hautPage"></utd-hautpage>
-<footer class="piv-bas-page">
+<footer class="utd">
     <h2 id="titreMenuPiedPage" class="utd-sr-only">Menu pied de page</h2>
-    <div class="utd-container conteneur-signature-mo">
-        <a href="https://www.mtess.gouv.qc.ca/" target="_blank" rel="noopener">
-            <img class="logo-mo" alt="Ministère de l'Emploi et de la Solidarité sociale. Ce lien sera ouvert dans un nouvel onglet." src="/images/logo_piv_bas_page.png" width="210" height="81">
-        </a>
-
-        <span class="copyright">
-            <a href="http://www.droitauteur.gouv.qc.ca/copyright.php" target="_blank" rel="noopener">
-                © Gouvernement du Québec,&nbsp;2021
-                <span class="utd-sr-only">. Ce lien sera ouvert dans un nouvel onglet.</span>
-            </a>
-        </span>
-    </div>
+    <utd-piv-pied-page id="pivPiedPage"></utd-piv-pied-page>
 </footer>
