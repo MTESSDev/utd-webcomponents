@@ -26,6 +26,7 @@
     import MenuAncres from './pages/MenuAncres.svelte';
     import PivEntete from './pages/PivEntete.svelte';
   import PivPiedPage from './pages/PivPiedPage.svelte';
+  import PiedPageSite from './pages/PiedPageSite.svelte';
 
     onMount(() => {  
         document.getElementById('pivEntete').addEventListener("clickLien", () => {       
@@ -131,10 +132,11 @@
                             <utd-menu-vertical-item libelle="Haut de page" href="/composants/navigation/hautpage"></utd-menu-vertical-item>
                             <utd-menu-vertical-item libelle="Menu d'ancres" href="/composants/navigation/menuancres"></utd-menu-vertical-item>
                             <utd-menu-vertical-item libelle="Menu vertical" href="/composants/navigation/menuvertical"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item libelle="Pied de page de site" href="/composants/navigation/piedpagesite"></utd-menu-vertical-item>
                         </utd-menu-vertical-item>
                         <utd-menu-vertical-item libelle="PIV">                                
                             <utd-menu-vertical-item libelle="Entête" href="/composants/piv/piventete"></utd-menu-vertical-item>
-                            <utd-menu-vertical-item libelle="Pied de page" href="/composants/piv/pivPiedPage"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item libelle="Pied de page" href="/composants/piv/pivpiedpage"></utd-menu-vertical-item>
                         </utd-menu-vertical-item>
 
                     {:else}                                    
@@ -178,10 +180,11 @@
                             <Route path="/hautpage" ><HautPage /></Route>
                             <Route path="/menuancres" ><MenuAncres /></Route>
                             <Route path="/menuvertical" ><MenuVertical /></Route>
+                            <Route path="/piedpagesite" ><PiedPageSite /></Route>
                         </Route>                            
                         <Route path="/piv/*">                    
                             <Route path="/piventete" ><PivEntete /></Route>
-                            <Route path="/pivPiedPage" ><PivPiedPage /></Route>
+                            <Route path="/pivpiedpage" ><PivPiedPage /></Route>
                         </Route>                            
 
                     </Route>
@@ -191,16 +194,41 @@
     </div>
 </div>
 <utd-hautpage id="hautPage"></utd-hautpage>
-<footer class="utd">    
-    <utd-pied-page-site id="piedPageSite">
-        <div slot="liensBase">
-            <ul>
-                <li><a href="/en/Commun/ContenuEdite/pageAccessibilite">Accessibility</a></li>
-                <li><a href="/en/Commun/ContenuEdite/pagePolitiquesConditionsUtilisations">Policy and terms of use</a></li>
-                <li><a href="/en/Commun/ContenuEdite/pageInformerSurClicSequr">Learn more about clicSÉQUR – Citoyens</a></li>
-                <li><a href="/en/Commun/FAQ">FAQ</a></li>
-            </ul>
-        </div>
-    </utd-pied-page-site>
-    <utd-piv-pied-page id="pivPiedPage"></utd-piv-pied-page>
+<footer class="utd">
+    <!--
+    <nav aria-labelledby="titreLiensNousJoindre">
+        <h2 id="titreLiensNousJoindre">Nous joindre</h2>
+        <ul>
+            <li><a target="_blank" rel="noreferrer noopener" href="https://www.localisateur.servicesquebec.gouv.qc.ca/">Bureaux de services</a></li>
+            <li><a target="_blank" rel="noreferrer noopener" href="https://www.localisateur.servicesquebec.gouv.qc.ca/">Bureaux de services</a></li>
+        </ul>
+    </nav>-->
+    {#if $router.path.indexOf('/composants/navigation/piedpagesite') >= 0}                                    
+        <utd-pied-page-site id="piedPageSite">
+            <div slot="contenu">
+                <nav aria-labelledby="titreLiensSuivezNous" class="media-sociaux">
+                    <h2 id="titreLiensSuivezNous">Suivez-nous</h2>
+                    <ul>
+                        <li><a href="https://www.facebook.com/TravailEmploiSolidaritesocialeQuebec" title="Suivez-nous sur Facebook." target="_blank" rel="noreferrer noopener" data-ga-libelle="Facebook"><span class="utd-icone-svg facebook"></span></a></li>
+                        <li><a href="https://twitter.com/Gouv_MTESS" title="Suivez-nous sur Twitter." target="_blank" rel="noreferrer noopener" data-ga-libelle="Twitter"><span class="utd-icone-svg twitter"></span></a></li>
+                        <li><a href="https://www.youtube.com/user/promomess" title="Suivez-nous sur Youtube." target="_blank" rel="noreferrer noopener" data-ga-libelle="Youtube"><span class="utd-icone-svg youtube"></span></a></li>
+                        <li><a href="https://www.linkedin.com/company/550343/" title="Suivez-nous sur Linkedln." target="_blank" rel="noreferrer noopener" data-ga-libelle="LinkedIn"><span class="utd-icone-svg linkedin"></span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </utd-pied-page-site>
+    {/if}
+
+    <utd-piv-pied-page id="pivPiedPage">
+        {#if $router.path.indexOf('/composants/piv/pivpiedpage') >= 0 || $router.path.indexOf('/composants/navigation/piedpagesite') >= 0}                                        
+            <div slot="liens">
+                <ul>
+                    <li><a href="#a">Accessibilité</a></li>
+                    <li><a href="#a">Politique et conditions d'utilisation</a></li>
+                    <li><a href="#a">S'informer sur clicSÉQUR - Citoyens</a></li>
+                    <li><a href="#a">FAQ</a></li>                    
+                </ul>
+            </div>
+        {/if}                    
+    </utd-piv-pied-page>    
 </footer>

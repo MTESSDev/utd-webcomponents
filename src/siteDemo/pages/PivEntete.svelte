@@ -8,8 +8,8 @@
   let tableauSlots = [];
 
   onMount(() => {
-      tableauParametres = obtenirTableauParametres();
-      tableauSlots = obtenirTableauSlots();
+      tableauParametres = obtenirTableauParametres()
+      tableauSlots = obtenirTableauSlots()
   })
 
   function obtenirTableauParametres() {

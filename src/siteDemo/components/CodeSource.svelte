@@ -100,6 +100,7 @@
     //Ajout de sauts de ligne sur certaines balises afin d'avoir un plus beau formatage
     codeSource = codeSource.replace(/<span/g, "\r\n<span")
     codeSource = codeSource.replace(/<\/span>/g, "</span>\r\n")
+    codeSource = codeSource.replace(/<\/a>/g, "</a>\r\n")
     codeSource = codeSource.replace(/<button/g, "\r\n<button")
     codeSource = codeSource.replace(/<div/g, "\r\n<div")
     codeSource = codeSource.replace(/<label/g, "\r\n<label")

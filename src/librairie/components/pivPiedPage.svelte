@@ -34,6 +34,16 @@ onMount(() => {
 </script>
 
 <div class="utd-container utd-piv-pied-page">
+  
+  {#if Utils.slotExiste(slots, 'liens')}
+  <div class="liens">
+    <h2 class="utd-sr-only" id="utdTitreLiensPivPiedPage">Liens vers informations complémentaires</h2>
+    <nav aria-labelledby="utdTitreLiensPivPiedPage">
+      <slot name="liens" />
+    </nav>
+  </div>    
+  {/if}    
+
   <a href="{urlLogo}" target="_blank" rel="noopener">
       <img class="logo-mo" alt="{altLogo}{texteSrOuvertureNouvelOnglet}" src="{srcLogo}" width="{widthLogo}" height="{heightLogo}">
   </a>

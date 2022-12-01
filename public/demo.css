@@ -23,6 +23,27 @@ h6 {
     margin-top: 24px; /*Quebec.ca = 16px, pas de sens, c'est moins que marge d'un paragraphe.*/
 }
 
+
+/*====================================================================================================*/
+/*  -02- Pied page site
+/*====================================================================================================*/
+utd-pied-page-site [slot="contenu"]{
+    justify-content: center;
+}
+
+utd-pied-page-site .media-sociaux ul {
+    display: flex; 
+    align-items: center;
+}
+
+utd-pied-page-site .media-sociaux ul li {
+    margin-right: 24px;
+}
+
+utd-pied-page-site .media-sociaux ul li a {
+    display: block;
+}
+
 /*====================================================================================================*/
 /*  -15- Menu principal (desktop)
 /*====================================================================================================*/

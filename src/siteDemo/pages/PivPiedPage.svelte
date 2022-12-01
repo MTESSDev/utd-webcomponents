@@ -2,12 +2,14 @@
   import { onMount } from 'svelte';
   import CodeSource from '../components/CodeSource.svelte'; 
   import TableauParams from '../components/TableauParams.svelte'; 
+  import TableauSlots from '../components/TableauSlots.svelte'; 
 
   let tableauParametres = [];
   let tableauSlots = [];
 
   onMount(() => {
-      tableauParametres = obtenirTableauParametres();
+    tableauParametres = obtenirTableauParametres()
+    tableauSlots = obtenirTableauSlots()
   })
 
   function obtenirTableauParametres() {
@@ -23,6 +25,13 @@
         {nom: "texte-sr-ouverture-nouvel-onglet", type: "String (Optionnel)", description: `Texte lu au lecteur écran indiquant qu'un lien est ouvert dans un nouvel onglet. Défaut ". Ce lien sera ouvert dans un nouvel onglet." / ". This link will open in a new tab.".`}
       ]
   }
+
+  function obtenirTableauSlots() {
+      return [
+        {nom: "liens", description: `<p>Contenu html (normalement "ul" avec des "li" contenant des hyperliens) dans le menu de liens. Aucun css à prévoir si la structure "ul", "li", "a" est respectée. (Voir exemple)</p>`}
+      ]
+  }
+
 </script>
 
 <h1>PIV pied de page</h1>
@@ -31,14 +40,19 @@
 </utd-menu-ancres>
 
 <h2>Description</h2>
-<p>PIV de pied de page gouvernemental.</p>
+<p>PIV de pied de page gouvernemental. Inclu le menu de liens.</p>
 
 <h3>Référence système de design Quebec.ca</h3>
-<p>Non disponible.</p>
+<p>Non disponible. <a href="https://www.piv.gouv.qc.ca/fileadmin/documents/guide/section4_numerique.pdf" target="_blank">Voir les spécifications du guide des communications électronique gouvernementales</a>.</p>
 
 <h2>Attributs disponibles</h2>
 <TableauParams parametres="{tableauParametres}">
 </TableauParams>
+
+<h2>Slots disponibles</h2>
+<TableauSlots parametres="{tableauSlots}">
+</TableauSlots>
+
 
 <h2>Exemple</h2>
 <p>L'exemple contient le piv de pied de page du présent site de démonstration.</p>

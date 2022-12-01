@@ -198,11 +198,39 @@ header {
 
 
 /*====================================================================================================
-  -02- PIV bas de page
+  -02- PIV pied de page
 ====================================================================================================*/
 footer.utd{
   margin-top: var(--tc-80-72-val);
 }
+
+utd-piv-pied-page [slot="liens"] ul {
+  margin: 40px 0 16px 0;
+  padding: 0 16px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;    
+}
+
+utd-piv-pied-page [slot="liens"] ul li {
+  display: inline-block;
+  padding: 0 16px 8px 16px; 
+}
+
+utd-piv-pied-page [slot="liens"] ul li:last-of-type {
+  margin-right: 0;
+}
+
+utd-piv-pied-page  [slot="liens"] a {
+  font-size: 14px;
+  text-decoration: none;
+}
+
+utd-piv-pied-page [slot="liens"] a:hover, utd-piv-pied-page [slot="liens"] a:focus {
+  text-decoration: underline;
+}
+
 
 .utd-piv-pied-page {
   display: flex;
@@ -227,42 +255,71 @@ footer.utd{
 /*====================================================================================================
   -03- Pied de page site
 ====================================================================================================*/
-
-utd-pied-page-site{
-  display: block;
+utd-pied-page-site {
+  color: #fff;
   background-color: var(--couleur-texte-base);
-  padding: 40px 16px;
+  display: block;
 }
 
-utd-pied-page-site a {
-  font-size: 14px;
-  text-decoration: none;
+utd-pied-page-site [slot="contenu"] {
+  display: flex;
+  padding: 0 0 40px 0;
+}
+
+utd-pied-page-site h2, utd-pied-page-site h3, utd-pied-page-site h4, utd-pied-page-site h5, utd-pied-page-site h6 {
   color: #fff;
+  font-family: OpenSans-Bold;
+  font-size: 16px;
+  margin: 0 0 16px 0;
+}
+
+utd-pied-page-site nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  padding: 0 16px;
 }
 
 utd-pied-page-site ul {
+  padding:0;
   margin: 0;
-  padding: 0;
   list-style: none;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;  
 }
 
-utd-pied-page-site ul li {
-  display: inline-block;
-  padding: 8px 16px;
-  margin-right: 8px;
-}
-
-utd-pied-page-site ul li:last-of-type {
-  margin-right: 0;
+utd-pied-page-site  a {
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
 }
 
 utd-pied-page-site a:hover, utd-pied-page-site a:focus {
   color: #fff;
   text-decoration: underline;
 }
+
+/* TODO pe éventuellement appliquer un modèle avec un nombre de colonnes?
+utd-pied-page-site nav {
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 768px){
+  utd-pied-page-site nav {
+      -ms-flex: 0 0 50%;
+      flex: 0 0 50%;
+      max-width: 50%;
+  }
+}
+
+@media (min-width: 992px){
+  utd-pied-page-site nav {
+      -ms-flex: 0 0 33.333333%;
+      flex: 0 0 33.333333%;
+      max-width: 33.333333%;
+  }
+}
+*/
 
 /*====================================================================================================
   -10- Listes à l'intérieur de composants UTD

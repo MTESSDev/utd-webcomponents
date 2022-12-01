@@ -1628,7 +1628,22 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
     background-image: url("../images/utd-sprite.svg_versionUtd_#ico-chevron-blanc");
 }
 
+.utd-icone-svg.facebook {
+    background-image: url("../images/utd-sprite.svg_versionUtd_#ico-facebook");
+}
 
+.utd-icone-svg.linkedin {
+    background-image: url("../images/utd-sprite.svg_versionUtd_#ico-linkedin");
+    height: 30px;
+}
+
+.utd-icone-svg.twitter {
+    background-image: url("../images/utd-sprite.svg_versionUtd_#ico-twitter");
+}
+
+.utd-icone-svg.youtube {
+    background-image: url("../images/utd-sprite.svg_versionUtd_#ico-youtube");
+}
 
 /*====================================================================================================
   -999- Divers
