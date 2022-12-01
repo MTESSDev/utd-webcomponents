@@ -156,7 +156,7 @@ utd-pied-page-site .media-sociaux ul li a {
 ====================================================================================================*/
 
 /* Il faut soustraire la hauteur du footer afin qu'il reste en bas de page */
-.conteneur-principal {
+.utd-conteneur-principal {
     min-height: calc(100vh - var(--hauteur-fixe-footer-desktop));
 }
 

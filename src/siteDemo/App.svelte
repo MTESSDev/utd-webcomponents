@@ -27,6 +27,7 @@
     import PivEntete from './pages/PivEntete.svelte';
   import PivPiedPage from './pages/PivPiedPage.svelte';
   import PiedPageSite from './pages/PiedPageSite.svelte';
+  import GabaritHtml from './pages/GabaritHTML.svelte';
 
     onMount(() => {  
         document.getElementById('pivEntete').addEventListener("clickLien", () => {       
@@ -48,9 +49,21 @@
 
 </script>
 
-<div class="conteneur-principal">    
+<div class="utd-conteneur-principal">    
     <header>
-
+        <noscript>
+            <div id="javascriptDesactive" class="fureteur-desuet">
+                <div class="utd-container" role="alert" aria-atomic="true">
+                    <div class="icone">
+                        <img alt="Icône avertissement" src="/images/utd-sprite.svg_versionUtd_#ico-avertissement" width="28" height="26" aria-hidden="true">
+                    </div>
+                    <div class="texte">
+                        Activez JavaScript dans votre navigateur pour que Système de design MESS fonctionne correctement.
+                    </div>
+                </div>
+            </div>
+        </noscript>
+        <img id="pivLogoGouvernementPrint" alt="Logo du gouvernement du Québec." src="/images/quebecPrint.gif" width="199" height="60">
         <utd-piv-entete id="pivEntete" titre-site1="Système de design MESS" alt-logo="Signature du gouvernement du Québec. Accédez à Système de design MESS.">
 <!--            <div slot="boutonRecherche">
                 <button type="button">RD</button>
@@ -64,20 +77,8 @@
         </utd-piv-entete>
 
         <!--Javascript désactivé-->
-        <noscript>
-        <div id="javascriptDesactive" class="fureteur-desuet">
-            <div class="utd-container" role="alert" aria-atomic="true">
-                <div class="icone">
-                    <img alt="Icône avertissement" src="/images/utd-sprite.svg_versionUtd_#ico-avertissement" width="28" height="26" aria-hidden="true">
-                </div>
-                <div class="texte">
-                    Activez JavaScript dans votre navigateur pour que Système de design MESS fonctionne correctement.
-                </div>
-            </div>
-        </div>
-        </noscript>
-
-        <img id="pivLogoGouvernementPrint" alt="Logo du gouvernement du Québec." src="/images/quebecPrint.gif" width="199" height="60">
+        
+        
         
 
         
@@ -142,6 +143,8 @@
                     {:else}                                    
                         <utd-menu-vertical-item href="/base/principe" libelle="Principe"></utd-menu-vertical-item>
                         <utd-menu-vertical-item href="/base/utilisation" libelle="Utilisation"></utd-menu-vertical-item>
+                        <utd-menu-vertical-item href="/gabarit1colonne" libelle="Gabarit 1 colonne"></utd-menu-vertical-item>
+                        <utd-menu-vertical-item href="/gabarit2colonnes" libelle="Gabarit 2 colonnes"></utd-menu-vertical-item>
                     {/if}
                 </utd-menu-vertical> 
             </div>
@@ -152,6 +155,7 @@
                     <Route path="/base" redirect="/base/principe" ></Route>
                     <Route path="/base/principe" ><Principe /></Route>
                     <Route path="/base/utilisation" ><Utilisation /></Route>
+                    <Route path="/base/gabarithtml" ><GabaritHtml /></Route>
                     <Route path="/composants" redirect="/composants/versions"></Route>
                     <Route path="/composants/*">
                         <Route path="/versions" ><Versions /></Route>
@@ -186,7 +190,6 @@
                             <Route path="/piventete" ><PivEntete /></Route>
                             <Route path="/pivpiedpage" ><PivPiedPage /></Route>
                         </Route>                            
-
                     </Route>
                 </main>        
             </div>
