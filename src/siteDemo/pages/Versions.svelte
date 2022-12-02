@@ -12,6 +12,8 @@
     <ul class="utd">
         <li>Ajout du composant <a href="/composants/piv/piventete">Piv entête</a></li>
         <li>Ajout du composant <a href="/composants/piv/pivpiedpage">Piv pied page</a></li>
+        <li>Ajout du composant <a href="/composants/navigation/piedpagesite">Pied de page de site</a></li>
+        <li>Ajout de 2 gabarits contenant la structure HTML de base pour l'intégration des composants UTD. <a href="/base/principe">Voir la section "Base"</a></li>
     </ul>    
 </utd-accordeon>
 
