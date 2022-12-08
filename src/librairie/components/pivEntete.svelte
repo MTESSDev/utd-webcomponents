@@ -47,7 +47,7 @@ function clickLien(){
     <div class="conteneur-sections">
       <div class="section-gauche signature-gouvernement">
         <a href="{urlLogo}">
-          <img alt="{altLogo}" src="/images/utd-sprite.svg_versionUtd_#QUEBEC_blanc">
+          <img alt="{altLogo}" src="../images/utd-sprite.svg_versionUtd_#QUEBEC_blanc">
         </a>
       </div>
       <div class="section-centre">
