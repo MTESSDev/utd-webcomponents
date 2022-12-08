@@ -64,12 +64,13 @@
             </div>
         </noscript>
         <img id="pivLogoGouvernementPrint" alt="Logo du gouvernement du Québec." src="/images/quebecPrint.gif" width="199" height="60">
-        <utd-piv-entete id="pivEntete" titre-site1="Système de design MESS" titre-site2="Système de design MESS" alt-logo="Signature du gouvernement du Québec. Accédez à Système de design MESS." url-nous-joindre="#a">
-            <div slot="liens">
+        <utd-piv-entete id="pivEntete" titre-site1="Système de design MESS" titre-site2="Système de design MESS" alt-logo="Signature du gouvernement du Québec. Accédez à Système de design MESS.">
+<!--            <div slot="liens">
                 <ul>
-                    <li>toto</li>
+                    <li><a href="#toto">toto</a></li>
+                    <li><a href="#toto">toto2</a></li>
                 </ul>
-            </div>
+            </div>-->
             <!--            <div slot="boutonRecherche">
                 <button type="button">RD</button>
             </div>

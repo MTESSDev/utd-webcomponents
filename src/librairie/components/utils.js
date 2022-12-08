@@ -1,4 +1,7 @@
+
 export class Utils {
+    static cssRelativePath = document.currentScript.getAttribute('css-relative-path') || '/css/';
+
     static conserverFocusElement(componentShadow, componentRoot) {
         const elementsFocusablesShadow = Array.from(this.obtenirElementsFocusables(componentShadow))
         const elementsFocusablesRoot = Array.from(this.obtenirElementsFocusables(componentRoot))

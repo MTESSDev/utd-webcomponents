@@ -58,4 +58,4 @@ onMount(() => {
 </div>
 
 
-<link rel='stylesheet' href='/css/utd-webcomponents.min.css'>
+<link rel='stylesheet' href='{Utils.cssRelativePath}utd-webcomponents.min.css'>

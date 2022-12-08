@@ -6,6 +6,7 @@
 
 //IMPORTANT! Laisser ce commentaire, une fois le build terminé, il sera remplacé par une condition permettant de ne pas réexécuter le script (afin d'éviter les erreurs de custom elements dejà définis qui se produisent parfois. On suppose rechargement d'un onglet ou autre.)
 /*!_VerifierSiDejaCharge_*/
+
 /*======================================================================================================================*/
 /* -10- FENÊTRES DE MESSAGE
 /*======================================================================================================================*/
