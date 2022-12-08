@@ -1764,6 +1764,7 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
   display: flex;
   flex-direction: column;
   text-decoration: none;
+  font-size: 18px;
   /*margin-top: 3px;  Pas dans charte graphique... permet d'aligner parfaitement avec drapeau*/
 }
 
@@ -1867,12 +1868,13 @@ header {
   -02- PIV pied de page
 ====================================================================================================*/
 footer.utd{
+  position: relative;
   margin-top: var(--tc-80-72-val);
 }
 
 utd-piv-pied-page [slot="liens"] ul {
-  margin: 40px 0 16px 0;
-  padding: 0 16px;
+  margin: 40px 0 16px -16px;
+  padding: 0;
   list-style: none;
   display: flex;
   justify-content: center;
@@ -1896,7 +1898,6 @@ utd-piv-pied-page  [slot="liens"] a {
 utd-piv-pied-page [slot="liens"] a:hover, utd-piv-pied-page [slot="liens"] a:focus {
   text-decoration: underline;
 }
-
 
 .utd-piv-pied-page {
   display: flex;
@@ -1925,6 +1926,7 @@ utd-pied-page-site {
   color: #fff;
   background-color: var(--couleur-texte-base);
   display: block;
+  margin-left: -16px; 
 }
 
 utd-pied-page-site [slot="contenu"] {

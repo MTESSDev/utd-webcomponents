@@ -66,16 +66,21 @@ function clickLien(){
           </div>    
         {/if}    
 
-        {#if urlNousJoindre || urlLangueAlternative}
-          <ul>
-            {#if urlLangueAlternative}
-              <li><a href="{urlLangueAlternative}">{texteLangueAlternative}</a></li>  
-            {/if}
-            {#if urlNousJoindre}              
-              <li><a href="{urlNousJoindre}">{texteNousJoindre}</a></li>
-            {/if}
-          </ul>
-        {/if}      
+
+        {#if Utils.slotExiste(slots, 'liens')}
+          <slot name="liens" />
+        {:else}    
+          {#if urlNousJoindre || urlLangueAlternative}
+            <ul>
+              {#if urlLangueAlternative}
+                <li><a href="{urlLangueAlternative}">{texteLangueAlternative}</a></li>  
+              {/if}
+              {#if urlNousJoindre}              
+                <li><a href="{urlNousJoindre}">{texteNousJoindre}</a></li>
+              {/if}
+            </ul>
+          {/if}
+        {/if}            
       </div>
     </div>
     <div class="zone-titre-recherche">

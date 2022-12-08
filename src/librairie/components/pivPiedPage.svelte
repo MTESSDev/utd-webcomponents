@@ -11,6 +11,7 @@ import { get_current_component } from "svelte/internal"
 const textesDefaut = Utils.obtenirTextesDefaut()
 const languePage = Utils.obtenirLanguePage()
 
+export let texteTitreSrLiens = languePage === 'fr' ? 'Liens vers informations complémentaires' : 'Links to additional information'   
 export let urlLogo = languePage === 'fr' ? 'https://www.mtess.gouv.qc.ca/' : 'https://www.mtess.gouv.qc.ca/index_en.asp'   
 export let altLogo = languePage === 'fr' ? `Ministère de l'Emploi et de la Solidarité sociale` : `Ministère de l'Emploi et de la Solidarité sociale`
 export let srcLogo = '/images/logo_piv_bas_page.png'   
@@ -37,7 +38,7 @@ onMount(() => {
   
   {#if Utils.slotExiste(slots, 'liens')}
   <div class="liens">
-    <h2 class="utd-sr-only" id="utdTitreLiensPivPiedPage">Liens vers informations complémentaires</h2>
+    <h2 class="utd-sr-only" id="utdTitreLiensPivPiedPage">{texteTitreSrLiens}</h2>
     <nav aria-labelledby="utdTitreLiensPivPiedPage">
       <slot name="liens" />
     </nav>

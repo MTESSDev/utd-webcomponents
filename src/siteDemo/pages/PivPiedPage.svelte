@@ -14,6 +14,7 @@
 
   function obtenirTableauParametres() {
       return [
+        {nom: "texte-titre-sr-liens", type: "String (Optionnel)", description: `Texte du titre "h2" lu au lecteur écran pour le menu de liens. Défaut : "Liens vers informations complémentaires" / "Links to additional information".`},
         {nom: "url-logo", type: "String (Optionnel)", description: `Url à ouvrir dans un nouvel onglet lorsque l'utilisateur clique sur le logo. Défaut : "https://www.mtess.gouv.qc.ca/" / "https://www.mtess.gouv.qc.ca/index_en.asp".`},
         {nom: "alt-logo", type: "String (Optionnel)", description: `Texte alternatif du logo. Défaut : "Ministère de l'Emploi et de la Solidarité sociale".`},
         {nom: "src-logo", type: "String (Optionnel)", description: `Source (attribut "src") du logo. Défaut logo du MESS "/images/logo_piv_bas_page.png" inclu avec les composants utd.`},
@@ -40,7 +41,8 @@
 </utd-menu-ancres>
 
 <h2>Description</h2>
-<p>PIV de pied de page gouvernemental. Inclu le menu de liens.</p>
+<p>PIV de pied de page gouvernemental.</p>
+<p>Inclu le menu de liens "génériques" ou "généraux" qui sont obligatoires (selon la version actuelle de nos règles d'interfaces) : Accessibilité et Politiques et conditions d’utilisation.</p>
 
 <h3>Référence système de design Quebec.ca</h3>
 <p>Non disponible. <a href="https://www.piv.gouv.qc.ca/fileadmin/documents/guide/section4_numerique.pdf" target="_blank">Voir les spécifications du guide des communications électronique gouvernementales</a>.</p>

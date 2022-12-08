@@ -55,7 +55,7 @@
             <div id="javascriptDesactive" class="fureteur-desuet">
                 <div class="utd-container" role="alert" aria-atomic="true">
                     <div class="icone">
-                        <img alt="Icône avertissement" src="/images/utd-sprite.svg_versionUtd_#ico-avertissement" width="28" height="26" aria-hidden="true">
+                        <img alt="Icône avertissement" src="../images/utd-sprite.svg_versionUtd_#ico-avertissement" width="28" height="26" aria-hidden="true">
                     </div>
                     <div class="texte">
                         Activez JavaScript dans votre navigateur pour que Système de design MESS fonctionne correctement.
@@ -64,8 +64,13 @@
             </div>
         </noscript>
         <img id="pivLogoGouvernementPrint" alt="Logo du gouvernement du Québec." src="/images/quebecPrint.gif" width="199" height="60">
-        <utd-piv-entete id="pivEntete" titre-site1="Système de design MESS" alt-logo="Signature du gouvernement du Québec. Accédez à Système de design MESS.">
-<!--            <div slot="boutonRecherche">
+        <utd-piv-entete id="pivEntete" titre-site1="Système de design MESS" titre-site2="Système de design MESS" alt-logo="Signature du gouvernement du Québec. Accédez à Système de design MESS." url-nous-joindre="#a">
+            <div slot="liens">
+                <ul>
+                    <li>toto</li>
+                </ul>
+            </div>
+            <!--            <div slot="boutonRecherche">
                 <button type="button">RD</button>
             </div>
             <div slot="boutonRechercheMobile">
