@@ -17,6 +17,7 @@
         {nom: "titre-site1", type: "String (Obligatoire)", description: `Texte ligne 1 pour le nom du site ou de service.`},
         {nom: "titre-site2", type: "String (Optionnel)", description: `Texte ligne 2 pour le nom du site ou de service.`},
         {nom: "url-titre-site", type: "String (Obligatoire)", description: `Url vers laquelle rediriger lorsque l'utilisateur clique sur la zone de titre du site ou de service.`},
+        {nom: "src-logo", type: "String (Optionnel)", description: `Source (attribut "src") du logo. Défaut logo du gouvernement du québec "/images/utd-sprite.svg#QUEBEC_blanc" inclu avec les composants utd.`},
         {nom: "url-logo", type: "String (Optionnel)", description: `Url du logo. Défaut : "/".`},
         {nom: "alt-logo", type: "String (Optionnel)", description: `Texte alternatif du logo. Défaut : "Signature du gouvernement du Québec." / "Québec government signature".`},
         {nom: "url-langue-alternative", type: "String (Optionnel)", description: `Url vers laquelle rediriger lorsque l'utilisateur clique sur le lien. Si non spécifié, le lien n'est pas affiché.`},     

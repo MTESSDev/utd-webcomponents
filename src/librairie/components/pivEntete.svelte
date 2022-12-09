@@ -8,7 +8,8 @@ import { onMount } from "svelte";
 import { Utils } from "./utils"
 import { get_current_component } from "svelte/internal"  
 
-export let urlLogo = '/'   
+export let urlLogo = '/'
+export let srcLogo = `${Utils.imagesRelativePath}utd-sprite.svg_versionUtd_#QUEBEC_blanc`   
 export let altLogo = Utils.obtenirLanguePage() === 'fr' ? 'Signature du gouvernement du Québec.' : 'Québec government signature.'
 export let titreSite1 = ''
 export let titreSite2 = ''
@@ -47,7 +48,7 @@ function clickLien(){
     <div class="conteneur-sections">
       <div class="section-gauche signature-gouvernement">
         <a href="{urlLogo}">
-          <img alt="{altLogo}" src="../images/utd-sprite.svg_versionUtd_#QUEBEC_blanc">
+          <img alt="{altLogo}" src="{srcLogo}">
         </a>
       </div>
       <div class="section-centre">

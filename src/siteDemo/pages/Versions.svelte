@@ -14,7 +14,7 @@
         <li>Ajout du composant <a href="/composants/piv/pivpiedpage">Piv pied page</a></li>
         <li>Ajout du composant <a href="/composants/navigation/piedpagesite">Pied de page de site</a></li>
         <li>Ajout de 2 gabarits contenant la structure HTML de base pour l'intégration des composants UTD. <a href="/base/principe">Voir la section "Base"</a></li>
-        <li>Ajout de la possibilité de spécifier le chemin relatif du css "utdwebcomponents.css" via l'attribut "css-relative-path" de la balise script.</li>
+        <li>Ajout de la possibilité de spécifier le chemin relatif du dossier contenant les fichiers utd via l'attribut "base-relative-path" de la balise script.</li>
     </ul>    
 </utd-accordeon>
 

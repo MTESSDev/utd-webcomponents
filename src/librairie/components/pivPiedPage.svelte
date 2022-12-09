@@ -14,7 +14,7 @@ const languePage = Utils.obtenirLanguePage()
 export let texteTitreSrLiens = languePage === 'fr' ? 'Liens vers informations complémentaires' : 'Links to additional information'   
 export let urlLogo = languePage === 'fr' ? 'https://www.mtess.gouv.qc.ca/' : 'https://www.mtess.gouv.qc.ca/index_en.asp'   
 export let altLogo = languePage === 'fr' ? `Ministère de l'Emploi et de la Solidarité sociale` : `Ministère de l'Emploi et de la Solidarité sociale`
-export let srcLogo = '../images/logo_piv_bas_page.png'   
+export let srcLogo = `${Utils.imagesRelativePath}logo_piv_bas_page.png`   
 export let widthLogo = '210'   
 export let heightLogo = '81'
 export let texteCopyright = languePage === 'fr' ? '© Gouvernement du Québec, ' : '© Gouvernement du Québec, '

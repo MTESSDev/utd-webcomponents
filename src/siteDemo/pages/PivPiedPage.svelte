@@ -17,7 +17,7 @@
         {nom: "texte-titre-sr-liens", type: "String (Optionnel)", description: `Texte du titre "h2" lu au lecteur écran pour le menu de liens. Défaut : "Liens vers informations complémentaires" / "Links to additional information".`},
         {nom: "url-logo", type: "String (Optionnel)", description: `Url à ouvrir dans un nouvel onglet lorsque l'utilisateur clique sur le logo. Défaut : "https://www.mtess.gouv.qc.ca/" / "https://www.mtess.gouv.qc.ca/index_en.asp".`},
         {nom: "alt-logo", type: "String (Optionnel)", description: `Texte alternatif du logo. Défaut : "Ministère de l'Emploi et de la Solidarité sociale".`},
-        {nom: "src-logo", type: "String (Optionnel)", description: `Source (attribut "src") du logo. Défaut logo du MESS "../images/logo_piv_bas_page.png" inclu avec les composants utd.`},
+        {nom: "src-logo", type: "String (Optionnel)", description: `Source (attribut "src") du logo. Défaut logo du MESS "/images/logo_piv_bas_page.png" inclu avec les composants utd.`},
         {nom: "width-logo", type: "Integer (Optionnel)", description: `Largeur du logo. Défaut : "210".`},
         {nom: "height-logo", type: "Integer (Optionnel)", description: `Hauteur du logo. Défaut : "81".`},
         {nom: "texte-copyright", type: "String (Optionnel)", description: `Texte du copyright. Défaut "© Gouvernement du Québec, ".`},     
