@@ -30,9 +30,9 @@
 
 
 <h3>Chargement du javascript</h3>
-<p>Charger le script à la fin du <span class="utd-emphase-gris">body</span> de la page. Il est possible de spécifier le chemin relatif du fichier css si ce dernier n'est pas "/css/'.</p>
-<p>Il suffit d'ajouter l'attribut "css-relative-path" à la balise script. Ne pas inscrire le nom du fichier css (utdwebcomponents.min.css), uniquement le chemin pour l'atteindre.</p>
-<CodeSource codeSource="<script src='/js/utd-webcomponents.min.js' css-relative-path='/css/'></script>">
+<p>Charger le script à la fin du <span class="utd-emphase-gris">body</span> de la page.</p>
+<p>Il est possible de spécifier le chemin relatif pour atteindre le dossier contenant les éléments utd si ce dernier n'est pas "/" (ex. racine wwwroot). Il suffit d'ajouter l'attribut "relative-base-path" à la balise script.</p>
+<CodeSource codeSource="<script src='/js/utd-webcomponents.min.js' relative-base-path='/utd/'></script>">
 </CodeSource>   
 
 <h3>Chargement du css</h3>
