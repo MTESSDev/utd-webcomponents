@@ -19,7 +19,7 @@
 
     function obtenirTableauParametresDebuter() {
         return [
-            {nom: "idBouton", type: "String", description: `Id du bouton ayant initié le traitement en cours.`},
+            {nom: "bouton", type: "Object", description: `Objet (bouton) ayant initié le traitement en cours.`},
             {nom: "avecOverlay", type: "Boolean (Optionnel)", description: `Indique si l'interface doit être bloquée (overlay). Défaut true.`}
         ];
     }

@@ -6,8 +6,19 @@
 <utd-menu-ancres selecteur="#main h2">
 </utd-menu-ancres>
 
-
 <utd-accordeon reduit="false">
+    <div slot="titre"><h2>1.7.2 (2022-12-08)</h2></div>
+    <h3>Améliorations</h3>
+    <ul class="utd">
+        <li>Ajout du composant <a href="/composants/piv/piventete">Piv entête</a></li>
+        <li>Ajout du composant <a href="/composants/piv/pivpiedpage">Piv pied page</a></li>
+        <li>Ajout du composant <a href="/composants/navigation/piedpagesite">Pied de page de site</a></li>
+        <li>Ajout de 2 gabarits contenant la structure HTML de base pour l'intégration des composants UTD. <a href="/base/principe">Voir la section "Base"</a></li>
+        <li>Ajout de la possibilité de spécifier le chemin relatif du dossier contenant les fichiers utd via l'attribut "relative-base-path" de la balise script.</li>
+    </ul>    
+</utd-accordeon>
+
+<utd-accordeon>
     <div slot="titre"><h2>1.7.1 (2022-11-28)</h2></div>
     <h3>Améliorations</h3>
     <ul class="utd">

@@ -4,10 +4,10 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 <svelte:options tag="utd-avis" />
 
 <script>
+  import { Utils } from "./utils"
   export let titre = ""
   export let type = "information"
   export let contenu = ""
-
 </script>
 
 <div class="utd-component utd-avis {type}" tabindex="0">
@@ -28,4 +28,4 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   </div>
 </div>
 
-<link rel='stylesheet' href='/css/utd-webcomponents.min.css'>
+<link rel='stylesheet' href='{Utils.cssRelativePath}utd-webcomponents.min.css'>

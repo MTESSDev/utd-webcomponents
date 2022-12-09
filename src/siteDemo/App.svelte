@@ -1,6 +1,7 @@
 <script>
     import {Route} from 'tinro'; 
     import {active} from 'tinro';
+    import { onMount } from "svelte";
     import Principe from './pages/Principe.svelte'; 
     import Utilisation from './pages/Utilisation.svelte'; 
     import Versions from './pages/Versions.svelte'; 
@@ -20,12 +21,23 @@
     import {router} from 'tinro';
     import ChampsAutomatique from './pages/ChampsAutomatique.svelte';
     import ChampObligatoire from './pages/ChampObligatoire.svelte';
-  import ChampErreur from './pages/ChampErreur.svelte';
-  import MenuVertical from './pages/MenuVertical.svelte';
-  import MenuAncres from './pages/MenuAncres.svelte';
+    import ChampErreur from './pages/ChampErreur.svelte';
+    import MenuVertical from './pages/MenuVertical.svelte';
+    import MenuAncres from './pages/MenuAncres.svelte';
+    import PivEntete from './pages/PivEntete.svelte';
+  import PivPiedPage from './pages/PivPiedPage.svelte';
+  import PiedPageSite from './pages/PiedPageSite.svelte';
+  import GabaritHtml from './pages/GabaritHTML.svelte';
 
-  //Patch afin de faire fonctionner le bouton "Passer au contenu", semble y avoir un problème avec le router tinro
-  function accederContenuPrincipal(){
+    onMount(() => {  
+        document.getElementById('pivEntete').addEventListener("clickLien", () => {       
+            accederContenuPrincipal()
+        })
+    })
+
+
+    //Patch afin de faire fonctionner le bouton "Passer au contenu", semble y avoir un problème avec le router tinro
+    function accederContenuPrincipal(){
     const urlActuelle = location.href.replace(location.hash,"")
     const urlContenuPrincipal = urlActuelle + '#main' 
 
@@ -33,59 +45,47 @@
         location.href = urlActuelle + '#main2'
     } 
     location.href = urlContenuPrincipal
-  }
+    }
 
 </script>
 
-<div class="conteneur-principal">    
+<div class="utd-conteneur-principal">    
     <header>
-        <div class="conteneur-passer-contenu">
-            <div class="passer-contenu">
-                <a href="#main" on:click={accederContenuPrincipal} class="passer-contenu">Passer au contenu</a>
-            </div>   
-        </div>
-
-        <!--Javascript désactivé-->
         <noscript>
-        <div id="javascriptDesactive" class="fureteur-desuet">
-            <div class="utd-container" role="alert" aria-atomic="true">
-                <div class="icone">
-                    <img alt="Icône avertissement" src="/images/utd-sprite.svg?v=1.7.1#ico-avertissement" width="28" height="26" aria-hidden="true">
-                </div>
-                <div class="texte">
-                    Activez JavaScript dans votre navigateur pour que Système de design MESS fonctionne correctement.
+            <div id="javascriptDesactive" class="fureteur-desuet">
+                <div class="utd-container" role="alert" aria-atomic="true">
+                    <div class="icone">
+                        <img alt="Icône avertissement" src="../images/utd-sprite.svg_versionUtd_#ico-avertissement" width="28" height="26" aria-hidden="true">
+                    </div>
+                    <div class="texte">
+                        Activez JavaScript dans votre navigateur pour que Système de design MESS fonctionne correctement.
+                    </div>
                 </div>
             </div>
-        </div>
         </noscript>
         <img id="pivLogoGouvernementPrint" alt="Logo du gouvernement du Québec." src="/images/quebecPrint.gif" width="199" height="60">
-        <div class="piv piv-entete">
-            <div class="utd-container">
-                <div class="conteneur-sections">
-                    <div class="section-gauche signature-gouvernement" lang="fr">
-                        <a href="/">
-                            <img alt="Signature du gouvernement du Québec. Accédez à Système de design MESS." src="/images/utd-sprite.svg?v=1.7.1#QUEBEC_blanc">
-                        </a>
-                    </div>
-                    <div class="section-centre">
-                        <a href="/" class="titre-site">
-                            <span>Système de design MESS</span>
-                            <span class="description"></span>
-                        </a>
-                    </div>
-
-                    
-                    <div class="section-droite">
-                        <ul class="utd-d-none">
-                            <li><a href="/Commun/NousJoindre">Nous joindre</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="titre-site mobile">
-                    <span>Système de design MESS</span>
-                </div>
+        <utd-piv-entete id="pivEntete" titre-site1="Système de design MESS" titre-site2="Système de design MESS" alt-logo="Signature du gouvernement du Québec. Accédez à Système de design MESS.">
+<!--            <div slot="liens">
+                <ul>
+                    <li><a href="#toto">toto</a></li>
+                    <li><a href="#toto">toto2</a></li>
+                </ul>
+            </div>-->
+            <!--            <div slot="boutonRecherche">
+                <button type="button">RD</button>
             </div>
-        </div>
+            <div slot="boutonRechercheMobile">
+                <button type="button">RM</button>
+            </div>
+            <div slot="zoneRecherche">
+                <div><input type="text"/></div>
+            </div>            -->
+        </utd-piv-entete>
+
+        <!--Javascript désactivé-->
+        
+        
+        
 
         
         <div class="conteneur-menu-identification">
@@ -139,10 +139,18 @@
                             <utd-menu-vertical-item libelle="Haut de page" href="/composants/navigation/hautpage"></utd-menu-vertical-item>
                             <utd-menu-vertical-item libelle="Menu d'ancres" href="/composants/navigation/menuancres"></utd-menu-vertical-item>
                             <utd-menu-vertical-item libelle="Menu vertical" href="/composants/navigation/menuvertical"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item libelle="Pied de page de site" href="/composants/navigation/piedpagesite"></utd-menu-vertical-item>
                         </utd-menu-vertical-item>
+                        <utd-menu-vertical-item libelle="PIV">                                
+                            <utd-menu-vertical-item libelle="Entête" href="/composants/piv/piventete"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item libelle="Pied de page" href="/composants/piv/pivpiedpage"></utd-menu-vertical-item>
+                        </utd-menu-vertical-item>
+
                     {:else}                                    
                         <utd-menu-vertical-item href="/base/principe" libelle="Principe"></utd-menu-vertical-item>
                         <utd-menu-vertical-item href="/base/utilisation" libelle="Utilisation"></utd-menu-vertical-item>
+                        <utd-menu-vertical-item href="/gabarit1colonne" libelle="Gabarit 1 colonne"></utd-menu-vertical-item>
+                        <utd-menu-vertical-item href="/gabarit2colonnes" libelle="Gabarit 2 colonnes"></utd-menu-vertical-item>
                     {/if}
                 </utd-menu-vertical> 
             </div>
@@ -153,6 +161,7 @@
                     <Route path="/base" redirect="/base/principe" ></Route>
                     <Route path="/base/principe" ><Principe /></Route>
                     <Route path="/base/utilisation" ><Utilisation /></Route>
+                    <Route path="/base/gabarithtml" ><GabaritHtml /></Route>
                     <Route path="/composants" redirect="/composants/versions"></Route>
                     <Route path="/composants/*">
                         <Route path="/versions" ><Versions /></Route>
@@ -181,6 +190,11 @@
                             <Route path="/hautpage" ><HautPage /></Route>
                             <Route path="/menuancres" ><MenuAncres /></Route>
                             <Route path="/menuvertical" ><MenuVertical /></Route>
+                            <Route path="/piedpagesite" ><PiedPageSite /></Route>
+                        </Route>                            
+                        <Route path="/piv/*">                    
+                            <Route path="/piventete" ><PivEntete /></Route>
+                            <Route path="/pivpiedpage" ><PivPiedPage /></Route>
                         </Route>                            
                     </Route>
                 </main>        
@@ -189,18 +203,41 @@
     </div>
 </div>
 <utd-hautpage id="hautPage"></utd-hautpage>
-<footer class="piv-bas-page">
-    <h2 id="titreMenuPiedPage" class="utd-sr-only">Menu pied de page</h2>
-    <div class="utd-container conteneur-signature-mo">
-        <a href="https://www.mtess.gouv.qc.ca/" target="_blank" rel="noopener">
-            <img class="logo-mo" alt="Ministère de l'Emploi et de la Solidarité sociale. Ce lien sera ouvert dans un nouvel onglet." src="/images/logo_piv_bas_page.png" width="210" height="81">
-        </a>
+<footer class="utd">
+    <!--
+    <nav aria-labelledby="titreLiensNousJoindre">
+        <h2 id="titreLiensNousJoindre">Nous joindre</h2>
+        <ul>
+            <li><a target="_blank" rel="noreferrer noopener" href="https://www.localisateur.servicesquebec.gouv.qc.ca/">Bureaux de services</a></li>
+            <li><a target="_blank" rel="noreferrer noopener" href="https://www.localisateur.servicesquebec.gouv.qc.ca/">Bureaux de services</a></li>
+        </ul>
+    </nav>-->
+    {#if $router.path.indexOf('/composants/navigation/piedpagesite') >= 0}                                    
+        <utd-pied-page-site id="piedPageSite">
+            <div slot="contenu">
+                <nav aria-labelledby="titreLiensSuivezNous" class="media-sociaux">
+                    <h2 id="titreLiensSuivezNous">Suivez-nous</h2>
+                    <ul>
+                        <li><a href="https://www.facebook.com/TravailEmploiSolidaritesocialeQuebec" title="Suivez-nous sur Facebook." target="_blank" rel="noreferrer noopener" data-ga-libelle="Facebook"><span class="utd-icone-svg facebook"></span></a></li>
+                        <li><a href="https://twitter.com/Gouv_MTESS" title="Suivez-nous sur Twitter." target="_blank" rel="noreferrer noopener" data-ga-libelle="Twitter"><span class="utd-icone-svg twitter"></span></a></li>
+                        <li><a href="https://www.youtube.com/user/promomess" title="Suivez-nous sur Youtube." target="_blank" rel="noreferrer noopener" data-ga-libelle="Youtube"><span class="utd-icone-svg youtube"></span></a></li>
+                        <li><a href="https://www.linkedin.com/company/550343/" title="Suivez-nous sur Linkedln." target="_blank" rel="noreferrer noopener" data-ga-libelle="LinkedIn"><span class="utd-icone-svg linkedin"></span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </utd-pied-page-site>
+    {/if}
 
-        <span class="copyright">
-            <a href="http://www.droitauteur.gouv.qc.ca/copyright.php" target="_blank" rel="noopener">
-                © Gouvernement du Québec,&nbsp;2021
-                <span class="utd-sr-only">. Ce lien sera ouvert dans un nouvel onglet.</span>
-            </a>
-        </span>
-    </div>
+    <utd-piv-pied-page id="pivPiedPage">
+        {#if $router.path.indexOf('/composants/piv/pivpiedpage') >= 0 || $router.path.indexOf('/composants/navigation/piedpagesite') >= 0}                                        
+            <div slot="liens">
+                <ul>
+                    <li><a href="#a">Accessibilité</a></li>
+                    <li><a href="#a">Politique et conditions d'utilisation</a></li>
+                    <li><a href="#a">S'informer sur clicSÉQUR - Citoyens</a></li>
+                    <li><a href="#a">FAQ</a></li>                    
+                </ul>
+            </div>
+        {/if}                    
+    </utd-piv-pied-page>    
 </footer>

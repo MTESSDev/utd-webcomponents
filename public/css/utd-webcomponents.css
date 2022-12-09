@@ -1,4 +1,4 @@
-/*! utd-webcomponents v1.7.1 */
+/*! utd-webcomponents v1.7.2 */
 /*====================================================================================================
   -00- Variables
 ====================================================================================================*/
@@ -639,7 +639,7 @@ a.utd-lien-externe[target="_blank"]:after, span.utd-lien-externe:after {
     content: "";
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-lien-externe");
+    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-lien-externe");
     margin-left: 4px;
     width: 12px;
     height: 12px;
@@ -1554,64 +1554,64 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
 }
 
 .utd-icone-svg.avertissement {
-    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-avertissement");
+    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-avertissement");
 }
 
 .utd-icone-svg.fleche-haut-blanche {
-    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-fleche-haut-blanche");
+    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-fleche-haut-blanche");
 }
 
 .utd-icone-svg.clipboard {
-    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-clipboard");
+    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-clipboard");
 }
 
 .utd-icone-svg.erreur {
-    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-erreur");
+    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-erreur");
 }
 
 .utd-icone-svg.erreur-blanc {
-    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-erreur-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-erreur-blanc");
 }
 
 .utd-icone-svg.information {
-    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-information");
+    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-information");
 }
 
 .utd-icone-svg.information-blanc {
-    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-information-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-information-blanc");
 }
 
 .utd-icone-svg.moins {
-    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-moins");
+    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-moins");
 }
 
 .utd-icone-svg.plus {
-    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-plus");
+    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-plus");
 }
 
 .utd-icone-svg.question {
-    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-question");
+    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-question");
 }
 
 
 .utd-icone-svg.succes {
-    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-succes");
+    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-succes");
 }
 .utd-icone-svg.succes-blanc {
-    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-succes-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-succes-blanc");
 }
 
 .utd-icone-svg.x-fermer-blanc {
     width: 16px;
     height: 16px;
     min-width: 16px;
-    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-xfermer-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-xfermer-blanc");
 }
 .utd-icone-svg.x-fermer-bleu {
     width: 16px;
     height: 16px;
     min-width: 16px;
-    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-xfermer-bleu");
+    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-xfermer-bleu");
 }
 
 .utd-icone-svg.chevron-bleu-piv, .utd-icone-svg.chevron-blanc, .utd-icone-svg.chevron-bleu-texte {
@@ -1621,14 +1621,29 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
 }
 
 .utd-icone-svg.chevron-bleu-piv {
-    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-chevron-bleu-piv");
+    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-chevron-bleu-piv");
 }
 
 .utd-icone-svg.chevron-blanc {
-    background-image: url("../images/utd-sprite.svg?v=1.7.1#ico-chevron-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-chevron-blanc");
 }
 
+.utd-icone-svg.facebook {
+    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-facebook");
+}
 
+.utd-icone-svg.linkedin {
+    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-linkedin");
+    height: 30px;
+}
+
+.utd-icone-svg.twitter {
+    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-twitter");
+}
+
+.utd-icone-svg.youtube {
+    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-youtube");
+}
 
 /*====================================================================================================
   -999- Divers
@@ -1649,7 +1664,333 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
 }
 
 
-/*! utd-webcomponents v1.7.1 */
+/*! utd-webcomponents v1.7.2 */
+
+
+/*====================================================================================================*/
+/*  -01- PIV entête
+/*====================================================================================================*/
+.utd-piv-entete {
+  background-color: var(--couleur-piv);
+  color: #fff;
+}
+
+.utd-piv-entete a {
+  color: #fff;
+}
+
+.utd-piv-entete a:hover, .utd-piv-entete a:focus {
+  color: #fff;
+}
+
+.utd-conteneur-passer-contenu {
+  position: absolute;
+  width: 100%;
+}
+
+.utd-passer-contenu {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+.utd-passer-contenu a {
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.utd-passer-contenu a:focus {
+  width: inherit;
+  height: inherit;
+  overflow: inherit;
+  clip: inherit;
+  white-space: inherit;
+  border: inherit;
+  color: #fff;
+  padding: 4px;
+  border: 1px solid #fff;
+  background-color: var(--couleur-piv);
+}
+
+.utd-piv-entete .conteneur-sections{
+  display: flex;
+  justify-content: space-between;
+}
+
+.utd-piv-entete .signature-gouvernement {
+  margin-right: 24px;
+
+}
+
+.utd-piv-entete .signature-gouvernement a {
+  display: block;
+}
+
+.utd-piv-entete .signature-gouvernement img{
+  height: 72px;
+  width: 198px;
+}
+
+
+@media screen and (max-width:403px) {
+
+  .utd-piv-entete .signature-gouvernement img {
+      width: 128px;
+      height: 48px;
+  }
+
+}
+
+.utd-piv-entete .section-centre {
+  width: 100%;
+}
+
+#pivLogoGouvernementPrint {
+  display: none;
+}
+
+/* ========== Section du centre ==========*/
+.utd-piv-entete .section-centre {
+  display: flex;
+  align-items: center;
+}
+
+.utd-piv-entete .titre-site {
+  font-family: Roboto-Medium;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  font-size: 18px;
+  /*margin-top: 3px;  Pas dans charte graphique... permet d'aligner parfaitement avec drapeau*/
+}
+
+.utd-piv-entete .titre-site:hover, .utd-piv-entete .titre-site:focus  {
+  text-decoration: underline;
+}
+
+.utd-piv-entete .zone-titre-recherche {
+  display:none;
+  padding-bottom: 8px;
+}
+
+.utd-piv-entete .titre-site .description {
+  font-size: 16px;
+}
+
+
+/* ========== Section droite ==========*/
+.utd-piv-entete .section-droite {
+  min-width: 160px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.utd-piv-entete .section-droite ul, utd-piv-entete [slot="liens"] ul {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  list-style: none;
+  padding: 0 0 0 0.5rem;
+  margin: 0;
+  height: 100%;
+}
+
+.utd-piv-entete .section-droite ul a, utd-piv-entete [slot="liens"] ul a {
+  text-decoration: none;
+  font-size: 14px;
+  color: #fff;
+}
+
+.utd-piv-entete .section-droite ul a:hover, utd-piv-entete [slot="liens"] ul a:hover,
+.utd-piv-entete .section-droite ul a:focus, utd-piv-entete [slot="liens"] ul a:focus {
+  text-decoration: underline;
+  color: #fff;
+}
+
+.utd-piv-entete .section-droite ul li:first-child, utd-piv-entete [slot="liens"] ul li:first-child{
+  padding-bottom: 0.7rem;
+}
+
+.utd-piv-entete .section-droite ul li:last-child, utd-piv-entete [slot="liens"] ul li:last-child{
+  padding-bottom: 0;
+}
+
+.utd-piv-entete .bouton-recherche {
+  min-width: 32px;
+  min-height: 32px;
+}
+
+.utd-piv-entete .section-droite .bouton-recherche {
+  margin-right: 16px;
+}
+
+@media screen and (max-width:767px) {
+  
+  .utd-piv-entete .section-droite{
+    min-width: 130px;
+  }
+
+  .utd-piv-entete .section-droite .bouton-recherche{
+    display: none;
+  }
+
+  .utd-piv-entete .signature-gouvernement img{
+    margin-left: -3px;
+  }
+
+  .utd-piv-entete .titre-site {
+      display: none;
+  }
+
+  .utd-piv-entete .zone-titre-recherche {
+      display: flex;
+      justify-content: space-between;
+  }
+  
+  .utd-piv-entete .zone-titre-recherche .titre-site {
+    display: flex;
+  }
+}
+
+utd-piv-entete [slot="zoneRecherche"] > *:first-child {
+  padding: 8px 0 24px 0;
+}
+
+header {
+  margin-bottom: var(--tc-48-40-val);
+}
+
+
+/*====================================================================================================
+  -02- PIV pied de page
+====================================================================================================*/
+footer.utd{
+  position: relative;
+  margin-top: var(--tc-80-72-val);
+}
+
+utd-piv-pied-page [slot="liens"] ul {
+  margin: 40px 0 16px -16px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;    
+}
+
+utd-piv-pied-page [slot="liens"] ul li {
+  display: inline-block;
+  padding: 0 16px 8px 16px; 
+}
+
+utd-piv-pied-page [slot="liens"] ul li:last-of-type {
+  margin-right: 0;
+}
+
+utd-piv-pied-page  [slot="liens"] a {
+  font-size: 14px;
+  text-decoration: none;
+}
+
+utd-piv-pied-page [slot="liens"] a:hover, utd-piv-pied-page [slot="liens"] a:focus {
+  text-decoration: underline;
+}
+
+.utd-piv-pied-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.utd-piv-pied-page .logo-mo {
+  display: block;
+}
+
+.utd-piv-pied-page .copyright a {
+  color: var(--couleur-liens);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.utd-piv-pied-page .copyright a:hover, .utd-piv-pied-page .copyright a:focus  {
+  text-decoration: underline;
+}
+
+/*====================================================================================================
+  -03- Pied de page site
+====================================================================================================*/
+utd-pied-page-site {
+  color: #fff;
+  background-color: var(--couleur-texte-base);
+  display: block;
+  margin-left: -16px; 
+}
+
+utd-pied-page-site [slot="contenu"] {
+  display: flex;
+  padding: 0 0 40px 0;
+}
+
+utd-pied-page-site h2, utd-pied-page-site h3, utd-pied-page-site h4, utd-pied-page-site h5, utd-pied-page-site h6 {
+  color: #fff;
+  font-family: OpenSans-Bold;
+  font-size: 16px;
+  margin: 0 0 16px 0;
+}
+
+utd-pied-page-site nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  padding: 0 16px;
+}
+
+utd-pied-page-site ul {
+  padding:0;
+  margin: 0;
+  list-style: none;
+}
+
+utd-pied-page-site  a {
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+utd-pied-page-site a:hover, utd-pied-page-site a:focus {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* TODO pe éventuellement appliquer un modèle avec un nombre de colonnes?
+utd-pied-page-site nav {
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 768px){
+  utd-pied-page-site nav {
+      -ms-flex: 0 0 50%;
+      flex: 0 0 50%;
+      max-width: 50%;
+  }
+}
+
+@media (min-width: 992px){
+  utd-pied-page-site nav {
+      -ms-flex: 0 0 33.333333%;
+      flex: 0 0 33.333333%;
+      max-width: 33.333333%;
+  }
+}
+*/
+
 /*====================================================================================================
   -10- Listes à l'intérieur de composants UTD
 ====================================================================================================*/

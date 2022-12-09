@@ -1,4 +1,9 @@
+
 export class Utils {
+    static relativeBasePath = document.currentScript.getAttribute('relative-base-path') || '/';
+    static cssRelativePath = `${this.relativeBasePath}/css/`.replace('//','/')
+    static imagesRelativePath = `${this.relativeBasePath}/images/`.replace('//','/')
+
     static conserverFocusElement(componentShadow, componentRoot) {
         const elementsFocusablesShadow = Array.from(this.obtenirElementsFocusables(componentShadow))
         const elementsFocusablesRoot = Array.from(this.obtenirElementsFocusables(componentRoot))
@@ -107,6 +112,12 @@ export class Utils {
         return slots.find(s => s.slot === nomSlot)
     }
 
+    static obtenirTextesDefaut() {
+        const textes = {
+            texteSrOuvertureNouvelOnglet: this.obtenirLanguePage() === 'fr' ? `. Ce lien sera ouvert dans un nouvel onglet.` : `. This link will open in a new tab.`
+        }
+        return textes
+    }
     /**
      * Obtient la langue de la page courante.
      * @returns {string} Code de langue de la page courante (fr/en).
