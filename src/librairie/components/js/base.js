@@ -1,5 +1,5 @@
 
-/*! utd-webcomponents _vUtd_ */
+/*! utd-webcomponents v_vUtd_ */
 //TODO ajouter possibilité que utd reçoive les textes de langue requis. De quelle façon?
 //A- En paramètre des méthodes qui en ont besoin
 //B- Globalement via une initialisation de texte UTD qui serait faite une fois.

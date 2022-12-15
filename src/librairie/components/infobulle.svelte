@@ -151,4 +151,4 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   {/if}
 </span>
 
-<link rel='stylesheet' href='{Utils.cssRelativePath}utd-webcomponents.min.css'>
+<link rel='stylesheet' href='{Utils.cssFullPath}'>
