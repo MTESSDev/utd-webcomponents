@@ -1,4 +1,4 @@
-/*! utd-webcomponents v1.7.3 */
+/*! utd-webcomponents v1.7.4 */
 /*====================================================================================================
   -00- Variables
 ====================================================================================================*/
@@ -639,7 +639,7 @@ a.utd-lien-externe[target="_blank"]:after, span.utd-lien-externe:after {
     content: "";
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url("../images/utd-sprite.svg?v=1.7.3#ico-lien-externe");
+    background-image: url("../images/utd-sprite.svg?v=1.7.4#ico-lien-externe");
     margin-left: 4px;
     width: 12px;
     height: 12px;
@@ -1556,64 +1556,64 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
 }
 
 .utd-icone-svg.avertissement {
-    background-image: url("../images/utd-sprite.svg?v=1.7.3#ico-avertissement");
+    background-image: url("../images/utd-sprite.svg?v=1.7.4#ico-avertissement");
 }
 
 .utd-icone-svg.fleche-haut-blanche {
-    background-image: url("../images/utd-sprite.svg?v=1.7.3#ico-fleche-haut-blanche");
+    background-image: url("../images/utd-sprite.svg?v=1.7.4#ico-fleche-haut-blanche");
 }
 
 .utd-icone-svg.clipboard {
-    background-image: url("../images/utd-sprite.svg?v=1.7.3#ico-clipboard");
+    background-image: url("../images/utd-sprite.svg?v=1.7.4#ico-clipboard");
 }
 
 .utd-icone-svg.erreur {
-    background-image: url("../images/utd-sprite.svg?v=1.7.3#ico-erreur");
+    background-image: url("../images/utd-sprite.svg?v=1.7.4#ico-erreur");
 }
 
 .utd-icone-svg.erreur-blanc {
-    background-image: url("../images/utd-sprite.svg?v=1.7.3#ico-erreur-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.7.4#ico-erreur-blanc");
 }
 
 .utd-icone-svg.information {
-    background-image: url("../images/utd-sprite.svg?v=1.7.3#ico-information");
+    background-image: url("../images/utd-sprite.svg?v=1.7.4#ico-information");
 }
 
 .utd-icone-svg.information-blanc {
-    background-image: url("../images/utd-sprite.svg?v=1.7.3#ico-information-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.7.4#ico-information-blanc");
 }
 
 .utd-icone-svg.moins {
-    background-image: url("../images/utd-sprite.svg?v=1.7.3#ico-moins");
+    background-image: url("../images/utd-sprite.svg?v=1.7.4#ico-moins");
 }
 
 .utd-icone-svg.plus {
-    background-image: url("../images/utd-sprite.svg?v=1.7.3#ico-plus");
+    background-image: url("../images/utd-sprite.svg?v=1.7.4#ico-plus");
 }
 
 .utd-icone-svg.question {
-    background-image: url("../images/utd-sprite.svg?v=1.7.3#ico-question");
+    background-image: url("../images/utd-sprite.svg?v=1.7.4#ico-question");
 }
 
 
 .utd-icone-svg.succes {
-    background-image: url("../images/utd-sprite.svg?v=1.7.3#ico-succes");
+    background-image: url("../images/utd-sprite.svg?v=1.7.4#ico-succes");
 }
 .utd-icone-svg.succes-blanc {
-    background-image: url("../images/utd-sprite.svg?v=1.7.3#ico-succes-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.7.4#ico-succes-blanc");
 }
 
 .utd-icone-svg.x-fermer-blanc {
     width: 16px;
     height: 16px;
     min-width: 16px;
-    background-image: url("../images/utd-sprite.svg?v=1.7.3#ico-xfermer-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.7.4#ico-xfermer-blanc");
 }
 .utd-icone-svg.x-fermer-bleu {
     width: 16px;
     height: 16px;
     min-width: 16px;
-    background-image: url("../images/utd-sprite.svg?v=1.7.3#ico-xfermer-bleu");
+    background-image: url("../images/utd-sprite.svg?v=1.7.4#ico-xfermer-bleu");
 }
 
 .utd-icone-svg.chevron-bleu-piv, .utd-icone-svg.chevron-blanc, .utd-icone-svg.chevron-bleu-texte {
@@ -1623,28 +1623,28 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
 }
 
 .utd-icone-svg.chevron-bleu-piv {
-    background-image: url("../images/utd-sprite.svg?v=1.7.3#ico-chevron-bleu-piv");
+    background-image: url("../images/utd-sprite.svg?v=1.7.4#ico-chevron-bleu-piv");
 }
 
 .utd-icone-svg.chevron-blanc {
-    background-image: url("../images/utd-sprite.svg?v=1.7.3#ico-chevron-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.7.4#ico-chevron-blanc");
 }
 
 .utd-icone-svg.facebook {
-    background-image: url("../images/utd-sprite.svg?v=1.7.3#ico-facebook");
+    background-image: url("../images/utd-sprite.svg?v=1.7.4#ico-facebook");
 }
 
 .utd-icone-svg.linkedin {
-    background-image: url("../images/utd-sprite.svg?v=1.7.3#ico-linkedin");
+    background-image: url("../images/utd-sprite.svg?v=1.7.4#ico-linkedin");
     height: 30px;
 }
 
 .utd-icone-svg.twitter {
-    background-image: url("../images/utd-sprite.svg?v=1.7.3#ico-twitter");
+    background-image: url("../images/utd-sprite.svg?v=1.7.4#ico-twitter");
 }
 
 .utd-icone-svg.youtube {
-    background-image: url("../images/utd-sprite.svg?v=1.7.3#ico-youtube");
+    background-image: url("../images/utd-sprite.svg?v=1.7.4#ico-youtube");
 }
 
 /*====================================================================================================
@@ -1666,7 +1666,7 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
 }
 
 
-/*! utd-webcomponents v1.7.3 */
+/*! utd-webcomponents v1.7.4 */
 
 
 /*====================================================================================================*/

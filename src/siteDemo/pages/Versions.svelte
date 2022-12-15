@@ -7,6 +7,15 @@
 </utd-menu-ancres>
 
 <utd-accordeon reduit="false">
+    <div slot="titre"><h2>1.7.4 (2022-12-16)</h2></div>
+    <h3>Améliorations</h3>
+    <ul class="utd">
+        <li>Mise à jour du site de documentation.</li>
+        <li>Ajustement des largeurs par défaut des champs de types (email, password, number, url et date).</li>
+    </ul>    
+</utd-accordeon>
+
+<utd-accordeon reduit="true">
     <div slot="titre"><h2>1.7.3 (2022-12-15)</h2></div>
     <h3>Correction d'anomalies</h3>
     <ul class="utd">
