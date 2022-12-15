@@ -54,7 +54,7 @@ export default [{
     plugins: [
         replace({            
             _versionUtd_ : `?v=${pkg.version}`,
-            _vUtd_ : `v${pkg.version}`,
+            _vUtd_ : `${pkg.version}`,
             customElements$1 : 'customElements', //Ici c'est une patch pour notre wrapper de customElement (permettant les attributs kebab). Je n'ai pas trouvé de façon d'avoir le code au bon format après que svelte ait compilé.
             delimiters: ['', '']
         }),

@@ -7,6 +7,14 @@
 </utd-menu-ancres>
 
 <utd-accordeon reduit="false">
+    <div slot="titre"><h2>1.7.3 (2022-12-15)</h2></div>
+    <h3>Correction d'anomalies</h3>
+    <ul class="utd">
+        <li>Ajout d'un cache buster sur l'url du css importé dans les différents composants.</li>
+    </ul>    
+</utd-accordeon>
+
+<utd-accordeon reduit="true">
     <div slot="titre"><h2>1.7.2 (2022-12-08)</h2></div>
     <h3>Améliorations</h3>
     <ul class="utd">
