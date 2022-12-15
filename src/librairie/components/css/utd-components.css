@@ -99,6 +99,7 @@
   flex-direction: column;
   text-decoration: none;
   font-size: 18px;
+  line-height: 1.2;
   /*margin-top: 3px;  Pas dans charte graphique... permet d'aligner parfaitement avec drapeau*/
 }
 

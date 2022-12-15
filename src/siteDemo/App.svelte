@@ -28,6 +28,7 @@
   import PivPiedPage from './pages/PivPiedPage.svelte';
   import PiedPageSite from './pages/PiedPageSite.svelte';
   import GabaritHtml from './pages/GabaritHTML.svelte';
+  import NousJoindre from './pages/NousJoindre.svelte';
 
     onMount(() => {  
         document.getElementById('pivEntete').addEventListener("clickLien", () => {       
@@ -64,13 +65,18 @@
             </div>
         </noscript>
         <img id="pivLogoGouvernementPrint" alt="Logo du gouvernement du Québec." src="/images/quebecPrint.gif" width="199" height="60">
-        <utd-piv-entete id="pivEntete" titre-site1="Système de design MESS" titre-site2="Système de design MESS" alt-logo="Signature du gouvernement du Québec. Accédez à Système de design MESS.">
-<!--            <div slot="liens">
+        <utd-piv-entete id="pivEntete" titre-site1="Composants du système de design – MESS" titre-site2="{$router.path.indexOf('/composants/entetepiedpage/piventete') >= 0 ? 'Description supplémentaire du site' : null}" alt-logo="Signature du gouvernement du Québec. Accédez à Système de design MESS.">
+
+            <div slot="liens">
                 <ul>
-                    <li><a href="#toto">toto</a></li>
-                    <li><a href="#toto">toto2</a></li>
+                    {#if $router.path.indexOf('/composants/entetepiedpage/piventete') >= 0}
+                        <li><a href="#fakeEnglish">English</a></li>
+                    {/if}
+                    <li><a href="/base/nousjoindre">Nous joindre</a></li>
                 </ul>
-            </div>-->
+            </div>
+            
+
             <!--            <div slot="boutonRecherche">
                 <button type="button">RD</button>
             </div>
@@ -83,11 +89,8 @@
         </utd-piv-entete>
 
         <!--Javascript désactivé-->
-        
-        
-        
 
-        
+
         <div class="conteneur-menu-identification">
             <div class="utd-container zone-menu-identification">
                 <h2 id="titreMenuPrincipal" class="utd-sr-only">Menu principal de navigation</h2>
@@ -139,11 +142,11 @@
                             <utd-menu-vertical-item libelle="Haut de page" href="/composants/navigation/hautpage"></utd-menu-vertical-item>
                             <utd-menu-vertical-item libelle="Menu d'ancres" href="/composants/navigation/menuancres"></utd-menu-vertical-item>
                             <utd-menu-vertical-item libelle="Menu vertical" href="/composants/navigation/menuvertical"></utd-menu-vertical-item>
-                            <utd-menu-vertical-item libelle="Pied de page de site" href="/composants/navigation/piedpagesite"></utd-menu-vertical-item>
                         </utd-menu-vertical-item>
-                        <utd-menu-vertical-item libelle="PIV">                                
-                            <utd-menu-vertical-item libelle="Entête" href="/composants/piv/piventete"></utd-menu-vertical-item>
-                            <utd-menu-vertical-item libelle="Pied de page" href="/composants/piv/pivpiedpage"></utd-menu-vertical-item>
+                        <utd-menu-vertical-item libelle="Entête et pied de page">                                
+                            <utd-menu-vertical-item libelle="Entête PIV" href="/composants/entetepiedpage/piventete"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item libelle="Pied de page PIV" href="/composants/entetepiedpage/pivpiedpage"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item libelle="Pied de page du site" href="/composants/entetepiedpage/piedpagesite"></utd-menu-vertical-item>
                         </utd-menu-vertical-item>
 
                     {:else}                                    
@@ -151,6 +154,7 @@
                         <utd-menu-vertical-item href="/base/utilisation" libelle="Utilisation"></utd-menu-vertical-item>
                         <utd-menu-vertical-item href="/gabarit1colonne" libelle="Gabarit 1 colonne"></utd-menu-vertical-item>
                         <utd-menu-vertical-item href="/gabarit2colonnes" libelle="Gabarit 2 colonnes"></utd-menu-vertical-item>
+                        <utd-menu-vertical-item href="/nousjoindre" libelle="Nous joindre"></utd-menu-vertical-item>
                     {/if}
                 </utd-menu-vertical> 
             </div>
@@ -162,6 +166,7 @@
                     <Route path="/base/principe" ><Principe /></Route>
                     <Route path="/base/utilisation" ><Utilisation /></Route>
                     <Route path="/base/gabarithtml" ><GabaritHtml /></Route>
+                    <Route path="/base/nousjoindre" ><NousJoindre /></Route>
                     <Route path="/composants" redirect="/composants/versions"></Route>
                     <Route path="/composants/*">
                         <Route path="/versions" ><Versions /></Route>
@@ -190,11 +195,11 @@
                             <Route path="/hautpage" ><HautPage /></Route>
                             <Route path="/menuancres" ><MenuAncres /></Route>
                             <Route path="/menuvertical" ><MenuVertical /></Route>
-                            <Route path="/piedpagesite" ><PiedPageSite /></Route>
                         </Route>                            
-                        <Route path="/piv/*">                    
+                        <Route path="/entetepiedpage/*">                    
                             <Route path="/piventete" ><PivEntete /></Route>
                             <Route path="/pivpiedpage" ><PivPiedPage /></Route>
+                            <Route path="/piedpagesite" ><PiedPageSite /></Route>
                         </Route>                            
                     </Route>
                 </main>        
@@ -212,7 +217,7 @@
             <li><a target="_blank" rel="noreferrer noopener" href="https://www.localisateur.servicesquebec.gouv.qc.ca/">Bureaux de services</a></li>
         </ul>
     </nav>-->
-    {#if $router.path.indexOf('/composants/navigation/piedpagesite') >= 0}                                    
+    {#if $router.path.indexOf('/composants/entetepiedpage/piedpagesite') >= 0}                                    
         <utd-pied-page-site id="piedPageSite">
             <div slot="contenu">
                 <nav aria-labelledby="titreLiensSuivezNous" class="media-sociaux">
@@ -229,7 +234,7 @@
     {/if}
 
     <utd-piv-pied-page id="pivPiedPage">
-        {#if $router.path.indexOf('/composants/piv/pivpiedpage') >= 0 || $router.path.indexOf('/composants/navigation/piedpagesite') >= 0}                                        
+        {#if $router.path.indexOf('/composants/entetepiedpage/pivpiedpage') >= 0 || $router.path.indexOf('/composants/entetepiedpage/piedpagesite') >= 0}                                        
             <div slot="liens">
                 <ul>
                     <li><a href="#a">Accessibilité</a></li>

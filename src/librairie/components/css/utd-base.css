@@ -1068,12 +1068,11 @@ textarea.utd-form-control {
 
 input[type="number"].utd-form-control,
 input[type="date"].utd-form-control {
-    width: auto;
+    width: 156px;
 }
 
 
 /*Largeur minimale pour les champs de type date (requis car sinon sur mobile parfois beaucoup trop petit) */
-
 input[type="date"].utd-form-control {
     min-width: 156px;
 }
@@ -1087,12 +1086,15 @@ textarea.utd-form-control.xxl {
 }
 
 input.utd-form-control.xl,
-textarea.utd-form-control.xl {
+textarea.utd-form-control.xl,
+input[type="email"].utd-form-control,
+input[type="url"].utd-form-control {
     width: 528px;
 }
 
 input.utd-form-control.lg,
-textarea.utd-form-control.lg {
+textarea.utd-form-control.lg,
+input[type="password"].utd-form-control {
     width: 249px;
 }
 
