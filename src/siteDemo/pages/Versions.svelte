@@ -103,7 +103,7 @@
             <span>Dialogue modal</span>
             <ul>
                 <li>Attribut renommé. srboutonfermer devient sr-bouton-fermer.</li>            
-                <li>Attribut renommé. id-focusouverture devient id-focus-ouverture.</li>            
+                <li>Attribut renommé. idfocusouverture devient id-focus-ouverture.</li>            
                 <li>Attribut renommé. idfocus devient id-focus-fermerture.</li>            
                 <li>Attribut renommé. estboutonstextelong devient boutons-textelong.</li>            
                 <li>Attribut renommé. estaffichageboutonsinline devient forcer-boutons-inline.</li>            
