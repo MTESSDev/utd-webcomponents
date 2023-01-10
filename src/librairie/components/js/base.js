@@ -56,7 +56,7 @@ export const message = (function () {
     
         parametres = extend(valeursDefaut, parametres);
     
-        parametres.idControleFocusFermeture = obtenirIdControleFocusFermeture(parametres);
+        parametres.idControleFocusFermeture = parametres.idControleFocusFermeture || obtenirIdControleActif();
     
         const conteneurFenetreMessage = ajouterControle(parametres);
         const fenetreMessage = conteneurFenetreMessage.querySelector('utd-dialog');  
@@ -76,29 +76,6 @@ export const message = (function () {
             fenetreMessage.setAttribute('afficher', 'true');    
         });    
     }
-    /**
-     * (Privée)
-     * Obtient l'id du contrôle auquel il faut redonner le focus lors de la fermeture.
-     * @param {Object} parametres Paramètres de la function afficherMessage.
-     * @returns Id du contrôle auquel il faut redonner le focus à la fermeture du message.
-     */
-    function obtenirIdControleFocusFermeture(parametres) {
-        if (!parametres.idControleFocusFermeture) {
-            if (document.activeElement) {
-                let id = document.activeElement.id;
-
-                if (!id) {
-                    id = genererId();
-                    document.activeElement.id = id;
-                }
-
-                parametres.idControleFocusFermeture = id;
-                return id;
-            }
-        }
-        return parametres.idControleFocusFermeture;
-    }
-
     /**
      * (Privée)
      * Ajoute le contrôle de fenêtre de message au DOM.
@@ -190,7 +167,7 @@ export const dialogue = (function () {
             return;
         }
 
-        idControleFocusFermeture = idControleFocusFermeture || obtenirIdControleFocusFermeture();
+        idControleFocusFermeture = idControleFocusFermeture || obtenirIdControleActif();
 
         const dialogue = document.getElementById(idDialogue);
 
@@ -230,27 +207,6 @@ export const dialogue = (function () {
         } else {
             console.error(`utd.dialogue.masquer -> Contrôle utd-dialog "${dialogue}" non trouvé.`);
         }
-    }
-
-    /**
-     * (Privée)
-     * Obtient l'id du contrôle auquel il faut redonner le focus lors de la fermeture.
-     * @returns Id du contrôle auquel il faut redonner le focus à la fermeture du message.
-     */
-    function obtenirIdControleFocusFermeture() {
-
-        if (document.activeElement) {
-            let id = document.activeElement.id;
-
-            if (!id) {
-                id = genererId();
-                document.activeElement.id = id;
-            }
-
-            return id;
-        }
-
-        return null;
     }
 
     return elementsPublics;
@@ -558,6 +514,25 @@ export const notification = (function () {
 /* ============================================================= */
 /* ======================== UTILITAIRES ======================== */
 /* ============================================================= */
+/**
+ * Obtient l'id du contrôle actif. Si le contrôle actif n'a pas d'id, on lui en assigne un.
+ * @returns L'id du contrôle actif.
+ */
+export function obtenirIdControleActif() {
+    if (document.activeElement) {
+        let id = document.activeElement.id;
+
+        if (!id) {
+            id = genererId();
+            document.activeElement.id = id;
+        }
+
+        return id;
+    }
+
+    return null;
+}
+
 
 /**
  * 

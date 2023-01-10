@@ -15,8 +15,10 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   export let srBoutonFermer = Utils.obtenirLanguePage() === "fr" ? "Fermer" : "Close"
   export let contenu = ""
 
+  const idBoutonToggle = Utils.genererId()
   const idModale = Utils.genererId()
   const idEntete = Utils.genererId()
+  const idCorps = Utils.genererId()
   const thisComponent = get_current_component()
 
   let html
@@ -27,7 +29,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   onMount(() => {
     html = thisComponent.getRootNode().getElementsByTagName("html")[0]
     body = thisComponent.getRootNode().getElementsByTagName("body")[0]
-    slots = Array.from(thisComponent.querySelectorAll('[slot]'))    
+    slots = Array.from(thisComponent.querySelectorAll('[slot]'))       
     assignerHtmlSlotContenu()
 
     if(Utils.estMobile()){
@@ -63,6 +65,16 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
   function masquerModale(e) {
     afficher = false
+    redonnerFocusBoutonToggle()
+  }
+
+  function redonnerFocusBoutonToggle() {
+    const controleFocus = thisComponent.shadowRoot.getElementById(idBoutonToggle)
+
+    if(controleFocus){
+      //On redonne le focus au contrôle spécifié (normalement le bouton toggle de l'infobulle)
+      controleFocus.focus()
+    }
   }
 
   function keydown(e) {
@@ -76,7 +88,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   }
 
   function conserverFocusInfobulle(e) {
-    thisComponent.shadowRoot.getElementById(idEntete).focus()
+    thisComponent.shadowRoot.getElementById(idCorps).focus()
     Utils.conserverFocusElement(thisComponent.shadowRoot.getElementById(idModale), thisComponent)
   }
 </script>
@@ -85,7 +97,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   {#if $$slots["texte-lie"]}
     <span class="texte-lie" on:click={afficherModale}><slot name="texte-lie" /></span>
   {/if}
-  <span class="conteneur-tooltip">&#xFEFF;<button type="button" on:click={afficherModale} aria-label={srBoutonOuvrir} class="tooltip-toggle">
+  <span class="conteneur-tooltip">&#xFEFF;<button type="button" id={idBoutonToggle} on:click={afficherModale} aria-label={srBoutonOuvrir} class="tooltip-toggle">
       <span class="conteneur-puce">
         <span aria-hidden="true" class="puce">
           <span
@@ -100,7 +112,6 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   {#if afficher}
     <div class="utd-backdrop" on:click={masquerModale} />
     <span
-      tabindex="-1"
       aria-labelledby={idEntete}
       class="modale"
       id={idModale}
@@ -113,7 +124,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       role="dialog"
     >
       <span class="utd-container entete">
-        <h1 id={idEntete} tabindex="-1">
+        <h1 id={idEntete}>
           <span class="utd-sr-only">{@html srTitre}</span>
           <span>
             {#if titre}
@@ -134,20 +145,20 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
         </button>
       </span>
       <span class="utd-container conteneur-corps">
-        <span class="corps">
-          {#if Utils.slotExiste(slots, 'contenu')}
-            <slot name="contenu" class="utd-d-none"/>
-            <span>
-              {@html htmlSlotContenu}              
+        <span class="corps" id={idCorps} tabindex="-1">
+            {#if Utils.slotExiste(slots, 'contenu')}
+              <slot name="contenu" class="utd-d-none"/>
+              <span>
+                {@html htmlSlotContenu}              
+              </span>
+            {:else}
+              {#if contenu}
+                {@html contenu}
+              {/if}
+            {/if}              
             </span>
-          {:else}
-            {#if contenu}
-              {@html contenu}
-            {/if}
-          {/if}              
-          </span>
+        </span>
       </span>
-    </span>
   {/if}
 </span>
 
