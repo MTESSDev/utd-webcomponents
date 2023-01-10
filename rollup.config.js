@@ -8,6 +8,9 @@ import css from 'rollup-plugin-css-only';
 //import css2 from 'rollup-plugin-css-porter';
 //import babel from 'rollup-plugin-babel';
 import copy from 'rollup-plugin-copy';
+import postcss from 'postcss'
+import cssReplace from 'postcss-replace'
+import autoprefixer from 'autoprefixer'
 import pkg from './package.json';
 import replace from '@rollup/plugin-replace';
 
@@ -25,7 +28,7 @@ const scssOptions = {
             })
         ]),
     // Choose files to include in processing (default: ['/**/*.css', '/**/*.scss', '/**/*.sass'])
-//    include: [],                
+    include: ['/src/components/scss/*.scss'],                
     sourceMap: false,
     //TODO Voir ce que nous avons réellement besoin dans les includePaths
     /*    includePaths: [
@@ -92,11 +95,11 @@ export default [{
         // we'll extract any component CSS out into
         // a separate file - better for performance
         //        css({ output: 'bundle.css' }),
+//        css2({ dest: demoPath + `/css/utd-webcomponents.css` }),
         scss(Object.assign(scssOptions, {
-            output: '_demo/public/css/test.min.css',
+            output: '/_demo/public/css/test.min.css',
         })),
 
-//        css2({ dest: demoPath + `/css/utd-webcomponents.css` }),
         // If you have external dependencies installed from
         // npm, you'll most likely need these plugins. In
         // some cases you'll need additional configuration -
