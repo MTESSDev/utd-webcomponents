@@ -7,6 +7,14 @@
 </utd-menu-ancres>
 
 <utd-accordeon reduit="false">
+    <div slot="titre"><h2>1.7.5 (2023-01-10)</h2></div>
+    <h3>Améliorations</h3>
+    <ul class="utd">
+        <li>Accessibilité du composant <a href="/composants/affichagecontenu/infobulle">Infobulle</a>. Le titre était lu 3 fois (au lieu de 2 le mieux que nous pouvons faire) et le bouton "Fermer" était aussi lu automatiquement (au lieu de le lire seulement lorsqu'il reçoit le focus).</li>
+    </ul>
+</utd-accordeon>
+
+<utd-accordeon reduit="true">
     <div slot="titre"><h2>1.7.4 (2022-12-16)</h2></div>
     <h3>Améliorations</h3>
     <ul class="utd">

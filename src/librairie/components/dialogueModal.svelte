@@ -152,7 +152,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
               for (let i = 0; i < boutonsSlotPied.length - 1; i++) {
                 if (boutonsSlotPied[i] === premierElementFocusable) {
                   premierElementFocusable = thisComponent.querySelector('.utd-btn.primaire') || premierElementFocusable
-                  estfenetremessage = true
+                  estfenetremessage = 'true'
                   break; 
                 }                
               }
