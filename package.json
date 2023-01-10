@@ -1,12 +1,12 @@
 {
     "name": "utd-webcomponents",
-    "version": "1.7.5",
+    "version": "1.7.6",
     "private": false,
     "scripts": {
         "build": "rollup -c",
         "dev": "rollup -c -w",
-        "start": "sirv public --single",
-        "start:dev": "sirv public --single --dev"
+        "start": "sirv _demo/public --single",
+        "start:dev": "sirv _demo/public --single --dev"
     },
     "devDependencies": {
         "@rollup/plugin-commonjs": "^17.0.0",

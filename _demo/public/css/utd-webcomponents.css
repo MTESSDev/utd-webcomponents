@@ -1,4 +1,4 @@
-/*! utd-webcomponents v1.7.2 */
+/*! utd-webcomponents v1.7.6 */
 
 
 /*====================================================================================================*/
@@ -98,6 +98,8 @@
   display: flex;
   flex-direction: column;
   text-decoration: none;
+  font-size: 18px;
+  line-height: 1.2;
   /*margin-top: 3px;  Pas dans charte graphique... permet d'aligner parfaitement avec drapeau*/
 }
 
@@ -123,7 +125,7 @@
   align-items: center;
 }
 
-.utd-piv-entete .section-droite ul {
+.utd-piv-entete .section-droite ul, utd-piv-entete [slot="liens"] ul {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -133,21 +135,23 @@
   height: 100%;
 }
 
-.utd-piv-entete .section-droite ul a {
+.utd-piv-entete .section-droite ul a, utd-piv-entete [slot="liens"] ul a {
   text-decoration: none;
   font-size: 14px;
+  color: #fff;
 }
 
-.utd-piv-entete .section-droite ul a:hover,
-.utd-piv-entete .section-droite ul a:focus {
+.utd-piv-entete .section-droite ul a:hover, utd-piv-entete [slot="liens"] ul a:hover,
+.utd-piv-entete .section-droite ul a:focus, utd-piv-entete [slot="liens"] ul a:focus {
   text-decoration: underline;
+  color: #fff;
 }
 
-.utd-piv-entete .section-droite ul li:first-child {
+.utd-piv-entete .section-droite ul li:first-child, utd-piv-entete [slot="liens"] ul li:first-child{
   padding-bottom: 0.7rem;
 }
 
-.utd-piv-entete .section-droite ul li:last-child {
+.utd-piv-entete .section-droite ul li:last-child, utd-piv-entete [slot="liens"] ul li:last-child{
   padding-bottom: 0;
 }
 
@@ -201,12 +205,13 @@ header {
   -02- PIV pied de page
 ====================================================================================================*/
 footer.utd{
+  position: relative;
   margin-top: var(--tc-80-72-val);
 }
 
 utd-piv-pied-page [slot="liens"] ul {
-  margin: 40px 0 16px 0;
-  padding: 0 16px;
+  margin: 40px 0 16px -16px;
+  padding: 0;
   list-style: none;
   display: flex;
   justify-content: center;
@@ -230,7 +235,6 @@ utd-piv-pied-page  [slot="liens"] a {
 utd-piv-pied-page [slot="liens"] a:hover, utd-piv-pied-page [slot="liens"] a:focus {
   text-decoration: underline;
 }
-
 
 .utd-piv-pied-page {
   display: flex;
@@ -259,6 +263,7 @@ utd-pied-page-site {
   color: #fff;
   background-color: var(--couleur-texte-base);
   display: block;
+  margin-left: -16px; 
 }
 
 utd-pied-page-site [slot="contenu"] {
@@ -545,7 +550,7 @@ utd-menu-vertical{
     line-height: 1.5;
     font-family: 'OpenSans-Bold';
     font-size: 14px !important;
-}
+  }
 
   .utd-avis .contenu {
       padding: 24px var(--tc-32-24-val) 24px 16px;
@@ -1223,7 +1228,7 @@ html.utd-modale-ouverte:not(.est-mobile) utd-hautpage {
     align-items: center !important;
 }
 
-/*! utd-webcomponents v1.7.2 */
+/*! utd-webcomponents v1.7.6 */
 /*====================================================================================================
   -00- Variables
 ====================================================================================================*/
@@ -1864,7 +1869,7 @@ a.utd-lien-externe[target="_blank"]:after, span.utd-lien-externe:after {
     content: "";
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-lien-externe");
+    background-image: url("../images/utd-sprite.svg?v=1.7.6#ico-lien-externe");
     margin-left: 4px;
     width: 12px;
     height: 12px;
@@ -2293,12 +2298,11 @@ textarea.utd-form-control {
 
 input[type="number"].utd-form-control,
 input[type="date"].utd-form-control {
-    width: auto;
+    width: 156px;
 }
 
 
 /*Largeur minimale pour les champs de type date (requis car sinon sur mobile parfois beaucoup trop petit) */
-
 input[type="date"].utd-form-control {
     min-width: 156px;
 }
@@ -2312,12 +2316,15 @@ textarea.utd-form-control.xxl {
 }
 
 input.utd-form-control.xl,
-textarea.utd-form-control.xl {
+textarea.utd-form-control.xl,
+input[type="email"].utd-form-control,
+input[type="url"].utd-form-control {
     width: 528px;
 }
 
 input.utd-form-control.lg,
-textarea.utd-form-control.lg {
+textarea.utd-form-control.lg,
+input[type="password"].utd-form-control {
     width: 249px;
 }
 
@@ -2779,64 +2786,64 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
 }
 
 .utd-icone-svg.avertissement {
-    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-avertissement");
+    background-image: url("../images/utd-sprite.svg?v=1.7.6#ico-avertissement");
 }
 
 .utd-icone-svg.fleche-haut-blanche {
-    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-fleche-haut-blanche");
+    background-image: url("../images/utd-sprite.svg?v=1.7.6#ico-fleche-haut-blanche");
 }
 
 .utd-icone-svg.clipboard {
-    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-clipboard");
+    background-image: url("../images/utd-sprite.svg?v=1.7.6#ico-clipboard");
 }
 
 .utd-icone-svg.erreur {
-    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-erreur");
+    background-image: url("../images/utd-sprite.svg?v=1.7.6#ico-erreur");
 }
 
 .utd-icone-svg.erreur-blanc {
-    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-erreur-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.7.6#ico-erreur-blanc");
 }
 
 .utd-icone-svg.information {
-    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-information");
+    background-image: url("../images/utd-sprite.svg?v=1.7.6#ico-information");
 }
 
 .utd-icone-svg.information-blanc {
-    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-information-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.7.6#ico-information-blanc");
 }
 
 .utd-icone-svg.moins {
-    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-moins");
+    background-image: url("../images/utd-sprite.svg?v=1.7.6#ico-moins");
 }
 
 .utd-icone-svg.plus {
-    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-plus");
+    background-image: url("../images/utd-sprite.svg?v=1.7.6#ico-plus");
 }
 
 .utd-icone-svg.question {
-    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-question");
+    background-image: url("../images/utd-sprite.svg?v=1.7.6#ico-question");
 }
 
 
 .utd-icone-svg.succes {
-    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-succes");
+    background-image: url("../images/utd-sprite.svg?v=1.7.6#ico-succes");
 }
 .utd-icone-svg.succes-blanc {
-    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-succes-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.7.6#ico-succes-blanc");
 }
 
 .utd-icone-svg.x-fermer-blanc {
     width: 16px;
     height: 16px;
     min-width: 16px;
-    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-xfermer-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.7.6#ico-xfermer-blanc");
 }
 .utd-icone-svg.x-fermer-bleu {
     width: 16px;
     height: 16px;
     min-width: 16px;
-    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-xfermer-bleu");
+    background-image: url("../images/utd-sprite.svg?v=1.7.6#ico-xfermer-bleu");
 }
 
 .utd-icone-svg.chevron-bleu-piv, .utd-icone-svg.chevron-blanc, .utd-icone-svg.chevron-bleu-texte {
@@ -2846,28 +2853,28 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
 }
 
 .utd-icone-svg.chevron-bleu-piv {
-    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-chevron-bleu-piv");
+    background-image: url("../images/utd-sprite.svg?v=1.7.6#ico-chevron-bleu-piv");
 }
 
 .utd-icone-svg.chevron-blanc {
-    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-chevron-blanc");
+    background-image: url("../images/utd-sprite.svg?v=1.7.6#ico-chevron-blanc");
 }
 
 .utd-icone-svg.facebook {
-    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-facebook");
+    background-image: url("../images/utd-sprite.svg?v=1.7.6#ico-facebook");
 }
 
 .utd-icone-svg.linkedin {
-    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-linkedin");
+    background-image: url("../images/utd-sprite.svg?v=1.7.6#ico-linkedin");
     height: 30px;
 }
 
 .utd-icone-svg.twitter {
-    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-twitter");
+    background-image: url("../images/utd-sprite.svg?v=1.7.6#ico-twitter");
 }
 
 .utd-icone-svg.youtube {
-    background-image: url("../images/utd-sprite.svg?v=1.7.2#ico-youtube");
+    background-image: url("../images/utd-sprite.svg?v=1.7.6#ico-youtube");
 }
 
 /*====================================================================================================

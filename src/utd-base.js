@@ -1,1 +1,1 @@
-import './librairie/components/css/utd-base.css'
+import './components/css/utd-base.css'

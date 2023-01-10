@@ -1,4 +1,4 @@
-import App from './siteDemo/App.svelte';
+import App from './src/App.svelte';
 
 
 const app = new App({

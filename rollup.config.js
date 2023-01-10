@@ -11,6 +11,7 @@ import pkg from './package.json';
 import replace from '@rollup/plugin-replace';
 
 const production = !process.env.ROLLUP_WATCH;
+const demoPath = '_demo/public'
 
 function serve() {
     let server;
@@ -41,14 +42,14 @@ export default [{
             sourcemap: false,
             format: 'iife',
             name: 'utd',
-            file: `public/js/utd-webcomponents.min.js`
+            file: demoPath + `/js/utd-webcomponents.min.js`
         },
         // Version pour diffusion
         {
             sourcemap: false,
             format: 'iife',
             name: 'utd',
-            file: `dist/js/utd-webcomponents.min.js`
+            file: demoPath + `/js/utd-webcomponents.min.js`
         }
     ],
     plugins: [
@@ -68,7 +69,7 @@ export default [{
         // we'll extract any component CSS out into
         // a separate file - better for performance
         //        css({ output: 'bundle.css' }),
-        css2({ dest: `public/css/utd-webcomponents.css` }),
+        css2({ dest: demoPath + `/css/utd-webcomponents.css` }),
         // If you have external dependencies installed from
         // npm, you'll most likely need these plugins. In
         // some cases you'll need additional configuration -
@@ -78,10 +79,10 @@ export default [{
         // compile to IE11 compatible ES5
         copy({
             targets: [
-              { src: `src/librairie/sprites/dist/view/svg/sprite.view.svg`, dest: `public/images`, rename: `utd-sprite.svg` },
+              { src: `src/librairie/sprites/dist/view/svg/sprite.view.svg`, dest: demoPath + `/images`, rename: `utd-sprite.svg` },
               { src: `src/librairie/sprites/dist/view/svg/sprite.view.svg`, dest: `dist/images`, rename: `utd-sprite.svg` },
-              { src: `src/librairie/components/fonts/*`, dest: `dist/fonts`},
-              { src: `src/librairie/components/fonts/*`, dest: `public/fonts`},
+              { src: `src/components/fonts/*`, dest: `dist/fonts`},
+              { src: `src/components/fonts/*`, dest: demoPath + `/fonts`},
             ]
           }),
     
@@ -132,9 +133,9 @@ export default [{
     plugins: [
         copy({
             targets: [
-                { src: `public/css/utd-webcomponents.min.css`, dest: `dist/css`},
+                { src: demoPath + `/css/utd-webcomponents.min.css`, dest: `dist/css`},
                 {
-                    src: 'public/js/utd-webcomponents.min.js',
+                    src: demoPath + `/js/utd-webcomponents.min.js`,
                     dest: 'dist/js',
                     transform: (contents, filename) => contents.toString().replace('/*!_VerifierSiDejaCharge_*/', "if (customElements.get('utd-infobulle')) { return true; }")
                 }
@@ -143,12 +144,12 @@ export default [{
     ]
 },
 {
-    input: 'src/siteDemo.js',
+    input: '_demo/siteDemo.js',
     output: {
         sourcemap: true,
         format: 'iife',
         name: 'app',
-        file: 'public/build/siteDemo.js'
+        file: demoPath + `/build/siteDemo.js`
     },
     plugins: [
         svelte({
@@ -179,7 +180,7 @@ export default [{
         !production && terser({compress: false, mangle: false, format: {keep_numbers: true, keep_quoted_props: true, comments: 'all'}}),
         // Watch the `public` directory and refresh the
         // browser on changes when not in production
-        !production && livereload('public'),
+        !production && livereload(demoPath),
 
         // If we're building for production (npm run build
         // instead of npm run dev), minify

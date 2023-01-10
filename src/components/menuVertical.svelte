@@ -1,6 +1,6 @@
 <svelte:options tag="utd-menu-vertical" />
 <script>
-  import { Utils } from '../../librairie/components/utils.js'
+  import { Utils } from './utils.js'
 
   export let titre = Utils.obtenirLanguePage() === 'en' ? 'Secondary menu' : 'Menu secondaire'
   export let titreVisible = "true"

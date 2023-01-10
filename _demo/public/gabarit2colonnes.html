@@ -5,7 +5,7 @@
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width,initial-scale=1'>
     <meta name="robots" content="noindex,nofollow">
-    <title>Composants UTD - Gabarit 1 colonne</title>
+    <title>Composants UTD - Gabarit 2 colonnes</title>
    
     <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png">
@@ -19,13 +19,13 @@
     <link rel="preload" as="font" href="/fonts/roboto-v20-latin-500.woff2" type="font/woff2" crossorigin="anonymous">
     <link rel="preload" as="font" href="/fonts/roboto-v20-latin-700.woff2" type="font/woff2" crossorigin="anonymous">
 
-    <link rel='stylesheet' href='/css/utd-webcomponents.min.css?v=1.7.5'>
-    <link rel='stylesheet' href='/demo.css?v=1.7.5'> <!-- css spécifique de votre site. Charger APRÈS celui UTD. -->    
+    <link rel='stylesheet' href='/css/utd-webcomponents.min.css?v=1.7.6'>
+    <link rel='stylesheet' href='/css/demo.css?v=1.7.6'> <!-- css spécifique de votre site. Charger APRÈS celui UTD. -->
+    
 </head>
 
 <body>
   <noscript>Ici ce qu'il faut afficher si javascript désactivé.</noscript>
-  <!-- Conteneur principal, sera utile si vous désirez que le pied de page soit toujours en bas de page même dans une page ayant très peu de contenu. -->
   <div class="utd-conteneur-principal">
     <header>
       <utd-piv-entete id="pivEntete" titre-site1="Système de design MESS" alt-logo="Signature du gouvernement du Québec. Accédez à Système de design MESS.">
@@ -35,13 +35,35 @@
         <utd-navigation-principale></utd-navigation-principale> Composant à venir...
       -->
     </header>
+    <!-- Conteneur principal, sera utile si vous désirez que le pied de page soit toujours en bas de page même dans une page ayant très peu de contenu. -->
     <div class="utd-container">
-      <main id="main">
-        <h1>Gabarit 1 colonne</h1>
-        <p>La présente page est une simple page HTML contenant le markup essentiel pour l'utilisation des composants UTD dans un contexte de gabarit 1 colonne.</p>
-        <p>Inspecter la source de la page afin de voir le HTML requis.</p>
-        <p>Vous devrez évidemment paramétrer les composants utd de base (utd-piv-entete, utd-piv-pied-page, ainsi que utd-menu-vertical et utd-pied-page-site au besoin. Les pages d'aide de ces composants sont dans le menu à gauche.</p>
-      </main>
+      <div id="conteneur2Colonnes" class="utd contenu-principal-droite">
+          <div id="colonneGauche" class="utd">                
+              <utd-menu-vertical id="menuVertical" titre-visible="false" titre="Composants" sr-titre="Menu composants">
+                  <utd-menu-vertical-item href="/" libelle="Retour au site démo"></utd-menu-vertical-item>
+                  <utd-menu-vertical-item libelle="Navigation">                                
+                      <utd-menu-vertical-item libelle="Haut de page" href="/composants/navigation/hautpage"></utd-menu-vertical-item>
+                      <utd-menu-vertical-item libelle="Menu d'ancres" href="/composants/navigation/menuancres"></utd-menu-vertical-item>
+                      <utd-menu-vertical-item libelle="Menu vertical" href="/composants/navigation/menuvertical"></utd-menu-vertical-item>
+                      <utd-menu-vertical-item libelle="Pied de page de site" href="/composants/navigation/piedpagesite"></utd-menu-vertical-item>
+                  </utd-menu-vertical-item>
+                  <utd-menu-vertical-item libelle="PIV">                                
+                      <utd-menu-vertical-item libelle="Entête" href="/composants/piv/piventete"></utd-menu-vertical-item>
+                      <utd-menu-vertical-item libelle="Pied de page" href="/composants/piv/pivpiedpage"></utd-menu-vertical-item>
+                  </utd-menu-vertical-item>
+              </utd-menu-vertical> 
+          </div>
+      
+          <div id="colonneDroite" class="utd">
+            <main id="main">
+              <h1>Gabarit 2 colonnes</h1>
+              <p>La présente page est une simple page HTML contenant le markup essentiel pour l'utilisation des composants UTD dans un contexte de gabarit 2 colonnes.</p>
+              <p>Inspecter la source de la page afin de voir le HTML requis.</p>
+              <p>Vous devrez évidemment paramétrer les composants utd de base (utd-piv-entete, utd-piv-pied-page, ainsi que utd-menu-vertical et utd-pied-page-site au besoin. Les pages d'aide de ces composants sont dans le menu à gauche.</p>
+            </main>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <utd-hautpage id="hautPage"></utd-hautpage>
@@ -71,10 +93,10 @@
       </div>
     </utd-piv-pied-page>    
   </footer>      
-  <script src='/js/utd-webcomponents.min.js?v=1.7.5'></script>  
+  <script src='/js/utd-webcomponents.min.js?v=1.7.6'></script>  
 
   <script>
-    //Optionnel. Ajoute automatiquement ce qu'il faut pour les liens externes.
+    //Ajoute automatiquement ce qu'il faut pour les liens externes
     utd.ajusterAccessibiliteLiens();    
   </script> 
 </body>

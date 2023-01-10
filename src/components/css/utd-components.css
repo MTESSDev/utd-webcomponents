@@ -550,7 +550,7 @@ utd-menu-vertical{
     line-height: 1.5;
     font-family: 'OpenSans-Bold';
     font-size: 14px !important;
-}
+  }
 
   .utd-avis .contenu {
       padding: 24px var(--tc-32-24-val) 24px 16px;
