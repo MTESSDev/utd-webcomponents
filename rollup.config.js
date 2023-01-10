@@ -75,8 +75,6 @@ export default [{
         // some cases you'll need additional configuration -
         // consult the documentation for details:
         // https://github.com/rollup/plugins/tree/master/packages/commonjs
-
-        // compile to IE11 compatible ES5
         copy({
             targets: [
               { src: `src/librairie/sprites/dist/view/svg/sprite.view.svg`, dest: demoPath + `/images`, rename: `utd-sprite.svg` },
@@ -85,7 +83,8 @@ export default [{
               { src: `src/components/fonts/*`, dest: demoPath + `/fonts`},
             ]
           }),
-    
+        /* Ne plus adapter le code pour qu'il fonctionne sur les vieux fureteurs. On garde ici au cas où on trouverait des problèmes. Sera retiré éventuellement. (2023-01-10)    
+        // compile to IE11 compatible ES5
         babel({
             runtimeHelpers: true,
             extensions: [ '.js', '.mjs', '.html', '.svelte' ],
@@ -111,7 +110,7 @@ export default [{
                     }
                 ]
             ]
-        }),
+        }),*/
         resolve({
             browser: true,
             dedupe: ['svelte']
@@ -124,6 +123,9 @@ export default [{
     ]
 },
 //TODO ici trouver moyen de passer des fichiers bidon pour éviter erreur
+/*==================================================================================*/
+/*           COPIE de fichiers et remplacement de texte à l'intérieur               */
+/*==================================================================================*/
 {
     input: 'src/utd-dummy.js',
     output: {
@@ -143,6 +145,9 @@ export default [{
         })
     ]
 },
+/*==================================================================================*/
+/*                                  SITE DÉMO                                       */
+/*==================================================================================*/
 {
     input: '_demo/siteDemo.js',
     output: {
