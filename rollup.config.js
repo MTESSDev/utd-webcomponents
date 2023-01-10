@@ -15,10 +15,11 @@ import pkg from './package.json';
 import replace from '@rollup/plugin-replace';
 
 const production = !process.env.ROLLUP_WATCH;
-const demoPath = '_demo/public'
+const demoPath = '/_demo/public'
+const distPath = '/dist'
 
 const scssOptions = {
-    processor: css =>
+    processor: () =>
         postcss([
             autoprefixer(),
             cssReplace({
@@ -28,20 +29,13 @@ const scssOptions = {
             })
         ]),
     // Choose files to include in processing (default: ['/**/*.css', '/**/*.scss', '/**/*.sass'])
-    include: ['/src/components/scss/*.scss'],                
     sourceMap: false,
     //TODO Voir ce que nous avons réellement besoin dans les includePaths
-    /*    includePaths: [
+/*        includePaths: [
         path.join(__dirname, '../../node_modules/'),
         'node_modules/',
         'src/scss',
     ],*/
-/*    includePaths: [
-        path.join(__dirname, '../../node_modules/'),
-        'node_modules/',
-        'src/components/scss',
-    ],*/
-
     outputStyle: production ?  'compressed': 'expanded',
     watch: 'src/components/scss'
 };
@@ -96,9 +90,6 @@ export default [{
         // a separate file - better for performance
         //        css({ output: 'bundle.css' }),
 //        css2({ dest: demoPath + `/css/utd-webcomponents.css` }),
-        scss(Object.assign(scssOptions, {
-            output: '/_demo/public/css/test.min.css',
-        })),
 
         // If you have external dependencies installed from
         // npm, you'll most likely need these plugins. In
@@ -138,11 +129,16 @@ export default [{
             browser: true,
             dedupe: ['svelte']
         }),
+        //TODO voir éventuellement si c'est vraiment requis commonjs ici
         commonjs(),
 
-        // If we're building for production (npm run build
-        // instead of npm run dev), minify
-        production && terser()
+        //Build pour production (code js minifié)
+        production && terser(),
+
+        //Génération du css
+        scss(Object.assign(scssOptions, {
+            output: demoPath + '/dist/css/utd-webcomponents.min.css',
+        })),
     ]
 },
 /*=======================================================================================================*/
@@ -176,9 +172,10 @@ export default [{
             browser: true,
             dedupe: ['svelte']
         }),
+        //TODO voir éventuellement si c'est vraiment requis commonjs ici
         commonjs(),
 
-        /*Copie de fichiers et ajout code vérification custom elements déjà chargés */
+        //Copie de fichiers et ajout code vérification custom elements déjà chargés
         copy({
             targets: [
                 { src: demoPath + `/css/utd-webcomponents.min.css`, dest: `dist/css`},
