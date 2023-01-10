@@ -3,15 +3,46 @@ import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
+import scss from 'rollup-plugin-scss';
 import css from 'rollup-plugin-css-only';
-import css2 from 'rollup-plugin-css-porter';
-import babel from 'rollup-plugin-babel';
+//import css2 from 'rollup-plugin-css-porter';
+//import babel from 'rollup-plugin-babel';
 import copy from 'rollup-plugin-copy';
 import pkg from './package.json';
 import replace from '@rollup/plugin-replace';
 
 const production = !process.env.ROLLUP_WATCH;
 const demoPath = '_demo/public'
+
+const scssOptions = {
+    processor: css =>
+        postcss([
+            autoprefixer(),
+            cssReplace({
+                data: {
+                    'pkg-version': pkg.version
+                }
+            })
+        ]),
+    // Choose files to include in processing (default: ['/**/*.css', '/**/*.scss', '/**/*.sass'])
+//    include: [],                
+    sourceMap: false,
+    //TODO Voir ce que nous avons réellement besoin dans les includePaths
+    /*    includePaths: [
+        path.join(__dirname, '../../node_modules/'),
+        'node_modules/',
+        'src/scss',
+    ],*/
+/*    includePaths: [
+        path.join(__dirname, '../../node_modules/'),
+        'node_modules/',
+        'src/components/scss',
+    ],*/
+
+    outputStyle: production ?  'compressed': 'expanded',
+    watch: 'src/components/scss'
+};
+
 
 function serve() {
     let server;
@@ -37,14 +68,6 @@ function serve() {
 export default [{
     input: 'src/utd-components.js',
     output: [
-        // Version pour site démo
-        {
-            sourcemap: false,
-            format: 'iife',
-            name: 'utd',
-            file: demoPath + `/js/utd-webcomponents.min.js`
-        },
-        // Version pour diffusion
         {
             sourcemap: false,
             format: 'iife',
@@ -69,20 +92,17 @@ export default [{
         // we'll extract any component CSS out into
         // a separate file - better for performance
         //        css({ output: 'bundle.css' }),
-        css2({ dest: demoPath + `/css/utd-webcomponents.css` }),
+        scss(Object.assign(scssOptions, {
+            output: '_demo/public/css/test.min.css',
+        })),
+
+//        css2({ dest: demoPath + `/css/utd-webcomponents.css` }),
         // If you have external dependencies installed from
         // npm, you'll most likely need these plugins. In
         // some cases you'll need additional configuration -
         // consult the documentation for details:
         // https://github.com/rollup/plugins/tree/master/packages/commonjs
-        copy({
-            targets: [
-              { src: `src/librairie/sprites/dist/view/svg/sprite.view.svg`, dest: demoPath + `/images`, rename: `utd-sprite.svg` },
-              { src: `src/librairie/sprites/dist/view/svg/sprite.view.svg`, dest: `dist/images`, rename: `utd-sprite.svg` },
-              { src: `src/components/fonts/*`, dest: `dist/fonts`},
-              { src: `src/components/fonts/*`, dest: demoPath + `/fonts`},
-            ]
-          }),
+
         /* Ne plus adapter le code pour qu'il fonctionne sur les vieux fureteurs. On garde ici au cas où on trouverait des problèmes. Sera retiré éventuellement. (2023-01-10)    
         // compile to IE11 compatible ES5
         babel({
@@ -122,32 +142,9 @@ export default [{
         production && terser()
     ]
 },
-//TODO ici trouver moyen de passer des fichiers bidon pour éviter erreur
-/*==================================================================================*/
-/*           COPIE de fichiers et remplacement de texte à l'intérieur               */
-/*==================================================================================*/
-{
-    input: 'src/utd-dummy.js',
-    output: {
-      file: 'build/dummy.js',
-      format: 'cjs'
-    },
-    plugins: [
-        copy({
-            targets: [
-                { src: demoPath + `/css/utd-webcomponents.min.css`, dest: `dist/css`},
-                {
-                    src: demoPath + `/js/utd-webcomponents.min.js`,
-                    dest: 'dist/js',
-                    transform: (contents, filename) => contents.toString().replace('/*!_VerifierSiDejaCharge_*/', "if (customElements.get('utd-infobulle')) { return true; }")
-                }
-            ]
-        })
-    ]
-},
-/*==================================================================================*/
-/*                                  SITE DÉMO                                       */
-/*==================================================================================*/
+/*=======================================================================================================*/
+/*  Génération du site démo + copie de fichiers et ajout code vérification custom elements déjà chargés  */
+/*=======================================================================================================*/
 {
     input: '_demo/siteDemo.js',
     output: {
@@ -178,9 +175,26 @@ export default [{
         }),
         commonjs(),
 
+        /*Copie de fichiers et ajout code vérification custom elements déjà chargés */
+        copy({
+            targets: [
+                { src: demoPath + `/css/utd-webcomponents.min.css`, dest: `dist/css`},
+                {
+                    src: demoPath + `/js/utd-webcomponents.min.js`,
+                    dest: 'dist/js',
+                    transform: (contents, filename) => contents.toString().replace('/*!_VerifierSiDejaCharge_*/', "if (customElements.get('utd-infobulle')) { return true; }")
+                },
+                { src: `src/sprites/dist/view/svg/sprite.view.svg`, dest: demoPath + `/images`, rename: `utd-sprite.svg` },
+                { src: `src/sprites/dist/view/svg/sprite.view.svg`, dest: `dist/images`, rename: `utd-sprite.svg` },
+                { src: `src/components/fonts/*`, dest: `dist/fonts`},
+                { src: `src/components/fonts/*`, dest: demoPath + `/fonts`}  
+            ]
+        }),
+
         // In dev mode, call `npm run start` once
         // the bundle has been generated
         // ICI on fait exprès de faire un serve suivi d'un terser pour simuler le code de prod (histoire de tester notre module code source et s'assurer que ce n'est pas compressé ou mal formaté)
+        // Aussi on désactive la compression de code (modification lors de la minification afin que nos exemples fonctionnent bien)
         !production && serve(),
         !production && terser({compress: false, mangle: false, format: {keep_numbers: true, keep_quoted_props: true, comments: 'all'}}),
         // Watch the `public` directory and refresh the
