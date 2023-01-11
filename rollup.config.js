@@ -23,8 +23,12 @@ const scssOptions = {
         postcss([
             autoprefixer(),
             cssReplace({
+                pattern: /_([^\s]+?)_/,
                 data: {
-                    'pkg-version': pkg.version
+                    'pkg-version': pkg.version,
+                    'versionUtd' : `?v=${pkg.version}`,
+                    'vUtd' : pkg.version,
+        
                 }
             })
         ]),
