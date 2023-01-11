@@ -15,8 +15,8 @@ import pkg from './package.json';
 import replace from '@rollup/plugin-replace';
 
 const production = !process.env.ROLLUP_WATCH;
-const demoPath = '/_demo/public'
-const distPath = '/dist'
+const demoPath = './_demo/public'
+const distPath = './dist'
 
 const scssOptions = {
     processor: () =>
@@ -37,7 +37,7 @@ const scssOptions = {
         'src/scss',
     ],*/
     outputStyle: production ?  'compressed': 'expanded',
-    watch: 'src/components/scss'
+    watch: './src/components/scss'
 };
 
 
@@ -137,7 +137,7 @@ export default [{
 
         //Génération du css
         scss(Object.assign(scssOptions, {
-            output: demoPath + '/dist/css/utd-webcomponents.min.css',
+            output: demoPath + '/css/utd-webcomponents.min.css',
         })),
     ]
 },
@@ -150,7 +150,7 @@ export default [{
         sourcemap: true,
         format: 'iife',
         name: 'app',
-        file: demoPath + `/build/siteDemo.js`
+        file: demoPath + `/js/siteDemo.js`
     },
     plugins: [
         svelte({
@@ -181,13 +181,16 @@ export default [{
                 { src: demoPath + `/css/utd-webcomponents.min.css`, dest: `dist/css`},
                 {
                     src: demoPath + `/js/utd-webcomponents.min.js`,
-                    dest: 'dist/js',
+                    dest: distPath + '/js',
                     transform: (contents, filename) => contents.toString().replace('/*!_VerifierSiDejaCharge_*/', "if (customElements.get('utd-infobulle')) { return true; }")
                 },
                 { src: `src/sprites/dist/view/svg/sprite.view.svg`, dest: demoPath + `/images`, rename: `utd-sprite.svg` },
-                { src: `src/sprites/dist/view/svg/sprite.view.svg`, dest: `dist/images`, rename: `utd-sprite.svg` },
-                { src: `src/components/fonts/*`, dest: `dist/fonts`},
-                { src: `src/components/fonts/*`, dest: demoPath + `/fonts`}  
+                { src: `src/sprites/dist/view/svg/sprite.view.svg`, dest: distPath + `/images`, rename: `utd-sprite.svg` },
+                { src: `src/assets/fonts/*`, dest: distPath + `/fonts`},
+                { src: `src/assets/fonts/*`, dest: demoPath + `/fonts`},  
+                { src: `src/assets/images/*`, dest: distPath + `/images`},
+                { src: `src/assets/images/*`, dest: demoPath + `/images`}  
+
             ]
         }),
 
@@ -209,4 +212,5 @@ export default [{
     watch: {
         clearScreen: false
     }
-}];
+}
+];

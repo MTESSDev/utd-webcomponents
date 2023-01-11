@@ -1,0 +1,228 @@
+/*====================================================================================================
+/*  Boutons
+/*====================================================================================================*/
+.utd-btn {
+    font-family: 'OpenSans-Bold', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    display: inline-block;
+    box-sizing: border-box;
+    min-width: 112px;
+    padding: 14px 22px;
+    transition: all 0.24s ease-in-out;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    border: 2px solid transparent;
+    border-radius: 0;
+          /* si Arrondi border-radius: 4px; */
+
+    &[disabled]{
+        pointer-events: none;
+    }
+        
+
+    &.compact {
+        min-height: 40px;
+        min-width: 48px;
+        padding: 7px 15px;
+        border: 1px solid transparent;
+        font-family: 'OpenSans-SemiBold';
+    }
+
+    &.arrondi {
+        border-radius: 4px;
+    }
+
+    &.avec-icone-droite, &.avec-icone-gauche {
+        display: flex;
+        align-items: center;
+
+        > *:nth-child(2){
+            margin-left: 4px;
+        }        
+    }
+    
+    /* ==================== Bouton primaire ==================== */
+    &.primaire {
+        color: #fff;
+        border-color: var(--couleur-bouton-primaire);
+        background-color: var(--couleur-bouton-primaire);
+        box-shadow: 0 1px 4px rgba(34, 54, 84, 0.16);
+        text-decoration: none;
+
+        &:not([disabled]):hover {
+            border-color: #156bb2;
+            background-color: #156bb2;
+            text-decoration: none;
+        }
+
+        &:not([disabled]):focus  {
+            border-color: var(--bleu-fonce);
+            background-color: #156bb2;
+            box-shadow: 0 2px 8px rgba(34, 54, 84, 0.16), 0 0 0 2px var(--bleu-clair);
+            outline: 0;
+            text-decoration: none;
+        }
+        &:active {
+            border-color: #3783c9;
+            background-color: #3783c9;
+        }
+
+        &[disabled] {
+            color: #6b778a;
+            border-color: #9ca5b2;
+            background-color: #9ca5b2;
+        }
+    
+    }
+
+    /* ==================== Bouton secondaire ==================== */
+    &.secondaire {
+        color: var(--bleu-piv);
+        border-color: var(--bleu-piv);
+        background-color: #fff;
+
+        &:not([disabled]):hover {
+            background-color: rgba(9, 87, 151, 0.16);
+        }
+        &:not([disabled]):focus {
+            border-color: var(--bleu-fonce);
+            background-color: rgba(9, 87, 151, 0.16);
+            box-shadow: 0 0 0 2px var(--bleu-clair);
+            outline: 0;
+        }
+        &:active {
+            background-color: rgba(9, 87, 151, 0.08);
+        }
+        &[disabled] {
+            color: #9ca5b2;
+            border-color: #9ca5b2;
+        }        
+    }
+
+    /* ==================== Bouton tertiaire ==================== */
+    &.tertiaire {
+        color: var(--couleur-liens);
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        min-width: 0;
+
+        &:not([disabled]):hover {
+            text-decoration: underline;
+            background-color: rgba(197, 202, 210, 0.24);
+        }
+        &:not([disabled]):focus {
+            border-color: var(--bleu-fonce);
+            background-color: rgba(197, 202, 210, 0.24);
+            box-shadow: 0 0 0 2px var(--bleu-clair);
+            outline: 0;
+        }
+        &:active {
+            background-color: rgba(197, 202, 210, 0.16);
+        }
+        &[disabled] {
+            color: #9ca5b2;
+            background-color: transparent;
+        }
+    
+        /* Boutons tertiaires comme liens */
+        &.comme-lien {
+            padding: 0;
+            border: 0;
+
+            &:hover, &:focus {
+                background-color: transparent;
+            }
+        }    
+    }
+    /* ==================== Bouton avertissement ==================== */
+    &.avertissement {
+        color: #fff;
+        border-color: var(--rouge);
+        background-color: var(--rouge);
+
+        &:not([disabled]):hover {
+            border-color: #b52e16;
+            background-color: #b52e16;
+        }
+        &:not([disabled]):focus {
+            border-color: var(--bleu-fonce);
+            background-color: #b52e16;
+            box-shadow: 0 0 0 2px var(--bleu-clair);
+            outline: 0;
+        }
+        &:active {
+            border-color: #eb705a;
+            background-color: #eb705a;
+        }
+        &[disabled] {
+            color: var(--gris-moyen);
+            border-color: #9ca5b2;
+            background-color: #9ca5b2;
+        }    
+    }    
+}
+
+
+/*====================================================================================================*/
+/*  Traitement en cours dans un bouton
+/*====================================================================================================*/
+button.utd-btn.utd-traitement-en-cours, input[type="submit"].utd-btn.utd-traitement-en-cours {
+    position: relative;
+    color: rgba(255, 255, 255, 0)!important; /* Ici on n'utilise pas le transparent, car comportement bizarre dans IOS */
+}
+
+/* Spinner affiché dans un bouton */
+.utd-btn .utd-spinner, input[type="submit"] .utd-spinner {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    margin: 0;
+    left: calc(50% - 16px);
+    top: calc(50% - 16px);
+}
+
+/* Spinner affiché dans un bouton compact */
+.utd-btn.compact .utd-spinner, input[type="submit"] .utd-spinner {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    margin: 0;
+    left: calc(50% - 12px);
+    top: calc(50% - 12px);
+    border-width: 3px;
+}
+
+/* Spinner bouton primaire */
+.utd-btn.primaire .utd-spinner, input[type="submit"] .utd-spinner {
+    border-color: rgba(255, 255, 255, .5);
+    border-top-color: rgba(255, 255, 255, 1);
+}
+
+.utd-btn.primaire.utd-traitement-en-cours[disabled] {
+    opacity: 1;
+    /*  color: #5F92BB;*/
+    background-color: #5F92BB;
+    border-color: #5F92BB;
+}
+
+/* Spinner bouton secondaire TODO pe éventuellement modifier la couleur du spinner d'un bouton secondaire */
+/*.utd-btn.secondaire .utd-spinner {
+    border: 4px solid rgba(134, 141, 149, .5);
+    border-top-color: rgba(134, 141, 149, 1)
+}*/
+
+.utd-btn.secondaire.utd-traitement-en-cours[disabled] {
+    opacity: 1;
+    background-color: #efefef;
+}
+
+/*====================================================================================================
+  Boutons désactivés
+====================================================================================================*/
+.utd-btn[disabled] .utd-icone-svg {
+    opacity: .5;
+}
+

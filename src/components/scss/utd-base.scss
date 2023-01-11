@@ -185,26 +185,6 @@
     --hauteur-fixe-footer-mobile: 270px;
     --utd-container-padding: 0 16px;
     --largeur-max-zone-texte: 736px;
-    --couleur-fond-gris: #F2F1F1;
-    --couleur-piv: #095797;
-    --couleur-bleu: #1479CC;
-    --couleur-liens: #095797;
-    --couleur-loader: #1073E6;
-    --couleur-bouton-primaire: #095797;
-    --couleur-bleu-pale: #DAE6F0;
-    --couleur-orange: #cf4b00;
-    --couleur-saumon: #E58271;
-    --couleur-primaire-entete-soulignee: var(--couleur-saumon);
-    --couleur-texte-base: #223654;
-    --couleur-texte-gris-pale: #6A778A;
-    --couleur-erreur: #cb381f;
-    --couleur-rouge-fonce: #B52E16;
-    --couleur-succes: #4f813d;
-    --couleur-avertissement: #ffcc00;
-    --couleur-hover: #ecf2f7;
-    --couleur-filet-secondaire: #c5cad2;
-    --couleur-bordure-tables: #dee2e6;
-
 
     /* Couleurs du système de design Quebec.ca*/
     --gris-pale: #F1F1F2;
@@ -221,7 +201,7 @@
     --rose-pale: #FFDBD6;
     --rose: #E58271;
     --rouge: #CB381F;
-    --rose-fonce: #692519;
+    --rouge-fonce: #692519;
     --vert-pale: #D7F0BB;
     --vert: #4F813D;
     --vert-fonce: #2C4024;
@@ -230,6 +210,30 @@
     --jaune-fonce: #AD781C;
 
 
+    /* Couleurs (noms alternatifs) TODO vérifier celles qui ne sont plus utilisées et les retirer */
+    --couleur-fond-gris: var(--gris-pale);
+    --couleur-piv: var(--bleu-piv);
+    --couleur-bleu: var(--bleu);
+    --couleur-liens: var(--bleu-piv);
+    --couleur-loader: #1073E6;
+    --couleur-bouton-primaire: var(--bleu-piv);
+    --couleur-bleu-pale: var(--bleu-pale);
+    --couleur-orange: #cf4b00;
+    --couleur-saumon: var(--rose);
+    --couleur-primaire-entete-soulignee: var(--couleur-saumon);
+    --couleur-texte-base: var(--bleu-fonce);
+    --couleur-texte-gris-pale: #6A778A;
+    --couleur-erreur: var(--rouge);
+    --couleur-rouge-fonce: #B52E16;
+    --couleur-succes: var(--vert);
+    --couleur-avertissement: #ffcc00;
+    --couleur-hover: #ecf2f7;
+    --couleur-filet-secondaire: var(--gris-clair);
+    --couleur-bordure-tables: #dee2e6;
+
+    /* Couleurs à classifier 
+        #9ca5b2, #89bce5, #b52e16, #eb705a, #3374cc
+    */
 }
 
 /*====================================================================================================
@@ -329,30 +333,32 @@ body {
 p {
     margin-top: 0;
     margin-bottom: 1.5rem;
+
+    /* Pas de margin sur un dernier paragraphe */
+    &:last-child {
+        margin-bottom: 0!important;
+    }
 }
 
-/* Pas de margin sur un dernier paragraphe */
-p:last-child {
-    margin-bottom: 0!important;
-}
 
 
 /* Listes */
 ul.utd  {
     padding-left: 20px;
+
+    li {
+        margin-bottom: 16px;
+        
+        &:last-of-type {
+            margin-bottom: 0;
+        }    
+    }
+
+    ul li:first-of-type {
+        margin-top: 16px;
+    }        
 }
   
-ul.utd li {
-    margin-bottom: 16px;
-}
-
-ul.utd ul li:first-of-type {
-    margin-top: 16px;
-}
-
-ul.utd li:last-of-type {
-margin-bottom: 0;
-}
   
 
 .utd-d-none {
@@ -523,6 +529,7 @@ margin-bottom: 0;
     }
 }
 
+/* TODO vérifier si doit rester dans UTD (normalement non) */
 .espaceur-conteneurs {
     height: var(--tc-48-40-val);
 }
@@ -624,12 +631,13 @@ h6 {
 a {
     color: var(--couleur-liens);
     text-decoration: underline;
+
+    &:hover, &:focus {
+        text-decoration: none;
+        color: #3374cc;
+    }    
 }
 
-a:hover, a:focus {
-    text-decoration: none;
-    color: #3374cc;
-}
 
 /* ----- Liens externes ----- */
 
@@ -684,269 +692,6 @@ a.utd-lien-externe[target="_blank"]:after, span.utd-lien-externe:after {
 }
 
 
-
-/*====================================================================================================
-  -12- Boutons
-====================================================================================================*/
-.utd-btn {
-    font-family: 'OpenSans-Bold', sans-serif;
-    font-size: 16px;
-    line-height: 24px;
-    display: inline-block;
-    box-sizing: border-box;
-    min-width: 112px;
-    padding: 14px 22px;
-    transition: all 0.24s ease-in-out;
-    text-align: center;
-    vertical-align: middle;
-    text-decoration: none;
-    border: 2px solid transparent;
-    border-radius: 0;
-          /* si Arrondi border-radius: 4px; */
-}
-
-.utd-btn[disabled]{
-    pointer-events: none;
-}
-
-.utd-btn.compact {
-    min-height: 40px;
-    min-width: 48px;
-    padding: 7px 15px;
-    border: 1px solid transparent;
-    font-family: 'OpenSans-SemiBold';
-}
-
-.utd-btn.arrondi {
-    border-radius: 4px;
-}
-
-.utd-btn.avec-icone-droite, .utd-btn.avec-icone-gauche {
-    display: flex;
-    align-items: center;
-}
-.utd-btn.avec-icone-droite > *:nth-child(2), .utd-btn.avec-icone-gauche > *:nth-child(2){
-    margin-left: 4px;
-}
-/* ==================== Bouton primaire ==================== */
-.utd-btn.primaire {
-    color: #fff;
-    border-color: var(--couleur-bouton-primaire);
-    background-color: var(--couleur-bouton-primaire);
-    box-shadow: 0 1px 4px rgba(34, 54, 84, 0.16);
-    text-decoration: none;
-}
-
-.utd-btn.primaire:not([disabled]):hover {
-    border-color: #156bb2;
-    background-color: #156bb2;
-    text-decoration: none;
-}
-
-.utd-btn.primaire:not([disabled]):focus  {
-    border-color: #223654;
-    background-color: #156bb2;
-    box-shadow: 0 2px 8px rgba(34, 54, 84, 0.16), 0 0 0 2px #4a98d9;
-    outline: 0;
-    text-decoration: none;
-}
-
-.utd-btn.primaire:active {
-    border-color: #3783c9;
-    background-color: #3783c9;
-}
-
-.utd-btn.primaire[disabled] {
-    color: #6b778a;
-    border-color: #9ca5b2;
-    background-color: #9ca5b2;
-}
-
-
-
-/* ==================== Bouton secondaire ==================== */
-.utd-btn.secondaire {
-    color: var(--couleur-liens);
-    border-color: var(--couleur-liens);
-    background-color: #fff;
-}
-.utd-btn.secondaire:not([disabled]):hover {
-    background-color: rgba(9, 87, 151, 0.16);
-}
-.utd-btn.secondaire:not([disabled]):focus {
-    border-color: #223654;
-    background-color: rgba(9, 87, 151, 0.16);
-    box-shadow: 0 0 0 2px #4a98d9;
-    outline: 0;
-}
-.utd-btn.secondaire:active {
-    background-color: rgba(9, 87, 151, 0.08);
-}
-.utd-btn.secondaire[disabled] {
-    color: #9ca5b2;
-    border-color: #9ca5b2;
-}
-
-/* ==================== Boutons secondaires couleurs inversées ==================== */
-.utd-btn.secondaire.inverse1 {
-    background-color: transparent;
-    color: #ffffff;
-    border-color: #ffffff;
-}
-
-.utd-btn.secondaire.inverse2 {
-    background-color: transparent;
-    color: #89bce5;
-    border-color: #89bce5;
-}
-
-.utd-btn.secondaire.inverse1:not([disabled]):hover, 
-.utd-btn.secondaire.inverse2:not([disabled]):hover {
-    background-color: rgba(218, 230, 240, 0.08);
-}
-.utd-btn.secondaire.inverse1:not([disabled]):focus,
-.utd-btn.secondaire.inverse2:not([disabled]):focus {
-    border-color: #223654;
-    background-color: rgba(218, 230, 240, 0.08);
-    box-shadow: 0 0 0 2px #4a98d9;
-}
-.utd-btn.secondaire.inverse1:active,
-.utd-btn.secondaire.inverse2:active {
-    background-color: rgba(218, 230, 240, 0.16);
-}
-.utd-btn.secondaire.inverse1[disabled],
-.utd-btn.secondaire.inverse2[disabled] {
-    pointer-events: none;
-    color: #9ca5b2;
-    border-color: #9ca5b2;
-    background-color: transparent;
-}
-
-
-
-/* ==================== Bouton tertiaire ==================== */
-.utd-btn.tertiaire {
-    color: var(--couleur-liens);
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    min-width: 0;
-}
-
-.utd-btn.tertiaire:not([disabled]):hover {
-    text-decoration: underline;
-    background-color: rgba(197, 202, 210, 0.24);
-}
-.utd-btn.tertiaire:not([disabled]):focus {
-    border-color: #223654;
-    background-color: rgba(197, 202, 210, 0.24);
-    box-shadow: 0 0 0 2px #4a98d9;
-    outline: 0;
-}
-.utd-btn.tertiaire:active {
-    background-color: rgba(197, 202, 210, 0.16);
-}
-.utd-btn.tertiaire[disabled] {
-    color: #9ca5b2;
-    background-color: transparent;
-}
-
-/* Boutons tertiaires comme liens */
-.utd-btn.tertiaire.comme-lien {
-    padding: 0;
-    border: 0;
-}
-
-.utd-btn.tertiaire.comme-lien:hover, .utd-btn.tertiaire.comme-lien:focus {
-    background-color: transparent;
-}
-
-
-/* ==================== Bouton avertissement ==================== */
-.utd-btn.avertissement {
-    color: #fff;
-    border-color: var(--rouge);
-    background-color: var(--rouge);
-}
-.utd-btn.avertissement:not([disabled]):hover {
-    border-color: #b52e16;
-    background-color: #b52e16;
-}
-.utd-btn.avertissement:not([disabled]):focus {
-    border-color: var(--bleu-fonce);
-    background-color: #b52e16;
-    box-shadow: 0 0 0 2px #4a98d9;
-    outline: 0;
-}
-.utd-btn.avertissement:active {
-    border-color: #eb705a;
-    background-color: #eb705a;
-}
-.utd-btn.avertissement[disabled] {
-    color: #6b778a;
-    border-color: #9ca5b2;
-    background-color: #9ca5b2;
-}
-
-/*====================================================================================================*/
-/*  -12A- Traitement en cours dans un bouton
-/*====================================================================================================*/
-button.utd-btn.utd-traitement-en-cours, input[type="submit"].utd-btn.utd-traitement-en-cours {
-    position: relative;
-    color: rgba(255, 255, 255, 0)!important; /* Ici on n'utilise pas le transparent, car comportement bizarre dans IOS */
-}
-
-/* Spinner affiché dans un bouton */
-.utd-btn .utd-spinner, input[type="submit"] .utd-spinner {
-    position: absolute;
-    width: 32px;
-    height: 32px;
-    margin: 0;
-    left: calc(50% - 16px);
-    top: calc(50% - 16px);
-}
-
-/* Spinner affiché dans un bouton compact */
-.utd-btn.compact .utd-spinner, input[type="submit"] .utd-spinner {
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    margin: 0;
-    left: calc(50% - 12px);
-    top: calc(50% - 12px);
-    border-width: 3px;
-}
-
-/* Spinner bouton primaire */
-.utd-btn.primaire .utd-spinner, input[type="submit"] .utd-spinner {
-    border-color: rgba(255, 255, 255, .5);
-    border-top-color: rgba(255, 255, 255, 1);
-}
-
-.utd-btn.primaire.utd-traitement-en-cours[disabled] {
-    opacity: 1;
-    /*  color: #5F92BB;*/
-    background-color: #5F92BB;
-    border-color: #5F92BB;
-}
-
-/* Spinner bouton secondaire TODO pe éventuellement modifier la couleur du spinner d'un bouton secondaire */
-/*.utd-btn.secondaire .utd-spinner {
-    border: 4px solid rgba(134, 141, 149, .5);
-    border-top-color: rgba(134, 141, 149, 1)
-}*/
-
-.utd-btn.secondaire.utd-traitement-en-cours[disabled] {
-    opacity: 1;
-    background-color: #efefef;
-}
-
-/*====================================================================================================
-  -12B- Boutons désactivés
-====================================================================================================*/
-.utd-btn[disabled] .utd-icone-svg {
-    opacity: .5;
-}
 
 /*====================================================================================================
   -15- WebComponents utd (éléments en dehors des webComponents mais qui leurs sont nécessaires)
