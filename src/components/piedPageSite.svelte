@@ -5,7 +5,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
 <script>
 import { onMount } from "svelte";
-import { Utils } from "./utils"
+import { Utils } from "./js/utils"
 import { get_current_component } from "svelte/internal"  
 
 const thisComponent = get_current_component()

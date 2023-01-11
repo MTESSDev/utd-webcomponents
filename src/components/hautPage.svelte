@@ -5,7 +5,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
 <script>
 import { onMount } from "svelte";
-import { Utils } from "./utils"
+import { Utils } from "./js/utils"
 import { get_current_component } from "svelte/internal"  
 
 export let title = Utils.obtenirLanguePage() === 'fr' ? "Retour en haut de page." : "Return to the top of the page."

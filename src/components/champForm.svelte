@@ -1,6 +1,6 @@
 <svelte:options tag="utd-champ-form" />
 <script>
-  import { Utils } from './utils.js'
+  import { Utils } from "./js/utils"
   import { get_current_component } from "svelte/internal"
   import { onMount } from "svelte";
 

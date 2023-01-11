@@ -4,7 +4,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 <svelte:options tag="utd-avis" />
 
 <script>
-  import { Utils } from "./utils"
+  import { Utils } from "./js/utils"
   export let titre = ""
   export let type = "information"
   export let contenu = ""

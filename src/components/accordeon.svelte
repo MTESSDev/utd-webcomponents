@@ -5,7 +5,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
 <script>
   import { slide } from "svelte/transition"
-  import { Utils } from './utils'
+  import { Utils } from "./js/utils"
   export let reduit = "true"
   export let titre = ""
   export let contenu = ""

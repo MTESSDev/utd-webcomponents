@@ -4,7 +4,7 @@
   import {HighlightJS} from "highlight.js"
   import {html_beautify} from "js-beautify"
   import {js_beautify} from "js-beautify"
-  import { Utils } from '../../../src/components/utils'
+  import { Utils } from '../../../src/components/js/utils'
   
   export let titre = "Code source"
   export let idElementCodeSource = ""

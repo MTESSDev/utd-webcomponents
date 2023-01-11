@@ -1,7 +1,7 @@
 <svelte:options tag="utd-menu-vertical-item" />
 <script>
   import { onMount } from "svelte";
-  import { Utils } from './utils.js'
+  import { Utils } from "./js/utils"
   import { slide } from "svelte/transition"
   import { get_current_component } from "svelte/internal"  
 

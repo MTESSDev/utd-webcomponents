@@ -7,7 +7,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   import { onMount } from "svelte";
   import { fly } from "svelte/transition"
   import { get_current_component } from "svelte/internal"  
-  import { Utils } from './utils'
+  import { Utils } from "./js/utils"
   export let afficher = false
   export let titre = ""
   export let srTitre = Utils.obtenirLanguePage() === "fr" ? "Aide à propos de&nbsp;" : "Help about&nbsp;"

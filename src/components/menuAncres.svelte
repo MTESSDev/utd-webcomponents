@@ -5,7 +5,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
 <script>
 import { onMount } from "svelte";
-import { Utils } from "./utils"
+import { Utils } from "./js/utils"
 
 export let titre = Utils.obtenirLanguePage() === 'fr' ? "Dans cette page :" : "On this page:"
 export let selecteur = '.ancre'
