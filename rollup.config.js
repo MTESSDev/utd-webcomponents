@@ -41,7 +41,7 @@ const scssOptions = {
         'src/scss',
     ],*/
     outputStyle: production ?  'compressed': 'expanded',
-    watch: './src/components/scss'
+    watch: './src/scss'
 };
 
 
