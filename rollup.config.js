@@ -6,7 +6,7 @@ import { terser } from 'rollup-plugin-terser';
 import scss from 'rollup-plugin-scss';
 import css from 'rollup-plugin-css-only';
 //import css2 from 'rollup-plugin-css-porter';
-//import babel from 'rollup-plugin-babel';
+import babel from 'rollup-plugin-babel';
 import copy from 'rollup-plugin-copy';
 import postcss from 'postcss'
 import cssReplace from 'postcss-replace'
@@ -129,6 +129,32 @@ export default [{
                 ]
             ]
         }),*/
+        babel({
+            runtimeHelpers: true,
+            extensions: [ '.js', '.mjs', '.html', '.svelte' ],
+            exclude: [ 'node_modules/@babel/**', 'node_modules/core-js/**' ],
+            presets: [
+                [
+                    '@babel/preset-env',
+                    {
+                        targets: {
+                        ie: '11'
+                        },
+                        useBuiltIns: 'usage',
+                        corejs: 3
+                    }
+                ]
+            ],
+            plugins: [
+                '@babel/plugin-syntax-dynamic-import',
+                [
+                '@babel/plugin-transform-runtime',
+                    {
+                        useESModules: true
+                    }
+                ]
+            ]
+        }),
         resolve({
             browser: true,
             dedupe: ['svelte']
