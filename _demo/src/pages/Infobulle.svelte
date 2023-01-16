@@ -16,6 +16,7 @@
         return [
             {nom: "titre", type: "String (Optionnel)", description: `Titre affiché dans la feuille associée à l'infobulle.`},
             {nom: "sr-titre", type: "String (Optionnel)", description: `Texte lecteur écran seulement en préfixe au titre affiché dans la feuille associée à l'infobulle. Défaut : "Aide concernant " et "Help about ".`},
+            {nom: "sr-prefixe-contenu", type: "String (Optionnel)", description: `Texte lecteur écran seulement en préfixe au contenu affiché dans la feuille associée à l'infobulle. Il permet d'améliorer l'accessibilité du composant en évitant de lire tout le contenu de l'infobulle lors de son ouverture.  Défaut : "Détails&nbsp;: " et "Details: ".`},
             {nom: "sr-bouton-ouvrir", type: "String (Optionnel)", description: `Texte lecteur écran seulement du bouton permettant d'ouvrir l'infobulle.`},
             {nom: "sr-bouton-fermer", type: "String (Optionnel)", description: `Texte lecteur écran seulement du bouton permettant de fermer l'infobulle.`},
             {nom: "contenu", type: "String (Optionnel)", description: `Texte à afficher dans la zone de contenu de l'infobulle.`}

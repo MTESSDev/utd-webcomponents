@@ -7,6 +7,25 @@
 </utd-menu-ancres>
 
 <utd-accordeon reduit="false">
+    <div slot="titre"><h2>1.7.6 (2023-01-16)</h2></div>
+    <h3>Améliorations</h3>
+    <ul class="utd">
+        <li>Composant <a href="/composants/affichagecontenu/infobulle">Infobulle</a>
+            <ul>
+                <li>Ajout du paramètre "sr-prefixe-contenu". Ce texte permet d'améliorer l'accessibilité du composant. Il s'agit d'un texte hors écran qui reçoit le focus lorsque l'infobulle est affichée. Il permet de ne pas lire tout le contenu de l'infobulle lors de son ouverture. Il est positionné juste avant la zone de contenu de l'infobulle.</li>
+            </ul>
+        </li>
+
+        <li>Restructuration du projet
+            <ul>
+                <li>Début du passage des css vers sass.</li>
+                <li>Restructuration de certains répertoires de la solution.</li>    
+            </ul>
+        </li>
+    </ul>
+</utd-accordeon>
+
+<utd-accordeon reduit="true">
     <div slot="titre"><h2>1.7.5 (2023-01-10)</h2></div>
     <h3>Améliorations</h3>
     <ul class="utd">

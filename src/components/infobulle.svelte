@@ -10,7 +10,8 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   import { Utils } from "./js/utils"
   export let afficher = false
   export let titre = ""
-  export let srTitre = Utils.obtenirLanguePage() === "fr" ? "Aide à propos de&nbsp;" : "Help about&nbsp;"
+  export let srTitre = Utils.obtenirLanguePage() === "fr" ? "Aide concernant&nbsp;" : "Help concerning&nbsp;"
+  export let srPrefixeContenu = Utils.obtenirLanguePage() === "fr" ? "Détails :" : "Details:"
   export let srBoutonOuvrir = Utils.obtenirLanguePage() === "fr" ? "Afficher l'aide contextuelle" : "Show help about"
   export let srBoutonFermer = Utils.obtenirLanguePage() === "fr" ? "Fermer" : "Close"
   export let contenu = ""
@@ -18,7 +19,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   const idBoutonToggle = Utils.genererId()
   const idModale = Utils.genererId()
   const idEntete = Utils.genererId()
-  const idCorps = Utils.genererId()
+  const idPrefixeContenu = Utils.genererId()
   const thisComponent = get_current_component()
 
   let html
@@ -88,7 +89,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   }
 
   function conserverFocusInfobulle(e) {
-    thisComponent.shadowRoot.getElementById(idCorps).focus()
+    thisComponent.shadowRoot.getElementById(idPrefixeContenu).focus()
     Utils.conserverFocusElement(thisComponent.shadowRoot.getElementById(idModale), thisComponent)
   }
 </script>
@@ -145,7 +146,8 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
         </button>
       </span>
       <span class="utd-container conteneur-corps">
-        <span class="corps" id={idCorps} tabindex="-1">
+        <span class="utd-sr-only" id="{idPrefixeContenu}" tabindex="-1">{srPrefixeContenu}</span>
+        <span class="corps">
             {#if Utils.slotExiste(slots, 'contenu')}
               <slot name="contenu" class="utd-d-none"/>
               <span>
