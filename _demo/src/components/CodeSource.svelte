@@ -4,7 +4,6 @@
   import {HighlightJS} from "highlight.js"
   import {html_beautify} from "js-beautify"
   import {js_beautify} from "js-beautify"
-  import { Utils } from '../../../src/components/js/utils'
   
   export let titre = "Code source"
   export let idElementCodeSource = ""
@@ -15,7 +14,7 @@
 
   let controleCodeSource = null  
   let estSuccesCopie = false
-  const idConteneurCode = Utils.genererId()
+  const idConteneurCode = genererId()
   const idBoutonCopier = 'copier' + idConteneurCode
   const estCopieSupportee = ClipboardJS.isSupported()
 
@@ -54,6 +53,15 @@
     }, 100);
     
   })
+
+  /**
+   * Génère un id unique. ATTENTION ici on fait exprès de ne pas utiliser la méthode genererId de notre classe Utils car ca provoque des bugs dans les anciens fureteurs (ex. Safari < 14.1). Si on utilise Babel comme pour notre librairie, nous avons d'autres problèmes.
+   * Comme c'est la seule méthode utilisée, on la recopie ici afin d'éviter les problèmes. Sera peut-être à creuser éventuellement.
+   * @returns L'id unique généré.
+   */
+  function genererId() {
+      return Date.now().toString(36) + '-' + Math.random().toString(36).substr(2, 9);
+  }
 
   function obtenirCodeSourceFormate(code) {
 

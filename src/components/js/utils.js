@@ -38,10 +38,10 @@ export class Utils {
     static obtenirElementsFocusables(element) {
             return element.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input:not([type="hidden"]):not([disabled]), select:not([disabled])')
         }
-        /**
-         * Génère un id unique.
-         * @returns L'id unique généré.
-         */
+    /**
+     * Génère un id unique.
+     * @returns L'id unique généré.
+     */
     static genererId() {
         return Date.now().toString(36) + '-' + Math.random().toString(36).substr(2, 9);
     }
