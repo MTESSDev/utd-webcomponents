@@ -90,18 +90,14 @@ export default [{
                 customElement: true
             }
         }),
+
         // we'll extract any component CSS out into
         // a separate file - better for performance
         //        css({ output: 'bundle.css' }),
 //        css2({ dest: demoPath + `/css/utd-webcomponents.css` }),
 
-        // If you have external dependencies installed from
-        // npm, you'll most likely need these plugins. In
-        // some cases you'll need additional configuration -
-        // consult the documentation for details:
-        // https://github.com/rollup/plugins/tree/master/packages/commonjs
 
-        /* Ne plus adapter le code pour qu'il fonctionne sur les vieux fureteurs. On garde ici au cas où on trouverait des problèmes. Sera retiré éventuellement. (2023-01-10)    
+        // IMPORTANT! On conserve Babel pour le moment, sinon nous avons de problèmes avec certains fureteurs ex. Safari < 14.
         // compile to IE11 compatible ES5
         babel({
             runtimeHelpers: true,
@@ -128,11 +124,17 @@ export default [{
                     }
                 ]
             ]
-        }),*/
+        }),
         resolve({
             browser: true,
             dedupe: ['svelte']
         }),
+        // If you have external dependencies installed from
+        // npm, you'll most likely need these plugins. In
+        // some cases you'll need additional configuration -
+        // consult the documentation for details:
+        // https://github.com/rollup/plugins/tree/master/packages/commonjs
+
         //TODO voir éventuellement si c'est vraiment requis commonjs ici
         commonjs(),
 
