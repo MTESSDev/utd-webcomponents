@@ -1,0 +1,67 @@
+/*====================================================================================================
+/*  Avis
+/*====================================================================================================*/
+.utd-avis {
+    display: flex;
+    border: 1px solid var(--couleur-filet-secondaire);
+    background-color: #fff;
+    word-break: break-word;
+    font-size: 14px;
+    margin-bottom: 32px;
+
+    .zone-icone {
+        display: flex;  
+        padding: 24px 8px;
+        background-color: var(--bleu-pale); /* Couleur par défaut */     
+
+        .utd-icone-svg {
+            background-size: 100% auto;
+            min-width: 24px;
+            height: 24px;
+        }      
+    }
+
+    &.information .zone-icone {
+        background-color: var(--bleu-pale);      
+    }
+    
+    &.avertissement .zone-icone {
+        background-color: var(--jaune-pale);
+    }
+  
+    &.succes .zone-icone {
+        background-color: var(--vert-pale);
+    }
+  
+    &.erreur .zone-icone {
+        background-color: var(--rose-pale);
+    }
+  
+    .titre {
+        margin: 0;
+        padding: 0;
+        line-height: 1.5;
+        font-family: 'OpenSans-Bold';
+        font-size: 14px !important;
+    }
+    
+    .contenu {
+        padding: 24px var(--tc-32-24-val) 24px 16px;
+        width: 100%;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }      
+}
+
+utd-avis[type="erreur"] ul li a {
+    color: var(--couleur-erreur);
+
+    &:hover, &:focus {
+        text-decoration: none;
+    }    
+}
+
+  
+  

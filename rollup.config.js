@@ -3,14 +3,47 @@ import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
+import scss from 'rollup-plugin-scss';
 import css from 'rollup-plugin-css-only';
-import css2 from 'rollup-plugin-css-porter';
+//import css2 from 'rollup-plugin-css-porter';
 import babel from 'rollup-plugin-babel';
 import copy from 'rollup-plugin-copy';
+import postcss from 'postcss'
+import cssReplace from 'postcss-replace'
+import autoprefixer from 'autoprefixer'
 import pkg from './package.json';
 import replace from '@rollup/plugin-replace';
 
 const production = !process.env.ROLLUP_WATCH;
+const demoPath = './_demo/public'
+const distPath = './dist'
+
+const scssOptions = {
+    processor: () =>
+        postcss([
+            autoprefixer(),
+            cssReplace({
+                pattern: /_([^\s]+?)_/,
+                data: {
+                    'pkg-version': pkg.version,
+                    'versionUtd' : `?v=${pkg.version}`,
+                    'vUtd' : pkg.version,
+        
+                }
+            })
+        ]),
+    // Choose files to include in processing (default: ['/**/*.css', '/**/*.scss', '/**/*.sass'])
+    sourceMap: false,
+    //TODO Voir ce que nous avons réellement besoin dans les includePaths
+/*        includePaths: [
+        path.join(__dirname, '../../node_modules/'),
+        'node_modules/',
+        'src/scss',
+    ],*/
+    outputStyle: production ?  'compressed': 'expanded',
+    watch: './src/scss'
+};
+
 
 function serve() {
     let server;
@@ -36,19 +69,11 @@ function serve() {
 export default [{
     input: 'src/utd-components.js',
     output: [
-        // Version pour site démo
         {
             sourcemap: false,
             format: 'iife',
             name: 'utd',
-            file: `public/js/utd-webcomponents.min.js`
-        },
-        // Version pour diffusion
-        {
-            sourcemap: false,
-            format: 'iife',
-            name: 'utd',
-            file: `dist/js/utd-webcomponents.min.js`
+            file: demoPath + `/js/utd-webcomponents.min.js`
         }
     ],
     plugins: [
@@ -65,26 +90,15 @@ export default [{
                 customElement: true
             }
         }),
+
         // we'll extract any component CSS out into
         // a separate file - better for performance
         //        css({ output: 'bundle.css' }),
-        css2({ dest: `public/css/utd-webcomponents.css` }),
-        // If you have external dependencies installed from
-        // npm, you'll most likely need these plugins. In
-        // some cases you'll need additional configuration -
-        // consult the documentation for details:
-        // https://github.com/rollup/plugins/tree/master/packages/commonjs
+//        css2({ dest: demoPath + `/css/utd-webcomponents.css` }),
 
+
+        // IMPORTANT! On conserve Babel pour le moment, sinon nous avons de problèmes avec certains fureteurs ex. Safari < 14.
         // compile to IE11 compatible ES5
-        copy({
-            targets: [
-              { src: `src/librairie/sprites/dist/view/svg/sprite.view.svg`, dest: `public/images`, rename: `utd-sprite.svg` },
-              { src: `src/librairie/sprites/dist/view/svg/sprite.view.svg`, dest: `dist/images`, rename: `utd-sprite.svg` },
-              { src: `src/librairie/components/fonts/*`, dest: `dist/fonts`},
-              { src: `src/librairie/components/fonts/*`, dest: `public/fonts`},
-            ]
-          }),
-    
         babel({
             runtimeHelpers: true,
             extensions: [ '.js', '.mjs', '.html', '.svelte' ],
@@ -115,40 +129,34 @@ export default [{
             browser: true,
             dedupe: ['svelte']
         }),
+        // If you have external dependencies installed from
+        // npm, you'll most likely need these plugins. In
+        // some cases you'll need additional configuration -
+        // consult the documentation for details:
+        // https://github.com/rollup/plugins/tree/master/packages/commonjs
+
+        //TODO voir éventuellement si c'est vraiment requis commonjs ici
         commonjs(),
 
-        // If we're building for production (npm run build
-        // instead of npm run dev), minify
-        production && terser()
+        //Build pour production (code js minifié)
+        production && terser(),
+
+        //Génération du css
+        scss(Object.assign(scssOptions, {
+            output: demoPath + '/css/utd-webcomponents.min.css',
+        })),
     ]
 },
-//TODO ici trouver moyen de passer des fichiers bidon pour éviter erreur
+/*=======================================================================================================*/
+/*  Génération du site démo + copie de fichiers et ajout code vérification custom elements déjà chargés  */
+/*=======================================================================================================*/
 {
-    input: 'src/utd-dummy.js',
-    output: {
-      file: 'build/dummy.js',
-      format: 'cjs'
-    },
-    plugins: [
-        copy({
-            targets: [
-                { src: `public/css/utd-webcomponents.min.css`, dest: `dist/css`},
-                {
-                    src: 'public/js/utd-webcomponents.min.js',
-                    dest: 'dist/js',
-                    transform: (contents, filename) => contents.toString().replace('/*!_VerifierSiDejaCharge_*/', "if (customElements.get('utd-infobulle')) { return true; }")
-                }
-            ]
-        })
-    ]
-},
-{
-    input: 'src/siteDemo.js',
+    input: '_demo/siteDemo.js',
     output: {
         sourcemap: true,
         format: 'iife',
         name: 'app',
-        file: 'public/build/siteDemo.js'
+        file: demoPath + `/js/siteDemo.js`
     },
     plugins: [
         svelte({
@@ -170,16 +178,37 @@ export default [{
             browser: true,
             dedupe: ['svelte']
         }),
+        //TODO voir éventuellement si c'est vraiment requis commonjs ici
         commonjs(),
+
+        //Copie de fichiers et ajout code vérification custom elements déjà chargés
+        copy({
+            targets: [
+                { src: demoPath + `/css/utd-webcomponents.min.css`, dest: `dist/css`},
+                {
+                    src: demoPath + `/js/utd-webcomponents.min.js`,
+                    dest: distPath + '/js',
+                    transform: (contents, filename) => contents.toString().replace('/*!_VerifierSiDejaCharge_*/', "if (customElements.get('utd-infobulle')) { return true; }")
+                },
+                { src: `src/sprites/dist/view/svg/sprite.view.svg`, dest: demoPath + `/images`, rename: `utd-sprite.svg` },
+                { src: `src/sprites/dist/view/svg/sprite.view.svg`, dest: distPath + `/images`, rename: `utd-sprite.svg` },
+                { src: `src/assets/fonts/*`, dest: distPath + `/fonts`},
+                { src: `src/assets/fonts/*`, dest: demoPath + `/fonts`},  
+                { src: `src/assets/images/*`, dest: distPath + `/images`},
+                { src: `src/assets/images/*`, dest: demoPath + `/images`}  
+
+            ]
+        }),
 
         // In dev mode, call `npm run start` once
         // the bundle has been generated
         // ICI on fait exprès de faire un serve suivi d'un terser pour simuler le code de prod (histoire de tester notre module code source et s'assurer que ce n'est pas compressé ou mal formaté)
+        // Aussi on désactive la compression de code (modification lors de la minification afin que nos exemples fonctionnent bien)
         !production && serve(),
         !production && terser({compress: false, mangle: false, format: {keep_numbers: true, keep_quoted_props: true, comments: 'all'}}),
         // Watch the `public` directory and refresh the
         // browser on changes when not in production
-        !production && livereload('public'),
+        !production && livereload(demoPath),
 
         // If we're building for production (npm run build
         // instead of npm run dev), minify
@@ -189,4 +218,5 @@ export default [{
     watch: {
         clearScreen: false
     }
-}];
+}
+];

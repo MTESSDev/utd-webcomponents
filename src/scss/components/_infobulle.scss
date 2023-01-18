@@ -1,0 +1,215 @@
+/*====================================================================================================
+/*  Infobulle
+/*====================================================================================================*/
+@use "./modules/include-media" as *;
+
+/*Test media*/
+/*@include media(">phone") {
+    .test {
+        width: 50%;        
+    }
+}*/
+
+.utd-infobulle{
+
+    .texte-lie {
+        background-color: #e7f1fa;
+        padding: 0 2px;
+        display: inline-block;
+        text-decoration: underline;
+        text-decoration-color: var(--couleur-piv);
+        text-underline-offset: 2px;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        & + .conteneur-tooltip {
+            bottom: 6px;
+            left: -6px;            
+
+            button.tooltip-toggle {
+                width: auto;
+                height: auto;
+                min-width: 0;
+                min-height: 0;
+                padding: 2px 4px;
+                margin-right: -10px;
+            }    
+        }        
+                
+    }
+
+    .conteneur-tooltip {
+        position: relative;
+        bottom: 8px;
+        left: -4px;
+        white-space: nowrap;
+    }
+
+    button.tooltip-toggle {
+        width: 40px;
+        height: 16px;
+        min-width: 40px;
+        min-height: 16px;
+        display: inline-block;
+        border: 0;
+        background-color: transparent;
+        position: relative;
+        padding: 0 12px;
+        top: 4px;
+
+        &:hover{
+            cursor: pointer;
+        }
+
+        .conteneur-puce {
+            display: block;
+            width: 16px;
+        }
+
+        .puce {
+            width: 16px;
+            height: 16px;
+            border-radius: 100%;
+            background-color: var(--bleu-piv);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .utd-icone-svg {  
+            width: 10px;
+            height: 10px;
+            min-width: 10px;
+            margin-left: 0;
+        }                  
+    }       
+
+    .modale {
+        font-family: "OpenSans-Regular", sans-serif;
+        display: block !important;
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 3px 12px rgba(34, 54, 84, 0.22);
+        border: 1px solid #c5cad2;
+        height: auto;
+        overflow: hidden;
+        z-index: 10000;
+        padding: var(--tc-32-16-val) 0;
+        white-space: normal;
+    }
+    
+    .entete {
+        position: relative;
+        display: flex;
+        align-items: center;
+        border: none;
+        max-width: calc(var(--largeur-max-zone-texte) + 32px); /* On ajoute le padding utd-container */
+        padding-top: 0;
+        padding-bottom: 0;
+        
+        h1 {
+            font-family: "Roboto-Bold", sans-serif;
+            font-size: var(--tc-20-18-val);
+            letter-spacing: 0;
+            max-width: 58.75rem;
+            margin: 0;
+            line-height: inherit;
+
+            &:focus {
+                outline: 0;
+            }
+            
+            &:after {
+                content: none;
+            }            
+        }
+        
+        .close {
+            line-height: 0;
+            padding: 1rem;
+            font-size: 1rem;
+            opacity: 1;
+            background-color: transparent;
+            border: 0;
+            margin: -1rem -1rem -1rem auto;
+
+            &:hover {
+                cursor: pointer;
+            }            
+        }        
+    }    
+
+    .conteneur-corps {
+        max-width: calc(var(--largeur-max-zone-texte) + 32px); /* On ajoute le padding utd-container */
+        border: 0;
+        line-height: 1.5;
+        margin: 8px auto 0 auto !important;
+        overflow-y: auto;
+        display: block;
+    }
+    
+    .corps {
+        display: block;
+        padding: 0 var(--tc-32-24-val) 0 0;
+        max-height: calc(33.33333vh - (var(--tc-32-16-val) * 2) - 8px - 30px);
+        overflow-y: auto;
+        font-size: 1rem;
+
+        h2, h3, h4, h5, h6 {
+            font-size: 1rem;
+        }
+
+        &:is(h2, h3, h4, h5, h6) {
+            font-size: 1rem;
+            line-height: inherit;
+            margin-top: 2rem;
+
+            :first-child {
+                margin-top: 0;
+            }            
+        }
+                
+        h2 {
+            font-size: var(--tc-18-16-val);
+        }
+
+        /* Scrollbar */
+        &::-webkit-scrollbar,
+        &::-webkit-scrollbar-thumb,
+        &::-webkit-scrollbar-track {
+            background: transparent;
+            border: none;
+            border-radius: 0.3125rem;
+            height: 50%;
+            width: .25rem;
+            margin-top: 4px;
+        }
+
+        &::-webkit-scrollbar-button,
+        &::-webkit-scrollbar-track-piece,
+        &::-webkit-scrollbar-corner,
+        &::-webkit-resizer {
+            display: none;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--bleu-piv);
+            transition: all 0.35s;
+        }                
+    }
+    
+}
+
+
+
+
+
+
