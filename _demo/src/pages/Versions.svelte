@@ -12,6 +12,7 @@
     <ul class="utd">
         <li>Composant <a href="/composants/affichagecontenu/infobulle">Infobulle</a>
             <ul>
+                <li>Ajustement du composant selon les nouvelles normes du système de design Quebec.ca (padding + largeur ascenceur).</li>
                 <li>Ajout du paramètre "sr-prefixe-contenu". Ce texte permet d'améliorer l'accessibilité du composant. Il s'agit d'un texte hors écran qui reçoit le focus lorsque l'infobulle est affichée. Il permet de ne pas lire tout le contenu de l'infobulle lors de son ouverture. Il est positionné juste avant la zone de contenu de l'infobulle.</li>
             </ul>
         </li>
