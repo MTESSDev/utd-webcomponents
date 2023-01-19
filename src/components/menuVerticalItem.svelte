@@ -78,7 +78,6 @@
   }
 
   function onKeyDown(e) {
-    console.log(e.keyCode)
     const parent = thisComponent.parentElement
 
     switch(e.keyCode) {

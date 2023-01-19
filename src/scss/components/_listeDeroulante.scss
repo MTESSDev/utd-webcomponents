@@ -1,0 +1,57 @@
+/*====================================================================================================
+/*  Liste déroulante
+/*====================================================================================================*/
+.utd-liste-deroulante {
+    position: relative;
+
+    .conteneur {
+
+        &.ouvert .selection.utd-form-control{
+
+        }
+
+        .selection{
+            cursor: pointer;
+
+            &.utd-form-control{
+                height: auto;
+            }
+
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+        
+        }
+    
+        .resultats{
+            display: block;
+            margin-top: 8px;
+            max-height: 330px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            
+            &.recherchable{
+                max-height: 290px;
+            }
+
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+
+                li{
+                    padding: 8px;
+                    margin: 0 -8px;
+                }
+            }
+
+
+        }
+    
+    }
+    
+}
+
+
