@@ -4,18 +4,34 @@
 .utd-liste-deroulante {
     position: relative;
 
+    &.sm{
+        .conteneur{
+            width: 156px;
+        }
+    }
+    &.md{
+        .conteneur{
+            width: 342px;
+        }
+    }
+    &.lg{
+        .conteneur{
+            width: 528px;
+        }
+    }
+
     .conteneur {
+
+        &.utd-form-control{
+            height: auto;
+        }
 
         &.ouvert .selection.utd-form-control{
 
         }
 
-        .selection{
+        .selection {
             cursor: pointer;
-
-            &.utd-form-control{
-                height: auto;
-            }
 
             ul {
                 list-style: none;
@@ -24,14 +40,16 @@
             }
         
         }
-    
-        .resultats{
+        .recherche {
+            margin-top:16px;
+        }
+        .resultats {
             display: block;
             margin-top: 8px;
             max-height: 330px;
             overflow-y: auto;
             overflow-x: hidden;
-            
+
             &.recherchable{
                 max-height: 290px;
             }

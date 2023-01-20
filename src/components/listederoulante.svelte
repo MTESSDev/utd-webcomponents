@@ -10,7 +10,7 @@ import { get_current_component } from "svelte/internal"
 
 export let multiple = "false"
 export let recherchable = "false"
-
+export let largeur = "md" //Valeurs possible sm, md, lg
 export let texteAideUtilisation = Utils.obtenirLanguePage() === 'fr' ? "Utilisez la tabulation (ou les touches flèches) pour naviguer dans la liste des suggestions." : "(en)Utilisez la tabulation (ou les touches flèches) pour naviguer dans la liste des suggestions."
 export let placeholder = Utils.obtenirLanguePage() === 'fr' ? "Rechercher dans la liste" : "(en)Rechercher dans la liste"
 export let noResult = Utils.obtenirLanguePage() === 'fr' ? "Aucun résultat" : "(en)Aucun résultat"
@@ -25,12 +25,13 @@ const idControleRecherche = Utils.genererId()
 const idControleResultats = Utils.genererId()
 const idControleSuggestions = Utils.genererId()
 
-
+let mounted = false
 let html
 let controle
-let controleSelect
+let controleConteneur
 let controleLabel
 let idControleLabel = ""
+let controleSelect
 let afficherOptions = false
 let indexeFocus = null
 let options = []
@@ -38,22 +39,22 @@ let suggestions = []
 let texteRecherche = ""
 
 onMount(() => {  
+  mounted = true
   html = thisComponent.getRootNode().getElementsByTagName("html")[0]
   controle = thisComponent.shadowRoot.querySelector('.utd-liste-deroulante')
-
-
-
+  controleConteneur = thisComponent.shadowRoot.querySelector('.conteneur')
+  console.log(controleConteneur)
   if(multiple === 'true' || recherchable === 'true'){
     ajusterControleSelectOriginal()
     
     options = obtenirOptions()
     definirSuggestions()
-    console.log(suggestions)
-  }
-
-  
+  }  
 })
 
+
+// Watches
+$: toggleAfficherOptions(afficherOptions) 
 
 function obtenirOptions() {
   const options = []
@@ -118,7 +119,7 @@ function ajusterControleSelectOriginal() {
   }
 }
 
-function toggleAfficherResultats(e){
+function traiterEvenementsControlePrincipal(e){
   if(e.keyCode){
     //Si Enter ou SpaceBar
     if(e.keyCode === 13 || e.keyCode === 32){
@@ -131,6 +132,25 @@ function toggleAfficherResultats(e){
   }
 }
 
+function obtenirControleRecherche(){
+  return thisComponent.shadowRoot.getElementById(idControleRecherche)
+}
+
+function toggleAfficherOptions() {
+  if(!mounted){
+    return
+  }
+  
+  if(afficherOptions){
+    if(recherchable === 'true'){
+      setTimeout(() => {
+        obtenirControleRecherche().focus()        
+      })
+    }
+  } else {
+    controleConteneur.focus()
+  }
+}
 
 function moveIndex(step) {
   if(indexeFocusOption === null){
@@ -159,13 +179,23 @@ function donnerFocusVisuelOption(indexe) {
 //  this.suggestions[indexeFocusOption].classList.add('focusVisuel');
 }
 
+function traiterSaisieRecherche(){  
+  const controleRecherche = obtenirControleRecherche()
+  // Empêche le traitement si simplement un focus ou un blur (l'événement input est lancé sur focus et blur)
+/*  if( texteRecherche === controleRecherche.value ){
+    return;
+  }*/
+  console.log('input')
+  texteRecherche = controleRecherche.value;
+  definirSuggestions();  
+}
 </script>
 
 
 <!--<select class="js-example-basic-multiple js-states form-control select2-hidden-accessible" multiple="" data-select2-id="select2-data-61-j7fv" tabindex="-1" aria-hidden="true">-->
 
 
-<div class="utd-component utd-liste-deroulante">
+<div class="utd-component utd-liste-deroulante {largeur}">
   <slot></slot>
 
   {#if recherchable === 'true' || multiple === 'true'}
@@ -175,14 +205,9 @@ function donnerFocusVisuelOption(indexe) {
       <span class="icon-select" aria-hidden="true"></span>
     </button>-->  
 
-    <span class="conteneur {afficherOptions ? 'ouvert' : ''} --focus" dir="ltr" data-select2-id="select2-data-62-9oiz">
-      {#if recherchable === 'true'}
-        <span id="{idTexteUtilisation}" class="utd-sr-only">{texteAideUtilisation}</span>
-        <label for="{idControleRecherche}" class="utd-sr-only">{placeholder}</label>
-        <input type="text" id="{idControleRecherche}" class="utd-form-control" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="{placeholder}" aria-describedby="{idTexteUtilisation}">
-      {/if}
+    <span class="conteneur utd-form-control {afficherOptions ? 'ouvert' : ''} --focus" dir="ltr"  role="combobox" aria-haspopup="true" aria-expanded="{afficherOptions ? 'true' : 'false'}" tabindex="0" on:keydown={traiterEvenementsControlePrincipal} aria-disabled="false" aria-controls="{afficherOptions ? idControleResultats : null}" aria-activedescendant="{afficherOptions ? 'testbidon' : null}">
   
-      <span class="selection utd-form-control select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="{afficherOptions ? 'true' : 'false'}" tabindex="0" on:click={toggleAfficherResultats} on:keydown={toggleAfficherResultats} aria-disabled="false" aria-controls="{afficherOptions ? idControleResultats : null}" aria-activedescendant="{afficherOptions ? 'testbidon' : null}" >
+      <span class="selection select2-selection--multiple" on:click={traiterEvenementsControlePrincipal}>
         <ul class="select2-selection__rendered" id="select2-2cnb-container">
           <li class="select2-selection__choice" title="Hawaii" data-select2-id="select2-data-247-9kw9">
             <button type="button" class="select2-selection__choice__remove" tabindex="-1" title="Remove item" aria-label="Remove item" aria-describedby="select2-2cnb-container-choice-s29e-HI">
@@ -190,11 +215,19 @@ function donnerFocusVisuelOption(indexe) {
             </button>
             <span class="select2-selection__choice__display" id="select2-2cnb-container-choice-s29e-HI">Hawaii</span>
           </li>
-        </ul>
-        {#if afficherOptions}    
+        </ul>      
+      </span>
+  
+        {#if afficherOptions}  
+          {#if recherchable === 'true'}
+            <span id="{idTexteUtilisation}" class="utd-sr-only">{texteAideUtilisation}</span>
+            <label for="{idControleRecherche}" class="utd-sr-only">{placeholder}</label>
+            <input type="text" id="{idControleRecherche}" class="utd-form-control recherche" on:input={traiterSaisieRecherche} on:blur={traiterEvenementsControlePrincipal} autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="{placeholder}" aria-describedby="{idTexteUtilisation}">
+          {/if}
+
           <span class="resultats" id="{idControleResultats}" dir="ltr">
             <span class="select2-results">
-              <ul class="select2-results__options" role="listbox" aria-multiselectable="true" id="select2-2cnb-results" aria-expanded="true" aria-hidden="false">
+              <ul class="select2-results__options" role="listbox" aria-multiselectable="{multiple === 'true' ? 'true' : null}" id="select2-2cnb-results" aria-expanded="true" aria-hidden="false">
                 {#each suggestions as suggestion, i}
                   <li class="select2-results__option select2-results__option--selectable" id="select2-2cnb-result-fwrc-AK" role="option" value="{suggestion.value}" data-select2-id="select2-data-select2-2cnb-result-fwrc-AK" aria-selected="false">{suggestion.texte}</li>
                 {/each}   
@@ -203,7 +236,7 @@ function donnerFocusVisuelOption(indexe) {
           </span>
         {/if}      
 
-      </span>
+
     </span>    
 
 
