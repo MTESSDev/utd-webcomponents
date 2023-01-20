@@ -1,5 +1,6 @@
 <!-- 
 Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un custom element.
+Référence : https://www.w3.org/WAI/ARIA/apg/example-index/combobox/combobox-autocomplete-none.html
 -->
 <svelte:options tag="utd-liste-deroulante" />
 
@@ -119,17 +120,37 @@ function ajusterControleSelectOriginal() {
   }
 }
 
-function traiterEvenementsControlePrincipal(e){
-  if(e.keyCode){
-    //Si Enter ou SpaceBar
-    if(e.keyCode === 13 || e.keyCode === 32){
+function onKeyDown(e){
+
+  switch(e.key) {
+    case "Enter":
       e.preventDefault()
       afficherOptions = !afficherOptions      
-    }
-  } else {
-    //Ici c'est un click
-    afficherOptions = !afficherOptions
+      break
+    case " ":
+        //TODO si contrôle courant est textbox on ne fait rien
+      e.preventDefault()
+      afficherOptions = !afficherOptions      
+      break
+    case "Tab":
+      e.stopPropagation()      
+      afficherOptions = false
+    break
+
   }
+}
+
+function onClick(e){
+  console.log('click')
+  if(e.currentTarget.classList.contains('selection')){
+    afficherOptions = !afficherOptions
+    controleConteneur.focus()
+  }
+}
+
+function selectionMouseDown(e){
+  //Petite twist afin de ne pas provoquer de blur si on click sur le contrôle de sélection à partir d'un autre contrôle. (Évite la loop de fermeture/ouverture du dropdown)
+  e.preventDefault()
 }
 
 function obtenirControleRecherche(){
@@ -146,10 +167,10 @@ function toggleAfficherOptions() {
       setTimeout(() => {
         obtenirControleRecherche().focus()        
       })
+    } else {
+      controleConteneur.focus()
     }
-  } else {
-    controleConteneur.focus()
-  }
+  }  
 }
 
 function moveIndex(step) {
@@ -184,11 +205,35 @@ function traiterSaisieRecherche(){
   // Empêche le traitement si simplement un focus ou un blur (l'événement input est lancé sur focus et blur)
 /*  if( texteRecherche === controleRecherche.value ){
     return;
-  }*/
+  } */
   console.log('input')
   texteRecherche = controleRecherche.value;
   definirSuggestions();  
 }
+
+function blurConteneur(){
+  console.log('blurConteneur')
+  if(recherchable === 'false'){
+    afficherOptions = false
+  }
+}
+
+function blurRecherche(e){  
+  console.log('blurRecherche')
+//  if(!e.currentTarget.classList.contains('selection')){
+
+    //TODO concorder avec les touches ici afin de redonner focus au textbox (event du dropdown ENTER, Escape)
+    afficherOptions = false
+
+//  }
+
+}
+
+function clickOption(e){  
+  e.stopPropagation()
+  console.log('clickOption')
+}
+
 </script>
 
 
@@ -205,9 +250,9 @@ function traiterSaisieRecherche(){
       <span class="icon-select" aria-hidden="true"></span>
     </button>-->  
 
-    <span class="conteneur utd-form-control {afficherOptions ? 'ouvert' : ''} --focus" dir="ltr"  role="combobox" aria-haspopup="true" aria-expanded="{afficherOptions ? 'true' : 'false'}" tabindex="0" on:keydown={traiterEvenementsControlePrincipal} aria-disabled="false" aria-controls="{afficherOptions ? idControleResultats : null}" aria-activedescendant="{afficherOptions ? 'testbidon' : null}">
+    <span class="conteneur utd-form-control {afficherOptions ? 'ouvert' : ''} --focus" dir="ltr" on:blur={blurConteneur}  role="combobox" aria-haspopup="true" aria-expanded="{afficherOptions ? 'true' : 'false'}" tabindex="0" on:keydown={onKeyDown} aria-disabled="false" aria-controls="{afficherOptions ? idControleResultats : null}" aria-activedescendant="{afficherOptions ? 'testbidon' : null}">
   
-      <span class="selection select2-selection--multiple" on:click={traiterEvenementsControlePrincipal}>
+      <span class="selection select2-selection--multiple" on:click={onClick} on:mousedown={selectionMouseDown}>
         <ul class="select2-selection__rendered" id="select2-2cnb-container">
           <li class="select2-selection__choice" title="Hawaii" data-select2-id="select2-data-247-9kw9">
             <button type="button" class="select2-selection__choice__remove" tabindex="-1" title="Remove item" aria-label="Remove item" aria-describedby="select2-2cnb-container-choice-s29e-HI">
@@ -222,14 +267,14 @@ function traiterSaisieRecherche(){
           {#if recherchable === 'true'}
             <span id="{idTexteUtilisation}" class="utd-sr-only">{texteAideUtilisation}</span>
             <label for="{idControleRecherche}" class="utd-sr-only">{placeholder}</label>
-            <input type="text" id="{idControleRecherche}" class="utd-form-control recherche" on:input={traiterSaisieRecherche} on:blur={traiterEvenementsControlePrincipal} autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="{placeholder}" aria-describedby="{idTexteUtilisation}">
+            <input type="text" id="{idControleRecherche}" class="utd-form-control recherche" on:input={traiterSaisieRecherche} on:blur={blurRecherche} autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="{placeholder}" aria-describedby="{idTexteUtilisation}">
           {/if}
 
           <span class="resultats" id="{idControleResultats}" dir="ltr">
             <span class="select2-results">
               <ul class="select2-results__options" role="listbox" aria-multiselectable="{multiple === 'true' ? 'true' : null}" id="select2-2cnb-results" aria-expanded="true" aria-hidden="false">
                 {#each suggestions as suggestion, i}
-                  <li class="select2-results__option select2-results__option--selectable" id="select2-2cnb-result-fwrc-AK" role="option" value="{suggestion.value}" data-select2-id="select2-data-select2-2cnb-result-fwrc-AK" aria-selected="false">{suggestion.texte}</li>
+                  <li class="select2-results__option select2-results__option--selectable" id="select2-2cnb-result-fwrc-AK" role="option" value="{suggestion.value}" on:click={clickOption} data-select2-id="select2-data-select2-2cnb-result-fwrc-AK" aria-selected="false">{suggestion.texte}</li>
                 {/each}   
               </ul>
             </span>

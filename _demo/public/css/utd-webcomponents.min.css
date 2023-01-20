@@ -2701,6 +2701,9 @@ button.utd-btn.utd-traitement-en-cours, input[type=submit].utd-btn.utd-traitemen
 }
 .utd-liste-deroulante .conteneur .selection {
   cursor: pointer;
+  padding: 8px;
+  margin: -8px;
+  display: block;
 }
 .utd-liste-deroulante .conteneur .selection ul {
   list-style: none;
