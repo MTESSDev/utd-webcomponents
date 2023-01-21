@@ -24,17 +24,21 @@
 
         &.utd-form-control{
             height: auto;
+            padding: 0;
         }
 
-        &:not(.ouvert) .selection .utd-icone-svg {
+        &:not(.ouvert) .selection .utd-icone-svg {            
             transform: rotate(-180deg);
+        }
+
+        &.mounted .selection .utd-icone-svg {
+            transition: transform 0.5s;
         }
 
         .selection {
             position: relative;
             cursor: pointer;
             padding: 8px 32px 8px 8px;
-            margin: -8px;
             display: block;
 
             ul {
@@ -46,14 +50,19 @@
                 position: absolute;
                 top: 15px;
                 right: 8px;
-                transition: transform 0.5s;
             }
         }
+        .conteneur-recherche {
+            display: block;
+            padding: 0 8px;
+        }
+
         .recherche {
             margin-top:16px;
         }
         .resultats {
             display: block;
+            padding: 0;
             margin-top: 8px;
             max-height: 330px;
             overflow-y: auto;
@@ -70,7 +79,15 @@
 
                 li{
                     padding: 8px;
-                    margin: 0 -8px;
+                    margin: 0;
+
+                    &:hover{
+                        cursor: pointer;
+                    }
+
+                    &.focus, &:hover{
+                        background-color: var(--bleu-pale);
+                    }
                 }
             }
 

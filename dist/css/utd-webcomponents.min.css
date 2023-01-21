@@ -2699,9 +2699,13 @@ button.utd-btn.utd-traitement-en-cours, input[type=submit].utd-btn.utd-traitemen
 .utd-liste-deroulante .conteneur.utd-form-control {
   height: auto;
 }
+.utd-liste-deroulante .conteneur:not(.ouvert) .selection .utd-icone-svg {
+  transform: rotate(-180deg);
+}
 .utd-liste-deroulante .conteneur .selection {
+  position: relative;
   cursor: pointer;
-  padding: 8px;
+  padding: 8px 32px 8px 8px;
   margin: -8px;
   display: block;
 }
@@ -2709,6 +2713,12 @@ button.utd-btn.utd-traitement-en-cours, input[type=submit].utd-btn.utd-traitemen
   list-style: none;
   padding: 0;
   margin: 0;
+}
+.utd-liste-deroulante .conteneur .selection .utd-icone-svg {
+  position: absolute;
+  top: 15px;
+  right: 8px;
+  transition: transform 0.5s;
 }
 .utd-liste-deroulante .conteneur .recherche {
   margin-top: 16px;

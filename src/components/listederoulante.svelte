@@ -34,9 +34,10 @@ let controleLabel
 let idControleLabel = ""
 let controleSelect
 let afficherOptions = false
-let indexeFocus = null
+let indexeFocusOption = null
 let options = []
 let suggestions = []
+let optionsSelectionnees = []
 let texteRecherche = ""
 
 onMount(() => {  
@@ -67,6 +68,7 @@ function obtenirOptions() {
 //    const texteFormatte = texte.toLowerCase()
 
     const opt = {
+      id: Utils.genererId(),
       texte: texte,
       valeur: option.value,
       texteFormatte: texte.toLowerCase() 
@@ -122,22 +124,90 @@ function ajusterControleSelectOriginal() {
 }
 
 function onKeyDown(e){
-
+  console.log(e.key)
   switch(e.key) {
     case "Enter":
       e.preventDefault()
-      afficherOptions = !afficherOptions      
+
+      if(e.target.classList.contains('recherche')) {
+        if(indexeFocusOption !== null){
+          //TODO ajouter sélection
+          if(multiple === 'true'){
+            optionsSelectionnees.push(suggestions[indexeFocusOption])
+          } else {
+            optionsSelectionnees = []
+            optionsSelectionnees.push(suggestions[indexeFocusOption])
+          }
+
+          if(multiple === 'false'){
+            afficherOptions = false
+            controleConteneur.focus()
+          }
+          console.log('TATA')
+        }
+      } else {
+        afficherOptions = !afficherOptions      
+      }
+
+
       break
     case " ":
-        //TODO si contrôle courant est textbox on ne fait rien
+      //Si contrôle courant est textbox recherche on ne fait rien
+      if(e.target.classList.contains('recherche')) {
+        break        
+      }
+
       e.preventDefault()
       afficherOptions = !afficherOptions      
       break
     case "Tab":
+      //Si contrôle courant est textbox recherche on ne fait rien
+      if(e.target.classList.contains('recherche')) {
+        break        
+      }
+  
       e.stopPropagation()      
       afficherOptions = false
-    break
+      break
+    case "Escape":
+      afficherOptions = false
+      controleConteneur.focus()  
+      break        
+    case "ArrowDown":
+      e.preventDefault()
+      //Affiche les options si ne sont pas visibles actuellement
+      if(!afficherOptions){
+        afficherOptions = true
+        if(recherchable === 'false' && suggestions.length){
+          indexeFocusOption = 0
+        }
+      } else {
+        if(indexeFocusOption === null){
+          indexeFocusOption = 0
+        } else {
+          modifierIndexeOptionCourante(1)     
+        }
+      }
 
+      break      
+    case "ArrowUp":
+      e.preventDefault()
+
+      if(!afficherOptions){
+        afficherOptions = true
+
+        if(recherchable === 'false' && suggestions.length){
+          indexeFocusOption = suggestions.length - 1
+        }
+
+      } else {
+        if(indexeFocusOption === null){
+          indexeFocusOption = suggestions.length - 1
+        } else {
+          modifierIndexeOptionCourante(-1)     
+        }
+      }
+      break
   }
 }
 
@@ -171,7 +241,9 @@ function toggleAfficherOptions() {
   if(afficherOptions){
     if(recherchable === 'true'){
       
+      obtenirControleRecherche().value = ''
       texteRecherche = ''
+      
       definirSuggestions()
 
       setTimeout(() => {
@@ -180,34 +252,30 @@ function toggleAfficherOptions() {
     } else {
       controleConteneur.focus()
     }
-  }  
+  } else {
+    indexeFocusOption = null
+  } 
 }
 
-function moveIndex(step) {
-  if(indexeFocusOption === null){
-    indexeFocusOption = 0
+function modifierIndexeOptionCourante(step) {
+  if(!step){
+    indexeFocusOption = null
+    return
+  }
+
+  const prochainIndexe = indexeFocusOption + step
+  const indexeDerniereOption = suggestions.length - 1
+
+  if(prochainIndexe > indexeDerniereOption){
+    indexeFocusOption = 0;
+  }
+  else if(prochainIndexe < 0){
+    indexeFocusOption = indexeDerniereOption;
   }
   else {
-    const prochainIndexe = indexeFocusOption + step
-//    const indexeDerniereOption = this.suggestions.length - 1
-
-    if(prochainIndexe > indexeDerniereOption){
-      indexeFocusOption = 0;
-    }
-    else if(prochainIndexe < 0){
-      indexeFocusOption = indexeDerniereOption;
-    }
-    else {
-      indexeFocusOption = prochainIndexe;
-    }
+    indexeFocusOption = prochainIndexe;
   }
 
-//  this.suggestions[indexeFocusOption].classList.add('focusVisuel');
-}
-
-function donnerFocusVisuelOption(indexe) {
-
-//  this.suggestions[indexeFocusOption].classList.add('focusVisuel');
 }
 
 function traiterSaisieRecherche(){  
@@ -250,47 +318,55 @@ function clickOption(e){
 <!--<select class="js-example-basic-multiple js-states form-control select2-hidden-accessible" multiple="" data-select2-id="select2-data-61-j7fv" tabindex="-1" aria-hidden="true">-->
 
 
-<div class="utd-component utd-liste-deroulante {largeur}">
+<div class="utd-component utd-liste-deroulante {largeur} {mounted ? 'mounted' : ''}">
   <slot></slot>
 
   {#if recherchable === 'true' || multiple === 'true'}
     <p aria-live="polite" class="utd-sr-only"></p>
-<!--    <button type="button" aria-expanded="false" class="btn btn-select-a11y" id="{idBoutonRecherche}" aria-labelledby="{idControleLabel} select-option-button">
-      <span>Perceivable</span>
-      <span class="icon-select" aria-hidden="true"></span>
-    </button>-->  
 
-    <span class="conteneur utd-form-control {afficherOptions ? 'ouvert' : ''} --focus" dir="ltr" on:blur={blurConteneur}  role="combobox" aria-haspopup="true" aria-expanded="{afficherOptions ? 'true' : 'false'}" tabindex="0" on:keydown={onKeyDown} aria-disabled="false" aria-controls="{afficherOptions ? idControleResultats : null}" aria-activedescendant="{afficherOptions ? 'testbidon' : null}">
+    <span class="conteneur utd-form-control {afficherOptions ? 'ouvert' : ''} --focus" dir="ltr" on:blur={blurConteneur}  role="combobox" aria-haspopup="true" aria-expanded="{afficherOptions ? 'true' : 'false'}" tabindex="0" on:keydown={onKeyDown} aria-disabled="false" aria-labelledby="{idControleLabel}" aria-controls="{afficherOptions ? idControleResultats : null}" aria-activedescendant="{afficherOptions ? 'testbidon' : null}">
   
       <span class="selection select2-selection--multiple" on:click={onClick} on:mousedown={selectionMouseDown}>
-        <ul class="select2-selection__rendered" id="select2-2cnb-container">
-          <li class="select2-selection__choice" title="Hawaii" data-select2-id="select2-data-247-9kw9">
-            <button type="button" class="select2-selection__choice__remove" tabindex="-1" title="Remove item" aria-label="Remove item" aria-describedby="select2-2cnb-container-choice-s29e-HI">
-              <span aria-hidden="true">×</span>
-            </button>
-            <span class="select2-selection__choice__display" id="select2-2cnb-container-choice-s29e-HI">Hawaii</span>
-          </li>
-        </ul>     
+        {#if multiple === 'false'}
+          {#if optionsSelectionnees.length === 0}
+            <span>Veuillez sélectionner ...</span>
+          {:else}
+            <span>{optionsSelectionnees[0].texte}</span>      
+          {/if}
+          
+        {:else}
+          <ul class="select2-selection__rendered" id="select2-2cnb-container">
+            <li class="select2-selection__choice" title="Hawaii" data-select2-id="select2-data-247-9kw9">
+              <button type="button" class="select2-selection__choice__remove" tabindex="-1" title="Remove item" aria-label="Remove item" aria-describedby="select2-2cnb-container-choice-s29e-HI">
+                <span aria-hidden="true">×</span>
+              </button>
+              <span class="select2-selection__choice__display" id="select2-2cnb-container-choice-s29e-HI">Hawaii</span>
+            </li>
+          </ul>     
+
+        {/if}
         <span class="utd-icone-svg chevron-bleu-piv"></span>
       </span>
   
-        {#if afficherOptions}  
-          {#if recherchable === 'true'}
+
+        {#if recherchable === 'true'}
+          <span class="conteneur-recherche {!afficherOptions ? 'utd-d-none' : ''}">
             <span id="{idTexteUtilisation}" class="utd-sr-only">{texteAideUtilisation}</span>
             <label for="{idControleRecherche}" class="utd-sr-only">{placeholder}</label>
             <input type="text" id="{idControleRecherche}" class="utd-form-control recherche" on:input={traiterSaisieRecherche} on:blur={blurRecherche} autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="{placeholder}" aria-describedby="{idTexteUtilisation}">
-          {/if}
+          </span>            
+        {/if}
 
-          <span class="resultats" id="{idControleResultats}" dir="ltr">
-            <span class="select2-results">
-              <ul class="select2-results__options" role="listbox" aria-multiselectable="{multiple === 'true' ? 'true' : null}" id="select2-2cnb-results" aria-expanded="true" aria-hidden="false">
-                {#each suggestions as suggestion, i}
-                  <li class="select2-results__option select2-results__option--selectable" id="select2-2cnb-result-fwrc-AK" role="option" value="{suggestion.value}" on:click={clickOption} on:mousedown={selectionMouseDown} data-select2-id="select2-data-select2-2cnb-result-fwrc-AK" aria-selected="false">{suggestion.texte}</li>
-                {/each}   
-              </ul>
-            </span>
+        <span class="resultats {!afficherOptions ? 'utd-d-none' : ''}" id="{idControleResultats}" dir="ltr">
+          <span class="select2-results">
+            <ul class="select2-results__options" role="listbox" aria-multiselectable="{multiple === 'true' ? 'true' : null}" id="select2-2cnb-results" aria-expanded="true" aria-hidden="false">
+              {#each suggestions as suggestion, i}
+                <li class="option select2-results__option--selectable {i === indexeFocusOption ? 'focus' : ''}" role="option" id="{suggestion.id}" value="{suggestion.value}" on:click={clickOption} on:mousedown={selectionMouseDown} data-select2-id="select2-data-select2-2cnb-result-fwrc-AK" aria-selected="false">{suggestion.texte}</li>
+              {/each}   
+            </ul>
           </span>
-        {/if}      
+        </span>
+        
 
 
     </span>    

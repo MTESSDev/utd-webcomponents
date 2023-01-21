@@ -2698,15 +2698,18 @@ button.utd-btn.utd-traitement-en-cours, input[type=submit].utd-btn.utd-traitemen
 }
 .utd-liste-deroulante .conteneur.utd-form-control {
   height: auto;
+  padding: 0;
 }
 .utd-liste-deroulante .conteneur:not(.ouvert) .selection .utd-icone-svg {
   transform: rotate(-180deg);
+}
+.utd-liste-deroulante .conteneur.mounted .selection .utd-icone-svg {
+  transition: transform 0.5s;
 }
 .utd-liste-deroulante .conteneur .selection {
   position: relative;
   cursor: pointer;
   padding: 8px 32px 8px 8px;
-  margin: -8px;
   display: block;
 }
 .utd-liste-deroulante .conteneur .selection ul {
@@ -2718,13 +2721,17 @@ button.utd-btn.utd-traitement-en-cours, input[type=submit].utd-btn.utd-traitemen
   position: absolute;
   top: 15px;
   right: 8px;
-  transition: transform 0.5s;
+}
+.utd-liste-deroulante .conteneur .conteneur-recherche {
+  display: block;
+  padding: 0 8px;
 }
 .utd-liste-deroulante .conteneur .recherche {
   margin-top: 16px;
 }
 .utd-liste-deroulante .conteneur .resultats {
   display: block;
+  padding: 0;
   margin-top: 8px;
   max-height: 330px;
   overflow-y: auto;
@@ -2740,5 +2747,11 @@ button.utd-btn.utd-traitement-en-cours, input[type=submit].utd-btn.utd-traitemen
 }
 .utd-liste-deroulante .conteneur .resultats ul li {
   padding: 8px;
-  margin: 0 -8px;
+  margin: 0;
+}
+.utd-liste-deroulante .conteneur .resultats ul li:hover {
+  cursor: pointer;
+}
+.utd-liste-deroulante .conteneur .resultats ul li.focus, .utd-liste-deroulante .conteneur .resultats ul li:hover {
+  background-color: var(--bleu-pale);
 }
