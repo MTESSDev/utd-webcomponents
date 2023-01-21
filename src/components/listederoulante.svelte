@@ -45,6 +45,7 @@ onMount(() => {
   controle = thisComponent.shadowRoot.querySelector('.utd-liste-deroulante')
   controleConteneur = thisComponent.shadowRoot.querySelector('.conteneur')
   console.log(controleConteneur)
+
   if(multiple === 'true' || recherchable === 'true'){
     ajusterControleSelectOriginal()
     
@@ -153,6 +154,11 @@ function selectionMouseDown(e){
   e.preventDefault()
 }
 
+function optionMouseDown(e){
+  //Petite twist afin de ne pas provoquer de blur si on click sur un contrôle d'option à partir d'un autre contrôle. (Évite la fermeture du dropdown via l'événement blur du contrôle de recherche)
+  e.preventDefault()
+}
+
 function obtenirControleRecherche(){
   return thisComponent.shadowRoot.getElementById(idControleRecherche)
 }
@@ -164,6 +170,10 @@ function toggleAfficherOptions() {
   
   if(afficherOptions){
     if(recherchable === 'true'){
+      
+      texteRecherche = ''
+      definirSuggestions()
+
       setTimeout(() => {
         obtenirControleRecherche().focus()        
       })
@@ -260,7 +270,8 @@ function clickOption(e){
             </button>
             <span class="select2-selection__choice__display" id="select2-2cnb-container-choice-s29e-HI">Hawaii</span>
           </li>
-        </ul>      
+        </ul>     
+        <span class="utd-icone-svg chevron-bleu-piv"></span>
       </span>
   
         {#if afficherOptions}  
@@ -274,7 +285,7 @@ function clickOption(e){
             <span class="select2-results">
               <ul class="select2-results__options" role="listbox" aria-multiselectable="{multiple === 'true' ? 'true' : null}" id="select2-2cnb-results" aria-expanded="true" aria-hidden="false">
                 {#each suggestions as suggestion, i}
-                  <li class="select2-results__option select2-results__option--selectable" id="select2-2cnb-result-fwrc-AK" role="option" value="{suggestion.value}" on:click={clickOption} data-select2-id="select2-data-select2-2cnb-result-fwrc-AK" aria-selected="false">{suggestion.texte}</li>
+                  <li class="select2-results__option select2-results__option--selectable" id="select2-2cnb-result-fwrc-AK" role="option" value="{suggestion.value}" on:click={clickOption} on:mousedown={selectionMouseDown} data-select2-id="select2-data-select2-2cnb-result-fwrc-AK" aria-selected="false">{suggestion.texte}</li>
                 {/each}   
               </ul>
             </span>

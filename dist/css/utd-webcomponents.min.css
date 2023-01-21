@@ -2687,16 +2687,31 @@ button.utd-btn.utd-traitement-en-cours, input[type=submit].utd-btn.utd-traitemen
 .utd-liste-deroulante {
   position: relative;
 }
+.utd-liste-deroulante.sm .conteneur {
+  width: 156px;
+}
+.utd-liste-deroulante.md .conteneur {
+  width: 342px;
+}
+.utd-liste-deroulante.lg .conteneur {
+  width: 528px;
+}
+.utd-liste-deroulante .conteneur.utd-form-control {
+  height: auto;
+}
 .utd-liste-deroulante .conteneur .selection {
   cursor: pointer;
-}
-.utd-liste-deroulante .conteneur .selection.utd-form-control {
-  height: auto;
+  padding: 8px;
+  margin: -8px;
+  display: block;
 }
 .utd-liste-deroulante .conteneur .selection ul {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+.utd-liste-deroulante .conteneur .recherche {
+  margin-top: 16px;
 }
 .utd-liste-deroulante .conteneur .resultats {
   display: block;
