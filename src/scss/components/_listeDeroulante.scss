@@ -31,10 +31,6 @@
             transform: rotate(-180deg);
         }
 
-        &.mounted .selection .utd-icone-svg {
-            transition: transform 0.5s;
-        }
-
         .selection {
             position: relative;
             cursor: pointer;

@@ -13,7 +13,8 @@ export let multiple = "false"
 export let recherchable = "false"
 export let largeur = "md" //Valeurs possible sm, md, lg
 export let texteAideUtilisation = Utils.obtenirLanguePage() === 'fr' ? "Utilisez la tabulation (ou les touches flèches) pour naviguer dans la liste des suggestions." : "(en)Utilisez la tabulation (ou les touches flèches) pour naviguer dans la liste des suggestions."
-export let placeholder = Utils.obtenirLanguePage() === 'fr' ? "Rechercher dans la liste" : "(en)Rechercher dans la liste"
+export let placeholder = Utils.obtenirLanguePage() === 'fr' ? "Sélectionner une valeur" : "(en)Sélectionner une valeur"
+export let placeholderRecherche = Utils.obtenirLanguePage() === 'fr' ? "Rechercher dans la liste" : "(en)Rechercher dans la liste"
 export let noResult = Utils.obtenirLanguePage() === 'fr' ? "Aucun résultat" : "(en)Aucun résultat"
 export let results = Utils.obtenirLanguePage() === 'fr' ? "{x} suggestion(s) disponibles" : "(en){x} suggestion(s) disponibles"
 export let deleteItem = Utils.obtenirLanguePage() === 'fr' ? "Supprimer {t}" : "(en)Supprimer {t}"
@@ -127,17 +128,17 @@ function onKeyDown(e){
   console.log(e.key)
   switch(e.key) {
     case "Enter":
+    case " ":
       e.preventDefault()
 
       if(e.target.classList.contains('recherche')) {
         if(indexeFocusOption !== null){
           //TODO ajouter sélection
-          if(multiple === 'true'){
-            optionsSelectionnees.push(suggestions[indexeFocusOption])
-          } else {
+          if(multiple === 'false'){
             optionsSelectionnees = []
-            optionsSelectionnees.push(suggestions[indexeFocusOption])
-          }
+          } 
+
+          optionsSelectionnees.push(suggestions[indexeFocusOption])
 
           if(multiple === 'false'){
             afficherOptions = false
@@ -149,17 +150,8 @@ function onKeyDown(e){
         afficherOptions = !afficherOptions      
       }
 
-
       break
-    case " ":
-      //Si contrôle courant est textbox recherche on ne fait rien
-      if(e.target.classList.contains('recherche')) {
-        break        
-      }
-
-      e.preventDefault()
-      afficherOptions = !afficherOptions      
-      break
+    
     case "Tab":
       //Si contrôle courant est textbox recherche on ne fait rien
       if(e.target.classList.contains('recherche')) {
@@ -178,15 +170,8 @@ function onKeyDown(e){
       //Affiche les options si ne sont pas visibles actuellement
       if(!afficherOptions){
         afficherOptions = true
-        if(recherchable === 'false' && suggestions.length){
-          indexeFocusOption = 0
-        }
       } else {
-        if(indexeFocusOption === null){
-          indexeFocusOption = 0
-        } else {
-          modifierIndexeOptionCourante(1)     
-        }
+        modifierIndexeOptionCourante(1)     
       }
 
       break      
@@ -196,16 +181,12 @@ function onKeyDown(e){
       if(!afficherOptions){
         afficherOptions = true
 
-        if(recherchable === 'false' && suggestions.length){
+        if(suggestions.length){
           indexeFocusOption = suggestions.length - 1
         }
 
       } else {
-        if(indexeFocusOption === null){
-          indexeFocusOption = suggestions.length - 1
-        } else {
-          modifierIndexeOptionCourante(-1)     
-        }
+        modifierIndexeOptionCourante(-1)     
       }
       break
   }
@@ -238,14 +219,19 @@ function toggleAfficherOptions() {
     return
   }
   
-  if(afficherOptions){
+  if(afficherOptions){    
+
+    if(indexeFocusOption === null){
+        indexeFocusOption = 0
+    }
+
     if(recherchable === 'true'){
       
       obtenirControleRecherche().value = ''
       texteRecherche = ''
       
       definirSuggestions()
-
+      
       setTimeout(() => {
         obtenirControleRecherche().focus()        
       })
@@ -318,18 +304,18 @@ function clickOption(e){
 <!--<select class="js-example-basic-multiple js-states form-control select2-hidden-accessible" multiple="" data-select2-id="select2-data-61-j7fv" tabindex="-1" aria-hidden="true">-->
 
 
-<div class="utd-component utd-liste-deroulante {largeur} {mounted ? 'mounted' : ''}">
+<div class="utd-component utd-liste-deroulante {largeur}">
   <slot></slot>
 
   {#if recherchable === 'true' || multiple === 'true'}
     <p aria-live="polite" class="utd-sr-only"></p>
 
-    <span class="conteneur utd-form-control {afficherOptions ? 'ouvert' : ''} --focus" dir="ltr" on:blur={blurConteneur}  role="combobox" aria-haspopup="true" aria-expanded="{afficherOptions ? 'true' : 'false'}" tabindex="0" on:keydown={onKeyDown} aria-disabled="false" aria-labelledby="{idControleLabel}" aria-controls="{afficherOptions ? idControleResultats : null}" aria-activedescendant="{afficherOptions ? 'testbidon' : null}">
+    <span class="conteneur utd-form-control {afficherOptions ? 'ouvert' : ''}" dir="ltr" on:blur={blurConteneur}  role="combobox" aria-haspopup="true" aria-expanded="{afficherOptions ? 'true' : 'false'}" tabindex="0" on:keydown={onKeyDown} aria-disabled="false" aria-labelledby="{idControleLabel}" aria-controls="{afficherOptions ? idControleResultats : null}" aria-activedescendant="{afficherOptions ? 'testbidon' : null}">
   
       <span class="selection select2-selection--multiple" on:click={onClick} on:mousedown={selectionMouseDown}>
         {#if multiple === 'false'}
           {#if optionsSelectionnees.length === 0}
-            <span>Veuillez sélectionner ...</span>
+            <span class="utd-placeholder">{placeholder}</span>
           {:else}
             <span>{optionsSelectionnees[0].texte}</span>      
           {/if}
@@ -352,8 +338,8 @@ function clickOption(e){
         {#if recherchable === 'true'}
           <span class="conteneur-recherche {!afficherOptions ? 'utd-d-none' : ''}">
             <span id="{idTexteUtilisation}" class="utd-sr-only">{texteAideUtilisation}</span>
-            <label for="{idControleRecherche}" class="utd-sr-only">{placeholder}</label>
-            <input type="text" id="{idControleRecherche}" class="utd-form-control recherche" on:input={traiterSaisieRecherche} on:blur={blurRecherche} autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="{placeholder}" aria-describedby="{idTexteUtilisation}">
+            <label for="{idControleRecherche}" class="utd-sr-only">{placeholderRecherche}</label>
+            <input type="text" id="{idControleRecherche}" class="utd-form-control recherche" on:input={traiterSaisieRecherche} on:blur={blurRecherche} autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="{placeholderRecherche}" aria-describedby="{idTexteUtilisation}">
           </span>            
         {/if}
 

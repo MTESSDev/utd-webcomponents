@@ -694,7 +694,7 @@ utd-accordeon .utd-form-group:last-child, utd-section .utd-form-group:last-child
   opacity: 1; /* Firefox */
 }
 
-.utd-form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+.utd-form-control::placeholder, .utd-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #647287;
   opacity: 1; /* Firefox */
 }
@@ -2702,9 +2702,6 @@ button.utd-btn.utd-traitement-en-cours, input[type=submit].utd-btn.utd-traitemen
 }
 .utd-liste-deroulante .conteneur:not(.ouvert) .selection .utd-icone-svg {
   transform: rotate(-180deg);
-}
-.utd-liste-deroulante .conteneur.mounted .selection .utd-icone-svg {
-  transition: transform 0.5s;
 }
 .utd-liste-deroulante .conteneur .selection {
   position: relative;

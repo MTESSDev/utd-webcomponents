@@ -759,7 +759,7 @@ utd-accordeon .utd-form-group:last-child, utd-section .utd-form-group:last-child
     border: 1px solid #808A9D;
     border-radius: 0;
 }
-.utd-form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+.utd-form-control::placeholder, .utd-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #647287;
     opacity: 1; /* Firefox */
 }
