@@ -2696,6 +2696,10 @@ button.utd-btn.utd-traitement-en-cours, input[type=submit].utd-btn.utd-traitemen
 .utd-liste-deroulante.lg .conteneur {
   width: 528px;
 }
+.utd-liste-deroulante:not(.multiple) .conteneur .resultats ul li[aria-selected=true] {
+  background-color: var(--bleu);
+  color: #fff;
+}
 .utd-liste-deroulante .conteneur.utd-form-control {
   height: auto;
   padding: 0;
@@ -2751,4 +2755,5 @@ button.utd-btn.utd-traitement-en-cours, input[type=submit].utd-btn.utd-traitemen
 }
 .utd-liste-deroulante .conteneur .resultats ul li.focus, .utd-liste-deroulante .conteneur .resultats ul li:hover {
   background-color: var(--bleu-pale);
+  color: var(--couleur-texte-base);
 }

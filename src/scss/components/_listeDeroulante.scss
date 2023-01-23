@@ -19,7 +19,12 @@
             width: 528px;
         }
     }
-
+    &:not(.multiple){
+        .conteneur .resultats ul li[aria-selected="true"]{
+            background-color: var(--bleu);
+            color: #fff;
+        }        
+    }
     .conteneur {
 
         &.utd-form-control{
@@ -79,10 +84,11 @@
 
                     &:hover{
                         cursor: pointer;
-                    }
+                    }                    
 
                     &.focus, &:hover{
                         background-color: var(--bleu-pale);
+                        color: var(--couleur-texte-base);
                     }
                 }
             }

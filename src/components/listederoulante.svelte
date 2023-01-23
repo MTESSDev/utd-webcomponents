@@ -72,7 +72,9 @@ function obtenirOptions() {
       id: Utils.genererId(),
       texte: texte,
       valeur: option.value,
-      texteFormatte: texte.toLowerCase() 
+      texteFormatte: texte.toLowerCase(),
+      indexe: i,
+      selected: option.selected
     }
 
     options.push(opt)
@@ -91,6 +93,7 @@ function definirSuggestions() {
 //    suggestions.push(options[i])
 
     if(texteRecherche === "" || suggestion.texteFormatte.indexOf(texteRecherche) >= 0){
+      suggestion.selected = controleSelect[i].selected
       nouvellesSuggestions.push(suggestion)
     }
   }
@@ -124,6 +127,48 @@ function ajusterControleSelectOriginal() {
   }
 }
 
+function selectionnerOption(indexeSuggestion, indexeOption){
+  if(indexeOption !== null){
+
+    const indexeSelectionPrecedente = controleSelect.selectedIndex || null
+    
+    majValeurListeOriginale(indexeOption)
+
+    if(multiple === 'false'){
+      optionsSelectionnees = []
+      
+      if(indexeSelectionPrecedente){
+        const indexePrecedent = suggestions.findIndex((element) => element.indexe === indexeSelectionPrecedente)
+
+        if(indexePrecedent >= 0){
+          suggestions[indexePrecedent].selected = false
+        }        
+      }
+
+      suggestions[indexeSuggestion].selected = true
+    } else {      
+      suggestions[indexeSuggestion].selected = !optionsSelectionnees.findIndex((element) => element.indexe === indexeOption) >= 0
+    }
+
+    optionsSelectionnees.push(suggestions[indexeSuggestion])
+
+    if(multiple === 'false'){
+      afficherOptions = false
+      controleConteneur.focus()
+    } else {
+      indexeFocusOption = indexeSuggestion
+    }
+  }
+}
+
+function majValeurListeOriginale(indexe) {
+  if(multiple === 'false'){
+    controleSelect.selectedIndex = indexe;
+  } else {
+    controleSelect.options[indexe].selected = !controleSelect.options[indexe].selected
+  }
+}
+
 function onKeyDown(e){
   console.log(e.key)
   switch(e.key) {
@@ -131,21 +176,8 @@ function onKeyDown(e){
     case " ":
       e.preventDefault()
 
-      if(e.target.classList.contains('recherche')) {
-        if(indexeFocusOption !== null){
-          //TODO ajouter sélection
-          if(multiple === 'false'){
-            optionsSelectionnees = []
-          } 
-
-          optionsSelectionnees.push(suggestions[indexeFocusOption])
-
-          if(multiple === 'false'){
-            afficherOptions = false
-            controleConteneur.focus()
-          }
-          console.log('TATA')
-        }
+      if(indexeFocusOption !== null) {
+        selectionnerOption(indexeFocusOption, suggestions[indexeFocusOption].indexe)
       } else {
         afficherOptions = !afficherOptions      
       }
@@ -192,12 +224,10 @@ function onKeyDown(e){
   }
 }
 
-function onClick(e){
-  console.log('click')
-  if(e.currentTarget.classList.contains('selection')){
-    afficherOptions = !afficherOptions
-    controleConteneur.focus()
-  }
+function clickSelection(e){
+  console.log('click selection')
+  afficherOptions = !afficherOptions
+  controleConteneur.focus()
 }
 
 function selectionMouseDown(e){
@@ -271,8 +301,9 @@ function traiterSaisieRecherche(){
     return;
   } */
   console.log('input')
-  texteRecherche = controleRecherche.value;
-  definirSuggestions();  
+  texteRecherche = controleRecherche.value
+  definirSuggestions()
+  indexeFocusOption = 0
 }
 
 function blurConteneur(){
@@ -294,8 +325,15 @@ function blurRecherche(e){
 }
 
 function clickOption(e){  
-  e.stopPropagation()
   console.log('clickOption')
+  e.stopPropagation()
+
+  const indexeOption = e.currentTarget.getAttribute('indexeOption')
+  const indexeSuggestion = e.currentTarget.getAttribute('indexeSuggestion')
+
+  if(indexeOption && indexeSuggestion){
+    selectionnerOption(parseInt(indexeSuggestion), parseInt(indexeOption))    
+  }
 }
 
 </script>
@@ -304,15 +342,15 @@ function clickOption(e){
 <!--<select class="js-example-basic-multiple js-states form-control select2-hidden-accessible" multiple="" data-select2-id="select2-data-61-j7fv" tabindex="-1" aria-hidden="true">-->
 
 
-<div class="utd-component utd-liste-deroulante {largeur}">
+<div class="utd-component utd-liste-deroulante {largeur}{multiple === 'true' ? ' multiple' : ''}">
   <slot></slot>
 
   {#if recherchable === 'true' || multiple === 'true'}
     <p aria-live="polite" class="utd-sr-only"></p>
 
-    <span class="conteneur utd-form-control {afficherOptions ? 'ouvert' : ''}" dir="ltr" on:blur={blurConteneur}  role="combobox" aria-haspopup="true" aria-expanded="{afficherOptions ? 'true' : 'false'}" tabindex="0" on:keydown={onKeyDown} aria-disabled="false" aria-labelledby="{idControleLabel}" aria-controls="{afficherOptions ? idControleResultats : null}" aria-activedescendant="{afficherOptions ? 'testbidon' : null}">
+    <span class="conteneur utd-form-control{afficherOptions ? ' ouvert' : ''}" dir="ltr" on:blur={blurConteneur}  role="combobox" aria-haspopup="true" aria-expanded="{afficherOptions ? 'true' : 'false'}" tabindex="0" on:keydown={onKeyDown} aria-disabled="false" aria-labelledby="{idControleLabel}" aria-controls="{afficherOptions ? idControleResultats : null}" aria-activedescendant="{afficherOptions ? 'testbidon' : null}">
   
-      <span class="selection select2-selection--multiple" on:click={onClick} on:mousedown={selectionMouseDown}>
+      <span class="selection select2-selection--multiple" on:click={clickSelection} on:mousedown={selectionMouseDown}>
         {#if multiple === 'false'}
           {#if optionsSelectionnees.length === 0}
             <span class="utd-placeholder">{placeholder}</span>
@@ -347,7 +385,7 @@ function clickOption(e){
           <span class="select2-results">
             <ul class="select2-results__options" role="listbox" aria-multiselectable="{multiple === 'true' ? 'true' : null}" id="select2-2cnb-results" aria-expanded="true" aria-hidden="false">
               {#each suggestions as suggestion, i}
-                <li class="option select2-results__option--selectable {i === indexeFocusOption ? 'focus' : ''}" role="option" id="{suggestion.id}" value="{suggestion.value}" on:click={clickOption} on:mousedown={selectionMouseDown} data-select2-id="select2-data-select2-2cnb-result-fwrc-AK" aria-selected="false">{suggestion.texte}</li>
+                <li class="option select2-results__option--selectable {i === indexeFocusOption ? 'focus' : ''}" role="option" id="{suggestion.id}" value="{suggestion.value}" indexeSuggestion="{i}" indexeOption="{suggestion.indexe}" aria-selected="{suggestion.selected ? 'true' : 'false'}" on:click={clickOption} on:mousedown={optionMouseDown} data-select2-id="select2-data-select2-2cnb-result-fwrc-AK">{suggestion.texte}</li>
               {/each}   
             </ul>
           </span>
