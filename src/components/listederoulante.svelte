@@ -33,9 +33,11 @@ let controle
 let controleConteneur
 let controleLabel
 let idControleLabel = ""
+let controleRecherche
 let controleSelect
 let afficherOptions = false
 let indexeFocusOption = null
+let idActiveDescendant = null
 let options = []
 let suggestions = []
 let optionsSelectionnees = []
@@ -46,7 +48,7 @@ onMount(() => {
   html = thisComponent.getRootNode().getElementsByTagName("html")[0]
   controle = thisComponent.shadowRoot.querySelector('.utd-liste-deroulante')
   controleConteneur = thisComponent.shadowRoot.querySelector('.conteneur')
-  console.log(controleConteneur)
+  controleRecherche = thisComponent.shadowRoot.getElementById(idControleRecherche)
 
   if(multiple === 'true' || recherchable === 'true'){
     ajusterControleSelectOriginal()
@@ -59,6 +61,7 @@ onMount(() => {
 
 // Watches
 $: toggleAfficherOptions(afficherOptions) 
+$: majActiveDescendant(indexeFocusOption) 
 
 function obtenirOptions() {
   const options = []
@@ -240,11 +243,16 @@ function optionMouseDown(e){
   e.preventDefault()
 }
 
-function obtenirControleRecherche(){
-  return thisComponent.shadowRoot.getElementById(idControleRecherche)
+function majActiveDescendant() {
+  if(indexeFocusOption !== null) {
+    idActiveDescendant = suggestions[indexeFocusOption].id
+  } else {
+    idActiveDescendant = null
+  }
 }
 
 function toggleAfficherOptions() {
+
   if(!mounted){
     return
   }
@@ -257,14 +265,16 @@ function toggleAfficherOptions() {
 
     if(recherchable === 'true'){
       
-      obtenirControleRecherche().value = ''
+      controleRecherche.value = ''
       texteRecherche = ''
       
       definirSuggestions()
       
       setTimeout(() => {
-        obtenirControleRecherche().focus()        
-      })
+        controleRecherche.focus()        
+      });
+
+
     } else {
       controleConteneur.focus()
     }
@@ -295,7 +305,7 @@ function modifierIndexeOptionCourante(step) {
 }
 
 function traiterSaisieRecherche(){  
-  const controleRecherche = obtenirControleRecherche()
+
   // Empêche le traitement si simplement un focus ou un blur (l'événement input est lancé sur focus et blur)
 /*  if( texteRecherche === controleRecherche.value ){
     return;
@@ -348,7 +358,7 @@ function clickOption(e){
   {#if recherchable === 'true' || multiple === 'true'}
     <p aria-live="polite" class="utd-sr-only"></p>
 
-    <span class="conteneur utd-form-control{afficherOptions ? ' ouvert' : ''}" dir="ltr" on:blur={blurConteneur}  role="combobox" aria-haspopup="true" aria-expanded="{afficherOptions ? 'true' : 'false'}" tabindex="0" on:keydown={onKeyDown} aria-disabled="false" aria-labelledby="{idControleLabel}" aria-controls="{afficherOptions ? idControleResultats : null}" aria-activedescendant="{afficherOptions ? 'testbidon' : null}">
+    <span class="conteneur utd-form-control{afficherOptions ? ' ouvert' : ''}" dir="ltr" on:blur={blurConteneur}  role="{recherchable === 'true' ? 'button' : 'listbox'}" aria-expanded="{recherchable === 'false' ? null : afficherOptions ? 'true' : 'false'}" tabindex="0" on:keydown={onKeyDown} aria-disabled="false" aria-labelledby="{idControleLabel}" aria-controls="{recherchable === 'false' ? idControleResultats : null}" aria-activedescendant="{recherchable === 'false' && afficherOptions ? idActiveDescendant : null}">
   
       <span class="selection select2-selection--multiple" on:click={clickSelection} on:mousedown={selectionMouseDown}>
         {#if multiple === 'false'}
@@ -377,13 +387,13 @@ function clickOption(e){
           <span class="conteneur-recherche {!afficherOptions ? 'utd-d-none' : ''}">
             <span id="{idTexteUtilisation}" class="utd-sr-only">{texteAideUtilisation}</span>
             <label for="{idControleRecherche}" class="utd-sr-only">{placeholderRecherche}</label>
-            <input type="text" id="{idControleRecherche}" class="utd-form-control recherche" on:input={traiterSaisieRecherche} on:blur={blurRecherche} autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="{placeholderRecherche}" aria-describedby="{idTexteUtilisation}">
+            <input type="text" id="{idControleRecherche}" class="utd-form-control recherche" role="combobox" aria-expanded="true" aria-haspopup="listbox" on:input={traiterSaisieRecherche} on:blur={blurRecherche} autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="{placeholderRecherche}" aria-describedby="{idTexteUtilisation}" aria-owns="{recherchable === 'true' ? idControleResultats : null}" aria-activedescendant="{recherchable === 'true' && afficherOptions ? idActiveDescendant : null}">
           </span>            
         {/if}
 
-        <span class="resultats {!afficherOptions ? 'utd-d-none' : ''}" id="{idControleResultats}" dir="ltr">
+        <span class="resultats {!afficherOptions ? 'utd-d-none' : ''}"  dir="ltr">
           <span class="select2-results">
-            <ul class="select2-results__options" role="listbox" aria-multiselectable="{multiple === 'true' ? 'true' : null}" id="select2-2cnb-results" aria-expanded="true" aria-hidden="false">
+            <ul class="select2-results__options" role="listbox" aria-multiselectable="{multiple === 'true' ? 'true' : null}" id="{idControleResultats}" aria-expanded="true" aria-hidden="false">
               {#each suggestions as suggestion, i}
                 <li class="option select2-results__option--selectable {i === indexeFocusOption ? 'focus' : ''}" role="option" id="{suggestion.id}" value="{suggestion.value}" indexeSuggestion="{i}" indexeOption="{suggestion.indexe}" aria-selected="{suggestion.selected ? 'true' : 'false'}" on:click={clickOption} on:mousedown={optionMouseDown} data-select2-id="select2-data-select2-2cnb-result-fwrc-AK">{suggestion.texte}</li>
               {/each}   
