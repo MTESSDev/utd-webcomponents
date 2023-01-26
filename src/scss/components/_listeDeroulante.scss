@@ -59,7 +59,7 @@
         }
 
         .recherche {
-            margin-top:16px;
+            margin-top:8px;
         }
         .resultats {
             display: block;
@@ -79,6 +79,8 @@
                 margin: 0;
 
                 li{
+                    display: flex;
+                    align-items:flex-start;
                     padding: 8px;
                     margin: 0;
 
@@ -87,9 +89,47 @@
                     }                    
 
                     &.focus, &:hover{
-                        background-color: var(--bleu-pale);
-                        color: var(--couleur-texte-base);
+                        background-color: var(--bleu-pale)!important;
+                        color: var(--couleur-texte-base)!important;
                     }
+
+                    .utd-checkbox {
+                        display: block;
+                        position: relative;
+                        margin: 4px 8px 0 0;              
+                        &::before{
+                            content: "";
+                            display:block;
+                            width: 16px;
+                            height: 16px;
+                            border: 1px solid var(--couleur-texte-base);          
+                        }
+                        &::after{
+                            content: "";
+                            position: absolute;
+                            top: 1px;
+                            left: 1px;
+                            width: 14px;
+                            height: 14px;
+                            transform: scale(0);
+                            transition: 120ms transform ease-in-out;
+                            -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M8.76,56.2c-6.38-6.34,3.26-16,9.64-9.69L38,65.88,80.56,23.29c6.38-6.38,16.07,3.32,9.69,9.69L42.84,80.37a6.83,6.83,0,0,1-9.65,0Z"/></svg>');
+                            mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M8.76,56.2c-6.38-6.34,3.26-16,9.64-9.69L38,65.88,80.56,23.29c6.38-6.38,16.07,3.32,9.69,9.69L42.84,80.37a6.83,6.83,0,0,1-9.65,0Z"/></svg>');
+                            background-color: #fff;                        
+                        }
+                    }
+
+                    &[aria-selected="true"]{
+                        .utd-checkbox::before {
+                            background-color: var(--couleur-bleu);
+                            border-color: var(--couleur-bleu);
+                        }
+
+                        .utd-checkbox::after {
+                            transform: scale(1);                            
+                        }        
+                    }
+   
                 }
             }
 

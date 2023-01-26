@@ -63,7 +63,7 @@
 
 <h4>3- Boîte combinée (sélection simple)</h4>
 <div id="exemple3a">
-    <utd-champ-form libelle="Qui est votre personnage préféré?" precision="Ne soyez pas timide et assumez-vous.">
+    <utd-champ-form libelle="Qui est votre personnage préféré?" precision="Ne soyez pas timide et assumez-vous." obligatoire="true" invalide="true" message-erreur="C'est mauvais!!!">
         <utd-liste-deroulante recherchable="true">
             <select id="select3">
                 <option value="volvo">Volvo XC90</option>

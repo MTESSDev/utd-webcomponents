@@ -330,7 +330,12 @@
           if(estGroupeControles()){
             elementWrapper.append(elementErreur)
           } else {
-            elementChamp.after(elementErreur)
+            const listeDeroulante = thisComponent.querySelector("utd-liste-deroulante")
+            if(listeDeroulante){
+              listeDeroulante.after(elementErreur)
+            } else {
+              elementChamp.after(elementErreur)
+            }
           }          
         }        
       }
