@@ -63,6 +63,10 @@ onMount(() => {
 
     controleSelect.addEventListener('click', (event) => { clickSelection(event) });
 
+    //TODO function pour définir les attributs aria initiaux du contrôle conteneur(description, invalid, required)
+    //Définir la valeur initiale de l'attribut aria-description de contrôle conteneur
+    majAttributControle(controleConteneur, 'aria-description', obtenirTexteSelonAttributAria(controleSelect, 'aria-describedby'))
+
   }  
 })
 
@@ -79,11 +83,13 @@ function observerAttributsSelectOrignal(){
 
         const nomAttribut = mutation.attributeName
         const nouvelleValeur = mutation.target.getAttribute(nomAttribut)
+        
+        let nomAttributMaj = nomAttribut === 'aria-describedby' ? 'aria-description' : nomAttribut
 
-        if(nouvelleValeur){
-          controleConteneur.setAttribute(nomAttribut, nouvelleValeur)
+        if(nomAttribut === 'aria-describedby'){
+          majAttributControle(controleConteneur, nomAttributMaj, obtenirTexteSelonAttributAria(controleSelect, nomAttribut))
         } else {
-          controleConteneur.removeAttribute(nomAttribut)
+          majAttributControle(controleConteneur, nomAttributMaj, nouvelleValeur)
         }
 
         console.log("attributes changed")
@@ -95,8 +101,37 @@ function observerAttributsSelectOrignal(){
   })
 }
 
+//TODO déplacer dans utils?
+function obtenirTexteSelonAttributAria(controle, nomAttribut){
+  
+    if(controle && controle.getAttribute(nomAttribut)) {
+      const ids = controle.getAttribute(nomAttribut).split(' ')
+  
+      if(ids.length){
+        const textes = []
+        
+        for (let i = 0; i < ids.length; i++) {
+          const controle = document.getElementById(ids[i])
+          if(controle){
+            textes.push(controle.textContent)
+          }
+        }
 
+        return textes.join(' ')
+    } else {
+      return null
+    }  
+  } 
+}
 
+//TODO déplacer dans utils?
+function majAttributControle(controle, nomAttribut, valeur){
+  if(valeur){
+      controle.setAttribute(nomAttribut, valeur)
+    } else{
+      controle.removeAttribute(nomAttribut)
+    }
+}
 
 
 function obtenirOptions() {
