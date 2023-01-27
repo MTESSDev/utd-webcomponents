@@ -76,19 +76,26 @@ function observerAttributsSelectOrignal(){
 
   const observer = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
-      if (mutation.type === "attributes") {
+
+        const nomAttribut = mutation.attributeName
+        const nouvelleValeur = mutation.target.getAttribute(nomAttribut)
+
+        if(nouvelleValeur){
+          controleConteneur.setAttribute(nomAttribut, nouvelleValeur)
+        } else {
+          controleConteneur.removeAttribute(nomAttribut)
+        }
 
         console.log("attributes changed")
-      } else {
-        console.log("other mutation")
-      }
-    });
-  });
+    })
+  })
 
-  observer.observe(controleLabel, {
-    attributes: true //configure it to listen to attribute changes
-  });
+  observer.observe(controleSelect, {
+    attributeFilter: ['aria-describedby', 'aria-required', 'aria-invalid'] //configure it to listen to attribute changes
+  })
 }
+
+
 
 
 
