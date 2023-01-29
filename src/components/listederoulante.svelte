@@ -20,7 +20,7 @@ export let results = Utils.obtenirLanguePage() === 'fr' ? "{x} suggestion(s) dis
 export let deleteItem = Utils.obtenirLanguePage() === 'fr' ? "Supprimer {t}" : "(en)Supprimer {t}"
 export let supprimer = Utils.obtenirLanguePage() === 'fr' ? "Supprimer" : "(en)Supprimer"
 
-
+//TODO ajouter mutation observer sur le label (attribut aria-label + les nodes) qui appele definirAriaLabel
 const thisComponent = get_current_component()
 const idTexteUtilisation = Utils.genererId()
 const idControleRecherche = Utils.genererId()
@@ -33,9 +33,8 @@ let html
 let controle
 let controleConteneur
 let controleLabel
-let libelle
-let description
 let idControleLabel = ""
+let ariaLabel = null
 let controleRecherche
 let controleSelect
 let afficherOptions = false
@@ -59,14 +58,12 @@ onMount(() => {
     options = obtenirOptions()
     definirSuggestions()
     definirOptionsSelectionnes()
-    observerAttributsSelectOrignal()
 
     controleSelect.addEventListener('click', (event) => { clickSelection(event) });
 
-    //TODO function pour définir les attributs aria initiaux du contrôle conteneur(description, invalid, required)
-    //Définir la valeur initiale de l'attribut aria-description de contrôle conteneur
-    majAttributControle(controleConteneur, 'aria-description', obtenirTexteSelonAttributAria(controleSelect, 'aria-describedby'))
-
+    definirAttributsInitiauxSelectOriginal()
+    observerAttributsSelectOrignal()
+    observerAttributsLabelOrignal()
   }  
 })
 
@@ -75,6 +72,41 @@ onMount(() => {
 $: toggleAfficherOptions(afficherOptions) 
 $: majActiveDescendant(indexeFocusOption) 
 
+function definirAttributsInitiauxSelectOriginal(){
+  majAttributControle(controleConteneur, 'aria-invalid', controleSelect.getAttribute('aria-invalid'))
+  majAttributControle(controleConteneur, 'aria-required', controleSelect.getAttribute('aria-required'))
+  definirAriaLabel()
+  majAttributControle(controleConteneur, 'aria-description', obtenirTexteSelonAttributAria(controleSelect, 'aria-describedby'))
+}
+
+function definirAriaLabel(){
+
+  //1 - aria-label sur le select
+  if(controleSelect && controleSelect.getAttribute('aria-label')) {
+    ariaLabel = controleSelect.getAttribute('aria-label')
+    return
+  }
+
+  //2 - aria-label sur le label
+  if(controleLabel && controleLabel.getAttribute('aria-label')){
+      ariaLabel = controleLabel.getAttribute('aria-label')
+      return
+  }
+
+  //3 - aria-labelledby sur le select
+  const ariaLabelledBySelect = obtenirTexteSelonAttributAria(controleSelect, 'aria-labelledby')
+  if(ariaLabelledBySelect){
+    ariaLabel = ariaLabelledBySelect
+    return
+  }
+
+  //4 - contenu textuel du label
+  if(controleLabel){
+    ariaLabel = obtenirTexteLecteurEcranControle(controleLabel)
+  }
+
+  return null
+}
 
 function observerAttributsSelectOrignal(){
 
@@ -97,8 +129,47 @@ function observerAttributsSelectOrignal(){
   })
 
   observer.observe(controleSelect, {
-    attributeFilter: ['aria-describedby', 'aria-required', 'aria-invalid'] //configure it to listen to attribute changes
+    attributeFilter: ['aria-describedby', 'aria-required', 'aria-invalid', 'aria-label']
   })
+}
+
+function observerAttributsLabelOrignal(){
+
+  const observerCharacterData = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      definirAriaLabel()
+    })
+  })
+
+  const observerAriaLabel = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      definirAriaLabel()
+    })
+  })
+
+  observerAriaLabel.observe(controleLabel, {
+    attributeFilter: ['aria-label']
+  })
+
+  observerCharacterData.observe(controleLabel, {
+    subtree: true,
+    childList: true,
+    characterData: true
+  })
+}
+//TODO déplacer dans utils?
+//On obtient le texte à partir du contenu textuel du contrôle label en excluant les éléments qui ne doivent pas être lus au lecteur écran.
+function obtenirTexteLecteurEcranControle(controle, selecteurExclusion){
+  const selecteurs = selecteurExclusion || ["[aria-hidden='true']"]
+  const controleEpure = controle.cloneNode(true)
+
+  const elementsExlus = controleEpure.querySelectorAll(selecteurs.join(','))
+
+  for (let i = 0; i < elementsExlus.length; i++) {
+    elementsExlus[i].remove();
+  }
+
+  return controleEpure.textContent
 }
 
 //TODO déplacer dans utils?
@@ -190,12 +261,6 @@ function ajusterControleSelectOriginal() {
     idControleLabel = controleLabel.getAttribute("id")
   }
   
-
-  const fakeLabel = thisComponent.shadowRoot.getElementById(idLabelFake) 
-  if(fakeLabel){
-    fakeLabel.append(controleLabel.cloneNode(true))
-  }
-
   controleSelect = thisComponent.querySelector("select")
 
   if(!controleSelect){
@@ -468,7 +533,7 @@ function clickOption(e){
 
       <span id="{idLabelFake}" class="utd-sr-only" aria-hidden="true"></span>
 
-      <span class="conteneur utd-form-control{afficherOptions ? ' ouvert' : ''}" dir="ltr" on:blur={blurConteneur}  role="{recherchable === 'true' ? 'combobox' : 'listbox'}" aria-expanded="{afficherOptions ? 'true' : 'false'}" tabindex="0" on:keydown={onKeyDown} aria-disabled="false" aria-labelledby="{controleLabel ? idControleLabel : null}" aria-describedby="{controleLabel ? idControleLabel : null}" aria-owns="{recherchable === 'false' ? idControleResultats : null}" aria-activedescendant="{recherchable === 'false' && afficherOptions ? idActiveDescendant : null}">
+      <span class="conteneur utd-form-control{afficherOptions ? ' ouvert' : ''}" dir="ltr" on:blur={blurConteneur}  role="{recherchable === 'true' ? 'combobox' : 'listbox'}" aria-expanded="{afficherOptions ? 'true' : 'false'}" tabindex="0" on:keydown={onKeyDown} aria-disabled="false" aria-label="{ariaLabel}" aria-owns="{recherchable === 'false' ? idControleResultats : null}" aria-activedescendant="{recherchable === 'false' && afficherOptions ? idActiveDescendant : null}">
     
         <span class="selection select2-selection--multiple" on:click={clickSelection} on:mousedown={selectionMouseDown}>
           {#if multiple === 'false'}
