@@ -59,7 +59,7 @@ onMount(() => {
     definirSuggestions()
     definirOptionsSelectionnes()
 
-    controleSelect.addEventListener('click', (event) => { clickSelection(event) });
+//    controleConteneur.addEventListener('click', (event) => { clickSelection(event) });
 
     definirAttributsInitiauxSelectOriginal()
     observerAttributsSelectOrignal()
@@ -267,9 +267,9 @@ function ajusterControleSelectOriginal() {
     return
   }
 
-//  controleSelect.classList.add('utd-sr-only')
+  controleSelect.classList.add('utd-sr-only')
 
-  controleSelect.setAttribute("tabindex", "0")  
+  controleSelect.setAttribute("tabindex", "-1")  
 
   if(multiple === 'true'){
     controleSelect.setAttribute("multiple", "")  
@@ -402,18 +402,19 @@ function onKeyDown(e){
 
 function clickSelection(e){
   e.preventDefault()
+
   console.log('click selection')
   afficherOptions = !afficherOptions
   controleConteneur.focus()
 }
 
-function selectionMouseDown(e){
-  //Petite twist afin de ne pas provoquer de blur si on click sur le contrôle de sélection à partir d'un autre contrôle. (Évite la loop de fermeture/ouverture du dropdown)
+function clickItemListeSelection(e){
   e.preventDefault()
+  e.stopPropagation()
 }
 
-function optionMouseDown(e){
-  //Petite twist afin de ne pas provoquer de blur si on click sur un contrôle d'option à partir d'un autre contrôle. (Évite la fermeture du dropdown via l'événement blur du contrôle de recherche)
+function selectionMouseDown(e){
+  //Petite twist afin de ne pas provoquer de blur si on click sur le contrôle de sélection à partir d'un autre contrôle. (Évite la loop de fermeture/ouverture du dropdown)
   e.preventDefault()
 }
 
@@ -507,7 +508,13 @@ function blurRecherche(e){
 
 }
 
+function resultatsMouseDown(e){
+    //Petite twist afin de ne pas provoquer de blur si on click sur un contrôle d'option à partir d'un autre contrôle. (Évite la fermeture du dropdown via l'événement blur du contrôle de recherche)
+  e.preventDefault()  
+}
+
 function clickOption(e){  
+  
   console.log('clickOption')
   e.stopPropagation()
 
@@ -534,28 +541,29 @@ function clickOption(e){
       <span id="{idLabelFake}" class="utd-sr-only" aria-hidden="true"></span>
 
       <span class="conteneur utd-form-control{afficherOptions ? ' ouvert' : ''}" dir="ltr" on:blur={blurConteneur}  role="{recherchable === 'true' ? 'combobox' : 'listbox'}" aria-expanded="{afficherOptions ? 'true' : 'false'}" tabindex="0" on:keydown={onKeyDown} aria-disabled="false" aria-label="{ariaLabel}" aria-owns="{recherchable === 'false' ? idControleResultats : null}" aria-activedescendant="{recherchable === 'false' && afficherOptions ? idActiveDescendant : null}">
-    
-        <span class="selection select2-selection--multiple" on:click={clickSelection} on:mousedown={selectionMouseDown}>
-          {#if multiple === 'false'}
-            {#if optionsSelectionnees.length === 0}
-              <span class="utd-placeholder">{placeholder}</span>
-            {:else}
-              <span>{optionsSelectionnees[0].texte}</span>      
-            {/if}
-            
+        <button type="button" class="utd-form-control" style="width: 100%; height: 100%;"></button>
+        <span class="selection {multiple === 'true'  && optionsSelectionnees.length > 0 ? 'contient-etiquettes': ''}" on:click={clickSelection} on:mousedown={selectionMouseDown}>
+          {#if optionsSelectionnees.length === 0}
+            <span class="utd-placeholder">{placeholder}</span>
           {:else}
-              <ul class="select2-selection__rendered" id="select2-2cnb-container">
-                {#each optionsSelectionnees as optionSelectionnee, i}
-                  <li class="select2-selection__choice" data-select2-id="select2-data-247-9kw9">
-                    <button type="button" class="select2-selection__choice__remove" title="Remove item" aria-describedby="select2-2cnb-container-choice-s29e-HI">
-                      <span aria-hidden="true">×</span>
-                    </button>
-                    <span class="select2-selection__choice__display" id="select2-2cnb-container-choice-s29e-HI">{optionSelectionnee.texte}</span>
-                  </li>
-                {/each}   
-              </ul>     
+            {#if multiple === 'false'}
+                <span>{optionsSelectionnees[0].texte}</span>                                
+            {:else}
+                <ul>
+                  {#each optionsSelectionnees as optionSelectionnee, i}
+                    <li on:click={clickItemListeSelection}>
+                      <span class="etiquette">
+                        <span class="texte" id="select2-2cnb-container-choice-s29e-HI">{optionSelectionnee.texte}</span>
+                        <button type="button" class="select2-selection__choice__remove" title="Remove item" aria-describedby="select2-2cnb-container-choice-s29e-HI">
+                          <span aria-hidden="true" class="utd-icone-svg md x-fermer-bleu"></span>
+                        </button>  
+                      </span>                    
+                    </li>
+                  {/each}   
+                </ul>     
+            {/if}
           {/if}
-          <span class="utd-icone-svg chevron-bleu-piv"></span>
+          <span class="utd-icone-svg chevron-bleu-piv developper"></span>
         </span>
     
 
@@ -567,10 +575,10 @@ function clickOption(e){
             </span>            
           {/if}
 
-          <span class="resultats {!afficherOptions ? 'utd-d-none' : ''}"  dir="ltr">
+          <span class="resultats {!afficherOptions ? 'utd-d-none' : ''}" on:mousedown={resultatsMouseDown}  dir="ltr">
             <ul class="suggestions" role="listbox" aria-multiselectable="{multiple === 'true' ? 'true' : null}" id="{idControleResultats}" aria-expanded="true" aria-hidden="false">
               {#each suggestions as suggestion, i}
-                <li class="{i === indexeFocusOption ? 'focus' : ''}" role="option" id="{suggestion.id}" value="{suggestion.value}" indexeSuggestion="{i}" indexeOption="{suggestion.indexe}" aria-selected="{suggestion.selected ? 'true' : 'false'}" on:click={clickOption} on:mousedown={optionMouseDown}>
+                <li class="{i === indexeFocusOption ? 'focus' : ''}" role="option" id="{suggestion.id}" value="{suggestion.value}" indexeSuggestion="{i}" indexeOption="{suggestion.indexe}" aria-selected="{suggestion.selected ? 'true' : 'false'}" on:click={clickOption}>
                   {#if multiple === 'true'}
                     <span class="utd-checkbox" aria-hidden="true"></span>
                   {/if}                            

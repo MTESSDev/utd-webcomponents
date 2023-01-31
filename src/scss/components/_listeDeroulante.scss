@@ -32,7 +32,7 @@
             padding: 0;
         }
 
-        &:not(.ouvert) .selection .utd-icone-svg {            
+        &:not(.ouvert) .selection .utd-icone-svg.developper {            
             transform: rotate(-180deg);
         }
 
@@ -42,16 +42,75 @@
             padding: 8px 32px 8px 8px;
             display: block;
 
+            &.contient-etiquettes {
+                padding: 4px 32px 4px 8px;
+                margin-bottom: -8px;
+
+            }
+
             ul {
                 list-style: none;
                 padding: 0;
                 margin: 0;
+                display: flex;
+                flex-wrap: wrap;
             }
-            .utd-icone-svg {
+            
+            li {
+                margin-bottom: 8px;
+                margin-right: 8px;
+
+                &:hover{
+                    cursor:default;
+                }
+            }
+
+            .utd-icone-svg.developper {
                 position: absolute;
                 top: 15px;
                 right: 8px;
             }
+
+
+            /*TODO déplacer composant étiquette*/
+            .etiquette {
+                position: relative;
+                display: flex;
+                background-color: var(--bleu-pale);
+                color: var(--bleu-piv);
+                font-family: OpenSans-SemiBold;
+                font-size: var(--utd-text-sm);
+                line-height: 1.2;
+                padding: 7.5px 2px 7.5px 8px; /*DESIGN_QC ici on triche par rapport à design qc pour arriver au résultat */
+
+                button {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: -4px;
+                    margin-bottom: -4px;
+                    width: 24px;
+                    height: 24px;
+                    border: 0;
+                    background-color: transparent;
+                    padding: 0;
+
+                    &:hover{
+                        border: 1px solid #6991D1;/*DESIGN_QC code de couleur selon leurs specs du composant étiquette mais n'existe pas dans leurs codes de couleurs */
+                    }
+                    &:focus{
+                        outline: 0;
+                        border: 2px solid #6991D1;/*DESIGN_QC code de couleur selon leurs specs du composant étiquette mais n'existe pas dans leurs codes de couleurs */
+                    }
+
+                    .utd-icone-svg.x-fermer-bleu{
+                        width: 12px;
+                        height: 12px; 
+                        min-width: 12px;
+                    }
+                }
+            }
+
         }
         .conteneur-recherche {
             display: block;
