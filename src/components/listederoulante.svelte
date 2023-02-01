@@ -30,13 +30,15 @@ const idControleSuggestions = Utils.genererId()
 
 let mounted = false
 let html
-let controle
+let composant
 let controleConteneur
+//let controleBoutonToggle
 let controleLabel
 let idControleLabel = ""
 let ariaLabel = null
 let controleRecherche
 let controleSelect
+let controleConteneurResultats
 let afficherOptions = false
 let indexeFocusOption = null
 let idActiveDescendant = null
@@ -48,9 +50,11 @@ let texteRecherche = ""
 onMount(() => {  
   mounted = true
   html = thisComponent.getRootNode().getElementsByTagName("html")[0]
-  controle = thisComponent.shadowRoot.querySelector('.utd-liste-deroulante')
+  composant = thisComponent.shadowRoot.querySelector('.utd-liste-deroulante')
   controleConteneur = thisComponent.shadowRoot.querySelector('.conteneur')
+//  controleBoutonToggle = recherchable === 'true' ? thisComponent.shadowRoot.querySelector('button.toggle') : null
   controleRecherche = thisComponent.shadowRoot.getElementById(idControleRecherche)
+  controleConteneurResultats = thisComponent.shadowRoot.querySelector('.resultats')
 
   if(multiple === 'true' || recherchable === 'true'){
     ajusterControleSelectOriginal()
@@ -72,7 +76,14 @@ onMount(() => {
 $: toggleAfficherOptions(afficherOptions) 
 $: majActiveDescendant(indexeFocusOption) 
 
+
+function contient(parent, child) {
+  return parent !== child && parent.contient(child);
+}
+
+
 function definirAttributsInitiauxSelectOriginal(){
+  //const controle = controleBoutonToggle || controleConteneur
   majAttributControle(controleConteneur, 'aria-invalid', controleSelect.getAttribute('aria-invalid'))
   majAttributControle(controleConteneur, 'aria-required', controleSelect.getAttribute('aria-required'))
   definirAriaLabel()
@@ -117,6 +128,8 @@ function observerAttributsSelectOrignal(){
         const nouvelleValeur = mutation.target.getAttribute(nomAttribut)
         
         let nomAttributMaj = nomAttribut === 'aria-describedby' ? 'aria-description' : nomAttribut
+
+//        const controle = controleBoutonToggle || controleConteneur
 
         if(nomAttribut === 'aria-describedby'){
           majAttributControle(controleConteneur, nomAttributMaj, obtenirTexteSelonAttributAria(controleSelect, nomAttribut))
@@ -303,6 +316,9 @@ function selectionnerOption(indexeSuggestion, indexeOption){
 
     if(multiple === 'false'){
       afficherOptions = false
+
+//      const controle = controleBoutonToggle || controleConteneur
+//      controle.focus()
       controleConteneur.focus()
     } else {
       indexeFocusOption = indexeSuggestion
@@ -334,6 +350,12 @@ function onKeyDown(e){
   switch(e.key) {
     case "Enter":
     case " ":
+   
+      //Si contrôle courant est textbox recherche on ne fait rien
+      if(e.target.classList.contains('etiquette')) {
+        break        
+      }
+
       e.preventDefault()
 
       if(indexeFocusOption !== null) {
@@ -354,13 +376,21 @@ function onKeyDown(e){
       }
   
       e.stopPropagation()      
-      afficherOptions = false
+//      afficherOptions = false
       break
     case "Escape":
       afficherOptions = false
-      controleConteneur.focus()  
+
+//      const controle = controleBoutonToggle || controleConteneur
+//      controle.focus()
+      controleConteneur.focus()
       break        
     case "ArrowDown":
+
+      if(recherchable === 'true' && e.target !== controleRecherche){
+        break
+      }
+
       e.preventDefault()
       //Affiche les options si ne sont pas visibles actuellement
       if(!afficherOptions){
@@ -377,9 +407,15 @@ function onKeyDown(e){
           indexeFocusOption = indexeFocusOption || 0
         }        
       }
+      assurerOptionCouranteVisible()
 
       break      
     case "ArrowUp":
+      
+      if(recherchable === 'true' && e.target !== controleRecherche){
+        break
+      }
+
       e.preventDefault()
 
       if(!afficherOptions){
@@ -396,6 +432,7 @@ function onKeyDown(e){
           indexeFocusOption = indexeFocusOption || suggestions.length - 1
         }      
       }
+      assurerOptionCouranteVisible()
       break
   }
 }
@@ -405,7 +442,10 @@ function clickSelection(e){
 
   console.log('click selection')
   afficherOptions = !afficherOptions
-  controleConteneur.focus()
+
+//  const controle = controleBoutonToggle || controleConteneur
+//  controle.focus()
+  controleConteneur.focus()  
 }
 
 function clickItemListeSelection(e){
@@ -415,6 +455,7 @@ function clickItemListeSelection(e){
 
 function selectionMouseDown(e){
   //Petite twist afin de ne pas provoquer de blur si on click sur le contrôle de sélection à partir d'un autre contrôle. (Évite la loop de fermeture/ouverture du dropdown)
+  console.log('selectionMouseDown')
   e.preventDefault()
 }
 
@@ -491,23 +532,44 @@ function traiterSaisieRecherche(){
   indexeFocusOption = 0
 }
 
-function blurConteneur(){
+function blurConteneur(e){
   console.log('blurConteneur')
-  if(recherchable === 'false'){
+  console.log(e.relatedTarget)
+
+  if(!estFocusInterieurComposant(e)){
+    afficherOptions = false
+  }
+ }
+
+function blurRecherche(e){  
+  console.log('blurRecherche')
+  console.log(e.relatedTarget)
+    
+  if(!estFocusInterieurComposant(e)){
+    afficherOptions = false
+  } else {
+    indexeFocusOption = null
+  }
+}
+
+function blurOptionSelectionnee(e){  
+  console.log('blurOptionSelectionnee')
+  console.log(e.relatedTarget)
+    
+  if(!estFocusInterieurComposant(e)){
     afficherOptions = false
   }
 }
 
-function blurRecherche(e){  
-  console.log('blurRecherche')
+function clickOptionSelectionnee(e){  
+  console.log('clickOptionSelectionnee')
 
-    //TODO concorder avec les touches ici afin de redonner focus au textbox (event du dropdown ENTER, Escape)
-    afficherOptions = false
-
-//  }
-
+  e.stopPropagation()
 }
 
+function estFocusInterieurComposant(e){
+  return composant !== e.relatedTarget && composant.contains(e.relatedTarget)  
+}
 function resultatsMouseDown(e){
     //Petite twist afin de ne pas provoquer de blur si on click sur un contrôle d'option à partir d'un autre contrôle. (Évite la fermeture du dropdown via l'événement blur du contrôle de recherche)
   e.preventDefault()  
@@ -526,13 +588,50 @@ function clickOption(e){
   }
 }
 
+
+function assurerOptionCouranteVisible() {
+  //SetTimeout nécessaire afin que le paint de la page soit fait et qu'on puisse travailler avec l'option qui vient de recevoir le focus.
+  setTimeout(() => {
+    const option = thisComponent.shadowRoot.querySelector('.suggestions .focus')
+    const hauteurConteneur = controleConteneurResultats.getBoundingClientRect().height
+    const hauteurOption = option.getBoundingClientRect().height
+    const offsetConteneur = controleConteneurResultats.scrollTop + hauteurConteneur
+
+    //Si nous sommes sur la 1ere ou la dernière suggestion on gère manuellement le scroll
+    if(indexeFocusOption === 0){
+      controleConteneurResultats.scroll({top: 0})
+      return
+    } else if(indexeFocusOption === suggestions.length - 1){
+      controleConteneurResultats.scroll({top: option.offsetTop})
+      return
+    }
+
+
+    if(option.offsetTop + hauteurOption > offsetConteneur){
+      if(option.offsetTop + hauteurOption > (offsetConteneur + hauteurOption)){
+        //Ici on traite le cas ou le user aurait modifié la position du scroll (ex. avec la souris), dans ce cas on remet l'option courant en au de liste
+        controleConteneurResultats.scroll({top: option.offsetTop});
+      } else {
+        controleConteneurResultats.scroll({top: controleConteneurResultats.scrollTop + hauteurOption});
+      }
+    } else if(option.offsetTop < (offsetConteneur - hauteurConteneur)){
+      if(option.offsetTop < (offsetConteneur - hauteurOption)){
+        //Ici on traite le cas ou le user aurait modifié la position du scroll (ex. avec la souris), dans ce cas on remet l'option courant en au de liste
+        controleConteneurResultats.scroll({top: option.offsetTop});
+      } else {
+        controleConteneurResultats.scroll({top: controleConteneurResultats.scrollTop - hauteurOption});
+      }
+    }
+  })
+}
+
 </script>
 
 
 <!--<select class="js-example-basic-multiple js-states form-control select2-hidden-accessible" multiple="" data-select2-id="select2-data-61-j7fv" tabindex="-1" aria-hidden="true">-->
 
 
-<div class="utd-component utd-liste-deroulante {largeur}{multiple === 'true' ? ' multiple' : ''}">
+<div class="utd-component utd-liste-deroulante {largeur}{multiple === 'true' ? ' multiple' : ''}{recherchable === 'true' ? ' recherchable' : ''}">
   <slot></slot>
 
   {#if recherchable === 'true' || multiple === 'true'}
@@ -540,9 +639,15 @@ function clickOption(e){
 
       <span id="{idLabelFake}" class="utd-sr-only" aria-hidden="true"></span>
 
-      <span class="conteneur utd-form-control{afficherOptions ? ' ouvert' : ''}" dir="ltr" on:blur={blurConteneur}  role="{recherchable === 'true' ? 'combobox' : 'listbox'}" aria-expanded="{afficherOptions ? 'true' : 'false'}" tabindex="0" on:keydown={onKeyDown} aria-disabled="false" aria-label="{ariaLabel}" aria-owns="{recherchable === 'false' ? idControleResultats : null}" aria-activedescendant="{recherchable === 'false' && afficherOptions ? idActiveDescendant : null}">
-        <button type="button" class="utd-form-control" style="width: 100%; height: 100%;"></button>
+      <span class="conteneur utd-form-control{afficherOptions ? ' ouvert' : ''}" dir="ltr" on:blur={blurConteneur}  role="{recherchable === 'true' ? 'listbox' : 'listbox'}" aria-expanded="{afficherOptions ? 'true' : 'false'}" tabindex="0" on:keydown={onKeyDown} aria-disabled="false" aria-label="{ariaLabel}" aria-owns="{recherchable === 'false' ? idControleResultats : null}" aria-activedescendant="{recherchable === 'false' && afficherOptions ? idActiveDescendant : null}">
+      <!-- <span class="conteneur utd-form-control{afficherOptions ? ' ouvert' : ''}" dir="ltr" on:blur={blurConteneur}  role="{recherchable === 'true' ? null : 'listbox'}" aria-expanded="{recherchable === 'true' ? null : afficherOptions ? 'true' : 'false'}" tabindex="{recherchable === 'true' ? '-1' : '0'}" on:keydown={onKeyDown} aria-disabled="false" aria-label="{recherchable === 'false' ? ariaLabel : null}" aria-owns="{recherchable === 'false' ? idControleResultats : null}" aria-activedescendant="{recherchable === 'false' && afficherOptions ? idActiveDescendant : null}"> -->
         <span class="selection {multiple === 'true'  && optionsSelectionnees.length > 0 ? 'contient-etiquettes': ''}" on:click={clickSelection} on:mousedown={selectionMouseDown}>
+        <!--<span class="selection {multiple === 'true'  && optionsSelectionnees.length > 0 ? 'contient-etiquettes': ''}" on:click={recherchable === 'false' ? clickSelection : null} on:mousedown={selectionMouseDown}>
+          
+          {#if recherchable === 'true'}
+            <button type="button" class="utd-form-control toggle" aria-disabled="false" aria-label="{ariaLabel}" aria-expanded="{afficherOptions ? 'true' : 'false'}" on:click={clickSelection}></button>
+          {/if}-->
+
           {#if optionsSelectionnees.length === 0}
             <span class="utd-placeholder">{placeholder}</span>
           {:else}
@@ -552,12 +657,10 @@ function clickOption(e){
                 <ul>
                   {#each optionsSelectionnees as optionSelectionnee, i}
                     <li on:click={clickItemListeSelection}>
-                      <span class="etiquette">
+                      <button type="button" class="etiquette" title="Remove item" tabindex="{afficherOptions ? '0' : '-1'}" aria-describedby="select2-2cnb-container-choice-s29e-HI" on:click={clickOptionSelectionnee} on:blur={blurOptionSelectionnee}>
                         <span class="texte" id="select2-2cnb-container-choice-s29e-HI">{optionSelectionnee.texte}</span>
-                        <button type="button" class="select2-selection__choice__remove" title="Remove item" aria-describedby="select2-2cnb-container-choice-s29e-HI">
-                          <span aria-hidden="true" class="utd-icone-svg md x-fermer-bleu"></span>
-                        </button>  
-                      </span>                    
+                        <span aria-hidden="true" class="utd-icone-svg md x-fermer-bleu"></span>
+                      </button>  
                     </li>
                   {/each}   
                 </ul>     
@@ -566,31 +669,27 @@ function clickOption(e){
           <span class="utd-icone-svg chevron-bleu-piv developper"></span>
         </span>
     
+        {#if recherchable === 'true'}
+          <span class="conteneur-recherche {!afficherOptions ? 'utd-d-none' : ''}">
+            <span id="{idTexteUtilisation}" class="utd-sr-only">{texteAideUtilisation}</span>
+            <label for="{idControleRecherche}" class="utd-sr-only">{placeholderRecherche}</label>
+            <input type="text" id="{idControleRecherche}" class="utd-form-control recherche" role="combobox" aria-multiselectable="{multiple === 'true' ? 'true' : null}" aria-expanded="true" aria-haspopup="listbox" on:input={traiterSaisieRecherche} on:blur={blurRecherche} autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="{placeholderRecherche}" aria-describedby="{idTexteUtilisation}" aria-controls="{idControleResultats}" aria-activedescendant="{afficherOptions ? idActiveDescendant : null}">
+          </span>            
+        {/if}
 
-          {#if recherchable === 'true'}
-            <span class="conteneur-recherche {!afficherOptions ? 'utd-d-none' : ''}">
-              <span id="{idTexteUtilisation}" class="utd-sr-only">{texteAideUtilisation}</span>
-              <label for="{idControleRecherche}" class="utd-sr-only">{placeholderRecherche}</label>
-              <input type="text" id="{idControleRecherche}" class="utd-form-control recherche" role="combobox" aria-multiselectable="{multiple === 'true' ? 'true' : null}" aria-expanded="true" aria-haspopup="listbox" on:input={traiterSaisieRecherche} on:blur={blurRecherche} autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="{placeholderRecherche}" aria-describedby="{idTexteUtilisation}" aria-controls="{idControleResultats}" aria-activedescendant="{afficherOptions ? idActiveDescendant : null}">
-            </span>            
-          {/if}
-
-          <span class="resultats {!afficherOptions ? 'utd-d-none' : ''}" on:mousedown={resultatsMouseDown}  dir="ltr">
-            <ul class="suggestions" role="listbox" aria-multiselectable="{multiple === 'true' ? 'true' : null}" id="{idControleResultats}" aria-expanded="true" aria-hidden="false">
-              {#each suggestions as suggestion, i}
-                <li class="{i === indexeFocusOption ? 'focus' : ''}" role="option" id="{suggestion.id}" value="{suggestion.value}" indexeSuggestion="{i}" indexeOption="{suggestion.indexe}" aria-selected="{suggestion.selected ? 'true' : 'false'}" on:click={clickOption}>
-                  {#if multiple === 'true'}
-                    <span class="utd-checkbox" aria-hidden="true"></span>
-                  {/if}                            
-                  <span class="texte-option">{suggestion.texte}</span>      
-                </li>
-              {/each}   
-            </ul>
-          </span>      
-      </span>   
-
-
-
+        <span class="resultats {!afficherOptions ? 'utd-d-none' : ''}" on:mousedown={resultatsMouseDown}  dir="ltr">
+          <ul class="suggestions" role="listbox" aria-multiselectable="{multiple === 'true' ? 'true' : null}" id="{idControleResultats}" aria-expanded="true" aria-hidden="false">
+            {#each suggestions as suggestion, i}
+              <li class="{i === indexeFocusOption ? 'focus' : ''}" role="option" id="{suggestion.id}" value="{suggestion.value}" indexeSuggestion="{i}" indexeOption="{suggestion.indexe}" aria-selected="{suggestion.selected ? 'true' : 'false'}" on:click={clickOption}>
+                {#if multiple === 'true'}
+                  <span class="utd-checkbox" aria-hidden="true"></span>
+                {/if}                            
+                <span class="texte-option">{suggestion.texte}</span>      
+              </li>
+            {/each}   
+          </ul>
+        </span>      
+      </span>      
   {/if}
 
 </div>
