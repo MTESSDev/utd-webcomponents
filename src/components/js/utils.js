@@ -126,4 +126,14 @@ export class Utils {
     static obtenirLanguePage() {
         return document.getElementsByTagName("html")[0].getAttribute("lang") || "fr";
     }
+
+    /**
+     * Permet de palier au fait que svelte converti en booleen la valeur d'un attribut si celui-ci est vide (ex. titre="", la valeur considérée par svelte est true, alors que nous c'est une attribut vide, qu'on ne devrait pas traiter. Nos if ne fonctionnent pas comme prévu dans cette situation)
+     * On considère donc qu'un attribut est absent, si l'attribut n'est pas spécifié, vide ou true (valeur booléenne que svelte utilise si attribut est vide, et ça ne peut jamais arriver sauf dans cette circonstance car normalement les attributs sont toujours des strings)
+     * @param {*} attribut Valeur de l'attribut à vérifier
+     * @returns Booléen indiquant si l'attribut doit être considéré comme présent ou non
+     */
+    static estAttributPresent(attribut) {
+        return attribut && attribut !== true
+    }    
 }

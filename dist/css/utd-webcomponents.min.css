@@ -2686,6 +2686,13 @@ button.utd-btn.utd-traitement-en-cours, input[type=submit].utd-btn.utd-traitemen
 /*====================================================================================================*/
 .utd-liste-deroulante {
   position: relative;
+  /*    &.recherchable {
+          .conteneur {
+              &:not(.ouvert){
+                  border: 0;
+              }
+          }        
+      }*/
 }
 .utd-liste-deroulante.sm .conteneur {
   width: 156px;
@@ -2700,8 +2707,25 @@ button.utd-btn.utd-traitement-en-cours, input[type=submit].utd-btn.utd-traitemen
   background-color: var(--bleu);
   color: #fff;
 }
+.utd-liste-deroulante .conteneur {
+  position: relative;
+  /*        button.toggle.utd-form-control{
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              top: 0px;
+              left: 0px;
+              background-color: transparent;            
+          }*/
+  /*        &.ouvert button.toggle {            
+              border: 0;
+          }*/
+}
 .utd-liste-deroulante .conteneur.utd-form-control {
   height: auto;
+  padding: 1px;
+}
+.utd-liste-deroulante .conteneur.utd-form-control:focus {
   padding: 0;
 }
 .utd-liste-deroulante .conteneur:not(.ouvert) .selection .utd-icone-svg.developper {
@@ -2710,12 +2734,15 @@ button.utd-btn.utd-traitement-en-cours, input[type=submit].utd-btn.utd-traitemen
 .utd-liste-deroulante .conteneur .selection {
   position: relative;
   cursor: pointer;
-  padding: 8px 32px 8px 8px;
+  padding: 6px 31px 6px 7px;
   display: block;
+  /*            &.contient-etiquettes button.toggle{
+                  height: calc(100% - 8px);
+              }*/
   /*TODO déplacer composant étiquette*/
 }
 .utd-liste-deroulante .conteneur .selection.contient-etiquettes {
-  padding: 4px 32px 4px 8px;
+  padding: 2px 31px 2px 7px;
   margin-bottom: -8px;
 }
 .utd-liste-deroulante .conteneur .selection ul {
@@ -2729,53 +2756,62 @@ button.utd-btn.utd-traitement-en-cours, input[type=submit].utd-btn.utd-traitemen
   margin-bottom: 8px;
   margin-right: 8px;
 }
+.utd-liste-deroulante .conteneur .selection li:hover {
+  cursor: default;
+}
 .utd-liste-deroulante .conteneur .selection .utd-icone-svg.developper {
   position: absolute;
-  top: 15px;
-  right: 8px;
+  top: 14px;
+  right: 7px;
 }
-.utd-liste-deroulante .conteneur .selection .etiquette {
+.utd-liste-deroulante .conteneur .selection button.etiquette {
   position: relative;
   display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: var(--bleu-pale);
   color: var(--bleu-piv);
   font-family: OpenSans-SemiBold;
   font-size: var(--utd-text-sm);
   line-height: 1.2;
-  padding: 7.5px 2px 7.5px 8px; /*DESIGN_QC ici on triche par rapport à design qc pour arriver au résultat */
-}
-.utd-liste-deroulante .conteneur .selection .etiquette button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: -4px;
-  margin-bottom: -4px;
-  width: 24px;
-  height: 24px;
+  min-height: 32px;
+  padding: 7.5px 8px 7.5px 8px; /*DESIGN_QC ici on triche par rapport à design qc pour arriver au résultat */
   border: 0;
-  background-color: transparent;
-  padding: 0;
 }
-.utd-liste-deroulante .conteneur .selection .etiquette button:hover {
+.utd-liste-deroulante .conteneur .selection button.etiquette:hover {
   border: 1px solid #6991D1; /*DESIGN_QC code de couleur selon leurs specs du composant étiquette mais n'existe pas dans leurs codes de couleurs */
+  padding: 6.5px 7px 6.5px 7px; /*DESIGN_QC ici on triche par rapport à design qc pour arriver au résultat */
 }
-.utd-liste-deroulante .conteneur .selection .etiquette button:focus {
+.utd-liste-deroulante .conteneur .selection button.etiquette:focus {
   outline: 0;
+  padding: 5.5px 6px 5.5px 6px; /*DESIGN_QC ici on triche par rapport à design qc pour arriver au résultat */
   border: 2px solid #6991D1; /*DESIGN_QC code de couleur selon leurs specs du composant étiquette mais n'existe pas dans leurs codes de couleurs */
 }
-.utd-liste-deroulante .conteneur .selection .etiquette button .utd-icone-svg.x-fermer-bleu {
+.utd-liste-deroulante .conteneur .selection button.etiquette .utd-icone-svg.x-fermer-bleu {
   width: 12px;
   height: 12px;
   min-width: 12px;
 }
+.utd-liste-deroulante .conteneur .selection button.etiquette .texte {
+  margin-right: 8px;
+}
+.utd-liste-deroulante .conteneur .selection button.etiquette button {
+  display: flex;
+  margin-top: -4px;
+  margin-bottom: -4px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+}
 .utd-liste-deroulante .conteneur .conteneur-recherche {
   display: block;
-  padding: 0 8px;
+  padding: 0 7px;
 }
 .utd-liste-deroulante .conteneur .recherche {
   margin-top: 8px;
 }
 .utd-liste-deroulante .conteneur .resultats {
+  position: relative;
   display: block;
   padding: 0;
   margin-top: 8px;

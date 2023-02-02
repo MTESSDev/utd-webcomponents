@@ -32,6 +32,7 @@ let mounted = false
 let html
 let composant
 let controleConteneur
+let controleSelection
 //let controleBoutonToggle
 let controleLabel
 let idControleLabel = ""
@@ -52,6 +53,7 @@ onMount(() => {
   html = thisComponent.getRootNode().getElementsByTagName("html")[0]
   composant = thisComponent.shadowRoot.querySelector('.utd-liste-deroulante')
   controleConteneur = thisComponent.shadowRoot.querySelector('.conteneur')
+  controleSelection = thisComponent.shadowRoot.querySelector('.selection')
 //  controleBoutonToggle = recherchable === 'true' ? thisComponent.shadowRoot.querySelector('button.toggle') : null
   controleRecherche = thisComponent.shadowRoot.getElementById(idControleRecherche)
   controleConteneurResultats = thisComponent.shadowRoot.querySelector('.resultats')
@@ -75,11 +77,6 @@ onMount(() => {
 // Watches
 $: toggleAfficherOptions(afficherOptions) 
 $: majActiveDescendant(indexeFocusOption) 
-
-
-function contient(parent, child) {
-  return parent !== child && parent.contient(child);
-}
 
 
 function definirAttributsInitiauxSelectOriginal(){
@@ -326,6 +323,60 @@ function selectionnerOption(indexeSuggestion, indexeOption){
   }
 }
 
+function deselectionnerOptionViaEtiquette(e){
+  console.log('deselectionnerOptionViaEtiquette')
+  e.preventDefault()
+  e.stopPropagation()
+
+  let indexeOption = e.currentTarget.getAttribute('indexeOption')
+  console.log('event detail = ' + e.detail)
+  if(indexeOption !== null){
+
+    //TODO la détection clavier ne fonctionne pas... ce n'est pas si grave... pe avec un span role="button" et 2 events? click pour souris et enter/spacebar pour keydown?
+    //Si événement clavier on donne le focus à la prochaine étiquette (ou la précédente si aucune prochaine) suite à la suppression.
+    let prochaineEtiquette
+    if(e.detail === 1){
+      prochaineEtiquette = e.currentTarget.parentNode.nextSibling
+      if(!prochaineEtiquette){
+        prochaineEtiquette = e.currentTarget.parentNode.previousSibling        
+      }
+    }
+
+    let indexeOptionProchaineEtiquette
+    if(prochaineEtiquette){
+      indexeOptionProchaineEtiquette = prochaineEtiquette.querySelector('button').getAttribute('indexeOption')
+    } 
+
+
+    majValeurListeOriginale(indexeOption)
+    definirOptionsSelectionnes()
+
+    console.log(indexeOptionProchaineEtiquette)
+    if(indexeOptionProchaineEtiquette >= 0){
+      //setTimeout afin de s'assurer que le paint a été refait avant de donner le focus (sinon parfois ne fonctionne pas)
+      setTimeout(() => {
+        controleSelection.querySelector(`[indexeOption="${indexeOptionProchaineEtiquette}"]`).focus()        
+      });
+    }
+    else {
+      if(recherchable === 'true'){
+        controleRecherche.focus()
+      } else {
+        controleConteneur.focus()
+      }
+    }
+
+    //Désélectionner l'élément dans la liste des suggestions
+    indexeOption = parseInt(indexeOption)
+    const indexeSuggestion = suggestions.findIndex((element) => element.indexe === indexeOption)
+    if(indexeSuggestion >= 0){
+      suggestions[indexeSuggestion].selected = false     
+    }
+
+  }
+}
+
+
 function majValeurListeOriginale(indexe) {
   if(multiple === 'false'){
     controleSelect.selectedIndex = indexe;
@@ -351,7 +402,7 @@ function onKeyDown(e){
     case "Enter":
     case " ":
    
-      //Si contrôle courant est textbox recherche on ne fait rien
+      //Si contrôle courant est une etiquette, on procède à la désélection
       if(e.target.classList.contains('etiquette')) {
         break        
       }
@@ -370,13 +421,14 @@ function onKeyDown(e){
       break
     
     case "Tab":
-      //Si contrôle courant est textbox recherche on ne fait rien
-      if(e.target.classList.contains('recherche')) {
-        break        
+      //Si contrôle courant est le textbox de recherche on ne fait rien
+
+      //TODO texte sélection SR
+      //TODO si options affichées et multiple et etiquettes  TAB = on ferme fenetre et focus suivant, SHIFT TAB focus dernière
+      if(e.target === controleConteneur & e.shiftKey && afficherOptions && multiple && optionsSelectionnees.length) {
+        console.log('conteneur shift!!')
+
       }
-  
-      e.stopPropagation()      
-//      afficherOptions = false
       break
     case "Escape":
       afficherOptions = false
@@ -438,7 +490,7 @@ function onKeyDown(e){
 }
 
 function clickSelection(e){
-  e.preventDefault()
+//  e.preventDefault()
 
   console.log('click selection')
   afficherOptions = !afficherOptions
@@ -448,15 +500,20 @@ function clickSelection(e){
   controleConteneur.focus()  
 }
 
-function clickItemListeSelection(e){
-  e.preventDefault()
-  e.stopPropagation()
-}
-
 function selectionMouseDown(e){
   //Petite twist afin de ne pas provoquer de blur si on click sur le contrôle de sélection à partir d'un autre contrôle. (Évite la loop de fermeture/ouverture du dropdown)
   console.log('selectionMouseDown')
+    //Si événement clavier on donne le focus à la prochaine étiquette (ou la précédente si aucune prochaine) suite à la suppression.
+/*    let prochaineEtiquette
+    if(e.detail === 1){
+      prochaineEtiquette = e.currentTarget.parentNode.nextSibling
+      if(!prochaineEtiquette){
+        prochaineEtiquette = e.currentTarget.parentNode.previousSibling        
+      }
+    }*/
+
   e.preventDefault()
+  e.stopPropagation()
 }
 
 function majActiveDescendant() {
@@ -474,10 +531,6 @@ function toggleAfficherOptions() {
   }
   
   if(afficherOptions){    
-
-    if(indexeFocusOption === null){
-//        indexeFocusOption = 0
-    }
 
     if(recherchable === 'true'){
       
@@ -561,12 +614,6 @@ function blurOptionSelectionnee(e){
   }
 }
 
-function clickOptionSelectionnee(e){  
-  console.log('clickOptionSelectionnee')
-
-  e.stopPropagation()
-}
-
 function estFocusInterieurComposant(e){
   return composant !== e.relatedTarget && composant.contains(e.relatedTarget)  
 }
@@ -639,7 +686,7 @@ function assurerOptionCouranteVisible() {
 
       <span id="{idLabelFake}" class="utd-sr-only" aria-hidden="true"></span>
 
-      <span class="conteneur utd-form-control{afficherOptions ? ' ouvert' : ''}" dir="ltr" on:blur={blurConteneur}  role="{recherchable === 'true' ? 'listbox' : 'listbox'}" aria-expanded="{afficherOptions ? 'true' : 'false'}" tabindex="0" on:keydown={onKeyDown} aria-disabled="false" aria-label="{ariaLabel}" aria-owns="{recherchable === 'false' ? idControleResultats : null}" aria-activedescendant="{recherchable === 'false' && afficherOptions ? idActiveDescendant : null}">
+      <span class="conteneur utd-form-control{afficherOptions ? ' ouvert' : ''}" dir="ltr" on:blur={blurConteneur}  role="{afficherOptions ? null : 'listbox'}" aria-expanded="{afficherOptions ? 'true' : 'false'}" tabindex="{afficherOptions ? '-1' : '0'}" on:keydown={onKeyDown} aria-disabled="false" aria-label="{ariaLabel}" aria-owns="{recherchable === 'false' ? idControleResultats : null}" aria-activedescendant="{recherchable === 'false' && afficherOptions ? idActiveDescendant : null}">
       <!-- <span class="conteneur utd-form-control{afficherOptions ? ' ouvert' : ''}" dir="ltr" on:blur={blurConteneur}  role="{recherchable === 'true' ? null : 'listbox'}" aria-expanded="{recherchable === 'true' ? null : afficherOptions ? 'true' : 'false'}" tabindex="{recherchable === 'true' ? '-1' : '0'}" on:keydown={onKeyDown} aria-disabled="false" aria-label="{recherchable === 'false' ? ariaLabel : null}" aria-owns="{recherchable === 'false' ? idControleResultats : null}" aria-activedescendant="{recherchable === 'false' && afficherOptions ? idActiveDescendant : null}"> -->
         <span class="selection {multiple === 'true'  && optionsSelectionnees.length > 0 ? 'contient-etiquettes': ''}" on:click={clickSelection} on:mousedown={selectionMouseDown}>
         <!--<span class="selection {multiple === 'true'  && optionsSelectionnees.length > 0 ? 'contient-etiquettes': ''}" on:click={recherchable === 'false' ? clickSelection : null} on:mousedown={selectionMouseDown}>
@@ -656,8 +703,8 @@ function assurerOptionCouranteVisible() {
             {:else}
                 <ul>
                   {#each optionsSelectionnees as optionSelectionnee, i}
-                    <li on:click={clickItemListeSelection}>
-                      <button type="button" class="etiquette" title="Remove item" tabindex="{afficherOptions ? '0' : '-1'}" aria-describedby="select2-2cnb-container-choice-s29e-HI" on:click={clickOptionSelectionnee} on:blur={blurOptionSelectionnee}>
+                    <li>
+                      <button type="button" class="etiquette" title="Remove item" tabindex="{afficherOptions ? '0' : '-1'}" aria-describedby="select2-2cnb-container-choice-s29e-HI" indexeOption="{optionSelectionnee.indexe}" on:click={deselectionnerOptionViaEtiquette} on:blur={blurOptionSelectionnee}>
                         <span class="texte" id="select2-2cnb-container-choice-s29e-HI">{optionSelectionnee.texte}</span>
                         <span aria-hidden="true" class="utd-icone-svg md x-fermer-bleu"></span>
                       </button>  
