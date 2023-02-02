@@ -9,24 +9,33 @@ import { onMount } from "svelte";
 import { Utils } from "./js/utils"
 import { get_current_component } from "svelte/internal"  
 
+const languePage = Utils.obtenirLanguePage()
+
 export let multiple = "false"
 export let recherchable = "false"
 export let largeur = "md" //Valeurs possible sm, md, lg
-export let texteAideUtilisation = Utils.obtenirLanguePage() === 'fr' ? "Utilisez la tabulation (ou les touches flèches) pour naviguer dans la liste des suggestions." : "(en)Utilisez la tabulation (ou les touches flèches) pour naviguer dans la liste des suggestions."
-export let placeholder = Utils.obtenirLanguePage() === 'fr' ? "Sélectionner une valeur" : "(en)Sélectionner une valeur"
-export let placeholderRecherche = Utils.obtenirLanguePage() === 'fr' ? "Rechercher dans la liste" : "(en)Rechercher dans la liste"
-export let noResult = Utils.obtenirLanguePage() === 'fr' ? "Aucun résultat" : "(en)Aucun résultat"
-export let results = Utils.obtenirLanguePage() === 'fr' ? "{x} suggestion(s) disponibles" : "(en){x} suggestion(s) disponibles"
-export let deleteItem = Utils.obtenirLanguePage() === 'fr' ? "Supprimer {t}" : "(en)Supprimer {t}"
-export let supprimer = Utils.obtenirLanguePage() === 'fr' ? "Supprimer" : "(en)Supprimer"
+export let placeholder = languePage === 'fr' ? "Sélectionner une valeur" : "(en)Sélectionner une valeur"
+export let placeholderRecherche = languePage === 'fr' ? "Rechercher dans la liste" : "(en)Rechercher dans la liste"
+export let noResult = languePage === 'fr' ? "Aucun résultat" : "(en)Aucun résultat"
+export let results = languePage === 'fr' ? "{x} suggestion(s) disponibles" : "(en){x} suggestion(s) disponibles"
 
-//TODO ajouter mutation observer sur le label (attribut aria-label + les nodes) qui appele definirAriaLabel
+//Contrôles
 const thisComponent = get_current_component()
-const idTexteUtilisation = Utils.genererId()
+const idTexteAideUtilisationRecherche = Utils.genererId()
 const idControleRecherche = Utils.genererId()
 const idControleResultats = Utils.genererId()
-const idLabelFake = Utils.genererId()
-const idControleSuggestions = Utils.genererId()
+
+
+//Textes fixes TODO traduire
+//const texteAideUtilisation = languePage === 'fr' ? "Utilisez la tabulation (ou les touches flèches) pour naviguer dans la liste des suggestions." : "(en)Utilisez la tabulation (ou les touches flèches) pour naviguer dans la liste des suggestions."
+const titleEtiquette = languePage === 'fr' ? "Supprimer" : "Delete"
+const descriptionEtiquette = languePage === 'fr' ? "Déselectionner" : "Unselect"
+const texteNotificationEtiquetteSupprimee = languePage === 'fr' ? "Élément désélectionné" : "Item unselected"
+const texteAideUtilisationRecherche = languePage === 'fr' ? "Utilisez les touches flèches haut et bas pour naviguer dans la liste des suggestions, Entrée ou Espace pour sélectionner un élément, et Shift + Tab afin d'accéder à la liste des éléments sélectionnés." : "(en)Utilisez les touches flèches haut et bas pour naviguer dans la liste des suggestions, Entrée ou Espace pour sélectionner un élément, et Shift + Tab afin d'accéder à la liste des éléments sélectionnés."
+const srPrefixeDescriptionValeursSelectionnees = languePage === 'fr' ? (multiple === 'true' ? "Valeurs sélectionnées" : "Valeur sélectionnée") : (multiple === 'true' ? "Selected values" : "Selected value")
+const labelListeValeursSelectionnees = languePage === 'fr' ? "Valeurs sélectionnées" : "Selected values"
+
+
 
 let mounted = false
 let html
@@ -37,6 +46,7 @@ let controleSelection
 let controleLabel
 let idControleLabel = ""
 let ariaLabel = null
+let ariaDescription = null
 let controleRecherche
 let controleSelect
 let controleConteneurResultats
@@ -47,6 +57,8 @@ let options = []
 let suggestions = []
 let optionsSelectionnees = []
 let texteRecherche = ""
+let texteNotificationLecteurEcran = ""
+let estDeselectionEnCours = false
 
 onMount(() => {  
   mounted = true
@@ -84,10 +96,11 @@ function definirAttributsInitiauxSelectOriginal(){
   majAttributControle(controleConteneur, 'aria-invalid', controleSelect.getAttribute('aria-invalid'))
   majAttributControle(controleConteneur, 'aria-required', controleSelect.getAttribute('aria-required'))
   definirAriaLabel()
-  majAttributControle(controleConteneur, 'aria-description', obtenirTexteSelonAttributAria(controleSelect, 'aria-describedby'))
+  definirAriaDescription()
 }
 
 function definirAriaLabel(){
+  
 
   //1 - aria-label sur le select
   if(controleSelect && controleSelect.getAttribute('aria-label')) {
@@ -116,6 +129,23 @@ function definirAriaLabel(){
   return null
 }
 
+function definirAriaDescription(){
+  let description = obtenirTexteSelonAttributAria(controleSelect, 'aria-describedby')
+  const texteNbOptions = multiple === 'true' ? ` (${optionsSelectionnees.length})` : ''
+  description += `. ${srPrefixeDescriptionValeursSelectionnees}${texteNbOptions} : ${obtenirTexteOptionsSelectionnees()}`
+
+  ariaDescription = description.replace("..", ".")
+}
+
+function obtenirTexteOptionsSelectionnees(){
+  let texte = ""
+  optionsSelectionnees.forEach((option, i) => {    
+    texte += option.texte + (i === optionsSelectionnees.length - 1 ? '' : ', ')
+  })   
+
+  return texte
+}
+
 function observerAttributsSelectOrignal(){
 
   const observer = new MutationObserver(function(mutations) {
@@ -129,7 +159,7 @@ function observerAttributsSelectOrignal(){
 //        const controle = controleBoutonToggle || controleConteneur
 
         if(nomAttribut === 'aria-describedby'){
-          majAttributControle(controleConteneur, nomAttributMaj, obtenirTexteSelonAttributAria(controleSelect, nomAttribut))
+          definirAriaDescription()
         } else {
           majAttributControle(controleConteneur, nomAttributMaj, nouvelleValeur)
         }
@@ -293,6 +323,7 @@ function selectionnerOption(indexeSuggestion, indexeOption){
     
     majValeurListeOriginale(indexeOption)
     definirOptionsSelectionnes()
+    definirAriaDescription()
 
     if(multiple === 'false'){
       
@@ -331,15 +362,16 @@ function deselectionnerOptionViaEtiquette(e){
   let indexeOption = e.currentTarget.getAttribute('indexeOption')
   console.log('event detail = ' + e.detail)
   if(indexeOption !== null){
+    estDeselectionEnCours = true
 
-    //TODO la détection clavier ne fonctionne pas... ce n'est pas si grave... pe avec un span role="button" et 2 events? click pour souris et enter/spacebar pour keydown?
+    indexeOption = parseInt(indexeOption)
+
+    //TODO la détection clavier ne fonctionne pas (e.detail ne semble pas toujours fonctionner c'est bizarre)... ce n'est pas si grave... pe avec un span role="button" et 2 events? click pour souris et enter/spacebar pour keydown?
     //Si événement clavier on donne le focus à la prochaine étiquette (ou la précédente si aucune prochaine) suite à la suppression.
     let prochaineEtiquette
-    if(e.detail === 1){
-      prochaineEtiquette = e.currentTarget.parentNode.nextSibling
-      if(!prochaineEtiquette){
-        prochaineEtiquette = e.currentTarget.parentNode.previousSibling        
-      }
+    prochaineEtiquette = e.currentTarget.parentNode.nextSibling
+    if(!prochaineEtiquette){
+      prochaineEtiquette = e.currentTarget.parentNode.previousSibling        
     }
 
     let indexeOptionProchaineEtiquette
@@ -349,16 +381,22 @@ function deselectionnerOptionViaEtiquette(e){
 
 
     majValeurListeOriginale(indexeOption)
-    definirOptionsSelectionnes()
+//    definirOptionsSelectionnes()
+    definirAriaDescription()
+    //notifierLecteurEcran(texteNotificationEtiquetteSupprimee)
 
     console.log(indexeOptionProchaineEtiquette)
     if(indexeOptionProchaineEtiquette >= 0){
       //setTimeout afin de s'assurer que le paint a été refait avant de donner le focus (sinon parfois ne fonctionne pas)
+      majOptionsSelectionees(indexeOption)
       setTimeout(() => {
         controleSelection.querySelector(`[indexeOption="${indexeOptionProchaineEtiquette}"]`).focus()        
       });
+
     }
     else {
+      majOptionsSelectionees(indexeOption)
+
       if(recherchable === 'true'){
         controleRecherche.focus()
       } else {
@@ -367,7 +405,6 @@ function deselectionnerOptionViaEtiquette(e){
     }
 
     //Désélectionner l'élément dans la liste des suggestions
-    indexeOption = parseInt(indexeOption)
     const indexeSuggestion = suggestions.findIndex((element) => element.indexe === indexeOption)
     if(indexeSuggestion >= 0){
       suggestions[indexeSuggestion].selected = false     
@@ -376,12 +413,27 @@ function deselectionnerOptionViaEtiquette(e){
   }
 }
 
-
+function notifierLecteurEcran(texte){
+  texteNotificationLecteurEcran = ""
+  
+  //On s'assure que le texte va être lu (car parfois c'est le même texte, s'il ne change pas, il n'est pas lu)
+  setTimeout(() => {
+    texteNotificationLecteurEcran = texte
+  }, 100);
+}
 function majValeurListeOriginale(indexe) {
   if(multiple === 'false'){
     controleSelect.selectedIndex = indexe;
   } else {
     controleSelect.options[indexe].selected = !controleSelect.options[indexe].selected
+  }
+}
+
+function majOptionsSelectionees(indexe){
+  const indexeSelection = optionsSelectionnees.findIndex((element) => element.indexe === indexe)  
+  if(indexeSelection >= 0){
+    optionsSelectionnees.splice(indexeSelection, 1)
+    optionsSelectionnees = optionsSelectionnees
   }
 }
 
@@ -606,12 +658,20 @@ function blurRecherche(e){
 }
 
 function blurOptionSelectionnee(e){  
+
+  if(estDeselectionEnCours){
+    estDeselectionEnCours = false
+    return
+  }
   console.log('blurOptionSelectionnee')
   console.log(e.relatedTarget)
-    
+
+
+
   if(!estFocusInterieurComposant(e)){
     afficherOptions = false
-  }
+  }    
+
 }
 
 function estFocusInterieurComposant(e){
@@ -682,11 +742,9 @@ function assurerOptionCouranteVisible() {
   <slot></slot>
 
   {#if recherchable === 'true' || multiple === 'true'}
-      <p aria-live="polite" class="utd-sr-only"></p>
+      <span aria-live="polite" class="utd-sr-only">{texteNotificationLecteurEcran}</span>
 
-      <span id="{idLabelFake}" class="utd-sr-only" aria-hidden="true"></span>
-
-      <span class="conteneur utd-form-control{afficherOptions ? ' ouvert' : ''}" dir="ltr" on:blur={blurConteneur}  role="{afficherOptions ? null : 'listbox'}" aria-expanded="{afficherOptions ? 'true' : 'false'}" tabindex="{afficherOptions ? '-1' : '0'}" on:keydown={onKeyDown} aria-disabled="false" aria-label="{ariaLabel}" aria-owns="{recherchable === 'false' ? idControleResultats : null}" aria-activedescendant="{recherchable === 'false' && afficherOptions ? idActiveDescendant : null}">
+      <span class="conteneur utd-form-control{afficherOptions ? ' ouvert' : ''}" dir="ltr" on:blur={blurConteneur}  role="{afficherOptions ? null : 'listbox'}" aria-expanded="{afficherOptions ? 'true' : 'false'}" tabindex="{afficherOptions ? '-1' : '0'}" on:keydown={onKeyDown} aria-disabled="false" aria-label="{ariaLabel}" aria-description="{ariaDescription}" aria-owns="{recherchable === 'false' ? idControleResultats : null}" aria-activedescendant="{recherchable === 'false' && afficherOptions ? idActiveDescendant : null}">
       <!-- <span class="conteneur utd-form-control{afficherOptions ? ' ouvert' : ''}" dir="ltr" on:blur={blurConteneur}  role="{recherchable === 'true' ? null : 'listbox'}" aria-expanded="{recherchable === 'true' ? null : afficherOptions ? 'true' : 'false'}" tabindex="{recherchable === 'true' ? '-1' : '0'}" on:keydown={onKeyDown} aria-disabled="false" aria-label="{recherchable === 'false' ? ariaLabel : null}" aria-owns="{recherchable === 'false' ? idControleResultats : null}" aria-activedescendant="{recherchable === 'false' && afficherOptions ? idActiveDescendant : null}"> -->
         <span class="selection {multiple === 'true'  && optionsSelectionnees.length > 0 ? 'contient-etiquettes': ''}" on:click={clickSelection} on:mousedown={selectionMouseDown}>
         <!--<span class="selection {multiple === 'true'  && optionsSelectionnees.length > 0 ? 'contient-etiquettes': ''}" on:click={recherchable === 'false' ? clickSelection : null} on:mousedown={selectionMouseDown}>
@@ -701,11 +759,11 @@ function assurerOptionCouranteVisible() {
             {#if multiple === 'false'}
                 <span>{optionsSelectionnees[0].texte}</span>                                
             {:else}
-                <ul>
+                <ul aria-label="{labelListeValeursSelectionnees}">
                   {#each optionsSelectionnees as optionSelectionnee, i}
                     <li>
-                      <button type="button" class="etiquette" title="Remove item" tabindex="{afficherOptions ? '0' : '-1'}" aria-describedby="select2-2cnb-container-choice-s29e-HI" indexeOption="{optionSelectionnee.indexe}" on:click={deselectionnerOptionViaEtiquette} on:blur={blurOptionSelectionnee}>
-                        <span class="texte" id="select2-2cnb-container-choice-s29e-HI">{optionSelectionnee.texte}</span>
+                      <button type="button" class="etiquette" title="{titleEtiquette}" tabindex="{afficherOptions ? '0' : '-1'}" aria-description="{descriptionEtiquette}" indexeOption="{optionSelectionnee.indexe}" on:click={deselectionnerOptionViaEtiquette} on:blur={blurOptionSelectionnee}>
+                        <span class="texte">{optionSelectionnee.texte}</span>
                         <span aria-hidden="true" class="utd-icone-svg md x-fermer-bleu"></span>
                       </button>  
                     </li>
@@ -718,9 +776,9 @@ function assurerOptionCouranteVisible() {
     
         {#if recherchable === 'true'}
           <span class="conteneur-recherche {!afficherOptions ? 'utd-d-none' : ''}">
-            <span id="{idTexteUtilisation}" class="utd-sr-only">{texteAideUtilisation}</span>
+            <span id="{idTexteAideUtilisationRecherche}" class="utd-sr-only">{texteAideUtilisationRecherche}</span>
             <label for="{idControleRecherche}" class="utd-sr-only">{placeholderRecherche}</label>
-            <input type="text" id="{idControleRecherche}" class="utd-form-control recherche" role="combobox" aria-multiselectable="{multiple === 'true' ? 'true' : null}" aria-expanded="true" aria-haspopup="listbox" on:input={traiterSaisieRecherche} on:blur={blurRecherche} autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="{placeholderRecherche}" aria-describedby="{idTexteUtilisation}" aria-controls="{idControleResultats}" aria-activedescendant="{afficherOptions ? idActiveDescendant : null}">
+            <input type="text" id="{idControleRecherche}" class="utd-form-control recherche" role="combobox" aria-multiselectable="{multiple === 'true' ? 'true' : null}" aria-expanded="true" aria-haspopup="listbox" on:input={traiterSaisieRecherche} on:blur={blurRecherche} autocomplete="off" spellcheck="false" placeholder="{placeholderRecherche}" aria-describedby="{idTexteAideUtilisationRecherche}" aria-controls="{idControleResultats}" aria-activedescendant="{afficherOptions ? idActiveDescendant : null}">
           </span>            
         {/if}
 

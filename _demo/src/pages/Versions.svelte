@@ -7,10 +7,11 @@
 </utd-menu-ancres>
 
 <utd-accordeon reduit="false">
-    <div slot="titre"><h2>1.7.7 (2023-02-??)</h2></div>
+    <div slot="titre"><h2>1.8.0 (2023-02-??)</h2></div>
     <h3>Améliorations</h3>
     <ul class="utd">
         <li>Ajout du composant <a href="/composants/formulaire/listederoulante">Liste déroulante</a>.</li>
+        <li>Tailles adaptatives pour les headers (h1 à h6).</li>
     </ul>
 </utd-accordeon>
 

@@ -123,15 +123,15 @@
   --tc-16-4-val: var(--tc-16-4);
   --tc-16-8-val: var(--tc-16-8);
   --tc-16-14-val: var(--tc-16-14);
-  --utd-text-base: var(--tc-16-14-val);
+  --utd-text-base: var(--tc-16-14);
   --tc-18-14-val: var(--tc-18-14);
   --tc-18-16-val: var(--tc-18-16);
   --tc-18-17-val: var(--tc-18-17);
-  --utd-text-lg: var(--tc-18-17-lg);
+  --utd-text-lg: var(--tc-18-17);
   --tc-20-16-val: var(--tc-20-16);
   --tc-20-18-val: var(--tc-20-18);
   --tc-21-18-val: var(--tc-21-18);
-  --utd-text-xl: var(--tc-21-18-val);
+  --utd-text-xl: var(--tc-21-18);
   --tc-24-12-val: var(--tc-24-12);
   --tc-24-16-val: var(--tc-24-16);
   --tc-24-20-val: var(--tc-24-20);
