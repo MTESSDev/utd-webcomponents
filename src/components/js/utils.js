@@ -136,4 +136,18 @@ export class Utils {
     static estAttributPresent(attribut) {
         return attribut && attribut !== true
     }    
+
+    /**
+     * Permet de debouncer une fonction.
+     * @param {Object} func Fonction à debouncer.
+     * @param {Number} timeout Délai du debounce.
+     */
+    static debounce(func, timeout = 400) {
+        let timer;
+        return (...args) => {
+            clearTimeout(timer)
+            timer = setTimeout(() => { func.apply(this, args); }, timeout)
+        }
+    }
+    
 }
