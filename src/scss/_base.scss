@@ -1270,6 +1270,35 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
 
 
 /*====================================================================================================
+  -65- Scrollbar
+====================================================================================================*/
+
+/* Scrollbar */
+.utd-scrollbar::-webkit-scrollbar,
+.utd-scrollbar::-webkit-scrollbar-thumb,
+.utd-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+    border: none;
+    border-radius: 0.3125rem;
+    height: 25%;
+    width: .5rem;
+    margin-top: 4px;
+}
+
+.utd-scrollbar::-webkit-scrollbar-button,
+.utd-scrollbar::-webkit-scrollbar-track-piece,
+.utd-scrollbar::-webkit-scrollbar-corner,
+.utd-scrollbar::-webkit-resizer {
+    display: none;
+}
+
+.utd-scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--bleu-piv);
+    transition: all 0.35s;
+}                
+
+
+/*====================================================================================================
   -900- Sprites 
 ====================================================================================================*/
 /* Taille par défaut des icônes svg */
