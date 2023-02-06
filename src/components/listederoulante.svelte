@@ -400,6 +400,10 @@ function deselectionnerOptionViaEtiquette(e){
   if(indexeOption !== null){
     estDeselectionEnCours = true
 
+    setTimeout(() => {
+      estDeselectionEnCours = false
+    })
+
     indexeOption = parseInt(indexeOption)
 
     //TODO la détection clavier ne fonctionne pas (e.detail ne semble pas toujours fonctionner c'est bizarre)... ce n'est pas si grave... pe avec un span role="button" et 2 events? click pour souris et enter/spacebar pour keydown?
@@ -714,15 +718,15 @@ function blurRecherche(e){
 }
 
 function blurOptionSelectionnee(e){  
-
   if(estDeselectionEnCours){
     estDeselectionEnCours = false
     return
   }
+  
   console.log('blurOptionSelectionnee')
   console.log(e.relatedTarget)
 
-
+  
 
   if(!estFocusInterieurComposant(e)){
     afficherOptions = false

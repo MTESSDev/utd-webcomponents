@@ -30,7 +30,7 @@
 <h3>Exemples</h3>
 <h4>1- Liste déroulante native à sélection simple</h4>
 <div id="exemple1">
-    <utd-champ-form libelle="Qui est votre personnage préféré?" precision="Ne soyez pas timide et assumez-vous.">
+    <utd-champ-form libelle="Sélectionnez un modèle de voiture" precision="Ne soyez pas timide et assumez-vous.">
         <select id="select1">
             <option value="volvo">Volvo XC90</option>
             <option value="saab">Saab 95</option>
@@ -65,7 +65,7 @@
 <div id="exemple3">
     <utd-champ-form precision="Ne soyez pas timide et assumez-vous.">
         <utd-liste-deroulante multiple="true">
-            <label>Sélectionnez un modèle de voiture</label>
+            <label>Sélectionnez un ou plusieurs modèles de voitures</label>
             <select id="select3">
                 <option value="volvo">Volvo XC90</option>
                 <option value="saab">Saab 95</option>
