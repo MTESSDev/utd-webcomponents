@@ -1,6 +1,9 @@
 <script>
     import CodeSource from '../components/CodeSource.svelte'; 
     import { onMount } from 'svelte';
+    import TableauParams from '../components/TableauParams.svelte'; 
+    import TableauSlots from '../components/TableauSlots.svelte'; 
+
 
     let tableauParametres = [];
     let tableauSlots = [];
@@ -9,22 +12,26 @@
         tableauParametres = obtenirTableauParametres();
         tableauSlots = obtenirTableauSlots();
     })
-
+/*    xport let multiple = "false"
+export let recherchable = "false"
+export let rechercheFloue = "true"
+export let precisionRecherche = "0.2"
+export let largeur = "md" //Valeurs possible sm, md, lg
+export let placeholder = languePage === 'fr' ? "Sélectionner une valeur" : "(en)Sélectionner une valeur"
+export let placeholderRecherche = languePage === 'fr' ? "Rechercher dans la liste" : "(en)Rechercher dans la liste"*/
 
     function obtenirTableauParametres() {
         return [
-            {nom: "titre", type: "String (Optionnel)", description: `Titre affiché dans la feuille associée à l'infobulle.`},
-            {nom: "sr-titre", type: "String (Optionnel)", description: `Texte lecteur écran seulement en préfixe au titre affiché dans la feuille associée à l'infobulle. Défaut : "Aide concernant " et "Help about ".`},
-            {nom: "sr-prefixe-contenu", type: "String (Optionnel)", description: `Texte lecteur écran seulement en préfixe au contenu affiché dans la feuille associée à l'infobulle. Il permet d'améliorer l'accessibilité du composant en évitant de lire tout le contenu de l'infobulle lors de son ouverture.  Défaut : "Détails&nbsp;: " et "Details: ".`},
-            {nom: "sr-bouton-ouvrir", type: "String (Optionnel)", description: `Texte lecteur écran seulement du bouton permettant d'ouvrir l'infobulle.`},
-            {nom: "sr-bouton-fermer", type: "String (Optionnel)", description: `Texte lecteur écran seulement du bouton permettant de fermer l'infobulle.`},
-            {nom: "contenu", type: "String (Optionnel)", description: `Texte à afficher dans la zone de contenu de l'infobulle.`}
+            {nom: "multiple", type: "Booléen (Optionnel)", description: `Indique s'il s'agit d'une liste à sélection multiple. (Défaut : "false")`},
+            {nom: "recherchable", type: "Booléen (Optionnel)", description: `Indique s'il est possible d'effectuer une recherche dans les valeurs possibles de la liste. (Défaut : "false")`},
+            {nom: "largeur", type: "String (Optionnel)", description: `Largeur de la liste. Valeurs possibles : <span class="utd-emphase-gris">lg</span> (528px), <span class="utd-emphase-gris">md</span> (342px), <span class="utd-emphase-gris">sm</span> (156px).`},
+            {nom: "rechercheFloue", type: "Booléen (Optionnel)", description: `Indique si la recherche doit être précise ou non, i.e. doit contenir exactement le terme recherché. Si la recherche est floue, ça permet un certain niveau d'erreur (ex. une faute de frappe). (Défaut : "true")`}
         ]
     }
 
     function obtenirTableauSlots() {
         return [
-            {nom: "contenu", description: `Texte à afficher dans la zone de contenu de l'infobulle.`},
+            {nom: "défaut", description: `<p>Slot par défaut. Aucun nom à fournir.</p><p>Contenu html entre les balises du contrôle. Ne devrait être que le contrôle "select" original.</p>`}
         ]
     }
 
@@ -50,13 +57,19 @@
 <h3>Référence système de design Quebec.ca</h3>
 <a href="https://design.quebec.ca/composantes/formulaire/liste-deroulante" target="_blank">Voir les spécifications sur le site de design Quebec.ca</a>
 
-
-
 <h3>Particularités vs. le système de design Quebec.ca</h3>
 <p>À venir?</p>
 
-<h3>Exemples</h3>
-<h4>1- Liste déroulante native à sélection simple</h4>
+<h2>Attributs disponibles</h2>
+<TableauParams parametres="{tableauParametres}">
+</TableauParams>
+
+<h2>Slots disponibles</h2>
+<TableauSlots parametres="{tableauSlots}">
+</TableauSlots>
+
+<h2>Exemples</h2>
+<h3>1- Liste déroulante native à sélection simple</h3>
 <div id="exemple1">
     <utd-champ-form libelle="Sélectionnez un modèle de voiture" precision="Ne soyez pas timide et assumez-vous.">
         <select id="select1">
@@ -71,7 +84,7 @@
 <CodeSource idElementCodeSource="exemple1">
 </CodeSource>
 
-<h4>2- Liste déroulante à sélection simple</h4>
+<h3>2- Liste déroulante à sélection simple</h3>
 <div id="exemple2">
     <utd-champ-form precision="Ne soyez pas timide et assumez-vous.">
         <utd-liste-deroulante>
@@ -89,7 +102,7 @@
 <CodeSource idElementCodeSource="exemple2">
 </CodeSource>
 
-<h4>3- Liste déroulante à sélection multiple</h4>
+<h3>3- Liste déroulante à sélection multiple</h3>
 <div id="exemple3">
     <utd-champ-form precision="Ne soyez pas timide et assumez-vous.">
         <utd-liste-deroulante multiple="true">
@@ -107,7 +120,7 @@
 <CodeSource idElementCodeSource="exemple3">
 </CodeSource>
 
-<h4>4- Boîte combinée (sélection simple)</h4>
+<h3>4- Boîte combinée (sélection simple)</h3>
 <div id="exemple4">
     <utd-champ-form libelle="Sélectionnez votre état américain préféré" precision="Ne soyez pas timide et assumez-vous." obligatoire="true" message-erreur="C'est mauvais!!!">
         <utd-liste-deroulante recherchable="true">
@@ -171,7 +184,7 @@
 <CodeSource idElementCodeSource="exemple4">
 </CodeSource>
 
-<h4>5- Boîte combinée (sélection multiple)</h4>
+<h3>5- Boîte combinée (sélection multiple)</h3>
 <p>Dans cet exemple des mots clés ont été ajoutés sur certaines options. Ex. "Nordiques Québec" pour "Colorado" et "pomme" pour "New York". Si une recherche est faite avec "Québec", le résultat "Colorado" sera disponible bien que le terme "Québec" ne soit pas dans le texte de l'option.</p>
 <div id="exemple5">
     <utd-champ-form libelle="Sélectionnez vos états américains préférés" precision="Ne soyez pas timide et assumez-vous.">
@@ -236,7 +249,7 @@
 <CodeSource idElementCodeSource="exemple5">
 </CodeSource>
 
-<h4>6- Boîte combinée (sélection multiple) avec recherche précise (aucun flou)</h4>
+<h3>6- Boîte combinée (sélection multiple) avec recherche précise (aucun flou)</h3>
 <p>Tenter une recherche avec le terme "Floride". Comme dans cet exemple la recherche est précise(vs. floue par défaut), il n'y aura aucun résultat contrairement à ce que nous pouvons obtenir dans l'exemple 5.</p>
 <div id="exemple6">
     <utd-champ-form libelle="Sélectionnez vos états américains préférés" precision="Ne soyez pas timide et assumez-vous.">
