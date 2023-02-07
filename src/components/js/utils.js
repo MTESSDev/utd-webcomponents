@@ -149,5 +149,45 @@ export class Utils {
             timer = setTimeout(() => { func.apply(this, args); }, timeout)
         }
     }
-    
+
+    static extend (first, second) {
+        for (var secondProp in second) {
+            var secondVal = second[secondProp]
+            // Is this value an object?  If so, iterate over its properties, copying them over
+            if (secondVal && Object.prototype.toString.call(secondVal) === "[object Object]") {
+                first[secondProp] = first[secondProp] || {}
+                this.extend(first[secondProp], secondVal)
+            }
+            else {
+                first[secondProp] = secondVal
+            }
+        }
+        return first
+    }
+
+    /**
+     * Normalise une chaîne de caractères pour utilisation insensible à la case et aux accents.
+     * @param {string} chaineCaracteres Chaîne de caractères.
+     * */
+    static normaliserChaineCaracteres(chaineCaracteres) {
+        return this.normaliserApostrophes(this.remplacerAccents(chaineCaracteres).toLowerCase())
+    }   
+
+    /**
+    * Normaliser les apostrophes d'une chaîne de caractères.
+    * @param {string} chaineCaracteres Chaîne de caractères.
+    **/
+    static normaliserApostrophes(chaineCaracteres) {
+        return chaineCaracteres.replace(/[\u2018-\u2019]/g, '\u0027')
+    }
+
+    /**
+     * Remplace les accents d'une chaîne de caractères.
+     * @param {string} chaineCaracteres Chaîne de caractères.
+     * */
+    static remplacerAccents(chaineCaracteres) {
+        return chaineCaracteres.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    }
+
+
 }

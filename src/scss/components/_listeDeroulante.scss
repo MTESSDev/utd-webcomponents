@@ -6,17 +6,17 @@
 
     &.sm{
         .conteneur{
-            width: 156px;
+            max-width: 156px;
         }
     }
     &.md{
         .conteneur{
-            width: 342px;
+            max-width: 342px;
         }
     }
     &.lg{
         .conteneur{
-            width: 528px;
+            max-width: 528px;
         }
     }
     &:not(.multiple){
@@ -150,7 +150,10 @@
             &.recherchable{
                 max-height: 290px;
             }
-
+            .texte-aucun-resultat{
+                display: inline-block;
+                padding: 8px;
+            }
             ul {
                 list-style: none;
                 padding: 0;

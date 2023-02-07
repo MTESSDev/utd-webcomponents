@@ -1,5 +1,6 @@
 export * from './components/js/componentsWrapper.js'
 export * from './components/js/components.js'
+export * from '../node_modules/minisearch/dist/umd/index'
 export * from './components/accordeon.svelte'
 export * from './components/avis.svelte'
 export * from './components/champForm.svelte'
