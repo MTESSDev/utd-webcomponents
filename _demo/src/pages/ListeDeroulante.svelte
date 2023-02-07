@@ -172,6 +172,7 @@
 </CodeSource>
 
 <h4>5- Boîte combinée (sélection multiple)</h4>
+<p>Dans cet exemple des mots clés ont été ajoutés sur certaines options. Ex. "Nordiques Québec" pour "Colorado" et "pomme" pour "New York". Si une recherche est faite avec "Québec", le résultat "Colorado" sera disponible bien que le terme "Québec" ne soit pas dans le texte de l'option.</p>
 <div id="exemple5">
     <utd-champ-form libelle="Sélectionnez vos états américains préférés" precision="Ne soyez pas timide et assumez-vous.">
         <utd-liste-deroulante recherchable="true" multiple="true">
@@ -236,19 +237,19 @@
 </CodeSource>
 
 <h4>6- Boîte combinée (sélection multiple) avec recherche précise (aucun flou)</h4>
-<p>Tenter une recherche avec le terme "Floride". Comme la recherche est précise, il n'y aura aucun résultat contrairement à ce que nous pouvons obtenir dans l'exemple 5.</p>
+<p>Tenter une recherche avec le terme "Floride". Comme dans cet exemple la recherche est précise(vs. floue par défaut), il n'y aura aucun résultat contrairement à ce que nous pouvons obtenir dans l'exemple 5.</p>
 <div id="exemple6">
     <utd-champ-form libelle="Sélectionnez vos états américains préférés" precision="Ne soyez pas timide et assumez-vous.">
-        <utd-liste-deroulante recherchable="true" recherche-floue="false" precision-recherche="0.5" multiple="true">
+        <utd-liste-deroulante recherchable="true" recherche-floue="false" multiple="true">
             <select id="select6">
                 <option value="AL">Alabama</option>
-                <option value="AK" mots-cles="freeze">Alaska</option>
+                <option value="AK">Alaska</option>
                 <option value="AZ">Arizona</option>
                 <option value="AR">Arkansas</option>
-                <option value="CA" mots-cles="sunshine">California</option>
-                <option value="CO" mots-cles="Nordiques Québec">Colorado</option>
+                <option value="CA">California</option>
+                <option value="CO">Colorado</option>
                 <option value="CT">Connecticut</option>
-                <option value="DE" mots-cles="Waynes world">Delaware</option>
+                <option value="DE">Delaware</option>
                 <option value="DC">District Of Columbia</option>
                 <option value="FL">Florida</option>
                 <option value="GA">Georgia</option>
@@ -260,7 +261,7 @@
                 <option value="KS">Kansas</option>
                 <option value="KY">Kentucky</option>
                 <option value="LA">Louisiana</option>
-                <option value="ME" mots-cles="Big Bad Bruins">Maine</option>
+                <option value="ME">Maine</option>
                 <option value="MD">Maryland</option>
                 <option value="MA">Massachusetts</option>
                 <option value="MI">Michigan</option>
@@ -270,10 +271,10 @@
                 <option value="MT">Montana</option>
                 <option value="NE">Nebraska</option>
                 <option value="NV">Nevada</option>
-                <option value="NH" mots-cles="Live free or die">New Hampshire</option>
+                <option value="NH">New Hampshire</option>
                 <option value="NJ">New Jersey</option>
                 <option value="NM">New Mexico</option>
-                <option value="NY" mots-cles="grosse pomme">New York</option>
+                <option value="NY">New York</option>
                 <option value="NC">North Carolina</option>
                 <option value="ND">North Dakota</option>
                 <option value="OH">Ohio</option>
