@@ -35,7 +35,7 @@ const texteNotificationEtiquetteSupprimee = languePage === 'fr' ? "Élément dé
 const srPrefixeDescriptionValeursSelectionnees = languePage === 'fr' ? (multiple === 'true' ? "Valeurs sélectionnées" : "Valeur sélectionnée") : (multiple === 'true' ? "Selected values" : "Selected value")
 const srDescriptionAucuneValeurSelectionnee = languePage === 'fr' ? "Aucune valeur sélectionnée." : "No selected value"
 const labelListeValeursSelectionnees = languePage === 'fr' ? "Valeurs sélectionnées" : "Selected values"
-const srResultatsTrouves = languePage === 'fr' ? "{x} résultats(s) trouvé(s)" : "{x} results found."
+const srResultatsTrouves = languePage === 'fr' ? "{x} résultats trouvés" : "{x} results found."
 const texteAucunResultat = languePage === 'fr' ? "Aucun résultat trouvé." : "No results found."
 const srAucunResultat = texteAucunResultat
 
@@ -560,7 +560,21 @@ function onKeyDown(e){
       }
 
       break
-   
+    case "Tab":
+      //Pour une liste déroulante multiple sans recherche avec des selections actives, on veut que le SHIFT + TAB donne le focus à la dernière étiquette.
+      if(recherchable === 'false' && multiple === 'true'){        
+        if(e.shiftKey && e.target === controleConteneur && afficherOptions && optionsSelectionnees.length > 0){
+          e.preventDefault()
+          e.stopPropagation()
+
+          const etiquettes = controleSelection.querySelectorAll('.etiquette')
+          if(etiquettes.length){
+            etiquettes[etiquettes.length -1].focus()
+          }
+        }
+      }
+      break        
+      
     case "Escape":
       afficherOptions = false
       controleConteneur.focus()
@@ -823,7 +837,7 @@ function assurerOptionCouranteVisible() {
           <input type="text" id="{idControleRecherche}" class="utd-form-control recherche" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-multiselectable="{multiple === 'true' ? 'true' : null}" on:input={traiterSaisieRecherche} on:blur={blurRecherche} autocomplete="off" spellcheck="false" placeholder="{placeholderRecherche}" aria-description="{ariaDescriptionRecherche}" aria-controls="{idControleResultats}" aria-activedescendant="{afficherOptions ? idActiveDescendant : null}">
         </span>            
       {/if}
-      <span class="resultats utd-scrollbar{!afficherOptions ? ' utd-d-none' : ''}{recherchable === 'true' ? ' recherchable' : ''}{estScrollbarSuggestionsVisible ? " scrollbar-visible" : ''}" on:mousedown={resultatsMouseDown}  dir="ltr">
+      <span class="resultats utd-scrollbar-verticale{!afficherOptions ? ' utd-d-none' : ''}{recherchable === 'true' ? ' recherchable' : ''}{estScrollbarSuggestionsVisible ? " scrollbar-visible" : ''}" on:mousedown={resultatsMouseDown}  dir="ltr">
         {#if suggestions.length === 0}
           <span class="texte-aucun-resultat" aria-hidden="true">{texteAucunResultat}</span>
         {/if}

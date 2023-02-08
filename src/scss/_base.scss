@@ -759,6 +759,9 @@ utd-accordeon .utd-form-group:last-child, utd-section .utd-form-group:last-child
     border: 1px solid #808A9D;
     border-radius: 0;
 }
+
+select
+
 .utd-form-control::placeholder, .utd-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #647287;
     opacity: 1; /* Firefox */
@@ -806,6 +809,7 @@ select.utd-form-control:focus {
 ====================================================================================================*/
 
 input[type="text"].utd-form-control,
+select.utd-form-control,
 textarea.utd-form-control {
     /* On applique une largeur xl à tous les contrôles de type texte par défaut */
     width: 528px;
@@ -827,12 +831,14 @@ input[type="date"].utd-form-control {
 /*Le xxl n'existe pas dans les règles du SCG, c'est ajouté */
 
 input.utd-form-control.xxl,
-textarea.utd-form-control.xxl {
+textarea.utd-form-control.xxl,
+select.utd-form-control.xxl {
     width: 100%;
 }
 
 input.utd-form-control.xl,
 textarea.utd-form-control.xl,
+select.utd-form-control.xl,
 input[type="email"].utd-form-control,
 input[type="url"].utd-form-control {
     width: 528px;
@@ -840,32 +846,37 @@ input[type="url"].utd-form-control {
 
 input.utd-form-control.lg,
 textarea.utd-form-control.lg,
+select.utd-form-control.lg
 input[type="password"].utd-form-control {
     width: 249px;
 }
 
 input.utd-form-control.md,
 textarea.utd-form-control.md,
+select.utd-form-control.md
 input[type="tel"].utd-form-control {
     width: 156px;
 }
 
 input.utd-form-control.sm,
-textarea.utd-form-control.sm {
+textarea.utd-form-control.sm,
+select.utd-form-control.sm {
     width: 63px;
 }
 
 @media (max-width: 560px) {
     input[type="text"].utd-form-control,
     input.utd-form-control.xl,
-    textarea.utd-form-control.xl {
+    textarea.utd-form-control.xl,
+    select.utd-form-control.xl {
         width: 100%;
     }
 }
 
 @media (max-width: 760px) {
     input.utd-form-control.xxl,
-    textarea.utd-form-control.xxl {
+    textarea.utd-form-control.xxl,
+    select.utd-form-control.xxl {
         width: 100%;
     }
 }
@@ -1274,31 +1285,30 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
 ====================================================================================================*/
 
 /* Scrollbar */
-.utd-scrollbar::-webkit-scrollbar,
-.utd-scrollbar::-webkit-scrollbar-thumb,
-.utd-scrollbar::-webkit-scrollbar-track {
+.utd-scrollbar-verticale::-webkit-scrollbar {
     background: transparent;
     border: none;
-    border-radius: 0.3125rem;
-    height: 25%;
     width: .5rem;
+    transition: all 0.35s;
+}
+
+.utd-scrollbar-verticale::-webkit-scrollbar-track {
     margin-top: 4px;
     margin-bottom: 8px;
 }
 
-.utd-scrollbar::-webkit-scrollbar-button,
-.utd-scrollbar::-webkit-scrollbar-track-piece,
-.utd-scrollbar::-webkit-scrollbar-corner,
-.utd-scrollbar::-webkit-resizer {
+.utd-scrollbar-verticale::-webkit-scrollbar-thumb {
+    background-color: var(--bleu-piv);
+    border-radius: 0.3125rem;
+}     
+
+.utd-scrollbar-verticale::-webkit-scrollbar-button,
+.utd-scrollbar-verticale::-webkit-scrollbar-track-piece,
+.utd-scrollbar-verticale::-webkit-scrollbar-corner,
+.utd-scrollbar-verticale::-webkit-resizer {
     display: none;
 }
-
-.utd-scrollbar::-webkit-scrollbar-thumb {
-    background-color: var(--bleu-piv);
-    transition: all 0.35s;
-}                
-
-
+        
 /*====================================================================================================
   -900- Sprites 
 ====================================================================================================*/

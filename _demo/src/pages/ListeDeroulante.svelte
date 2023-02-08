@@ -69,7 +69,7 @@ export let placeholderRecherche = languePage === 'fr' ? "Rechercher dans la list
 </TableauSlots>
 
 <h2>Exemples</h2>
-<h3>1- Liste déroulante native à sélection simple</h3>
+<h3>1a- Liste déroulante native à sélection simple</h3>
 <div id="exemple1">
     <utd-champ-form libelle="Sélectionnez votre province canadienne préférée" precision="Ne soyez pas timide et assumez-vous.">
         <select id="select1">
@@ -89,10 +89,26 @@ export let placeholderRecherche = languePage === 'fr' ? "Rechercher dans la list
         </select>          
     </utd-champ-form>
 </div>
-
-<CodeSource idElementCodeSource="exemple1">
-</CodeSource>
-
+<h3>1b- Liste déroulante native à sélection multiple</h3>
+<div id="exemple1b">
+    <utd-champ-form libelle="Sélectionnez vos provinces canadiennes préférées" precision="Ne soyez pas timide et assumez-vous.">
+        <select id="select1b" multiple>
+            <option value="AB">Alberta</option>
+            <option value="BC">Colombie-Britannique</option>
+            <option value="MB">Manitoba</option>
+            <option value="NB">Nouveau-Brunswick</option>
+            <option value="NL">Terre-Neuve-et-Labrador</option>
+            <option value="NS">Nouvelle-Écosse</option>
+            <option value="ON">Ontario</option>
+            <option value="PE">Île-du-Prince-Édouard</option>
+            <option value="QC">Quebec</option>
+            <option value="SK">Saskatchewan</option>
+            <option value="NT">Territoires du Nord-Ouest</option>
+            <option value="NU">Nunavut</option>
+            <option value="YT">Yukon</option>
+        </select>          
+    </utd-champ-form>
+</div>
 <h3>2a- Liste déroulante à sélection simple</h3>
 <div id="exemple2">
     <utd-champ-form precision="Ne soyez pas timide et assumez-vous.">
