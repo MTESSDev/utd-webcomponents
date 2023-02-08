@@ -150,6 +150,9 @@
             &.recherchable{
                 max-height: 290px;
             }
+            &.scrollbar-visible{
+                margin-right: 6px;
+            }
             .texte-aucun-resultat{
                 display: inline-block;
                 padding: 8px;

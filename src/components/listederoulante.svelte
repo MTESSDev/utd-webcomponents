@@ -65,6 +65,7 @@ let texteNotificationLecteurEcran = ""
 let estDeselectionEnCours = false
 let miniSearch
 let optionsMiniSearch
+let estScrollbarRechercheVisible = false
 
 
 onMount(() => {  
@@ -319,6 +320,7 @@ function obtenirOptions() {
 
 
 function definirSuggestions(doitNotifierLecteurEcran) {
+
   let nouvellesSuggestions = []
   let resultatRecherche = []
 
@@ -347,6 +349,11 @@ function definirSuggestions(doitNotifierLecteurEcran) {
   }
 
   suggestions = nouvellesSuggestions
+
+  //Vérifier si scrollbar visible ou non (servira a ajouter une marge de droite afin que la scrollbar ne soit pas collée sur la bordure du contrôle)
+  setTimeout(() => {
+    estScrollbarRechercheVisible = controleConteneurResultats.scrollHeight > controleConteneurResultats.clientHeight    
+  })
 }
 
 
@@ -809,8 +816,7 @@ function assurerOptionCouranteVisible() {
           <input type="text" id="{idControleRecherche}" class="utd-form-control recherche" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-multiselectable="{multiple === 'true' ? 'true' : null}" on:input={traiterSaisieRecherche} on:blur={blurRecherche} autocomplete="off" spellcheck="false" placeholder="{placeholderRecherche}" aria-description="{ariaDescriptionRecherche}" aria-controls="{idControleResultats}" aria-activedescendant="{afficherOptions ? idActiveDescendant : null}">
         </span>            
       {/if}
-
-      <span class="resultats utd-scrollbar {!afficherOptions ? 'utd-d-none' : ''}" on:mousedown={resultatsMouseDown}  dir="ltr">
+      <span class="resultats utd-scrollbar{!afficherOptions ? ' utd-d-none' : ''}{recherchable === 'true' ? ' recherchable' : ''}{estScrollbarRechercheVisible ? " scrollbar-visible" : ''}" on:mousedown={resultatsMouseDown}  dir="ltr">
         {#if suggestions.length === 0}
           <span class="texte-aucun-resultat" aria-hidden="true">{texteAucunResultat}</span>
         {/if}
@@ -824,7 +830,7 @@ function assurerOptionCouranteVisible() {
               <span class="texte-option">{suggestion.texte}</span>      
             </li>
           {/each}   
-        </ul>
+        </ul> 
       </span>      
     </span>      
 </div>

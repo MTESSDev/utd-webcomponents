@@ -25,7 +25,7 @@ export let placeholderRecherche = languePage === 'fr' ? "Rechercher dans la list
             {nom: "multiple", type: "Booléen (Optionnel)", description: `Indique s'il s'agit d'une liste à sélection multiple. (Défaut : "false")`},
             {nom: "recherchable", type: "Booléen (Optionnel)", description: `Indique s'il est possible d'effectuer une recherche dans les valeurs possibles de la liste. (Défaut : "false")`},
             {nom: "largeur", type: "String (Optionnel)", description: `Largeur de la liste. Valeurs possibles : <span class="utd-emphase-gris">lg</span> (528px), <span class="utd-emphase-gris">md</span> (342px), <span class="utd-emphase-gris">sm</span> (156px).`},
-            {nom: "rechercheFloue", type: "Booléen (Optionnel)", description: `Indique si la recherche doit être précise ou non, i.e. doit contenir exactement le terme recherché. Si la recherche est floue, ça permet un certain niveau d'erreur (ex. une faute de frappe). (Défaut : "true")`}
+            {nom: "recherche-floue", type: "Booléen (Optionnel)", description: `Indique si la recherche doit être précise ou non, i.e. doit contenir exactement le terme recherché. Si la recherche est floue, ça permet un certain niveau d'erreur (ex. une faute de frappe). (Défaut : "true")`}
         ]
     }
 
@@ -71,12 +71,21 @@ export let placeholderRecherche = languePage === 'fr' ? "Rechercher dans la list
 <h2>Exemples</h2>
 <h3>1- Liste déroulante native à sélection simple</h3>
 <div id="exemple1">
-    <utd-champ-form libelle="Sélectionnez un modèle de voiture" precision="Ne soyez pas timide et assumez-vous.">
+    <utd-champ-form libelle="Sélectionnez votre province canadienne préférée" precision="Ne soyez pas timide et assumez-vous.">
         <select id="select1">
-            <option value="volvo">Volvo XC90</option>
-            <option value="saab">Saab 95</option>
-            <option value="mercedes">Mercedes SLK</option>
-            <option value="audi">Audi TT</option>
+            <option value="AB">Alberta</option>
+            <option value="BC">Colombie-Britannique</option>
+            <option value="MB">Manitoba</option>
+            <option value="NB">Nouveau-Brunswick</option>
+            <option value="NL">Terre-Neuve-et-Labrador</option>
+            <option value="NS">Nouvelle-Écosse</option>
+            <option value="ON">Ontario</option>
+            <option value="PE">Île-du-Prince-Édouard</option>
+            <option value="QC">Quebec</option>
+            <option value="SK">Saskatchewan</option>
+            <option value="NT">Territoires du Nord-Ouest</option>
+            <option value="NU">Nunavut</option>
+            <option value="YT">Yukon</option>
         </select>          
     </utd-champ-form>
 </div>
@@ -84,17 +93,26 @@ export let placeholderRecherche = languePage === 'fr' ? "Rechercher dans la list
 <CodeSource idElementCodeSource="exemple1">
 </CodeSource>
 
-<h3>2- Liste déroulante à sélection simple</h3>
+<h3>2a- Liste déroulante à sélection simple</h3>
 <div id="exemple2">
     <utd-champ-form precision="Ne soyez pas timide et assumez-vous.">
         <utd-liste-deroulante>
-            <label>Sélectionnez un modèle de voiture</label>
+            <label>Sélectionnez votre province canadienne préférée</label>
             <select id="select2">
-                <option value="volvo">Volvo XC90</option>
-                <option value="saab">Saab 95</option>
-                <option value="mercedes">Mercedes SLK</option>
-                <option value="audi">Audi TT</option>
-              </select>          
+                <option value="AB">Alberta</option>
+                <option value="BC">Colombie-Britannique</option>
+                <option value="MB">Manitoba</option>
+                <option value="NB">Nouveau-Brunswick</option>
+                <option value="NL">Terre-Neuve-et-Labrador</option>
+                <option value="NS">Nouvelle-Écosse</option>
+                <option value="ON">Ontario</option>
+                <option value="PE">Île-du-Prince-Édouard</option>
+                <option value="QC">Quebec</option>
+                <option value="SK">Saskatchewan</option>
+                <option value="NT">Territoires du Nord-Ouest</option>
+                <option value="NU">Nunavut</option>
+                <option value="YT">Yukon</option>
+            </select>          
         </utd-liste-deroulante>
     </utd-champ-form>
 </div>
@@ -102,16 +120,43 @@ export let placeholderRecherche = languePage === 'fr' ? "Rechercher dans la list
 <CodeSource idElementCodeSource="exemple2">
 </CodeSource>
 
+<h3>2b- Liste déroulante à sélection simple (avec peu de choix donc sans barre de défilement)</h3>
+<div id="exemple2a">
+    <utd-champ-form precision="Ne soyez pas timide et assumez-vous.">
+        <utd-liste-deroulante>
+            <label>Sélectionnez votre province canadienne préférée</label>
+            <select id="select2a">
+                <option value="AB">Alberta</option>
+                <option value="BC">Colombie-Britannique</option>
+                <option value="QC">Quebec</option>
+                <option value="SK">Saskatchewan</option>
+            </select>          
+        </utd-liste-deroulante>
+    </utd-champ-form>
+</div>
+
+<CodeSource idElementCodeSource="exemple2a">
+</CodeSource>
+
 <h3>3- Liste déroulante à sélection multiple</h3>
 <div id="exemple3">
     <utd-champ-form precision="Ne soyez pas timide et assumez-vous.">
         <utd-liste-deroulante multiple="true">
-            <label>Sélectionnez un ou plusieurs modèles de voitures</label>
+            <label>Sélectionnez vos provinces canadiennes préférées</label>
             <select id="select3">
-                <option value="volvo">Volvo XC90</option>
-                <option value="saab">Saab 95</option>
-                <option value="mercedes">Mercedes SLK</option>
-                <option value="audi">Audi TT</option>
+                <option value="AB">Alberta</option>
+                <option value="BC">Colombie-Britannique</option>
+                <option value="MB">Manitoba</option>
+                <option value="NB">Nouveau-Brunswick</option>
+                <option value="NL">Terre-Neuve-et-Labrador</option>
+                <option value="NS">Nouvelle-Écosse</option>
+                <option value="ON">Ontario</option>
+                <option value="PE">Île-du-Prince-Édouard</option>
+                <option value="QC">Quebec</option>
+                <option value="SK">Saskatchewan</option>
+                <option value="NT">Territoires du Nord-Ouest</option>
+                <option value="NU">Nunavut</option>
+                <option value="YT">Yukon</option>
               </select>          
         </utd-liste-deroulante>
     </utd-champ-form>
