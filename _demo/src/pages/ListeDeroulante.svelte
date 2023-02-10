@@ -115,6 +115,7 @@ export let placeholderRecherche = languePage === 'fr' ? "Rechercher dans la list
         <utd-liste-deroulante>
             <label>Sélectionnez votre province canadienne préférée</label>
             <select id="select2">
+                <option value="" hidden="hidden" disabled="disabled" selected>Veuillez faire un choix</option>
                 <option value="AB">Alberta</option>
                 <option value="BC">Colombie-Britannique</option>
                 <option value="MB">Manitoba</option>
@@ -142,6 +143,7 @@ export let placeholderRecherche = languePage === 'fr' ? "Rechercher dans la list
         <utd-liste-deroulante>
             <label>Sélectionnez votre province canadienne préférée</label>
             <select id="select2a">
+                <option value="" hidden="hidden" disabled="disabled" selected>Veuillez faire un choix</option>
                 <option value="AB">Alberta</option>
                 <option value="BC">Colombie-Britannique</option>
                 <option value="QC">Quebec</option>
@@ -160,6 +162,7 @@ export let placeholderRecherche = languePage === 'fr' ? "Rechercher dans la list
         <utd-liste-deroulante multiple="true">
             <label>Sélectionnez vos provinces canadiennes préférées</label>
             <select id="select3">
+                <option value="" hidden="hidden" disabled="disabled" selected>Veuillez faire un choix</option>
                 <option value="AB">Alberta</option>
                 <option value="BC">Colombie-Britannique</option>
                 <option value="MB">Manitoba</option>
@@ -183,9 +186,10 @@ export let placeholderRecherche = languePage === 'fr' ? "Rechercher dans la list
 
 <h3>4- Boîte combinée (sélection simple)</h3>
 <div id="exemple4">
-    <utd-champ-form libelle="Sélectionnez votre état américain préféré" precision="Ne soyez pas timide et assumez-vous." obligatoire="true" message-erreur="C'est mauvais!!!">
+    <utd-champ-form libelle="Sélectionnez votre état américain préféré" precision="Ne soyez pas timide et assumez-vous." obligatoire="true" invalide="true" message-erreur="C'est mauvais!!!">
         <utd-liste-deroulante recherchable="true">
             <select id="select4">
+                <option value="" hidden="hidden" disabled="disabled" selected>Veuillez faire un choix</option>
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
                 <option value="AZ">Arizona</option>
@@ -251,6 +255,7 @@ export let placeholderRecherche = languePage === 'fr' ? "Rechercher dans la list
     <utd-champ-form libelle="Sélectionnez vos états américains préférés" precision="Ne soyez pas timide et assumez-vous.">
         <utd-liste-deroulante recherchable="true" multiple="true">
             <select id="select5">
+                <option value="" hidden="hidden" disabled="disabled" selected>Veuillez faire un choix</option>
                 <option value="AL">Alabama</option>
                 <option value="AK" mots-cles="freeze">Alaska</option>
                 <option value="AZ">Arizona</option>
@@ -316,6 +321,7 @@ export let placeholderRecherche = languePage === 'fr' ? "Rechercher dans la list
     <utd-champ-form libelle="Sélectionnez vos états américains préférés" precision="Ne soyez pas timide et assumez-vous.">
         <utd-liste-deroulante recherchable="true" recherche-floue="false" multiple="true">
             <select id="select6">
+                <option value="" hidden="hidden" disabled="disabled" selected>Veuillez faire un choix</option>
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
                 <option value="AZ">Arizona</option>

@@ -2,9 +2,20 @@
 Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un custom element.
 Référence : https://www.w3.org/WAI/ARIA/apg/example-index/combobox/combobox-autocomplete-none.html
 -->
+
+
 <svelte:options tag="utd-liste-deroulante" />
 
 <script>
+//TODO 0 recherche dans tout le terme
+//TODO1 option default... ajouter un param true par défaut. Append de l'option au load si value = ""
+//<option value="" hidden="hidden" disabled="disabled" selected>Veuillez faire un choix.</option>
+//TODO2 Caller blur event du select quand on quitte le champ recherche, sinon erreur non affichée
+//TODO3 Caller blur event du select quand sélectionne ou déselectionne une option
+//FRW
+//TODO 3 message d'erreur
+
+
 import { onMount } from "svelte";
 import { Utils } from "./js/utils"
 import { get_current_component } from "svelte/internal"  
@@ -46,7 +57,6 @@ let composant
 let controleConteneur
 let controleSelection
 let controleLabel
-let idControleLabel = ""
 let ariaLabel = null
 let ariaDescriptionConteneur = null
 let ariaDescriptionRecherche = null
@@ -93,7 +103,10 @@ onMount(() => {
 
 
     ajusterControleSelectOriginal()
-    
+    if(!controleSelect){
+      return
+    }
+
     options = obtenirOptions()
     definirSuggestions()
     definirOptionsSelectionnees()
@@ -180,12 +193,13 @@ function definirAriaLabel(){
 
 function definirAriaDescriptionConteneur(){
   let description = obtenirTexteSelonAttributAria(controleSelect, 'aria-describedby')
+  description = description ? description + '. ' : '' 
 
   if(optionsSelectionnees.length){
     const texteNbOptions = multiple === 'true' ? ` (${optionsSelectionnees.length})` : ''
-    description += `. ${srPrefixeDescriptionValeursSelectionnees}${texteNbOptions} : ${obtenirTexteOptionsSelectionnees()}`
+    description += `${srPrefixeDescriptionValeursSelectionnees}${texteNbOptions} : ${obtenirTexteOptionsSelectionnees()}`
   } else {
-    description += `. ${srDescriptionAucuneValeurSelectionnee}`
+    description += `${srDescriptionAucuneValeurSelectionnee}`
   }
 
   ariaDescriptionConteneur = description.replace("..", ".")
@@ -224,6 +238,10 @@ function observerAttributsSelectOrignal(){
 }
 
 function observerAttributsLabelOrignal(){
+
+  if(!controleLabel){
+    return
+  }
 
   const observerCharacterData = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
@@ -265,24 +283,25 @@ function obtenirTexteLecteurEcranControle(controle, selecteurExclusion){
 //TODO déplacer dans utils?
 function obtenirTexteSelonAttributAria(controle, nomAttribut){
   
-    if(controle && controle.getAttribute(nomAttribut)) {
-      const ids = controle.getAttribute(nomAttribut).split(' ')
-  
-      if(ids.length){
-        const textes = []
-        
-        for (let i = 0; i < ids.length; i++) {
-          const controle = document.getElementById(ids[i])
-          if(controle){
-            textes.push(controle.textContent)
-          }
-        }
+  if(controle && controle.getAttribute(nomAttribut)) {
+    const ids = controle.getAttribute(nomAttribut).split(' ')
 
-        return textes.join(' ')
-    } else {
-      return null
-    }  
-  } 
+    if(ids.length){
+      const textes = []
+      
+      for (let i = 0; i < ids.length; i++) {
+        const controle = document.getElementById(ids[i])
+        if(controle){
+          textes.push(controle.textContent)
+        }
+      }
+
+      return textes.join(' ')
+    } 
+  }
+  else {
+      return ''
+  }       
 }
 
 //TODO déplacer dans utils?
@@ -301,23 +320,33 @@ function obtenirOptions() {
   for (let i = 0; i < controleSelect.options.length; i++) {
     const option = controleSelect.options[i]
     const texte = option.label || option.value
+    if(option.value){
+        const opt = {
+        id: Utils.genererId(),
+        texte: texte,
+        valeur: option.value,
+        texteFormatte: texte.toLowerCase(),
+        motsCles: option.getAttribute('mots-cles'),
+        indexe: i,
+        selected: option.selected
+      }
 
-    const opt = {
-      id: Utils.genererId(),
-      texte: texte,
-      valeur: option.value,
-      texteFormatte: texte.toLowerCase(),
-      motsCles: option.getAttribute('mots-cles'),
-      indexe: i,
-      selected: option.selected
+      options.push(opt)
     }
-
-    options.push(opt)
   }
 
   return options
 }
 
+function retirerOptionPlaceholderControleSelectOriginal(){
+  //Pour le moment on ne retire que la 1ere option d'un select multiple si elle est vide, hidden et disabled... Dans ce cas il s'agit d'un placeholder, mais ça ne sert à rien pour un select multiple.
+  if(controleSelect.options.length){
+    const option = controleSelect.options[0]
+    if(!option.value && option.getAttribute('hidden') !== null && option.getAttribute('disabled') !== null){
+      controleSelect.options[0] = null
+    }
+  }
+}
 
 function definirSuggestions(doitNotifierLecteurEcran) {
 
@@ -326,7 +355,7 @@ function definirSuggestions(doitNotifierLecteurEcran) {
 
   const optionsRecherche = {...optionsMiniSearch, ...{fuzzy: term => term.length > 3 ? optionsMiniSearch.fuzzy : null}}
   if(texteRecherche.trim() !== ""){
-    resultatRecherche = miniSearch.search(texteRecherche.trim(), optionsRecherche).map((item) => options[item.indexe]);
+    resultatRecherche = miniSearch.search(texteRecherche.trim(), optionsRecherche).map((item) => options.find((option) => item.indexe === option.indexe))
   } else {
     resultatRecherche = options
   }
@@ -365,19 +394,6 @@ function definirPresenceScrollbarResultats(){
 }
 
 function ajusterControleSelectOriginal() {
-  controleLabel = thisComponent.querySelector("label")
-
-  //Si le contrôle label n'a pas d'id on lui en assigne un
-  if(!controleLabel){
-    controleLabel = thisComponent.parentElement.querySelector('label')
-  }
-
-  if(controleLabel){
-    if(!controleLabel.getAttribute("id")){
-      controleLabel.setAttribute("id", Utils.genererId())
-    }
-    idControleLabel = controleLabel.getAttribute("id")
-  }
   
   controleSelect = thisComponent.querySelector("select")
 
@@ -385,14 +401,34 @@ function ajusterControleSelectOriginal() {
     return
   }
 
+  //Si le select original reçoit le focus, on le redonne tout de suite à notre composant
+  controleSelect.addEventListener('focus', (e) => { 
+    e.preventDefault()
+    e.stopPropagation()
+
+    controleConteneur.focus()
+  })
+
   controleSelect.classList.add('utd-sr-only')
   controleSelect.setAttribute("tabindex", "-1")  
   controleSelect.setAttribute("aria-hidden", "true")  
 
   if(multiple === 'true'){
-    controleSelect.setAttribute("multiple", "")  
+    controleSelect.setAttribute("multiple", "")
+    retirerOptionPlaceholderControleSelectOriginal()
+  }
+
+  controleLabel = thisComponent.querySelector("label")
+
+  if(!controleLabel){
+    controleLabel = thisComponent.getRootNode().querySelector(`label[for="${controleSelect.id}"]`)
+  }
+
+  if(!controleLabel){
+    controleLabel = thisComponent.parentElement.querySelector('label')
   }
 }
+
 
 function selectionnerOption(indexeSuggestion, indexeOption){
   if(indexeOption !== null){
@@ -417,8 +453,6 @@ function selectionnerOption(indexeSuggestion, indexeOption){
     } else {      
       suggestions[indexeSuggestion].selected = optionsSelectionnees.findIndex((element) => element.indexe === indexeOption) >= 0
     }
-
-
 
     if(multiple === 'false'){
       afficherOptions = false
@@ -512,11 +546,13 @@ function notifierLecteurEcran(texte){
   }, 400);
 }
 function majValeurListeOriginale(indexe) {
-  if(multiple === 'false'){
-    controleSelect.selectedIndex = indexe;
-  } else {
+  
+  if(multiple === 'true'){
     controleSelect.options[indexe].selected = !controleSelect.options[indexe].selected
+  } else {
+    controleSelect.selectedIndex = indexe
   }
+  controleSelect.dispatchEvent(new Event('change'))
 }
 
 function majOptionsSelectionees(indexe){
@@ -532,8 +568,8 @@ function definirOptionsSelectionnees(){
   for (let i = 0; i < controleSelect.options.length; i++) {  
     const option = controleSelect.options[i]
     
-    if(option.selected){
-      optionsSelectionnees.push(options[i])
+    if(option.selected && option.value){      
+      optionsSelectionnees.push(options.find((element) => element.indexe === i))
     }
   }
 }
@@ -719,6 +755,7 @@ function traiterSaisieRecherche(){
 function blurConteneur(e){
   if(!estFocusInterieurComposant(e)){
     afficherOptions = false
+    controleSelect.dispatchEvent(new Event('blur'))
   }
  }
 
