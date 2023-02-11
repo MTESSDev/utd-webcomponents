@@ -25,7 +25,7 @@ export let placeholderRecherche = languePage === 'fr' ? "Rechercher dans la list
             {nom: "multiple", type: "Booléen (Optionnel)", description: `Indique s'il s'agit d'une liste à sélection multiple. (Défaut : "false")`},
             {nom: "recherchable", type: "Booléen (Optionnel)", description: `Indique s'il est possible d'effectuer une recherche dans les valeurs possibles de la liste. (Défaut : "false")`},
             {nom: "largeur", type: "String (Optionnel)", description: `Largeur de la liste. Valeurs possibles : <span class="utd-emphase-gris">lg</span> (528px), <span class="utd-emphase-gris">md</span> (342px), <span class="utd-emphase-gris">sm</span> (156px).`},
-            {nom: "recherche-floue", type: "Booléen (Optionnel)", description: `Indique si la recherche doit être précise ou non, i.e. doit contenir exactement le terme recherché. Si la recherche est floue, ça permet un certain niveau d'erreur (ex. une faute de frappe). (Défaut : "true")`}
+            {nom: "recherche-floue", type: "Booléen (Optionnel)", description: `Indique si la recherche doit être précise ou non, i.e. doit contenir exactement le terme recherché. Si la recherche est floue, un certain niveau d'erreur est permis (ex. une faute de frappe). (Défaut : "true")`}
         ]
     }
 
@@ -115,7 +115,7 @@ export let placeholderRecherche = languePage === 'fr' ? "Rechercher dans la list
         <utd-liste-deroulante>
             <label>Sélectionnez votre province canadienne préférée</label>
             <select id="select2">
-                <option value="" hidden="hidden" disabled="disabled" selected>Veuillez faire un choix</option>
+                
                 <option value="AB">Alberta</option>
                 <option value="BC">Colombie-Britannique</option>
                 <option value="MB">Manitoba</option>

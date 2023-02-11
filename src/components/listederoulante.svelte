@@ -7,13 +7,11 @@ Référence : https://www.w3.org/WAI/ARIA/apg/example-index/combobox/combobox-au
 <svelte:options tag="utd-liste-deroulante" />
 
 <script>
-//TODO 0 recherche dans tout le terme
+//TODO 0 recherche dans tout le terme NON ON OUBIE CA CE N'EST PAS LOGIQUE ex. COL
 //TODO1 option default... ajouter un param true par défaut. Append de l'option au load si value = ""
 //<option value="" hidden="hidden" disabled="disabled" selected>Veuillez faire un choix.</option>
-//TODO2 Caller blur event du select quand on quitte le champ recherche, sinon erreur non affichée
-//TODO3 Caller blur event du select quand sélectionne ou déselectionne une option
-//FRW
-//TODO 3 message d'erreur
+//TODO2 (REVÉRIFIER CAR CHANGE DEVRAIT ETRE CALLÉ) Caller blur event du select quand sélectionne ou déselectionne une option
+
 
 
 import { onMount } from "svelte";
@@ -65,7 +63,7 @@ let controleSelect
 let controleZoneNotificationLecteurEcran
 let controleConteneurResultats
 let afficherOptions = false
-let indexeFocusOption = null
+let indexeFocusSuggestion = null
 let idActiveDescendant = null
 let options = []
 let suggestions = []
@@ -107,6 +105,8 @@ onMount(() => {
       return
     }
 
+    ajusterControleLabelOriginal()
+
     options = obtenirOptions()
     definirSuggestions()
     definirOptionsSelectionnees()
@@ -121,7 +121,7 @@ onMount(() => {
 
 // Watches
 $: toggleAfficherOptions(afficherOptions) 
-$: majActiveDescendant(indexeFocusOption) 
+$: majActiveDescendant(indexeFocusSuggestion) 
 
 
 /**
@@ -328,7 +328,9 @@ function obtenirOptions() {
         texteFormatte: texte.toLowerCase(),
         motsCles: option.getAttribute('mots-cles'),
         indexe: i,
-        selected: option.selected
+        selected: option.selected,
+        disabled: option.disabled,
+        hidden: option.hidden
       }
 
       options.push(opt)
@@ -363,6 +365,7 @@ function definirSuggestions(doitNotifierLecteurEcran) {
   for (let i = 0; i < resultatRecherche.length; i++) {   
     const suggestion = resultatRecherche[i]
 
+    //TODO ici faire un findindex?
     suggestion.selected = controleSelect.options[suggestion.indexe].selected
     nouvellesSuggestions.push(suggestion)
   }
@@ -373,7 +376,7 @@ function definirSuggestions(doitNotifierLecteurEcran) {
       notifierLecteurEcran(srAucunResultat)
     } else {
       notifierLecteurEcran(srResultatsTrouves.replace("{x}", nouvellesSuggestions.length))      
-      indexeFocusOption = null
+      indexeFocusSuggestion = null
     }    
   }
 
@@ -418,6 +421,13 @@ function ajusterControleSelectOriginal() {
     retirerOptionPlaceholderControleSelectOriginal()
   }
 
+  //TODO ici ajouter le placeholder
+//<option value="" hidden="hidden" disabled="disabled" selected>Veuillez faire un choix</option>
+  
+}
+
+function ajusterControleLabelOriginal() {
+  
   controleLabel = thisComponent.querySelector("label")
 
   if(!controleLabel){
@@ -426,15 +436,16 @@ function ajusterControleSelectOriginal() {
 
   if(!controleLabel){
     controleLabel = thisComponent.parentElement.querySelector('label')
-  }
+  } 
 }
 
 
-function selectionnerOption(indexeSuggestion, indexeOption){
-  if(indexeOption !== null){
+function selectionnerOption(indexeSuggestion){
+  if(indexeSuggestion !== null){
 
     const indexeSelectionPrecedente = controleSelect.selectedIndex
-    
+    const indexeOption = suggestions[indexeSuggestion].indexe
+
     majValeurListeOriginale(indexeOption)
     definirOptionsSelectionnees()
     definirAriaDescriptionConteneur()
@@ -458,7 +469,7 @@ function selectionnerOption(indexeSuggestion, indexeOption){
       afficherOptions = false
       controleConteneur.focus()
     } else {
-      indexeFocusOption = indexeSuggestion
+      indexeFocusSuggestion = indexeSuggestion
     }
   }
 }
@@ -552,7 +563,8 @@ function majValeurListeOriginale(indexe) {
   } else {
     controleSelect.selectedIndex = indexe
   }
-  controleSelect.dispatchEvent(new Event('change'))
+  //TODO en théorie inutile
+  //controleSelect.dispatchEvent(new Event('change'))
 }
 
 function majOptionsSelectionees(indexe){
@@ -565,11 +577,12 @@ function majOptionsSelectionees(indexe){
 
 function definirOptionsSelectionnees(){
   optionsSelectionnees = []
-  for (let i = 0; i < controleSelect.options.length; i++) {  
-    const option = controleSelect.options[i]
-    
-    if(option.selected && option.value){      
-      optionsSelectionnees.push(options.find((element) => element.indexe === i))
+
+  for (let i = 0; i < controleSelect.selectedOptions.length; i++) {  
+    const option = controleSelect.selectedOptions[i]   
+
+    if(option.value){ 
+      optionsSelectionnees.push(options.find((element) => element.indexe === option.index))
     }
   }
 }
@@ -586,12 +599,12 @@ function onKeyDown(e){
 
       e.preventDefault()
 
-      if(indexeFocusOption !== null) {
-        selectionnerOption(indexeFocusOption, suggestions[indexeFocusOption].indexe)
+      if(indexeFocusSuggestion !== null) {
+        selectionnerOption(indexeFocusSuggestion)
       } else {
         afficherOptions = !afficherOptions     
         if(suggestions.length && recherchable === 'false'){
-          indexeFocusOption = 0
+          indexeFocusSuggestion = 0
         } 
       }
 
@@ -616,54 +629,93 @@ function onKeyDown(e){
       controleConteneur.focus()
       break        
     case "ArrowDown":
+    case "ArrowRight":
+      e.preventDefault()
 
-      if(recherchable === 'true' && e.target !== controleRecherche){
-        break
+      //Si liste simple sans recherche, la flèche provoque un changement de l'option sélectionnée comme un select natif
+      if(recherchable === 'false' && multiple === 'false' && !afficherOptions){
+        selectionnerOption(obtenirIndexeProchaineSuggestion(controleSelect.selectedIndex, 1))
+        return
       }
 
-      e.preventDefault()
       //Affiche les options si ne sont pas visibles actuellement
       if(!afficherOptions){
         afficherOptions = true
 
         if(suggestions.length && recherchable === 'false'){
-          indexeFocusOption = 0
+          indexeFocusSuggestion = 0
         }
 
       } else {
-        if(indexeFocusOption !== null){
+        if(e.key === "ArrowRight" && recherchable === 'true'){
+          return   
+        }
+
+        if(indexeFocusSuggestion !== null){
           modifierIndexeOptionCourante(1)     
         } else {
-          indexeFocusOption = indexeFocusOption || 0
+          indexeFocusSuggestion = indexeFocusSuggestion || 0
         }        
       }
       assurerOptionCouranteVisible()
 
       break      
     case "ArrowUp":
-      
-      if(recherchable === 'true' && e.target !== controleRecherche){
-        break
-      }
+    case "ArrowLeft":
 
       e.preventDefault()
+
+      //Si liste simple sans recherche, la flèche provoque un changement de l'option sélectionnée comme un select natif
+      if(recherchable === 'false' && multiple === 'false' && !afficherOptions){
+        selectionnerOption(obtenirIndexeProchaineSuggestion(controleSelect.selectedIndex, -1))
+        return
+      }
 
       if(!afficherOptions){
         afficherOptions = true
 
         if(suggestions.length && recherchable === 'false'){
-          indexeFocusOption = suggestions.length - 1
+          indexeFocusSuggestion = suggestions.length - 1
         }
 
       } else {
-        if(indexeFocusOption !== null){
+        if(e.key === "ArrowLeft" && recherchable === 'true'){
+          return   
+        }
+
+        if(indexeFocusSuggestion !== null){
           modifierIndexeOptionCourante(-1)     
         } else {
-          indexeFocusOption = indexeFocusOption || suggestions.length - 1
+          indexeFocusSuggestion = indexeFocusSuggestion || suggestions.length - 1
         }      
       }
       assurerOptionCouranteVisible()
       break
+  }
+}
+
+function obtenirIndexeProchaineSuggestion(indexeCourantControleSelect, step){
+  let indexeTrouve = false
+  let indexeCourantSuggestion = suggestions.findIndex((s) => s.indexe === indexeCourantControleSelect)
+  
+  //Si suggestion associée à indexe courant du select (ex. le placeholder index 0 hidden disabled qui n'est pas intégré dans nos suggestions) on retourne 0 (1ere suggestion)
+  if(indexeCourantSuggestion < 0){
+      return 0
+  }
+
+  let prochainIndexe = indexeCourantSuggestion + step
+
+  while (!indexeTrouve) {
+    
+    if(step > 0 && prochainIndexe > suggestions.length - 1 || step < 0 && prochainIndexe < 0){
+      return indexeCourantSuggestion
+    } else {
+      const prochaineSuggestion = suggestions[prochainIndexe]
+      if(!prochaineSuggestion.disabled && !prochaineSuggestion.hidden){
+        return prochainIndexe
+      }
+    }
+    prochainIndexe = prochainIndexe + step
   }
 }
 
@@ -679,8 +731,8 @@ function selectionMouseDown(e){
 }
 
 function majActiveDescendant() {
-  if(indexeFocusOption !== null) {
-    idActiveDescendant = suggestions[indexeFocusOption].id
+  if(indexeFocusSuggestion !== null) {
+    idActiveDescendant = suggestions[indexeFocusSuggestion].id
   } else {
     idActiveDescendant = null
   }
@@ -716,27 +768,27 @@ function toggleAfficherOptions() {
     })
   } else {
     definirAriaDescriptionRecherche()   
-    indexeFocusOption = null
+    indexeFocusSuggestion = null
   } 
 }
 
 function modifierIndexeOptionCourante(step) {
   if(!step){
-    indexeFocusOption = null
+    indexeFocusSuggestion = null
     return
   }
 
-  const prochainIndexe = indexeFocusOption + step
+  const prochainIndexe = indexeFocusSuggestion + step
   const indexeDerniereOption = suggestions.length - 1
 
   if(prochainIndexe > indexeDerniereOption){
-    indexeFocusOption = 0;
+    indexeFocusSuggestion = 0;
   }
   else if(prochainIndexe < 0){
-    indexeFocusOption = indexeDerniereOption;
+    indexeFocusSuggestion = indexeDerniereOption;
   }
   else {
-    indexeFocusOption = prochainIndexe;
+    indexeFocusSuggestion = prochainIndexe;
   }
 
 }
@@ -762,8 +814,9 @@ function blurConteneur(e){
 function blurRecherche(e){     
   if(!estFocusInterieurComposant(e)){
     afficherOptions = false
+    controleSelect.dispatchEvent(new Event('blur'))
   } else {
-    indexeFocusOption = null
+    indexeFocusSuggestion = null
   }
 }
 
@@ -791,11 +844,10 @@ function clickOption(e){
   
   e.stopPropagation()
 
-  const indexeOption = e.currentTarget.getAttribute('indexeOption')
   const indexeSuggestion = e.currentTarget.getAttribute('indexeSuggestion')
 
-  if(indexeOption && indexeSuggestion){
-    selectionnerOption(parseInt(indexeSuggestion), parseInt(indexeOption))    
+  if(indexeSuggestion){
+    selectionnerOption(parseInt(indexeSuggestion))    
   }
 }
 
@@ -804,15 +856,20 @@ function assurerOptionCouranteVisible() {
   //SetTimeout nécessaire afin que le paint de la page soit fait et qu'on puisse travailler avec l'option qui vient de recevoir le focus.
   setTimeout(() => {
     const option = thisComponent.shadowRoot.querySelector('.suggestions .focus')
+
+    if(!option){
+      return
+    }
+
     const hauteurConteneur = controleConteneurResultats.getBoundingClientRect().height
     const hauteurOption = option.getBoundingClientRect().height
     const offsetConteneur = controleConteneurResultats.scrollTop + hauteurConteneur
 
     //Si nous sommes sur la 1ere ou la dernière suggestion on gère manuellement le scroll
-    if(indexeFocusOption === 0){
+    if(indexeFocusSuggestion === 0){
       controleConteneurResultats.scroll({top: 0})
       return
-    } else if(indexeFocusOption === suggestions.length - 1){
+    } else if(indexeFocusSuggestion === suggestions.length - 1){
       controleConteneurResultats.scroll({top: option.offsetTop})
       return
     }
@@ -844,7 +901,7 @@ function assurerOptionCouranteVisible() {
 
     <span aria-live="polite" id="{idControleZoneNotificationLecteurEcran}" class="utd-sr-only" tabindex="-1">{texteNotificationLecteurEcran}</span>
 
-    <span class="conteneur utd-form-control{afficherOptions ? ' ouvert' : ''}" dir="ltr" on:blur={blurConteneur}  role="{afficherOptions ? null : 'listbox'}" aria-expanded="{afficherOptions ? 'true' : 'false'}" tabindex="{afficherOptions ? '-1' : '0'}" on:keydown={onKeyDown} aria-disabled="false" aria-label="{ariaLabel}" aria-description="{ariaDescriptionConteneur}" aria-owns="{recherchable === 'false' ? idControleResultats : null}" aria-activedescendant="{recherchable === 'false' && afficherOptions ? idActiveDescendant : null}">
+    <span class="conteneur utd-form-control{afficherOptions ? ' ouvert' : ''}" dir="ltr" on:blur={blurConteneur}  role="{afficherOptions ? null : 'listbox'}" aria-expanded="{afficherOptions ? 'true' : 'false'}" tabindex="{afficherOptions ? '-1' : '0'}" on:keydown={onKeyDown} aria-disabled="false" aria-label="{ariaLabel}" aria-description="{ariaDescriptionConteneur}" aria-owns="{recherchable === 'false' ? idControleResultats : null}" aria-multiselectable="{multiple === 'true' && recherchable === 'false' ? 'true' : null}" aria-activedescendant="{recherchable === 'false' && afficherOptions ? idActiveDescendant : null}">
       <span class="selection {multiple === 'true'  && optionsSelectionnees.length > 0 ? 'contient-etiquettes': ''}" on:click={clickSelection} on:mousedown={selectionMouseDown}>
 
         {#if optionsSelectionnees.length === 0}
@@ -871,7 +928,7 @@ function assurerOptionCouranteVisible() {
       {#if recherchable === 'true'}
         <span class="conteneur-recherche {!afficherOptions ? 'utd-d-none' : ''}">
           <label for="{idControleRecherche}" class="utd-sr-only">{placeholderRecherche}</label>
-          <input type="text" id="{idControleRecherche}" class="utd-form-control recherche" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-multiselectable="{multiple === 'true' ? 'true' : null}" on:input={traiterSaisieRecherche} on:blur={blurRecherche} autocomplete="off" spellcheck="false" placeholder="{placeholderRecherche}" aria-description="{ariaDescriptionRecherche}" aria-controls="{idControleResultats}" aria-activedescendant="{afficherOptions ? idActiveDescendant : null}">
+          <input type="text" id="{idControleRecherche}" class="utd-form-control recherche" role="combobox" aria-expanded="true" aria-autocomplete="list" on:input={traiterSaisieRecherche} on:blur={blurRecherche} autocomplete="off" spellcheck="false" placeholder="{placeholderRecherche}" aria-description="{ariaDescriptionRecherche}" aria-controls="{idControleResultats}" aria-activedescendant="{afficherOptions ? idActiveDescendant : null}">
         </span>            
       {/if}
       <span class="resultats utd-scrollbar-verticale{!afficherOptions ? ' utd-d-none' : ''}{recherchable === 'true' ? ' recherchable' : ''}{estScrollbarSuggestionsVisible ? " scrollbar-visible" : ''}" on:mousedown={resultatsMouseDown}  dir="ltr">
@@ -881,7 +938,7 @@ function assurerOptionCouranteVisible() {
 
         <ul class="suggestions" role="listbox" aria-label="Suggestions" aria-multiselectable="{multiple === 'true' ? 'true' : null}" id="{idControleResultats}">
           {#each suggestions as suggestion, i}
-            <li class="{i === indexeFocusOption ? 'focus' : ''}" aria-label="{suggestion.texte}" role="option" id="{suggestion.id}" value="{suggestion.value}" indexeSuggestion="{i}" indexeOption="{suggestion.indexe}" aria-selected="{suggestion.selected ? 'true' : 'false'}" on:click={clickOption}>
+            <li class="{i === indexeFocusSuggestion ? 'focus' : ''}" aria-label="{suggestion.texte}" role="option" id="{suggestion.id}" value="{suggestion.value}" indexeSuggestion="{i}" indexeOption="{suggestion.indexe}" aria-selected="{suggestion.selected ? 'true' : 'false'}" on:click={clickOption}>
               {#if multiple === 'true'}
                 <span class="utd-checkbox" aria-hidden="true"></span>
               {/if}                            
