@@ -12,17 +12,10 @@
         tableauParametres = obtenirTableauParametres();
         tableauSlots = obtenirTableauSlots();
     })
-/*    xport let multiple = "false"
-export let recherchable = "false"
-export let rechercheFloue = "true"
-export let precisionRecherche = "0.2"
-export let largeur = "md" //Valeurs possible sm, md, lg
-export let placeholder = languePage === 'fr' ? "Sélectionner une valeur" : "(en)Sélectionner une valeur"
-export let placeholderRecherche = languePage === 'fr' ? "Rechercher dans la liste" : "(en)Rechercher dans la liste"*/
 
     function obtenirTableauParametres() {
         return [
-            {nom: "multiple", type: "Booléen (Optionnel)", description: `Indique s'il s'agit d'une liste à sélection multiple. (Défaut : "false")`},
+           
             {nom: "recherchable", type: "Booléen (Optionnel)", description: `Indique s'il est possible d'effectuer une recherche dans les valeurs possibles de la liste. (Défaut : "false")`},
             {nom: "largeur", type: "String (Optionnel)", description: `Largeur de la liste. Valeurs possibles : <span class="utd-emphase-gris">lg</span> (528px), <span class="utd-emphase-gris">md</span> (342px), <span class="utd-emphase-gris">sm</span> (156px).`},
             {nom: "recherche-floue", type: "Booléen (Optionnel)", description: `Indique si la recherche doit être précise ou non, i.e. doit contenir exactement le terme recherché. Si la recherche est floue, un certain niveau d'erreur est permis (ex. une faute de frappe). (Défaut : "true")`}
@@ -60,6 +53,10 @@ export let placeholderRecherche = languePage === 'fr' ? "Rechercher dans la list
 <h3>Particularités vs. le système de design Quebec.ca</h3>
 <p>À venir?</p>
 
+<h3>Particularités techniques</h3>
+<p>Ce composant produit une liste déroulante à partir d'une liste native (select). Il suffit d'intégrer à l'intérieur du présent composant une liste déroulante native avec les options que vous souhaitez et l'attribut "multiple" pour une liste à sélection multiple.</p>
+<p>Les attributs du composant vous permettent de spécifier si la liste est recherchable (floue ou précise), ainsi que sa largeur. La largeur devrait être déterminée en fonction de la longueur des textes des choix possibles.</p>
+
 <h2>Attributs disponibles</h2>
 <TableauParams parametres="{tableauParametres}">
 </TableauParams>
@@ -67,8 +64,10 @@ export let placeholderRecherche = languePage === 'fr' ? "Rechercher dans la list
 <h2>Slots disponibles</h2>
 <TableauSlots parametres="{tableauSlots}">
 </TableauSlots>
+<p>Pour obtenir une liste avec sélection multiple il suffit </p>
 
 <h2>Exemples</h2>
+<p>Les exemples 1a et 1b montrent des listes déroulantes natives à titre de référence et comparaison. Les autres exemples utilisent tous le composant "Liste déroulante".</p>
 <h3>1a- Liste déroulante native à sélection simple</h3>
 <div id="exemple1">
     <utd-champ-form libelle="Sélectionnez votre province canadienne préférée" precision="Ne soyez pas timide et assumez-vous.">
@@ -159,9 +158,9 @@ export let placeholderRecherche = languePage === 'fr' ? "Rechercher dans la list
 <h3>3- Liste déroulante à sélection multiple</h3>
 <div id="exemple3">
     <utd-champ-form precision="Ne soyez pas timide et assumez-vous.">
-        <utd-liste-deroulante multiple="true">
+        <utd-liste-deroulante>
             <label>Sélectionnez vos provinces canadiennes préférées</label>
-            <select id="select3">
+            <select id="select3" multiple>
                 <option value="" hidden="hidden" disabled="disabled" selected>Veuillez faire un choix</option>
                 <option value="AB">Alberta</option>
                 <option value="BC">Colombie-Britannique</option>
@@ -253,8 +252,8 @@ export let placeholderRecherche = languePage === 'fr' ? "Rechercher dans la list
 <p>Dans cet exemple des mots clés ont été ajoutés sur certaines options. Ex. "Nordiques Québec" pour "Colorado" et "pomme" pour "New York". Si une recherche est faite avec "Québec", le résultat "Colorado" sera disponible bien que le terme "Québec" ne soit pas dans le texte de l'option.</p>
 <div id="exemple5">
     <utd-champ-form libelle="Sélectionnez vos états américains préférés" precision="Ne soyez pas timide et assumez-vous.">
-        <utd-liste-deroulante recherchable="true" multiple="true">
-            <select id="select5">
+        <utd-liste-deroulante recherchable="true">
+            <select id="select5" multiple>
                 <option value="" hidden="hidden" disabled="disabled" selected>Veuillez faire un choix</option>
                 <option value="AL">Alabama</option>
                 <option value="AK" mots-cles="freeze">Alaska</option>
@@ -316,11 +315,11 @@ export let placeholderRecherche = languePage === 'fr' ? "Rechercher dans la list
 </CodeSource>
 
 <h3>6- Boîte combinée (sélection multiple) avec recherche précise (aucun flou)</h3>
-<p>Tenter une recherche avec le terme "Floride". Comme dans cet exemple la recherche est précise(vs. floue par défaut), il n'y aura aucun résultat contrairement à ce que nous pouvons obtenir dans l'exemple 5.</p>
+<p>Effectuer une recherche avec le terme "Floride". Comme dans cet exemple la recherche est précise(vs. floue par défaut), il n'y aura aucun résultat contrairement à ce que nous pouvons obtenir dans l'exemple 5.</p>
 <div id="exemple6">
     <utd-champ-form libelle="Sélectionnez vos états américains préférés" precision="Ne soyez pas timide et assumez-vous.">
         <utd-liste-deroulante recherchable="true" recherche-floue="false" multiple="true">
-            <select id="select6">
+            <select id="select6" multiple>
                 <option value="" hidden="hidden" disabled="disabled" selected>Veuillez faire un choix</option>
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>

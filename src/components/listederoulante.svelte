@@ -9,7 +9,7 @@ Référence : https://www.w3.org/WAI/ARIA/apg/example-index/combobox/combobox-au
 <script>
 //TODO 0 recherche dans tout le terme NON ON OUBIE CA CE N'EST PAS LOGIQUE ex. COL
 //TODO2 (REVÉRIFIER CAR CHANGE DEVRAIT ETRE CALLÉ) Caller blur event du select quand sélectionne ou déselectionne une option
-
+//TODO3 filet au dessus des suggestions (nouveau span visible uniquement si résultats visibles ou dans resultats et lui appliquer le margin top au lieu de resultats)
 
 
 import { onMount } from "svelte";
@@ -19,13 +19,10 @@ import MiniSearch from 'minisearch'
 
 const languePage = Utils.obtenirLanguePage()
 
-export let multiple = "false"
 export let recherchable = "false"
 export let rechercheFloue = "true"
 export let precisionRecherche = "0.2"
 export let largeur = "md" //Valeurs possible sm, md, lg
-export let textePlaceholderSelect = languePage === 'fr' ? "Veuillez faire un choix" : "(en)Veuillez faire un choix"
-export let textePlaceholderRecherche = languePage === 'fr' ? "Rechercher dans la liste" : "(en)Rechercher dans la liste"
 
 //Contrôles
 const thisComponent = get_current_component()
@@ -39,13 +36,16 @@ const idControleZoneNotificationLecteurEcran = Utils.genererId()
 const titleEtiquette = languePage === 'fr' ? "Supprimer" : "Delete"
 const descriptionEtiquette = languePage === 'fr' ? "Déselectionner" : "Unselect"
 const texteNotificationEtiquetteSupprimee = languePage === 'fr' ? "Élément désélectionné" : "Item unselected"
-const srPrefixeDescriptionValeursSelectionnees = languePage === 'fr' ? (multiple === 'true' ? "Valeurs sélectionnées" : "Valeur sélectionnée") : (multiple === 'true' ? "Selected values" : "Selected value")
+const srPrefixeDescriptionValeursSelectionnees = languePage === 'fr' ? (multiple ? "Valeurs sélectionnées" : "Valeur sélectionnée") : (multiple ? "Selected values" : "Selected value")
 const srDescriptionAucuneValeurSelectionnee = languePage === 'fr' ? "Aucune valeur sélectionnée." : "No selected value"
 const labelListeValeursSelectionnees = languePage === 'fr' ? "Valeurs sélectionnées" : "Selected values"
 const srResultatsTrouves = languePage === 'fr' ? "{x} résultats trouvés" : "{x} results found."
 const texteAucunResultat = languePage === 'fr' ? "Aucun résultat trouvé." : "No results found."
 const srAucunResultat = texteAucunResultat
-
+const textePlaceholderSelect = languePage === 'fr' ? "Veuillez faire un choix" : "(en)Veuillez faire un choix"
+const textePlaceholderRecherche = languePage === 'fr' ? "Rechercher dans la liste" : "(en)Rechercher dans la liste"
+const texteCommunAriaDescriptionRecherche = languePage === 'fr' ? "Utilisez les touches flèches haut et bas pour naviguer dans la liste des suggestions, Entrée ou Espace pour sélectionner un élément" : "(en)Utilisez les touches flèches haut et bas pour naviguer dans la liste des suggestions, Entrée ou Espace pour sélectionner un élément"
+const texteAccesSelectionAriaDescriptionRecherche = languePage === 'fr' ? ", et Shift + Tab afin d'accéder à la liste des éléments sélectionnés" : "(en), et Shift + Tab afin d'accéder à la liste des éléments sélectionnés"
 
 let mounted = false
 let html
@@ -72,6 +72,7 @@ let estDeselectionEnCours = false
 let miniSearch
 let optionsMiniSearch
 let estScrollbarSuggestionsVisible = false
+let multiple = false
 
 
 onMount(() => {  
@@ -96,7 +97,7 @@ onMount(() => {
   controleZoneNotificationLecteurEcran = thisComponent.shadowRoot.getElementById(idControleZoneNotificationLecteurEcran)
   controleRecherche = thisComponent.shadowRoot.getElementById(idControleRecherche)
   controleConteneurResultats = thisComponent.shadowRoot.querySelector('.resultats')
-
+  
 
     ajusterControleSelectOriginal()
     if(!controleSelect){
@@ -137,15 +138,7 @@ function indexerTerme(terme) {
 function definirAriaDescriptionRecherche(initial) {
   let ariaDescription = null
   if(initial || !afficherOptions){
-    if(languePage === 'fr'){
-      const texteCommun = "Utilisez les touches flèches haut et bas pour naviguer dans la liste des suggestions, Entrée ou Espace pour sélectionner un élément"      
-      const texteSelectionMultiple = ", et Shift + Tab afin d'accéder à la liste des éléments sélectionnés"
-      ariaDescription = multiple === 'true' ? `${texteCommun}${texteSelectionMultiple}.` : `${texteCommun}.`
-    } else {
-      const texteCommun = "(en)Utilisez les touches flèches haut et bas pour naviguer dans la liste des suggestions, Entrée ou Espace pour sélectionner un élément"      
-      const texteSelectionMultiple = ", et Shift + Tab afin d'accéder à la liste des éléments sélectionnés"
-      ariaDescription = multiple === 'true' ? `${texteCommun}${texteSelectionMultiple}.` : `${texteCommun}.`
-    }
+      ariaDescription = multiple ? `${texteCommunAriaDescriptionRecherche}${texteAccesSelectionAriaDescriptionRecherche}.` : `${texteCommunAriaDescriptionRecherche}.`
   }
 
   ariaDescriptionRecherche = ariaDescription
@@ -194,7 +187,7 @@ function definirAriaDescriptionConteneur(){
   description = description ? description + '. ' : '' 
 
   if(optionsSelectionnees.length){
-    const texteNbOptions = multiple === 'true' ? ` (${optionsSelectionnees.length})` : ''
+    const texteNbOptions = multiple ? ` (${optionsSelectionnees.length})` : ''
     description += `${srPrefixeDescriptionValeursSelectionnees}${texteNbOptions} : ${obtenirTexteOptionsSelectionnees()}`
   } else {
     description += `${srDescriptionAucuneValeurSelectionnee}`
@@ -402,6 +395,10 @@ function ajusterControleSelectOriginal() {
     return
   }
 
+  if(controleSelect.getAttribute('multiple') !== null){
+    multiple = true
+  }
+  
   ajouterPlaceholderSelectOriginal()
 
   //Si le select original reçoit le focus, on le redonne tout de suite à notre composant
@@ -416,7 +413,7 @@ function ajusterControleSelectOriginal() {
   controleSelect.setAttribute("tabindex", "-1")  
   controleSelect.setAttribute("aria-hidden", "true")  
 
-  if(multiple === 'true'){
+  if(multiple){
     controleSelect.setAttribute("multiple", "")
     retirerOptionPlaceholderControleSelectOriginal()
   }
@@ -466,7 +463,7 @@ function selectionnerOption(indexeSuggestion){
     definirOptionsSelectionnees()
     definirAriaDescriptionConteneur()
 
-    if(multiple === 'false'){
+    if(!multiple){
       
       if(indexeSelectionPrecedente >= 0){
         const indexePrecedent = suggestions.findIndex((element) => element.indexe === indexeSelectionPrecedente)
@@ -481,7 +478,7 @@ function selectionnerOption(indexeSuggestion){
       suggestions[indexeSuggestion].selected = optionsSelectionnees.findIndex((element) => element.indexe === indexeOption) >= 0
     }
 
-    if(multiple === 'false'){
+    if(!multiple){
       afficherOptions = false
       controleConteneur.focus()
     } else {
@@ -574,7 +571,7 @@ function notifierLecteurEcran(texte){
 }
 function majValeurListeOriginale(indexe) {
   
-  if(multiple === 'true'){
+  if(multiple){
     controleSelect.options[indexe].selected = !controleSelect.options[indexe].selected
   } else {
     controleSelect.selectedIndex = indexe
@@ -627,7 +624,7 @@ function onKeyDown(e){
       break
     case "Tab":
       //Pour une liste déroulante multiple sans recherche avec des selections actives, on veut que le SHIFT + TAB donne le focus à la dernière étiquette.
-      if(recherchable === 'false' && multiple === 'true'){        
+      if(recherchable === 'false' && multiple){        
         if(e.shiftKey && e.target === controleConteneur && afficherOptions && optionsSelectionnees.length > 0){
           e.preventDefault()
           e.stopPropagation()
@@ -649,7 +646,7 @@ function onKeyDown(e){
       e.preventDefault()
 
       //Si liste simple sans recherche, la flèche provoque un changement de l'option sélectionnée comme un select natif
-      if(recherchable === 'false' && multiple === 'false' && !afficherOptions){
+      if(recherchable === 'false' && !multiple && !afficherOptions){
         selectionnerOption(obtenirIndexeProchaineSuggestion(controleSelect.selectedIndex, 1))
         return
       }
@@ -682,7 +679,7 @@ function onKeyDown(e){
       e.preventDefault()
 
       //Si liste simple sans recherche, la flèche provoque un changement de l'option sélectionnée comme un select natif
-      if(recherchable === 'false' && multiple === 'false' && !afficherOptions){
+      if(recherchable === 'false' && !multiple && !afficherOptions){
         selectionnerOption(obtenirIndexeProchaineSuggestion(controleSelect.selectedIndex, -1))
         return
       }
@@ -912,18 +909,18 @@ function assurerOptionCouranteVisible() {
 </script>
 
 
-<div class="utd-component utd-liste-deroulante {largeur}{multiple === 'true' ? ' multiple' : ''}{recherchable === 'true' ? ' recherchable' : ''}">
+<div class="utd-component utd-liste-deroulante {largeur}{multiple ? ' multiple' : ''}{recherchable === 'true' ? ' recherchable' : ''}">
   <slot></slot>
 
     <span aria-live="polite" id="{idControleZoneNotificationLecteurEcran}" class="utd-sr-only" tabindex="-1">{texteNotificationLecteurEcran}</span>
 
-    <span class="conteneur utd-form-control{afficherOptions ? ' ouvert' : ''}" dir="ltr" on:blur={blurConteneur}  role="{afficherOptions ? null : 'listbox'}" aria-expanded="{afficherOptions ? 'true' : 'false'}" tabindex="{afficherOptions ? '-1' : '0'}" on:keydown={onKeyDown} aria-disabled="false" aria-label="{ariaLabel}" aria-description="{ariaDescriptionConteneur}" aria-owns="{recherchable === 'false' ? idControleResultats : null}" aria-multiselectable="{multiple === 'true' && recherchable === 'false' ? 'true' : null}" aria-activedescendant="{recherchable === 'false' && afficherOptions ? idActiveDescendant : null}">
-      <span class="selection {multiple === 'true'  && optionsSelectionnees.length > 0 ? 'contient-etiquettes': ''}" on:click={clickSelection} on:mousedown={selectionMouseDown}>
+    <span class="conteneur utd-form-control{afficherOptions ? ' ouvert' : ''}" dir="ltr" on:blur={blurConteneur}  role="{afficherOptions ? null : 'listbox'}" aria-expanded="{afficherOptions ? 'true' : 'false'}" tabindex="{afficherOptions ? '-1' : '0'}" on:keydown={onKeyDown} aria-disabled="false" aria-label="{ariaLabel}" aria-description="{ariaDescriptionConteneur}" aria-owns="{recherchable === 'false' ? idControleResultats : null}" aria-multiselectable="{multiple && recherchable === 'false' ? 'true' : null}" aria-activedescendant="{recherchable === 'false' && afficherOptions ? idActiveDescendant : null}">
+      <span class="selection {multiple  && optionsSelectionnees.length > 0 ? 'contient-etiquettes': ''}" on:click={clickSelection} on:mousedown={selectionMouseDown}>
 
         {#if optionsSelectionnees.length === 0}
           <span class="utd-placeholder">{textePlaceholderSelect}</span>
         {:else}
-          {#if multiple === 'false'}
+          {#if !multiple}
               <span>{optionsSelectionnees[0].texte}</span>                                
           {:else}
               <ul aria-label="{labelListeValeursSelectionnees}">
@@ -952,10 +949,10 @@ function assurerOptionCouranteVisible() {
           <span class="texte-aucun-resultat" aria-hidden="true">{texteAucunResultat}</span>
         {/if}
 
-        <ul class="suggestions" role="listbox" aria-label="Suggestions" aria-multiselectable="{multiple === 'true' ? 'true' : null}" id="{idControleResultats}">
+        <ul class="suggestions" role="listbox" aria-label="Suggestions" aria-multiselectable="{multiple ? 'true' : null}" id="{idControleResultats}">
           {#each suggestions as suggestion, i}
             <li class="{i === indexeFocusSuggestion ? 'focus' : ''}" aria-label="{suggestion.texte}" role="option" id="{suggestion.id}" value="{suggestion.value}" indexeSuggestion="{i}" indexeOption="{suggestion.indexe}" aria-selected="{suggestion.selected ? 'true' : 'false'}" on:click={clickOption}>
-              {#if multiple === 'true'}
+              {#if multiple}
                 <span class="utd-checkbox" aria-hidden="true"></span>
               {/if}                            
               <span class="texte-option">{suggestion.texte}</span>      
