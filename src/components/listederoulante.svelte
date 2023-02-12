@@ -8,8 +8,6 @@ Référence : https://www.w3.org/WAI/ARIA/apg/example-index/combobox/combobox-au
 
 <script>
 //TODO 0 recherche dans tout le terme NON ON OUBIE CA CE N'EST PAS LOGIQUE ex. COL
-//TODO1 option default... ajouter un param true par défaut. Append de l'option au load si value = ""
-//<option value="" hidden="hidden" disabled="disabled" selected>Veuillez faire un choix.</option>
 //TODO2 (REVÉRIFIER CAR CHANGE DEVRAIT ETRE CALLÉ) Caller blur event du select quand sélectionne ou déselectionne une option
 
 
@@ -26,8 +24,8 @@ export let recherchable = "false"
 export let rechercheFloue = "true"
 export let precisionRecherche = "0.2"
 export let largeur = "md" //Valeurs possible sm, md, lg
-export let placeholder = languePage === 'fr' ? "Sélectionner une valeur" : "(en)Sélectionner une valeur"
-export let placeholderRecherche = languePage === 'fr' ? "Rechercher dans la liste" : "(en)Rechercher dans la liste"
+export let textePlaceholderSelect = languePage === 'fr' ? "Veuillez faire un choix" : "(en)Veuillez faire un choix"
+export let textePlaceholderRecherche = languePage === 'fr' ? "Rechercher dans la liste" : "(en)Rechercher dans la liste"
 
 //Contrôles
 const thisComponent = get_current_component()
@@ -404,6 +402,8 @@ function ajusterControleSelectOriginal() {
     return
   }
 
+  ajouterPlaceholderSelectOriginal()
+
   //Si le select original reçoit le focus, on le redonne tout de suite à notre composant
   controleSelect.addEventListener('focus', (e) => { 
     e.preventDefault()
@@ -420,10 +420,17 @@ function ajusterControleSelectOriginal() {
     controleSelect.setAttribute("multiple", "")
     retirerOptionPlaceholderControleSelectOriginal()
   }
+}
 
-  //TODO ici ajouter le placeholder
-//<option value="" hidden="hidden" disabled="disabled" selected>Veuillez faire un choix</option>
-  
+function ajouterPlaceholderSelectOriginal(){
+  if(controleSelect.options[0].value !== '' ){
+    const optionPlaceholder = new Option(textePlaceholderSelect,'')
+    optionPlaceholder.disabled = true
+    optionPlaceholder.hidden = true
+    optionPlaceholder.selected = true
+
+    controleSelect.options.add(optionPlaceholder, 0)
+  }
 }
 
 function ajusterControleLabelOriginal() {
@@ -436,6 +443,15 @@ function ajusterControleLabelOriginal() {
 
   if(!controleLabel){
     controleLabel = thisComponent.parentElement.querySelector('label')
+  } 
+
+  //On annule le comportement par défaut du click afin d'éviter qu'il donne le focus au contrôle select original qui est hors écran. Cela faisait afficher le contrôle natif en mobile une fraction de seconde avant que le focus retourne sur notre conteneur.
+  if(controleLabel){
+    controleLabel.addEventListener('click', (e) => {  
+      e.preventDefault()
+      e.stopPropagation()
+      controleConteneur.focus()
+    })
   } 
 }
 
@@ -905,7 +921,7 @@ function assurerOptionCouranteVisible() {
       <span class="selection {multiple === 'true'  && optionsSelectionnees.length > 0 ? 'contient-etiquettes': ''}" on:click={clickSelection} on:mousedown={selectionMouseDown}>
 
         {#if optionsSelectionnees.length === 0}
-          <span class="utd-placeholder">{placeholder}</span>
+          <span class="utd-placeholder">{textePlaceholderSelect}</span>
         {:else}
           {#if multiple === 'false'}
               <span>{optionsSelectionnees[0].texte}</span>                                
@@ -927,8 +943,8 @@ function assurerOptionCouranteVisible() {
   
       {#if recherchable === 'true'}
         <span class="conteneur-recherche {!afficherOptions ? 'utd-d-none' : ''}">
-          <label for="{idControleRecherche}" class="utd-sr-only">{placeholderRecherche}</label>
-          <input type="text" id="{idControleRecherche}" class="utd-form-control recherche" role="combobox" aria-expanded="true" aria-autocomplete="list" on:input={traiterSaisieRecherche} on:blur={blurRecherche} autocomplete="off" spellcheck="false" placeholder="{placeholderRecherche}" aria-description="{ariaDescriptionRecherche}" aria-controls="{idControleResultats}" aria-activedescendant="{afficherOptions ? idActiveDescendant : null}">
+          <label for="{idControleRecherche}" class="utd-sr-only">{textePlaceholderRecherche}</label>
+          <input type="text" id="{idControleRecherche}" class="utd-form-control recherche" role="combobox" aria-expanded="true" aria-autocomplete="list" on:input={traiterSaisieRecherche} on:blur={blurRecherche} autocomplete="off" spellcheck="false" placeholder="{textePlaceholderRecherche}" aria-description="{ariaDescriptionRecherche}" aria-controls="{idControleResultats}" aria-activedescendant="{afficherOptions ? idActiveDescendant : null}">
         </span>            
       {/if}
       <span class="resultats utd-scrollbar-verticale{!afficherOptions ? ' utd-d-none' : ''}{recherchable === 'true' ? ' recherchable' : ''}{estScrollbarSuggestionsVisible ? " scrollbar-visible" : ''}" on:mousedown={resultatsMouseDown}  dir="ltr">
