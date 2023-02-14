@@ -7,9 +7,8 @@ Référence : https://www.w3.org/WAI/ARIA/apg/example-index/combobox/combobox-au
 <svelte:options tag="utd-liste-deroulante" />
 
 <script>
-//TODO 0 recherche dans tout le terme NON ON OUBIE CA CE N'EST PAS LOGIQUE ex. COL
 //TODO2 (REVÉRIFIER CAR CHANGE DEVRAIT ETRE CALLÉ) Caller blur event du select quand sélectionne ou déselectionne une option
-//TODO3 filet au dessus des suggestions (nouveau span visible uniquement si résultats visibles ou dans resultats et lui appliquer le margin top au lieu de resultats)
+
 
 
 import { onMount } from "svelte";
@@ -32,12 +31,11 @@ const idControleZoneNotificationLecteurEcran = Utils.genererId()
 
 
 //Textes fixes TODO traduire
-//const texteAideUtilisation = languePage === 'fr' ? "Utilisez la tabulation (ou les touches flèches) pour naviguer dans la liste des suggestions." : "(en)Utilisez la tabulation (ou les touches flèches) pour naviguer dans la liste des suggestions."
 const titleEtiquette = languePage === 'fr' ? "Supprimer" : "Delete"
 const descriptionEtiquette = languePage === 'fr' ? "Déselectionner" : "Unselect"
 const texteNotificationEtiquetteSupprimee = languePage === 'fr' ? "Élément désélectionné" : "Item unselected"
-const srPrefixeDescriptionValeursSelectionnees = languePage === 'fr' ? (multiple ? "Valeurs sélectionnées" : "Valeur sélectionnée") : (multiple ? "Selected values" : "Selected value")
-const srDescriptionAucuneValeurSelectionnee = languePage === 'fr' ? "Aucune valeur sélectionnée." : "No selected value"
+const srPrefixeDescriptionValeurSelectionnee = languePage === 'fr' ? "Valeur sélectionnée" : "Selected value"
+const srPrefixeDescriptionValeursSelectionnees = languePage === 'fr' ? "Valeurs sélectionnées" : "Selected values"
 const labelListeValeursSelectionnees = languePage === 'fr' ? "Valeurs sélectionnées" : "Selected values"
 const srResultatsTrouves = languePage === 'fr' ? "{x} résultats trouvés" : "{x} results found."
 const texteAucunResultat = languePage === 'fr' ? "Aucun résultat trouvé." : "No results found."
@@ -46,6 +44,8 @@ const textePlaceholderSelect = languePage === 'fr' ? "Veuillez faire un choix" :
 const textePlaceholderRecherche = languePage === 'fr' ? "Rechercher dans la liste" : "(en)Rechercher dans la liste"
 const texteCommunAriaDescriptionRecherche = languePage === 'fr' ? "Utilisez les touches flèches haut et bas pour naviguer dans la liste des suggestions, Entrée ou Espace pour sélectionner un élément" : "(en)Utilisez les touches flèches haut et bas pour naviguer dans la liste des suggestions, Entrée ou Espace pour sélectionner un élément"
 const texteAccesSelectionAriaDescriptionRecherche = languePage === 'fr' ? ", et Shift + Tab afin d'accéder à la liste des éléments sélectionnés" : "(en), et Shift + Tab afin d'accéder à la liste des éléments sélectionnés"
+const srLibelleListeValeursPossibles = 'fr' ? "Choix:" : "(en)Rechercher dans la liste"
+const nbCaracteresMinimalRecherche = 2
 
 let mounted = false
 let html
@@ -193,11 +193,13 @@ function definirAriaDescriptionConteneur(){
   let description = obtenirTexteSelonAttributAria(controleSelect, 'aria-describedby')
   description = description ? description + '. ' : '' 
 
+  const prefixe = multiple ? srPrefixeDescriptionValeursSelectionnees : srPrefixeDescriptionValeurSelectionnee
+
   if(optionsSelectionnees.length){
     const texteNbOptions = multiple ? ` (${optionsSelectionnees.length})` : ''
-    description += `${srPrefixeDescriptionValeursSelectionnees}${texteNbOptions} : ${obtenirTexteOptionsSelectionnees()}`
+    description += `${prefixe}${texteNbOptions} : ${obtenirTexteOptionsSelectionnees()}`
   } else {
-    description += `${srDescriptionAucuneValeurSelectionnee}`
+    description += `${textePlaceholderSelect}.`
   }
 
   ariaDescriptionConteneur = description.replace("..", ".")
@@ -353,8 +355,10 @@ function definirSuggestions(doitNotifierLecteurEcran) {
   let resultatRecherche = []
 
   const optionsRecherche = {...optionsMiniSearch, ...{fuzzy: term => term.length > 3 ? optionsMiniSearch.fuzzy : null}}
-  if(texteRecherche.trim() !== ""){
-    resultatRecherche = miniSearch.search(texteRecherche.trim(), optionsRecherche).map((item) => options.find((option) => item.indexe === option.indexe))
+
+  const texteRechercheSansEspace = texteRecherche.trim()
+  if(texteRechercheSansEspace !== "" && texteRechercheSansEspace.length >= nbCaracteresMinimalRecherche){
+    resultatRecherche = miniSearch.search(texteRechercheSansEspace, optionsRecherche).map((item) => options.find((option) => item.indexe === option.indexe))
   } else {
     resultatRecherche = options
   }
@@ -459,7 +463,7 @@ function ajusterControleLabelOriginal() {
 }
 
 
-function selectionnerOption(indexeSuggestion){
+function selectionnerOption(indexeSuggestion, doitNotifierLecteurEcran = false){
   if(indexeSuggestion !== null){
 
     const indexeSelectionPrecedente = controleSelect.selectedIndex
@@ -467,7 +471,6 @@ function selectionnerOption(indexeSuggestion){
 
     majValeurListeOriginale(indexeOption)
     definirOptionsSelectionnees()
-    definirAriaDescriptionConteneur()
 
     if(!multiple){
       
@@ -480,6 +483,9 @@ function selectionnerOption(indexeSuggestion){
       }
 
       suggestions[indexeSuggestion].selected = true
+      if(doitNotifierLecteurEcran){
+        notifierLecteurEcran(suggestions[indexeSuggestion].texte)
+      }
     } else {      
       suggestions[indexeSuggestion].selected = optionsSelectionnees.findIndex((element) => element.indexe === indexeOption) >= 0
     }
@@ -625,6 +631,7 @@ function onKeyDown(e){
 
       if(indexeFocusSuggestion !== null) {
         selectionnerOption(indexeFocusSuggestion)
+        definirAriaDescriptionConteneur()
       } else {
         afficherOptions = !afficherOptions     
         if(suggestions.length && recherchable === 'false'){
@@ -667,7 +674,7 @@ function onKeyDown(e){
 
       //Si liste simple sans recherche, la flèche provoque un changement de l'option sélectionnée comme un select natif
       if(recherchable === 'false' && !multiple && !afficherOptions){
-        selectionnerOption(obtenirIndexeProchaineSuggestion(controleSelect.selectedIndex, 1))
+        selectionnerOption(obtenirIndexeProchaineSuggestion(controleSelect.selectedIndex, 1), true)
         return
       }
 
@@ -700,7 +707,7 @@ function onKeyDown(e){
 
       //Si liste simple sans recherche, la flèche provoque un changement de l'option sélectionnée comme un select natif
       if(recherchable === 'false' && !multiple && !afficherOptions){
-        selectionnerOption(obtenirIndexeProchaineSuggestion(controleSelect.selectedIndex, -1))
+        selectionnerOption(obtenirIndexeProchaineSuggestion(controleSelect.selectedIndex, -1), true)
         return
       }
 
@@ -837,6 +844,7 @@ function blurConteneur(e){
   if(!estFocusInterieurComposant(e)){
     afficherOptions = false
     controleSelect.dispatchEvent(new Event('blur'))
+    definirAriaDescriptionConteneur()
   }
  }
 
@@ -876,7 +884,8 @@ function clickOption(e){
   const indexeSuggestion = e.currentTarget.getAttribute('indexeSuggestion')
 
   if(indexeSuggestion){
-    selectionnerOption(parseInt(indexeSuggestion))    
+    selectionnerOption(parseInt(indexeSuggestion)) 
+    definirAriaDescriptionConteneur()   
   }
 }
 
@@ -957,15 +966,20 @@ function assurerOptionCouranteVisible() {
       {#if recherchable === 'true'}
         <span class="conteneur-recherche {!afficherOptions ? 'utd-d-none' : ''}">
           <label for="{idControleRecherche}" class="utd-sr-only">{textePlaceholderRecherche}</label>
-          <input type="text" id="{idControleRecherche}" class="utd-form-control recherche" role="combobox" aria-expanded="true" aria-autocomplete="list" on:input={traiterSaisieRecherche} on:blur={blurRecherche} autocomplete="off" spellcheck="false" placeholder="{textePlaceholderRecherche}" aria-description="{ariaDescriptionRecherche}" aria-controls="{idControleResultats}" aria-activedescendant="{afficherOptions ? idActiveDescendant : null}">
+          <input type="text" id="{idControleRecherche}" class="utd-form-control recherche" role="combobox" aria-expanded="true" aria-autocomplete="none" on:input={traiterSaisieRecherche} on:blur={blurRecherche} autocomplete="off" spellcheck="false" placeholder="{textePlaceholderRecherche}" aria-description="{ariaDescriptionRecherche}" aria-controls="{idControleResultats}" aria-activedescendant="{afficherOptions ? idActiveDescendant : null}">
         </span>            
       {/if}
+
+      {#if !multiple && recherchable === 'false' && afficherOptions}
+        <span class="separateur-resultats" aria-hidden="true"></span>
+      {/if}
+
       <span class="resultats utd-scrollbar-verticale{!afficherOptions ? ' utd-d-none' : ''}{recherchable === 'true' ? ' recherchable' : ''}{estScrollbarSuggestionsVisible ? " scrollbar-visible" : ''}" on:mousedown={resultatsMouseDown}  dir="ltr">
         {#if suggestions.length === 0}
           <span class="texte-aucun-resultat" aria-hidden="true">{texteAucunResultat}</span>
         {/if}
 
-        <ul class="suggestions" role="listbox" aria-label="Suggestions" aria-multiselectable="{multiple ? 'true' : null}" id="{idControleResultats}">
+        <ul class="suggestions" role="listbox" aria-label="{srLibelleListeValeursPossibles}" aria-multiselectable="{multiple ? 'true' : null}" id="{idControleResultats}">
           {#each suggestions as suggestion, i}
             <li class="{i === indexeFocusSuggestion ? 'focus' : ''}" aria-label="{suggestion.texte}" role="option" id="{suggestion.id}" value="{suggestion.value}" indexeSuggestion="{i}" indexeOption="{suggestion.indexe}" aria-selected="{suggestion.selected ? 'true' : 'false'}" on:click={clickOption}>
               {#if multiple}
