@@ -112,8 +112,8 @@ onMount(() => {
     //Settimeout important afin de s'assurer que le paint et autres traitements sont complétés (ex. avec VueFormulate)
     setTimeout(() => {
       //TODO tester et remettre avant settimeout si ne fonctionne pas
-      definirSuggestions()
       definirOptionsSelectionnees()      
+      definirSuggestions()
     })
    
     definirAttributsInitiauxSelectOriginal()
@@ -323,7 +323,6 @@ function obtenirOptions() {
         id: Utils.genererId(),
         texte: texte,
         valeur: option.value,
-        texteFormatte: texte.toLowerCase(),
         motsCles: option.getAttribute('mots-cles'),
         indexe: i,
         selected: option.selected,
@@ -363,7 +362,7 @@ function definirSuggestions(doitNotifierLecteurEcran) {
   for (let i = 0; i < resultatRecherche.length; i++) {   
     const suggestion = resultatRecherche[i]
 
-    suggestion.selected = controleSelect.options[suggestion.indexe].selected
+    suggestion.selected =  optionsSelectionnees.findIndex((option) => suggestion.indexe === option.indexe) >= 0
     nouvellesSuggestions.push(suggestion)
   }
 
@@ -597,16 +596,10 @@ function majOptionsSelectionees(indexe){
 
 function definirOptionsSelectionnees(){
   optionsSelectionnees = []
-  console.log(controleLabel.innerText)
-  console.log(controleSelect.selectedOptions)
 
   for (let i = 0; i < controleSelect.selectedOptions.length; i++) {  
     const option = controleSelect.selectedOptions[i]   
-    console.log('value')
-    console.log(option.value)
-    console.log(option.index)
     if(option.value){ 
-      console.log(options)
       optionsSelectionnees.push(options.find((element) => element.indexe === option.index))
     }
   }
@@ -617,9 +610,15 @@ function onKeyDown(e){
     case "Enter":
     case " ":
    
+
+      //On conserve comportement natif si barre espace et contrôle courant est textbox de recherche
+      if(e.key === " " && e.target == controleRecherche && indexeFocusSuggestion === null) {
+        return  
+      }
+
       //Si contrôle courant est une etiquette, on procède à la désélection
       if(e.target.classList.contains('etiquette')) {
-        break        
+        return        
       }
 
       e.preventDefault()
@@ -635,9 +634,9 @@ function onKeyDown(e){
 
       break
     case "Tab":
-      //Pour une liste déroulante multiple sans recherche avec des selections actives, on veut que le SHIFT + TAB donne le focus à la dernière étiquette.
-      if(recherchable === 'false' && multiple){        
-        if(e.shiftKey && e.target === controleConteneur && afficherOptions && optionsSelectionnees.length > 0){
+      //Pour une liste déroulante multiple sans recherche avec des selections actives, on veut que le SHIFT + TAB donne le focus à la dernière étiquette et TAB passe au contrôle suivant.
+      if(recherchable === 'false' && multiple && afficherOptions && e.target === controleConteneur && optionsSelectionnees.length > 0){            
+        if(e.shiftKey){
           e.preventDefault()
           e.stopPropagation()
 
@@ -645,6 +644,9 @@ function onKeyDown(e){
           if(etiquettes.length){
             etiquettes[etiquettes.length -1].focus()
           }
+        } else {            
+            //Si tab seulement on ferme la liste (le focus ira au prochain contrôle)
+            afficherOptions = false
         }
       }
       break        
@@ -655,6 +657,12 @@ function onKeyDown(e){
       break        
     case "ArrowDown":
     case "ArrowRight":
+
+      //On conserve comportement natif si flèche droite et contrôle courant est textbox de recherche
+      if(e.key === 'ArrowRight' && e.target == controleRecherche) {
+        return  
+      }
+      
       e.preventDefault()
 
       //Si liste simple sans recherche, la flèche provoque un changement de l'option sélectionnée comme un select natif
@@ -670,12 +678,7 @@ function onKeyDown(e){
         if(suggestions.length && recherchable === 'false'){
           indexeFocusSuggestion = 0
         }
-
-      } else {
-        if(e.key === "ArrowRight" && recherchable === 'true'){
-          return   
-        }
-
+      } else if(suggestions.length){
         if(indexeFocusSuggestion !== null){
           modifierIndexeOptionCourante(1)     
         } else {
@@ -687,6 +690,11 @@ function onKeyDown(e){
       break      
     case "ArrowUp":
     case "ArrowLeft":
+
+      //On conserve comportement natif si flèche gauche et contrôle courant est textbox de recherche
+      if(e.key === 'ArrowLeft' && e.target == controleRecherche) {
+        return  
+      }
 
       e.preventDefault()
 
@@ -703,16 +711,12 @@ function onKeyDown(e){
           indexeFocusSuggestion = suggestions.length - 1
         }
 
-      } else {
-        if(e.key === "ArrowLeft" && recherchable === 'true'){
-          return   
-        }
-
-        if(indexeFocusSuggestion !== null){
-          modifierIndexeOptionCourante(-1)     
-        } else {
-          indexeFocusSuggestion = indexeFocusSuggestion || suggestions.length - 1
-        }      
+      } else if(suggestions.length){
+          if(indexeFocusSuggestion !== null){
+            modifierIndexeOptionCourante(-1)     
+          } else {
+            indexeFocusSuggestion = indexeFocusSuggestion || suggestions.length - 1
+          }      
       }
       assurerOptionCouranteVisible()
       break
