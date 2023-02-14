@@ -14,8 +14,7 @@
     })
 
     function obtenirTableauParametres() {
-        return [
-           
+        return [           
             {nom: "recherchable", type: "Booléen (Optionnel)", description: `Indique s'il est possible d'effectuer une recherche dans les valeurs possibles de la liste. (Défaut : "false")`},
             {nom: "largeur", type: "String (Optionnel)", description: `Largeur de la liste. Valeurs possibles : <span class="utd-emphase-gris">lg</span> (528px), <span class="utd-emphase-gris">md</span> (342px), <span class="utd-emphase-gris">sm</span> (156px).`},
             {nom: "recherche-floue", type: "Booléen (Optionnel)", description: `Indique si la recherche doit être précise ou non, i.e. doit contenir exactement le terme recherché. Si la recherche est floue, un certain niveau d'erreur est permis (ex. une faute de frappe). (Défaut : "true")`}

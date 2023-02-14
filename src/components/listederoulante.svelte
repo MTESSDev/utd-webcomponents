@@ -107,8 +107,15 @@ onMount(() => {
     ajusterControleLabelOriginal()
 
     options = obtenirOptions()
-    definirSuggestions()
-    definirOptionsSelectionnees()
+
+
+    //Settimeout important afin de s'assurer que le paint et autres traitements sont complétés (ex. avec VueFormulate)
+    setTimeout(() => {
+      //TODO tester et remettre avant settimeout si ne fonctionne pas
+      definirSuggestions()
+      definirOptionsSelectionnees()      
+    })
+   
     definirAttributsInitiauxSelectOriginal()
     observerAttributsSelectOrignal()
     observerAttributsLabelOrignal()
@@ -356,7 +363,6 @@ function definirSuggestions(doitNotifierLecteurEcran) {
   for (let i = 0; i < resultatRecherche.length; i++) {   
     const suggestion = resultatRecherche[i]
 
-    //TODO ici faire un findindex?
     suggestion.selected = controleSelect.options[suggestion.indexe].selected
     nouvellesSuggestions.push(suggestion)
   }
@@ -420,6 +426,7 @@ function ajusterControleSelectOriginal() {
 }
 
 function ajouterPlaceholderSelectOriginal(){
+  
   if(controleSelect.options[0].value !== '' ){
     const optionPlaceholder = new Option(textePlaceholderSelect,'')
     optionPlaceholder.disabled = true
@@ -576,8 +583,8 @@ function majValeurListeOriginale(indexe) {
   } else {
     controleSelect.selectedIndex = indexe
   }
-  //TODO en théorie inutile
-  //controleSelect.dispatchEvent(new Event('change'))
+  //Important! Nécessaire afin que notamment VueFormulate (FRW) considère la nouvelle valeur saisie... Sinon c'est comme si rien n'avait été sélectionné.
+  controleSelect.dispatchEvent(new Event('change'))
 }
 
 function majOptionsSelectionees(indexe){
@@ -590,11 +597,16 @@ function majOptionsSelectionees(indexe){
 
 function definirOptionsSelectionnees(){
   optionsSelectionnees = []
+  console.log(controleLabel.innerText)
+  console.log(controleSelect.selectedOptions)
 
   for (let i = 0; i < controleSelect.selectedOptions.length; i++) {  
     const option = controleSelect.selectedOptions[i]   
-
+    console.log('value')
+    console.log(option.value)
+    console.log(option.index)
     if(option.value){ 
+      console.log(options)
       optionsSelectionnees.push(options.find((element) => element.indexe === option.index))
     }
   }
