@@ -742,7 +742,34 @@ function onKeyDown(e){
       }
       assurerOptionCouranteVisible()
       break
-    case "End":
+
+      case "Home":
+        //On conserve comportement natif si End et contrôle courant est textbox de recherche
+        if(e.target == controleRecherche) {
+          return  
+        }
+
+        e.preventDefault()
+
+        //Si liste simple sans recherche, la flèche provoque un changement de l'option sélectionnée comme un select natif
+        if(recherchable === 'false' && !multiple && !afficherOptions){
+          selectionnerOption(0, true)
+          return
+        }
+
+        if(!afficherOptions){
+          afficherOptions = true
+
+          if(suggestions.length && recherchable === 'false'){
+            indexeFocusSuggestion = 0
+          }
+
+        } else if(suggestions.length){
+          indexeFocusSuggestion = 0
+        }
+        assurerOptionCouranteVisible()
+        break
+      case "End":
         //On conserve comportement natif si End et contrôle courant est textbox de recherche
         if(e.target == controleRecherche) {
           return  
