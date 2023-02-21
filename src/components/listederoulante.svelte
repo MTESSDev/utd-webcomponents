@@ -108,7 +108,7 @@ onMount(() => {
 
     initialiserOptionsSuggestionsEtRecherche()
 
-    definirAttributsInitiauxSelectOriginal()
+    definirAttributsInitiauxControles()
     observerChildListSelectOriginal()
     observerAttributsSelectOriginal()
     observerAttributsLabelOrignal()
@@ -156,15 +156,18 @@ function definirAriaDescriptionRecherche(initial) {
   ariaDescriptionRecherche = ariaDescription
 }
 
-function definirAttributsInitiauxSelectOriginal(){
-  majAttributControle(controleConteneur, 'aria-invalid', controleSelect.getAttribute('aria-invalid'))
-  majAttributControle(controleConteneur, 'aria-required', controleSelect.getAttribute('aria-required'))
-  definirAriaLabel()
-  definirAriaDescriptionConteneur()
-  definirAriaDescriptionRecherche()
+function definirAttributsInitiauxControles(){
+  //Settimeout important afin de s'assurer que le paint et autres traitements sont complétés (ex. avec VueFormulate)
+  setTimeout(() => {
+    majAttributControle(controleConteneur, 'aria-invalid', controleSelect.getAttribute('aria-invalid'))
+    majAttributControle(controleConteneur, 'aria-required', controleSelect.getAttribute('aria-required'))
+    definirAriaLabelConteneur()
+    definirAriaDescriptionConteneur()
+    definirAriaDescriptionRecherche()
+  })
 }
 
-function definirAriaLabel(){
+function definirAriaLabelConteneur(){
   
 
   //1 - aria-label sur le select
@@ -260,13 +263,13 @@ function observerAttributsLabelOrignal(){
 
   const observerCharacterData = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
-      definirAriaLabel()
+      definirAriaLabelConteneur()
     })
   })
 
   const observerAriaLabel = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
-      definirAriaLabel()
+      definirAriaLabelConteneur()
     })
   })
 
