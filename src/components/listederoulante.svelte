@@ -742,6 +742,20 @@ function onKeyDown(e){
       }
       assurerOptionCouranteVisible()
       break
+    case "End":
+        //On conserve comportement natif si flèche gauche et contrôle courant est textbox de recherche
+        if(e.target == controleRecherche) {
+          return  
+        }
+
+        e.preventDefault()
+
+        //Si liste simple sans recherche, la flèche provoque un changement de l'option sélectionnée comme un select natif
+        if(recherchable === 'false' && !multiple && !afficherOptions){
+          selectionnerOption(obtenirIndexeProchaineSuggestion(controleSelect.selectedIndex, -1), true)
+          return
+        }
+
   }
 }
 
@@ -801,10 +815,10 @@ function toggleAfficherOptions() {
       controleRecherche.value = ''
       texteRecherche = ''
       definirSuggestions()
-      
+      controleRecherche.focus() 
+
       setTimeout(() => {        
-        controleRecherche.focus() 
-        controleRecherche.click()       
+        controleRecherche.focus()       
       })
 
       //Ici on attend volontairement avant de modifier le aria-description du champ recherche. Si on modifie immédiatement le lecteur écran considère la nouvelle valeur. Dans le cas présent, on veut que le aria-description disparaisse après l'affichage de la recherche. 
