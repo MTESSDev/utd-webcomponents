@@ -314,7 +314,7 @@
 </CodeSource>
 
 <h3>6- Boîte combinée (sélection multiple) avec recherche précise (aucun flou)</h3>
-<p>Effectuer une recherche avec le terme "Floride". Comme dans cet exemple la recherche est précise(vs. floue par défaut), il n'y aura aucun résultat contrairement à ce que nous pouvons obtenir dans l'exemple 5.</p>
+<p>Effectuer une recherche avec le terme "Floride". Comme dans cet exemple la recherche est précise (vs. floue par défaut), il n'y aura aucun résultat contrairement à ce que nous pouvons obtenir dans l'exemple 5.</p>
 <div id="exemple6">
     <utd-champ-form libelle="Sélectionnez vos états américains préférés" precision="Ne soyez pas timide et assumez-vous.">
         <utd-liste-deroulante recherchable="true" recherche-floue="false" multiple="true">

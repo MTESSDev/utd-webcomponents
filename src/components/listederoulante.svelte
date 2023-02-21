@@ -22,6 +22,7 @@ export let recherchable = "false"
 export let rechercheFloue = "true"
 export let precisionRecherche = "0.2"
 export let largeur = "md" //Valeurs possible sm, md, lg
+export let placeholder = languePage === 'fr' ? "Effectuer un choix" : "Make a selection"
 
 //Contrôles
 const thisComponent = get_current_component()
@@ -40,11 +41,10 @@ const labelListeValeursSelectionnees = languePage === 'fr' ? "Valeurs sélection
 const srResultatsTrouves = languePage === 'fr' ? "{x} résultats trouvés" : "{x} results found."
 const texteAucunResultat = languePage === 'fr' ? "Aucun résultat trouvé." : "No results found."
 const srAucunResultat = texteAucunResultat
-const textePlaceholderSelect = languePage === 'fr' ? "Veuillez faire un choix" : "(en)Veuillez faire un choix"
-const textePlaceholderRecherche = languePage === 'fr' ? "Rechercher dans la liste" : "(en)Rechercher dans la liste"
-const texteCommunAriaDescriptionRecherche = languePage === 'fr' ? "Utilisez les touches flèches haut et bas pour naviguer dans la liste des suggestions, Entrée ou Espace pour sélectionner un élément" : "(en)Utilisez les touches flèches haut et bas pour naviguer dans la liste des suggestions, Entrée ou Espace pour sélectionner un élément"
-const texteAccesSelectionAriaDescriptionRecherche = languePage === 'fr' ? ", et Shift + Tab afin d'accéder à la liste des éléments sélectionnés" : "(en), et Shift + Tab afin d'accéder à la liste des éléments sélectionnés"
-const srLibelleListeValeursPossibles = 'fr' ? "Choix:" : "(en)Rechercher dans la liste"
+const textePlaceholderRecherche = languePage === 'fr' ? "Rechercher dans la liste" : "Search in the list"
+const texteCommunAriaDescriptionRecherche = languePage === 'fr' ? "Utilisez les touches flèches haut et bas pour naviguer dans la liste des choix possibles, Entrée ou Espace pour effectuer une sélection" : "Use the up and down arrow keys to navigate through the list of possible choices, Enter or Space to make a selection"
+const texteAccesSelectionAriaDescriptionRecherche = languePage === 'fr' ? ", et Shift + Tab afin d'accéder à la liste des éléments sélectionnés" : ", and Shift + Tab to to access the list of selected items"
+const srLibelleListeValeursPossibles = 'fr' ? "Choix disponibles:" : "Available choices:"
 const nbCaracteresMinimalRecherche = 2
 
 let mounted = false
@@ -106,22 +106,13 @@ onMount(() => {
 
     ajusterControleLabelOriginal()
 
-    options = obtenirOptions()
+    initialiserOptionsSuggestionsEtRecherche()
 
-
-    //Settimeout important afin de s'assurer que le paint et autres traitements sont complétés (ex. avec VueFormulate)
-    setTimeout(() => {
-      //TODO tester et remettre avant settimeout si ne fonctionne pas
-      definirOptionsSelectionnees()      
-      definirSuggestions()
-    })
-   
     definirAttributsInitiauxSelectOriginal()
-    observerAttributsSelectOrignal()
+    observerChildListSelectOriginal()
+    observerAttributsSelectOriginal()
     observerAttributsLabelOrignal()
 
-    miniSearch = new MiniSearch(optionsMiniSearch)    
-    miniSearch.addAll(options)   
 })
 
 
@@ -130,6 +121,20 @@ $: toggleAfficherOptions(afficherOptions)
 $: majActiveDescendant(indexeFocusSuggestion) 
 
 
+function initialiserOptionsSuggestionsEtRecherche(){
+  options = obtenirOptions()
+
+  //Settimeout important afin de s'assurer que le paint et autres traitements sont complétés (ex. avec VueFormulate)
+  setTimeout(() => {
+    definirOptionsSelectionnees()      
+    definirSuggestions()
+  })  
+
+  if(recherchable === 'true'){
+      miniSearch = new MiniSearch(optionsMiniSearch)    
+      miniSearch.addAll(options)   
+    }
+}
 /**
  * Obtient le terme à indexer (normalisé et tout).
  * @param terme
@@ -199,7 +204,7 @@ function definirAriaDescriptionConteneur(){
     const texteNbOptions = multiple ? ` (${optionsSelectionnees.length})` : ''
     description += `${prefixe}${texteNbOptions} : ${obtenirTexteOptionsSelectionnees()}`
   } else {
-    description += `${textePlaceholderSelect}.`
+    description += `${placeholder}.`
   }
 
   ariaDescriptionConteneur = description.replace("..", ".")
@@ -214,7 +219,7 @@ function obtenirTexteOptionsSelectionnees(){
   return texte
 }
 
-function observerAttributsSelectOrignal(){
+function observerAttributsSelectOriginal(){
 
   const observer = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
@@ -236,6 +241,16 @@ function observerAttributsSelectOrignal(){
     attributeFilter: ['aria-describedby', 'aria-required', 'aria-invalid', 'aria-label']
   })
 }
+
+function observerChildListSelectOriginal(){
+
+  const observer = new MutationObserver(function(mutations) {
+    initialiserOptionsSuggestionsEtRecherche()
+  })
+
+  observer.observe(controleSelect, {subtree: true, childList: true})
+}
+
 
 function observerAttributsLabelOrignal(){
 
@@ -431,7 +446,7 @@ function ajusterControleSelectOriginal() {
 function ajouterPlaceholderSelectOriginal(){
   
   if(controleSelect.options[0].value !== '' ){
-    const optionPlaceholder = new Option(textePlaceholderSelect,'')
+    const optionPlaceholder = new Option(placeholder,'')
     optionPlaceholder.disabled = true
     optionPlaceholder.hidden = true
     optionPlaceholder.selected = true
@@ -560,7 +575,10 @@ function deselectionnerOptionViaEtiquette(e){
         controleRecherche.focus()
 
       } else {
-        controleConteneur.focus()
+        setTimeout(() => {
+          controleConteneur.focus()          
+        })
+
       }
     }
 
@@ -943,7 +961,7 @@ function assurerOptionCouranteVisible() {
       <span class="selection {multiple  && optionsSelectionnees.length > 0 ? 'contient-etiquettes': ''}" on:click={clickSelection} on:mousedown={selectionMouseDown}>
 
         {#if optionsSelectionnees.length === 0}
-          <span class="utd-placeholder">{textePlaceholderSelect}</span>
+          <span class="utd-placeholder">{placeholder}</span>
         {:else}
           {#if !multiple}
               <span>{optionsSelectionnees[0].texte}</span>                                

@@ -83,7 +83,7 @@
         const params = {
             type: "erreur",
             titre: "Continuum espace temps brisé",
-            corps: "<p>Une erreur est survenu lors de vos tentatives de réparation des perturbations du continuum espace temps.</p><p>Il n'y a rien à faire.</p>",
+            corps: "<p>Une erreur est survenue lors de vos tentatives de réparation des perturbations du continuum espace temps.</p><p>Il n'y a rien à faire.</p>",
             texteBoutonPrimaire: "D'accord"
         };
 
