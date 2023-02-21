@@ -815,6 +815,10 @@ function majActiveDescendant() {
   }
 }
 
+function clickRecherche(e){
+  controleRecherche.focus()
+}
+
 function toggleAfficherOptions() {
 
   if(!mounted){
@@ -829,12 +833,7 @@ function toggleAfficherOptions() {
       definirSuggestions()
 
       setTimeout(() => {        
-        controleRecherche.setAttribute('autofocus', 'autofocus')
-        controleRecherche.focus()       
-        
-        setTimeout(() => {
-          controleRecherche.removeAttribute('autofocus')          
-        }, 100);
+        controleRecherche.click()               
       })
 
       //Ici on attend volontairement avant de modifier le aria-description du champ recherche. Si on modifie immédiatement le lecteur écran considère la nouvelle valeur. Dans le cas présent, on veut que le aria-description disparaisse après l'affichage de la recherche. 
@@ -1012,7 +1011,7 @@ function assurerOptionCouranteVisible() {
       {#if recherchable === 'true'}
         <span class="conteneur-recherche {!afficherOptions ? 'utd-d-none' : ''}">
           <label for="{idControleRecherche}" class="utd-sr-only">{textePlaceholderRecherche}</label>
-          <input type="text" id="{idControleRecherche}" class="utd-form-control recherche" role="combobox" aria-expanded="true" aria-autocomplete="none" on:input={traiterSaisieRecherche} on:blur={blurRecherche} autocomplete="off" spellcheck="false" placeholder="{textePlaceholderRecherche}" aria-description="{ariaDescriptionRecherche}" aria-controls="{idControleResultats}" aria-activedescendant="{afficherOptions ? idActiveDescendant : null}">
+          <input type="text" id="{idControleRecherche}" class="utd-form-control recherche" role="combobox" aria-expanded="true" aria-autocomplete="none" on:input={traiterSaisieRecherche} on:blur={blurRecherche} on:click={clickRecherche} autocomplete="off" spellcheck="false" placeholder="{textePlaceholderRecherche}" aria-description="{ariaDescriptionRecherche}" aria-controls="{idControleResultats}" aria-activedescendant="{afficherOptions ? idActiveDescendant : null}">
         </span>            
       {/if}
 
