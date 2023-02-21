@@ -797,12 +797,13 @@ function obtenirIndexeProchaineSuggestion(indexeCourantControleSelect, step){
 }
 
 function clickSelection(e){
+
+  
   afficherOptions = !afficherOptions
 
-  if(recherchable === 'true'){
-    setTimeout(() => {
-      controleRecherche.focus()          
-    })
+  if(recherchable === 'true' && afficherOptions){
+    controleRecherche.parentElement.classList.remove('utd-d-none')
+    controleRecherche.focus()              
 
   } else {
     controleConteneur.focus()  
