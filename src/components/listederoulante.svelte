@@ -803,7 +803,7 @@ function toggleAfficherOptions() {
       definirSuggestions()
       
       setTimeout(() => {        
-//        controleRecherche.focus() 
+        controleRecherche.focus() 
         controleRecherche.click()       
       })
 
