@@ -401,9 +401,7 @@ function definirSuggestions(doitNotifierLecteurEcran) {
   suggestions = nouvellesSuggestions
 
   //Vérifier si scrollbar visible ou non (servira a ajouter une marge de droite afin que la scrollbar ne soit pas collée sur la bordure du contrôle)
-  setTimeout(() => {
-    definirPresenceScrollbarResultats()
-  })
+  definirPresenceScrollbarResultats()
 }
 
 
@@ -411,7 +409,9 @@ const definirSuggestionsDebounced = Utils.debounce(() => definirSuggestions(true
 
 
 function definirPresenceScrollbarResultats(){
-  estScrollbarSuggestionsVisible = controleConteneurResultats.scrollHeight > controleConteneurResultats.clientHeight    
+  setTimeout(() => {
+    estScrollbarSuggestionsVisible = controleConteneurResultats.scrollHeight > controleConteneurResultats.clientHeight    
+  })
 }
 
 function ajusterControleSelectOriginal() {
@@ -861,6 +861,7 @@ function toggleAfficherOptions() {
   }
   
   if(afficherOptions){    
+    
     if(recherchable === 'true'){
       
       controleRecherche.value = ''
@@ -880,9 +881,9 @@ function toggleAfficherOptions() {
       controleConteneur.focus()
     }
     
-    setTimeout(() => {
-      definirPresenceScrollbarResultats()      
-    })
+    assurerControleVisible()
+    definirPresenceScrollbarResultats()      
+
   } else {
     definirAriaDescriptionRecherche()   
     indexeFocusSuggestion = null
@@ -1009,6 +1010,37 @@ function assurerOptionCouranteVisible() {
         controleConteneurResultats.scroll({top: controleConteneurResultats.scrollTop - hauteurOption});
       }
     }
+  })
+}
+
+/**
+ * On s'assure que notre contrôle est visible en entier ou du moins au maximum de la hauteur disponible.
+ */
+function assurerControleVisible() {
+  //SetTimeout nécessaire afin que le paint de la page soit fait 
+  setTimeout(() => {
+    const rectConteneur = controleConteneur.getBoundingClientRect()
+    const rectLabel = controleLabel.getBoundingClientRect()
+
+    const hauteurFenetre = window.innerHeight
+    const hauteurConteneur = rectConteneur.height
+    const topLabel = rectLabel.top
+    const topConteneur = rectConteneur.top
+    const offsetTopLabel = html.scrollTop + topLabel
+    const hauteurLabel = topConteneur - topLabel
+    const hauteurControle = hauteurLabel + hauteurConteneur
+
+    const posYBasFenetre = html.scrollTop + hauteurFenetre
+    const posYBasControle = offsetTopLabel + hauteurControle
+
+    if(hauteurControle > hauteurFenetre){
+      //La hauteur de notre contrôle est supérieure à la hauteur du viewport, on scroll afin que le label soit au haut de l'écran.
+      window.scroll({top: html.scrollTop + rectLabel.top})
+    } else if(posYBasControle > posYBasFenetre) {
+      //Notre contrôle n'est pas entièrement visible, on scroll juste ce qu'il faut pour que le bas de notre contrôle soit visible
+      const hauteurPortionMasquee = posYBasControle - posYBasFenetre
+      window.scroll({top: html.scrollTop + hauteurPortionMasquee})
+    }    
   })
 }
 
