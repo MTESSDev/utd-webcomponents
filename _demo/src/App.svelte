@@ -155,7 +155,9 @@
                         <utd-menu-vertical-item href="/base/principe" libelle="Principe"></utd-menu-vertical-item>
                         <utd-menu-vertical-item href="/base/utilisation" libelle="Utilisation"></utd-menu-vertical-item>
                         <utd-menu-vertical-item href="/gabarit1colonne" libelle="Gabarit 1 colonne"></utd-menu-vertical-item>
+                        <utd-menu-vertical-item href="/gabarit1colonneCdn" libelle="Gabarit 1 colonne (cdn)"></utd-menu-vertical-item>
                         <utd-menu-vertical-item href="/gabarit2colonnes" libelle="Gabarit 2 colonnes"></utd-menu-vertical-item>
+                        <utd-menu-vertical-item href="/gabarit2colonnesCdn" libelle="Gabarit 2 colonnes (cdn)"></utd-menu-vertical-item>
                         <utd-menu-vertical-item href="/base/nousjoindre" libelle="Nous joindre"></utd-menu-vertical-item>
                     {/if}
                 </utd-menu-vertical> 

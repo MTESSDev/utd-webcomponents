@@ -747,6 +747,7 @@ function onKeyDown(e){
       break
 
       case "Home":
+      case "PageUp":
         //On conserve comportement natif si End et contrôle courant est textbox de recherche
         if(e.target == controleRecherche) {
           return  
@@ -756,7 +757,15 @@ function onKeyDown(e){
 
         //Si liste simple sans recherche, la flèche provoque un changement de l'option sélectionnée comme un select natif
         if(recherchable === 'false' && !multiple && !afficherOptions){
-          selectionnerOption(0, true)
+          if(e.key === "PageUp"){
+            let step = Math.floor((suggestions.length - 1) / 4)
+            step = step > 8  ? 8 : step
+
+            const indexe = (controleSelect.selectedIndex - step) < 0 ? 0 : controleSelect.selectedIndex - step
+            selectionnerOption(indexe, true)
+          } else {
+            selectionnerOption(0, true)
+          }
           return
         }
 
@@ -773,6 +782,7 @@ function onKeyDown(e){
         assurerOptionCouranteVisible()
         break
       case "End":
+      case "PageDown":
         //On conserve comportement natif si End et contrôle courant est textbox de recherche
         if(e.target == controleRecherche) {
           return  
@@ -782,7 +792,16 @@ function onKeyDown(e){
 
         //Si liste simple sans recherche, la flèche provoque un changement de l'option sélectionnée comme un select natif
         if(recherchable === 'false' && !multiple && !afficherOptions){
-          selectionnerOption(suggestions.length - 1, true)
+          if(e.key === "PageDown"){
+            let step = Math.floor((suggestions.length - 1) / 4)
+            step = step > 8  ? 8 : step
+
+            const indexe = (controleSelect.selectedIndex + step) > suggestions.length - 1 ? suggestions.length - 1 : controleSelect.selectedIndex + step
+            selectionnerOption(indexe, true)
+          } else {
+            selectionnerOption(suggestions.length - 1, true)
+          }
+
           return
         }
 

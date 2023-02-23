@@ -11,6 +11,7 @@
     onMount(() => {
         tableauParametres = obtenirTableauParametres();
         tableauSlots = obtenirTableauSlots();
+        ajouterCodeExemple4();
     })
 
     function obtenirTableauParametres() {
@@ -26,6 +27,14 @@
             {nom: "défaut", description: `<p>Slot par défaut. Aucun nom à fournir.</p><p>Contenu html entre les balises du contrôle. Ne devrait être que le contrôle "select" original.</p>`}
         ]
     }
+
+    function ajouterCodeExemple4() {   
+        const controleUtd = document.getElementById('champUtd4')     
+        document.getElementById('select4').addEventListener('change', (event) => {
+            controleUtd.setAttribute('invalide', event.target.value === '' ? 'true': 'false')
+        })
+    }
+
 
 </script>
 
@@ -50,7 +59,7 @@
 <a href="https://design.quebec.ca/composantes/formulaire/liste-deroulante" target="_blank">Voir les spécifications sur le site de design Quebec.ca</a>
 
 <h3>Particularités vs. le système de design Quebec.ca</h3>
-<p>À venir?</p>
+<p>Un filet gris pâle a été ajouté sous le placeholder lorsqu'une liste à sélection simple sans recherche est ouverte afin de mieux distinguer les choix possibles de l'élément sélectionné.</p>
 
 <h3>Particularités techniques</h3>
 <p>Ce composant produit une liste déroulante à partir d'une liste native (select). Il suffit d'intégrer à l'intérieur du présent composant une liste déroulante native avec les options que vous souhaitez et l'attribut "multiple" pour une liste à sélection multiple.</p>
@@ -63,7 +72,6 @@
 <h2>Slots disponibles</h2>
 <TableauSlots parametres="{tableauSlots}">
 </TableauSlots>
-<p>Pour obtenir une liste avec sélection multiple il suffit </p>
 
 <h2>Exemples</h2>
 <p>Les exemples 1a et 1b montrent des listes déroulantes natives à titre de référence et comparaison. Les autres exemples utilisent tous le composant "Liste déroulante".</p>
@@ -112,8 +120,7 @@
     <utd-champ-form precision="Ne soyez pas timide et assumez-vous.">
         <utd-liste-deroulante>
             <label>Sélectionnez votre province canadienne préférée</label>
-            <select id="select2">
-                
+            <select id="select2">                
                 <option value="AB">Alberta</option>
                 <option value="BC">Colombie-Britannique</option>
                 <option value="MB">Manitoba</option>
@@ -184,7 +191,7 @@
 
 <h3>4- Boîte combinée (sélection simple)</h3>
 <div id="exemple4">
-    <utd-champ-form libelle="Sélectionnez votre état américain préféré" precision="Ne soyez pas timide et assumez-vous." obligatoire="true" invalide="true" message-erreur="C'est mauvais!!!">
+    <utd-champ-form id="champUtd4" libelle="Sélectionnez votre état américain préféré" precision="Ne soyez pas timide et assumez-vous." obligatoire="true" invalide="true" message-erreur="Le champ «Sélectionnez votre état américain préféré» est obligatoire.">
         <utd-liste-deroulante recherchable="true">
             <select id="select4">
                 <option value="" hidden="hidden" disabled="disabled" selected>Veuillez faire un choix</option>
