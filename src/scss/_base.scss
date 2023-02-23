@@ -25,7 +25,7 @@
     --tc-16-8-ecart: 8;
     /*min 8px max 16px*/
     --tc-16-8-ecart-px: calc(var(--tc-16-8-ecart) * 1px);
-    --utd-text-sm: 14;
+    --utd-text-sm: 14px;
     /*max 16px min 14px*/
     --tc-16-14: 1rem;/*16px*/    
     --tc-16-14-ecart: 2;
@@ -147,25 +147,25 @@
     --tc-16-4-val: var(--tc-16-4);
     --tc-16-8-val: var(--tc-16-8);
     --tc-16-14-val: var(--tc-16-14);
-    --utd-text-base: var(--tc-16-14);
+    --utd-text-base: var(--tc-16-14-val);
     --tc-18-14-val: var(--tc-18-14);
     --tc-18-16-val: var(--tc-18-16);
     --tc-18-17-val: var(--tc-18-17);
-    --utd-text-lg: var(--tc-18-17);
+    --utd-text-lg: var(--tc-18-17-lg);
     --tc-20-16-val: var(--tc-20-16);
     --tc-20-18-val: var(--tc-20-18);
     --tc-21-18-val: var(--tc-21-18);
-    --utd-text-xl: var(--tc-21-18);
+    --utd-text-xl: var(--tc-21-18-val);
     --tc-24-12-val: var(--tc-24-12);
     --tc-24-16-val: var(--tc-24-16);
     --tc-24-20-val: var(--tc-24-20);
-    --utd-text-xxl: var(--tc-24-20);    
+    --utd-text-xxl: var(--tc-24-20-val);    
     --tc-24-21-val: var(--tc-24-21);
     --tc-28-24-val: var(--tc-28-24);
     --tc-30-24-val: var(--tc-30-24);
     --tc-32-16-val: var(--tc-32-16);
     --tc-32-22-val: var(--tc-32-22);
-    --utd-text-xxxl: var(--tc-32-22);    
+    --utd-text-xxxl: var(--tc-32-22-val);    
     --tc-32-24-val: var(--tc-32-24);
     --tc-32-28-val: var(--tc-32-28);
     --tc-36-28-val: var(--tc-36-28);
@@ -759,7 +759,10 @@ utd-accordeon .utd-form-group:last-child, utd-section .utd-form-group:last-child
     border: 1px solid #808A9D;
     border-radius: 0;
 }
-.utd-form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+
+select
+
+.utd-form-control::placeholder, .utd-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #647287;
     opacity: 1; /* Firefox */
 }
@@ -788,10 +791,12 @@ label + .utd-erreur-champ{
     margin-top: 4px;
 }
 
-textarea.utd-form-control{
+textarea.utd-form-control,
+select.utd-form-control{
     height: auto;
 }
 
+.utd-form-control:focus,
 input.utd-form-control:focus,
 textarea.utd-form-control:focus,
 select.utd-form-control:focus {
@@ -805,6 +810,7 @@ select.utd-form-control:focus {
 ====================================================================================================*/
 
 input[type="text"].utd-form-control,
+select.utd-form-control,
 textarea.utd-form-control {
     /* On applique une largeur xl à tous les contrôles de type texte par défaut */
     width: 528px;
@@ -826,12 +832,14 @@ input[type="date"].utd-form-control {
 /*Le xxl n'existe pas dans les règles du SCG, c'est ajouté */
 
 input.utd-form-control.xxl,
-textarea.utd-form-control.xxl {
+textarea.utd-form-control.xxl,
+select.utd-form-control.xxl {
     width: 100%;
 }
 
 input.utd-form-control.xl,
 textarea.utd-form-control.xl,
+select.utd-form-control.xl,
 input[type="email"].utd-form-control,
 input[type="url"].utd-form-control {
     width: 528px;
@@ -839,32 +847,37 @@ input[type="url"].utd-form-control {
 
 input.utd-form-control.lg,
 textarea.utd-form-control.lg,
+select.utd-form-control.lg
 input[type="password"].utd-form-control {
     width: 249px;
 }
 
 input.utd-form-control.md,
 textarea.utd-form-control.md,
+select.utd-form-control.md
 input[type="tel"].utd-form-control {
     width: 156px;
 }
 
 input.utd-form-control.sm,
-textarea.utd-form-control.sm {
+textarea.utd-form-control.sm,
+select.utd-form-control.sm {
     width: 63px;
 }
 
 @media (max-width: 560px) {
     input[type="text"].utd-form-control,
     input.utd-form-control.xl,
-    textarea.utd-form-control.xl {
+    textarea.utd-form-control.xl,
+    select.utd-form-control.xl {
         width: 100%;
     }
 }
 
 @media (max-width: 760px) {
     input.utd-form-control.xxl,
-    textarea.utd-form-control.xxl {
+    textarea.utd-form-control.xxl,
+    select.utd-form-control.xxl {
         width: 100%;
     }
 }
@@ -1058,7 +1071,7 @@ textarea.utd-form-control.sm {
     min-width: 24px;
     height: 24px;
     min-height: 24px;
-    border-radius: 0;   
+    border-radius: 0;
     outline: 0!important;
 }
 
@@ -1268,6 +1281,35 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
 }
 
 
+/*====================================================================================================
+  -65- Scrollbar
+====================================================================================================*/
+
+/* Scrollbar */
+.utd-scrollbar-verticale::-webkit-scrollbar {
+    background: transparent;
+    border: none;
+    width: .5rem;
+    transition: all 0.35s;
+}
+
+.utd-scrollbar-verticale::-webkit-scrollbar-track {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.utd-scrollbar-verticale::-webkit-scrollbar-thumb {
+    background-color: var(--bleu-piv);
+    border-radius: 0.3125rem;
+}     
+
+.utd-scrollbar-verticale::-webkit-scrollbar-button,
+.utd-scrollbar-verticale::-webkit-scrollbar-track-piece,
+.utd-scrollbar-verticale::-webkit-scrollbar-corner,
+.utd-scrollbar-verticale::-webkit-resizer {
+    display: none;
+}
+        
 /*====================================================================================================
   -900- Sprites 
 ====================================================================================================*/

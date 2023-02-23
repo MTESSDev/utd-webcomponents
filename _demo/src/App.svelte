@@ -29,6 +29,7 @@
   import PiedPageSite from './pages/PiedPageSite.svelte';
   import GabaritHtml from './pages/GabaritHTML.svelte';
   import NousJoindre from './pages/NousJoindre.svelte';
+  import ListeDeroulante from './pages/ListeDeroulante.svelte';
 
     onMount(() => {  
         document.getElementById('pivEntete').addEventListener("clickLien", () => {       
@@ -137,6 +138,7 @@
                             <utd-menu-vertical-item libelle="Champs texte et autres" href="/composants/formulaire/champstexte"></utd-menu-vertical-item> 
                             <utd-menu-vertical-item libelle="Champs (Gestion automatique)" href="/composants/formulaire/champsautomatique"></utd-menu-vertical-item>                           
                             <utd-menu-vertical-item libelle="Erreurs" href="/composants/formulaire/champerreur"></utd-menu-vertical-item>                                 
+                            <utd-menu-vertical-item libelle="Liste déroulante" href="/composants/formulaire/listederoulante"></utd-menu-vertical-item>                                 
                         </utd-menu-vertical-item>
                         <utd-menu-vertical-item libelle="Navigation">                                
                             <utd-menu-vertical-item libelle="Haut de page" href="/composants/navigation/hautpage"></utd-menu-vertical-item>
@@ -153,7 +155,9 @@
                         <utd-menu-vertical-item href="/base/principe" libelle="Principe"></utd-menu-vertical-item>
                         <utd-menu-vertical-item href="/base/utilisation" libelle="Utilisation"></utd-menu-vertical-item>
                         <utd-menu-vertical-item href="/gabarit1colonne" libelle="Gabarit 1 colonne"></utd-menu-vertical-item>
+                        <utd-menu-vertical-item href="/gabarit1colonneCdn" libelle="Gabarit 1 colonne (cdn)"></utd-menu-vertical-item>
                         <utd-menu-vertical-item href="/gabarit2colonnes" libelle="Gabarit 2 colonnes"></utd-menu-vertical-item>
+                        <utd-menu-vertical-item href="/gabarit2colonnesCdn" libelle="Gabarit 2 colonnes (cdn)"></utd-menu-vertical-item>
                         <utd-menu-vertical-item href="/base/nousjoindre" libelle="Nous joindre"></utd-menu-vertical-item>
                     {/if}
                 </utd-menu-vertical> 
@@ -190,6 +194,7 @@
                             <Route path="/champstexte" ><ChampsTexte /></Route>
                             <Route path="/champsautomatique" ><ChampsAutomatique /></Route>
                             <Route path="/champerreur" ><ChampErreur /></Route>
+                            <Route path="/listederoulante" ><ListeDeroulante /></Route>
                         </Route>
                         <Route path="/navigation/*">                    
                             <Route path="/hautpage" ><HautPage /></Route>

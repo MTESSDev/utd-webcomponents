@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width,initial-scale=1'>
+    <meta name="robots" content="noindex,nofollow">
+    <title>Composants UTD - Gabarit 2 colonnes (avec cdn)</title>
+   
+    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.8.0/images/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.8.0/images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.8.0/images/favicons/favicon-16x16.png">
+    <link rel="mask-icon" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.8.0/images/favicons/safari-pinned-tab.svg" color="#5bbad5">
+
+    <!-- Préchargement des fonts requises UTD -->
+    <link rel="preload" as="font" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.8.0/dist/fonts/open-sans-v18-latin-regular.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.8.0/dist/fonts/open-sans-v18-latin-600.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.8.0/dist/fonts/open-sans-v18-latin-700.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.8.0/dist/fonts/roboto-v20-latin-500.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.8.0/dist/fonts/roboto-v20-latin-700.woff2" type="font/woff2" crossorigin="anonymous">
+
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.8.0/dist/css/utd-webcomponents.min.css'>
+    <!--<link rel='stylesheet' href='../css/demo.css?v=1.8.0'> css spécifique de votre site. Charger APRÈS celui UTD. -->
+    
+</head>
+
+<body>
+  <noscript>Ici ce qu'il faut afficher si javascript désactivé.</noscript>
+  <div class="utd-conteneur-principal">
+    <header>
+      <utd-piv-entete id="pivEntete" titre-site1="Système de design MESS" alt-logo="Signature du gouvernement du Québec. Accédez à Système de design MESS.">
+      </utd-piv-entete>
+      <!--
+        Ici votre menu principal
+        <utd-navigation-principale></utd-navigation-principale> Composant à venir...
+      -->
+    </header>
+    <!-- Conteneur principal, sera utile si vous désirez que le pied de page soit toujours en bas de page même dans une page ayant très peu de contenu. -->
+    <div class="utd-container">
+      <div id="conteneur2Colonnes" class="utd contenu-principal-droite">
+          <div id="colonneGauche" class="utd">                
+              <utd-menu-vertical id="menuVertical" titre-visible="false" titre="Composants" sr-titre="Menu composants">
+                <utd-menu-vertical-item href="/" libelle="Retour au site démo"></utd-menu-vertical-item>
+                <utd-menu-vertical-item href="/composants/versions" libelle="Historique des versions"></utd-menu-vertical-item>
+                <utd-menu-vertical-item libelle="Action">                                
+                    <utd-menu-vertical-item libelle="Boutons" href="/composants/actions/boutons"></utd-menu-vertical-item>
+                    <utd-menu-vertical-item libelle="Dialogue modal" href="/composants/actions/dialogue"></utd-menu-vertical-item>
+                    <utd-menu-vertical-item libelle="Message" href="/composants/actions/message"></utd-menu-vertical-item>
+                    <utd-menu-vertical-item libelle="Notifications" href="/composants/actions/notifications"></utd-menu-vertical-item>
+                    <utd-menu-vertical-item libelle="Traitement en cours" href="/composants/actions/traitementencours"></utd-menu-vertical-item>
+                </utd-menu-vertical-item>
+                <utd-menu-vertical-item libelle="Affichage de contenu">                                
+                    <utd-menu-vertical-item libelle="Accordéon" href="/composants/affichagecontenu/accordeon"></utd-menu-vertical-item>
+                    <utd-menu-vertical-item libelle="Avis" href="/composants/affichagecontenu/avis"></utd-menu-vertical-item>
+                    <utd-menu-vertical-item libelle="Infobulle" href="/composants/affichagecontenu/infobulle"></utd-menu-vertical-item>
+                    <utd-menu-vertical-item libelle="Section" href="/composants/affichagecontenu/section"></utd-menu-vertical-item>
+                </utd-menu-vertical-item>
+                <utd-menu-vertical-item libelle="Formulaire">    
+                    <utd-menu-vertical-item libelle="Bouton radio" href="/composants/formulaire/boutonradio"></utd-menu-vertical-item>                            
+                    <utd-menu-vertical-item libelle="Case à cocher" href="/composants/formulaire/casecocher"></utd-menu-vertical-item>                            
+                    <utd-menu-vertical-item libelle="Champs obligatoires" href="/composants/formulaire/champobligatoire"></utd-menu-vertical-item> 
+                    <utd-menu-vertical-item libelle="Champs texte et autres" href="/composants/formulaire/champstexte"></utd-menu-vertical-item> 
+                    <utd-menu-vertical-item libelle="Champs (Gestion automatique)" href="/composants/formulaire/champsautomatique"></utd-menu-vertical-item>                           
+                    <utd-menu-vertical-item libelle="Erreurs" href="/composants/formulaire/champerreur"></utd-menu-vertical-item>                                 
+                    <utd-menu-vertical-item libelle="Liste déroulante" href="/composants/formulaire/listederoulante"></utd-menu-vertical-item>                                 
+                </utd-menu-vertical-item>
+                <utd-menu-vertical-item libelle="Navigation">                                
+                    <utd-menu-vertical-item libelle="Haut de page" href="/composants/navigation/hautpage"></utd-menu-vertical-item>
+                    <utd-menu-vertical-item libelle="Menu d'ancres" href="/composants/navigation/menuancres"></utd-menu-vertical-item>
+                    <utd-menu-vertical-item libelle="Menu vertical" href="/composants/navigation/menuvertical"></utd-menu-vertical-item>
+                </utd-menu-vertical-item>
+                <utd-menu-vertical-item libelle="Entête et pied de page">                                
+                    <utd-menu-vertical-item libelle="Entête PIV" href="/composants/entetepiedpage/piventete"></utd-menu-vertical-item>
+                    <utd-menu-vertical-item libelle="Pied de page PIV" href="/composants/entetepiedpage/pivpiedpage"></utd-menu-vertical-item>
+                    <utd-menu-vertical-item libelle="Pied de page du site" href="/composants/entetepiedpage/piedpagesite"></utd-menu-vertical-item>
+                </utd-menu-vertical-item>
+              </utd-menu-vertical> 
+          </div>
+      
+          <div id="colonneDroite" class="utd">
+            <main id="main">
+              <h1>Gabarit 2 colonnes (avec cdn)</h1>
+              <p>La présente page est une simple page HTML contenant le markup essentiel pour l'utilisation des composants UTD dans un contexte de gabarit 2 colonnes en utilisant le cdn.</p>
+              <p>Inspecter la source de la page afin de voir le HTML requis.</p>
+              <p>Vous devrez évidemment paramétrer les composants utd de base (utd-piv-entete, utd-piv-pied-page, ainsi que utd-menu-vertical et utd-pied-page-site au besoin. Les pages d'aide de ces composants sont dans le menu à gauche.</p>
+            </main>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <utd-hautpage id="hautPage"></utd-hautpage>
+  <footer class="utd">
+    <utd-pied-page-site id="piedPageSite">
+        <div slot="contenu">
+          <span>Ici votre contenu de pied de page de site (C'est votre css qui devra le styler).</span>
+        </div>
+    </utd-pied-page-site>
+  
+    <utd-piv-pied-page id="pivPiedPage">
+      <div slot="liens">
+          <ul>
+              <li><a href="#bidon">Accessibilité</a></li>
+              <li><a href="#bidon">Politique et conditions d'utilisation</a></li>
+              <li><a href="#bidon">S'informer sur clicSÉQUR - Citoyens</a></li>
+              <li><a href="#bidon">FAQ</a></li>                    
+          </ul>
+      </div>
+    </utd-piv-pied-page>    
+  </footer>      
+  <script src='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.8.0/dist/js/utd-webcomponents.min.js' relative-base-path='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.8.0/dist'></script>  
+
+  <script>
+    //Ajoute automatiquement ce qu'il faut pour les liens externes
+    utd.ajusterAccessibiliteLiens();    
+  </script> 
+</body>
+
+</html>

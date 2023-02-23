@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width,initial-scale=1'>
+    <meta name="robots" content="noindex,nofollow">
+    <title>Composants UTD - Gabarit 1 colonne (avec CDN)</title>
+   
+    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.8.0/dist/images/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.8.0/dist/images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.8.0/dist/images/favicons/favicon-16x16.png">
+    <link rel="mask-icon" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.8.0/dist/images/favicons/safari-pinned-tab.svg" color="#5bbad5">
+
+    <!-- Préchargement des fonts requises UTD -->
+    <link rel="preload" as="font" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.8.0/dist/fonts/open-sans-v18-latin-regular.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.8.0/dist/fonts/open-sans-v18-latin-600.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.8.0/dist/fonts/open-sans-v18-latin-700.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.8.0/dist/fonts/roboto-v20-latin-500.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.8.0/dist/fonts/roboto-v20-latin-700.woff2" type="font/woff2" crossorigin="anonymous">
+
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.8.0/dist/css/utd-webcomponents.min.css'>
+    <!-- <link rel='stylesheet' href='/css/demo.css?v=1.8.0'> css spécifique de votre site. Charger APRÈS celui UTD. -->    
+</head>
+
+<body>
+  <noscript>Ici ce qu'il faut afficher si javascript désactivé.</noscript>
+  <!-- Conteneur principal, sera utile si vous désirez que le pied de page soit toujours en bas de page même dans une page ayant très peu de contenu. -->
+  <div class="utd-conteneur-principal">
+    <header>
+      <utd-piv-entete id="pivEntete" titre-site1="Système de design MESS" alt-logo="Signature du gouvernement du Québec. Accédez à Système de design MESS.">
+      </utd-piv-entete>
+      <!--
+        Ici votre menu principal
+        <utd-navigation-principale></utd-navigation-principale> Composant à venir...
+      -->
+    </header>
+    <div class="utd-container">
+      <main id="main">
+        <h1>Gabarit 1 colonne (avec Cdn)</h1>
+        <p>La présente page est une simple page HTML contenant le markup essentiel pour l'utilisation des composants UTD dans un contexte de gabarit 1 colonne en utilisant le cdn.</p>
+        <p>Inspecter la source de la page afin de voir le HTML requis.</p>
+        <p>Vous devrez évidemment paramétrer les composants utd de base (utd-piv-entete, utd-piv-pied-page, ainsi que utd-menu-vertical et utd-pied-page-site au besoin. Les pages d'aide de ces composants sont dans le menu à gauche.</p>
+
+        <utd-avis titre="L’aide financière qui peut être accordée tient compte de votre situation familiale.">
+          <span>Est considérée comme votre conjoint (même si elle est absente temporairement) :</span>
+          <ul>
+              <li>la personne qui habite avec vous et avec qui vous êtes marié ou uni civilement;</li>
+              <li>la personne qui habite avec vous et qui est l’autre parent d’au moins un de vos enfants;</li>
+              <li>la personne majeure qui vit maritalement avec vous et qui, à un moment donné, a habité avec vous pendant une période d’au moins un an.</li>
+          </ul>
+        </utd-avis>
+                      
+      </main>
+    </div>
+  </div>
+  <utd-hautpage id="hautPage"></utd-hautpage>
+  <footer class="utd">
+    <utd-pied-page-site id="piedPageSite">
+        <div slot="contenu">
+          <span>Ici votre contenu de pied de page de site (C'est votre css qui devra le styler).</span>
+        </div>
+    </utd-pied-page-site>
+  
+    <utd-piv-pied-page id="pivPiedPage">
+      <div slot="liens">
+          <ul>
+              <li><a href="#bidon">Accessibilité</a></li>
+              <li><a href="#bidon">Politique et conditions d'utilisation</a></li>
+              <li><a href="#bidon">S'informer sur clicSÉQUR - Citoyens</a></li>
+              <li><a href="#bidon">FAQ</a></li>                    
+          </ul>
+      </div>
+    </utd-piv-pied-page>    
+  </footer>      
+  <script src='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.8.0/dist/js/utd-webcomponents.min.js' relative-base-path='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.8.0/dist'></script>  
+
+  <script>
+    //Optionnel. Ajoute automatiquement ce qu'il faut pour les liens externes.
+    utd.ajusterAccessibiliteLiens();    
+  </script> 
+</body>
+
+</html>

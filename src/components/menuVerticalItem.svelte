@@ -78,21 +78,18 @@
   }
 
   function onKeyDown(e) {
-    console.log(e.keyCode)
     const parent = thisComponent.parentElement
 
-    switch(e.keyCode) {
-      //ESC
-      case 27:
+    switch(e.key) {
+      case "Escape":
         if(estMenuItem(parent)){
           parent.setAttribute('afficher', 'false')
           parent.setAttribute('focus', 'true')
         }
         e.preventDefault()
         break;
-      //ENTER et space
-      case 13:
-      case 32:
+      case "Enter":
+      case " ":
         if(possedeEnfants){
           if(afficher === 'false'){
             afficher = 'true'                            
@@ -101,17 +98,15 @@
           e.preventDefault()
         }
         break;
-        //Flèche gauche et flèche haut
-      case 37:
+      case "ArrowLeft":
         accederMenuPrecedent()
         e.preventDefault()
         break;
-      case 38:
+      case "ArrowUp":
         accederMenuPrecedent(true)
         e.preventDefault()
         break;
-      //Flèche droite
-      case 39:
+      case "ArrowRight":
         if(possedeEnfants){
           if(afficher === 'false'){
             afficher = 'true'                            
@@ -124,8 +119,7 @@
         }
         e.preventDefault()
         break;
-      //Flèche bas
-      case 40:
+      case "ArrowDown":
         accederMenuSuivant(true)
         e.preventDefault()        
         break;        

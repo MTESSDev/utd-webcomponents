@@ -126,4 +126,68 @@ export class Utils {
     static obtenirLanguePage() {
         return document.getElementsByTagName("html")[0].getAttribute("lang") || "fr";
     }
+
+    /**
+     * Permet de palier au fait que svelte converti en booleen la valeur d'un attribut si celui-ci est vide (ex. titre="", la valeur considérée par svelte est true, alors que nous c'est une attribut vide, qu'on ne devrait pas traiter. Nos if ne fonctionnent pas comme prévu dans cette situation)
+     * On considère donc qu'un attribut est absent, si l'attribut n'est pas spécifié, vide ou true (valeur booléenne que svelte utilise si attribut est vide, et ça ne peut jamais arriver sauf dans cette circonstance car normalement les attributs sont toujours des strings)
+     * @param {*} attribut Valeur de l'attribut à vérifier
+     * @returns Booléen indiquant si l'attribut doit être considéré comme présent ou non
+     */
+    static estAttributPresent(attribut) {
+        return attribut && attribut !== true
+    }    
+
+    /**
+     * Permet de debouncer une fonction.
+     * @param {Object} func Fonction à debouncer.
+     * @param {Number} timeout Délai du debounce.
+     */
+    static debounce(func, timeout = 400) {
+        let timer;
+        return (...args) => {
+            clearTimeout(timer)
+            timer = setTimeout(() => { func.apply(this, args); }, timeout)
+        }
+    }
+
+    static extend (first, second) {
+        for (var secondProp in second) {
+            var secondVal = second[secondProp]
+            // Is this value an object?  If so, iterate over its properties, copying them over
+            if (secondVal && Object.prototype.toString.call(secondVal) === "[object Object]") {
+                first[secondProp] = first[secondProp] || {}
+                this.extend(first[secondProp], secondVal)
+            }
+            else {
+                first[secondProp] = secondVal
+            }
+        }
+        return first
+    }
+
+    /**
+     * Normalise une chaîne de caractères pour utilisation insensible à la case et aux accents.
+     * @param {string} chaineCaracteres Chaîne de caractères.
+     * */
+    static normaliserChaineCaracteres(chaineCaracteres) {
+        return this.normaliserApostrophes(this.remplacerAccents(chaineCaracteres).toLowerCase())
+    }   
+
+    /**
+    * Normaliser les apostrophes d'une chaîne de caractères.
+    * @param {string} chaineCaracteres Chaîne de caractères.
+    **/
+    static normaliserApostrophes(chaineCaracteres) {
+        return chaineCaracteres.replace(/[\u2018-\u2019]/g, '\u0027')
+    }
+
+    /**
+     * Remplace les accents d'une chaîne de caractères.
+     * @param {string} chaineCaracteres Chaîne de caractères.
+     * */
+    static remplacerAccents(chaineCaracteres) {
+        return chaineCaracteres.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    }
+
+
 }
