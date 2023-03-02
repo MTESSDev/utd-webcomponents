@@ -7,6 +7,23 @@
 </utd-menu-ancres>
 
 <utd-accordeon reduit="false">
+    <div slot="titre"><h2>1.8.1 (2023-03-??)</h2></div>
+    <h3>Améliorations</h3>
+    <ul class="utd">
+        <li>Ajout du composant <a href="/composants/formulaire/listederoulante">Liste déroulante</a>.</li>
+        <li>Tailles adaptatives pour les headers (h1 à h6).</li>
+        <li>Ajout des gabarits 1 et 2 colonnes avec utilisation du cdn.</li>
+    </ul>
+    <h3>Améliorations</h3>
+    <ul class="utd">
+        <li>Ajout du composant <a href="/composants/formulaire/listederoulante">Liste déroulante</a>.</li>
+        <li>Tailles adaptatives pour les headers (h1 à h6).</li>
+        <li>Ajout des gabarits 1 et 2 colonnes avec utilisation du cdn.</li>
+    </ul>
+
+</utd-accordeon>
+
+<utd-accordeon reduit="false">
     <div slot="titre"><h2>1.8.0 (2023-02-23)</h2></div>
     <h3>Améliorations</h3>
     <ul class="utd">
