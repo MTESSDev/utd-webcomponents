@@ -88,7 +88,6 @@
                 position: relative;
                 display: flex;
                 align-items: center;
-                justify-content: center;
                 background-color: var(--bleu-pale);
                 color: var(--bleu-piv);
                 font-family: OpenSans-SemiBold;
@@ -117,6 +116,7 @@
 
                 .texte {
                     margin-right: 8px;
+                    text-align: left;
                 }
                 button {
                     display: flex;
