@@ -10,13 +10,17 @@
     <div slot="titre"><h2>1.8.1 (2023-03-??)</h2></div>
     <h3>Améliorations</h3>
     <ul class="utd">
-        <li>Ajout du composant <a href="/composants/formulaire/listederoulante">Liste déroulante</a>.</li>
-        <li>Tailles adaptatives pour les headers (h1 à h6).</li>
-        <li>Ajout des gabarits 1 et 2 colonnes avec utilisation du cdn.</li>
+        <li>Forcer un fond blanc pour la zone de contenu des composants "Section" et "Accordeon".</li>
     </ul>
-    <h3>Améliorations</h3>
+    <h3>Corrections d'anomalies</h3>
     <ul class="utd">
-        <li>Ajout du composant <a href="/composants/formulaire/listederoulante">Liste déroulante</a>.</li>
+        <li>Composant <a href="/composants/formulaire/listederoulante">Liste déroulante</a>
+            <ul>
+                <li>Pour les listes à choix multiple, alignement du texte à gauche du texte dans les étiquettes (valeurs sélectionnées). Était centré si le texte était sur plus d'une ligne.</li>
+            </ul>
+        </li>
+
+        <li>Composant <a href="/composants/formulaire/listederoulante">Liste déroulante</a>,.</li>
         <li>Tailles adaptatives pour les headers (h1 à h6).</li>
         <li>Ajout des gabarits 1 et 2 colonnes avec utilisation du cdn.</li>
     </ul>

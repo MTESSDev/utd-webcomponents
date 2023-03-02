@@ -543,6 +543,7 @@ utd-accordeon + utd-accordeon{
 
 .utd-accordeon .contenu {
   border: 1px solid transparent;
+  background-color: #fff;
 }
 
 .utd-accordeon .entete button:focus {
@@ -595,6 +596,10 @@ utd-section + utd-section {
   font-family: OpenSans-SemiBold;
   font-size: 16px;
   margin: 0;
+}
+
+.utd-section .contenu{
+  background-color: #fff;
 }
 
 .utd-section .contenu > div{
