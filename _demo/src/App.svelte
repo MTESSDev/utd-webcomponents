@@ -225,15 +225,7 @@
     {#if $router.path.indexOf('/composants/entetepiedpage/piedpagesite') >= 0}                                    
         <utd-pied-page-site id="piedPageSite">
             <div slot="contenu">
-                <nav aria-labelledby="titreLiensSuivezNous" class="media-sociaux">
-                    <h2 id="titreLiensSuivezNous">Suivez-nous</h2>
-                    <ul>
-                        <li><a href="https://www.facebook.com/TravailEmploiSolidaritesocialeQuebec" title="Suivez-nous sur Facebook." target="_blank" rel="noreferrer noopener" data-ga-libelle="Facebook"><span class="utd-icone-svg facebook"></span></a></li>
-                        <li><a href="https://twitter.com/Gouv_MTESS" title="Suivez-nous sur Twitter." target="_blank" rel="noreferrer noopener" data-ga-libelle="Twitter"><span class="utd-icone-svg twitter"></span></a></li>
-                        <li><a href="https://www.youtube.com/user/promomess" title="Suivez-nous sur Youtube." target="_blank" rel="noreferrer noopener" data-ga-libelle="Youtube"><span class="utd-icone-svg youtube"></span></a></li>
-                        <li><a href="https://www.linkedin.com/company/550343/" title="Suivez-nous sur Linkedln." target="_blank" rel="noreferrer noopener" data-ga-libelle="LinkedIn"><span class="utd-icone-svg linkedin"></span></a></li>
-                    </ul>
-                </nav>
+                <span>Ici votre contenu de pied de page de site (C'est votre css qui devra le styler).</span>
             </div>
         </utd-pied-page-site>
     {/if}

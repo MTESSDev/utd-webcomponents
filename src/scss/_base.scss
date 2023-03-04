@@ -341,7 +341,6 @@ p {
 }
 
 
-
 /* Listes */
 ul.utd  {
     padding-left: 20px;
@@ -387,6 +386,9 @@ ul.utd  {
     border: 0;
 }
 
+.utd-hidden  {
+    visibility: hidden;
+}
 .utd-backdrop {
     /*Backdrop*/
     opacity: 0.5;

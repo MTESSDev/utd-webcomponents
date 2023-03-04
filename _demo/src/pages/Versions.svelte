@@ -20,7 +20,7 @@
             </ul>
         </li>
 
-        <li>Composant <a href="/composants/formulaire/listederoulante">Liste déroulante</a>,.</li>
+        <li>Composant <a href="/composants/formulaire/listederoulante">Liste déroulante</a>.</li>
         <li>Tailles adaptatives pour les headers (h1 à h6).</li>
         <li>Ajout des gabarits 1 et 2 colonnes avec utilisation du cdn.</li>
     </ul>
