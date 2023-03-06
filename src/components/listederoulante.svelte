@@ -7,10 +7,6 @@ Référence : https://www.w3.org/WAI/ARIA/apg/example-index/combobox/combobox-au
 <svelte:options tag="utd-liste-deroulante" />
 
 <script>
-//TODO2 (REVÉRIFIER CAR CHANGE DEVRAIT ETRE CALLÉ) Caller blur event du select quand sélectionne ou déselectionne une option
-
-
-
 import { onMount } from "svelte";
 import { Utils } from "./js/utils"
 import { get_current_component } from "svelte/internal"  
@@ -30,8 +26,6 @@ const idControleRecherche = Utils.genererId()
 const idControleResultats = Utils.genererId()
 const idControleZoneNotificationLecteurEcran = Utils.genererId()
 
-
-//Textes fixes TODO traduire
 const titleEtiquette = languePage === 'fr' ? "Supprimer" : "Delete"
 const descriptionEtiquette = languePage === 'fr' ? "Déselectionner" : "Unselect"
 const texteNotificationEtiquetteSupprimee = languePage === 'fr' ? "Élément désélectionné" : "Item unselected"
@@ -74,7 +68,6 @@ let optionsMiniSearch
 let estScrollbarSuggestionsVisible = false
 let multiple = false
 
-
 onMount(() => {  
 
   optionsMiniSearch = {
@@ -86,7 +79,7 @@ onMount(() => {
     combineWith: 'OR',
     filter: null,
     processTerm: (term, _fieldName) => indexerTerme(term)
-}
+  }
 
 
   mounted = true
@@ -113,6 +106,7 @@ onMount(() => {
     observerAttributsSelectOriginal()
     observerAttributsLabelOrignal()
 
+    Utils.reafficherApresChargement(thisComponent)
 })
 
 

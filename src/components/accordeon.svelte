@@ -4,8 +4,10 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 <svelte:options tag="utd-accordeon" />
 
 <script>
+  import { onMount } from "svelte";
   import { slide } from "svelte/transition"
   import { Utils } from "./js/utils"
+  import { get_current_component } from "svelte/internal" 
   export let reduit = "true"
   export let titre = ""
   export let contenu = ""
@@ -13,6 +15,11 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
   const idEntete = Utils.genererId()
   const idContenu = 'corps' + idEntete
+  const thisComponent = get_current_component()
+
+  onMount(() => {  
+    Utils.reafficherApresChargement(thisComponent)
+  })
 
   function toggleAffichageContenu(){
     reduit =  reduit === 'true' ? 'false' : 'true'

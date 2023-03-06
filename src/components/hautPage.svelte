@@ -21,10 +21,7 @@ onMount(() => {
   controle = thisComponent.shadowRoot.querySelector('.utd-hautpage')
   controle.classList.add("utd-d-none")
   
-  setTimeout(() => {
-    thisComponent.classList.add('mounted')
-  })
-
+  Utils.reafficherApresChargement(thisComponent)
 })
 
 window.addEventListener('scroll', function(e) {

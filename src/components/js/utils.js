@@ -165,6 +165,12 @@ export class Utils {
         return first
     }
 
+    static reafficherApresChargement(composant) {
+        setTimeout(() => {
+            composant.classList.add('mounted')
+        })        
+    }
+
     /**
      * Normalise une chaîne de caractères pour utilisation insensible à la case et aux accents.
      * @param {string} chaineCaracteres Chaîne de caractères.

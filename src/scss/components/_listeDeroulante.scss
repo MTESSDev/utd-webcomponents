@@ -1,6 +1,19 @@
 /*====================================================================================================
 /*  Liste déroulante
 /*====================================================================================================*/
+utd-liste-deroulante {
+    display: block;
+    min-height: 40px;
+    max-height: 40px;
+    visibility: hidden;    
+
+    &.mounted{
+        min-height: inherit;
+        max-height: inherit;
+        visibility: visible;
+    }
+}
+
 .utd-liste-deroulante {
     position: relative;
 

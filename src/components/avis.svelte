@@ -5,9 +5,19 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
 <script>
   import { Utils } from "./js/utils"
+  import { onMount } from "svelte";
+  import { get_current_component } from "svelte/internal"  
+
   export let titre = ""
   export let type = "information"
   export let contenu = ""
+
+  const thisComponent = get_current_component()
+
+  onMount(() => {  
+    Utils.reafficherApresChargement(thisComponent)
+  })
+
 </script>
 
 <div class="utd-component utd-avis {type}" tabindex="0">

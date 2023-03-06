@@ -36,6 +36,8 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     if(Utils.estMobile()){
       html.classList.add("est-mobile")      
     }
+
+    Utils.reafficherApresChargement(thisComponent)    
   })
 
   /**

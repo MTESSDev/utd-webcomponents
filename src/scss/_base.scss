@@ -374,6 +374,10 @@ ul.utd  {
     display: block!important;
 }
 
+.utd-d-flex{
+    display: flex!important;
+}
+
 .utd-sr-only, .sr-only {
     position: absolute;
     width: 1px;
@@ -399,6 +403,14 @@ ul.utd  {
     width: 100vw;
     height: 100vh;
     background-color: #000;
+}
+
+.mt-48 {
+    margin-top: 48px;
+}
+
+.mb-48 {
+    margin-bottom: 48px;
 }
 
 .mt-32 {
@@ -1051,6 +1063,7 @@ select.utd-form-control.sm {
 /* checkbox-seul */
 .utd-form-group.checkbox label:first-of-type:last-of-type{
     font-family: 'OpenSans-SemiBold';
+    margin-top: 0;
 }
 
 .utd-form-group.checkbox .label, .utd-form-group.checkbox .utd-precision{

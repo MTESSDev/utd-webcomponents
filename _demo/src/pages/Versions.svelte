@@ -20,14 +20,12 @@
             </ul>
         </li>
 
-        <li>Composant <a href="/composants/formulaire/listederoulante">Liste déroulante</a>.</li>
-        <li>Tailles adaptatives pour les headers (h1 à h6).</li>
-        <li>Ajout des gabarits 1 et 2 colonnes avec utilisation du cdn.</li>
+        <li>Amélioration de l'affichage initial de certains composants sur connexions lentes. Provoquait parfois un effet visuel désagréable (flicking et contenu html non stylé) durant la phase d'affichage. Dorénavant les composants susceptibles d'avoir ce problème (ex. Piv entête/pied de page, accordéon, section, etc.) ne sont pas visibles pendant leur chargement.</li>
     </ul>
 
 </utd-accordeon>
 
-<utd-accordeon reduit="false">
+<utd-accordeon reduit="true">
     <div slot="titre"><h2>1.8.0 (2023-02-23)</h2></div>
     <h3>Améliorations</h3>
     <ul class="utd">
