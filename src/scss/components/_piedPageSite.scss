@@ -1,0 +1,56 @@
+/*====================================================================================================
+  Pied de page site
+====================================================================================================*/
+utd-pied-page-site {
+    color: #fff;
+    background-color: var(--couleur-texte-base);
+    display: block;
+    margin-bottom: 40px;
+
+    [slot="contenu"] {
+        display: flex;
+        padding: 48px 0;
+    }
+
+    ul {
+        padding:0;
+        margin: 0;
+        list-style: none;
+    }
+      
+    a {
+        color: #fff;
+        font-size: 14px;
+        text-decoration: none;
+    }
+
+    a:hover, a:focus {
+        color: #fff;
+        text-decoration: underline;
+    }
+}
+    
+  /* TODO pe éventuellement appliquer un modèle avec un nombre de colonnes?
+  utd-pied-page-site nav {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
+  @media (min-width: 768px){
+    utd-pied-page-site nav {
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+  }
+  
+  @media (min-width: 992px){
+    utd-pied-page-site nav {
+        -ms-flex: 0 0 33.333333%;
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+  }
+  */
+  

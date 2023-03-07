@@ -1,7 +1,7 @@
 /*====================================================================================================
 /*  Infobulle
 /*====================================================================================================*/
-@use "./modules/include-media" as *;
+/*@use "./modules/include-media" as *;*/
 
 /*Test media*/
 /*@include media(">phone") {
@@ -10,6 +10,13 @@
     }
 }*/
 
+utd-infobulle {
+    visibility: hidden;
+
+    &.mounted {
+        visibility: visible;
+    }
+}
 .utd-infobulle{
 
     .texte-lie {

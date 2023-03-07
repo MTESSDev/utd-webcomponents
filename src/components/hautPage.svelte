@@ -20,6 +20,8 @@ onMount(() => {
   html = thisComponent.getRootNode().getElementsByTagName("html")[0]
   controle = thisComponent.shadowRoot.querySelector('.utd-hautpage')
   controle.classList.add("utd-d-none")
+  
+  Utils.reafficherApresChargement(thisComponent)
 })
 
 window.addEventListener('scroll', function(e) {

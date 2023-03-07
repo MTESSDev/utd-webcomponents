@@ -27,6 +27,7 @@ let slots = []
 
 onMount(() => {  
   slots = Array.from(thisComponent.querySelectorAll('[slot]'))    
+  Utils.reafficherApresChargement(thisComponent)
 })
 
 function clickLien(){

@@ -6,6 +6,8 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 <script> 
   import { slide } from "svelte/transition"
   import { Utils } from './js/utils'
+  import { onMount } from "svelte";
+  import { get_current_component } from "svelte/internal"
   export let extensible = "true"
   export let reduit = "true"
   export let titre = ""
@@ -14,8 +16,12 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
   const idEntete = Utils.genererId() 
   const idContenu = 'corps' + idEntete
+  const thisComponent = get_current_component()
 
   //TODO éventuellement déterminer automatiquement le niveau de header via un script? 
+  onMount(() => {  
+    Utils.reafficherApresChargement(thisComponent)
+  })
 
   function toggleAffichageContenu(){
     reduit =  reduit === 'true' ? 'false' : 'true'

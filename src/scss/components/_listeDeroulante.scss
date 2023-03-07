@@ -1,6 +1,19 @@
 /*====================================================================================================
 /*  Liste déroulante
 /*====================================================================================================*/
+utd-liste-deroulante {
+    display: block;
+    min-height: 40px;
+    max-height: 40px;
+    visibility: hidden;    
+
+    &.mounted{
+        min-height: inherit;
+        max-height: inherit;
+        visibility: visible;
+    }
+}
+
 .utd-liste-deroulante {
     position: relative;
 
@@ -88,7 +101,6 @@
                 position: relative;
                 display: flex;
                 align-items: center;
-                justify-content: center;
                 background-color: var(--bleu-pale);
                 color: var(--bleu-piv);
                 font-family: OpenSans-SemiBold;
@@ -117,6 +129,7 @@
 
                 .texte {
                     margin-right: 8px;
+                    text-align: left;
                 }
                 button {
                     display: flex;
