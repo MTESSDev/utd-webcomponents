@@ -7,10 +7,11 @@
 </utd-menu-ancres>
 
 <utd-accordeon reduit="false">
-    <div slot="titre"><h2>1.8.1 (2023-03-??)</h2></div>
+    <div slot="titre"><h2>1.8.1 (2023-03-07)</h2></div>
     <h3>Améliorations</h3>
     <ul class="utd">
         <li>Forcer un fond blanc pour la zone de contenu des composants "Section" et "Accordeon".</li>
+        <li>Amélioration de l'affichage initial de certains composants sur connexions lentes. Provoquait parfois un effet visuel désagréable (flicking et contenu html non stylé) durant la phase d'affichage. Dorénavant les composants susceptibles d'avoir ce problème (ex. Piv entête/pied de page, accordéon, section, etc.) ne sont pas visibles pendant leur chargement.</li>
     </ul>
     <h3>Corrections d'anomalies</h3>
     <ul class="utd">
@@ -19,10 +20,7 @@
                 <li>Pour les listes à choix multiple, alignement du texte à gauche du texte dans les étiquettes (valeurs sélectionnées). Était centré si le texte était sur plus d'une ligne.</li>
             </ul>
         </li>
-
-        <li>Amélioration de l'affichage initial de certains composants sur connexions lentes. Provoquait parfois un effet visuel désagréable (flicking et contenu html non stylé) durant la phase d'affichage. Dorénavant les composants susceptibles d'avoir ce problème (ex. Piv entête/pied de page, accordéon, section, etc.) ne sont pas visibles pendant leur chargement.</li>
     </ul>
-
 </utd-accordeon>
 
 <utd-accordeon reduit="true">

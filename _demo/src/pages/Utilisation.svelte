@@ -18,7 +18,7 @@
 </CodeSource>   
 
 <h3>Chargement du css</h3>
-<p>Charger le css dans la balise <span class="utd-emphase-gris">head</span> après le css de votre projet.</p>
+<p>Charger le css dans la balise <span class="utd-emphase-gris">head</span> avant le css de votre projet.</p>
 <CodeSource codeSource="<link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.8.1/dist/css/utd-webcomponents.min.css'>">
 </CodeSource>   
 
