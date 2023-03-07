@@ -1,8 +1,8 @@
 
 export class Utils {
-    static relativeBasePath = document.currentScript.getAttribute('relative-base-path') || '/';
-    static cssRelativePath = `${this.relativeBasePath}/css/`.replace('//','/')
-    static imagesRelativePath = `${this.relativeBasePath}/images/`.replace('//','/')
+    static relativeBasePath = document.currentScript.getAttribute('relative-base-path').replace(/\/$/, '') || '';
+    static cssRelativePath = `${this.relativeBasePath}/css/`
+    static imagesRelativePath = `${this.relativeBasePath}/images/`
     static cssFullPath = `${this.cssRelativePath}utd-webcomponents.min.css?v=_vUtd_`
 
     static conserverFocusElement(componentShadow, componentRoot) {
