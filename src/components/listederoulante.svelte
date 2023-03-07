@@ -1119,4 +1119,6 @@ function assurerControleVisible() {
     </span>      
 </div>
 
-<link rel='stylesheet' href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.8.1/dist/css/utd-webcomponents.min.css?v=1.8.1">
+<style>
+@import 'https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.8.1/dist/css/utd-webcomponents.min.css?v=1.8.1';
+</style>
