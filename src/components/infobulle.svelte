@@ -166,6 +166,4 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   {/if}
 </span>
 
-<style>
-@import 'https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.8.1/dist/css/utd-webcomponents.min.css?v=1.8.1';
-</style>
+<link rel='stylesheet' href='{Utils.cssFullPath}'>

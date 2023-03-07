@@ -211,8 +211,8 @@
     </a>    
   {/if}            
 </div>
-<style>
-@import 'https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.8.1/dist/css/utd-webcomponents.min.css?v=1.8.1';
-</style>
+<link rel='stylesheet' href='{Utils.cssFullPath}'>
 
+<style>
+</style>
 
