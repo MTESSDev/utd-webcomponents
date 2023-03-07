@@ -6,17 +6,20 @@
 
     let tableauParametres = [];
     let tableauSlots = [];
+    let mounted = false;
 
     onMount(() => {
         tableauParametres = obtenirTableauParametres();
         tableauSlots = obtenirTableauSlots();
+        controlerSection7();
+        mounted = true;
     })
 
 
     function obtenirTableauParametres() {
         return [
             {nom: "extensible", type: "Boolean (Optionnel)", description: `Indique si la section doit être extensible ou non. Défaut "true" (extensible).`},        
-            {nom: "reduit", type: "Boolean (Optionnel)", description: `Indique si la section doit être réduite ou développée. Défaut "true" (réduite).`},    
+            {nom: "reduit", type: "Boolean (Optionnel)", description: `Indique si la section doit être réduite ou développée. Peut être mis à jour une fois le contrôle généré afin de modifier son état d'affichage (développée/réduite). Défaut "true" (réduite).`},    
             {nom: "bordure", type: "Boolean (Optionnel)", description: `Indique si la section doit être affichée avec bordure ou non. Défaut "true" (avec bordure).`},    
             {nom: "titre", type: "String (Optionnel)", description: `Titre affiché dans l'entête de la section.`},
             {nom: "tag-titre", type: "String (Optionnel)", description: `Balise html à utiliser pour le titre de l'entête. Défaut "h2".`}
@@ -29,6 +32,16 @@
             {nom: "titre", description: `Contenu html injecté dans l'entête de la section. Exemple d'utilisation : Ajout d'une icône à gauche du titre.`}            
         ];
     }
+
+    function controlerSection7() {
+        document.getElementById('btnControleExemple7').addEventListener('click', () => {
+            
+            const section = document.getElementById('section7')
+            section.setAttribute('reduit', section.getAttribute('reduit') === 'false' ? 'true' : 'false')
+        })
+    }
+
+    
 
 </script>
 
@@ -179,3 +192,26 @@ N'existe pas sur le site de design Quebec.ca
 </div>
 <CodeSource idElementCodeSource="exempleSection6">
 </CodeSource>   
+
+
+<h3>7- Section contrôlée par javascript</h3>
+<div class="mb-32" id="exempleSection7">
+    <utd-section class="mb-32" id="section7" reduit="false">
+        <span slot="titre">
+            Exemple d'utilisation 7
+        </span>   
+        <p>Un bel exemple de comment contrôler l'ouverture/fermeture de la section via un bouton.</p>
+        <p>Cliquez le bouton "Contrôler section" pour essayer.</p>
+    </utd-section>
+
+    <button type="button" id="btnControleExemple7" class="utd-btn secondaire compact">Contrôler section</button>
+</div>
+
+<CodeSource idElementCodeSource="exempleSection7" titre="Code source (Html)">
+</CodeSource>   
+
+{#if mounted}
+    <CodeSource codeSource="{controlerSection7.toString()}" titre="Code source (js)" language="language-javascript">
+    </CodeSource>   
+{/if}   
+

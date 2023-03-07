@@ -16,35 +16,49 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   const idEntete = Utils.genererId()
   const idContenu = 'corps' + idEntete
   const thisComponent = get_current_component()
+  let estReduit = reduit === 'true' ? true : false
+  let mounted = false
 
   onMount(() => {  
     Utils.reafficherApresChargement(thisComponent)
+    mounted = true
   })
 
+  $: gererEtatAffichage(reduit)
+
+
+  function gererEtatAffichage(){
+    if(!mounted){
+      return
+    }
+
+    estReduit =  reduit === 'true' ? true : false
+  }
+
   function toggleAffichageContenu(){
-    reduit =  reduit === 'true' ? 'false' : 'true'
+    thisComponent.setAttribute('reduit', estReduit ? 'false' : 'true')    
   }
 
   //TODO trouver le moyen d'obtenir le niveau de titre par défaut...
 </script>
 
-<div class="utd-component utd-accordeon {reduit === 'false' ? 'ouvert' : ''}" >
+<div class="utd-component utd-accordeon {!estReduit ? 'ouvert' : ''}" >
   <div class="entete">
     <svelte:element this={tagTitre} class="titre"> 
-      <button type="button" class="" aria-controls="{idContenu}" aria-expanded="{reduit === 'false'}" on:click={toggleAffichageContenu}>
+      <button type="button" class="" aria-controls="{idContenu}" aria-expanded="{!estReduit}" on:click={toggleAffichageContenu}>
         <span class="titre">
           {#if titre}
             {titre}
           {/if}
           <slot name="titre" />      
         </span>
-        <span class="utd-icone-svg {reduit === 'false' ? 'moins' : 'plus'}"></span>
+        <span class="utd-icone-svg {!estReduit ? 'moins' : 'plus'}"></span>
       </button>
     </svelte:element>       
   </div>
 
     <div id="{idContenu}" class="contenu" >
-      {#if reduit === 'false'}
+      {#if !estReduit}
         <div class="conteneur" transition:slide="{{duration:250}}">
           {#if contenu}
             {@html contenu}

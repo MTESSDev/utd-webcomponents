@@ -17,22 +17,36 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   const idEntete = Utils.genererId() 
   const idContenu = 'corps' + idEntete
   const thisComponent = get_current_component()
+  let estReduit = reduit === 'true' ? true : false
+  let mounted = false
 
   //TODO éventuellement déterminer automatiquement le niveau de header via un script? 
   onMount(() => {  
     Utils.reafficherApresChargement(thisComponent)
+    mounted = true
   })
 
+  $: gererEtatAffichage(reduit)
+
+
+  function gererEtatAffichage(){
+    if(!mounted){
+      return
+    }
+
+    estReduit =  reduit === 'true' ? true : false
+  }
+
   function toggleAffichageContenu(){
-    reduit =  reduit === 'true' ? 'false' : 'true'
+    thisComponent.setAttribute('reduit', estReduit ? 'false' : 'true')    
   }
 </script>
 
-<div class="utd-component utd-section {extensible === 'true' ? 'extensible' : ''} {reduit === 'false' ? 'ouvert' : ''} {bordure === 'true' ? 'bordure' : ''}" >
+<div class="utd-component utd-section{extensible === 'true' ? ' extensible' : ''}{!estReduit ? ' ouvert' : ''}{bordure === 'true' ? ' bordure' : ''}" >
   <div class="entete">
     {#if extensible === 'true'}
     <svelte:element this={tagTitre} class="titre"> 
-      <button type="button" class="" aria-controls="{idContenu}" aria-expanded="{reduit === 'false'}" on:click={toggleAffichageContenu}>
+      <button type="button" class="" aria-controls="{idContenu}" aria-expanded="{!estReduit}" on:click={toggleAffichageContenu}>
           {#if titre}
             {titre}
           {/if}
@@ -52,7 +66,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   </div>
 
   <div id="{idContenu}" class="contenu" >
-    {#if extensible === 'false' || reduit === 'false'}
+    {#if extensible === 'false' || !estReduit}
     <div transition:slide="{{duration:250}}">
       <slot/>
     </div>
