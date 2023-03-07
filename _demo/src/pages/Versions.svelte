@@ -17,7 +17,7 @@
     <ul class="utd">
         <li>Composant <a href="/composants/formulaire/listederoulante">Liste déroulante</a>
             <ul>
-                <li>Pour les listes à choix multiple, alignement du texte à gauche du texte dans les étiquettes (valeurs sélectionnées). Était centré si le texte était sur plus d'une ligne.</li>
+                <li>Pour les listes à choix multiple, alignement du texte à gauche dans les étiquettes (valeurs sélectionnées). Était centré si le texte était sur plus d'une ligne.</li>
             </ul>
         </li>
     </ul>

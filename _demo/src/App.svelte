@@ -40,13 +40,21 @@
 
     //Patch afin de faire fonctionner le bouton "Passer au contenu", semble y avoir un problème avec le router tinro
     function accederContenuPrincipal(){
-    const urlActuelle = location.href.replace(location.hash,"")
-    const urlContenuPrincipal = urlActuelle + '#main' 
+        const urlActuelle = location.href.replace(location.hash,"")
+        const urlContenuPrincipal = urlActuelle + '#main' 
 
-    if(location.href === urlContenuPrincipal){
-        location.href = urlActuelle + '#main2'
-    } 
-    location.href = urlContenuPrincipal
+        if(location.href === urlContenuPrincipal){
+            location.href = urlActuelle + '#main2'
+        } 
+        location.href = urlContenuPrincipal
+    }
+
+    //Pour raison inconnue, nous avions un bug js lorsqu'on accédait la 1ère fois au menu "Composants". Cela brisait la naviguation. On corrige en chargeant la page directement.
+    function clickMenuComposants(e){
+        e.preventDefault()
+        e.stopPropagation()
+    
+        location.href="/composants"
     }
 
 </script>
@@ -101,7 +109,7 @@
                             <a href="/base" use:active>Base</a>
                         </li>
                         <li>
-                            <a href="/composants" use:active>Composants</a>
+                            <a href="/composants" on:click={clickMenuComposants} use:active>Composants</a>
                         </li>
                     </ul>
                 </nav>
@@ -243,3 +251,6 @@
         {/if}                    
     </utd-piv-pied-page>    
 </footer>
+
+<style>    
+</style>
