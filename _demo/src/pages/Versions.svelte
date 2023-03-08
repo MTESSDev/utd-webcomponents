@@ -7,6 +7,19 @@
 </utd-menu-ancres>
 
 <utd-accordeon reduit="false">
+    <div slot="titre"><h2>1.9.0 (2023-03-??)</h2></div>
+    <h3>Améliorations</h3>
+    <ul class="utd">
+        <li>L'attribut "reduit" est maintenant réactif. On peut modifier sa valeur une fois le composant chargé afin de le développer ou réduire à l'aide de script.</li>
+        <li>Ajout d'un événement "ouverture" et "fermeture".</li>
+    </ul>
+    <h3>Corrections d'anomalies</h3>
+    <ul class="utd">
+        <li>L'utilisation avec CDN est maintenant pleinement fonctionnelle. Tous les fichiers peuvent être sur le CDN.</li>
+    </ul>
+</utd-accordeon>
+
+<utd-accordeon reduit="false">
     <div slot="titre"><h2>1.8.1 (2023-03-07)</h2></div>
     <h3>Améliorations</h3>
     <ul class="utd">

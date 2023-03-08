@@ -774,8 +774,6 @@ utd-accordeon .utd-form-group:last-child, utd-section .utd-form-group:last-child
     border-radius: 0;
 }
 
-select
-
 .utd-form-control::placeholder, .utd-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #647287;
     opacity: 1; /* Firefox */
@@ -861,14 +859,14 @@ input[type="url"].utd-form-control {
 
 input.utd-form-control.lg,
 textarea.utd-form-control.lg,
-select.utd-form-control.lg
+select.utd-form-control.lg,
 input[type="password"].utd-form-control {
     width: 249px;
 }
 
 input.utd-form-control.md,
 textarea.utd-form-control.md,
-select.utd-form-control.md
+select.utd-form-control.md,
 input[type="tel"].utd-form-control {
     width: 156px;
 }
