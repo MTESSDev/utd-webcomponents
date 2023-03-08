@@ -194,6 +194,14 @@ export class Utils {
     static remplacerAccents(chaineCaracteres) {
         return chaineCaracteres.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     }
-
-
+    
+    /**
+     * Génère un id à partir du texte spécifié. Le texte est normalisé, puis tous les caractères non textuels sont remplacés par des underscore "_".
+     * @param {string} texte Texte à partir duquel il faut créer un id.
+     * @returns Un id généré à partir du texte.
+     */
+    static obtenirIdSelonTexte(texte){
+        const texteNormalise = this.normaliserChaineCaracteres(texte)
+        return texteNormalise.replace(/\W/g,'_')        
+    }
 }

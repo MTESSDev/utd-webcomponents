@@ -10,8 +10,12 @@
     <div slot="titre"><h2>1.9.0 (2023-03-??)</h2></div>
     <h3>Améliorations</h3>
     <ul class="utd">
-        <li>L'attribut "reduit" est maintenant réactif. On peut modifier sa valeur une fois le composant chargé afin de le développer ou réduire à l'aide de script.</li>
-        <li>Ajout d'un événement "ouverture" et "fermeture".</li>
+        <li>Composants <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/affichagecontenu/accordeon">Accordéon</a> et <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/affichagecontenu/section">Section</a>
+        <ul>
+            <li>L'attribut "reduit" est maintenant réactif. On peut modifier sa valeur une fois le composant chargé afin de le développer ou réduire à l'aide de script.</li>
+            <li>Ajout de l'événement "changementEtat" levé au changement d'état (développé/réduit). Il retourne un indicateur permettant de savoir l'état d'affichage actuel du composant.</li>
+            <li>Ajout de l'attribut "conserver-etat-affichage" indiquant si l'état d'affichage (développé/réduit) de l'accordéon doit être conservé pendant la session (tant que le fureteur est ouvert).</li>
+        </ul>            
     </ul>
     <h3>Corrections d'anomalies</h3>
     <ul class="utd">
@@ -19,7 +23,7 @@
     </ul>
 </utd-accordeon>
 
-<utd-accordeon reduit="false">
+<utd-accordeon>
     <div slot="titre"><h2>1.8.1 (2023-03-07)</h2></div>
     <h3>Améliorations</h3>
     <ul class="utd">

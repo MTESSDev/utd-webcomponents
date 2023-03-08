@@ -6,13 +6,15 @@
 
     let tableauParametres = [];
     let tableauSlots = [];
+    let tableauRetourEvenementChangementEtat = [];
     let mounted = false;
 
     onMount(() => {
-        tableauParametres = obtenirTableauParametres();
-        tableauSlots = obtenirTableauSlots();
-        controlerSection7();
-        mounted = true;
+        tableauParametres = obtenirTableauParametres()
+        tableauSlots = obtenirTableauSlots()
+        tableauRetourEvenementChangementEtat = obtenirTableauRetourEvenementChangementEtat()
+        controlerSection7()
+        mounted = true
     })
 
 
@@ -33,13 +35,31 @@
         ];
     }
 
+    function obtenirTableauRetourEvenementChangementEtat() {
+        return [
+            {nom: "reduit", type: "Boolean (Optionnel)", description: `Indique si la section est réduite. Il s'agit du nouvel état suite au changement d'état d'affichage.`},    
+        ];
+    }
+
     function controlerSection7() {
         document.getElementById('btnControleExemple7').addEventListener('click', () => {
             
-            const section = document.getElementById('section7')
+            const section = document.getElementById('utdSection7')
             section.setAttribute('reduit', section.getAttribute('reduit') === 'false' ? 'true' : 'false')
         })
+
+        document.getElementById("utdSection7").addEventListener("changementEtat", e => {
+            document.getElementById('resultat7').innerText = `État d'affichage = ${e.detail.reduit ? 'réduit' : 'développé'}`;
+        })
     }
+
+    //TODO faire une méthode générique et ajouter dans utils afin de patcher le problème d'ancres avec tinro
+    function clickAncre(e) {
+        e.preventDefault();
+        location.hash = ''
+        location.hash = e.target.getAttribute('href')
+    }
+
 
     
 
@@ -68,6 +88,12 @@ N'existe pas sur le site de design Quebec.ca
 <TableauSlots parametres="{tableauSlots}">
 </TableauSlots>
 
+<h2>Événements disponibles</h2>
+<h3>changementEtat</h3>
+<p>Est exécuté lorsque l'état d'affichage (développé/réduit) de la section change. Voir exemple <a href="#exempleSectionJs" on:click="{clickAncre}">7- Section contrôlée par javascript</a>.</p>
+<h4>Retour</h4>
+<TableauParams parametres="{tableauRetourEvenementChangementEtat}">
+</TableauParams>
 
 <h2>Exemples</h2>
 <h3>1- Section avec champs</h3>
@@ -194,19 +220,20 @@ N'existe pas sur le site de design Quebec.ca
 </CodeSource>   
 
 
-<h3>7- Section contrôlée par javascript</h3>
+<h3 id="exempleSectionJs">7- Section contrôlée par javascript</h3>
 <div class="mb-32" id="exempleSection7">
-    <utd-section class="mb-32" id="section7" reduit="false">
+    <utd-section class="mb-32" id="utdSection7" reduit="false">
         <span slot="titre">
             Exemple d'utilisation 7
         </span>   
         <p>Un bel exemple de comment contrôler l'ouverture/fermeture de la section via un bouton.</p>
         <p>Cliquez le bouton "Contrôler section" pour essayer.</p>
+        <p>Remarquez également le texte indiquant l'état d'affichage lorsque ce dernier change.</p>
     </utd-section>
 
     <button type="button" id="btnControleExemple7" class="utd-btn secondaire compact">Contrôler section</button>
 </div>
-
+<div id="resultat7" class="mt-32 mb-32"></div>
 <CodeSource idElementCodeSource="exempleSection7" titre="Code source (Html)">
 </CodeSource>   
 

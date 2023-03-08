@@ -35,6 +35,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     }
 
     estReduit =  reduit === 'true' ? true : false
+    Utils.dispatchWcEvent(thisComponent, "changementEtat", {reduit: estReduit})
   }
 
   function toggleAffichageContenu(){
