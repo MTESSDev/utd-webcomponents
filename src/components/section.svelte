@@ -13,6 +13,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   export let titre = ""
   export let bordure = "true"
   export let tagTitre = "h2"
+  export let conserverEtatAffichage = "false"
 
   const idEntete = Utils.genererId() 
   const idContenu = 'corps' + idEntete
@@ -22,6 +23,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
   //TODO éventuellement déterminer automatiquement le niveau de header via un script? 
   onMount(() => {  
+    definirEtatAffichageInitial()
     Utils.reafficherApresChargement(thisComponent)
     mounted = true
   })
@@ -35,7 +37,38 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     }
 
     estReduit =  reduit === 'true' ? true : false
+    
+    conserverEtatAffichageSession()
+    
     Utils.dispatchWcEvent(thisComponent, "changementEtat", {reduit: estReduit})
+  }
+
+  function definirEtatAffichageInitial() {
+    if(conserverEtatAffichage === 'true'){
+      if(thisComponent.id){       
+        const valeur = sessionStorage.getItem(thisComponent.id)
+        //Si null (clé non trouvée dans le session storage, on va utiliser la valeur par défaut reçue en paramètre, sinon on l'écrase avec celle du session storage)
+        if(valeur !== null){
+          if (valeur === '1') {
+            thisComponent.setAttribute('reduit', 'false')
+          }
+          else {
+            thisComponent.setAttribute('reduit', 'true')
+          }
+        }
+      } 
+    }
+
+    estReduit = reduit === 'true' ? true : false
+
+    conserverEtatAffichageSession()
+  }
+
+
+  function conserverEtatAffichageSession(){
+    if(conserverEtatAffichage === 'true' && thisComponent.id){
+      sessionStorage.setItem(thisComponent.id, estReduit ? '0' : '1')
+    }
   }
 
   function toggleAffichageContenu(){

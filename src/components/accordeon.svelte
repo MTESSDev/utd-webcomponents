@@ -23,7 +23,6 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   onMount(() => {  
     definirEtatAffichageInitial()
     Utils.reafficherApresChargement(thisComponent)
-
     mounted = true
   })
 
@@ -36,10 +35,10 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
         //Si null (clé non trouvée dans le session storage, on va utiliser la valeur par défaut reçue en paramètre, sinon on l'écrase avec celle du session storage)
         if(valeur !== null){
           if (valeur === '1') {
-            reduit = 'false'
+            thisComponent.setAttribute('reduit', 'false')
           }
           else {
-            reduit = 'true'
+            thisComponent.setAttribute('reduit', 'true')
           }
         }
       } 

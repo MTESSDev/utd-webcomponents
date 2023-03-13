@@ -132,7 +132,7 @@
 <CodeSource idElementCodeSource="exemple5">
 </CodeSource>
 
-<h3>6- Gestion automatique (la plus simple avec dynamisme)</h3>
+<h3>6- Gestion automatique champ texte (la plus simple avec dynamisme)</h3>
 <p>Afin de modifier l'affichage du contrôle il suffit de modifier la valeur des différents attributs.</p>
 <p>Par exemple pour modifier l'affichage du message d'erreur il suffit de spécifier la valeur désirée dans l'attribut <span class="utd-emphase-gris">invalide</span> (true/false) et toutes les attaches vont être faites.</p>
 <p>À noter que le présent exemple est très basique et vérifie uniquement que le champ contient une valeur ou non.</p>
@@ -150,3 +150,14 @@
     <CodeSource codeSource="{ajouterCodeExemple6.toString()}" titre="Code source (js)" language="language-javascript">
     </CodeSource>   
 {/if} 
+
+<h3>7- Gestion automatique textarea (la plus simple)</h3>
+
+<div id="exemple7">
+    <utd-champ-form id="utdIdRequete" obligatoire="false" libelle="Saisissez ici votre requête en langage naturel" format="xxl" invalide="false" precision="Comme vous poseriez la question à quelqu'un." message-erreur="Vous devez saisir une requête.">
+        <textarea id="requete" rows=3></textarea>
+    </utd-champ-form>
+</div>
+
+<CodeSource idElementCodeSource="exemple7" titre="Code source (HTML)">
+</CodeSource>

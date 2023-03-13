@@ -7,7 +7,7 @@
 </utd-menu-ancres>
 
 <utd-accordeon reduit="false">
-    <div slot="titre"><h2>1.9.0 (2023-03-??)</h2></div>
+    <div slot="titre"><h2>1.9.0 (2023-03-13)</h2></div>
     <h3>Améliorations</h3>
     <ul class="utd">
         <li>Composants <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/affichagecontenu/accordeon">Accordéon</a> et <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/affichagecontenu/section">Section</a>
