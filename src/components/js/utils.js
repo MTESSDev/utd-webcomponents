@@ -1,8 +1,8 @@
 
 export class Utils {
-    static relativeBasePath = document.currentScript.getAttribute('relative-base-path') || '/';
-    static cssRelativePath = `${this.relativeBasePath}/css/`.replace('//','/')
-    static imagesRelativePath = `${this.relativeBasePath}/images/`.replace('//','/')
+    static relativeBasePath = document.currentScript.getAttribute('relative-base-path') || '';
+    static cssRelativePath = `${this.relativeBasePath.replace(/\/$/, '')}/css/`
+    static imagesRelativePath = `${this.relativeBasePath.replace(/\/$/, '')}/images/`
     static cssFullPath = `${this.cssRelativePath}utd-webcomponents.min.css?v=_vUtd_`
 
     static conserverFocusElement(componentShadow, componentRoot) {
@@ -194,6 +194,14 @@ export class Utils {
     static remplacerAccents(chaineCaracteres) {
         return chaineCaracteres.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     }
-
-
+    
+    /**
+     * Génère un id à partir du texte spécifié. Le texte est normalisé, puis tous les caractères non textuels sont remplacés par des underscore "_".
+     * @param {string} texte Texte à partir duquel il faut créer un id.
+     * @returns Un id généré à partir du texte.
+     */
+    static obtenirIdSelonTexte(texte){
+        const texteNormalise = this.normaliserChaineCaracteres(texte)
+        return texteNormalise.replace(/\W/g,'_')        
+    }
 }

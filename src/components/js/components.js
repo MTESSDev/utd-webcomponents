@@ -564,6 +564,40 @@ export function genererId() {
 }
 
 /**
+ * Normalise une chaîne de caractères pour utilisation insensible à la case et aux accents.
+ * @param {string} chaineCaracteres Chaîne de caractères.
+ * */
+export function normaliserChaineCaracteres(chaineCaracteres) {
+    return normaliserApostrophes(remplacerAccents(chaineCaracteres).toLowerCase())
+}   
+
+/**
+* Normaliser les apostrophes d'une chaîne de caractères.
+* @param {string} chaineCaracteres Chaîne de caractères.
+**/
+export function normaliserApostrophes(chaineCaracteres) {
+    return chaineCaracteres.replace(/[\u2018-\u2019]/g, '\u0027')
+}
+
+/**
+ * Remplace les accents d'une chaîne de caractères.
+ * @param {string} chaineCaracteres Chaîne de caractères.
+ * */
+export function remplacerAccents(chaineCaracteres) {
+    return chaineCaracteres.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+}
+    
+/**
+ * Génère un id à partir du texte spécifié. Le texte est normalisé, puis tous les caractères non textuels sont remplacés par des underscore "_".
+ * @param {string} texte Texte à partir duquel il faut créer un id.
+ * @returns Un id généré à partir du texte.
+ */
+export function obtenirIdSelonTexte(texte){
+    const texteNormalise = normaliserChaineCaracteres(texte)
+    return texteNormalise.replace(/\W/g,'_')        
+}
+
+/**
  * Obtient la langue de la page courante.
  * @returns {string} Code de langue de la page courante (fr/en).
  */

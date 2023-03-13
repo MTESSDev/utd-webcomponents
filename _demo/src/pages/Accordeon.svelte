@@ -4,22 +4,27 @@
     import TableauParams from '../components/TableauParams.svelte'; 
     import TableauSlots from '../components/TableauSlots.svelte'; 
 
-    let tableauParametres = [];
-    let tableauSlots = [];
+    let tableauParametres = []
+    let tableauSlots = []
+    let tableauRetourEvenementChangementEtat = []
+    let mounted = false
 
     onMount(() => {
-        tableauParametres = obtenirTableauParametres();
-        tableauSlots = obtenirTableauSlots();
+        tableauParametres = obtenirTableauParametres()
+        tableauSlots = obtenirTableauSlots()
+        tableauRetourEvenementChangementEtat = obtenirTableauRetourEvenementChangementEtat()
+        controlerAccordeon5()
+        mounted = true
     })
 
 
     function obtenirTableauParametres() {
         return [
-            {nom: "reduit", type: "Boolean (Optionnel)", description: `Indique si l'accordéon doit être réduit ou développé. Défaut "true" (réduit).`},    
+            {nom: "reduit", type: "Boolean (Optionnel)", description: `Indique si l'accordéon doit être réduit ou développé. Peut être mis à jour une fois le contrôle généré afin de modifier son état d'affichage (développé/réduit). Défaut "true" (réduit).`},    
             {nom: "titre", type: "String (Optionnel)", description: `Titre affiché dans l'entête de l'accordéon.`},
             {nom: "tag-titre", type: "String (Optionnel)", description: `Balise html à utiliser pour le titre de l'entête. Défaut "h2".`},
-            {nom: "contenu", type: "String (Optionnel)", description: `Texte à afficher dans la zone de contenu de l'accordéon.`}
-
+            {nom: "contenu", type: "String (Optionnel)", description: `Texte à afficher dans la zone de contenu de l'accordéon.`},
+            {nom: "conserver-etat-affichage", type: "Boolean (Optionnel)", description: `<p>Indique si l'état d'affichage (développé/réduit) de l'accordéon doit être conservé pendant la session (tant que le fureteur est ouvert). Défaut "false".</p><p>IMPORTANT! Afin que la fonctionnalité de conservation d'état d'affichage fonctionne, le composant utd-accordeon doit avoir un id.</p>`}
         ];
     }
 
@@ -28,6 +33,30 @@
             {nom: "défaut", description: `<p>Slot par défaut. Aucun nom à fournir.</p><p>Contenu html entre les balises du contrôle. Est injecté dans la zone de contenu de l'accordéon.</p>`},
             {nom: "titre", description: `Contenu html injecté dans l'entête de l'accordéon. Exemple d'utilisation : Ajout d'une icône à gauche du titre.`}            
         ];
+    }
+
+    function obtenirTableauRetourEvenementChangementEtat() {
+        return [
+            {nom: "reduit", type: "Boolean (Optionnel)", description: `Indique si l'accordéon est réduit. Il s'agit du nouvel état suite au changement d'état d'affichage.`},    
+        ];
+    }
+
+    function controlerAccordeon5() {        
+        document.getElementById('btnControleExemple5').addEventListener('click', () => {            
+            const accordeon = document.getElementById('utdAccordeon5')
+            accordeon.setAttribute('reduit', accordeon.getAttribute('reduit') === 'false' ? 'true' : 'false')
+        })
+
+        document.getElementById("utdAccordeon5").addEventListener("changementEtat", e => {
+            document.getElementById('resultat5').innerText = `État d'affichage = ${e.detail.reduit ? 'réduit' : 'développé'}`;
+        })
+    }
+
+    //TODO faire une méthode générique et ajouter dans utils afin de patcher le problème d'ancres avec tinro
+    function clickAncre(e) {
+        e.preventDefault();
+        location.hash = ''
+        location.hash = e.target.getAttribute('href')
     }
 
 </script>
@@ -54,6 +83,13 @@
 <TableauSlots parametres="{tableauSlots}">
 </TableauSlots>
 
+<h2>Événements disponibles</h2>
+<h3>changementEtat</h3>
+<p>Est exécuté lorsque l'état d'affichage (développé/réduit) de l'accordéon change. Voir exemple <a href="#aaa" on:click="{clickAncre}">5- Accordéon contrôlé par javascript</a>.</p>
+<h4>Retour</h4>
+<TableauParams parametres="{tableauRetourEvenementChangementEtat}">
+</TableauParams>
+
 
 <h2>Exemples</h2>
 <h3>1- Avec attributs "titre" et "contenu"</h3>
@@ -75,9 +111,11 @@
 </CodeSource>   
 
 
-<h3>3- Avec slots "titre" et slot par défaut</h3>
+<h3>3- Avec slots "titre" et slot par défaut et conservation de l'état d'affichage</h3>
+<p>Dans cet exemple, l'état d'affichage (développé/réduit) et conservé tout au long de la session.</p> 
+<p>Pour tester, développer l'accordéon, changer de page et revenir dans cette page. Vous constaterez que l'accordéon sera ouvert.</p>
 <div class="mb-32" id="exempleAccordeon3">
-    <utd-accordeon class="mb-32">
+    <utd-accordeon class="mb-32" id="utdAccordeon3" conserver-etat-affichage="true">
         <span slot="titre">
             Exemple d'utilisation 3 avec un titre long long long long long long long long long long long long long long long long long long
         </span>   
@@ -88,4 +126,42 @@
 <CodeSource idElementCodeSource="exempleAccordeon3">
 </CodeSource>   
 
+<h3>4- Accordéon développé par défaut</h3>
+<div class="mb-32" id="exempleAccordeon4">
+    <utd-accordeon class="mb-32" reduit="false">
+        <span slot="titre">
+            Exemple d'utilisation 4
+        </span>   
+        <p>Ici un texte incroyable.</p>
+        <p>Qui peut même contenir du html.</p>
+    </utd-accordeon>
+</div>
+<CodeSource idElementCodeSource="exempleAccordeon4">
+</CodeSource>   
 
+<h3 id="aaa">5- Accordéon contrôlé par javascript et conservation de l'état d'affichage</h3>
+<p>Cet exemple démontre l'utilisation de javascript afin de développer/réduire l'accordéon via un bouton.</p>
+<p>Il utilise également l'événement <span class="utd-emphase-gris">changementEtat</span> afin de signaler l'état d'affichage de l'accordéon (développé/réduit) lorsque son état change.</p>
+<p>Aussi dans cet exemple, l'état d'affichage (développé/réduit) et conservé tout au long de la session.</p> 
+<p>Pour tester, réduire l'accordéon, changer de page et revenir dans cette page. Vous constaterez que l'accordéon sera réduit.</p>
+
+<div class="mb-32" id="exempleAccordeon5">
+    <utd-accordeon class="mb-32" id="utdAccordeon5" reduit="false" conserver-etat-affichage="true">
+        <span slot="titre">
+            Exemple d'utilisation 5
+        </span>   
+        <p>Un bel exemple de comment contrôler l'ouverture/fermeture de l'accordéon via un bouton.</p>
+        <p>Cliquez le bouton "Contrôler accordéon" pour essayer.</p>        
+        <p>Remarquez également le texte indiquant l'état d'affichage lorsque ce dernier change.</p>
+    </utd-accordeon>
+
+    <button type="button" id="btnControleExemple5" class="utd-btn secondaire compact">Contrôler accordéon</button>
+</div>
+<div id="resultat5" class="mt-32 mb-32"></div>
+<CodeSource idElementCodeSource="exempleAccordeon5" titre="Code source (Html)">
+</CodeSource>   
+
+{#if mounted}
+    <CodeSource codeSource="{controlerAccordeon5.toString()}" titre="Code source (js)" language="language-javascript">
+    </CodeSource>   
+{/if}   

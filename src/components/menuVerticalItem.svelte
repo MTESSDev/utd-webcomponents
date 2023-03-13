@@ -1,4 +1,5 @@
 <svelte:options tag="utd-menu-vertical-item" />
+
 <script>
   import { onMount } from "svelte";
   import { Utils } from "./js/utils"

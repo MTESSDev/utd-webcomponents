@@ -144,6 +144,12 @@
             <label for="champ8">Champ type "search"</label>
             <input type="search" id="champ8" class="utd-form-control"/>
         </div>
+
+        <div class="utd-form-group">
+            <label for="champ9">Champ type "textarea"</label>
+            <textarea rows="3" id="champ9" class="utd-form-control"/>
+        </div>
+
     </div>
 </form>
 <CodeSource idElementCodeSource="differentsTypes">
