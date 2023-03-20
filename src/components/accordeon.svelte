@@ -17,7 +17,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   const idEntete = Utils.genererId()
   const idContenu = 'corps' + idEntete
   const thisComponent = get_current_component()
-  let estReduit
+  let estReduit = reduit === 'true' ? true : false
   let mounted = false
 
   onMount(() => {  

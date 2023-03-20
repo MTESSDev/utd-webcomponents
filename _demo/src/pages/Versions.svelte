@@ -7,6 +7,17 @@
 </utd-menu-ancres>
 
 <utd-accordeon reduit="false">
+    <div slot="titre"><h2>1.9.1 (2023-03-20)</h2></div>
+    <h3>Correction d'anomalies</h3>
+    <ul class="utd">
+        <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/affichagecontenu/accordeon">Accordéon</a>
+        <ul>
+            <li>Correction d'une régression visuelle au chargement de la page (introduite à la version 1.9.0). Selon la position de l'accordéon dans la page, il était possible qu'on voit son contenu une fraction de seconde au chargement.</li>
+        </ul>            
+    </ul>
+</utd-accordeon>
+
+<utd-accordeon reduit="true">
     <div slot="titre"><h2>1.9.0 (2023-03-13)</h2></div>
     <h3>Améliorations</h3>
     <ul class="utd">
