@@ -137,7 +137,7 @@ function ajouterCodeDialogue4() {
 </TableauSlots>
 
 <h2>Accessibilité</h2>
-<p>Les <a href="https://www.w3.org/WAI/ARIA/apg/example-index/dialog-modal/dialog">règles du W3C relatives aux dialogues</a> sont suivies à la lettre.</p>
+<p>Les <a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/examples/dialog" target="_blank">règles du W3C relatives aux dialogues</a> sont suivies à la lettre.</p>
 <p>Il semble que l'implémentation dans NVDA provoque la lecture du titre de la modale au lecteur écran deux fois.</p>
 <p>Il s'agit malgré tout de la meilleure solution possible, et il semble qu'il n'y a malheureusement rien à faire.</p>
 
