@@ -3,7 +3,6 @@
     import {active} from 'tinro';
     import { onMount } from "svelte";
     import Principe from './pages/Principe.svelte'; 
-    import Utilisation from './pages/Utilisation.svelte'; 
     import Versions from './pages/Versions.svelte'; 
     import Accordeon from './pages/Accordeon.svelte'; 
     import Infobulle from './pages/Infobulle.svelte'; 
@@ -27,9 +26,9 @@
     import PivEntete from './pages/PivEntete.svelte';
   import PivPiedPage from './pages/PivPiedPage.svelte';
   import PiedPageSite from './pages/PiedPageSite.svelte';
-  import GabaritHtml from './pages/GabaritHTML.svelte';
   import NousJoindre from './pages/NousJoindre.svelte';
   import ListeDeroulante from './pages/ListeDeroulante.svelte';
+  import ReglesInterfaces from './pages/ReglesInterfaces.svelte';
 
     onMount(() => {  
         document.getElementById('pivEntete').addEventListener("clickLien", () => {       
@@ -160,12 +159,14 @@
                         </utd-menu-vertical-item>
 
                     {:else}                                    
-                        <utd-menu-vertical-item href="/base/principe" libelle="Principe"></utd-menu-vertical-item>
-                        <utd-menu-vertical-item href="/base/utilisation" libelle="Utilisation"></utd-menu-vertical-item>
-                        <utd-menu-vertical-item href="/gabarit1colonne" libelle="Gabarit 1 colonne"></utd-menu-vertical-item>
-                        <utd-menu-vertical-item href="/gabarit1colonneCdn" libelle="Gabarit 1 colonne (cdn)"></utd-menu-vertical-item>
-                        <utd-menu-vertical-item href="/gabarit2colonnes" libelle="Gabarit 2 colonnes"></utd-menu-vertical-item>
-                        <utd-menu-vertical-item href="/gabarit2colonnesCdn" libelle="Gabarit 2 colonnes (cdn)"></utd-menu-vertical-item>
+                        <utd-menu-vertical-item href="/base/reglesinterfaces" libelle="Règles d'interfaces"></utd-menu-vertical-item>    
+                        <utd-menu-vertical-item href="/base/principe" libelle="Principe et utilisation des composants"></utd-menu-vertical-item>
+                        <utd-menu-vertical-item libelle="Gabarits">
+                            <utd-menu-vertical-item href="/gabarit1colonne" libelle="Gabarit 1 colonne"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item href="/gabarit1colonneCdn" libelle="Gabarit 1 colonne (cdn)"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item href="/gabarit2colonnes" libelle="Gabarit 2 colonnes"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item href="/gabarit2colonnesCdn" libelle="Gabarit 2 colonnes (cdn)"></utd-menu-vertical-item>    
+                        </utd-menu-vertical-item>
                         <utd-menu-vertical-item href="/base/nousjoindre" libelle="Nous joindre"></utd-menu-vertical-item>
                     {/if}
                 </utd-menu-vertical> 
@@ -173,11 +174,10 @@
         
             <div id="colonneDroite" class="utd">
                 <main id="main">
-                    <Route path="/" redirect="/base/principe" ></Route>
-                    <Route path="/base" redirect="/base/principe" ></Route>
+                    <Route path="/" redirect="/base/reglesinterfaces" ></Route>
+                    <Route path="/base" redirect="/base/reglesinterfaces" ></Route>
+                    <Route path="/base/reglesinterfaces" ><ReglesInterfaces /></Route>
                     <Route path="/base/principe" ><Principe /></Route>
-                    <Route path="/base/utilisation" ><Utilisation /></Route>
-                    <Route path="/base/gabarithtml" ><GabaritHtml /></Route>
                     <Route path="/base/nousjoindre" ><NousJoindre /></Route>
                     <Route path="/composants" redirect="/composants/versions"></Route>
                     <Route path="/composants/*">
