@@ -6,7 +6,7 @@
 <p>Tous les sites Web développés au sein du ministère de l'Emploi et de la Solidarité sociale doivent être conformes à ces standards du gouvernement :</p>
 
 
-<utd-accordeon titre="Système de design" tag-titre="h2">
+<utd-accordeon titre="Programme d'identification visuelle (PIV)" tag-titre="h2">
 
     <p>Toutes les communications du gouvernement, des ministères et des organismes gouvernementaux sont soumises aux normes graphiques du PIV : <a href="https://www.piv.gouv.qc.ca" target="_blank">www.piv.gouv.qc.ca</a></p>
 
