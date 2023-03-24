@@ -9,7 +9,7 @@
 
 <p>Accessibles, "responsive", sans dépendance, utilisables dans tous les types de projets (.Net, Drupal, SharePoint, VueJs, etc.).</p>
 
-<p>Pour utiliser les composants utd, il suffit d'injecter un fichier javascript, un fichier css, un fichier svg et quelques fichiers de fonts.</p>
+<p>Pour utiliser ces composants, il suffit d'injecter un fichier javascript, un fichier css, un fichier svg et quelques fichiers de fonts.</p>
 
 
 <h2>Utilisation des composants</h2>
