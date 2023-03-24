@@ -406,74 +406,127 @@ ul.utd  {
 }
 
 .mt-48 {
-    margin-top: 48px;
+    margin-top: 48px!important;
 }
 
 .mb-48 {
-    margin-bottom: 48px;
+    margin-bottom: 48px!important;
+}
+.ml-48 {
+    margin-left: 48px!important;
 }
 
+.mr-48 {
+    margin-right: 48px!important;
+}
+
+.m-48 {
+    margin: 48px!important;
+}
+
+
 .mt-32 {
-    margin-top: 32px;
+    margin-top: 32px!important;
 }
 
 .mb-32 {
-    margin-bottom: 32px;
+    margin-bottom: 32px!important;
 }
 
 .mr-32 {
-    margin-right: 32px;
+    margin-right: 32px!important;
 }
 
 .ml-32 {
-    margin-left: 32px;
+    margin-left: 32px!important;
+}
+
+.m-32 {
+    margin: 32px!important;
 }
 
 .mt-24 {
-    margin-top: 24px;
+    margin-top: 24px!important;
 }
 
 .mb-24 {
-    margin-bottom: 24px;
+    margin-bottom: 24px!important;
 }
 
 .mr-24 {
-    margin-right: 24px;
+    margin-right: 24px!important;
 }
 
 .ml-24 {
-    margin-left: 24px;
+    margin-left: 24px!important;
 }
+.m-24 {
+    margin: 24px!important;
+}
+
 .mt-16 {
-    margin-top: 16px;
+    margin-top: 16px!important;
 }
 
 .mb-16 {
-    margin-bottom: 16px;
+    margin-bottom: 16px!important;
 }
 .mr-16 {
-    margin-right: 16px;
+    margin-right: 16px!important;
 }
 
 .ml-16 {
-    margin-left: 16px;
+    margin-left: 16px!important;
+}
+
+.m-16 {
+    margin: 16px!important;
 }
 
 .mt-8 {
-    margin-top: 8px;
+    margin-top: 8px!important;
 }
 
 .mb-8 {
-    margin-bottom: 8px;
+    margin-bottom: 8px!important;
 }
 
 .mr-8 {
-    margin-right: 8px;
+    margin-right: 8px!important;
 }
 
 .ml-8 {
-    margin-left: 8px;
+    margin-left: 8px!important;
 }
+.m-8 {
+    margin: 8px!important;
+}
+
+.mt-0 {
+    margin-top: 0!important;
+}
+
+.mb-0 {
+    margin-bottom: 0!important;
+}
+
+.ml-0 {
+    margin-left: 0!important;
+}
+
+.mr-0 {
+    margin-right: 0!important;
+}
+
+.m-0 {
+    margin: 0!important;
+}
+
+/* Éléments à retirer éventuellement car encore utilisé dans certains forms. Nous l'ajoutons afin de supporter le retrait Bootstrap. */
+.mt-3 {
+    margin-top: 16px!important;
+}
+
 
 /*====================================================================================================
   -02- Tailles adaptatives                                                                                  
@@ -772,26 +825,33 @@ utd-accordeon .utd-form-group:last-child, utd-section .utd-form-group:last-child
     background-clip: padding-box;
     border: 1px solid #808A9D;
     border-radius: 0;
+
+    &:disabled, &[read-only]{
+        background-color: var(--gris-pale);
+        color: var(--gris-fonce);
+    } 
+
+    &::placeholder, &.utd-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #647287;
+        opacity: 1; /* Firefox */
+    }
+
+    &::-ms-input-placeholder { /* Microsoft Edge */
+        color: #647287;
+    }
+
+    &[aria-invalid="true"]{
+        border: 2px solid var(--couleur-erreur);
+    }        
 }
 
-.utd-form-control::placeholder, .utd-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #647287;
-    opacity: 1; /* Firefox */
-}
-  
-.utd-form-control::-ms-input-placeholder { /* Microsoft Edge */
-    color: #647287;
-}
+
 
 /*Redéfinition de Bootstrap*/
 input.utd-form-control[type="search"]{
     outline-offset: 0;
 }
 
-/* Champs en erreur TODO */
-.utd-form-control[aria-invalid="true"]{
-    border: 2px solid var(--couleur-erreur);
-}    
 .utd-erreur-champ {
     display: block;
     margin-top: 8px;
@@ -811,8 +871,8 @@ select.utd-form-control{
 .utd-form-control:focus,
 input.utd-form-control:focus,
 textarea.utd-form-control:focus,
-select.utd-form-control:focus {
-    outline: 2px solid #89bce5;
+select.utd-form-control:focus {    
+    outline: 2px solid #4a98d9;
     border: 2px solid #5b6476;
 }
 

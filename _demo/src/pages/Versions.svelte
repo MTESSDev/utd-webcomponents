@@ -6,7 +6,18 @@
 <utd-menu-ancres selecteur="#main h2">
 </utd-menu-ancres>
 
-<utd-accordeon reduit="false">
+<utd-accordeon reduit="true">
+    <div slot="titre"><h2>1.9.2 (2023-03-27)</h2></div>
+    <h3>Correction d'anomalies</h3>
+    <ul class="utd">
+        <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/formulaire/champsautomatique">Champ (gestion automatique)</a>
+        <ul>
+            <li>Correction d'un problème d'affichage avec les champs gérés automatiquement avec le compostant "utd-champ-form".</li>
+        </ul>            
+    </ul>
+</utd-accordeon>
+
+<utd-accordeon reduit="true">
     <div slot="titre"><h2>1.9.1 (2023-03-20)</h2></div>
     <h3>Correction d'anomalies</h3>
     <ul class="utd">
