@@ -35,7 +35,7 @@
     <p><strong>Tous nos composants web sont basés sur ce système de design</strong>, et sont accessibles et "responsive".</p>
 
     <h3>Évolution et collaboration</h3>
-    <p>Le système de design est évolutif. Lorsqu'une nouvelle interface est développée, les besoins de styles et de composantes sont identifiés à l'étape des maquettes schématiques. Si les styles et composantes nécessaires à cette interface se trouvent dans le système de design, ils doivent être utilisés. Si les styles ou composantes ne répondent pas tout à fait au besoin, ou n'existent tout simplement pas, les nouvelles composantes doivent être développées par l'équipe UX en collaboration avec la Firection des communications numériques gouvernementales (DCNG).</p>    
+    <p>Le système de design est évolutif. Lorsqu'une nouvelle interface est développée, les besoins de styles et de composantes sont identifiés à l'étape des maquettes schématiques. Si les styles et composantes nécessaires à cette interface se trouvent dans le système de design, ils doivent être utilisés. Si les styles ou composantes ne répondent pas tout à fait au besoin, ou n'existent tout simplement pas, les nouvelles composantes doivent être développées par l'équipe UX en collaboration avec la Direction des communications numériques gouvernementales (DCNG).</p>    
 </utd-accordeon>
 
 <utd-accordeon titre="Standard sur l'accessibilité des sites Web" tag-titre="h2" class="mb-32">
