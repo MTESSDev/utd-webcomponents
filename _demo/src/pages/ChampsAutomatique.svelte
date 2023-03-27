@@ -47,7 +47,7 @@
 
 <utd-menu-ancres selecteur="#main h2">
 </utd-menu-ancres>
-
+<div class="no-test">
 <h2>Description</h2>
 <p>Il est possible de grandement simplifier à différents niveaux le code requis pour les champs en utilisant le contrôle <span class="utd-emphase-gris">utd-champ-form</span>.</p>
 <p>En effet, il prend en charge la gestion du label, de la précision, du champ requis, du message d'erreur et évidemment de tous les attributs requis pour l'accessibilité.</p>
@@ -60,6 +60,7 @@
 <h2>Slots disponibles</h2>
 <TableauSlots parametres="{tableauSlots}">
 </TableauSlots>
+</div>
 
 <h2>Exemples</h2>
 <p>Tous les exemples utilisent le cas de figure le plus complexe, i.e. un champ obligatoire, avec précision et message d'erreur.</p>

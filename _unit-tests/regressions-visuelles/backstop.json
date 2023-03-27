@@ -1,0 +1,67 @@
+{
+  "id": "backstop_default",
+  "cookiePath": "backstop_data/engine_scripts/cookies.json",
+  "referenceUrl": "",
+  "readyEvent": "",
+  "readySelector": "",
+  "delay": 50,
+  "hideSelectors": [],
+  "removeSelectors": [".no-test", "header", "utd-menu-ancres", "utd-accordeon", "footer", "utd-hautpage"],
+  "postInteractionWait": 50,
+  "selectors": [],
+  "selectorExpansion": true,
+  "clickSelectors" : [],
+  "hoverSelectors": [],
+  "expect": 0,
+  "misMatchThreshold" : 0.1,
+  "requireSameDimensions": true,
+  "onBeforeScript": "puppet/onBefore.js",
+  "onReadyScript": "puppet/onReady.js",
+  "viewports": [
+    {
+      "label": "phone",
+      "width": 375,
+      "height": 812
+    },
+    {
+      "label": "tablet",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "label": "desktop",
+      "width": 1920,
+      "height": 1080
+    }
+  ],
+  "scenarios": [
+    {
+      "label": "Champs textes et autres", 
+      "url": "http://localhost:5000/composants/formulaire/champstexte",
+      "referenceUrl": "",
+      "clickSelectors": ["#taille1"]      
+    },
+    {
+      "label": "Champs gestion automatique", 
+      "url": "http://localhost:5000/composants/formulaire/champsautomatique",
+      "referenceUrl": "",
+      "clickSelectors": ["#requete"]
+    }
+  ],
+  "paths": {
+    "bitmaps_reference": "backstop_data/bitmaps_reference",
+    "bitmaps_test": "backstop_data/bitmaps_test",
+    "engine_scripts": "backstop_data/engine_scripts",
+    "html_report": "backstop_data/html_report",
+    "ci_report": "backstop_data/ci_report"
+  },
+  "report": ["browser"],
+  "engine": "puppeteer",
+  "engineOptions": {
+    "args": ["--no-sandbox"]
+  },
+  "asyncCaptureLimit": 5,
+  "asyncCompareLimit": 50,
+  "debug": false,
+  "debugWindow": false
+}

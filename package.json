@@ -1,12 +1,16 @@
 {
     "name": "utd-webcomponents",
-    "version": "1.9.2",
+    "version": "1.9.3",
     "private": false,
     "scripts": {
         "build": "rollup -c",
         "dev": "rollup -c -w",
         "start": "sirv _demo/public --single",
-        "start:dev": "sirv _demo/public --single --dev"
+        "start:dev": "sirv _demo/public --single --dev",
+        "bs-test": "node backstop.js --test",
+        "bs-reference": "node backstop.js --reference",
+        "bs-approve": "node backstop.js --approve",
+        "bs-openReport": "node backstop.js --openReport"
     },
     "devDependencies": {
         "@rollup/plugin-commonjs": "^17.0.0",
@@ -33,7 +37,9 @@
         "@babel/plugin-transform-runtime": "^7.16.0",
         "rollup-plugin-babel": "^4.4.0",
         "@rollup/plugin-replace": "^4.0.0",
-        "minisearch": "^6.0.1"
+        "minisearch": "^6.0.1",
+        "backstopjs": "^6.2.0",
+        "yargs": "^17.7.1"
     },
     "dependencies": {
         "sirv-cli": "^1.0.0"

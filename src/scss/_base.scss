@@ -880,7 +880,7 @@ select.utd-form-control:focus {
 -Z20A- Forms (Champs largeurs)  
 ====================================================================================================*/
 
-input[type="text"].utd-form-control,
+input.utd-form-control,
 select.utd-form-control,
 textarea.utd-form-control {
     /* On applique une largeur xl à tous les contrôles de type texte par défaut */
