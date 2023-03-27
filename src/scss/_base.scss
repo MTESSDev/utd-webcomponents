@@ -1509,6 +1509,17 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
 /*====================================================================================================
   -999- Divers
 ====================================================================================================*/
+.utd-d-flex{
+   display: flex!important;
+}
+
+.utd-d-inline{
+    display: inline!important;
+}
+.utd-d-inline-block{
+    display: inline-block!important;
+}
+
 .utd-emphase{
     background-color: var(--couleur-bleu);
     padding: 2px 4px;
