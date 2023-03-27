@@ -6,15 +6,23 @@
 <utd-menu-ancres selecteur="#main h2">
 </utd-menu-ancres>
 
-<utd-accordeon reduit="true">
+<utd-accordeon reduit="false">
     <div slot="titre"><h2>1.9.2 (2023-03-27)</h2></div>
     <h3>Correction d'anomalies</h3>
     <ul class="utd">
         <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/formulaire/champsautomatique">Champ (gestion automatique)</a>
-        <ul>
-            <li>Correction d'un problème d'affichage avec les champs gérés automatiquement avec le compostant "utd-champ-form".</li>
-        </ul>            
+            <ul>
+                <li>Correction d'un problème d'affichage avec les champs gérés automatiquement avec le compostant "utd-champ-form".</li>
+            </ul>     
+        </li>
+    </ul>            
+        
+    <h3>Améliorations</h3>
+    <ul class="utd">
+        <li>Ajout du visuel pour les champs inactifs (disabled) et lecture seule (readonly).</li>
+        <li>Ajustement visuel des champs avec focus (outline bleu un peu plus foncé) selon règles Québec.ca.</li>
     </ul>
+    
 </utd-accordeon>
 
 <utd-accordeon reduit="true">
