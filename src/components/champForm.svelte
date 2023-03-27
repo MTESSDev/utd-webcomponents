@@ -64,20 +64,33 @@
   $: gererErreur(invalide) 
 
   function wrapperControles(){
-    elementWrapper = document.createElement('div')    
+
+    const wrapper = thisComponent.querySelector('.utd-wrapper')
+
+    if(wrapper){
+      elementWrapper = wrapper
+      return
+    } 
+
+    elementWrapper = document.createElement('div') 
     
     const classeType = typeChamp === 'checkbox-seul' ? 'checkbox' : typeChamp
-    elementWrapper.classList.add('utd-form-group', classeType)
+    elementWrapper.classList.add('utd-form-group', 'utd-wrapper', classeType)
 
-    thisComponent.childNodes.forEach((element) => {
+    const nbEnfants = thisComponent.childNodes.length
+    for (let i = 0; i < nbEnfants; i++) {
+
+      const element = thisComponent.childNodes[0];
       elementWrapper.append(element)  
-      if(typeChamp === 'radio'){
+    }
+
+    if(typeChamp === 'radio'){
         elementWrapper.setAttribute('role', 'radiogroup')
-      }
-      if(typeChamp === 'checkbox'){
-        elementWrapper.setAttribute('role', 'group')
-      }
-    })
+    }
+
+    if(typeChamp === 'checkbox'){
+      elementWrapper.setAttribute('role', 'group')
+    }      
 
     if(format){ 
       elementWrapper.classList.add(format)

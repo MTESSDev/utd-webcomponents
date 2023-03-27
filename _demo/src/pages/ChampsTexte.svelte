@@ -111,6 +111,11 @@
         </div>
 
         <div class="utd-form-group">
+            <label for="champ1a">Champ type "text" (inactif)</label>
+            <input type="text" id="champ1a" disabled class="utd-form-control"/>
+        </div>
+
+        <div class="utd-form-group">
             <label for="champ2">Champ type "number"</label>
             <input type="number" id="champ2" class="utd-form-control"/>
         </div>
@@ -149,7 +154,6 @@
             <label for="champ9">Champ type "textarea"</label>
             <textarea rows="3" id="champ9" class="utd-form-control"/>
         </div>
-
     </div>
 </form>
 <CodeSource idElementCodeSource="differentsTypes">
