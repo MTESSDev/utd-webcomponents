@@ -1,5 +1,5 @@
 node_modules
 /public/build/
 /_unit-tests/regressions-visuelles/backstop_data/html_report/
-/_unit-tests/regressions-visuelles/bitmaps_test/
+/_unit-tests/regressions-visuelles/backstop_data/bitmaps_test/
 .DS_Store
