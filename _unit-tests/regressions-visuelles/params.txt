@@ -1,0 +1,47 @@
+﻿label                    // [required] Tag saved with your reference images
+onBeforeScript           // Used to set up browser state e.g. cookies.
+cookiePath               // import cookies in JSON format (available with default onBeforeScript see setting cookies below)
+url                      // [required] The url of your app state
+referenceUrl             // Specify a different state or environment when creating reference.
+readyEvent               // Wait until this string has been logged to the console.
+readySelector            // Wait until this selector exists before continuing.
+readyTimeout             // Timeout for readyEvent and readySelector (default: 30000ms)
+delay                    // Wait for x milliseconds
+hideSelectors            // Array of selectors set to visibility: hidden
+removeSelectors          // Array of selectors set to display: none
+onReadyScript            // After the above conditions are met -- use this script to modify UI state prior to screen shots e.g. hovers, clicks etc.
+keyPressSelectors        // Takes array of selector and string values -- simulates multiple sequential keypress interactions.
+hoverSelector            // Move the pointer over the specified DOM element prior to screen shot.
+hoverSelectors           // *Playwright and Puppeteer only* takes array of selectors -- simulates multiple sequential hover interactions.
+clickSelector            // Click the specified DOM element prior to screen shot.
+clickSelectors           // *Playwright and Puppeteer only* takes array of selectors -- simulates multiple sequential click interactions.
+postInteractionWait      // Wait for a selector after interacting with hoverSelector or clickSelector (optionally accepts wait time in ms. Ideal for use with a click or hover element transition. available with default onReadyScript)
+scrollToSelector         // Scrolls the specified DOM element into view prior to screen shot (available with default onReadyScript)
+selectors                // Array of selectors to capture. Defaults to document if omitted. Use "viewport" to capture the viewport size. See Targeting elements in the next section for more info...
+selectorExpansion        // See Targeting elements in the next section for more info...
+misMatchThreshold        // Percentage of different pixels allowed to pass test
+requireSameDimensions    // If set to true -- any change in selector size will trigger a test failure.
+viewports                // An array of screen size objects your DOM will be tested against. This configuration will override the viewports property assigned at the config root.
+gotoParameters           // An array of settings passed to page.goto(url, parameters) function.
+
+  "scenarios": [
+    {
+      "label": "Champs textes et autres",  
+      "cookiePath": "backstop_data/engine_scripts/cookies.json", 
+      "url": "http://localhost:5000/composants/formulaire/champstexte",
+      "referenceUrl": "", 
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": ["header", "utd-menu-ancres", "utd-accordeon", "footer", "utd-haut-page"],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": 0,
+      "selectors": [],
+      "selectorExpansion": true,
+      "expect": 0,
+      "misMatchThreshold" : 0.1,
+      "requireSameDimensions": true
+    }
+  ],

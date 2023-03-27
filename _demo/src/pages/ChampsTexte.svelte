@@ -58,106 +58,107 @@
 <h3>Particularités vs. le système de design Quebec.ca</h3>
 <p>Nous avons ajouté un format "extra extra-large" <span class="utd-emphase-gris">xxl</span> prenant la largeur disponible à l'intérieur du conteneur.</p>
 
-<h3>Exemples</h3>
-<div id="exempleFormats">
-    <div class="utd-form-group">
-        <label for="taille1">Champ "petit" (<em>sm</em>)</label>
-        <input type="text" id="taille1" class="utd-form-control sm"/>
+<div id="exemples">
+    <h3>Exemples</h3>
+    <div id="exempleFormats">
+        <div class="utd-form-group">
+            <label for="taille1">Champ "petit" (<em>sm</em>)</label>
+            <input type="text" id="taille1" class="utd-form-control sm"/>
+        </div>
+        <div class="utd-form-group">
+            <label for="taille2">Champ "moyen" (<em>md</em>)</label>
+            <input type="text" id="taille2" class="utd-form-control md"/>
+        </div>
+        <div class="utd-form-group">
+            <label for="taille3">Champ "large" (<em>lg</em>)</label>
+            <input type="text" id="taille3" class="utd-form-control lg"/>
+        </div>
+        <div class="utd-form-group">
+            <label for="taille4">Champ "extra-large" (<em>xl</em>)</label>
+            <input type="text" id="taille4" class="utd-form-control xl"/>
+        </div>
+
+        <div class="utd-form-group">
+            <label for="taille5">Champ "extra extra-large" (<em>xxl</em>)</label>
+            <input type="text" id="taille5" class="utd-form-control xxl"/>
+        </div>
     </div>
-    <div class="utd-form-group">
-        <label for="taille2">Champ "moyen" (<em>md</em>)</label>
-        <input type="text" id="taille2" class="utd-form-control md"/>
-    </div>
-    <div class="utd-form-group">
-        <label for="taille3">Champ "large" (<em>lg</em>)</label>
-        <input type="text" id="taille3" class="utd-form-control lg"/>
-    </div>
-    <div class="utd-form-group">
-        <label for="taille4">Champ "extra-large" (<em>xl</em>)</label>
-        <input type="text" id="taille4" class="utd-form-control xl"/>
+    <CodeSource idElementCodeSource="exempleFormats">
+    </CodeSource>
+
+    <h2>Espace réservé et précision</h2>
+    <p>Un espace réservé (<em>placeholder</em>) permet de préciser comment saisir les informations. Il est utilisé dans les champs dont le format est particulier, comme le code postal, le numéro de téléphone ou la date.</p>
+    <p>La précision quant à elle permet d'ajouter certaines informations permettant de mieux comprendre ce qui doit être inscrit dans un champ. Elle s’ajoute à la suite de l’étiquette, avant le champ texte. Simplement utiliser un &lt;span&gt; avec la classe <span class="utd-emphase-gris">utd-precision</span>.</p>
+    <p>Lors de l'utilisation d'une précision, il est impératif d'ajouter l'attribut <span class="utd-emphase-gris">aria-describedby</span> sur le champ afin que la précision soit lue au lecteur écran avec le libellé.</p>
+    <h3>Exemples</h3>
+    <div id="exemplePlaceholderPrecision">
+        <div class="utd-form-group">
+            <label for="placeholder1">Téléphone</label>
+            <span id="precisionExemplePlaceholderPrecision" class="utd-precision">Si vous n’avez pas de numéro de téléphone, inscrivez le numéro d’un membre de votre famille, d’un ami ou d’un organisme.</span>
+            <input type="tel" id="placeholder1" placeholder="123 456-7890" aria-describedby="precisionExemplePlaceholderPrecision" class="utd-form-control md"/>
+        </div>
     </div>
 
-    <div class="utd-form-group">
-        <label for="taille5">Champ "extra extra-large" (<em>xxl</em>)</label>
-        <input type="text" id="taille5" class="utd-form-control xxl"/>
-    </div>
+    <CodeSource idElementCodeSource="exemplePlaceholderPrecision">
+    </CodeSource>
+
+    <h3>Différents types</h3>
+    <form novalidate>
+        <div id="differentsTypes">
+            
+            <div class="utd-form-group">
+                <label for="champ1">Champ type "text"</label>
+                <input type="text" id="champ1" class="utd-form-control"/>
+            </div>
+
+            <div class="utd-form-group">
+                <label for="champ1a">Champ type "text" (inactif)</label>
+                <input type="text" id="champ1a" disabled class="utd-form-control"/>
+            </div>
+
+            <div class="utd-form-group">
+                <label for="champ2">Champ type "number"</label>
+                <input type="number" id="champ2" class="utd-form-control"/>
+            </div>
+
+            <div class="utd-form-group">
+                <label for="champ3">Champ type "date"</label>
+                <input type="date" id="champ3" class="utd-form-control"/>
+            </div>
+
+            <div class="utd-form-group">
+                <label for="champ4">Champ type "url"</label>
+                <input type="url" id="champ4" class="utd-form-control"/>
+            </div>
+
+            <div class="utd-form-group">
+                <label for="champ5">Champ type "tel"</label>
+                <input type="tel" id="champ5" class="utd-form-control"/>
+            </div>
+
+            <div class="utd-form-group">
+                <label for="champ6">Champ type "email"</label>
+                <input type="email" id="champ6" class="utd-form-control"/>
+            </div>
+
+            <div class="utd-form-group">
+                <label for="champ7">Champ type "password"</label>
+                <input type="password" id="champ7" class="utd-form-control"/>
+            </div>
+
+            <div class="utd-form-group">
+                <label for="champ8">Champ type "search"</label>
+                <input type="search" id="champ8" class="utd-form-control"/>
+            </div>
+
+            <div class="utd-form-group">
+                <label for="champ9">Champ type "textarea"</label>
+                <textarea rows="3" id="champ9" class="utd-form-control"/>
+            </div>
+        </div>
+    </form>
+    <CodeSource idElementCodeSource="differentsTypes">
+    </CodeSource>
 </div>
-<CodeSource idElementCodeSource="exempleFormats">
-</CodeSource>
-
-<h2>Espace réservé et précision</h2>
-<p>Un espace réservé (<em>placeholder</em>) permet de préciser comment saisir les informations. Il est utilisé dans les champs dont le format est particulier, comme le code postal, le numéro de téléphone ou la date.</p>
-<p>La précision quant à elle permet d'ajouter certaines informations permettant de mieux comprendre ce qui doit être inscrit dans un champ. Elle s’ajoute à la suite de l’étiquette, avant le champ texte. Simplement utiliser un &lt;span&gt; avec la classe <span class="utd-emphase-gris">utd-precision</span>.</p>
-<p>Lors de l'utilisation d'une précision, il est impératif d'ajouter l'attribut <span class="utd-emphase-gris">aria-describedby</span> sur le champ afin que la précision soit lue au lecteur écran avec le libellé.</p>
-<h3>Exemples</h3>
-<div id="exemplePlaceholderPrecision">
-    <div class="utd-form-group">
-        <label for="placeholder1">Téléphone</label>
-        <span id="precisionExemplePlaceholderPrecision" class="utd-precision">Si vous n’avez pas de numéro de téléphone, inscrivez le numéro d’un membre de votre famille, d’un ami ou d’un organisme.</span>
-        <input type="tel" id="placeholder1" placeholder="123 456-7890" aria-describedby="precisionExemplePlaceholderPrecision" class="utd-form-control md"/>
-    </div>
-</div>
-
-<CodeSource idElementCodeSource="exemplePlaceholderPrecision">
-</CodeSource>
-
-<h3>Différents types</h3>
-<form novalidate>
-    <div id="differentsTypes">
-        
-        <div class="utd-form-group">
-            <label for="champ1">Champ type "text"</label>
-            <input type="text" id="champ1" class="utd-form-control"/>
-        </div>
-
-        <div class="utd-form-group">
-            <label for="champ1a">Champ type "text" (inactif)</label>
-            <input type="text" id="champ1a" disabled class="utd-form-control"/>
-        </div>
-
-        <div class="utd-form-group">
-            <label for="champ2">Champ type "number"</label>
-            <input type="number" id="champ2" class="utd-form-control"/>
-        </div>
-
-        <div class="utd-form-group">
-            <label for="champ3">Champ type "date"</label>
-            <input type="date" id="champ3" class="utd-form-control"/>
-        </div>
-
-        <div class="utd-form-group">
-            <label for="champ4">Champ type "url"</label>
-            <input type="url" id="champ4" class="utd-form-control"/>
-        </div>
-
-        <div class="utd-form-group">
-            <label for="champ5">Champ type "tel"</label>
-            <input type="tel" id="champ5" class="utd-form-control"/>
-        </div>
-
-        <div class="utd-form-group">
-            <label for="champ6">Champ type "email"</label>
-            <input type="email" id="champ6" class="utd-form-control"/>
-        </div>
-
-        <div class="utd-form-group">
-            <label for="champ7">Champ type "password"</label>
-            <input type="password" id="champ7" class="utd-form-control"/>
-        </div>
-
-        <div class="utd-form-group">
-            <label for="champ8">Champ type "search"</label>
-            <input type="search" id="champ8" class="utd-form-control"/>
-        </div>
-
-        <div class="utd-form-group">
-            <label for="champ9">Champ type "textarea"</label>
-            <textarea rows="3" id="champ9" class="utd-form-control"/>
-        </div>
-    </div>
-</form>
-<CodeSource idElementCodeSource="differentsTypes">
-</CodeSource>
-
 
 
