@@ -30,6 +30,7 @@ module.exports = {
     ],
     scenarios: obtenirScenarios(),
     paths: {
+      engine_scripts: 'backstop_data/engine_scripts',
       bitmaps_reference: 'backstop_data/bitmaps_reference',
       bitmaps_test: 'backstop_data/bitmaps_test',
       html_report: 'backstop_data/html_report',
@@ -40,7 +41,7 @@ module.exports = {
     engineOptions: {
       args: ["--no-sandbox"]
     },
-    asyncCaptureLimit: 20,
+    asyncCaptureLimit: 10,
     asyncCompareLimit: 100,
     debug: false,
     debugWindow: false
