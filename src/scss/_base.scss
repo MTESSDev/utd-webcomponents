@@ -831,21 +831,19 @@ utd-accordeon .utd-form-group:last-child, utd-section .utd-form-group:last-child
         color: var(--gris-fonce);
     } 
 
-    &::placeholder, &.utd-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-        color: #647287;
-        opacity: 1; /* Firefox */
-    }
-
-    &::-ms-input-placeholder { /* Microsoft Edge */
-        color: #647287;
-    }
-
     &[aria-invalid="true"]{
         border: 2px solid var(--couleur-erreur);
     }        
 }
 
+.utd-form-control::placeholder, .utd-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #647287!important;
+    opacity: 1; /* Firefox */
+}
 
+.utd-form-control::-ms-input-placeholder { /* Microsoft Edge */
+    color: #647287!important;
+}
 
 /*Redéfinition de Bootstrap*/
 input.utd-form-control[type="search"]{
