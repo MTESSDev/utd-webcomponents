@@ -24,8 +24,7 @@ const supprimerFichiersRepertoire = function(chemin) {
   }
 }
 
-const obtenirCommande = function() {
-  
+const obtenirCommande = function() {  
   if (args.reference) {
     return "reference";
   } else if (args.test) {
@@ -34,6 +33,8 @@ const obtenirCommande = function() {
       return "approve";
   } else if(args.openReport) {
       return "openReport";
+  } else if(args.remote) {
+    return "remote";
   }
 }
 

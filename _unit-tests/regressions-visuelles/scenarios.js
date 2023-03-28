@@ -15,7 +15,7 @@ paramsDefaut : {
     clickSelectors : [],
     hoverSelectors: [],
     expect: 0,
-    misMatchThreshold: 0.1,
+    misMatchThreshold: 0.01,
     requireSameDimensions: true,
     onBeforeScript: "puppet/onBefore.js",
     onReadyScript: "puppet/onReady.js"  
