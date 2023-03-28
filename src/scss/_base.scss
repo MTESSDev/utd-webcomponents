@@ -883,7 +883,7 @@ select.utd-form-control:focus {
 input.utd-form-control,
 select.utd-form-control,
 textarea.utd-form-control {
-    /* On applique une largeur xl à tous les contrôles de type texte par défaut */
+    /* On applique une largeur xl à tous les contrôles par défaut */
     width: 528px;
     max-width: 100%;
 }
@@ -937,7 +937,6 @@ select.utd-form-control.sm {
 }
 
 @media (max-width: 560px) {
-    input[type="text"].utd-form-control,
     input.utd-form-control.xl,
     textarea.utd-form-control.xl,
     select.utd-form-control.xl {

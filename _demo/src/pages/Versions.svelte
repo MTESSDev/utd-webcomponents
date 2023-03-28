@@ -7,6 +7,21 @@
 </utd-menu-ancres>
 
 <utd-accordeon reduit="false">
+    <div slot="titre"><h2>1.9.3 (2023-04-03)</h2></div>
+    <h3>Correction d'anomalies</h3>
+    <ul class="utd">
+        <li>Correction de la taille par défaut des champs de taille "sm" et "md" en format téléphone.</li>
+        <li>Correction de la taille par défaut des champs de type "email" et "url" en format téléphone.</li>
+    </ul>            
+        
+    <h3>Améliorations</h3>
+    <ul class="utd">
+        <li>Ajout d'essais automatisés de non régression visuelle.</li>
+    </ul>
+    
+</utd-accordeon>
+
+<utd-accordeon reduit="false">
     <div slot="titre"><h2>1.9.2 (2023-03-27)</h2></div>
     <h3>Correction d'anomalies</h3>
     <ul class="utd">
