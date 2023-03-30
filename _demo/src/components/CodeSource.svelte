@@ -158,7 +158,7 @@
   }
 </script>
 
-<utd-accordeon titre="{titre}">
+<utd-accordeon titre="{titre}" class="no-test">
   <span slot="contenu">
 
     <div class="code-source">

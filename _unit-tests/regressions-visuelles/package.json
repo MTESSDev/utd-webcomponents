@@ -7,7 +7,14 @@
         "bs-reference": "node backstop.js --reference",
         "bs-approve": "node backstop.js --approve",
         "bs-openReport": "node backstop.js --openReport",
-        "remote": "node backstop.js --remote"
+        "remote": "node backstop.js --remote",
+        "bs-test-accordeon": "node backstop.js --test --filter=Accordeon*",
+        "bs-test-avis": "node backstop.js --test --filter=Avis",
+        "bs-test-boutons": "node backstop.js --test --filter=Boutons",
+        "bs-test-boutonsRadio": "node backstop.js --test --filter=radioButton",
+        "bs-test-casesCocher": "node backstop.js --test --filter=checkbox",
+        "bs-test-champsTexte": "node backstop.js --test --filter=Champs_texte",
+        "bs-test-champsAutomatiques": "node backstop.js --test --filter=Champs_gestion_automatique"
     },
     "devDependencies": {
         "backstopjs": "^6.2.0",

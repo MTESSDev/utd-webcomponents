@@ -5,58 +5,60 @@
 <style type="text/css">
 </style>
 
-<h1>Champs texte et autres</h1>
+<div class="documentation">
+    <h1>Champs texte et autres</h1>
 
-<utd-menu-ancres selecteur="#main h2">
-</utd-menu-ancres>
+    <utd-menu-ancres selecteur="#main h2">
+    </utd-menu-ancres>
 
-<utd-avis>
-    <div slot="contenu">
-        <p>Tout ce qui est décrit dans cette page s'applique également aux champs de type "number", "date", "tel", "email", "password", "url" et "search".</p>
+    <utd-avis>
+        <div slot="contenu">
+            <p>Tout ce qui est décrit dans cette page s'applique également aux champs de type "number", "date", "tel", "email", "password", "url" et "search".</p>
+        </div>
+    </utd-avis>
+
+    <h2>Description</h2>
+    <p>Le <strong>champ texte</strong> est un espace dans lequel est saisie une information qui tient sur une ligne de texte. </p>
+    <p>Le champ est accompagné d’une étiquette claire et succincte. Elle permet d’identifier au premier coup d’œil l’information requise dans le champ. Les signes de ponctuation sont à éviter.</p>
+    <p>On évite aussi d’ajouter des compléments d’information entre les champs d’un formulaire. Les précisions sont fournies à l’aide :</p>
+    <ul>
+        <li>d’une étiquette claire et succincte;</li>
+        <li>d’un espace réservé (<em>placeholder</em>), au besoin;</li>
+        <li>d’une courte phrase sous l’étiquette, au besoin;</li>
+    </ul>
+
+    <h3>Référence système de design Quebec.ca</h3>
+    <a href="https://design.quebec.ca/composantes/formulaire/champ-texte" target="_blank">Voir les spécifications sur le site de design Quebec.ca</a>
+
+
+    <h2>Notions de base</h2>
+    <p>Un champ de type &lt;input&gt; doit posséder la classe <span class="utd-emphase-gris">utd-form-control</span> et être dans un conteneur (ex. un &lt;div&gt;) ayant la classe <span class="utd-emphase-gris">utd-form-group</span> (sauf le dernier champ d'une page).</p>
+
+
+    <h2>Étiquette (label)</h2>
+    <p>Style appliqué automatiquement à tous les éléments &lt;label&gt;.</p>
+
+    <h3>Particularités vs. le système de design Quebec.ca</h3>
+    <p>Nous utilisons la graisse semi-bold au lieu de bold.</p>
+
+    <h3>Exemples</h3>
+    <div id="exempleLabel">
+        <div class="utd-form-group">
+            <label for="label1">Un beau libellé de champ</label>
+            <input type="text" id="label1" class="utd-form-control"/>
+        </div>
     </div>
-</utd-avis>
 
-<h2>Description</h2>
-<p>Le <strong>champ texte</strong> est un espace dans lequel est saisie une information qui tient sur une ligne de texte. </p>
-<p>Le champ est accompagné d’une étiquette claire et succincte. Elle permet d’identifier au premier coup d’œil l’information requise dans le champ. Les signes de ponctuation sont à éviter.</p>
-<p>On évite aussi d’ajouter des compléments d’information entre les champs d’un formulaire. Les précisions sont fournies à l’aide :</p>
-<ul>
-    <li>d’une étiquette claire et succincte;</li>
-    <li>d’un espace réservé (<em>placeholder</em>), au besoin;</li>
-    <li>d’une courte phrase sous l’étiquette, au besoin;</li>
-</ul>
+    <CodeSource idElementCodeSource="exempleLabel">
+    </CodeSource>
 
-<h3>Référence système de design Quebec.ca</h3>
-<a href="https://design.quebec.ca/composantes/formulaire/champ-texte" target="_blank">Voir les spécifications sur le site de design Quebec.ca</a>
+    <h2 id="formatsDisponibles">Formats disponibles</h2>
+    <p>La longueur du champ doit être adaptée à la réponse requise, selon 5 formats disponibles.</p>
+    <p>Utilisez les classes <span class="utd-emphase-gris">sm</span>, <span class="utd-emphase-gris">md</span>, <span class="utd-emphase-gris">lg</span>, <span class="utd-emphase-gris">xl</span>, et <span class="utd-emphase-gris">xxl</span> afin de préciser le format des champs. Si rien n'est spécifié, le format "large" par défaut s'applique.</p>
 
-
-<h2>Notions de base</h2>
-<p>Un champ de type &lt;input&gt; doit posséder la classe <span class="utd-emphase-gris">utd-form-control</span> et être dans un conteneur (ex. un &lt;div&gt;) ayant la classe <span class="utd-emphase-gris">utd-form-group</span> (sauf le dernier champ d'une page).</p>
-
-
-<h2>Étiquette (label)</h2>
-<p>Style appliqué automatiquement à tous les éléments &lt;label&gt;.</p>
-
-<h3>Particularités vs. le système de design Quebec.ca</h3>
-<p>Nous utilisons la graisse semi-bold au lieu de bold.</p>
-
-<h3>Exemples</h3>
-<div id="exempleLabel">
-    <div class="utd-form-group">
-        <label for="label1">Un beau libellé de champ</label>
-        <input type="text" id="label1" class="utd-form-control"/>
-    </div>
+    <h3>Particularités vs. le système de design Quebec.ca</h3>
+    <p>Nous avons ajouté un format "extra extra-large" <span class="utd-emphase-gris">xxl</span> prenant la largeur disponible à l'intérieur du conteneur.</p>
 </div>
-
-<CodeSource idElementCodeSource="exempleLabel">
-</CodeSource>
-
-<h2 id="formatsDisponibles">Formats disponibles</h2>
-<p>La longueur du champ doit être adaptée à la réponse requise, selon 5 formats disponibles.</p>
-<p>Utilisez les classes <span class="utd-emphase-gris">sm</span>, <span class="utd-emphase-gris">md</span>, <span class="utd-emphase-gris">lg</span>, <span class="utd-emphase-gris">xl</span>, et <span class="utd-emphase-gris">xxl</span> afin de préciser le format des champs. Si rien n'est spécifié, le format "large" par défaut s'applique.</p>
-
-<h3>Particularités vs. le système de design Quebec.ca</h3>
-<p>Nous avons ajouté un format "extra extra-large" <span class="utd-emphase-gris">xxl</span> prenant la largeur disponible à l'intérieur du conteneur.</p>
 
 <div id="exemples">
     <h3>Exemples</h3>

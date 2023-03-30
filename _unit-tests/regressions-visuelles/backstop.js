@@ -38,10 +38,13 @@ const obtenirCommande = function() {
   }
 }
 
+const obtenirFiltre = function() {
+  return args.filter || ""
+}
 
 process.argv = []; 
 
 supprimerFichiersRepertoire(repertoireBitmapsTest);
 
-backstop(obtenirCommande(), { config: 'backstopConfig' });
+backstop(obtenirCommande(), { config: 'backstopConfig', filter: obtenirFiltre()});
 //backstop(commandToRun, { docker: true, config: 'backstop.json' });

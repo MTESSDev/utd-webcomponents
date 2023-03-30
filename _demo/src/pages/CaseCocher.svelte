@@ -60,21 +60,23 @@
 <style type="text/css">
 </style>
 
-<h1>Case à cocher</h1>
+<div class="documentation">
+    <h1>Case à cocher</h1>
 
-<utd-menu-ancres selecteur="#main h2">
-</utd-menu-ancres>
+    <utd-menu-ancres selecteur="#main h2">
+    </utd-menu-ancres>
 
-<h2>Description</h2>
-<p>La <strong>case à cocher</strong> permet à l’utilisateur de sélectionner une ou plusieurs options dans une liste.</p>
+    <h2>Description</h2>
+    <p>La <strong>case à cocher</strong> permet à l’utilisateur de sélectionner une ou plusieurs options dans une liste.</p>
 
-<h3>Référence système de design Quebec.ca</h3>
-<a href="https://design.quebec.ca/composantes/formulaire/case-a-cocher" target="_blank">Voir les spécifications sur le site de design Quebec.ca</a>
+    <h3>Référence système de design Quebec.ca</h3>
+    <a href="https://design.quebec.ca/composantes/formulaire/case-a-cocher" target="_blank">Voir les spécifications sur le site de design Quebec.ca</a>
+</div>
 
 <h2>Exemples</h2>
 
 <h3>1- Seul (gestion manuelle)</h3>
-<div id="exemple1">    
+<div id="exemple1" class="bs-test">    
     <div class="utd-form-group checkbox">
         <label>
             <input type="checkbox" name="rempliFormulaire1" value="PrisConnaissanceDirectives" aria-required="true" aria-invalid="true" aria-describedby="texteErreur1">
@@ -88,7 +90,7 @@
 </CodeSource>
 
 <h3>2- Seul (gestion manuelle, format compact)</h3>
-<div id="exemple2">    
+<div id="exemple2" class="bs-test">    
     <div class="utd-form-group checkbox compact">
         <label>
             <input type="checkbox" name="rempliFormulaire2" value="PrisConnaissanceDirectives" aria-required="true" aria-invalid="true" aria-describedby="texteErreur2">
@@ -119,7 +121,7 @@
         </label>               
         <label>
             <input type="checkbox" name="persoPrefere3" value="Vader">
-            <span>Darth Vador</span>
+            <span>Darth Vador (AKA Anakin Skywalker, AKA Dark Lord of the Sith)</span>
         </label>    
         <label>
             <input type="checkbox" name="persoPrefere3" value="Fonzi">
@@ -155,7 +157,7 @@
         </label>               
         <label>
             <input type="checkbox" name="persoPrefere4" value="Vader">
-            <span>Darth Vador</span>
+            <span>Darth Vador (AKA Anakin Skywalker, AKA Dark Lord of the Sith)</span>
         </label>    
         <label>
             <input type="checkbox" name="persoPrefere4" value="Fonzi">
@@ -174,7 +176,7 @@
 </CodeSource>
 
 <h3>5- Seul (Gestion automatique avec wrapper "utd-champ-form")</h3>
-<div id="exemple5">    
+<div id="exemple5" class="bs-test">    
     <utd-champ-form id="utdChamp5" obligatoire="true" message-erreur="Le champ «J'ai pris connaissance des directives» est obligatoire.">
         <label>
             <input type="checkbox" name="rempliFormulaire5" value="PrisConnaissanceDirectives">
@@ -191,7 +193,7 @@
 {/if} 
 
 <h3>6- Seul (Gestion automatique avec wrapper "utd-champ-form", format compact)</h3>
-<div id="exemple6">    
+<div id="exemple6" class="bs-test">    
     <utd-champ-form id="utdChamp6" obligatoire="true" format="compact" message-erreur="Le champ «J'ai pris connaissance des directives» est obligatoire.">
         <label>
             <input type="checkbox" name="rempliFormulaire6" value="PrisConnaissanceDirectives">
@@ -208,7 +210,7 @@
 {/if} 
 
 <h3>7- Liste (Gestion automatique avec wrapper "utd-champ-form")</h3>
-<div id="exemple7">    
+<div id="exemple7" class="bs-test">    
     <utd-champ-form id="utdChamp7" obligatoire="true" libelle="Quels sont vos personnages préférés ?" precision="Faites confiance à votre instinct." message-erreur="Le champ «Quels sont vos personnages préférés ?» est obligatoire.">
         <label>
             <input type="checkbox" name="persoPrefere7" value="Marty">                
@@ -220,7 +222,7 @@
         </label>               
         <label>
             <input type="checkbox" name="persoPrefere7" value="Vader">
-            <span>Darth Vador</span>
+            <span>Darth Vador (AKA Anakin Skywalker, AKA Dark Lord of the Sith)</span>
         </label>    
         <label>
             <input type="checkbox" disabled name="persoPrefere7" value="Fonzi">
@@ -242,7 +244,7 @@
 {/if} 
 
 <h3>8- Liste (Gestion automatique avec wrapper "utd-champ-form", format compact)</h3>
-<div id="exemple8">    
+<div id="exemple8" class="bs-test">    
     <utd-champ-form id="utdChamp8" obligatoire="true" format="compact" libelle="Quels sont vos personnages préférés ?" precision="Faites confiance à votre instinct." message-erreur="Le champ «Quels sont vos personnages préférés ?» est obligatoire.">
         <label>
             <input type="checkbox" name="persoPrefere8" value="Marty">                
@@ -254,14 +256,14 @@
         </label>               
         <label>
             <input type="checkbox" name="persoPrefere8" value="Vader">
-            <span>Darth Vador</span>
+            <span>Darth Vador (AKA Anakin Skywalker, AKA Dark Lord of the Sith)</span>
         </label>    
         <label>
-            <input type="checkbox" name="persoPrefere8" value="Fonzi">
+            <input type="checkbox" disabled name="persoPrefere8" value="Fonzi">
             <span>Fonzi</span>
         </label>    
         <label>
-            <input type="checkbox" name="persoPrefere8" value="CaptainAmerica">
+            <input type="checkbox" disabled name="persoPrefere8" value="CaptainAmerica">
             <span>Captain America</span>
         </label>    
     </utd-champ-form>

@@ -17,6 +17,7 @@
     <h3>Améliorations</h3>
     <ul class="utd">
         <li>Ajout d'essais automatisés de non régression visuelle.</li>
+        <li>Composant <a href="#">Avis</a>, ajout du type "complementaire" avec x variations (astuce, xxx et xxx).</li>
     </ul>
     
 </utd-accordeon>
