@@ -146,18 +146,6 @@ scenarios : [
         selectors: ["#exempleBoutons4"],
         hoverSelectors: ["#exempleBoutons4 button"]
     },
-    //Champs textes et autres (focus testé via le input #taille1)
-    {
-        label: "Champs_textes et autres", 
-        url: "/composants/formulaire/champstexte",            
-        clickSelectors: ["#taille1"]      
-    },
-    //Champs gestion automatique (focus testé via le input #requete)
-    {
-        label: "Champs_gestion_automatique", 
-        url: "/composants/formulaire/champsautomatique",
-        clickSelectors: ["#requete"]
-    },    
     //Boutons radio (Base)
     {
         label: "Boutons radio (Base) (radioButton)", 
@@ -264,6 +252,217 @@ scenarios : [
         selectors: ["#exemple8"],
         focusSelectors: ["#exemple8 input"]
     },
+    //Champs erreur (base)
+    {
+        label: "Champs_erreur (Base)", 
+        url: "/composants/formulaire/champerreur"
+    },    
+    //Champs erreur (focus)
+    {
+        label: "Champs_erreur (Focus)", 
+        url: "/composants/formulaire/champerreur",
+        viewports: viewports.vPhone,
+        selectors: ["#exemple1"],
+        clickSelectors: ["#exemple1 input"]      
+    },    
+    //Champs gestion automatique (focus testé via le input #requete)
+    {
+        label: "Champs_gestion_automatique", 
+        url: "/composants/formulaire/champsautomatique",
+        clickSelectors: ["#requete"]
+    },    
+    //Champs textes et autres (focus testé via le input #taille1)
+    {
+        label: "Champs_textes et autres", 
+        url: "/composants/formulaire/champstexte",            
+        clickSelectors: ["#taille1"]      
+    },
+    //Dialogue modal (Base)
+    {
+        label: "Dialogue modal (Base)", 
+        url: "/composants/actions/dialogue",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],        
+        clickSelectors: ["#btnTest1"]      
+    },    
+    //Dialogue modal (Fermeture X)
+    {
+        label: "Dialogue modal (Fermeture X)", 
+        url: "/composants/actions/dialogue",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        clickSelectors: ["#btnTest1"],              
+        shadowClickSelectors: [{domElementSelector: "#dialogue1", shadowDomElementSelector: "button.close"}]
+    },    
+    //Dialogue modal (Fermeture via méthode masquer)
+    {
+        label: "Dialogue modal (Fermeture via methode masquer)", 
+        url: "/composants/actions/dialogue",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],  
+        clickSelectors: ["#btnTest1", "#btnAnnuler1"]
+    },    
+    //Dialogue modal (Fermeture via click outside)
+    {
+        label: "Dialogue modal (Fermeture via via click outside)", 
+        url: "/composants/actions/dialogue",
+        selectors: ["viewport"],
+        viewports: viewports.vTablet,
+        removeSelectors: [".no-test"],  
+        clickSelectors: ["#btnTest1", "#btnVotreAvis"]
+    },    
 
+    //Dialogue modal (Fermeture via escape)
+    {
+        label: "Dialogue modal (Fermeture via escape)", 
+        url: "/composants/actions/dialogue",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],  
+        clickSelectors: ["#btnTest1"],
+        keyPressKeyCode: ["Escape"]
+    },
+    //Dialogue modal (Focus bouton fermer)
+    {
+        label: "Dialogue modal (Focus bouton fermer)", 
+        url: "/composants/actions/dialogue",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],  
+        clickSelectors: ["#btnTest1"],
+        keyPressKeyCode: ["Tab", "Tab", "Tab", "Tab"]
+    },    
+    //Dialogue modal (Focus reste dans modale)
+    {
+        label: "Dialogue modal (Focus reste dans modale)", 
+        url: "/composants/actions/dialogue",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],  
+        clickSelectors: ["#btnTest1"],
+        keyPressKeyCode: ["Tab", "Tab", "Tab", "Tab", "Tab"]
+    },    
+    //Dialogue modal (Focus bloc texte sans visuel)
+    {
+        label: "Dialogue modal (Focus bloc texte sans visuel)", 
+        url: "/composants/actions/dialogue",
+        selectors: ["viewport"],
+        viewports: viewports.vTablet,
+        removeSelectors: [".no-test"],
+        clickSelectors: ["#btnTest3"],              
+    },    
+    //Dialogue modal (Mode message focus bouton primaire)
+    {
+        label: "Dialogue modal (Mode message focus bouton primaire)", 
+        url: "/composants/actions/dialogue",
+        selectors: ["viewport"],
+        viewports: viewports.vTablet,
+        removeSelectors: [".no-test"],
+        clickSelectors: ["#btnTest4"],              
+    },    
+    //Haut page (Base)
+    {
+        label: "Haut_page (Base)", 
+        url: "/composants/navigation/hautpage",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        scrollToSelector: "#exemple"            
+    },    
+    //Haut page (Retour haut si click)
+    {
+        label: "Haut_page (Retour haut si click)", 
+        url: "/composants/navigation/hautpage",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        scrollToSelector: "#exemple",
+        viewports: viewports.vTablet,
+        postInteractionWait: 2000,
+        shadowClickSelectors: [{domElementSelector: "utd-hautpage", shadowDomElementSelector: "button"}]
+    },    
+    //Haut page (Hover)
+    {
+        label: "Haut_page (Hover)", 
+        url: "/composants/navigation/hautpage",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        scrollToSelector: "#exemple",
+        viewports: viewports.vTablet,
+        postInteractionWait: 2000,
+        shadowHoverSelector: [{domElementSelector: "utd-hautpage", shadowDomElementSelector: "button"}]
+    },    
+    //Haut page (Focus)
+    {
+        label: "Haut_page (Focus)", 
+        url: "/composants/navigation/hautpage",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        scrollToSelector: "#exemple",
+        viewports: viewports.vTablet,
+        postInteractionWait: 2000,
+        shadowFocusSelectors: [{domElementSelector: "utd-hautpage", shadowDomElementSelector: "button"}]
+    },    
+    //TODO scrollbar non visible pour les feuilles (pe car render considéré comme mobile?)
+/*
+    //Infobulle (Base)    
+    {
+        label: "Infobulle (Base)", 
+        url: "/composants/affichagecontenu/infobulle"
+    },    */
+    //Infobulle (Affichage via bulle)
+    {
+        label: "Infobulle (Affichage via bulle)", 
+        url: "/composants/affichagecontenu/infobulle",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        postInteractionWait: 3000,
+        shadowClickSelectors: [{domElementSelector: "#exempleInfobulle1 utd-infobulle", shadowDomElementSelector: "button"}]
+    },    /*
+    //Infobulle (Affichage via texte lié)
+    {
+        label: "Infobulle (Affichage via texte lie)", 
+        url: "/composants/affichagecontenu/infobulle",
+        viewports: viewports.vTablet,
+        postInteractionWait: 3000,
+        clickSelectors: ['#exempleInfobulle2 utd-infobulle [slot="texte-lie"]']
+    },    
+    //Infobulle (Fermeture via X)
+    {
+        label: "Infobulle (Fermeture via X)", 
+        url: "/composants/affichagecontenu/infobulle",
+        viewports: viewports.vTablet,
+        postInteractionWait: 3000,
+        shadowClickSelectors: [{domElementSelector: "#exempleInfobulle3 utd-infobulle", shadowDomElementSelector: "button"}, {domElementSelector: "#exempleInfobulle3 utd-infobulle", shadowDomElementSelector: "button.close"}],
+    },    
+    //Infobulle (Fermeture via click outside)
+    {
+        label: "Infobulle (Fermeture via click outside)", 
+        url: "/composants/affichagecontenu/infobulle",
+        viewports: viewports.vTablet,
+        postInteractionWait: 3000,
+        shadowClickSelectors: [{domElementSelector: "#exempleInfobulle3 utd-infobulle", shadowDomElementSelector: "button"}],
+        clickSelectors2: ['#exempleInfobulle2 utd-infobulle [slot="texte-lie"]']
+    },    
+    //Infobulle (Fermeture via Escape)
+    {
+        label: "Infobulle (Fermeture via escape)", 
+        url: "/composants/affichagecontenu/infobulle",
+        viewports: viewports.vTablet,
+        postInteractionWait: 3000,
+        shadowClickSelectors: [{domElementSelector: "#exempleInfobulle3 utd-infobulle", shadowDomElementSelector: "button"}],
+        keyPressKeyCode: ["Escape"]
+    },    
 
+    //Infobulle (Focus bouton fermer et focus reste dans feuille)
+    {
+        label: "Infobulle (Focus bouton fermer et focus reste dans feuille)", 
+        url: "/composants/actions/dialogue",
+        url: "/composants/affichagecontenu/infobulle",
+        viewports: viewports.vTablet,
+        postInteractionWait: 3000,
+        shadowClickSelectors: [{domElementSelector: "#exempleInfobulle3 utd-infobulle", shadowDomElementSelector: "button"}],
+        keyPressKeyCode: ["Tab", "Tab", "Tab"]
+    },    */
+    
 ]}

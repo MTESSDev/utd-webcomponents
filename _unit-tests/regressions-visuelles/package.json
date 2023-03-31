@@ -13,8 +13,12 @@
         "bs-test-boutons": "node backstop.js --test --filter=Boutons",
         "bs-test-boutonsRadio": "node backstop.js --test --filter=radioButton",
         "bs-test-casesCocher": "node backstop.js --test --filter=checkbox",
+        "bs-test-champsErreur": "node backstop.js --test --filter=Champs_erreur",
         "bs-test-champsTexte": "node backstop.js --test --filter=Champs_texte",
-        "bs-test-champsAutomatiques": "node backstop.js --test --filter=Champs_gestion_automatique"
+        "bs-test-champsAutomatiques": "node backstop.js --test --filter=Champs_gestion_automatique",
+        "bs-test-dialogue": "node backstop.js --test --filter=Dialogue",
+        "bs-test-hautPage": "node backstop.js --test --filter=Haut_page",
+        "bs-test-infobulle": "node backstop.js --test --filter=Infobulle"
     },
     "devDependencies": {
         "backstopjs": "^6.2.0",

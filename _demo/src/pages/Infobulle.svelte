@@ -31,29 +31,29 @@
     }
 
 </script>
+<div class="documentation">
+    <h1>Infobulle</h1>
 
-<h1>Infobulle</h1>
+    <utd-menu-ancres selecteur="#main h2">
+    </utd-menu-ancres>
 
-<utd-menu-ancres selecteur="#main h2">
-</utd-menu-ancres>
+    <h2>Description</h2>
+    <p>L<strong>’infobulle</strong> est utilisée pour fournir des informations contextuelles liées à un élément particulier.</p>
 
-<h2>Description</h2>
-<p>L<strong>’infobulle</strong> est utilisée pour fournir des informations contextuelles liées à un élément particulier.</p>
+    <h3>Référence système de design Quebec.ca</h3>
+    <a href="https://design.quebec.ca/composantes/affichage-de-contenu/infobulle" target="_blank">Voir les spécifications sur le site de design Quebec.ca</a>
 
-<h3>Référence système de design Quebec.ca</h3>
-<a href="https://design.quebec.ca/composantes/affichage-de-contenu/infobulle" target="_blank">Voir les spécifications sur le site de design Quebec.ca</a>
+    <h3>Particularités vs. le système de design Quebec.ca</h3>
+    <p>Notre composant prend toujours l'aspect feuille, i.e. l'infobulle est toujours affichée au bas de la page et jamais à côté du bouton qui lui est associé.</p>
 
-<h3>Particularités vs. le système de design Quebec.ca</h3>
-<p>Notre composant prend toujours l'aspect feuille, i.e. l'infobulle est toujours affichée au bas de la page et jamais à côté du bouton qui lui est associé.</p>
+    <h2>Attributs disponibles</h2>
+    <TableauParams parametres="{tableauParametres}">
+    </TableauParams>
 
-<h2>Attributs disponibles</h2>
-<TableauParams parametres="{tableauParametres}">
-</TableauParams>
-
-<h2>Slots disponibles</h2>
-<TableauSlots parametres="{tableauSlots}">
-</TableauSlots>
-
+    <h2>Slots disponibles</h2>
+    <TableauSlots parametres="{tableauSlots}">
+    </TableauSlots>
+</div>
 
 <h2>Exemples</h2>
 

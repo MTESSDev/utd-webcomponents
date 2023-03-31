@@ -34,7 +34,7 @@
 <TableauParams parametres="{tableauParametres}">
 </TableauParams>
 
-<h2>Exemple</h2>
+<h2 id="exemple">Exemple</h2>
 <p>Défiler la page vers le bas afin de voir le contrôle <strong>haut de page</strong> en bas à droite de la page.</p>
 <p>À noter que le contrôle en exemple devrait être inséré dans votre page à l'endroit désiré dans le DOM pour la tabulation. Généralement c'est juste avant le pied de page.</p>
 <CodeSource idElementCodeSource="hautPage" outerhtml="true">
