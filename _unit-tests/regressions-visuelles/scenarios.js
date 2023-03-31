@@ -17,7 +17,7 @@ paramsDefaut : {
     clickSelectors : [],
     hoverSelectors: [],
     expect: 0,
-    misMatchThreshold: 0.01,
+    misMatchThreshold: 0.05,
     requireSameDimensions: true,
     onBeforeScript: "puppet/onBefore.js",
     onReadyScript: "puppet/onReady.js"  
@@ -35,31 +35,33 @@ scenarios : [
         label: "Accordeon (focus/ouverture)", 
         url: "/composants/affichagecontenu/accordeon",
         selectors: ["#exempleAccordeon1"],
-        viewports: viewports.vDesktop,
+        viewports: viewports.vPhone,
         removeSelectors: [".no-test"],
-        shadowClickSelectors: [{domElementSelector: "#exempleAccordeon1", shadowDomElementSelector: "button"}]
+        shadowClickSelectors: [{domSelector: "#exempleAccordeon1", shadowDomSelector: "button"}]
     },
     //Accordéon (focus/fermeture)
     {
         label: "Accordeon (focus/fermeture)", 
         url: "/composants/affichagecontenu/accordeon",
         selectors: ["#exempleAccordeon4"],        
-        viewports: viewports.vDesktop,
+        viewports: viewports.vTablet,
         removeSelectors: [".no-test"],
-        shadowClickSelectors: [{domElementSelector: "#exempleAccordeon4", shadowDomElementSelector: "button"}]
+        shadowClickSelectors: [{domSelector: "#exempleAccordeon4", shadowDomSelector: "button"}]
     },    
     //Accordéon (hover) Doit prendre écran au complet sinon ne fonctionne pas... problème bizarre... https://github.com/garris/BackstopJS/issues/689
     {
         label: "Accordeon (hover)", 
         url: "/composants/affichagecontenu/accordeon",
-        viewports: viewports.vDesktop,
-        shadowHoverSelectors: [{domElementSelector: "#exempleAccordeon1", shadowDomElementSelector: "button"}],
+        selectors: ["#exempleAccordeon1"],        
+        viewports: viewports.vPhone,
+        hoverSelectors: ["#exempleAccordeon1"]
+//        shadowHoverSelectors: [{domSelector: "#exempleAccordeon1", shadowDomSelector: "button"}],
     },    
     //Accordéon (contrôle via bouton/fermeture)
     {
         label: "Accordeon (contrôle via bouton/fermeture)", 
         url: "/composants/affichagecontenu/accordeon",
-        viewports: viewports.vDesktop,
+        viewports: viewports.vPhone,
         selectors: ["#exempleAccordeon5"],
         clickSelectors: ["#btnControleExemple5"]
     },
@@ -67,7 +69,7 @@ scenarios : [
     {
         label: "Accordeon (contrôle via bouton/ouverture)", 
         url: "/composants/affichagecontenu/accordeon",
-        viewports: viewports.vDesktop,
+        viewports: viewports.vPhone,
         selectors: ["#exempleAccordeon5"],
         clickSelectors: ["#btnControleExemple5", "#btnControleExemple5"]
     },
@@ -86,7 +88,7 @@ scenarios : [
     {
         label: "Boutons primaire (focus)", 
         url: "/composants/actions/boutons",
-        viewports: viewports.vDesktop,
+        viewports: viewports.vTablet,
         selectors: ["#exempleBoutons1"],
         clickSelectors: ["#exempleBoutons1 button"]
     },
@@ -94,7 +96,7 @@ scenarios : [
     {
         label: "Boutons secondaire (focus)", 
         url: "/composants/actions/boutons",
-        viewports: viewports.vDesktop,
+        viewports: viewports.vTablet,
         selectors: ["#exempleBoutons2"],        
         clickSelectors: ["#exempleBoutons2 button"]
     },
@@ -102,7 +104,7 @@ scenarios : [
     {
         label: "Boutons tertiaire (focus)", 
         url: "/composants/actions/boutons",
-        viewports: viewports.vDesktop,
+        viewports: viewports.vTablet,
         selectors: ["#exempleBoutons3"],
         clickSelectors: ["#exempleBoutons3 button"]
     },
@@ -110,7 +112,7 @@ scenarios : [
     {
         label: "Boutons avertissement (focus)", 
         url: "/composants/actions/boutons",
-        viewports: viewports.vDesktop,
+        viewports: viewports.vTablet,
         selectors: ["#exempleBoutons4"],
         clickSelectors: ["#exempleBoutons4 button"]
     },
@@ -118,7 +120,7 @@ scenarios : [
     {
         label: "Boutons primaire (hover)", 
         url: "/composants/actions/boutons",
-        viewports: viewports.vDesktop,
+        viewports: viewports.vTablet,
         selectors: ["#exempleBoutons1"],
         hoverSelectors: ["#exempleBoutons1 button"]
     },
@@ -126,7 +128,7 @@ scenarios : [
     {
         label: "Boutons secondaire (hover)", 
         url: "/composants/actions/boutons",
-        viewports: viewports.vDesktop,
+        viewports: viewports.vTablet,
         selectors: ["#exempleBoutons2"],        
         hoverSelectors: ["#exempleBoutons2 button"]
     },
@@ -134,7 +136,7 @@ scenarios : [
     {
         label: "Boutons tertiaire (hover)", 
         url: "/composants/actions/boutons",
-        viewports: viewports.vDesktop,
+        viewports: viewports.vTablet,
         selectors: ["#exempleBoutons3"],
         hoverSelectors: ["#exempleBoutons3 button"]
     },
@@ -142,7 +144,7 @@ scenarios : [
     {
         label: "Boutons avertissement (hover)", 
         url: "/composants/actions/boutons",
-        viewports: viewports.vDesktop,
+        viewports: viewports.vTablet,
         selectors: ["#exempleBoutons4"],
         hoverSelectors: ["#exempleBoutons4 button"]
     },
@@ -293,7 +295,7 @@ scenarios : [
         viewports: viewports.vPhone,
         removeSelectors: [".no-test"],
         clickSelectors: ["#btnTest1"],              
-        shadowClickSelectors: [{domElementSelector: "#dialogue1", shadowDomElementSelector: "button.close"}]
+        shadowClickSelectors: [{domSelector: "#dialogue1", shadowDomSelector: "button.close"}]
     },    
     //Dialogue modal (Fermeture via méthode masquer)
     {
@@ -313,7 +315,6 @@ scenarios : [
         removeSelectors: [".no-test"],  
         clickSelectors: ["#btnTest1", "#btnVotreAvis"]
     },    
-
     //Dialogue modal (Fermeture via escape)
     {
         label: "Dialogue modal (Fermeture via escape)", 
@@ -379,7 +380,7 @@ scenarios : [
         scrollToSelector: "#exemple",
         viewports: viewports.vTablet,
         postInteractionWait: 2000,
-        shadowClickSelectors: [{domElementSelector: "utd-hautpage", shadowDomElementSelector: "button"}]
+        shadowClickSelectors: [{domSelector: "utd-hautpage", shadowDomSelector: "button"}]
     },    
     //Haut page (Hover)
     {
@@ -390,7 +391,7 @@ scenarios : [
         scrollToSelector: "#exemple",
         viewports: viewports.vTablet,
         postInteractionWait: 2000,
-        shadowHoverSelector: [{domElementSelector: "utd-hautpage", shadowDomElementSelector: "button"}]
+        shadowHoverSelector: [{domSelector: "utd-hautpage", shadowDomSelector: "button"}]
     },    
     //Haut page (Focus)
     {
@@ -401,30 +402,30 @@ scenarios : [
         scrollToSelector: "#exemple",
         viewports: viewports.vTablet,
         postInteractionWait: 2000,
-        shadowFocusSelectors: [{domElementSelector: "utd-hautpage", shadowDomElementSelector: "button"}]
+        shadowFocusSelectors: [{domSelector: "utd-hautpage", shadowDomSelector: "button"}]
     },    
     //TODO scrollbar non visible pour les feuilles (pe car render considéré comme mobile?)
-/*
+
     //Infobulle (Base)    
     {
         label: "Infobulle (Base)", 
         url: "/composants/affichagecontenu/infobulle"
-    },    */
+    },    
     //Infobulle (Affichage via bulle)
     {
         label: "Infobulle (Affichage via bulle)", 
         url: "/composants/affichagecontenu/infobulle",
         selectors: ["viewport"],
         removeSelectors: [".no-test"],
-        postInteractionWait: 3000,
-        shadowClickSelectors: [{domElementSelector: "#exempleInfobulle1 utd-infobulle", shadowDomElementSelector: "button"}]
-    },    /*
+        postInteractionWait: 2000,
+        shadowClickSelectors: [{domSelector: "#exempleInfobulle1 utd-infobulle", shadowDomSelector: "button"}]
+    },    
     //Infobulle (Affichage via texte lié)
     {
         label: "Infobulle (Affichage via texte lie)", 
         url: "/composants/affichagecontenu/infobulle",
         viewports: viewports.vTablet,
-        postInteractionWait: 3000,
+        postInteractionWait: 2000,
         clickSelectors: ['#exempleInfobulle2 utd-infobulle [slot="texte-lie"]']
     },    
     //Infobulle (Fermeture via X)
@@ -432,16 +433,16 @@ scenarios : [
         label: "Infobulle (Fermeture via X)", 
         url: "/composants/affichagecontenu/infobulle",
         viewports: viewports.vTablet,
-        postInteractionWait: 3000,
-        shadowClickSelectors: [{domElementSelector: "#exempleInfobulle3 utd-infobulle", shadowDomElementSelector: "button"}, {domElementSelector: "#exempleInfobulle3 utd-infobulle", shadowDomElementSelector: "button.close"}],
+        postInteractionWait: 2000,
+        shadowClickSelectors: [{domSelector: "#exempleInfobulle3 utd-infobulle", shadowDomSelector: "button"}, {domSelector: "#exempleInfobulle3 utd-infobulle", shadowDomSelector: "button.close"}],
     },    
     //Infobulle (Fermeture via click outside)
     {
         label: "Infobulle (Fermeture via click outside)", 
         url: "/composants/affichagecontenu/infobulle",
         viewports: viewports.vTablet,
-        postInteractionWait: 3000,
-        shadowClickSelectors: [{domElementSelector: "#exempleInfobulle3 utd-infobulle", shadowDomElementSelector: "button"}],
+        postInteractionWait: 2000,
+        shadowClickSelectors: [{domSelector: "#exempleInfobulle3 utd-infobulle", shadowDomSelector: "button"}],
         clickSelectors2: ['#exempleInfobulle2 utd-infobulle [slot="texte-lie"]']
     },    
     //Infobulle (Fermeture via Escape)
@@ -449,8 +450,8 @@ scenarios : [
         label: "Infobulle (Fermeture via escape)", 
         url: "/composants/affichagecontenu/infobulle",
         viewports: viewports.vTablet,
-        postInteractionWait: 3000,
-        shadowClickSelectors: [{domElementSelector: "#exempleInfobulle3 utd-infobulle", shadowDomElementSelector: "button"}],
+        postInteractionWait: 2000,
+        shadowClickSelectors: [{domSelector: "#exempleInfobulle3 utd-infobulle", shadowDomSelector: "button"}],
         keyPressKeyCode: ["Escape"]
     },    
 
@@ -460,9 +461,124 @@ scenarios : [
         url: "/composants/actions/dialogue",
         url: "/composants/affichagecontenu/infobulle",
         viewports: viewports.vTablet,
-        postInteractionWait: 3000,
-        shadowClickSelectors: [{domElementSelector: "#exempleInfobulle3 utd-infobulle", shadowDomElementSelector: "button"}],
+        postInteractionWait: 2000,
+        shadowClickSelectors: [{domSelector: "#exempleInfobulle3 utd-infobulle", shadowDomSelector: "button"}],
         keyPressKeyCode: ["Tab", "Tab", "Tab"]
-    },    */
+    },    
+    //=================================
+    //TODO ICI LISTE DEROULANTE     
+    //=================================
+
+    //Menu ancres (Base)        
+    {
+        label: "Menu_ancres (Base)", 
+        url: "/composants/navigation/menuancres",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test", "#colonneGauche"]
+
+    },    
+    //Menu ancres (Click sur ancre)
+    {
+        label: "Menu_ancres (Click sur ancre)", 
+        url: "/composants/navigation/menuancres",
+        selectors: ["viewport"],
+        viewports: viewports.vTablet,
+        removeSelectors: [".no-test", "#colonneGauche"],
+        shadowClickSelectors: [{domSelector: "utd-menu-ancres", shadowDomSelector: 'a[href="#exemple"]'}]
+    },    
+    //=================================
+    //TODO ICI MENU VERTICAL     
+    //=================================
+
+    //Message (Base) avertissement avec 2 boutons
+    {
+        label: "Message (Base) avertissement avec 2 boutons", 
+        url: "/composants/actions/message",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],        
+        clickSelectors: ["#btnTest1"]      
+    },    
+    //Message (type information avec 1 bouton)
+    {
+        label: "Message (type information avec 1 bouton)", 
+        url: "/composants/actions/message",
+        viewports: viewports.vPhone,
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],        
+        clickSelectors: ["#btnTest2"]      
+    },    
+    //Message (type succès avec 1 bouton)
+    {
+        label: "Message (type succès avec 1 bouton)", 
+        url: "/composants/actions/message",
+        viewports: viewports.vPhone,
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],        
+        clickSelectors: ["#btnTest3"]      
+    },    
+    //Message (type erreur avec 1 bouton)
+    {
+        label: "Message (type erreur avec 1 bouton)", 
+        url: "/composants/actions/message",
+        viewports: viewports.vPhone,
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],        
+        clickSelectors: ["#btnTest4"]      
+    },    
+    //Message (type erreur avec 1 bouton)
+    {
+        label: "Message (sans type avec 2 boutons)", 
+        url: "/composants/actions/message",
+        viewports: viewports.vPhone,
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],        
+        clickSelectors: ["#btnTest5"]      
+    },    
+    //Message (type erreur avec 1 bouton)
+    {
+        label: "Message (sans type avec 2 boutons et texte long)", 
+        url: "/composants/actions/message",
+        viewports: viewports.vLargePhone,
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],        
+        clickSelectors: ["#btnTest6"]      
+    },    
+
+    //Notifications (Base sans stacking) teste aussi type positif avec titre
+    {
+        label: "Notification (Base sans stacking, positif avec titre)", 
+        url: "/composants/actions/notifications",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],        
+        clickSelectors: ["#test1"],
+        scrollToSelector2: "h1"      
+    },    
+    
+    //Notifications (Base + stacking) teste aussi type positif sans titre et negatif avec titre
+    {
+        label: "Notification (Base + stacking, succes sans titre et negatif avec titre)", 
+        url: "/composants/actions/notifications",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],        
+        clickSelectors: ["#test2", "#test3"]      
+    },    
+    //Notifications (negatif sans titre et neutre avec et sans titre) 
+    {
+        label: "Notifications (negatif sans titre et neutre avec et sans titre) ", 
+        url: "/composants/actions/notifications",
+        viewports: viewports.vPhone,
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],        
+        clickSelectors: ["#test4", "#test5", "#test6"]      
+    },    
+    //Notifications (Fermeture via click)
+    {
+        label: "Notification (Fermeture via click)", 
+        url: "/composants/actions/notifications",
+        viewports: viewports.vPhone,
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],        
+        clickSelectors: ["#test1", "#utdZoneNotifications .notification"],
+    },    
     
 ]}

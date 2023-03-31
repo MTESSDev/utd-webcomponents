@@ -35,7 +35,7 @@
 <TableauParams parametres="{tableauParametres}">
 </TableauParams>
 
-<h2>Exemple</h2>
+<h2 id="exemple">Exemple</h2>
 <p>L'exemple contient le menu d'ancre contenu dans la présente page. Le sélecteur css obtient les balises <span class="utd-emphase-gris">h2</span> dans <span class="utd-emphase-gris">main</span>.</p>
 
 <CodeSource idElementCodeSource="exempleMenuAncres" outerhtml="true">

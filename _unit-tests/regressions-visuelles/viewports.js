@@ -16,6 +16,12 @@ const phoneData = {
     height: 812
 }
 
+const largePhoneData = {
+    label: "largePhone",
+    width: 524,
+    height: 812
+}
+
 module.exports = {
     vDesktopData : desktopData,
     vTabletData : tabletData,
@@ -26,5 +32,6 @@ module.exports = {
     vTabletPhone : [tabletData, phoneData],
     vDesktop : [desktopData],
     vTablet : [tabletData],
-    vPhone : [phoneData]
+    vPhone : [phoneData],
+    vLargePhone : [largePhoneData]
 };
