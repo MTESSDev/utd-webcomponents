@@ -580,5 +580,17 @@ scenarios : [
         removeSelectors: [".no-test"],        
         clickSelectors: ["#test1", "#utdZoneNotifications .notification"],
     },    
+    //Pied page site (Base)
+    {
+        label: "Pied_page_site (Base)", 
+        url: "/composants/entetepiedpage/piedpagesite",
+        removeSelectors: [".no-test"]  
+    },    
+    //Piv entête (Base)
+    {
+        label: "Piv_entete (Base)", 
+        url: "/composants/entetepiedpage/piedpagesite",
+        removeSelectors: [".no-test"]  
+    },    
     
 ]}

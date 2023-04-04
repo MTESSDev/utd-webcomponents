@@ -23,7 +23,8 @@
         "bs-test-menuAncres": "node backstop.js --test --filter=Menu_ancres",
         "bs-test-menuVertical": "node backstop.js --test --filter=Menu_vertical",
         "bs-test-message": "node backstop.js --test --filter=Message",
-        "bs-test-notification": "node backstop.js --test --filter=Notification"
+        "bs-test-notification": "node backstop.js --test --filter=Notification",
+        "bs-test-piedPageSite": "node backstop.js --test --filter=Pied_page_site"
     },
     "devDependencies": {
         "backstopjs": "^6.2.0",
