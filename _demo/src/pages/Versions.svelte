@@ -7,7 +7,7 @@
 </utd-menu-ancres>
 
 <utd-accordeon reduit="false">
-    <div slot="titre"><h2>1.9.3 (2023-04-03)</h2></div>
+    <div slot="titre"><h2>1.9.3 (2023-04-10)</h2></div>
     <h3>Correction d'anomalies</h3>
     <ul class="utd">
         <li>Correction de la taille par défaut des champs de taille "sm" et "md" en format téléphone.</li>
@@ -18,6 +18,7 @@
     <ul class="utd">
         <li>Ajout d'essais automatisés de non régression visuelle.</li>
         <li>Composant <a href="#">Avis</a>, ajout du type "complementaire" avec x variations (astuce, xxx et xxx).</li>
+        <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/entetepiedpage/piventete">Piv entête</a>, légères modifications afin de le rendre plus conforme au système de design Québec.ca.</li>
     </ul>
     
 </utd-accordeon>

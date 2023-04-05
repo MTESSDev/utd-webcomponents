@@ -584,13 +584,38 @@ scenarios : [
     {
         label: "Pied_page_site (Base)", 
         url: "/composants/entetepiedpage/piedpagesite",
-        removeSelectors: [".no-test"]  
+        removeSelectors: [".no-test"]
     },    
-    //Piv entête (Base)
+    //Piv entête (Base - 2 lignes MO, 2 liens langue et nous joindre)
     {
         label: "Piv_entete (Base)", 
-        url: "/composants/entetepiedpage/piedpagesite",
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],  
+        removeSelectors: [".no-test"]
+    },    
+
+    //Piv entête (1 ligne MO, 1 lien nous joindre)
+    {
+        label: "Piv_entete (1 ligne MO, 1 lien nous joindre)", 
+        url: "/composants/entetepiedpage/pivpiedpage",
+        selectors: ["utd-piv-entete"],
         removeSelectors: [".no-test"]  
     },    
+
+    //Piv entête (1 ligne MO, Aucun lien)
+    {
+        label: "Piv_entete (1 ligne MO, Aucun lien)", 
+        url: "/gabarit1colonne",
+        selectors: ["utd-piv-entete"],
+        removeSelectors: [".no-test"]  
+    },    
+    //Piv pied page (Base)
+    {
+        label: "Piv_pied_page (Base)", 
+        url: "/composants/entetepiedpage/pivpiedpage",
+        selectors: ["footer"],  
+        removeSelectors: [".no-test"]
+    },    
+
     
 ]}

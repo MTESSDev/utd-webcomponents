@@ -20,6 +20,7 @@
 <CodeSource codeSource="<link rel='preload' as='font' href='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.9.3/dist/fonts/open-sans-v18-latin-regular.woff2' type='font/woff2' crossorigin='anonymous'>
     <link rel='preload' as='font' href='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.9.3/dist/fonts/open-sans-v18-latin-600.woff2' type='font/woff2' crossorigin='anonymous'>
     <link rel='preload' as='font' href='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.9.3/dist/fonts/open-sans-v18-latin-700.woff2' type='font/woff2' crossorigin='anonymous'>
+    <link rel='preload' as='font' href='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.9.3/dist/fonts/roboto-v20-latin-regular.woff2' type='font/woff2' crossorigin='anonymous'>
     <link rel='preload' as='font' href='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.9.3/dist/fonts/roboto-v20-latin-500.woff2' type='font/woff2' crossorigin='anonymous'>
     <link rel='preload' as='font' href='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.9.3/dist/fonts/roboto-v20-latin-700.woff2' type='font/woff2' crossorigin='anonymous'>    
 ">
@@ -48,6 +49,7 @@
 <CodeSource codeSource="<link rel='preload' as='font' href='/fonts/open-sans-v18-latin-regular.woff2' type='font/woff2' crossorigin='anonymous'>
     <link rel='preload' as='font' href='/fonts/open-sans-v18-latin-600.woff2' type='font/woff2' crossorigin='anonymous'>
     <link rel='preload' as='font' href='/fonts/open-sans-v18-latin-700.woff2' type='font/woff2' crossorigin='anonymous'>
+    <link rel='preload' as='font' href='/fonts/roboto-v20-latin-regular.woff2' type='font/woff2' crossorigin='anonymous'>
     <link rel='preload' as='font' href='/fonts/roboto-v20-latin-500.woff2' type='font/woff2' crossorigin='anonymous'>
     <link rel='preload' as='font' href='/fonts/roboto-v20-latin-700.woff2' type='font/woff2' crossorigin='anonymous'>">
 </CodeSource>   
