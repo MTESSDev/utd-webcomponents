@@ -26,7 +26,8 @@
         "bs-test-notification": "node backstop.js --test --filter=Notification",
         "bs-test-piedPageSite": "node backstop.js --test --filter=Pied_page_site",
         "bs-test-pivEntete": "node backstop.js --test --filter=Piv_entete",
-        "bs-test-pivPiedPage": "node backstop.js --test --filter=Piv_pied_page"
+        "bs-test-pivPiedPage": "node backstop.js --test --filter=Piv_pied_page",
+        "bs-test-section": "node backstop.js --test --filter=Section"
     },
     "devDependencies": {
         "backstopjs": "^6.2.0",

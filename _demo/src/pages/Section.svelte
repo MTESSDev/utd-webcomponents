@@ -69,36 +69,37 @@
 <style type="text/css">
 </style>
 
-<h1>Section</h1>
+<div class="documentation">
+    <h1>Section</h1>
 
-<utd-menu-ancres selecteur="#main h2">
-</utd-menu-ancres>
+    <utd-menu-ancres selecteur="#main h2">
+    </utd-menu-ancres>
 
-<h2>Description</h2>
-<p>Le composant <strong>section</strong> permet d'organiser le contenu en regroupant les informations en sections principales ou en blocs d'informations.</p>
-<p>Selon les besoins, cette section peut être extensible ou non, et avoir une bordure ou non pour regrouper son contenu.</p>
+    <h2>Description</h2>
+    <p>Le composant <strong>section</strong> permet d'organiser le contenu en regroupant les informations en sections principales ou en blocs d'informations.</p>
+    <p>Selon les besoins, cette section peut être extensible ou non, et avoir une bordure ou non pour regrouper son contenu.</p>
 
-<h3>Référence système de design Quebec.ca</h3>
-N'existe pas sur le site de design Quebec.ca
+    <h3>Référence système de design Quebec.ca</h3>
+    N'existe pas sur le site de design Quebec.ca
 
-<h2>Attributs disponibles</h2>
-<TableauParams parametres="{tableauParametres}">
-</TableauParams>
+    <h2>Attributs disponibles</h2>
+    <TableauParams parametres="{tableauParametres}">
+    </TableauParams>
 
-<h2>Slots disponibles</h2>
-<TableauSlots parametres="{tableauSlots}">
-</TableauSlots>
+    <h2>Slots disponibles</h2>
+    <TableauSlots parametres="{tableauSlots}">
+    </TableauSlots>
 
-<h2>Événements disponibles</h2>
-<h3>changementEtat</h3>
-<p>Est exécuté lorsque l'état d'affichage (développé/réduit) de la section change. Voir exemple <a href="#exempleSectionJs" on:click="{clickAncre}">7- Section contrôlée par javascript</a>.</p>
-<h4>Retour</h4>
-<TableauParams parametres="{tableauRetourEvenementChangementEtat}">
-</TableauParams>
-
+    <h2>Événements disponibles</h2>
+    <h3>changementEtat</h3>
+    <p>Est exécuté lorsque l'état d'affichage (développé/réduit) de la section change. Voir exemple <a href="#exempleSectionJs" on:click="{clickAncre}">7- Section contrôlée par javascript</a>.</p>
+    <h4>Retour</h4>
+    <TableauParams parametres="{tableauRetourEvenementChangementEtat}">
+    </TableauParams>
+</div>
 <h2>Exemples</h2>
 <h3>1- Section avec champs</h3>
-<div class="mb-32" id="exempleSection1">
+<div class="mb-32 bs-test" id="exempleSection1">
     <utd-section titre="Véhicule principal">
         <div class="utd-form-group">
             <label for="champ1a">Marque</label>
@@ -121,7 +122,7 @@ N'existe pas sur le site de design Quebec.ca
 
 
 <h3>2- Section avec accordéons et conservation de l'état d'affichage</h3>
-<div class="mb-32" id="exempleSection2">
+<div class="mb-32 bs-test" id="exempleSection2">
     <utd-section titre="Véhicules" id="utdSection2" conserver-etat-affichage="true">
         <utd-accordeon titre="Véhicule principal" id="utdSection2Acc1" conserver-etat-affichage="true">
             <div class="utd-form-group">
@@ -161,7 +162,7 @@ N'existe pas sur le site de design Quebec.ca
 </CodeSource>   
 
 <h3>3- Section sans bordure</h3>
-<div class="mb-32" id="exempleSection3">
+<div class="mb-32 bs-test" id="exempleSection3">
     <utd-section titre="Véhicules"  bordure="false">
         <div class="utd-form-group">
             <label for="champ1c">Marque</label>
@@ -184,7 +185,7 @@ N'existe pas sur le site de design Quebec.ca
 
 
 <h3>4- Section non extensible</h3>
-<div class="mb-32" id="exempleSection4">
+<div class="mb-32 bs-test" id="exempleSection4">
     <utd-section titre="Informations personnelles" extensible="false">
         <p>Le mot de passe est associé à votre compte clicSÉQUR - Citoyens.</p>
         <p>
@@ -197,7 +198,7 @@ N'existe pas sur le site de design Quebec.ca
 </CodeSource>   
 
 <h3>5- Section non extensible sans bordure</h3>
-<div class="mb-32" id="exempleSection5">
+<div class="mb-32 bs-test" id="exempleSection5">
     <utd-section titre="Informations personnelles" extensible="false" bordure="false">
         <p>Le mot de passe est associé à votre compte clicSÉQUR - Citoyens.</p>
         <p>
@@ -209,7 +210,7 @@ N'existe pas sur le site de design Quebec.ca
 </CodeSource>   
 
 <h3>6- Section ouverte par défaut et titre h3</h3>
-<div class="mb-32" id="exempleSection6">
+<div class="mb-32 bs-test" id="exempleSection6">
     <utd-section titre="Informations personnelles" reduit="false" tag-titre="h3">
         <p>Le mot de passe est associé à votre compte clicSÉQUR - Citoyens.</p>
         <p>
@@ -222,7 +223,7 @@ N'existe pas sur le site de design Quebec.ca
 
 
 <h3 id="exempleSectionJs">7- Section contrôlée par javascript et conservation de l'état d'affichage</h3>
-<div class="mb-32" id="exempleSection7">
+<div class="mb-32 bs-test" id="exempleSection7">
     <utd-section class="mb-32" id="utdSection7" reduit="false" conserver-etat-affichage="true">
         <span slot="titre">
             Exemple d'utilisation 7

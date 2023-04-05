@@ -485,10 +485,23 @@ scenarios : [
         viewports: viewports.vTablet,
         removeSelectors: [".no-test", "#colonneGauche"],
         shadowClickSelectors: [{domSelector: "utd-menu-ancres", shadowDomSelector: 'a[href="#exemple"]'}]
+    },
+    //Menu vertical (Base)        
+    {
+        label: "Menu_vertical (Base)", 
+        url: "/composants/navigation/menuvertical",
+        selectors: ["utd-menu-vertical"],
+        removeSelectors: [".no-test"]
     },    
-    //=================================
-    //TODO ICI MENU VERTICAL     
-    //=================================
+    //Menu vertical (Base mobile)        
+    {
+        label: "Menu_vertical (Base)", 
+        url: "/composants/navigation/menuvertical",
+        viewports: viewports.vTabletPhone,
+        selectors: ["utd-menu-vertical"],        
+        removeSelectors: [".no-test"],
+        shadowClickSelectors: [{domSelector: "utd-menu-vertical", shadowDomSelector: "a.toggle"}]
+    },    
 
     //Message (Base) avertissement avec 2 boutons
     {
@@ -616,6 +629,93 @@ scenarios : [
         selectors: ["footer"],  
         removeSelectors: [".no-test"]
     },    
-
-    
+    //Section (base)
+    {
+        label: "Section (Base)", 
+        url: "/composants/affichagecontenu/section"
+    },
+    //Section (avec accordéons)
+    {
+        label: "Section (avec accordéons)", 
+        url: "/composants/affichagecontenu/section",
+        selectors: ["#exempleSection2"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors: [{domSelector: "#exempleSection2", shadowDomSelector: "button"}]
+    },
+    //Section (sans bordure)
+    {
+        label: "Section (sans bordure)", 
+        url: "/composants/affichagecontenu/section",
+        selectors: ["#exempleSection3"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors: [{domSelector: "#exempleSection3", shadowDomSelector: "button"}]
+    },
+    //Section (non extensible)
+    {
+        label: "Section (non extensible)", 
+        url: "/composants/affichagecontenu/section",
+        selectors: ["#exempleSection4"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+    },
+    //Section (non extensible, sans bordure)
+    {
+        label: "Section (non extensible,sans bordure)", 
+        url: "/composants/affichagecontenu/section",
+        selectors: ["#exempleSection5"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+    },
+    //Section (ouverte et titre h3)
+    {
+        label: "Section (ouverte et titre h3)", 
+        url: "/composants/affichagecontenu/section",
+        selectors: ["#exempleSection6"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+    },
+    //Section (focus/ouverture)
+    {
+        label: "Section (focus/ouverture)", 
+        url: "/composants/affichagecontenu/section",
+        selectors: ["#exempleSection1"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors: [{domSelector: "#exempleSection1", shadowDomSelector: "button"}]
+    },
+    //Section (focus/fermeture)
+    {
+        label: "Section (focus/fermeture)", 
+        url: "/composants/affichagecontenu/section",
+        selectors: ["#exempleSection6"],        
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors: [{domSelector: "#exempleSection6", shadowDomSelector: "button"}]
+    },    
+    //Section (hover) Doit prendre écran au complet sinon ne fonctionne pas... problème bizarre... https://github.com/garris/BackstopJS/issues/689
+    {
+        label: "Section (hover)", 
+        url: "/composants/affichagecontenu/section",
+        selectors: ["#exempleSection1"],        
+        viewports: viewports.vPhone,
+        hoverSelectors: ["#exempleSection1"]
+    },    
+    //Section (contrôle via bouton/fermeture)
+    {
+        label: "Section (contrôle via bouton/fermeture)", 
+        url: "/composants/affichagecontenu/section",
+        viewports: viewports.vPhone,
+        selectors: ["#exempleSection7", "#resultat7"],
+        clickSelectors: ["#btnControleExemple7"]
+    },
+    //Section (contrôle via bouton/ouverture)
+    {
+        label: "Section (contrôle via bouton/ouverture)", 
+        url: "/composants/affichagecontenu/section",
+        viewports: viewports.vPhone,
+        selectors: ["#exempleSection7", "#resultat7"],
+        clickSelectors: ["#btnControleExemple7", "#btnControleExemple7"]
+    },
 ]}

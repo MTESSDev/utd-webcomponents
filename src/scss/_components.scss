@@ -304,80 +304,10 @@ utd-accordeon + utd-accordeon{
 }
 
 .utd-accordeon .entete button:focus {
-  outline: 2px solid #89bce5;
+  outline: 2px solid var(--bleu-clair);
   border: 2px solid #5b6476;
   padding: 14px 14px 14px 14px;  
 }
-
-/*====================================================================================================
-  -41- utd-section
-====================================================================================================*/
-utd-section {
-  display: block;
-  max-height: 54px;
-  min-height: 54px;
-  visibility: hidden;
-}
-
-utd-section.mounted {
-  max-height: inherit;
-  min-height: inherit;
-  visibility: visible;
-}
-
-utd-section + utd-section {
-  margin-top: 16px;
-}
-
-.utd-section:not(.ouvert) .utd-icone-svg {
-  transform: rotate(180deg);
-}
-
-.utd-section:not(.extensible) .entete, .utd-section .entete button {
-  font-family: 'OpenSans-SemiBold';
-  font-size: 16px;
-  color: var(--couleur-texte-base);
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;  
-  border: 1px solid transparent;
-  background-color: var(--couleur-bouton-primaire);
-  color: #fff;
-}
-
-.utd-section.bordure:not(.extensible) .contenu, .utd-section.bordure.ouvert .contenu {
-  border: 1px solid var(--couleur-filet-secondaire);
-  border-top: 0;
-}
-
-.utd-section .entete button .titre {
-  text-align: left;
-  margin-right: 16px;
-}
-
-.utd-section .entete h2.titre, .utd-section .entete h3.titre, .utd-section .entete h4.titre, .utd-section .entete h5.titre {
-  color: #fff;
-  font-family: OpenSans-SemiBold;
-  font-size: 16px;
-  margin: 0;
-}
-
-.utd-section .contenu{
-  background-color: #fff;
-}
-
-.utd-section .contenu > div{
-  padding: 24px 16px;
-}
-
-.utd-section .entete button:focus {
-  outline: 2px solid #89bce5!important;
-  border: 2px solid #5b6476!important;
-  padding: 14px;  
-}
-
 
 /*====================================================================================================
   -51- utd-menu-ancres

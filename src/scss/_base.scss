@@ -232,7 +232,7 @@
     --couleur-bordure-tables: #dee2e6;
 
     /* Couleurs à classifier 
-        #9ca5b2, #89bce5, #b52e16, #eb705a, #3374cc
+        #9ca5b2, #5b6476, #b52e16, #eb705a, #3374cc
     */
 }
 
@@ -869,7 +869,7 @@ textarea.utd-form-control{
 input.utd-form-control:focus,
 textarea.utd-form-control:focus,
 select.utd-form-control:focus {    
-    outline: 2px solid #4a98d9;
+    outline: 2px solid var(--bleu-clair);
     border: 2px solid #5b6476;
 }
 

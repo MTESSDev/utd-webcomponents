@@ -228,3 +228,7 @@ utd-accordeon + h2, utd-accordeon + h3, utd-accordeon + h4, utd-accordeon + h5 {
 .bs-test-in-progress .bs-test {
     padding: 8px;
 }
+
+.bs-test-in-progress utd-menu-vertical {
+    padding: 8px;
+}
