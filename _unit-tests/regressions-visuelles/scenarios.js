@@ -502,6 +502,102 @@ scenarios : [
         removeSelectors: [".no-test"],
         shadowClickSelectors: [{domSelector: "utd-menu-vertical", shadowDomSelector: "a.toggle"}]
     },    
+    //Menu vertical (Hover niveau 1 sans enfants - Desktop)        
+    {
+        label: "Menu_vertical (Hover niveau 1 sans enfants)", 
+        url: "/composants/navigation/menuvertical",
+        selectors: ["utd-menu-vertical"],
+        viewports: viewports.vDesktop, 
+        removeSelectors: [".no-test"],
+        hoverSelectors: ['utd-menu-vertical-item[href="/composants/versions"]']
+    },    
+    //Menu vertical (Hover niveau 1 sans enfants - Mobile)        
+    {
+        label: "Menu_vertical (Hover niveau 1 sans enfants - Mobile)", 
+        url: "/composants/navigation/menuvertical",
+        selectors: ["utd-menu-vertical"], 
+        viewports: viewports.vTabletPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors: [{domSelector: "utd-menu-vertical", shadowDomSelector: "a.toggle"}],
+        hoverSelectors2: ['utd-menu-vertical-item[href="/composants/versions"]']
+    },    
+    //Menu vertical (Hover niveau 1 avec enfants - Desktop)        
+    {
+        label: "Menu_vertical (Hover niveau 1 avec enfants - Desktop)", 
+        url: "/composants/navigation/menuvertical",
+        selectors: ["utd-menu-vertical"],
+        viewports: viewports.vDesktop, 
+        removeSelectors: [".no-test"],
+        hoverSelectors: ['utd-menu-vertical-item[libelle="Action"]']
+    },    
+    //Menu vertical (Hover niveau 1 avec enfants - Mobile)        
+    {
+        label: "Menu_vertical (Hover niveau 1 avec enfants - Mobile)", 
+        url: "/composants/navigation/menuvertical",
+        selectors: ["utd-menu-vertical"], 
+        viewports: viewports.vTabletPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors: [{domSelector: "utd-menu-vertical", shadowDomSelector: "a.toggle"}],
+        hoverSelectors2: ['utd-menu-vertical-item[libelle="Action"]']
+    },    
+    //Menu vertical (Hover niveau 1 actif avec enfants - Desktop)        
+    {
+        label: "Menu_vertical (Hover niveau 1 actif avec enfants - Desktop)", 
+        url: "/composants/navigation/menuvertical",
+        selectors: ["utd-menu-vertical"],
+        viewports: viewports.vDesktop, 
+        removeSelectors: [".no-test"],
+        shadowHoverSelectors: [{domSelector: 'utd-menu-vertical-item[libelle="Navigation"]', shadowDomSelector: "a"}],
+    },    
+    //Menu vertical (Hover niveau 1 actif avec enfants - Mobile)        
+    {
+        label: "Menu_vertical (Hover niveau actif 1 avec enfants - Mobile)", 
+        url: "/composants/navigation/menuvertical",
+        selectors: ["utd-menu-vertical"], 
+        viewports: viewports.vTabletPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors: [{domSelector: "utd-menu-vertical", shadowDomSelector: "a.toggle"}],
+        shadowHoverSelectors2: [{domSelector: 'utd-menu-vertical-item[libelle="Navigation"]', shadowDomSelector: "a"}],
+    },    
+
+    //Menu vertical (Hover niveau 2 - Desktop)        
+    {
+        label: "Menu_vertical (Hover niveau 2)", 
+        url: "/composants/navigation/menuvertical",
+        selectors: ["utd-menu-vertical"],
+        viewports: viewports.vDesktop, 
+        removeSelectors: [".no-test"],
+        hoverSelectors: ['utd-menu-vertical-item[libelle="Haut de page"]']
+    },    
+    //Menu vertical (Hover niveau 2  - Mobile)        
+    {
+        label: "Menu_vertical (Hover niveau 2 - Mobile)", 
+        url: "/composants/navigation/menuvertical",
+        selectors: ["utd-menu-vertical"], 
+        viewports: viewports.vTabletPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors: [{domSelector: "utd-menu-vertical", shadowDomSelector: "a.toggle"}],
+        hoverSelectors2: ['utd-menu-vertical-item[libelle="Haut de page"]']
+    },    
+    //Menu vertical (Hover niveau 2 actif - Desktop)        
+    {
+        label: "Menu_vertical (Hover niveau 2 actif)", 
+        url: "/composants/navigation/menuvertical",
+        selectors: ["utd-menu-vertical"],
+        viewports: viewports.vDesktop, 
+        removeSelectors: [".no-test"],
+        hoverSelectors: ['utd-menu-vertical-item[libelle="Menu vertical"]']
+    },    
+    //Menu vertical (Hover niveau 2 actif  - Mobile)        
+    {
+        label: "Menu_vertical (Hover niveau 2 actif - Mobile)", 
+        url: "/composants/navigation/menuvertical",
+        selectors: ["utd-menu-vertical"], 
+        viewports: viewports.vTabletPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors: [{domSelector: "utd-menu-vertical", shadowDomSelector: "a.toggle"}],
+        hoverSelectors2: ['utd-menu-vertical-item[libelle="Menu vertical"]']
+    },    
 
     //Message (Base) avertissement avec 2 boutons
     {
@@ -694,7 +790,7 @@ scenarios : [
         removeSelectors: [".no-test"],
         shadowClickSelectors: [{domSelector: "#exempleSection6", shadowDomSelector: "button"}]
     },    
-    //Section (hover) Doit prendre écran au complet sinon ne fonctionne pas... problème bizarre... https://github.com/garris/BackstopJS/issues/689
+    //Section (hover)
     {
         label: "Section (hover)", 
         url: "/composants/affichagecontenu/section",
