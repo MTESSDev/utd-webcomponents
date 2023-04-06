@@ -168,7 +168,7 @@ export class Utils {
     static reafficherApresChargement(composant) {
         setTimeout(() => {
             composant.classList.add('mounted')
-        })        
+        }, 100)        
     }
 
     /**
