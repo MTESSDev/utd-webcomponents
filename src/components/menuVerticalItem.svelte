@@ -27,6 +27,8 @@
     actif = estElementActif()
     niveau = obtenirNiveau()
     possedeEnfants = !!thisComponent.querySelector('utd-menu-vertical-item')
+
+    Utils.reafficherApresChargement(thisComponent)
   })
 
   // Watch sur la prop focus

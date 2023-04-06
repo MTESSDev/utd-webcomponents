@@ -24,9 +24,11 @@ export let textePasserContenu = Utils.obtenirLanguePage() === 'fr' ? 'Passer au 
 
 const thisComponent = get_current_component()
 let slots = []
+let mounted = false
 
 onMount(() => {  
   slots = Array.from(thisComponent.querySelectorAll('[slot]'))    
+  mounted = true
   Utils.reafficherApresChargement(thisComponent)
 })
 
@@ -44,7 +46,7 @@ function clickLien(){
   </div>
 {/if}
 
-<div class="utd-piv-entete">
+<div class="utd-piv-entete" class:utd-d-none={!mounted}>
   <div class="utd-container">
     <div class="conteneur-sections">
       <div class="section-gauche signature-gouvernement">

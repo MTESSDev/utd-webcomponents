@@ -3,9 +3,11 @@
 /*====================================================================================================*/
 utd-piv-entete {
     display: block;
-    min-height: 78px;
-    max-height: 78px;
+    min-height: 72px;
+    max-height: 72px;
     visibility: hidden;
+    background-color: var(--couleur-piv);
+    width: 100%;
 
     &.mounted {
         min-height: inherit;
@@ -15,7 +17,6 @@ utd-piv-entete {
 } 
   
 .utd-piv-entete {
-    background-color: var(--couleur-piv);
     color: #fff;
 
     a {
@@ -170,6 +171,11 @@ utd-piv-entete {
   /* ========== Particularités (mobile) ==========*/
 @media screen and (max-width:767px) {
 
+    utd-piv-entete {
+        min-height: 99px;
+        max-height: 99px;   
+    } 
+    
     .utd-piv-entete .section-centre {
         margin-top: 0;
     }

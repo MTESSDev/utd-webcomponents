@@ -26,15 +26,26 @@
 ">
 </CodeSource>   
 
-<h4>Chargement du css</h4>
+<h4>Chargement du css (version précise)</h4>
 <p>Charger le css dans la balise <span class="utd-emphase-gris">head</span> <strong>avant</strong> le css de votre projet.</p>
 <CodeSource codeSource="<link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.9.3/dist/css/utd-webcomponents.min.css'>">
 </CodeSource>   
 
-<h4>Chargement du javascript</h4>
+<h4>Chargement du javascript (version précise)</h4>
 <p>Charger le script à la fin du <span class="utd-emphase-gris">body</span> de la page.</p>
 <CodeSource codeSource="<script src='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.9.3/dist/js/utd-webcomponents.min.js' relative-base-path='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.9.3/dist'></script>">
 </CodeSource>   
+
+<div class="mt-48">
+    <utd-avis titre="Utiliser un alias de version">
+        <span>Il est possible de ne pas spécifier de numéro de version précis remplaçant le numéro de version (ex. @1.9.3) par  :</span>
+        <ul>
+            <li><span class="utd-emphase-gris">@latest</span> afin d'obtenir la version la plus récente (Attention! Pourrait contenir un "breaking change");</li>
+            <li><span class="utd-emphase-gris">@1.9</span> afin d'obtenir la version la plus récente 1.9.x;</li>
+            <li><span class="utd-emphase-gris">@1</span> afin d'obtenir la version la plus récente 1.x.x. (Recommandé afin de rester le plus à jour possible sans "breaking change")</li>
+        </ul>
+    </utd-avis>
+</div>
 
 <h3>Intégration dans un projet (Copie locale des fichiers)</h3>
 <p>Vous pouvez rappatrier les fichiers dans votre solution afin de pouvoir les fusionner avec les vôtres histoire de diminuer le nombre de fichiers.</p>
