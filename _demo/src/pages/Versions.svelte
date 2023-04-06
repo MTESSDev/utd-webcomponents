@@ -16,7 +16,7 @@
         
     <h3>Améliorations</h3>
     <ul class="utd">
-        <li>Ajout d'essais automatisés de non régression visuelle.</li>
+        <li>Ajout d'essais automatisés pour chaque composant.</li>
         <li>Composant <a href="#">Avis</a>, ajout du type "complementaire" avec x variations (astuce, xxx et xxx).</li>
         <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/entetepiedpage/piventete">Piv entête</a>, légères modifications afin de le rendre plus conforme au système de design Québec.ca.</li>
         <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/entetepiedpage/piventete">Section</a>, amélioration de l'accessibilité avec un visuel au focus beaucoup plus visible, ainsi que l'ajout d'un visuel sur hover.</li>

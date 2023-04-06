@@ -41,42 +41,43 @@
 <style type="text/css">
 </style>
 
-<h1>Liste déroulante</h1>
+<div class="documentation">
+    <h1>Liste déroulante</h1>
 
-<utd-menu-ancres selecteur="#main h2">
-</utd-menu-ancres>
+    <utd-menu-ancres selecteur="#main h2">
+    </utd-menu-ancres>
 
-<h2>Description</h2>
-<p>La <strong>liste déroulante</strong> permet à l'utilisateur de sélectionner une ou plusieurs des options contenues dans une liste.</p>
-<p>Il existe 3 types de liste déroulante.</p>
-<p>La <strong>liste déroulante standard</strong> est utilisée lorsqu'un seul choix est requis, par exemple pour sélectionner la province de résidence dans une adresse postale.&nbsp;</p>
-<p>La <strong>liste déroulante à sélection multiple</strong> permet de choisir un ou plusieurs éléments de la liste, comme la composante&nbsp;<a href="/composantes/formulaire/case-a-cocher">Case à cocher</a>. Elle ne devrait être utilisée uniquement lorsque les cases à cocher occupent trop d'espace dans l'écran.</p>
-<p>Cette liste est utilisée pour permettre à l'utilisateur de sélectionner des critères comme dans le cas de conditions de travail d'un emploi.</p>
-<p>La <strong>boîte combinée</strong> est une liste à sélection unique ou multiple qui comprend un outil de recherche. Par défaut la recherche permet un certain flou (Voir paramètres "recherche-floue" et "precision-recherche").</p>
-<p>Cette liste est utilisée pour faciliter la sélection d'éléments lorsque la liste est très longue, par exemple une liste de ministères et organismes.</p>
+    <h2>Description</h2>
+    <p>La <strong>liste déroulante</strong> permet à l'utilisateur de sélectionner une ou plusieurs des options contenues dans une liste.</p>
+    <p>Il existe 3 types de liste déroulante.</p>
+    <p>La <strong>liste déroulante standard</strong> est utilisée lorsqu'un seul choix est requis, par exemple pour sélectionner la province de résidence dans une adresse postale.&nbsp;</p>
+    <p>La <strong>liste déroulante à sélection multiple</strong> permet de choisir un ou plusieurs éléments de la liste, comme la composante&nbsp;<a href="/composantes/formulaire/case-a-cocher">Case à cocher</a>. Elle ne devrait être utilisée uniquement lorsque les cases à cocher occupent trop d'espace dans l'écran.</p>
+    <p>Cette liste est utilisée pour permettre à l'utilisateur de sélectionner des critères comme dans le cas de conditions de travail d'un emploi.</p>
+    <p>La <strong>boîte combinée</strong> est une liste à sélection unique ou multiple qui comprend un outil de recherche. Par défaut la recherche permet un certain flou (Voir paramètres "recherche-floue" et "precision-recherche").</p>
+    <p>Cette liste est utilisée pour faciliter la sélection d'éléments lorsque la liste est très longue, par exemple une liste de ministères et organismes.</p>
 
-<h3>Référence système de design Quebec.ca</h3>
-<a href="https://design.quebec.ca/composantes/formulaire/liste-deroulante" target="_blank">Voir les spécifications sur le site de design Quebec.ca</a>
+    <h3>Référence système de design Quebec.ca</h3>
+    <a href="https://design.quebec.ca/composantes/formulaire/liste-deroulante" target="_blank">Voir les spécifications sur le site de design Quebec.ca</a>
 
-<h3>Particularités vs. le système de design Quebec.ca</h3>
-<p>Un filet gris pâle a été ajouté sous le placeholder lorsqu'une liste à sélection simple sans recherche est ouverte afin de mieux distinguer les choix possibles de l'élément sélectionné.</p>
+    <h3>Particularités vs. le système de design Quebec.ca</h3>
+    <p>Un filet gris pâle a été ajouté sous le placeholder lorsqu'une liste à sélection simple sans recherche est ouverte afin de mieux distinguer les choix possibles de l'élément sélectionné.</p>
 
-<h3>Particularités techniques</h3>
-<p>Ce composant produit une liste déroulante à partir d'une liste native (select). Il suffit d'intégrer à l'intérieur du présent composant une liste déroulante native avec les options que vous souhaitez et l'attribut "multiple" pour une liste à sélection multiple.</p>
-<p>Les attributs du composant vous permettent de spécifier si la liste est recherchable (floue ou précise), ainsi que sa largeur. La largeur devrait être déterminée en fonction de la longueur des textes des choix possibles.</p>
+    <h3>Particularités techniques</h3>
+    <p>Ce composant produit une liste déroulante à partir d'une liste native (select). Il suffit d'intégrer à l'intérieur du présent composant une liste déroulante native avec les options que vous souhaitez et l'attribut "multiple" pour une liste à sélection multiple.</p>
+    <p>Les attributs du composant vous permettent de spécifier si la liste est recherchable (floue ou précise), ainsi que sa largeur. La largeur devrait être déterminée en fonction de la longueur des textes des choix possibles.</p>
 
-<h2>Attributs disponibles</h2>
-<TableauParams parametres="{tableauParametres}">
-</TableauParams>
+    <h2>Attributs disponibles</h2>
+    <TableauParams parametres="{tableauParametres}">
+    </TableauParams>
 
-<h2>Slots disponibles</h2>
-<TableauSlots parametres="{tableauSlots}">
-</TableauSlots>
-
+    <h2>Slots disponibles</h2>
+    <TableauSlots parametres="{tableauSlots}">
+    </TableauSlots>
+</div>
 <h2>Exemples</h2>
 <p>Les exemples 1a et 1b montrent des listes déroulantes natives à titre de référence et comparaison. Les autres exemples utilisent tous le composant "Liste déroulante".</p>
 <h3>1a- Liste déroulante native à sélection simple</h3>
-<div id="exemple1">
+<div id="exemple1" class="bs-test">
     <utd-champ-form libelle="Sélectionnez votre province canadienne préférée" precision="Ne soyez pas timide et assumez-vous.">
         <select id="select1">
             <option value="AB">Alberta</option>
@@ -96,7 +97,7 @@
     </utd-champ-form>
 </div>
 <h3>1b- Liste déroulante native à sélection multiple</h3>
-<div id="exemple1b">
+<div id="exemple1b" class="bs-test">
     <utd-champ-form libelle="Sélectionnez vos provinces canadiennes préférées" precision="Ne soyez pas timide et assumez-vous.">
         <select id="select1b" multiple>
             <option value="AB">Alberta</option>
@@ -116,7 +117,7 @@
     </utd-champ-form>
 </div>
 <h3>2a- Liste déroulante à sélection simple</h3>
-<div id="exemple2">
+<div id="exemple2" class="bs-test">
     <utd-champ-form precision="Ne soyez pas timide et assumez-vous.">
         <utd-liste-deroulante>
             <label>Sélectionnez votre province canadienne préférée</label>
@@ -143,7 +144,7 @@
 </CodeSource>
 
 <h3>2b- Liste déroulante à sélection simple (avec peu de choix donc sans barre de défilement)</h3>
-<div id="exemple2a">
+<div id="exemple2a" class="bs-test">
     <utd-champ-form precision="Ne soyez pas timide et assumez-vous.">
         <utd-liste-deroulante>
             <label>Sélectionnez votre province canadienne préférée</label>
@@ -162,7 +163,7 @@
 </CodeSource>
 
 <h3>3- Liste déroulante à sélection multiple</h3>
-<div id="exemple3">
+<div id="exemple3" class="bs-test">
     <utd-champ-form precision="Ne soyez pas timide et assumez-vous.">
         <utd-liste-deroulante>
             <label>Sélectionnez vos provinces canadiennes préférées</label>
@@ -190,7 +191,7 @@
 </CodeSource>
 
 <h3>4- Boîte combinée (sélection simple)</h3>
-<div id="exemple4">
+<div id="exemple4" class="bs-test">
     <utd-champ-form id="champUtd4" libelle="Sélectionnez votre état américain préféré" precision="Ne soyez pas timide et assumez-vous." obligatoire="true" invalide="true" message-erreur="Le champ «Sélectionnez votre état américain préféré» est obligatoire.">
         <utd-liste-deroulante recherchable="true">
             <select id="select4">
@@ -256,7 +257,7 @@
 
 <h3>5- Boîte combinée (sélection multiple)</h3>
 <p>Dans cet exemple des mots clés ont été ajoutés sur certaines options. Ex. "Nordiques Québec" pour "Colorado" et "pomme" pour "New York". Si une recherche est faite avec "Québec", le résultat "Colorado" sera disponible bien que le terme "Québec" ne soit pas dans le texte de l'option.</p>
-<div id="exemple5">
+<div id="exemple5" class="bs-test">
     <utd-champ-form libelle="Sélectionnez vos états américains préférés" precision="Ne soyez pas timide et assumez-vous.">
         <utd-liste-deroulante recherchable="true">
             <select id="select5" multiple>
@@ -322,7 +323,7 @@
 
 <h3>6- Boîte combinée (sélection multiple) avec recherche précise (aucun flou)</h3>
 <p>Effectuer une recherche avec le terme "Floride". Comme dans cet exemple la recherche est précise (vs. floue par défaut), il n'y aura aucun résultat contrairement à ce que nous pouvons obtenir dans l'exemple 5.</p>
-<div id="exemple6">
+<div id="exemple6" class="bs-test">
     <utd-champ-form libelle="Sélectionnez vos états américains préférés" precision="Ne soyez pas timide et assumez-vous.">
         <utd-liste-deroulante recherchable="true" recherche-floue="false" multiple="true">
             <select id="select6" multiple>
