@@ -11,8 +11,8 @@
     <ul class="utd">
         <li>Taille par défaut des champs de taille "sm" et "md" en format téléphone.</li>
         <li>Taille par défaut des champs de type "email" et "url" en format téléphone.</li>
-        <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/navigation/menuvertical">Menu vertical</a>, amélioration de l'affichage initial sur connexions lentes. Provoquait parfois un effet visuel désagréable (flicking et contenu html non stylé) durant la phase d'affichage.</li>
-        <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/formulaire/listederoulante">Liste déroulante</a>, lorsque la liste est ouverte, son contenu s'affiche par dessus le contenu de la page au lieu de pousser le contenu de la page vers le bas.</li>
+        <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/navigation/menuvertical">Menu vertical</a>, l'affichage initial sur connexions lentes provoquait parfois un effet visuel désagréable (flicking et contenu html non stylé) durant la phase d'affichage.</li>
+        <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/formulaire/listederoulante">Liste déroulante</a>, lorsque la liste est ouverte, son contenu s'affiche maintenant par dessus le contenu de la page au lieu de pousser le contenu de la page vers le bas.</li>
     </ul>            
         
     <h3>Améliorations</h3>
