@@ -5,44 +5,26 @@
 
 <utd-menu-ancres selecteur="#main h2">
 </utd-menu-ancres>
-<!--
 <utd-accordeon reduit="false">
-    <div slot="titre"><h2>1.9.3 (2023-04-10)</h2></div>
+    <div slot="titre"><h2>1.10.0 (2023-04-14)</h2></div>
     <h3>Correction d'anomalies</h3>
     <ul class="utd">
-        <li>Correction de la taille par défaut des champs de taille "sm" et "md" en format téléphone.</li>
-        <li>Correction de la taille par défaut des champs de type "email" et "url" en format téléphone.</li>
-    </ul>            
-        
-    <h3>Améliorations</h3>
-    <ul class="utd">
-        <li>Ajout d'essais automatisés pour chaque composant.</li>
-        <li>Composant <a href="#">Avis</a>, ajout du type "complementaire" avec x variations (astuce, xxx et xxx).</li>
-        <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/entetepiedpage/piventete">Piv entête</a>, légères modifications afin de le rendre plus conforme au système de design Québec.ca.</li>
-        <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/entetepiedpage/piventete">Section</a>, amélioration de l'accessibilité avec un visuel au focus beaucoup plus visible, ainsi que l'ajout d'un visuel sur hover.</li>
-    </ul>
-</utd-accordeon>
--->
-
-<utd-accordeon reduit="false">
-    <div slot="titre"><h2>1.9.3 (2023-04-10)</h2></div>
-    <h3>Correction d'anomalies</h3>
-    <ul class="utd">
-        <li>Correction de la taille par défaut des champs de taille "sm" et "md" en format téléphone.</li>
-        <li>Correction de la taille par défaut des champs de type "email" et "url" en format téléphone.</li>
+        <li>Taille par défaut des champs de taille "sm" et "md" en format téléphone.</li>
+        <li>Taille par défaut des champs de type "email" et "url" en format téléphone.</li>
         <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/navigation/menuvertical">Menu vertical</a>, amélioration de l'affichage initial sur connexions lentes. Provoquait parfois un effet visuel désagréable (flicking et contenu html non stylé) durant la phase d'affichage.</li>
+        <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/formulaire/listederoulante">Liste déroulante</a>, lorsque la liste est ouverte, son contenu s'affiche par dessus le contenu de la page au lieu de pousser le contenu de la page vers le bas.</li>
     </ul>            
         
     <h3>Améliorations</h3>
     <ul class="utd">
         <li>Ajout d'essais automatisés pour chaque composant.</li>
-        <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/entetepiedpage/piventete">Piv entête</a>, modifications afin de le rendre plus conforme au système de design Québec.ca. Notamment la taille du titre de site et l'espacement entre les liens de langue alternative et nous joindre.</li>
-        <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/affichagecontenu/section">Section</a>, amélioration de l'accessibilité avec un visuel au focus beaucoup plus visible, ainsi que l'ajout d'un visuel sur hover.</li>
+        <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/entetepiedpage/piventete">Piv entête</a>, rendre plus conforme au système de design Québec.ca. Notamment la taille du titre de site et l'espacement entre les liens de langue alternative et nous joindre.</li>
+        <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/affichagecontenu/section">Section</a>, visuel au focus beaucoup plus visible (accessibilité), ainsi que l'ajout d'un visuel sur hover.</li>        
     </ul>
     
 </utd-accordeon>
 
-<utd-accordeon reduit="false">
+<utd-accordeon reduit="true">
     <div slot="titre"><h2>1.9.2 (2023-03-27)</h2></div>
     <h3>Correction d'anomalies</h3>
     <ul class="utd">
