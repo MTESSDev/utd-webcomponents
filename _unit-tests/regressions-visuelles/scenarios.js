@@ -475,7 +475,6 @@ scenarios : [
         label: "Liste_deroulante (Simple ouverte)", 
         url: "/composants/formulaire/listederoulante",
         viewports: viewports.vTablet,
-        selectors: ["#exemple2"],
         shadowClickSelectors: [{domSelector: "#exemple2 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
     },    
     //Liste déroulante (Multiple ouverte)        
@@ -483,7 +482,6 @@ scenarios : [
         label: "Liste_deroulante (Multiple ouverte)", 
         url: "/composants/formulaire/listederoulante",
         viewports: viewports.vTablet,
-        selectors: ["#exemple3"],
         shadowClickSelectors: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
 //        shadowHoverSelectors2: [{domSelector: 'utd-menu-vertical-item[libelle="Navigation"]', shadowDomSelector: "a"}],
     },    
@@ -492,7 +490,6 @@ scenarios : [
         label: "Liste_deroulante (Combinée simple ouverte)", 
         url: "/composants/formulaire/listederoulante",
         viewports: viewports.vTablet,
-        selectors: ["#exemple4"],
         shadowClickSelectors: [{domSelector: "#exemple4 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
     },    
     //Liste déroulante (Combinée multiple ouverte)        
@@ -500,7 +497,6 @@ scenarios : [
         label: "Liste_deroulante (Combinée multiple ouverte)", 
         url: "/composants/formulaire/listederoulante",
         viewports: viewports.vTablet,
-        selectors: ["#exemple5"],
         shadowClickSelectors: [{domSelector: "#exemple5 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
     },    
     //Liste déroulante (Simple fermeture escape)        
@@ -580,7 +576,6 @@ scenarios : [
         label: "Liste_deroulante (Simple Hover item)", 
         url: "/composants/formulaire/listederoulante",
         viewports: viewports.vTablet,
-        selectors: ["#exemple2"],
         shadowClickSelectors: [{domSelector: "#exemple2 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
         shadowHoverSelectors2: [{domSelector: "#exemple2 utd-liste-deroulante", shadowDomSelector: 'li[aria-label="Manitoba"]'}]
     },    
@@ -590,7 +585,6 @@ scenarios : [
         label: "Liste_deroulante (Multiple Hover item)", 
         url: "/composants/formulaire/listederoulante",
         viewports: viewports.vTablet,
-        selectors: ["#exemple3"],
         shadowClickSelectors: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
         shadowHoverSelectors2: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: 'li[aria-label="Manitoba"]'}]
     },    
@@ -600,7 +594,6 @@ scenarios : [
         label: "Liste_deroulante (Combinée simple Hover item)", 
         url: "/composants/formulaire/listederoulante",
         viewports: viewports.vTablet,
-        selectors: ["#exemple4"],
         postInteractionWait: 3000,
         shadowClickSelectors: [{domSelector: "#exemple4 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
         shadowHoverSelectors2: [{domSelector: "#exemple4 utd-liste-deroulante", shadowDomSelector: 'li[aria-label="Alaska"]'}]
@@ -611,7 +604,6 @@ scenarios : [
         label: "Liste_deroulante (Combinée multiple Hover item)", 
         url: "/composants/formulaire/listederoulante",
         viewports: viewports.vTablet,
-        selectors: ["#exemple5"],
         shadowClickSelectors: [{domSelector: "#exemple5 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
         shadowHoverSelectors2: [{domSelector: "#exemple5 utd-liste-deroulante", shadowDomSelector: 'li[aria-label="Alaska"]'}]
     },    
@@ -628,9 +620,17 @@ scenarios : [
         label: "Liste_deroulante (Multiple selection 3 items)", 
         url: "/composants/formulaire/listederoulante",
         viewports: viewports.vTablet,
-        selectors: ["#exemple3"],
         shadowClickSelectors: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}, {domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: 'li[aria-label="Manitoba"]'}, {domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: 'li[aria-label="Ontario"]'}, {domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: 'li[aria-label="Nouvelle-Écosse"]'}],
     },    
+    //Liste déroulante (Multiple selection 3 items ferméee)        
+    {
+        label: "Liste_deroulante (Multiple selection 3 items fermée)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}, {domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: 'li[aria-label="Manitoba"]'}, {domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: 'li[aria-label="Ontario"]'}, {domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: 'li[aria-label="Nouvelle-Écosse"]'}],
+        keyPressKeyCode: ["Escape"]        
+    },    
+
     //Liste déroulante (Combinée simple selection item)        
     {
         label: "Liste_deroulante (Combinée simple selection item)", 
@@ -645,9 +645,17 @@ scenarios : [
         label: "Liste_deroulante (Combinée multiple selection 3 items)", 
         url: "/composants/formulaire/listederoulante",
         viewports: viewports.vTablet,
-        selectors: ["#exemple5"],
         shadowClickSelectors: [{domSelector: "#exemple5 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}, {domSelector: "#exemple5 utd-liste-deroulante", shadowDomSelector: 'li[aria-label="Alaska"]'},{domSelector: "#exemple5 utd-liste-deroulante", shadowDomSelector: 'li[aria-label="Colorado"]'}, {domSelector: "#exemple5 utd-liste-deroulante", shadowDomSelector: 'li[aria-label="Connecticut"]'}],
     },     
+    //Liste déroulante (Combinée multiple selection 3 items fermée)        
+    {
+        label: "Liste_deroulante (Combinée multiple selection 3 items fermée)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: "#exemple5 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}, {domSelector: "#exemple5 utd-liste-deroulante", shadowDomSelector: 'li[aria-label="Alaska"]'},{domSelector: "#exemple5 utd-liste-deroulante", shadowDomSelector: 'li[aria-label="Colorado"]'}, {domSelector: "#exemple5 utd-liste-deroulante", shadowDomSelector: 'li[aria-label="Connecticut"]'}],
+        keyPressKeyCode: ["Escape"]         
+    },     
+
     //Menu ancres (Base)        
     {
         label: "Menu_ancres (Base)", 

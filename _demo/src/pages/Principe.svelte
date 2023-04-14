@@ -26,12 +26,12 @@
 ">
 </CodeSource>   
 
-<h4>Chargement du css (version précise)</h4>
+<h4>Chargement du css</h4>
 <p>Charger le css dans la balise <span class="utd-emphase-gris">head</span> <strong>avant</strong> le css de votre projet.</p>
 <CodeSource codeSource="<link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.9.3/dist/css/utd-webcomponents.min.css'>">
 </CodeSource>   
 
-<h4>Chargement du javascript (version précise)</h4>
+<h4>Chargement du javascript</h4>
 <p>Charger le script à la fin du <span class="utd-emphase-gris">body</span> de la page.</p>
 <CodeSource codeSource="<script src='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.9.3/dist/js/utd-webcomponents.min.js' relative-base-path='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.9.3/dist'></script>">
 </CodeSource>   
