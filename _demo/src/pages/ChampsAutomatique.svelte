@@ -43,23 +43,26 @@
 <style type="text/css">
 </style>
 
-<h1>Champs (gestion automatique)</h1>
+<div class="documentation">
+    <h1>Champs (gestion automatique)</h1>
 
-<utd-menu-ancres selecteur="#main h2">
-</utd-menu-ancres>
+    <utd-menu-ancres selecteur="#main h2">
+    </utd-menu-ancres>
+    <div class="no-test">
+    <h2>Description</h2>
+    <p>Il est possible de grandement simplifier à différents niveaux le code requis pour les champs en utilisant le contrôle <span class="utd-emphase-gris">utd-champ-form</span>.</p>
+    <p>En effet, il prend en charge la gestion du label, de la précision, du champ requis, du message d'erreur et évidemment de tous les attributs requis pour l'accessibilité.</p>
+    <p>Il est possible de tout spécifier via des attributs du contrôle <span class="utd-emphase-gris">utd-champ-form</span>, ou bien via du html traditionnel et tous va être bien ficelé (ex. label for, les attributs aria, la précision, le message d'erreur, etc.)</p>
 
-<h2>Description</h2>
-<p>Il est possible de grandement simplifier à différents niveaux le code requis pour les champs en utilisant le contrôle <span class="utd-emphase-gris">utd-champ-form</span>.</p>
-<p>En effet, il prend en charge la gestion du label, de la précision, du champ requis, du message d'erreur et évidemment de tous les attributs requis pour l'accessibilité.</p>
-<p>Il est possible de tout spécifier via des attributs du contrôle <span class="utd-emphase-gris">utd-champ-form</span>, ou bien via du html traditionnel et tous va être bien ficelé (ex. label for, les attributs aria, la précision, le message d'erreur, etc.)</p>
+    <h2>Attributs disponibles</h2>
+    <TableauParams parametres="{tableauParametres}">
+    </TableauParams>
 
-<h2>Attributs disponibles</h2>
-<TableauParams parametres="{tableauParametres}">
-</TableauParams>
-
-<h2>Slots disponibles</h2>
-<TableauSlots parametres="{tableauSlots}">
-</TableauSlots>
+    <h2>Slots disponibles</h2>
+    <TableauSlots parametres="{tableauSlots}">
+    </TableauSlots>
+    </div>
+</div>
 
 <h2>Exemples</h2>
 <p>Tous les exemples utilisent le cas de figure le plus complexe, i.e. un champ obligatoire, avec précision et message d'erreur.</p>

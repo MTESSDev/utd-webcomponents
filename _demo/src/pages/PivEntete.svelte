@@ -51,8 +51,7 @@
 <p>Non disponible. <a href="https://xd.adobe.com/view/b098e26e-f500-4d59-b2cb-48ef475bbab3-e5cb/screen/130e1bf9-39c8-454f-bd97-f076a698361a/specs/" target="_blank">Voir les spécifications sur le XD de design Quebec.ca</a>.</p>
 
 <h3>Particularités vs. le système de design Quebec.ca</h3>
-<p>Nous avons 2 lignes potentielles pour le titre du site ou du service. La font de ces 2 lignes est "Roboto-Medium" au lieu de "Roboto-Regular". La spécification Québec.ca ne nous semble pas assez visible.</p>
-<p>Notre espacement les liens "Nous joindre" et "langue alternative" est plus grand. La spécification Québec.ca nous semble trop rapprochée.</p>
+<p>Nous avons 2 lignes potentielles pour le titre du site ou du service.</p>
 
 <h2>Attributs disponibles</h2>
 <TableauParams parametres="{tableauParametres}">

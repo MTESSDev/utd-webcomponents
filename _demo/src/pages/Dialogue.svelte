@@ -7,6 +7,7 @@
   let mounted = false;
   let tableauParametres = [];
   let tableauSlots = [];
+  let afficherGrosContenu = false;
 
   onMount(() => {
     tableauParametres = obtenirTableauParametres();
@@ -144,21 +145,37 @@ function ajouterCodeDialogue4() {
 <h2>Exemples</h2>
 <h3>1- Ouverture par le biais d'un bouton</h3>
 <div id="exempleDialogue1">
+    <utd-champ-form format="compact">
+        <label>
+            <input type="checkbox" name="grosContenu1" bind:checked={afficherGrosContenu} >
+             <span>Afficher un long contenu dans la fenêtre modale</span>
+        </label>               
+    </utd-champ-form>
+
     <button type="button" id="btnTest1" class="utd-btn secondaire mb-32">Afficher</button>
     <utd-dialog id="dialogue1" titre="Ajout d'un problème">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet pulvinar ipsum. Donec luctus nulla scelerisque, congue nibh a, malesuada dolor. Sed mattis interdum pellentesque. Vivamus lacinia risus a justo imperdiet imperdiet at quis ligula. Cras a dictum tortor, sit amet venenatis tortor. Vestibulum aliquam elit eu venenatis laoreet. Aenean tellus enim, consectetur eu condimentum accumsan, malesuada volutpat lectus. Aliquam sit amet rhoncus mauris, a placerat mauris. Mauris neque nulla, vulputate a convallis in, imperdiet tincidunt leo.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet pulvinar ipsum. Donec luctus nulla scelerisque, congue nibh a, malesuada dolor. Sed mattis interdum pellentesque. Vivamus lacinia risus a justo imperdiet imperdiet at quis ligula. Cras a dictum tortor, sit amet venenatis tortor. Vestibulum aliquam elit eu venenatis laoreet. Aenean tellus enim, consectetur eu condimentum accumsan, malesuada volutpat lectus. Aliquam sit amet rhoncus mauris, a placerat mauris. Mauris neque nulla, vulputate a convallis in, imperdiet tincidunt leo.</p>
+        {#if afficherGrosContenu}
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet pulvinar ipsum. Donec luctus nulla scelerisque, congue nibh a, malesuada dolor. Sed mattis interdum pellentesque. Vivamus lacinia risus a justo imperdiet imperdiet at quis ligula. Cras a dictum tortor, sit amet venenatis tortor. Vestibulum aliquam elit eu venenatis laoreet. Aenean tellus enim, consectetur eu condimentum accumsan, malesuada volutpat lectus. Aliquam sit amet rhoncus mauris, a placerat mauris. Mauris neque nulla, vulputate a convallis in, imperdiet tincidunt leo.</p>        
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet pulvinar ipsum. Donec luctus nulla scelerisque, congue nibh a, malesuada dolor. Sed mattis interdum pellentesque. Vivamus lacinia risus a justo imperdiet imperdiet at quis ligula. Cras a dictum tortor, sit amet venenatis tortor. Vestibulum aliquam elit eu venenatis laoreet. Aenean tellus enim, consectetur eu condimentum accumsan, malesuada volutpat lectus. Aliquam sit amet rhoncus mauris, a placerat mauris. Mauris neque nulla, vulputate a convallis in, imperdiet tincidunt leo.</p>
+        {/if}
+
         <label for="test1">Description du problème</label>
         <input type="text" id="test1" class="utd-form-group utd-form-control"/>
 
-        <label for="test2">Solution 1</label>
+        <label for="test2">Solution</label>
         <input type="text" id="test2" class="utd-form-group utd-form-control"/>
 
-        <label for="test3">Solution 2</label>
-        <input type="text" id="test3" class="utd-form-group utd-form-control"/>
+        {#if afficherGrosContenu}
+            <label for="test3">Solution 2</label>
+            <input type="text" id="test3" class="utd-form-group utd-form-control"/>
 
-        <label for="test5">Solution 4</label>
-        <input type="text" id="test5" class="utd-form-control"/>
+            <label for="test4">Solution 3</label>
+            <input type="text" id="test4" class="utd-form-group utd-form-control"/>
+
+            <label for="test5">Solution 4</label>
+            <input type="text" id="test5" class="utd-form-control"/>
+        {/if}
+
         <div slot="pied">
             <button id="btnAnnuler1" type="button" class="utd-btn secondaire compact">Annuler</button>        
             <button id="btnEnregistrer1" type="button" class="utd-btn primaire compact">Enregistrer</button>        

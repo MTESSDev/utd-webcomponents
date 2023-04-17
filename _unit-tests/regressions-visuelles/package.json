@@ -1,0 +1,37 @@
+{
+    "name": "utd-webcomponents-unit-tests",
+    "version": "1.0.0",
+    "private": false,
+    "scripts": {
+        "bs-test": "node backstop.js --test",
+        "bs-reference": "node backstop.js --reference",
+        "bs-approve": "node backstop.js --approve",
+        "bs-openReport": "node backstop.js --openReport",
+        "remote": "node backstop.js --remote",
+        "bs-test-accordeon": "node backstop.js --test --filter=Accordeon*",
+        "bs-test-avis": "node backstop.js --test --filter=Avis",
+        "bs-test-boutons": "node backstop.js --test --filter=Boutons",
+        "bs-test-boutonsRadio": "node backstop.js --test --filter=radioButton",
+        "bs-test-casesCocher": "node backstop.js --test --filter=checkbox",
+        "bs-test-champsErreur": "node backstop.js --test --filter=Champs_erreur",
+        "bs-test-champsTexte": "node backstop.js --test --filter=Champs_texte",
+        "bs-test-champsAutomatiques": "node backstop.js --test --filter=Champs_gestion_automatique",
+        "bs-test-dialogue": "node backstop.js --test --filter=Dialogue",
+        "bs-test-hautPage": "node backstop.js --test --filter=Haut_page",
+        "bs-test-infobulle": "node backstop.js --test --filter=Infobulle",
+        "bs-test-listeDeroulante": "node backstop.js --test --filter=Liste_deroulante",
+        "bs-test-menuAncres": "node backstop.js --test --filter=Menu_ancres",
+        "bs-test-menuVertical": "node backstop.js --test --filter=Menu_vertical",
+        "bs-test-message": "node backstop.js --test --filter=Message",
+        "bs-test-notification": "node backstop.js --test --filter=Notification",
+        "bs-test-piedPageSite": "node backstop.js --test --filter=Pied_page_site",
+        "bs-test-pivEntete": "node backstop.js --test --filter=Piv_entete",
+        "bs-test-pivPiedPage": "node backstop.js --test --filter=Piv_pied_page",
+        "bs-test-section": "node backstop.js --test --filter=Section"
+    },
+    "devDependencies": {
+        "backstopjs": "^6.2.0",
+        "yargs": "^17.7.1"
+    },
+    "dependencies": {}
+}

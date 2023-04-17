@@ -1,0 +1,220 @@
+/*====================================================================================================*/
+/*  -01- PIV entête
+/*====================================================================================================*/
+utd-piv-entete {
+    display: block;
+    min-height: 72px;
+    max-height: 72px;
+    visibility: hidden;
+    background-color: var(--couleur-piv);
+    width: 100%;
+
+    &.mounted {
+        min-height: inherit;
+        max-height: inherit;
+        visibility: visible;
+    }    
+} 
+  
+.utd-piv-entete {
+    color: #fff;
+
+    a {
+        color: #fff;
+
+        &:hover, &:focus {
+            color: #fff;
+        }    
+    }
+
+    .conteneur-sections{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 72px;        
+    }
+      
+    .signature-gouvernement {
+        margin-right: 24px;
+      
+        a {
+            display: block;
+        }
+
+        img{
+            height: 72px;
+            width: 200px;
+        }        
+    }
+      
+    /* ========== Section du centre ==========*/
+    .section-centre {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin-top: -4px;
+    }
+
+    .titre-site {
+        font-family: Roboto;
+        display: flex;
+        flex-direction: column;
+        text-decoration: none;
+        font-size: 16px;
+        line-height: 1.2;
+        /*margin-top: 3px;  Pas dans charte graphique... permet d'aligner parfaitement avec drapeau*/
+
+        &:hover, &:focus  {
+            text-decoration: underline;
+        }
+
+        .description {
+            font-size: 14px;
+        }            
+    }
+      
+    .zone-titre-recherche {
+        display:none;
+        padding-bottom: 8px;
+    }
+              
+}
+     
+.utd-conteneur-passer-contenu {
+    position: absolute;
+    width: 100%;
+}
+  
+.utd-passer-contenu {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+    a {
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        overflow: hidden;
+        clip: rect(0,0,0,0);
+        white-space: nowrap;
+        border: 0;
+    }    
+
+    a:focus {
+        width: inherit;
+        height: inherit;
+        overflow: inherit;
+        clip: inherit;
+        white-space: inherit;
+        border: inherit;
+        color: #fff;
+        padding: 4px;
+        border: 1px solid #fff;
+        background-color: var(--couleur-piv);
+    }    
+}
+    
+  
+/* ========== Section droite ==========*/
+.utd-piv-entete .section-droite {
+    min-width: 160px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.utd-piv-entete .section-droite ul, utd-piv-entete [slot="liens"] ul {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    list-style: none;
+    padding: 0 0 0 0.5rem;
+    margin: 0;
+    height: 100%;
+}
+
+.utd-piv-entete .section-droite ul a, utd-piv-entete [slot="liens"] ul a {
+    font-family: 'Roboto';
+    text-decoration: none;
+    font-size: 14px;
+    color: #fff;
+}
+
+.utd-piv-entete .section-droite ul a:hover, utd-piv-entete [slot="liens"] ul a:hover,
+.utd-piv-entete .section-droite ul a:focus, utd-piv-entete [slot="liens"] ul a:focus {
+    text-decoration: underline;
+    color: #fff;
+}
+
+.utd-piv-entete .section-droite ul li:last-child, utd-piv-entete [slot="liens"] ul li:last-child{
+    padding-bottom: 0;
+}
+
+.utd-piv-entete .bouton-recherche {
+    min-width: 32px;
+    min-height: 32px;
+}
+
+.utd-piv-entete .section-droite .bouton-recherche {
+    margin-right: 16px;
+}
+  
+
+/* ========== Logo gouvernement (téléphone) ==========*/  
+@media screen and (max-width:403px) {
+    .utd-piv-entete .signature-gouvernement img {
+        width: 132px;
+        height: 48px;
+    }
+}
+
+  /* ========== Particularités (mobile) ==========*/
+@media screen and (max-width:767px) {
+
+    utd-piv-entete {
+        min-height: 99px;
+        max-height: 99px;   
+    } 
+    
+    .utd-piv-entete .section-centre {
+        margin-top: 0;
+    }
+
+    .utd-piv-entete .section-droite{
+        min-width: 130px;
+    }
+
+    .utd-piv-entete .section-droite .bouton-recherche{
+        display: none;
+    }
+
+    .utd-piv-entete .signature-gouvernement img{
+        margin-left: -3px;
+    }
+
+    .utd-piv-entete .titre-site {
+        display: none;
+    }
+
+    .utd-piv-entete .zone-titre-recherche {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .utd-piv-entete .zone-titre-recherche .titre-site {
+        display: flex;
+    }
+}
+  
+utd-piv-entete [slot="zoneRecherche"] > *:first-child {
+    padding: 8px 0 24px 0;
+}
+
+header {
+    margin-bottom: var(--tc-48-40-val);
+}
+  
+#pivLogoGouvernementPrint {
+    display: none;
+}
+  

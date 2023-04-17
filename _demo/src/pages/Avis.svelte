@@ -30,25 +30,26 @@
 <style type="text/css">
 </style>
 
-<h1>Avis</h1>
+<div class="documentation">
+    <h1>Avis</h1>
 
-<utd-menu-ancres selecteur="#main h2">
-</utd-menu-ancres>
+    <utd-menu-ancres selecteur="#main h2">
+    </utd-menu-ancres>
 
-<h2>Description</h2>
-<p>Les <strong>avis</strong> sont des messages contextuels qui peuvent s’afficher sur une page ou sur plusieurs pages d’un même sujet.</p>
+    <h2>Description</h2>
+    <p>Les <strong>avis</strong> sont des messages contextuels qui peuvent s’afficher sur une page ou sur plusieurs pages d’un même sujet.</p>
 
-<h3>Référence système de design Quebec.ca</h3>
-<a href="https://design.quebec.ca/composantes/affichage-de-contenu/avis" target="_blank">Voir les spécifications sur le site de design Quebec.ca</a>
+    <h3>Référence système de design Quebec.ca</h3>
+    <a href="https://design.quebec.ca/composantes/affichage-de-contenu/avis" target="_blank">Voir les spécifications sur le site de design Quebec.ca</a>
 
-<h2>Attributs disponibles</h2>
-<TableauParams parametres="{tableauParametres}">
-</TableauParams>
+    <h2>Attributs disponibles</h2>
+    <TableauParams parametres="{tableauParametres}">
+    </TableauParams>
 
-<h2>Slots disponibles</h2>
-<TableauSlots parametres="{tableauSlots}">
-</TableauSlots>
-
+    <h2>Slots disponibles</h2>
+    <TableauSlots parametres="{tableauSlots}">
+    </TableauSlots>
+</div>
 
 <h2>Exemples</h2>
 

@@ -52,6 +52,7 @@ let ariaDescriptionConteneur = null
 let ariaDescriptionRecherche = null
 let controleRecherche
 let controleSelect
+let controleEspaceur
 let controleZoneNotificationLecteurEcran
 let controleConteneurResultats
 let afficherOptions = false
@@ -86,6 +87,7 @@ onMount(() => {
   html = thisComponent.getRootNode().getElementsByTagName("html")[0]
   composant = thisComponent.shadowRoot.querySelector('.utd-liste-deroulante')
   controleConteneur = thisComponent.shadowRoot.querySelector('.conteneur')
+  controleEspaceur = thisComponent.shadowRoot.querySelector('.espaceur')
   controleSelection = thisComponent.shadowRoot.querySelector('.selection')
   controleZoneNotificationLecteurEcran = thisComponent.shadowRoot.getElementById(idControleZoneNotificationLecteurEcran)
   controleRecherche = thisComponent.shadowRoot.getElementById(idControleRecherche)
@@ -503,7 +505,7 @@ function selectionnerOption(indexeSuggestion, doitNotifierLecteurEcran = false){
     }
 
     if(!multiple){
-      afficherOptions = false
+      definirAfficherOptions(false)
       controleConteneur.focus()
     } else {
       indexeFocusSuggestion = indexeSuggestion
@@ -645,7 +647,8 @@ function onKeyDown(e){
         selectionnerOption(indexeFocusSuggestion)
         definirAriaDescriptionConteneur()
       } else {
-        afficherOptions = !afficherOptions     
+        definirAfficherOptions(!afficherOptions)
+
         if(suggestions.length && recherchable === 'false'){
           indexeFocusSuggestion = 0
         } 
@@ -665,13 +668,13 @@ function onKeyDown(e){
           }
         } else {            
             //Si tab seulement on ferme la liste (le focus ira au prochain contrôle)
-            afficherOptions = false
+            definirAfficherOptions(false)
         }
       }
       break        
       
     case "Escape":
-      afficherOptions = false
+      definirAfficherOptions(false)  
       controleConteneur.focus()
       break        
     case "ArrowDown":
@@ -692,7 +695,7 @@ function onKeyDown(e){
 
       //Affiche les options si ne sont pas visibles actuellement
       if(!afficherOptions){
-        afficherOptions = true
+        definirAfficherOptions(true)
 
         if(suggestions.length && recherchable === 'false'){
           indexeFocusSuggestion = 0
@@ -724,7 +727,7 @@ function onKeyDown(e){
       }
 
       if(!afficherOptions){
-        afficherOptions = true
+        definirAfficherOptions(true)
 
         if(suggestions.length && recherchable === 'false'){
           indexeFocusSuggestion = suggestions.length - 1
@@ -764,7 +767,7 @@ function onKeyDown(e){
         }
 
         if(!afficherOptions){
-          afficherOptions = true
+          definirAfficherOptions(true)
 
           if(suggestions.length && recherchable === 'false'){
             indexeFocusSuggestion = 0
@@ -800,7 +803,7 @@ function onKeyDown(e){
         }
 
         if(!afficherOptions){
-          afficherOptions = true
+          definirAfficherOptions(true)
 
           if(suggestions.length && recherchable === 'false'){
             indexeFocusSuggestion = suggestions.length - 1
@@ -842,7 +845,7 @@ function obtenirIndexeProchaineSuggestion(indexeCourantControleSelect, step){
 function clickSelection(e){
 
   
-  afficherOptions = !afficherOptions
+  definirAfficherOptions(!afficherOptions)
 
   if(recherchable === 'true' && afficherOptions){
     controleRecherche.parentElement.classList.remove('utd-d-none')
@@ -867,6 +870,16 @@ function majActiveDescendant() {
   }
 }
 
+function definirAfficherOptions(doitAfficherOptions) {
+  if(doitAfficherOptions){
+    console.log(controleConteneur.offsetHeight)
+    controleEspaceur.style.height = controleConteneur.offsetHeight + "px"
+    afficherOptions = true
+  } else {
+    afficherOptions = false
+  }
+}
+
 function toggleAfficherOptions() {
 
   if(!mounted){
@@ -884,7 +897,6 @@ function toggleAfficherOptions() {
       setTimeout(() => {
         controleRecherche.focus()                       
       })
-
 
       //Ici on attend volontairement avant de modifier le aria-description du champ recherche. Si on modifie immédiatement le lecteur écran considère la nouvelle valeur. Dans le cas présent, on veut que le aria-description disparaisse après l'affichage de la recherche. 
       setTimeout(() => {        
@@ -937,7 +949,7 @@ function traiterSaisieRecherche(){
 
 function blurConteneur(e){
   if(!estFocusInterieurComposant(e)){
-    afficherOptions = false
+    definirAfficherOptions(false)
     controleSelect.dispatchEvent(new Event('blur'))
     definirAriaDescriptionConteneur()
   }
@@ -945,7 +957,7 @@ function blurConteneur(e){
 
 function blurRecherche(e){     
   if(!estFocusInterieurComposant(e)){
-    afficherOptions = false
+    definirAfficherOptions(false)
     controleSelect.dispatchEvent(new Event('blur'))
   } else {
     indexeFocusSuggestion = null
@@ -959,7 +971,7 @@ function blurOptionSelectionnee(e){
   }
 
   if(!estFocusInterieurComposant(e)){
-    afficherOptions = false
+    definirAfficherOptions(false)
   }    
 
 }
@@ -1116,7 +1128,9 @@ function assurerControleVisible() {
           {/each}   
         </ul> 
       </span>      
-    </span>      
+    </span>  
+    
+    <div class="espaceur{!afficherOptions ? ' utd-d-none' : ''}"></div>
 </div>
 
 <link rel='stylesheet' href='{Utils.cssFullPath}'>

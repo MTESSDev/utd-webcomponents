@@ -126,44 +126,45 @@
         });
     }
 </script>
+<div class="documentation">
+    <h1>Message</h1>
 
-<h1>Message</h1>
+    <utd-menu-ancres selecteur="#main h2">
+    </utd-menu-ancres>
 
-<utd-menu-ancres selecteur="#main h2">
-</utd-menu-ancres>
+    <h2>Description</h2>
+    <p>Il s'agit du composant <strong>dialogue d’alerte</strong> du système de design Quebec.ca.</p>
+    <p>Il apparaît lorsqu’une action immédiate est requise. Le dialogue d’alerte contient un message ainsi qu’un ou plusieurs boutons d’action. </p>
 
-<h2>Description</h2>
-<p>Il s'agit du composant <strong>dialogue d’alerte</strong> du système de design Quebec.ca.</p>
-<p>Il apparaît lorsqu’une action immédiate est requise. Le dialogue d’alerte contient un message ainsi qu’un ou plusieurs boutons d’action. </p>
+    <h3>Référence système de design Quebec.ca</h3>
+    <a href="https://design.quebec.ca/composantes/action/dialog-modal" target="_blank">Voir les spécifications sur le site de design Quebec.ca</a>
 
-<h3>Référence système de design Quebec.ca</h3>
-<a href="https://design.quebec.ca/composantes/action/dialog-modal" target="_blank">Voir les spécifications sur le site de design Quebec.ca</a>
+    <h3>Particularités vs. le système de design Quebec.ca</h3>
+    <p>Lorsqu'un type est spécifié, nous ajoutons une icône au titre du message et nous retirons le filet de couleur saumon sous le titre du message.</p>
+    <p>Nous estimons que cela ajoute un élément visuel fort qui indique rapidement de quel type de message il s'agit.</p>
 
-<h3>Particularités vs. le système de design Quebec.ca</h3>
-<p>Lorsqu'un type est spécifié, nous ajoutons une icône au titre du message et nous retirons le filet de couleur saumon sous le titre du message.</p>
-<p>Nous estimons que cela ajoute un élément visuel fort qui indique rapidement de quel type de message il s'agit.</p>
+    <h2>Méthodes</h2>
+    <h3>utd.message.afficher</h3>
+    <h4>Paramètres</h4>
+    <TableauParams parametres="{tableauParametres}">
+    </TableauParams>
 
-<h2>Méthodes</h2>
-<h3>utd.message.afficher</h3>
-<h4>Paramètres</h4>
-<TableauParams parametres="{tableauParametres}">
-</TableauParams>
+    <h4>Retour</h4>
+    <p>Une promesse javascript dont le résultat contient une chaîne de caractères contenant le raison de fermeture du message. Les valeurs possibles sont : </p>
+    <ul class="utd">
+        <li><span class="utd-emphase-gris">primaire</span>, si le bouton primaire a été cliqué.</li>
+        <li><span class="utd-emphase-gris">secondaire</span>, si le bouton secondaire a été cliqué.</li>
+        <li><span class="utd-emphase-gris">clickBackdrop</span>, si l'utilisateur a cliqué dans le backdrop afin de fermer le message.</li>
+        <li><span class="utd-emphase-gris">boutonFermer</span>, si l'utilisateur a cliqué sur le bouton "Fermer (X)" afin de fermer le message.</li>
+        <li><span class="utd-emphase-gris">escape</span>, si l'utilisateur appuyé sur la touche "ESC" afin de fermer le message.</li>
+    </ul>
 
-<h4>Retour</h4>
-<p>Une promesse javascript dont le résultat contient une chaîne de caractères contenant le raison de fermeture du message. Les valeurs possibles sont : </p>
-<ul class="utd">
-    <li><span class="utd-emphase-gris">primaire</span>, si le bouton primaire a été cliqué.</li>
-    <li><span class="utd-emphase-gris">secondaire</span>, si le bouton secondaire a été cliqué.</li>
-    <li><span class="utd-emphase-gris">clickBackdrop</span>, si l'utilisateur a cliqué dans le backdrop afin de fermer le message.</li>
-    <li><span class="utd-emphase-gris">boutonFermer</span>, si l'utilisateur a cliqué sur le bouton "Fermer (X)" afin de fermer le message.</li>
-    <li><span class="utd-emphase-gris">escape</span>, si l'utilisateur appuyé sur la touche "ESC" afin de fermer le message.</li>
-</ul>
-
-<h2>Accessibilité</h2>
-<p>Les <a href="https://www.w3.org/WAI/ARIA/apg/example-index/dialog-modal/dialog">règles du W3C relatives aux dialogues de type "messages"</a> sont suivies à la lettre.</p>
-<p>Il semble que l'implémentation dans NVDA provoque la lecture du titre de la modale au lecteur écran deux fois (une au début et une à la fin). Le libellé du bouton qui reçoit le focus est également lu deux fois.</p>
-<p>Il serait possible de donner le focus au texte du message, mais dans ce cas c'est un bout du texte du message qui serait lu deux fois. Dans tous les cas le titre de la modale est lu deux fois.</p>
-<p>On préfère donc donner le focus au bouton même si son libellé est lu deux fois. Il s'agit malgré tout de la meilleure solution possible, et il semble qu'il n'y a malheureusement rien à faire.</p>
+    <h2>Accessibilité</h2>
+    <p>Les <a href="https://www.w3.org/WAI/ARIA/apg/example-index/dialog-modal/dialog">règles du W3C relatives aux dialogues de type "messages"</a> sont suivies à la lettre.</p>
+    <p>Il semble que l'implémentation dans NVDA provoque la lecture du titre de la modale au lecteur écran deux fois (une au début et une à la fin). Le libellé du bouton qui reçoit le focus est également lu deux fois.</p>
+    <p>Il serait possible de donner le focus au texte du message, mais dans ce cas c'est un bout du texte du message qui serait lu deux fois. Dans tous les cas le titre de la modale est lu deux fois.</p>
+    <p>On préfère donc donner le focus au bouton même si son libellé est lu deux fois. Il s'agit malgré tout de la meilleure solution possible, et il semble qu'il n'y a malheureusement rien à faire.</p>
+</div>
 
 <h2>Exemples</h2>
 <h3>1- Message de type avertissement avec 2 boutons</h3>

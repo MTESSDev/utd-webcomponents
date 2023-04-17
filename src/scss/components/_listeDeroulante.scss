@@ -51,7 +51,17 @@ utd-liste-deroulante {
 
         &.utd-form-control{
             height: auto;
-            padding: 1px;
+            padding: 0;
+
+            &:not([aria-invalid=true]){
+                padding: 1px;
+            }
+            
+            &.ouvert {
+                position: absolute;
+                width: 100%;
+                z-index: 9000;
+            }
         }
 
         &.utd-form-control:focus{

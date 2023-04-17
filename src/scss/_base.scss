@@ -232,7 +232,7 @@
     --couleur-bordure-tables: #dee2e6;
 
     /* Couleurs à classifier 
-        #9ca5b2, #89bce5, #b52e16, #eb705a, #3374cc
+        #9ca5b2, #5b6476, #b52e16, #eb705a, #3374cc
     */
 }
 
@@ -276,14 +276,14 @@
 
 /* Roboto - latin  non utilisé pour le moment */
 
-/*
+
 @font-face {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     src: local('Roboto'), local('Roboto-Regular'), url('../fonts/roboto-v20-latin-regular.woff2') format('woff2'); 
-    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ 
-}*/
+    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
 
 
 /* roboto-500 - latin */
@@ -831,21 +831,19 @@ utd-accordeon .utd-form-group:last-child, utd-section .utd-form-group:last-child
         color: var(--gris-fonce);
     } 
 
-    &::placeholder, &.utd-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-        color: #647287;
-        opacity: 1; /* Firefox */
-    }
-
-    &::-ms-input-placeholder { /* Microsoft Edge */
-        color: #647287;
-    }
-
     &[aria-invalid="true"]{
         border: 2px solid var(--couleur-erreur);
     }        
 }
 
+.utd-form-control::placeholder, .utd-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #647287!important;
+    opacity: 1; /* Firefox */
+}
 
+.utd-form-control::-ms-input-placeholder { /* Microsoft Edge */
+    color: #647287!important;
+}
 
 /*Redéfinition de Bootstrap*/
 input.utd-form-control[type="search"]{
@@ -871,7 +869,7 @@ textarea.utd-form-control{
 input.utd-form-control:focus,
 textarea.utd-form-control:focus,
 select.utd-form-control:focus {    
-    outline: 2px solid #4a98d9;
+    outline: 2px solid var(--bleu-clair);
     border: 2px solid #5b6476;
 }
 
@@ -880,10 +878,10 @@ select.utd-form-control:focus {
 -Z20A- Forms (Champs largeurs)  
 ====================================================================================================*/
 
-input[type="text"].utd-form-control,
+input.utd-form-control,
 select.utd-form-control,
 textarea.utd-form-control {
-    /* On applique une largeur xl à tous les contrôles de type texte par défaut */
+    /* On applique une largeur xl à tous les contrôles par défaut */
     width: 528px;
     max-width: 100%;
 }
@@ -937,7 +935,6 @@ select.utd-form-control.sm {
 }
 
 @media (max-width: 560px) {
-    input[type="text"].utd-form-control,
     input.utd-form-control.xl,
     textarea.utd-form-control.xl,
     select.utd-form-control.xl {

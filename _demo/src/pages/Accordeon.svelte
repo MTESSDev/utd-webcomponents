@@ -64,104 +64,110 @@
 <style type="text/css">
 </style>
 
-<h1>Accordéon</h1>
+<div class="documentation">
+    <h1>Accordéon</h1>
 
-<utd-menu-ancres selecteur="#main h2">
-</utd-menu-ancres>
+    <utd-menu-ancres selecteur="#main h2">
+    </utd-menu-ancres>
 
-<h2>Description</h2>
-<p>L’<strong>accordéon</strong> permet de réduire temporairement la quantité d’information affichée sur une page. Avec cette option, la personne survole le contenu et accède plus rapidement à l’information recherchée.</p>
+    <h2>Description</h2>
+    <p>L’<strong>accordéon</strong> permet de réduire temporairement la quantité d’information affichée sur une page. Avec cette option, la personne survole le contenu et accède plus rapidement à l’information recherchée.</p>
 
-<h3>Référence système de design Quebec.ca</h3>
-<a href="https://design.quebec.ca/composantes/affichage-de-contenu/accordeon" target="_blank">Voir les spécifications sur le site de design Quebec.ca</a>
+    <h3>Référence système de design Quebec.ca</h3>
+    <a href="https://design.quebec.ca/composantes/affichage-de-contenu/accordeon" target="_blank">Voir les spécifications sur le site de design Quebec.ca</a>
 
-<h2>Attributs disponibles</h2>
-<TableauParams parametres="{tableauParametres}">
-</TableauParams>
+    <h2>Attributs disponibles</h2>
+    <TableauParams parametres="{tableauParametres}">
+    </TableauParams>
 
-<h2>Slots disponibles</h2>
-<TableauSlots parametres="{tableauSlots}">
-</TableauSlots>
+    <h2>Slots disponibles</h2>
+    <TableauSlots parametres="{tableauSlots}">
+    </TableauSlots>
 
-<h2>Événements disponibles</h2>
-<h3>changementEtat</h3>
-<p>Est exécuté lorsque l'état d'affichage (développé/réduit) de l'accordéon change. Voir exemple <a href="#aaa" on:click="{clickAncre}">5- Accordéon contrôlé par javascript</a>.</p>
-<h4>Retour</h4>
-<TableauParams parametres="{tableauRetourEvenementChangementEtat}">
-</TableauParams>
-
-
-<h2>Exemples</h2>
-<h3>1- Avec attributs "titre" et "contenu"</h3>
-<div class="mb-32" id="exempleAccordeon1">
-    <utd-accordeon titre="Exemple d'utilisation 1" contenu="<p>Ici un texte incroyable.</p><p>Qui peut même contenir du html.</p>">
-    </utd-accordeon>
+    <h2>Événements disponibles</h2>
+    <h3>changementEtat</h3>
+    <p>Est exécuté lorsque l'état d'affichage (développé/réduit) de l'accordéon change. Voir exemple <a href="#aaa" on:click="{clickAncre}">5- Accordéon contrôlé par javascript</a>.</p>
+    <h4>Retour</h4>
+    <TableauParams parametres="{tableauRetourEvenementChangementEtat}">
+    </TableauParams>
 </div>
-<CodeSource idElementCodeSource="exempleAccordeon1">
-</CodeSource>   
 
+<div class="backstop-test">
+    <h2>Exemples</h2>
+    <h3>1- Avec attributs "titre" et "contenu"</h3>
 
-<h3>2- Avec attribut "titre", slot par défaut et tag-titre h5</h3>
-<div class="mb-32" id="exempleAccordeon2">
-    <utd-accordeon titre="Exemple d'utilisation 2" tag-titre="h5">
-        <p>Dans cet exemple, le niveau de titre de l'accordéon a été forcé à "h5" au lieu de la valeur par défaut "h2" via l'attribut <span class="utd-emphase-gris">tag-titre</span>.</p>
-    </utd-accordeon>
-</div>
-<CodeSource idElementCodeSource="exempleAccordeon2">
-</CodeSource>   
-
-
-<h3>3- Avec slots "titre" et slot par défaut et conservation de l'état d'affichage</h3>
-<p>Dans cet exemple, l'état d'affichage (développé/réduit) et conservé tout au long de la session.</p> 
-<p>Pour tester, développer l'accordéon, changer de page et revenir dans cette page. Vous constaterez que l'accordéon sera ouvert.</p>
-<div class="mb-32" id="exempleAccordeon3">
-    <utd-accordeon class="mb-32" id="utdAccordeon3" conserver-etat-affichage="true">
-        <span slot="titre">
-            Exemple d'utilisation 3 avec un titre long long long long long long long long long long long long long long long long long long
-        </span>   
-        <p>Ici un texte incroyable.</p>
-        <p>Qui peut même contenir du html.</p>
-    </utd-accordeon>
-</div>
-<CodeSource idElementCodeSource="exempleAccordeon3">
-</CodeSource>   
-
-<h3>4- Accordéon développé par défaut</h3>
-<div class="mb-32" id="exempleAccordeon4">
-    <utd-accordeon class="mb-32" reduit="false">
-        <span slot="titre">
-            Exemple d'utilisation 4
-        </span>   
-        <p>Ici un texte incroyable.</p>
-        <p>Qui peut même contenir du html.</p>
-    </utd-accordeon>
-</div>
-<CodeSource idElementCodeSource="exempleAccordeon4">
-</CodeSource>   
-
-<h3 id="aaa">5- Accordéon contrôlé par javascript et conservation de l'état d'affichage</h3>
-<p>Cet exemple démontre l'utilisation de javascript afin de développer/réduire l'accordéon via un bouton.</p>
-<p>Il utilise également l'événement <span class="utd-emphase-gris">changementEtat</span> afin de signaler l'état d'affichage de l'accordéon (développé/réduit) lorsque son état change.</p>
-<p>Aussi dans cet exemple, l'état d'affichage (développé/réduit) et conservé tout au long de la session.</p> 
-<p>Pour tester, réduire l'accordéon, changer de page et revenir dans cette page. Vous constaterez que l'accordéon sera réduit.</p>
-
-<div class="mb-32" id="exempleAccordeon5">
-    <utd-accordeon class="mb-32" id="utdAccordeon5" reduit="false" conserver-etat-affichage="true">
-        <span slot="titre">
-            Exemple d'utilisation 5
-        </span>   
-        <p>Un bel exemple de comment contrôler l'ouverture/fermeture de l'accordéon via un bouton.</p>
-        <p>Cliquez le bouton "Contrôler accordéon" pour essayer.</p>        
-        <p>Remarquez également le texte indiquant l'état d'affichage lorsque ce dernier change.</p>
-    </utd-accordeon>
-
-    <button type="button" id="btnControleExemple5" class="utd-btn secondaire compact">Contrôler accordéon</button>
-</div>
-<div id="resultat5" class="mt-32 mb-32"></div>
-<CodeSource idElementCodeSource="exempleAccordeon5" titre="Code source (Html)">
-</CodeSource>   
-
-{#if mounted}
-    <CodeSource codeSource="{controlerAccordeon5.toString()}" titre="Code source (js)" language="language-javascript">
+    <div class="mb-32 bs-test" id="exempleAccordeon1">
+        <utd-accordeon titre="Exemple d'utilisation 1" contenu="<p>Ici un texte incroyable.</p><p>Qui peut même contenir du html.</p>">
+        </utd-accordeon>
+    </div>
+    <CodeSource idElementCodeSource="exempleAccordeon1">
     </CodeSource>   
-{/if}   
+
+
+    <h3>2- Avec attribut "titre", slot par défaut et tag-titre h5</h3>
+    <div class="mb-32" id="exempleAccordeon2">
+        <utd-accordeon titre="Exemple d'utilisation 2" tag-titre="h5">
+            <p>Dans cet exemple, le niveau de titre de l'accordéon a été forcé à "h5" au lieu de la valeur par défaut "h2" via l'attribut <span class="utd-emphase-gris">tag-titre</span>.</p>
+        </utd-accordeon>
+    </div>
+    <CodeSource idElementCodeSource="exempleAccordeon2">
+    </CodeSource>   
+
+
+    <h3>3- Avec slots "titre" et slot par défaut et conservation de l'état d'affichage</h3>
+    <p>Dans cet exemple, l'état d'affichage (développé/réduit) et conservé tout au long de la session.</p> 
+    <p>Pour tester, développer l'accordéon, changer de page et revenir dans cette page. Vous constaterez que l'accordéon sera ouvert.</p>
+    <div class="mb-32" id="exempleAccordeon3">
+        <utd-accordeon class="mb-32" id="utdAccordeon3" conserver-etat-affichage="true">
+            <span slot="titre">
+                Exemple d'utilisation 3 avec un titre long long long long long long long long long long long long long long long long long long
+            </span>   
+            <p>Ici un texte incroyable.</p>
+            <p>Qui peut même contenir du html.</p>
+        </utd-accordeon>
+    </div>
+    <CodeSource idElementCodeSource="exempleAccordeon3">
+    </CodeSource>   
+
+
+    <h3>4- Accordéon développé par défaut</h3>
+
+    <div class="mb-32 bs-test" id="exempleAccordeon4">
+        <utd-accordeon class="mb-32" reduit="false">
+            <span slot="titre">
+                Exemple d'utilisation 4
+            </span>   
+            <p>Ici un texte incroyable.</p>
+            <p>Qui peut même contenir du html.</p>
+        </utd-accordeon>
+    </div>
+    <CodeSource idElementCodeSource="exempleAccordeon4">
+    </CodeSource>   
+
+    <h3>5- Accordéon contrôlé par javascript et conservation de l'état d'affichage</h3>
+    <p>Cet exemple démontre l'utilisation de javascript afin de développer/réduire l'accordéon via un bouton.</p>
+    <p>Il utilise également l'événement <span class="utd-emphase-gris">changementEtat</span> afin de signaler l'état d'affichage de l'accordéon (développé/réduit) lorsque son état change.</p>
+    <p>Aussi dans cet exemple, l'état d'affichage (développé/réduit) et conservé tout au long de la session.</p> 
+    <p>Pour tester, réduire l'accordéon, changer de page et revenir dans cette page. Vous constaterez que l'accordéon sera réduit.</p>
+
+    <div class="mb-32 bs-test" id="exempleAccordeon5">
+        <utd-accordeon class="mb-32" id="utdAccordeon5" reduit="false" conserver-etat-affichage="true">
+            <span slot="titre">
+                Exemple d'utilisation 5
+            </span>   
+            <p>Un bel exemple de comment contrôler l'ouverture/fermeture de l'accordéon via un bouton.</p>
+            <p>Cliquez le bouton "Contrôler accordéon" pour essayer.</p>        
+            <p>Remarquez également le texte indiquant l'état d'affichage lorsque ce dernier change.</p>
+        </utd-accordeon>
+
+        <button type="button" id="btnControleExemple5" class="utd-btn secondaire compact">Contrôler accordéon</button>
+    </div>
+    <div id="resultat5" class="mt-32 mb-32"></div>
+    <CodeSource idElementCodeSource="exempleAccordeon5" titre="Code source (Html)">
+    </CodeSource>   
+
+    {#if mounted}
+        <CodeSource codeSource="{controlerAccordeon5.toString()}" titre="Code source (js)" language="language-javascript">
+        </CodeSource>   
+    {/if}   
+</div>
