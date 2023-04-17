@@ -6,7 +6,7 @@
 <utd-menu-ancres selecteur="#main h2">
 </utd-menu-ancres>
 <utd-accordeon reduit="false">
-    <div slot="titre"><h2>1.10.0 (2023-04-14)</h2></div>
+    <div slot="titre"><h2>1.10.0 (2023-04-17)</h2></div>
     <h3>Correction d'anomalies</h3>
     <ul class="utd">
         <li>Taille par défaut des champs de taille "sm" et "md" en format téléphone.</li>
