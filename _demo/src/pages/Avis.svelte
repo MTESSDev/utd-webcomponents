@@ -90,9 +90,9 @@
     <utd-avis type="avertissement" titre="Les informations suivantes pourraient vous sauver la vie.">
         <span>Certains faits importants à savoir à propos de Chuck Norris :</span>
         <ul>
-            <li>Un jour Chuck Norris a eu un zero en latin, depuis c'est une langue morte;</li>
-            <li>Chuck Norris a déjà compté jusqu'à l'infini. Deux fois;</li>
-            <li>C'est Chuck Norris qui a décidé que toute phrase se terminait par un poing;</li>
+            <li>Un jour Chuck Norris a eu un zero en latin, depuis c'est une langue morte.</li>
+            <li>Chuck Norris a déjà compté jusqu'à l'infini. Deux fois.</li>
+            <li>C'est Chuck Norris qui a décidé que toute phrase se terminait par un poing.</li>
         </ul>
     </utd-avis>    
 </div>
@@ -113,9 +113,9 @@
     <utd-avis type="succes" titre="Chuck Norris a été élu être humain le plus extraordinaire de tous les temps.">
         <span>Certains faits importants à savoir à propos de Chuck Norris :</span>
         <ul>
-            <li>Un jour Chuck Norris a eu un zero en latin, depuis c'est une langue morte;</li>
-            <li>Chuck Norris a déjà compté jusqu'à l'infini. Deux fois;</li>
-            <li>C'est Chuck Norris qui a décidé que toute phrase se terminait par un poing;</li>
+            <li>Un jour Chuck Norris a eu un zero en latin, depuis c'est une langue morte.</li>
+            <li>Chuck Norris a déjà compté jusqu'à l'infini. Deux fois.</li>
+            <li>C'est Chuck Norris qui a décidé que toute phrase se terminait par un poing.</li>
         </ul>
     </utd-avis>    
 </div>
@@ -164,13 +164,13 @@
     <utd-avis type="complementaire rappel" titre="Ne pas oublier">
         <ul>
             <li>
-                Compléter le formulaire A38;
+                compléter le formulaire A38;
             </li>
             <li>
-                Armez-vous de patience;
+                armez-vous de patience;
             </li>
             <li>
-                Apporter le formulaire complété à la capitainerie du port.
+                apporter le formulaire complété à la capitainerie du port.
             </li>
         </ul>
     </utd-avis>    
