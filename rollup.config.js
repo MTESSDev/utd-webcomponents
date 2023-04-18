@@ -190,12 +190,12 @@ export default [{
                     dest: distPath + '/js',
                     transform: (contents, filename) => contents.toString().replace('/*!_VerifierSiDejaCharge_*/', "if (customElements.get('utd-infobulle')) { return true; }")
                 },
-                { src: `src/sprites/dist/view/svg/sprite.view.svg`, dest: demoPath + `/images`, rename: `utd-sprite.svg` },
-                { src: `src/sprites/dist/view/svg/sprite.view.svg`, dest: distPath + `/images`, rename: `utd-sprite.svg` },
-                { src: `src/assets/fonts/*`, dest: distPath + `/fonts`},
-                { src: `src/assets/fonts/*`, dest: demoPath + `/fonts`},  
-                { src: `src/assets/images/*`, dest: distPath + `/images`},
-                { src: `src/assets/images/*`, dest: demoPath + `/images`}  
+                { src: `./src/assets/sprites/dist/view/svg/sprite.view.svg`, dest: demoPath + `/images`, rename: `utd-sprite.svg` },
+                { src: `./src/assets/sprites/dist/view/svg/sprite.view.svg`, dest: distPath + `/images`, rename: `utd-sprite.svg` },
+                { src: `./src/assets/fonts/*`, dest: distPath + `/fonts`},
+                { src: `./src/assets/fonts/*`, dest: demoPath + `/fonts`},  
+                { src: `./src/assets/images/*`, dest: distPath + `/images`},
+                { src: `./src/assets/images/*`, dest: demoPath + `/images`}  
 
             ]
         }),

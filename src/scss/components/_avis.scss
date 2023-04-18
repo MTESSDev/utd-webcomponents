@@ -44,7 +44,11 @@ utd-avis{
     &.erreur .zone-icone {
         background-color: var(--rose-pale);
     }
-  
+
+    &.complementaire .zone-icone {
+        background-color: var(--gris-pale);
+    }
+
     .titre {
         margin: 0;
         padding: 0;
