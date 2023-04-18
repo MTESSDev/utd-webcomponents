@@ -71,5 +71,14 @@ utd-avis[type="erreur"] ul li a {
     }    
 }
 
+
+@media print {
+    .utd-avis {
+        .zone-icone {
+            display: none;
+        }    
+    }
+}
+
   
   

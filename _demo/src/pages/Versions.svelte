@@ -5,7 +5,21 @@
 
 <utd-menu-ancres selecteur="#main h2">
 </utd-menu-ancres>
+
 <utd-accordeon reduit="false">
+    <div slot="titre"><h2>1.11.0 (2023-05-??)</h2></div>
+    <h3>Correction d'anomalies</h3>
+    <ul class="utd">
+        <li>???</li>
+    </ul>            
+        
+    <h3>Améliorations</h3>
+    <ul class="utd">
+        <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/affichagecontenu/avis">Avis</a>, ajout de l'avis de type "complémentaire".</li>
+    </ul>    
+</utd-accordeon>
+
+<utd-accordeon reduit="true">
     <div slot="titre"><h2>1.10.0 (2023-04-17)</h2></div>
     <h3>Correction d'anomalies</h3>
     <ul class="utd">
@@ -20,8 +34,7 @@
         <li>Ajout d'essais automatisés pour chaque composant.</li>
         <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/entetepiedpage/piventete">Piv entête</a>, rendre plus conforme au système de design Québec.ca. Notamment la taille du titre de site et l'espacement entre les liens de langue alternative et nous joindre.</li>
         <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/affichagecontenu/section">Section</a>, visuel au focus beaucoup plus visible (accessibilité), ainsi que l'ajout d'un visuel sur hover.</li>        
-    </ul>
-    
+    </ul>   
 </utd-accordeon>
 
 <utd-accordeon reduit="true">
