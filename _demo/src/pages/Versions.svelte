@@ -16,6 +16,7 @@
     <h3>Améliorations</h3>
     <ul class="utd">
         <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/affichagecontenu/avis">Avis</a>, ajout de l'avis de type "complémentaire".</li>
+        <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/actions/traitementencours">Traitement en cours</a>, si un traitement est déjà en cours pour un élément, aucun autre traitement en cours ne sera possible sur cet élément jusqu'à ce qu'il soit terminé.</li>
     </ul>    
 </utd-accordeon>
 
