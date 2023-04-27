@@ -21,6 +21,7 @@
         "bs-test-infobulle": "node backstop.js --test --filter=Infobulle",
         "bs-test-listeDeroulante": "node backstop.js --test --filter=Liste_deroulante",
         "bs-test-menuAncres": "node backstop.js --test --filter=Menu_ancres",
+        "bs-test-menuHorizontal": "node backstop.js --test --filter=Menu_horizontal",
         "bs-test-menuVertical": "node backstop.js --test --filter=Menu_vertical",
         "bs-test-message": "node backstop.js --test --filter=Message",
         "bs-test-notification": "node backstop.js --test --filter=Notification",

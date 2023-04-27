@@ -13,9 +13,7 @@
   const idTitreMenu = Utils.genererId()
   const srTexteSortirMenu = Utils.obtenirLanguePage() === "en" ?  "Press ESC key to exit menu." : "Appuyez sur la touche Échappe pour sortir du menu."
   const thisComponent = get_current_component()
-
-  //TODO implémnenter gestion langue (aller chercher dans balise html? lang=?)
-  
+ 
   // Références pour accessibilité
   // https://www.w3.org/WAI/ARIA/apg/example-index/menubar/menubar-navigation, https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/menu_role et https://usability.yale.edu/web-accessibility/articles/focus-keyboard-operability
 
