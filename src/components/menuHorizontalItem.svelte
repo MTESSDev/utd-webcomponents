@@ -97,13 +97,6 @@
     
     while (elementParent.tagName.toLowerCase() === 'utd-menu-horizontal-item') {
         ++niveau
-
-        if(actif === 'true'){
-          elementParent.setAttribute('actif', 'true')
-          elementParent.setAttribute('animer', 'false')
-          elementParent.setAttribute('afficher', 'true')
-          elementParent.setAttribute('animer', 'true')
-        }
         elementParent = elementParent.parentElement
     }
 
@@ -206,7 +199,7 @@
     if(!utdMenuHorizontalParent.contains(e.relatedTarget)){
       const itemsMenu = utdMenuHorizontalParent.querySelectorAll('utd-menu-horizontal-item')
       itemsMenu.forEach((item) => {
-        item.setAttribute('afficher', 'false')
+//        item.setAttribute('afficher', 'false')
       })
     }
   }

@@ -106,7 +106,7 @@
                 <utd-menu-horizontal>
                     <utd-menu-horizontal-item libelle="Base" href="/base"></utd-menu-horizontal-item>
                     <utd-menu-horizontal-item libelle="Composants" href="/composants" on:click={clickMenuComposants}></utd-menu-horizontal-item>
-                    {#if $router.path.indexOf('/composants') >= 0}                    
+                    {#if $router.path.indexOf('/composants/navigation/menuhorizontal') >= 0}                    
                         <utd-menu-horizontal-item libelle="Menu 3">
                             <utd-menu-horizontal-item libelle="Élément 1" href="#"></utd-menu-horizontal-item>
                             <utd-menu-horizontal-item libelle="Élément 2" href="#"></utd-menu-horizontal-item>
@@ -123,24 +123,24 @@
                             <utd-menu-horizontal-item libelle="Élément 1" href="#"></utd-menu-horizontal-item>
                             <utd-menu-horizontal-item libelle="Élément 2" href="#"></utd-menu-horizontal-item>
                         </utd-menu-horizontal-item>
-                        <utd-menu-horizontal-item libelle="Plus">
-                            <utd-menu-horizontal-item libelle="Menu 6">
-                                <utd-menu-horizontal-item libelle="Élément 1" href="#"></utd-menu-horizontal-item>
-                                <utd-menu-horizontal-item libelle="Élément 2" href="#"></utd-menu-horizontal-item>
-                                <utd-menu-horizontal-item libelle="Élément 3" href="#"></utd-menu-horizontal-item>
-                                <utd-menu-horizontal-item libelle="Élément 4" href="#"></utd-menu-horizontal-item>
-                                <utd-menu-horizontal-item libelle="Élément 5" href="#"></utd-menu-horizontal-item>
-                            </utd-menu-horizontal-item>
-                            <utd-menu-horizontal-item libelle="Menu 7">
-                                <utd-menu-horizontal-item libelle="Élément 1" href="#"></utd-menu-horizontal-item>
-                                <utd-menu-horizontal-item libelle="Élément 2" href="#"></utd-menu-horizontal-item>
-                                <utd-menu-horizontal-item libelle="Élément 3" href="#"></utd-menu-horizontal-item>
-                            </utd-menu-horizontal-item>
-                            <utd-menu-horizontal-item libelle="Menu 8">
-                                <utd-menu-horizontal-item libelle="Élément 1" href="#"></utd-menu-horizontal-item>
-                                <utd-menu-horizontal-item libelle="Élément 2" href="#"></utd-menu-horizontal-item>
-                            </utd-menu-horizontal-item>    
+
+                        <utd-menu-horizontal-item libelle="Menu 6">
+                            <utd-menu-horizontal-item libelle="Élément 1" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Élément 2" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Élément 3" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Élément 4" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Élément 5" href="#"></utd-menu-horizontal-item>
                         </utd-menu-horizontal-item>
+                        <utd-menu-horizontal-item libelle="Menu 7">
+                            <utd-menu-horizontal-item libelle="Élément 1" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Élément 2" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Élément 3" href="#"></utd-menu-horizontal-item>
+                        </utd-menu-horizontal-item>
+                        <utd-menu-horizontal-item libelle="Menu 8">
+                            <utd-menu-horizontal-item libelle="Élément 1" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Élément 2" href="#"></utd-menu-horizontal-item>
+                        </utd-menu-horizontal-item>    
+
 
                     {/if}
                 </utd-menu-horizontal>                

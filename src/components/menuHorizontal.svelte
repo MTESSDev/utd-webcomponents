@@ -12,12 +12,24 @@
   const idTitreMenu = Utils.genererId()
   const srTexteSortirMenu = Utils.obtenirLanguePage() === "en" ?  "Press ESC key to exit menu." : "Appuyez sur la touche Échappe pour sortir du menu."
   const thisComponent = get_current_component()
+  let controleMenu 
+  let largeurConteneur = 0
+  let largeurMenu = 0
  
   // Références pour accessibilité
   // https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation/
 
+//  test()
 
   onMount(() => {      
+    controleMenu = thisComponent.shadowRoot.getElementById(idMenu)
+    //test()
+
+    setTimeout(() => {
+      test()
+      contientMenusNonVisibles()      
+    }, 1000)
+
     Utils.reafficherApresChargement(thisComponent)
   })
 
@@ -26,7 +38,49 @@
     afficher = !afficher
   }
 
-  
+  function contientMenusNonVisibles(){
+    largeurConteneur = thisComponent.getBoundingClientRect().width
+
+
+    console.log('Largeur conteneur -> ' + largeurConteneur)
+    console.log('Largeur menu -> ' + largeurMenu)
+
+  }
+
+  function test(){
+    let menuVisible = true
+    let i = 0
+
+    largeurConteneur = thisComponent.getBoundingClientRect().width
+
+    while (menuVisible && i <= thisComponent.children.length - 1) {
+      const item = thisComponent.children[i]
+
+      largeurMenu += item.getBoundingClientRect().right
+
+      if(largeurMenu <= largeurConteneur){
+        i++        
+      } else {
+        menuVisible = false
+      }
+      
+    }
+//      return indexeDernierMenuVisible
+    console.log(i)
+  }
+
+  function test9(){
+    const menuPlus = document.createElement('utd-menu-horizontal-item')
+    menuPlus.setAttribute('libelle', 'Plus')
+      
+    thisComponent.childNodes.forEach(function(item){
+      const cln = item.cloneNode(true);
+      menuPlus.appendChild(cln);
+    })
+
+    thisComponent.appendChild(menuPlus)
+  }
+
 </script>
 <h2 id="{idTitreMenu}" class="utd-sr-only">{titre}</h2>
 

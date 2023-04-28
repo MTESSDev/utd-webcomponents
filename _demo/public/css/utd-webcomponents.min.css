@@ -2635,6 +2635,8 @@ utd-menu-horizontal.mounted, utd-menu-horizontal-item.mounted {
   display: flex;
   align-items: flex-end;
   height: 100%;
+  max-width: calc(100vw - 16px);
+  /*overflow-x: hidden;*/
 }
 .utd-menu-horizontal div[role=list] {
   display: flex;
@@ -2643,10 +2645,10 @@ utd-menu-horizontal.mounted, utd-menu-horizontal-item.mounted {
   height: 100%;
 }
 
-utd-menu-horizontal-item {
+utd-menu-horizontal > utd-menu-horizontal-item {
   margin-right: 32px;
 }
-utd-menu-horizontal-item:last-of-type {
+utd-menu-horizontal > utd-menu-horizontal-item:last-of-type {
   margin-right: 0;
 }
 
@@ -2657,6 +2659,13 @@ utd-menu-horizontal-item:last-of-type {
 }
 .utd-menu-horizontal-item:not(.visible) .utd-icone-svg {
   transform: rotate(-180deg);
+}
+.utd-menu-horizontal-item a {
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
 }
 .utd-menu-horizontal-item.niv1 {
   position: relative;
@@ -2671,17 +2680,16 @@ utd-menu-horizontal-item:last-of-type {
   position: absolute;
   top: 100%;
   min-width: 200px;
-  padding: 16px;
+  padding: 8px 0;
   background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 4px 16px rgba(34, 54, 84, 0.2392156863);
   opacity: 1;
+  z-index: 9999;
 }
 .utd-menu-horizontal-item.niv1 a {
   height: 100%;
-  display: flex;
-  align-items: center;
+  justify-content: flex-start;
   color: #fff;
-  text-decoration: none;
   font-family: "OpenSans-Regular", sans-serif;
   font-size: var(--tc-18-16-val);
   padding: 8px 8px 4px 8px;
@@ -2700,6 +2708,21 @@ utd-menu-horizontal-item:last-of-type {
   height: 4px;
   width: 100%;
   background-color: transparent;
+}
+
+/* Niveaux 2 et + */
+.utd-menu-horizontal-item:not(.niv1) a {
+  font-family: OpenSans-SemiBold;
+}
+.utd-menu-horizontal-item:not(.niv1) a:hover, .utd-menu-horizontal-item:not(.niv1) a:focus {
+  text-decoration: underline;
+  color: var(--couleur-liens);
+}
+
+/* Niveau 3 */
+.utd-menu-horizontal-item.niv3 a {
+  padding: 8px 32px;
+  font-size: 14px;
 }
 
 /*====================================================================================================
