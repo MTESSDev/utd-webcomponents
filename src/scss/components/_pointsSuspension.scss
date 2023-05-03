@@ -7,31 +7,46 @@ utd-points-suspension {
     min-height: 22px;
     visibility: hidden;
     overflow: hidden;
+    width: 100%;
 
     &.mounted {
         max-height: inherit;
         min-height: inherit;
         visibility: visible;
     }     
+
 }
   
   
 .utd-points-suspension {
     overflow: hidden;
 
+    &.ajustement-en-cours {
+        overflow: hidden;
+        visibility: hidden;
+    }
+
     & a.ellipsis {
         text-decoration: none;
         font-size: 150%;
         line-height: 0.8;
-        display: inline-block;
-        
+        border: 2px solid transparent;
+        outline: 0;
+
         &:hover {
             text-decoration: underline;
+        }
+        &:focus {
+            border-color: inherit;
         }
 
         & > span{
             line-height: 0.8;
         }
+    }
+
+    .texte-supplementaire:focus {
+        outline: 0;
     }
 }
 
