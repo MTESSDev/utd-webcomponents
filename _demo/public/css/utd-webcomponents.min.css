@@ -3084,6 +3084,38 @@ header {
 }
 
 /*====================================================================================================
+  Points de suspension
+====================================================================================================*/
+utd-points-suspension {
+  display: inline-block;
+  max-height: 22px;
+  min-height: 22px;
+  visibility: hidden;
+  overflow: hidden;
+}
+utd-points-suspension.mounted {
+  max-height: inherit;
+  min-height: inherit;
+  visibility: visible;
+}
+
+.utd-points-suspension {
+  overflow: hidden;
+}
+.utd-points-suspension a.ellipsis {
+  text-decoration: none;
+  font-size: 150%;
+  line-height: 0.8;
+  display: inline-block;
+}
+.utd-points-suspension a.ellipsis:hover {
+  text-decoration: underline;
+}
+.utd-points-suspension a.ellipsis > span {
+  line-height: 0.8;
+}
+
+/*====================================================================================================
   -41- utd-section
 ====================================================================================================*/
 utd-section {

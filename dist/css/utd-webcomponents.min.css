@@ -2161,6 +2161,9 @@ button.utd-btn.utd-traitement-en-cours, input[type=submit].utd-btn.utd-traitemen
 .utd-icone-svg.erreur {
   background-image: url("../images/utd-sprite.svg?v=1.11.0#ico-erreur");
 }
+.utd-icone-svg.ellipsis {
+  background-image: url("../images/utd-sprite.svg?v=1.11.0#ico-ellipsis");
+}
 .utd-icone-svg.erreur-blanc {
   background-image: url("../images/utd-sprite.svg?v=1.11.0#ico-erreur-blanc");
 }
@@ -3081,6 +3084,33 @@ header {
 
 #pivLogoGouvernementPrint {
   display: none;
+}
+
+/*====================================================================================================
+  Points de suspension
+====================================================================================================*/
+utd-points-suspension {
+  display: inline-block;
+  max-height: 22px;
+  min-height: 22px;
+  visibility: hidden;
+  overflow: hidden;
+}
+utd-points-suspension.mounted {
+  max-height: inherit;
+  min-height: inherit;
+  visibility: visible;
+}
+
+.utd-points-suspension {
+  overflow: hidden;
+}
+.utd-points-suspension a.ellipsis {
+  text-decoration: none;
+  font-weight: bold;
+}
+.utd-points-suspension a.ellipsis:hover {
+  text-decoration: underline;
 }
 
 /*====================================================================================================

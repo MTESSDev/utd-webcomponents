@@ -1,0 +1,43 @@
+/*====================================================================================================
+  Points de suspension
+====================================================================================================*/
+utd-points-suspension {
+    display: inline-block;
+    max-height: 22px;
+    min-height: 22px;
+    visibility: hidden;
+    overflow: hidden;
+
+    &.mounted {
+        max-height: inherit;
+        min-height: inherit;
+        visibility: visible;
+    }     
+}
+  
+  
+.utd-points-suspension {
+    overflow: hidden;
+
+    & a.ellipsis {
+        text-decoration: none;
+        font-size: 150%;
+        line-height: 0.8;
+        display: inline-block;
+        
+        &:hover {
+            text-decoration: underline;
+        }
+
+        & > span{
+            line-height: 0.8;
+        }
+    }
+}
+
+  
+  
+  
+  
+  
+  

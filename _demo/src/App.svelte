@@ -30,6 +30,7 @@
   import NousJoindre from './pages/NousJoindre.svelte';
   import ListeDeroulante from './pages/ListeDeroulante.svelte';
   import ReglesInterfaces from './pages/ReglesInterfaces.svelte';
+  import PointsSuspension from './pages/PointsSuspension.svelte';
 
 
     onMount(() => {  
@@ -166,6 +167,7 @@
                             <utd-menu-vertical-item libelle="Accordéon" href="/composants/affichagecontenu/accordeon"></utd-menu-vertical-item>
                             <utd-menu-vertical-item libelle="Avis" href="/composants/affichagecontenu/avis"></utd-menu-vertical-item>
                             <utd-menu-vertical-item libelle="Infobulle" href="/composants/affichagecontenu/infobulle"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item libelle="Points de suspension" href="/composants/affichagecontenu/pointssuspension"></utd-menu-vertical-item>
                             <utd-menu-vertical-item libelle="Section" href="/composants/affichagecontenu/section"></utd-menu-vertical-item>
                         </utd-menu-vertical-item>
                         <utd-menu-vertical-item libelle="Formulaire">    
@@ -224,6 +226,7 @@
                             <Route path="/accordeon" ><Accordeon /></Route>
                             <Route path="/avis" ><Avis /></Route>
                             <Route path="/infobulle" ><Infobulle /></Route>    
+                            <Route path="/pointssuspension" ><PointsSuspension /></Route>    
                             <Route path="/section" ><Section /></Route>    
                         </Route>
                         <Route path="/formulaire/*">                    

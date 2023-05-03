@@ -15,11 +15,24 @@
   let controleMenu 
   let largeurConteneur = 0
   let largeurMenu = 0
- 
+  let menuOriginal = []
   // Références pour accessibilité
   // https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation/
 
 //  test()
+//  menuOriginal = thisComponent.cloneNode(true)
+
+  ajouterElementsMenuAuMenuOriginal(menuOriginal, thisComponent)
+
+/*  Array.from(thisComponent.children).forEach((child) => {
+    const elementMenu = {
+      libelle: child.getAttribute('libelle'),
+      href: child.getAttribute('href')
+    }
+
+    menuOriginal.push(elementMenu)
+  })*/
+  
 
   onMount(() => {      
     controleMenu = thisComponent.shadowRoot.getElementById(idMenu)
@@ -28,11 +41,28 @@
     setTimeout(() => {
       test()
       contientMenusNonVisibles()      
+      console.log(menuOriginal)
     }, 1000)
 
     Utils.reafficherApresChargement(thisComponent)
   })
 
+  function ajouterElementsMenuAuMenuOriginal(elementMenuItem, parent) {
+    Array.from(parent.children).forEach((child) => {
+      const elementMenu = {
+        libelle: child.getAttribute('libelle'),
+        href: child.getAttribute('href'),
+        children : []
+      }
+
+      elementMenuItem.push(elementMenu)
+
+      //
+      if(child.childNodes.length) {
+        ajouterElementsMenuAuMenuOriginal(elementMenu.children, child)
+      }
+    })
+  }
 
   function toggleAfficher(){
     afficher = !afficher
@@ -50,23 +80,30 @@
   function test(){
     let menuVisible = true
     let i = 0
+    let dernierIndexeVisible = 0
 
-    largeurConteneur = thisComponent.getBoundingClientRect().width
+    largeurConteneur = thisComponent.getBoundingClientRect().right
+    largeurMenu = thisComponent.children[thisComponent.children.length - 1].getBoundingClientRect().right
+
+    console.log(largeurMenu)
+    if(largeurMenu <= largeurConteneur) {
+      console.log('Le menu fit, rien à faire!')
+    }
 
     while (menuVisible && i <= thisComponent.children.length - 1) {
       const item = thisComponent.children[i]
 
-      largeurMenu += item.getBoundingClientRect().right
-
-      if(largeurMenu <= largeurConteneur){
+//      largeurMenu += item.getBoundingClientRect().right
+      console.log('indexe = ' + i + '    right = ' + item.getBoundingClientRect().right)
+      if(item.getBoundingClientRect().right <= largeurConteneur){
+        dernierIndexeVisible = i
         i++        
       } else {
         menuVisible = false
-      }
-      
+      }      
     }
 //      return indexeDernierMenuVisible
-    console.log(i)
+    console.log(dernierIndexeVisible)
   }
 
   function test9(){
@@ -75,10 +112,10 @@
       
     thisComponent.childNodes.forEach(function(item){
       const cln = item.cloneNode(true);
-      menuPlus.appendChild(cln);
+//      menuPlus.appendChild(cln);
     })
 
-    thisComponent.appendChild(menuPlus)
+//    thisComponent.appendChild(menuPlus)
   }
 
 </script>
