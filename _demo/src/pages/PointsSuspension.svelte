@@ -20,7 +20,7 @@
     function obtenirTableauParametres() {
         return [
             {nom: "nb-lignes", type: "String (Optionnel)", description: `Nombre de ligne à afficher initialement. Défaut "1".`,
-             nom: "afficher-texte-lien", type: "String (Optionnel)", description: `Ajoute le texte "Voir plus/Show more" au lien permettant l'affichage complet du texte. Défaut "false".`,
+             nom: "afficher-texte-lien", type: "String (Optionnel)", description: `Ajoute le texte "Voir plus/Show more" dans le lien permettant l'affichage complet du texte. Ex. ... [Voir plus]. Défaut "false".`,
              nom: "affichage-initial", type: "String (Optionnel)", description: `Attribut réactif permettant de forcer la réinitialisation de l'affichage si valeur = 'true'`}
         ];
     }

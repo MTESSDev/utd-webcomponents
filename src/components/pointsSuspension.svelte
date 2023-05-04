@@ -11,7 +11,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   export let nbLignes = '1'
   export let affichageInitial = 'true'
   export let afficherTexteLien = 'false'
-  export let texteLien = 'Voir plus'
+  export let texteLien = Utils.obtenirLanguePage() === "fr" ?  "Voir plus" : "Show more"
 
   // Références pour accessibilité
   // https://www.accede-web.com/en/guidelines/rich-interface-components/show-more-buttons/
@@ -208,14 +208,19 @@ function obtenirNbCaracteresTexteLien(){
   </span>
  
   {#if estAffichageTexteTronque && !estTexteCompletAffiche}    
-    <a href="#" role="button" class="ellipsis {estAjustementAffichageEnCours ? ' utd-d-none' : ''}" title="Voir plus" on:click|preventDefault={afficherContenuSupplementaire}>
+    <a href="#" role="button" class="ellipsis {estAjustementAffichageEnCours ? ' utd-d-none' : ''}" title="{afficherTexteLien === 'true' ? null : texteLien}" on:click|preventDefault={afficherContenuSupplementaire}>
       <span aria-hidden="true">
-      {#if afficherTexteLien === 'true'} 
-        <span class="dots">...</span>&nbsp;[{texteLien}]        
-      {:else}
-        [<span class="dots">...</span>]        
-      {/if}    
+        {#if afficherTexteLien === 'true'} 
+          <span class="dots">...</span>&nbsp;[{texteLien}]        
+        {:else}
+          [<span class="dots">...</span>]        
+        {/if}    
       </span>
+      
+      {#if afficherTexteLien === 'true'} 
+        <span class="utd-sr-only">{texteLien}</span>
+      {/if}    
+
     </a>
   {/if}    
   
