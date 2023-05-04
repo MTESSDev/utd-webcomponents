@@ -28,6 +28,7 @@
         "bs-test-piedPageSite": "node backstop.js --test --filter=Pied_page_site",
         "bs-test-pivEntete": "node backstop.js --test --filter=Piv_entete",
         "bs-test-pivPiedPage": "node backstop.js --test --filter=Piv_pied_page",
+        "bs-test-pointsSuspension": "node backstop.js --test --filter=Points_suspension",
         "bs-test-section": "node backstop.js --test --filter=Section"
     },
     "devDependencies": {

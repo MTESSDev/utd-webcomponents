@@ -940,7 +940,23 @@ scenarios : [
         url: "/composants/entetepiedpage/pivpiedpage",
         selectors: ["footer"],  
         removeSelectors: [".no-test"]
+    },
+    //Points suspension (Base)
+    {
+        label: "Points_suspension (Base)", 
+        viewports: viewports.vDesktopPhones,
+        selectors: [".backstop-test"],
+        url: "/composants/affichagecontenu/pointssuspension"
     },    
+    //Points suspension (Click ...)
+    {
+        label: "Points_suspension (Click ...)",
+        viewports: viewports.vDesktopPhones,
+        selectors: [".backstop-test"],         
+        url: "/composants/affichagecontenu/pointssuspension",
+        shadowClickSelectors: [{domSelector: "#exemplePointsSuspension1 utd-points-suspension", shadowDomSelector: 'a'}, {domSelector: "#exemplePointsSuspension2 utd-points-suspension", shadowDomSelector: 'a'}, {domSelector: "#exemplePointsSuspension3 utd-points-suspension", shadowDomSelector: 'a'}, {domSelector: "#exemplePointsSuspension4 utd-points-suspension", shadowDomSelector: 'a'}, {domSelector: "#exemplePointsSuspension5 utd-points-suspension", shadowDomSelector: 'a'}]
+    },    
+
     //Section (base)
     {
         label: "Section (Base)", 

@@ -27,6 +27,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   let texteComplet = thisComponent.textContent
   let texteCache = ""
   let estAjustementAffichageEnCours = true
+  let estEvenementObserverEnCours = false
   let estAffichageInitial = true
 
   onMount(() => {      
@@ -46,6 +47,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   function ajusterAffichageControle() {
 
     estAjustementAffichageEnCours = true
+    estEvenementObserverEnCours = true
 
     // On doit repaint ici afin que l'interface soit à jour avant d'effectuer les ajustements à l'affichage du contrôle (ex. le bouton ... doit être retiré si présent, car bousille le calcul pour la hauteur)
     setTimeout(() => {
@@ -72,8 +74,11 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       tronquerTexte()
     } 
 
-    estAjustementAffichageEnCours = false
+    estAjustementAffichageEnCours = false      
 
+    setTimeout(() => {
+      estEvenementObserverEnCours = false
+    }, 500)
   }
 
   const resizeObserverDebounced = Utils.debounce((entries) => resizeObserver(entries))
@@ -92,7 +97,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
           return
         }
 
-        if(estAjustementAffichageEnCours){
+        if(estEvenementObserverEnCours){
           return
         }
         
@@ -131,6 +136,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
       const height = el.clientHeight;
       thisComponent.parentElement.removeChild(el);
+      // On se donne un petit jeu sur la hauteur... Il y a toujours qques décimales de différences et ça cause problème (à cause du lien ... qui est plus gros entre autres)
       return height + 2;
 }  
 
@@ -174,7 +180,7 @@ function tronquerTexte() {
 
 </script>
 
-<div class="utd-component utd-points-suspension{estAjustementAffichageEnCours ? ' ajustement-affichage-en-cours' : ''}" id="{idConteneur}" >
+<div class="utd-component utd-points-suspension{estAjustementAffichageEnCours ? ' ajustement-en-cours' : ''}" id="{idConteneur}" >
   <span class="texte" id="{idTexte}">
     <slot></slot>    
   </span>
@@ -183,9 +189,12 @@ function tronquerTexte() {
     <a href="#" role="button" class="ellipsis {estAjustementAffichageEnCours ? ' utd-d-none' : ''}" title="Voir plus" on:click|preventDefault={afficherContenuSupplementaire}>
       <span aria-hidden="true">...</span>
     </a>
-  {:else} 
-    <span class="texte-supplementaire" id="{idTexteSupplementaire}" transition:fade="{{duration:250}}" tabindex="-1">{texteCache}</span>
   {/if}    
+  
+  {#if estTexteCompletAffiche}    
+    <span class="texte-supplementaire{estAffichageTexteTronque ? ' estAffichageTexteTronque' : ''}{estTexteCompletAffiche ? ' estTexteCompletAffiche' : ''}" id="{idTexteSupplementaire}" transition:fade="{{duration:250}}" tabindex="-1">{texteCache}</span>
+  {/if}    
+
 </div>
 
 <link rel='stylesheet' href='{Utils.cssFullPath}'>
