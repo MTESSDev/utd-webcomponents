@@ -19,7 +19,9 @@
 
     function obtenirTableauParametres() {
         return [
-            {nom: "nb-lignes", type: "String (Optionnel)", description: `Nombre de ligne à afficher initialement. Défaut "1".`}
+            {nom: "nb-lignes", type: "String (Optionnel)", description: `Nombre de ligne à afficher initialement. Défaut "1".`,
+             nom: "afficher-texte-lien", type: "String (Optionnel)", description: `Ajoute le texte "Voir plus/Show more" au lien permettant l'affichage complet du texte. Défaut "false".`,
+             nom: "affichage-initial", type: "String (Optionnel)", description: `Attribut réactif permettant de forcer la réinitialisation de l'affichage si valeur = 'true'`}
         ];
     }
 
@@ -129,5 +131,16 @@
         <CodeSource codeSource="{exemple6.toString()}" titre="Code source (js)" language="language-javascript">
         </CodeSource>   
     {/if}   
+
+    <h3>7- Avec texte affiché dans le lien</h3>
+
+    <div class="mb-32" id="exemplePointsSuspension7">
+        <utd-points-suspension afficher-texte-lien="true">
+            Les ennemis des amis de Chuck Norris sont ses amis. Et oui! Les ennemis de Chuck Norris n'existent plus. L'avenir se demande parfois ce que Chuck Norris lui réserve. Un jour Chuck Norris a eu un zero en latin, depuis c'est une langue morte. Chuck Norris a déjà compté jusqu'à l'infini. Deux fois. Chuck Norris n'a pas de père. On ne nique pas la mère de Chuck Norris. Chuck Norris ne ment pas, c'est la vérité qui se trompe. Quand Chuck Norris s'est mis aux arts martiaux, les Japonais se sont reconvertis dans les jeux videos. Les ennemis de Chuck Norris lui disent souvent d'aller au diable. Le Diable aimerait bien qu'ils arrêtent. Chuck Norris peut ressusciter un angle mort. Chuck Norris est le seul homme à posséder une bible dédicacée. Chuck Norris n'est pas égal à lui-même, il est meilleur. Un jour un mec a refuser de filer une clope à Chuck Norris. Depuis, on prévient sur tous les paquets que "Fumer tue".
+        </utd-points-suspension>
+    </div>
+    <CodeSource idElementCodeSource="exemplePointsSuspension7">
+    </CodeSource>   
+
 
 </div>

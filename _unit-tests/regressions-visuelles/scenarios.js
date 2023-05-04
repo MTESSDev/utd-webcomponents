@@ -954,7 +954,7 @@ scenarios : [
         viewports: viewports.vDesktopPhones,
         selectors: [".backstop-test"],         
         url: "/composants/affichagecontenu/pointssuspension",
-        shadowClickSelectors: [{domSelector: "#exemplePointsSuspension1 utd-points-suspension", shadowDomSelector: 'a'}, {domSelector: "#exemplePointsSuspension2 utd-points-suspension", shadowDomSelector: 'a'}, {domSelector: "#exemplePointsSuspension3 utd-points-suspension", shadowDomSelector: 'a'}, {domSelector: "#exemplePointsSuspension4 utd-points-suspension", shadowDomSelector: 'a'}, {domSelector: "#exemplePointsSuspension5 utd-points-suspension", shadowDomSelector: 'a'}]
+        shadowClickSelectors: [{domSelector: "#exemplePointsSuspension1 utd-points-suspension", shadowDomSelector: 'a'}, {domSelector: "#exemplePointsSuspension2 utd-points-suspension", shadowDomSelector: 'a'}, {domSelector: "#exemplePointsSuspension3 utd-points-suspension", shadowDomSelector: 'a'}, {domSelector: "#exemplePointsSuspension4 utd-points-suspension", shadowDomSelector: 'a'}, {domSelector: "#exemplePointsSuspension5 utd-points-suspension", shadowDomSelector: 'a'}, {domSelector: "#exemplePointsSuspension6 utd-points-suspension", shadowDomSelector: 'a'}, {domSelector: "#exemplePointsSuspension7 utd-points-suspension", shadowDomSelector: 'a'}]
     },    
     //Points suspension (reinitialisation ...)
     {

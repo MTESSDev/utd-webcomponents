@@ -10,6 +10,8 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   import { get_current_component } from "svelte/internal" 
   export let nbLignes = '1'
   export let affichageInitial = 'true'
+  export let afficherTexteLien = 'false'
+  export let texteLien = 'Voir plus'
 
   // Références pour accessibilité
   // https://www.accede-web.com/en/guidelines/rich-interface-components/show-more-buttons/
@@ -29,6 +31,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   let estAjustementAffichageEnCours = true
   let estEvenementObserverEnCours = false
   let mounted = false
+  let nbCaracteresRemplacementEspaceLien = 5
 
   onMount(() => {      
 
@@ -50,7 +53,6 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
   function initialiserAffichage(){
     if(mounted && affichageInitial === 'true'){    
-      console.log('watch affichageInitial')
       estTexteCompletAffiche = false  
       ajusterAffichageControle()
     }
@@ -181,7 +183,7 @@ function tronquerTexte() {
   }
 
   // Ici petit ajustement de 4 caractères pour compenser l'ajustement requis avec notre ...
-  texteCourant = texteComplet.slice(0, posMilieu - 5)
+  texteCourant = texteComplet.slice(0, posMilieu - obtenirNbCaracteresTexteLien())
 
   // Trouver le dernier espace avant notre tronquage et utiliser cette position pour le tronquage.
   const posDernierEspace = texteCourant.lastIndexOf(' ')
@@ -190,6 +192,14 @@ function tronquerTexte() {
   controleTexte.textContent = texteComplet.slice(0, posDernierEspace)
 }
 
+function obtenirNbCaracteresTexteLien(){
+  if(afficherTexteLien === 'true'){
+    return `... [${texteLien}]`.length
+  } else {
+    return 5
+  }
+
+}
 </script>
 
 <div class="utd-component utd-points-suspension{estAjustementAffichageEnCours ? ' ajustement-en-cours' : ''}" id="{idConteneur}" >
@@ -199,7 +209,13 @@ function tronquerTexte() {
  
   {#if estAffichageTexteTronque && !estTexteCompletAffiche}    
     <a href="#" role="button" class="ellipsis {estAjustementAffichageEnCours ? ' utd-d-none' : ''}" title="Voir plus" on:click|preventDefault={afficherContenuSupplementaire}>
-      <span aria-hidden="true">[<span class="dots">...</span>]</span>
+      <span aria-hidden="true">
+      {#if afficherTexteLien === 'true'} 
+        <span class="dots">...</span>&nbsp;[{texteLien}]        
+      {:else}
+        [<span class="dots">...</span>]        
+      {/if}    
+      </span>
     </a>
   {/if}    
   
