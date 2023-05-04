@@ -30,13 +30,10 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   let estAffichageInitial = true
 
   onMount(() => {      
-    hauteurLigne = obtenirHauteurLigne(thisComponent)
-    hauteurMax = hauteurLigne * parseInt(nbLignes)
+
 
     conteneur = thisComponent.shadowRoot.getElementById(idConteneur)
     controleTexte = thisComponent.shadowRoot.getElementById(idTexte)
-
-    conteneur.style.maxHeight = hauteurMax + 'px'
 
     ajusterAffichageControle()
 
@@ -49,13 +46,24 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   function ajusterAffichageControle() {
 
     estAjustementAffichageEnCours = true
+
+    // On doit repaint ici afin que l'interface soit à jour avant d'effectuer les ajustements à l'affichage du contrôle (ex. le bouton ... doit être retiré si présent, car bousille le calcul pour la hauteur)
+    setTimeout(() => {
+      ajusterAffichageControle2()
+    })
+
+  }
+
+  function ajusterAffichageControle2() {
+    hauteurMax = obtenirHauteurMaximale()
+    conteneur.style.maxHeight = hauteurMax + 'px'
+
     controleTexte.textContent = texteComplet
     controleTexteSupplementaire = thisComponent.shadowRoot.getElementById(idTexteSupplementaire)
 
     if(controleTexteSupplementaire){
       controleTexteSupplementaire.textContent = ''
     }
-
 
     estAffichageTexteTronque = doitTronquerTexte()
 
@@ -65,9 +73,10 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     } 
 
     estAjustementAffichageEnCours = false
+
   }
 
-  const resizeObserverDebounced = Utils.debounce((entries) => resizeObserver(entries), 250)
+  const resizeObserverDebounced = Utils.debounce((entries) => resizeObserver(entries))
 
   function observerRezise(){
     const observer = new ResizeObserver(resizeObserverDebounced)
@@ -84,7 +93,6 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
         }
 
         if(estAjustementAffichageEnCours){
-          estAjustementAffichageEnCours = false
           return
         }
         
@@ -105,24 +113,25 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     }, 250)    
   }
 
-  function obtenirHauteurLigne(conteneur) {
-    const style = window.getComputedStyle(conteneur, null)
-    const lineHeight = style.getPropertyValue('line-height')    
-   
-    if (lineHeight === 'normal') {
-        // Créer un élément temporaire afin d'obtenir la hauteur de la ligne
-        const el = document.createElement('span');
-        el.style.width = '300px';
-        el.style.position = 'absolute';
-        el.style.visibility = 'hidden';
-        el.innerText = 'Test';
-        conteneur.appendChild(el);
+  function obtenirHauteurMaximale() {
+      // Créer un élément temporaire afin d'obtenir la hauteur hauteur maximale selon le nombre de lignes reçues en paramètre
+      const el = document.createElement('span');
+      el.style.width = '300px';
+      el.style.position = 'absolute';
+      el.style.visibility = 'hidden';
+      const nombreLignes = parseInt(nbLignes)
+      
+      let htmlBidon = 'TjpyYZ'
+      for (let i = 1; i < nombreLignes; i++) {
+        htmlBidon += '<br/>TjpyYZ'          
+      }
 
-        const height = el.clientHeight;
-        conteneur.removeChild(el);
-        return height;
-    }
-    return parseFloat(lineHeight);
+      el.innerHTML = htmlBidon;
+      thisComponent.parentElement.appendChild(el);
+
+      const height = el.clientHeight;
+      thisComponent.parentElement.removeChild(el);
+      return height + 2;
 }  
 
 function doitTronquerTexte() {
@@ -171,7 +180,7 @@ function tronquerTexte() {
   </span>
  
   {#if estAffichageTexteTronque && !estTexteCompletAffiche}    
-    <a href="#" role="button" class="ellipsis" title="Voir plus" on:click|preventDefault={afficherContenuSupplementaire}>
+    <a href="#" role="button" class="ellipsis {estAjustementAffichageEnCours ? ' utd-d-none' : ''}" title="Voir plus" on:click|preventDefault={afficherContenuSupplementaire}>
       <span aria-hidden="true">...</span>
     </a>
   {:else} 

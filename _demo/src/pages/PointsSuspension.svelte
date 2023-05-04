@@ -86,4 +86,10 @@
     <CodeSource idElementCodeSource="exemplePointsSuspension3">
     </CodeSource>  
 
+    <div id="exemplePointsSuspension4">
+        <h3><utd-points-suspension nb-lignes="2">4- Texte sur une ligne dans un header. Chuck Norris a déjà compté jusqu'à l'infini. Deux fois. Chuck Norris peut ressusciter un angle mort.</utd-points-suspension></h3>
+    </div>    
+    <CodeSource idElementCodeSource="exemplePointsSuspension4">
+    </CodeSource>  
+
 </div>
