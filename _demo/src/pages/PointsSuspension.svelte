@@ -11,6 +11,8 @@
     onMount(() => {
         tableauParametres = obtenirTableauParametres()
         tableauSlots = obtenirTableauSlots()
+        exemple6()
+
         mounted = true
     })
 
@@ -26,6 +28,12 @@
             {nom: "défaut", description: `<p>Slot par défaut. Aucun nom à fournir.</p><p>Contenu html entre les balises du contrôle. Est injecté dans la zone de contenu du composant.</p>`},
         ];
     }
+
+    function exemple6() {    
+        document.getElementById('btnTest6').addEventListener('click', () => {
+            document.getElementById('utdExemple6').setAttribute('affichage-initial', 'true')
+        })
+    }        
 
 </script>
 
@@ -59,7 +67,7 @@
 
     <h3>1- Texte long sur une ligne</h3>
 
-    <div class="mb-32 bs-test" id="exemplePointsSuspension1">
+    <div class="mb-32" id="exemplePointsSuspension1">
         <utd-points-suspension>
             Les ennemis des amis de Chuck Norris sont ses amis. Et oui! Les ennemis de Chuck Norris n'existent plus. L'avenir se demande parfois ce que Chuck Norris lui réserve. Un jour Chuck Norris a eu un zero en latin, depuis c'est une langue morte. Chuck Norris a déjà compté jusqu'à l'infini. Deux fois. Chuck Norris n'a pas de père. On ne nique pas la mère de Chuck Norris. Chuck Norris ne ment pas, c'est la vérité qui se trompe. Quand Chuck Norris s'est mis aux arts martiaux, les Japonais se sont reconvertis dans les jeux videos. Les ennemis de Chuck Norris lui disent souvent d'aller au diable. Le Diable aimerait bien qu'ils arrêtent. Chuck Norris peut ressusciter un angle mort. Chuck Norris est le seul homme à posséder une bible dédicacée. Chuck Norris n'est pas égal à lui-même, il est meilleur. Un jour un mec a refuser de filer une clope à Chuck Norris. Depuis, on prévient sur tous les paquets que "Fumer tue".
         </utd-points-suspension>
@@ -100,5 +108,26 @@
     </div>
     <CodeSource idElementCodeSource="exemplePointsSuspension5">
     </CodeSource>  
+
+    <h3>6- Texte court sur une ligne et exemple de réinitialisation</h3>
+    <p>Cet exemple vise a démontrer la possibilité de réinitialiser l'affichage du contrôle à son état initial.</p>
+    <p>Ex. si l'utilisateur a cliqué [...] afin de voir tout le contenu, il y a possibilité via le code de remettre l'affichage à son état initial. Dans cet exemple on le fait via un bouton, mais il suffit d'initialiser la valeur de l'attribut "affichage-initial" à "true".</p>
+    
+    <h4>Début de l'exemple</h4>
+    <div class="mb-16" id="exemplePointsSuspension6">
+        <utd-points-suspension id="utdExemple6">
+            Les ennemis des amis de Chuck Norris sont ses amis. Et oui! Les ennemis de Chuck Norris n'existent plus. L'avenir se demande parfois ce que Chuck Norris lui réserve. Un jour Chuck Norris a eu un zero en latin, depuis c'est une langue morte. Chuck Norris a déjà compté jusqu'à l'infini. Deux fois. Chuck Norris n'a pas de père. On ne nique pas la mère de Chuck Norris. Chuck Norris ne ment pas, c'est la vérité qui se trompe. Quand Chuck Norris s'est mis aux arts martiaux, les Japonais se sont reconvertis dans les jeux videos. Les ennemis de Chuck Norris lui disent souvent d'aller au diable. Le Diable aimerait bien qu'ils arrêtent. Chuck Norris peut ressusciter un angle mort. Chuck Norris est le seul homme à posséder une bible dédicacée. Chuck Norris n'est pas égal à lui-même, il est meilleur. Un jour un mec a refuser de filer une clope à Chuck Norris. Depuis, on prévient sur tous les paquets que "Fumer tue".
+        </utd-points-suspension>
+    </div>
+
+    <button type="button" id="btnTest6" class="utd-btn secondaire compact mb-32">Réinitialiser</button>
+
+    <CodeSource idElementCodeSource="exemplePointsSuspension6">
+    </CodeSource>  
+    
+    {#if mounted}
+        <CodeSource codeSource="{exemple6.toString()}" titre="Code source (js)" language="language-javascript">
+        </CodeSource>   
+    {/if}   
 
 </div>

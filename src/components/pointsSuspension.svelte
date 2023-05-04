@@ -9,6 +9,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   import { Utils } from "./js/utils"
   import { get_current_component } from "svelte/internal" 
   export let nbLignes = '1'
+  export let affichageInitial = 'true'
 
   // Références pour accessibilité
   // https://www.accede-web.com/en/guidelines/rich-interface-components/show-more-buttons/
@@ -22,16 +23,14 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   let conteneur
   let controleTexte
   let controleTexteSupplementaire
-  let hauteurLigne = 0
   let hauteurMax = 24
   let texteComplet = thisComponent.textContent
   let texteCache = ""
   let estAjustementAffichageEnCours = true
   let estEvenementObserverEnCours = false
-  let estAffichageInitial = true
+  let mounted = false
 
   onMount(() => {      
-
 
     conteneur = thisComponent.shadowRoot.getElementById(idConteneur)
     controleTexte = thisComponent.shadowRoot.getElementById(idTexte)
@@ -42,7 +41,20 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
     // Détecter les resize sur le composant et redessiner
     observerRezise()          
+
+    mounted = true
   })
+
+  // Watch sur la prop focus
+  $: initialiserAffichage(affichageInitial) 
+
+  function initialiserAffichage(){
+    if(mounted && affichageInitial === 'true'){    
+      console.log('watch affichageInitial')
+      estTexteCompletAffiche = false  
+      ajusterAffichageControle()
+    }
+  }
 
   function ajusterAffichageControle() {
 
@@ -92,8 +104,8 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   function resizeObserver(entries) {
       entries.forEach(entry => {
        
-        if(estAffichageInitial){
-          estAffichageInitial = false
+        if(affichageInitial === 'true'){
+          affichageInitial = 'false'
           return
         }
 
@@ -169,7 +181,7 @@ function tronquerTexte() {
   }
 
   // Ici petit ajustement de 4 caractères pour compenser l'ajustement requis avec notre ...
-  texteCourant = texteComplet.slice(0, posMilieu - 4)
+  texteCourant = texteComplet.slice(0, posMilieu - 5)
 
   // Trouver le dernier espace avant notre tronquage et utiliser cette position pour le tronquage.
   const posDernierEspace = texteCourant.lastIndexOf(' ')
@@ -187,7 +199,7 @@ function tronquerTexte() {
  
   {#if estAffichageTexteTronque && !estTexteCompletAffiche}    
     <a href="#" role="button" class="ellipsis {estAjustementAffichageEnCours ? ' utd-d-none' : ''}" title="Voir plus" on:click|preventDefault={afficherContenuSupplementaire}>
-      <span aria-hidden="true">...</span>
+      <span aria-hidden="true">[<span class="dots">...</span>]</span>
     </a>
   {/if}    
   

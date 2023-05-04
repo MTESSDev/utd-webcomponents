@@ -27,7 +27,6 @@ utd-points-suspension {
 
     & a.ellipsis {
         text-decoration: none;
-        font-size: 150%;
         line-height: 0.8;
         border: 2px solid transparent;
         outline: 0;
@@ -39,8 +38,12 @@ utd-points-suspension {
             border-color: inherit;
         }
 
-        & > span{
+        & > span {
             line-height: 0.8;
+        }
+
+        & .dots {
+            font-size: 150%;
         }
     }
 

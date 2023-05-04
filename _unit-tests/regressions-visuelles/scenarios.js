@@ -956,6 +956,15 @@ scenarios : [
         url: "/composants/affichagecontenu/pointssuspension",
         shadowClickSelectors: [{domSelector: "#exemplePointsSuspension1 utd-points-suspension", shadowDomSelector: 'a'}, {domSelector: "#exemplePointsSuspension2 utd-points-suspension", shadowDomSelector: 'a'}, {domSelector: "#exemplePointsSuspension3 utd-points-suspension", shadowDomSelector: 'a'}, {domSelector: "#exemplePointsSuspension4 utd-points-suspension", shadowDomSelector: 'a'}, {domSelector: "#exemplePointsSuspension5 utd-points-suspension", shadowDomSelector: 'a'}]
     },    
+    //Points suspension (reinitialisation ...)
+    {
+        label: "Points_suspension (Reinitialisation)",
+        viewports: viewports.vPhone,
+        selectors: ["#exemplePointsSuspension6"],         
+        url: "/composants/affichagecontenu/pointssuspension",
+        shadowClickSelectors: [{domSelector: "#exemplePointsSuspension6 utd-points-suspension", shadowDomSelector: 'a'}],
+        clickSelectors2: ["#btnTest6"]
+    },    
 
     //Section (base)
     {
