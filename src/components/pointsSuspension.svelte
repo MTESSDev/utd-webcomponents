@@ -97,7 +97,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   const resizeObserverDebounced = Utils.debounce((entries) => resizeObserver(entries))
 
   function observerRezise(){
-    debugger
+    debugger //s
     const observer = new ResizeObserver(resizeObserverDebounced)
 
     observer.observe(thisComponent)    
