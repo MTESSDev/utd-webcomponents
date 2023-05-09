@@ -65,7 +65,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     // On doit repaint ici afin que l'interface soit à jour avant d'effectuer les ajustements à l'affichage du contrôle (ex. le bouton ... doit être retiré si présent, car bousille le calcul pour la hauteur)
     setTimeout(() => {
       ajusterAffichageControle2()
-    }, 250)
+    })
 
   }
 
@@ -148,9 +148,9 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       thisComponent.parentElement.appendChild(el);
 
       const height = el.clientHeight;
-      thisComponent.parentElement.removeChild(el);
+//      thisComponent.parentElement.removeChild(el);
       // On se donne un petit jeu sur la hauteur... Il y a toujours qques décimales de différences et ça cause problème (à cause du lien ... qui est plus gros entre autres)
-      return height + 6;
+      return height + 10;
 }  
 
 function doitTronquerTexte() {
