@@ -65,7 +65,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     // On doit repaint ici afin que l'interface soit à jour avant d'effectuer les ajustements à l'affichage du contrôle (ex. le bouton ... doit être retiré si présent, car bousille le calcul pour la hauteur)
     setTimeout(() => {
       ajusterAffichageControle2()
-    })
+    }, 250)
 
   }
 
