@@ -26,17 +26,17 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   let controleTexte
   let controleTexteSupplementaire
   let hauteurMax = 24
-  let texteComplet = thisComponent.textContent
-  let texteCache = ""
+  let texteComplet = ''
+  let texteSupplementaire = ''
   let estAjustementAffichageEnCours = true
   let estEvenementObserverEnCours = false
   let mounted = false
-  let nbCaracteresRemplacementEspaceLien = 5
 
   onMount(() => {      
 
     conteneur = thisComponent.shadowRoot.getElementById(idConteneur)
     controleTexte = thisComponent.shadowRoot.getElementById(idTexte)
+    texteComplet = thisComponent.textContent
 
     ajusterAffichageControle()
 
@@ -59,7 +59,6 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   }
 
   function ajusterAffichageControle() {
-
     estAjustementAffichageEnCours = true
     estEvenementObserverEnCours = true
 
@@ -188,7 +187,7 @@ function tronquerTexte() {
   // Trouver le dernier espace avant notre tronquage et utiliser cette position pour le tronquage.
   const posDernierEspace = texteCourant.lastIndexOf(' ')
 
-  texteCache = texteComplet.slice(posDernierEspace)
+  texteSupplementaire = texteComplet.slice(posDernierEspace)
   controleTexte.textContent = texteComplet.slice(0, posDernierEspace)
 }
 
@@ -225,7 +224,7 @@ function obtenirNbCaracteresTexteLien(){
   {/if}    
   
   {#if estTexteCompletAffiche}    
-    <span class="texte-supplementaire{estAffichageTexteTronque ? ' estAffichageTexteTronque' : ''}{estTexteCompletAffiche ? ' estTexteCompletAffiche' : ''}" id="{idTexteSupplementaire}" transition:fade="{{duration:250}}" tabindex="-1">{texteCache}</span>
+    <span class="texte-supplementaire{estAffichageTexteTronque ? ' estAffichageTexteTronque' : ''}{estTexteCompletAffiche ? ' estTexteCompletAffiche' : ''}" id="{idTexteSupplementaire}" transition:fade="{{duration:250}}" tabindex="-1">{texteSupplementaire}</span>
   {/if}    
 
 </div>
