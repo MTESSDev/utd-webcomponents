@@ -863,6 +863,7 @@ label + .utd-erreur-champ{
 
 textarea.utd-form-control{
     height: auto;
+    width: 100%;
 }
 
 .utd-form-control:focus,
@@ -879,8 +880,8 @@ select.utd-form-control:focus {
 ====================================================================================================*/
 
 input.utd-form-control,
-select.utd-form-control,
-textarea.utd-form-control {
+select.utd-form-control
+{
     /* On applique une largeur xl à tous les contrôles par défaut */
     width: 528px;
     max-width: 100%;

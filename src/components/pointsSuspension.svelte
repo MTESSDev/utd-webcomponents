@@ -97,6 +97,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   const resizeObserverDebounced = Utils.debounce((entries) => resizeObserver(entries))
 
   function observerRezise(){
+    debugger
     const observer = new ResizeObserver(resizeObserverDebounced)
 
     observer.observe(thisComponent)    
@@ -115,7 +116,6 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
         }
         
         if(!estTexteCompletAffiche){
-          console.log('resize')
           ajusterAffichageControle()
         }
       })
