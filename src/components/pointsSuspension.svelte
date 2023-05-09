@@ -150,7 +150,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       const height = el.clientHeight;
       thisComponent.parentElement.removeChild(el);
       // On se donne un petit jeu sur la hauteur... Il y a toujours qques décimales de différences et ça cause problème (à cause du lien ... qui est plus gros entre autres)
-      return height + 2;
+      return height + 6;
 }  
 
 function doitTronquerTexte() {
