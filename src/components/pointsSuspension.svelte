@@ -72,6 +72,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     estAjustementAffichageEnCours = true
     estEvenementObserverEnCours = true
     controleTexte.textContent = ""
+    controleTexte.style.removeProperty('maxHeight')
 
     // On doit repaint ici afin que l'interface soit à jour avant d'effectuer les ajustements à l'affichage du contrôle (ex. le bouton ... doit être retiré si présent, car bousille le calcul pour la hauteur)
     setTimeout(() => {
@@ -82,7 +83,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
   function ajusterAffichageControle2() {
     hauteurMax = obtenirHauteurMaximale()
-
+    controleTexte.style.maxHeight = hauteurMax + 'px'
     controleTexte.textContent = texteComplet
     controleTexteSupplementaire = thisComponent.shadowRoot.getElementById(idTexteSupplementaire)
 
@@ -140,11 +141,6 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   }
 
   function obtenirHauteurMaximale() {
-      // Créer un élément temporaire afin d'obtenir la hauteur hauteur maximale selon le nombre de lignes reçues en paramètre
-/*      const el = document.createElement('span')
-      el.style.width = '200px'
-      el.style.position = 'absolute'
-      el.style.visibility = 'hidden'*/
       const nombreLignes = parseInt(nbLignes)
       
       let htmlBidon = 'TjpyYZ'
@@ -152,15 +148,12 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
         htmlBidon += '<br/>TjpyYZ'          
       }
 
-//      el.innerHTML = htmlBidon
       controleTexte.innerHTML = htmlBidon
-//      controleTexte.appendChild(el)
 
-//      const height = el.offsetHeight
-        const height = controleTexte.offsetHeight
-//      controleTexte.removeChild(el);
-        controleTexte.textContent = ''
-      // On se donne un petit jeu sur la hauteur... Il y a toujours qques décimales de différences et ça cause problème (à cause du lien ... qui est plus gros entre autres)
+      const height = controleTexte.offsetHeight
+      controleTexte.textContent = ''
+
+        // On se donne un petit jeu sur la hauteur... Il y a toujours qques décimales de différences et ça cause problème (à cause du lien ... qui est plus gros entre autres)
       return height + 2
 }  
 
