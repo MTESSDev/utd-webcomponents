@@ -36,22 +36,23 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
     //
     if (!window.ResizeObserver){
-      mounted = true
-      return
+      estAjustementAffichageEnCours = false
+      estTexteCompletAffiche = true
+    } else {
+
+      conteneur = thisComponent.shadowRoot.getElementById(idConteneur)
+      controleTexte = thisComponent.shadowRoot.getElementById(idTexte)
+      texteComplet = thisComponent.textContent
+
+      ajusterAffichageControle()
+
+      // Détecter les resize sur le composant et redessiner
+      observerRezise()          
     }
 
-    conteneur = thisComponent.shadowRoot.getElementById(idConteneur)
-    controleTexte = thisComponent.shadowRoot.getElementById(idTexte)
-    texteComplet = thisComponent.textContent
-
-    ajusterAffichageControle()
-
+    mounted = true    
     Utils.reafficherApresChargement(thisComponent)
 
-    // Détecter les resize sur le composant et redessiner
-    observerRezise()          
-
-    mounted = true
   })
 
 
@@ -69,8 +70,6 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     estAjustementAffichageEnCours = true
     estEvenementObserverEnCours = true
     controleTexte.textContent = ""
-    conteneur.style.removeProperty('maxHeight')
-
 
     // On doit repaint ici afin que l'interface soit à jour avant d'effectuer les ajustements à l'affichage du contrôle (ex. le bouton ... doit être retiré si présent, car bousille le calcul pour la hauteur)
     setTimeout(() => {
@@ -81,7 +80,6 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
   function ajusterAffichageControle2() {
     hauteurMax = obtenirHauteurMaximale()
-    conteneur.style.maxHeight = hauteurMax + 'px'
 
     controleTexte.textContent = texteComplet
     controleTexteSupplementaire = thisComponent.shadowRoot.getElementById(idTexteSupplementaire)
