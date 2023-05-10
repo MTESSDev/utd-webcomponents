@@ -151,10 +151,10 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
       controleTexte.innerHTML = htmlBidon
 
-      const height = controleTexte.offsetHeight
+      const height = controleTexte.getBoundingClientRect().height
       controleTexte.textContent = ''
 
-      // On se donne un petit jeu sur la hauteur... Il y a toujours qques décimales de différences et ça cause problème (à cause du lien ... qui est plus gros entre autres)
+      // On se donne un petit jeu sur la hauteur... Il y a toujours une petite différence et ça cause problème (à cause du lien ... qui est plus gros entre autres)
       return height + 2
 }  
 
