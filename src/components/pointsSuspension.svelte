@@ -68,6 +68,8 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   function ajusterAffichageControle() {
     estAjustementAffichageEnCours = true
     estEvenementObserverEnCours = true
+    conteneur.style.maxHeight = null
+    controleTexte.textContent = ""
 
     // On doit repaint ici afin que l'interface soit à jour avant d'effectuer les ajustements à l'affichage du contrôle (ex. le bouton ... doit être retiré si présent, car bousille le calcul pour la hauteur)
     setTimeout(() => {
@@ -151,7 +153,6 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       }
 
       el.innerHTML = htmlBidon
-      conteneur.style.maxHeight = null
       controleTexte.appendChild(el)
 
 
