@@ -52,13 +52,13 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
       // Détecter les resize sur le composant et redessiner
       observerRezise()  
-              
+
       mounted = true    
     } 
   })
 
 
-  // Watch sur la prop focus
+  // Watch sur la prop affichageInitial
   $: initialiserAffichage(affichageInitial) 
 
   function initialiserAffichage(){
