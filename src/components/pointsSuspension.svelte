@@ -69,7 +69,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     estAjustementAffichageEnCours = true
     estEvenementObserverEnCours = true
     controleTexte.textContent = ""
-    conteneur.style.maxHeight = null
+    conteneur.style.removeProperty('maxHeight')
 
 
     // On doit repaint ici afin que l'interface soit à jour avant d'effectuer les ajustements à l'affichage du contrôle (ex. le bouton ... doit être retiré si présent, car bousille le calcul pour la hauteur)
@@ -82,7 +82,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   function ajusterAffichageControle2() {
     hauteurMax = obtenirHauteurMaximale()
     conteneur.style.maxHeight = hauteurMax + 'px'
-    
+
     controleTexte.textContent = texteComplet
     controleTexteSupplementaire = thisComponent.shadowRoot.getElementById(idTexteSupplementaire)
 
