@@ -97,7 +97,6 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   const resizeObserverDebounced = Utils.debounce((entries) => resizeObserver(entries))
 
   function observerRezise(){
-    debugger //s
     const observer = new ResizeObserver(resizeObserverDebounced)
 
     observer.observe(thisComponent)    
@@ -133,10 +132,10 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
   function obtenirHauteurMaximale() {
       // Créer un élément temporaire afin d'obtenir la hauteur hauteur maximale selon le nombre de lignes reçues en paramètre
-      const el = document.createElement('span');
-      el.style.width = '300px';
-      el.style.position = 'absolute';
-      el.style.visibility = 'hidden';
+      const el = document.createElement('span')
+      el.style.width = '300px'
+      el.style.position = 'absolute'
+      el.style.visibility = 'hidden'
       const nombreLignes = parseInt(nbLignes)
       
       let htmlBidon = 'TjpyYZ'
@@ -144,13 +143,13 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
         htmlBidon += '<br/>TjpyYZ'          
       }
 
-      el.innerHTML = htmlBidon;
-      thisComponent.parentElement.appendChild(el);
+      el.innerHTML = htmlBidon
+      controleTexte.appendChild(el)
 
-      const height = el.clientHeight;
-//      thisComponent.parentElement.removeChild(el);
+      const height = el.clientHeight
+      controleTexte.removeChild(el);
       // On se donne un petit jeu sur la hauteur... Il y a toujours qques décimales de différences et ça cause problème (à cause du lien ... qui est plus gros entre autres)
-      return height + 10;
+      return height + 2
 }  
 
 function doitTronquerTexte() {
