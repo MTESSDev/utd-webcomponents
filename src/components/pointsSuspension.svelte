@@ -159,7 +159,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 }  
 
 function doitTronquerTexte() {
-  //console.log('hauteur contrôle texte -> ' + controleTexte.getBoundingClientRect().height + '     hauteur max -> ' + hauteurMax)
+  console.log('hauteur contrôle texte -> ' + controleTexte.getBoundingClientRect().height + '     hauteur max -> ' + hauteurMax)
   return controleTexte.getBoundingClientRect().height > hauteurMax
 }
 
