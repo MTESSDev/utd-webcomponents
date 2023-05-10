@@ -178,7 +178,7 @@ function tronquerTexte() {
       break
     }
     const texteTemp = texteComplet.slice(posGauche, posMilieu)
-    controleTexte.textContent = texteCourant + texteTemp
+    controleTexte.innerHTML = texteCourant + texteTemp
     
     const height = controleTexte.getBoundingClientRect().height
     console.log('G ' + posGauche + '    M ' + posMilieu + '   height -> ' + height + '   hauteurMax -> ' + hauteurMax)
