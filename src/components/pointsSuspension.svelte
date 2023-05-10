@@ -82,7 +82,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
   function ajusterAffichageControle2() {
     hauteurMax = obtenirHauteurMaximale()
-    conteneur.style.maxHeight = hauteurMax + 'px'
+//    conteneur.style.maxHeight = hauteurMax + 'px'
 
     controleTexte.textContent = texteComplet
     controleTexteSupplementaire = thisComponent.shadowRoot.getElementById(idTexteSupplementaire)
@@ -155,7 +155,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       controleTexte.textContent = ''
 
       // On se donne un petit jeu sur la hauteur... Il y a toujours une petite différence et ça cause problème (à cause du lien ... qui est plus gros entre autres)
-      return height + 4
+      return height + 2
 }  
 
 function doitTronquerTexte() {
