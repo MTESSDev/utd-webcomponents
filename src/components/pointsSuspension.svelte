@@ -181,8 +181,8 @@ function tronquerTexte() {
     controleTexte.textContent = texteCourant + texteTemp
     
     const height = controleTexte.getBoundingClientRect().height
-    console.log('G ' + posGauche + '    M ' + posMilieu + '   hauteurMax -> ' + hauteurMax + '   hauteurMax -> ' + hauteurMax)
-    
+    console.log('G ' + posGauche + '    M ' + posMilieu + '   height -> ' + height + '   hauteurMax -> ' + hauteurMax)
+
     if (height > hauteurMax) {
       posDroite = posMilieu
     } else {
