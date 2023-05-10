@@ -83,7 +83,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   function ajusterAffichageControle2() {
     hauteurMax = obtenirHauteurMaximale()
     
-    conteneur.style.maxHeight = hauteurMax + 'px'
+//    conteneur.style.maxHeight = hauteurMax + 'px'
 
     controleTexte.textContent = texteComplet
     controleTexteSupplementaire = thisComponent.shadowRoot.getElementById(idTexteSupplementaire)
@@ -172,6 +172,7 @@ function tronquerTexte() {
   let posMilieu = 0
   
   while (posGauche < posDroite) {
+
     posMilieu = Math.floor((posGauche + posDroite) / 2)
     if (posGauche === posMilieu) {
       break
@@ -180,6 +181,7 @@ function tronquerTexte() {
     controleTexte.textContent = texteCourant + texteTemp
     
     const { height } = controleTexte.getBoundingClientRect()
+    console.log('G ' + posGauche + '    M ' + posMilieu + '   height -> ' + height + '   hauteurMax -> ' + hauteurMax)
     if (height > hauteurMax) {
       posDroite = posMilieu
     } else {

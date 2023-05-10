@@ -11,7 +11,7 @@
     onMount(() => {
         tableauParametres = obtenirTableauParametres()
         tableauSlots = obtenirTableauSlots()
-        exemple6()
+        //exemple6()
 
         mounted = true
     })
@@ -77,7 +77,7 @@
     <CodeSource idElementCodeSource="exemplePointsSuspension1">
     </CodeSource>   
 
-
+<!--
     <h3>2- Texte long sur 3 lignes</h3>
     <div class="mb-32" id="exemplePointsSuspension2">
         <utd-points-suspension nb-lignes="3">
@@ -141,6 +141,6 @@
     </div>
     <CodeSource idElementCodeSource="exemplePointsSuspension7">
     </CodeSource>   
-
+-->
 
 </div>
