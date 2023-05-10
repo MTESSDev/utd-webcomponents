@@ -72,18 +72,18 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     estAjustementAffichageEnCours = true
     estEvenementObserverEnCours = true
     controleTexte.textContent = ""
-    conteneur.style.removeProperty('maxHeight')
+    conteneur.removeAttribute('style')
 
     // On doit repaint ici afin que l'interface soit à jour avant d'effectuer les ajustements à l'affichage du contrôle (ex. le bouton ... doit être retiré si présent, car bousille le calcul pour la hauteur)
     setTimeout(() => {
       ajusterAffichageControle2()
     })
-
   }
 
   function ajusterAffichageControle2() {
     hauteurMax = obtenirHauteurMaximale()
     conteneur.style.maxHeight = hauteurMax + 'px'
+
     controleTexte.textContent = texteComplet
     controleTexteSupplementaire = thisComponent.shadowRoot.getElementById(idTexteSupplementaire)
 
@@ -132,6 +132,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   }
 
   function afficherContenuSupplementaire(){
+    conteneur.removeAttribute('style')
     estTexteCompletAffiche = true
 
     setTimeout(() => {
@@ -153,12 +154,12 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       const height = controleTexte.offsetHeight
       controleTexte.textContent = ''
 
-        // On se donne un petit jeu sur la hauteur... Il y a toujours qques décimales de différences et ça cause problème (à cause du lien ... qui est plus gros entre autres)
+      // On se donne un petit jeu sur la hauteur... Il y a toujours qques décimales de différences et ça cause problème (à cause du lien ... qui est plus gros entre autres)
       return height + 2
 }  
 
 function doitTronquerTexte() {
-  console.log('hauteur contrôle texte -> ' + controleTexte.getBoundingClientRect().height + '     hauteur max -> ' + hauteurMax)
+  //console.log('hauteur contrôle texte -> ' + controleTexte.getBoundingClientRect().height + '     hauteur max -> ' + hauteurMax)
   return controleTexte.getBoundingClientRect().height > hauteurMax
 }
 

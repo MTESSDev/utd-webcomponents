@@ -41,7 +41,7 @@
     setTimeout(() => {
       test()
       contientMenusNonVisibles()      
-      console.log(menuOriginal)
+//      console.log(menuOriginal)
     }, 1000)
 
     Utils.reafficherApresChargement(thisComponent)
@@ -72,8 +72,8 @@
     largeurConteneur = thisComponent.getBoundingClientRect().width
 
 
-    console.log('Largeur conteneur -> ' + largeurConteneur)
-    console.log('Largeur menu -> ' + largeurMenu)
+//    console.log('Largeur conteneur -> ' + largeurConteneur)
+//    console.log('Largeur menu -> ' + largeurMenu)
 
   }
 
@@ -85,16 +85,16 @@
     largeurConteneur = thisComponent.getBoundingClientRect().right
     largeurMenu = thisComponent.children[thisComponent.children.length - 1].getBoundingClientRect().right
 
-    console.log(largeurMenu)
+    //console.log(largeurMenu)
     if(largeurMenu <= largeurConteneur) {
-      console.log('Le menu fit, rien à faire!')
+      //console.log('Le menu fit, rien à faire!')
     }
 
     while (menuVisible && i <= thisComponent.children.length - 1) {
       const item = thisComponent.children[i]
 
 //      largeurMenu += item.getBoundingClientRect().right
-      console.log('indexe = ' + i + '    right = ' + item.getBoundingClientRect().right)
+      //console.log('indexe = ' + i + '    right = ' + item.getBoundingClientRect().right)
       if(item.getBoundingClientRect().right <= largeurConteneur){
         dernierIndexeVisible = i
         i++        
@@ -103,7 +103,7 @@
       }      
     }
 //      return indexeDernierMenuVisible
-    console.log(dernierIndexeVisible)
+    //console.log(dernierIndexeVisible)
   }
 
   function test9(){
