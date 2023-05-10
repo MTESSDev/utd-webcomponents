@@ -82,7 +82,11 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
   function ajusterAffichageControle2() {
     hauteurMax = obtenirHauteurMaximale()
-//    conteneur.style.maxHeight = hauteurMax + 'px'
+    
+    //Appliquer un maxHeight uniquement après l'affichage initial. Semble causer des problèmes avec certains fureteurs (ex. Big Sur Safari 14)
+    if(mounted){
+      conteneur.style.maxHeight = hauteurMax + 'px'
+    }
 
     controleTexte.textContent = texteComplet
     controleTexteSupplementaire = thisComponent.shadowRoot.getElementById(idTexteSupplementaire)
