@@ -155,7 +155,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       controleTexte.textContent = ''
 
       // On se donne un petit jeu sur la hauteur... Il y a toujours une petite différence et ça cause problème (à cause du lien ... qui est plus gros entre autres)
-      return height + 3
+      return height + 4
 }  
 
 function doitTronquerTexte() {
