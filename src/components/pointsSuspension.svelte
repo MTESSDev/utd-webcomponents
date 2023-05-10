@@ -31,7 +31,6 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   let estAjustementAffichageEnCours = true
   let estEvenementObserverEnCours = false
   let mounted = false
-  let estPremierAffichage = true
 
   onMount(() => {      
 
@@ -84,10 +83,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   function ajusterAffichageControle2() {
     hauteurMax = obtenirHauteurMaximale()
     
-    //Appliquer un maxHeight uniquement après l'affichage initial. Semble causer des problèmes avec certains fureteurs (ex. Big Sur Safari 14)
-    if(!estPremierAffichage){
-      conteneur.style.maxHeight = hauteurMax + 'px'
-    }
+    conteneur.style.maxHeight = hauteurMax + 'px'
 
     controleTexte.textContent = texteComplet
     controleTexteSupplementaire = thisComponent.shadowRoot.getElementById(idTexteSupplementaire)
@@ -104,7 +100,6 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     } 
 
     estAjustementAffichageEnCours = false      
-    estPremierAffichage = false
 
     setTimeout(() => {
       estEvenementObserverEnCours = false
@@ -205,9 +200,9 @@ function tronquerTexte() {
 
 function obtenirNbCaracteresTexteLien(){
   if(afficherTexteLien === 'true'){
-    return `... [${texteLien}]`.length
+    return `... [${texteLien}]`.length + 1
   } else {
-    return 5
+    return 5 + 1
   }
 
 }
