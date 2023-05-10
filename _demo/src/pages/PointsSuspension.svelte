@@ -11,7 +11,7 @@
     onMount(() => {
         tableauParametres = obtenirTableauParametres()
         tableauSlots = obtenirTableauSlots()
-        exemple6()
+//        exemple6()
 
         mounted = true
     })
