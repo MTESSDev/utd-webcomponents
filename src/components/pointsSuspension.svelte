@@ -160,7 +160,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 }  
 
 function doitTronquerTexte() {
-//  console.log('hauteur contrôle texte -> ' + controleTexte.getBoundingClientRect().height + '     hauteur max -> ' + hauteurMax)
+  console.log('hauteur contrôle texte -> ' + controleTexte.getBoundingClientRect().height + '     hauteur max -> ' + hauteurMax)
   return controleTexte.getBoundingClientRect().height > hauteurMax
 }
 
@@ -181,7 +181,8 @@ function tronquerTexte() {
     controleTexte.textContent = texteCourant + texteTemp
     
     const height = controleTexte.getBoundingClientRect().height
-
+    console.log('G ' + posGauche + '    M ' + posMilieu + '   hauteurMax -> ' + hauteurMax + '   hauteurMax -> ' + hauteurMax)
+    
     if (height > hauteurMax) {
       posDroite = posMilieu
     } else {
