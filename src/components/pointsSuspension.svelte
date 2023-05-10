@@ -38,6 +38,8 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     if (!window.ResizeObserver){
       estAjustementAffichageEnCours = false
       estTexteCompletAffiche = true
+      Utils.reafficherApresChargement(thisComponent)
+      mounted = true    
     } else {
 
       conteneur = thisComponent.shadowRoot.getElementById(idConteneur)
@@ -46,13 +48,13 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
       ajusterAffichageControle()
 
+      Utils.reafficherApresChargement(thisComponent)
+
       // Détecter les resize sur le composant et redessiner
-      observerRezise()          
-    }
-
-    mounted = true    
-    Utils.reafficherApresChargement(thisComponent)
-
+      observerRezise()  
+              
+      mounted = true    
+    } 
   })
 
 
