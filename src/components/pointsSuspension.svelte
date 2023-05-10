@@ -21,7 +21,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   const idTexte = Utils.genererId()
   const thisComponent = get_current_component()
   let estTexteCompletAffiche = false
-  let estAffichageTexteTronque = true
+  let estAffichageTexteTronque = false
   let conteneur
   let controleTexte
   let controleTexteSupplementaire
@@ -33,6 +33,12 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   let mounted = false
 
   onMount(() => {      
+
+    //
+    if (!window.ResizeObserver){
+      mounted = true
+      return
+    }
 
     conteneur = thisComponent.shadowRoot.getElementById(idConteneur)
     controleTexte = thisComponent.shadowRoot.getElementById(idTexte)
@@ -47,6 +53,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
     mounted = true
   })
+
 
   // Watch sur la prop focus
   $: initialiserAffichage(affichageInitial) 
@@ -153,6 +160,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 }  
 
 function doitTronquerTexte() {
+  console.log('hauteur contrôle texte -> ' + controleTexte.getBoundingClientRect().height + '     hauteur max -> ' + hauteurMax)
   return controleTexte.getBoundingClientRect().height > hauteurMax
 }
 
@@ -180,7 +188,7 @@ function tronquerTexte() {
     }
   }
 
-  // Ici petit ajustement de 4 caractères pour compenser l'ajustement requis avec notre ...
+  // Ici petit ajustement de x caractères pour compenser l'ajustement requis avec notre "..."
   texteCourant = texteComplet.slice(0, posMilieu - obtenirNbCaracteresTexteLien())
 
   // Trouver le dernier espace avant notre tronquage et utiliser cette position pour le tronquage.
