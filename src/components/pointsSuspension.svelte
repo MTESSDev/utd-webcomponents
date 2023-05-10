@@ -31,6 +31,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   let estAjustementAffichageEnCours = true
   let estEvenementObserverEnCours = false
   let mounted = false
+  let estPremierAffichage = true
 
   onMount(() => {      
 
@@ -84,7 +85,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     hauteurMax = obtenirHauteurMaximale()
     
     //Appliquer un maxHeight uniquement après l'affichage initial. Semble causer des problèmes avec certains fureteurs (ex. Big Sur Safari 14)
-    if(mounted){
+    if(!estPremierAffichage){
       conteneur.style.maxHeight = hauteurMax + 'px'
     }
 
@@ -103,6 +104,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     } 
 
     estAjustementAffichageEnCours = false      
+    estPremierAffichage = false
 
     setTimeout(() => {
       estEvenementObserverEnCours = false
