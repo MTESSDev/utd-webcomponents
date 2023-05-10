@@ -155,10 +155,9 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       el.innerHTML = htmlBidon
       controleTexte.appendChild(el)
 
-
       const height = el.offsetHeight
-      conteneur.style.maxHeight = hauteurMax
-//      controleTexte.removeChild(el);
+
+      controleTexte.removeChild(el);
 
       // On se donne un petit jeu sur la hauteur... Il y a toujours qques décimales de différences et ça cause problème (à cause du lien ... qui est plus gros entre autres)
       return height + 2
