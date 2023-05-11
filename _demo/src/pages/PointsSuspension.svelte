@@ -54,6 +54,10 @@
     <h3>Référence système de design Quebec.ca</h3>
     <p>N'existe pas dans la système de design.</p>    
 
+    <h3>Particularités</h3>
+    <p>Si le fureteur ne supporte pas les "ResizeObserver" (ex. IOS &#60;= 13.3, cela dit très rare car supporté par 95% des fureteurs), le texte est toujours affiché au long.</p>    
+    <p><a href="https://caniuse.com/?search=resizeobserver" target="_blank">Consulter le tableau de support des fureteurs</a></p>    
+
     <h2>Attributs disponibles</h2>
     <TableauParams parametres="{tableauParametres}">
     </TableauParams>
