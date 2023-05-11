@@ -160,7 +160,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 }  
 
 function doitTronquerTexte() {
-  console.log('hauteur contrôle texte -> ' + controleTexte.getBoundingClientRect().height + '     hauteur max -> ' + hauteurMax)
+//  console.log('hauteur contrôle texte -> ' + controleTexte.getBoundingClientRect().height + '     hauteur max -> ' + hauteurMax)
   return controleTexte.getBoundingClientRect().height > hauteurMax
 }
 
@@ -181,7 +181,7 @@ function tronquerTexte() {
     controleTexte.textContent = texteCourant + texteTemp
     
     const height = controleTexte.getBoundingClientRect().height
-    console.log('G ' + posGauche + '    M ' + posMilieu + '   height -> ' + height + '   hauteurMax -> ' + hauteurMax)
+//    console.log('G ' + posGauche + '    M ' + posMilieu + '   height -> ' + height + '   hauteurMax -> ' + hauteurMax)
 
     // Petite patch pour certains fureteurs/appareils sur lesquels la hauteur du texteTemp au chargement initial était de 0??? Rien à comprendre (ex. Big Sur Safari 14.1)
     if(height === 0){
