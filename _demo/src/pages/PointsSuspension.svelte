@@ -11,7 +11,7 @@
     onMount(() => {
         tableauParametres = obtenirTableauParametres()
         tableauSlots = obtenirTableauSlots()
-        //exemple6()
+        exemple6()
 
         mounted = true
     })
@@ -67,7 +67,7 @@
 <div class="backstop-test">
     <h2>Exemples</h2>
 
-<!--    <h3>1- Texte long sur une ligne</h3>
+    <h3>1- Texte long sur une ligne</h3>
 
     <div class="mb-32" id="exemplePointsSuspension1">
         <utd-points-suspension>
@@ -94,14 +94,14 @@
         </utd-points-suspension>
     </div>
     <CodeSource idElementCodeSource="exemplePointsSuspension3">
-    </CodeSource>  -->
+    </CodeSource>  
 
     <div id="exemplePointsSuspension4">
         <h3><utd-points-suspension nb-lignes="2">4- Texte sur 2 lignes dans un header. Chuck Norris a déjà compté jusqu'à l'infini. Deux fois. Chuck Norris peut ressusciter un angle mort.</utd-points-suspension></h3>
     </div>    
     <CodeSource idElementCodeSource="exemplePointsSuspension4">
     </CodeSource>  
-<!--
+
     <h3>5- Texte court sur 3 lignes (entre toujours sur 2 lignes max.)</h3>
     <div class="mb-32" id="exemplePointsSuspension5">
         <utd-points-suspension nb-lignes="3">
@@ -141,6 +141,6 @@
     </div>
     <CodeSource idElementCodeSource="exemplePointsSuspension7">
     </CodeSource>   
--->
+
 
 </div>
