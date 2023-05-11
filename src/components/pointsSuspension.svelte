@@ -92,12 +92,12 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
       controleTexteSupplementaire.textContent = ''
     }
 
-    estAffichageTexteTronque = doitTronquerTexte()
-
-    if(estAffichageTexteTronque){
+    if(doitTronquerTexte()){
       thisComponent.textContent = ""
       tronquerTexte()
-    } 
+    } else {
+      estAffichageTexteTronque = false
+    }
 
     estAjustementAffichageEnCours = false      
 
@@ -171,6 +171,8 @@ function tronquerTexte() {
   let posDroite = texteComplet.length - 1;
   let posMilieu = 0
   
+  let estHauteurZero = false
+
   while (posGauche < posDroite) {
 
     posMilieu = Math.floor((posGauche + posDroite) / 2)
@@ -185,7 +187,7 @@ function tronquerTexte() {
 
     // Petite patch pour certains fureteurs/appareils sur lesquels la hauteur du texteTemp au chargement initial était de 0??? Rien à comprendre (ex. Big Sur Safari 14.1)
     if(height === 0){
-      estAffichageTexteTronque = false
+      estHauteurZero = true
       controleTexte.textContent = ''
       setTimeout(() => {
         tronquerTexte()
@@ -201,6 +203,10 @@ function tronquerTexte() {
     }
   }
 
+  if(estHauteurZero) {
+    return
+  }  
+
   // Ici petit ajustement de x caractères pour compenser l'ajustement requis avec notre "..."
   texteCourant = texteComplet.slice(0, posMilieu - obtenirNbCaracteresTexteLien())
 
@@ -209,6 +215,8 @@ function tronquerTexte() {
 
   texteSupplementaire = texteComplet.slice(posDernierEspace)
   controleTexte.textContent = texteComplet.slice(0, posDernierEspace)
+
+  estAffichageTexteTronque = true
 }
 
 function obtenirNbCaracteresTexteLien(){
