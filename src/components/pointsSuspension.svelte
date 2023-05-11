@@ -178,11 +178,19 @@ function tronquerTexte() {
       break
     }
     const texteTemp = texteComplet.slice(posGauche, posMilieu)
-    controleTexte.innerHTML = texteCourant + texteTemp
+    controleTexte.textContent = texteCourant + texteTemp
     
     const height = controleTexte.getBoundingClientRect().height
     console.log('G ' + posGauche + '    M ' + posMilieu + '   height -> ' + height + '   hauteurMax -> ' + hauteurMax)
 //Si height = 0 settimeout et reprendre
+/*    if(height === 0){
+      controleTexte.textContent = ''
+      setTimeout(() => {
+        tronquerTexte()
+      }, 100)
+      break
+    }*/
+
     if (height > hauteurMax) {
       posDroite = posMilieu
     } else {
