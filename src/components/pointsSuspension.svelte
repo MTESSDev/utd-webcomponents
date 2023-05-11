@@ -185,6 +185,7 @@ function tronquerTexte() {
 
     // Petite patch pour certains fureteurs/appareils sur lesquels la hauteur du texteTemp au chargement initial était de 0??? Rien à comprendre (ex. Big Sur Safari 14.1)
     if(height === 0){
+      estAffichageTexteTronque = false
       controleTexte.textContent = ''
       setTimeout(() => {
         tronquerTexte()
