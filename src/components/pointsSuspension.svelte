@@ -182,7 +182,8 @@ function tronquerTexte() {
     
     const height = controleTexte.getBoundingClientRect().height
     console.log('G ' + posGauche + '    M ' + posMilieu + '   height -> ' + height + '   hauteurMax -> ' + hauteurMax)
-//Si height = 0 settimeout et reprendre
+
+    // Petite patch pour certains fureteurs/appareils sur lesquels la hauteur du texteTemp au chargement initial était de 0??? Rien à comprendre (ex. Big Sur Safari 14.1)
     if(height === 0){
       controleTexte.textContent = ''
       setTimeout(() => {
