@@ -182,7 +182,6 @@
                         <utd-menu-vertical-item libelle="Navigation">       
                             <utd-menu-vertical-item libelle="Haut de page" href="/composants/navigation/hautpage"></utd-menu-vertical-item>
                             <utd-menu-vertical-item libelle="Menu d'ancres" href="/composants/navigation/menuancres"></utd-menu-vertical-item>
-                            <utd-menu-vertical-item libelle="Menu horizontal" href="/composants/navigation/menuhorizontal"></utd-menu-vertical-item>
                             <utd-menu-vertical-item libelle="Menu vertical" href="/composants/navigation/menuvertical"></utd-menu-vertical-item>
                         </utd-menu-vertical-item>
                         <utd-menu-vertical-item libelle="Entête et pied de page">                                

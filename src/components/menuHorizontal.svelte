@@ -12,8 +12,6 @@
   const idTitreMenu = Utils.genererId()
   const srTexteSortirMenu = Utils.obtenirLanguePage() === "en" ?  "Press ESC key to exit menu." : "Appuyez sur la touche Échappe pour sortir du menu."
   const thisComponent = get_current_component()
-  const paddingHorizontal = 16
-  const margeDroite = 32
   let controleMenu
   let controleMenuItemPlus 
   let largeurConteneur = 0
@@ -52,18 +50,18 @@
 //            ajouterMenuPlus()
 
             masquerMenusExcedentaires()
-            console.log('dernier indexe visible -> ' + dernierIndexeVisible)          
+//            console.log('dernier indexe visible -> ' + dernierIndexeVisible)          
             setTimeout(() => {
               Utils.reafficherApresChargement(thisComponent)              
             }, 200)
           },100)
       } else {
-        console.log('Le menu fit, rien à faire!')
-        ajouterMenuPlus()
+//        console.log('Le menu fit, rien à faire!')
+//        ajouterMenuPlus()
         Utils.reafficherApresChargement(thisComponent)
       }
 
-      console.log(menuOriginal)
+//      console.log(menuOriginal)
     })
   })
 
@@ -103,7 +101,7 @@
 
   function contientMenusNonVisibles() {
 
-    largeurConteneur = thisComponent.getBoundingClientRect().right - paddingHorizontal
+    largeurConteneur = thisComponent.getBoundingClientRect().right
     largeurMenu = thisComponent.children[thisComponent.children.length - 1].getBoundingClientRect().right
 
     //console.log(largeurMenu)
@@ -117,7 +115,7 @@
 
     const menuPlus = thisComponent.children[thisComponent.children.length - 1]
     const largeurMenuPlus = menuPlus.getBoundingClientRect().right - menuPlus.getBoundingClientRect().left
-    console.log('Largeur menu plus -> ' + largeurMenuPlus)
+//    console.log('Largeur menu plus -> ' + largeurMenuPlus)
     while (menuVisible && i <= thisComponent.children.length - 1) {
       const item = thisComponent.children[i]
 
