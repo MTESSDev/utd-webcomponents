@@ -10,13 +10,13 @@
     <div slot="titre"><h2>1.11.0 (2023-05-??)</h2></div>
     <h3>Correction d'anomalies</h3>
     <ul class="utd">
-        <li>???</li>
+        <li>Focus dans un textarea provoquait un léger décalage vers le bas (le contrôle devenait légèrement plus haut, soit 2px de bordure).</li>
     </ul>            
         
     <h3>Améliorations</h3>
     <ul class="utd">
         <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/affichagecontenu/avis">Avis</a>, ajout de l'avis de type "complémentaire".</li>
-        <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/actions/traitementencours">Traitement en cours</a>, si un traitement est déjà en cours pour un élément, aucun autre traitement en cours ne sera possible sur cet élément jusqu'à ce qu'il soit terminé.</li>
+        <li>Ajout du composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/affichagecontenu/pointssuspension">Points de suspension</a>.</li>
     </ul>    
 </utd-accordeon>
 

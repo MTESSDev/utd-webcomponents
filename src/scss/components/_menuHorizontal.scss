@@ -6,11 +6,23 @@ utd-menu-horizontal, utd-menu-horizontal-item {
     display: block;
     visibility: hidden;
     max-height: 72px;
+}
 
-    &.mounted{
+utd-menu-horizontal {
+    &.mounted, &.mounted utd-menu-horizontal-item {
         visibility: visible;
         max-height: inherit;
     }    
+
+    &.ajustement-en-cours, &.ajustement-en-cours utd-menu-horizontal-item{
+        visibility: hidden;
+        overflow: hidden;
+    }
+
+    &.ajustement-en-cours2, &.ajustement-en-cours2 utd-menu-horizontal-item{
+        overflow: hidden;
+    }
+
 }
 
 .utd-menu-horizontal {
@@ -20,6 +32,7 @@ utd-menu-horizontal, utd-menu-horizontal-item {
     max-width: calc(100vw - 16px);
     /*overflow-x: hidden;*/
 
+    
     div[role="list"] {
         display: flex;
         padding: 0;
@@ -74,7 +87,11 @@ utd-menu-horizontal > utd-menu-horizontal-item {
             background: #FFFFFF 0% 0% no-repeat padding-box;
             box-shadow: 0px 4px 16px #2236543D;
             opacity: 1;  
-            z-index: 9999;          
+            z-index: 9999;     
+            
+            &.menu-plus {
+                right: 0;
+            }
         }
         a {
             height: 100%;

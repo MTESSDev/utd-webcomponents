@@ -15,12 +15,12 @@
   export let animer = 'true'
   export let focus = 'false'
   export let actif = 'false'
+  export let estMenuPlus = 'false'
 
   let possedeEnfants = false
   let niveau = 1
   
-  const thisComponent = get_current_component()
-  const utdMenuHorizontalParent = thisComponent.closest('utd-menu-horizontal')
+  const thisComponent = get_current_component()  
   const idSousMenu = Utils.genererId()
  
   onMount(() => {
@@ -196,6 +196,7 @@
 
 
   function onBlur(e){
+    const utdMenuHorizontalParent = thisComponent.closest('utd-menu-horizontal')
     if(!utdMenuHorizontalParent.contains(e.relatedTarget)){
       const itemsMenu = utdMenuHorizontalParent.querySelectorAll('utd-menu-horizontal-item')
       itemsMenu.forEach((item) => {
@@ -212,7 +213,7 @@
       <span aria-hidden="true" class="utd-icone-svg {niveau === 1 ? 'chevron-blanc' : 'chevron-bleu-piv'}"/>
     </a>
     {#if afficher === 'true'}
-      <div id="{idSousMenu}" role="list" class="sous-menu" transition:slide="{{duration: animer ==='true' ? 250: 0}}">
+      <div id="{idSousMenu}" role="list" class="sous-menu {estMenuPlus === 'true' ? 'menu-plus' : ''}" transition:slide="{{duration: animer ==='true' ? 250: 0}}">
         <slot></slot>
       </div>
     {/if}
