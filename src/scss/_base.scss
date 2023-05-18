@@ -825,6 +825,7 @@ utd-accordeon .utd-form-group:last-child, utd-section .utd-form-group:last-child
     background-clip: padding-box;
     border: 1px solid #808A9D;
     border-radius: 0;
+    font-family: inherit;
 
     &:disabled, &[read-only]{
         background-color: var(--gris-pale);
@@ -880,11 +881,16 @@ select.utd-form-control:focus {
 -Z20A- Forms (Champs largeurs)  
 ====================================================================================================*/
 
-input.utd-form-control,
-select.utd-form-control
+input.utd-form-control
 {
     /* On applique une largeur xl à tous les contrôles par défaut */
     width: 528px;
+    max-width: 100%;
+}
+
+select.utd-form-control
+{
+    width: auto;
     max-width: 100%;
 }
 
