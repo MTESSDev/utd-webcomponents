@@ -10,7 +10,8 @@
     <div slot="titre"><h2>1.11.0 (2023-05-??)</h2></div>
     <h3>Correction d'anomalies</h3>
     <ul class="utd">
-        <li>Focus dans un textarea provoquait un léger décalage vers le bas (le contrôle devenait légèrement plus haut, soit 2px de bordure).</li>
+        <li>Le focus dans un textarea provoquait un léger décalage vers le bas (le contrôle devenait légèrement plus haut, soit 2px de bordure).</li>
+        <li>Ajustement de la font par défaut du texte à l'intérieur des contrôles. Était laissée à la discretion du fureteur et devait être OpenSans-Regular.</li>
     </ul>            
         
     <h3>Améliorations</h3>
