@@ -2201,10 +2201,13 @@ button.utd-btn.utd-traitement-en-cours, input[type=submit].utd-btn.utd-traitemen
   min-width: 16px;
   background-image: url("../images/utd-sprite.svg?v=1.11.0#ico-xfermer-bleu");
 }
-.utd-icone-svg.chevron-bleu-piv, .utd-icone-svg.chevron-blanc, .utd-icone-svg.chevron-bleu-texte {
+.utd-icone-svg.chevron-bleu-piv, .utd-icone-svg.chevron-blanc, .utd-icone-svg.chevron {
   width: 16px;
   min-width: 16px;
   height: 10px;
+}
+.utd-icone-svg.chevron {
+  background-image: url("../images/utd-sprite.svg?v=1.11.0#ico-chevron");
 }
 .utd-icone-svg.chevron-bleu-piv {
   background-image: url("../images/utd-sprite.svg?v=1.11.0#ico-chevron-bleu-piv");
@@ -2665,6 +2668,9 @@ utd-menu-horizontal > utd-menu-horizontal-item:last-of-type {
   display: flex;
   flex-direction: column;
   height: 100%;
+  /* Niveaux 2 et + */
+  /* Niveau 2*/
+  /* Niveau 3 */
 }
 .utd-menu-horizontal-item:not(.visible) .utd-icone-svg {
   transform: rotate(-180deg);
@@ -2685,18 +2691,35 @@ utd-menu-horizontal > utd-menu-horizontal-item:last-of-type {
 .utd-menu-horizontal-item.niv1.active .bordure-bas {
   background-color: #909aa9;
 }
+.utd-menu-horizontal-item.niv1.menu-plus.visible {
+  background-color: var(--bleu-pale);
+}
+.utd-menu-horizontal-item.niv1.menu-plus.visible a {
+  color: var(--bleu-fonce);
+  font-family: OpenSans-SemiBold; /* TODO ici aucune idée pourquoi je dois le mettre plus gros, car sinon sort trop petit! Effet visuel seulement? */
+}
+.utd-menu-horizontal-item.niv1.menu-plus.visible a.bordure-bas, .utd-menu-horizontal-item.niv1.menu-plus.visible a:focus ~ .bordure-bas {
+  background-color: var(--bleu-fonce);
+  width: calc(100% - 8px);
+  position: relative;
+  left: 4px;
+}
+.utd-menu-horizontal-item.niv1.menu-plus.visible a .chevron-blanc {
+  background-image: url("../images/utd-sprite.svg?v=1.11.0#ico-chevron");
+}
+.utd-menu-horizontal-item.niv1.menu-plus .sous-menu {
+  right: 0;
+  background: var(--bleu-pale) 0% 0% no-repeat padding-box;
+}
 .utd-menu-horizontal-item.niv1 .sous-menu {
   position: absolute;
   top: 100%;
   min-width: 200px;
-  padding: 8px 0;
+  padding: 4px 0;
   background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 4px 16px rgba(34, 54, 84, 0.2392156863);
   opacity: 1;
   z-index: 9999;
-}
-.utd-menu-horizontal-item.niv1 .sous-menu.menu-plus {
-  right: 0;
 }
 .utd-menu-horizontal-item.niv1 a {
   height: 100%;
@@ -2721,20 +2744,29 @@ utd-menu-horizontal > utd-menu-horizontal-item:last-of-type {
   width: 100%;
   background-color: transparent;
 }
-
-/* Niveaux 2 et + */
-.utd-menu-horizontal-item:not(.niv1) a {
-  font-family: OpenSans-SemiBold;
+.utd-menu-horizontal-item:not(.niv1) a:hover {
+  text-decoration: underline;
 }
 .utd-menu-horizontal-item:not(.niv1) a:hover, .utd-menu-horizontal-item:not(.niv1) a:focus {
-  text-decoration: underline;
   color: var(--couleur-liens);
 }
-
-/* Niveau 3 */
-.utd-menu-horizontal-item.niv3 a {
-  padding: 8px 32px;
+.utd-menu-horizontal-item.niv2 > a {
+  padding: 12px 16px;
+}
+.utd-menu-horizontal-item.niv2.visible {
+  background-color: #fff;
+}
+.utd-menu-horizontal-item.niv2.visible > a {
+  font-family: OpenSans-Bold;
+  padding-bottom: 16px;
+}
+.utd-menu-horizontal-item.niv2 .sous-menu {
+  padding-bottom: 16px;
+}
+.utd-menu-horizontal-item.niv3 > a {
+  padding: 8px 24px;
   font-size: 14px;
+  font-family: OpenSans-SemiBold;
 }
 
 /*====================================================================================================

@@ -43,6 +43,8 @@
 
     //TODO fermer tous les menus
     //TODO css du plus (hover, active, etc.)
+    //TODO navigation au clavier comme w3c
+    
     setTimeout(() => {
 
       if(contientMenusNonVisibles()) {        

@@ -36,7 +36,10 @@
 
   function toggleFocus(){
     if(focus === 'true'){
-      thisComponent.shadowRoot.querySelector('a').focus()
+      const premierLien = thisComponent.shadowRoot.querySelector('a')
+      if(premierLien){
+        premierLien.focus()
+      }
       focus = 'false'
     }
   }
@@ -200,20 +203,20 @@
     if(!utdMenuHorizontalParent.contains(e.relatedTarget)){
       const itemsMenu = utdMenuHorizontalParent.querySelectorAll('utd-menu-horizontal-item')
       itemsMenu.forEach((item) => {
-//        item.setAttribute('afficher', 'false')
+       // item.setAttribute('afficher', 'false')
       })
     }
   }
 
 </script>
-<div class="utd-menu-horizontal-item niv{niveau}{afficher === 'true' ? ' visible' : ''}{actif === 'true' ? ' active' : ''}" role="listitem">
+<div class="utd-menu-horizontal-item niv{niveau}{afficher === 'true' ? ' visible' : ''}{actif === 'true' ? ' active' : ''}{estMenuPlus === 'true' ? ' menu-plus' : ''}" role="listitem">
   {#if possedeEnfants}    
     <a role="button" href="{href}" aria-expanded="{afficher}" aria-controls="{idSousMenu}" on:click|preventDefault={toggleAfficher} on:keydown={onKeyDown} on:blur={onBlur} >
       <span>{libelle}</span>
       <span aria-hidden="true" class="utd-icone-svg {niveau === 1 ? 'chevron-blanc' : 'chevron-bleu-piv'}"/>
     </a>
     {#if afficher === 'true'}
-      <div id="{idSousMenu}" role="list" class="sous-menu {estMenuPlus === 'true' ? 'menu-plus' : ''}" transition:slide="{{duration: animer ==='true' ? 250: 0}}">
+      <div id="{idSousMenu}" role="list" class="sous-menu" transition:slide="{{duration: animer ==='true' ? 250: 0}}">
         <slot></slot>
       </div>
     {/if}

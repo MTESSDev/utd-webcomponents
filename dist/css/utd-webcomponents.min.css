@@ -2201,10 +2201,13 @@ button.utd-btn.utd-traitement-en-cours, input[type=submit].utd-btn.utd-traitemen
   min-width: 16px;
   background-image: url("../images/utd-sprite.svg?v=1.11.0#ico-xfermer-bleu");
 }
-.utd-icone-svg.chevron-bleu-piv, .utd-icone-svg.chevron-blanc, .utd-icone-svg.chevron-bleu-texte {
+.utd-icone-svg.chevron-bleu-piv, .utd-icone-svg.chevron-blanc, .utd-icone-svg.chevron {
   width: 16px;
   min-width: 16px;
   height: 10px;
+}
+.utd-icone-svg.chevron {
+  background-image: url("../images/utd-sprite.svg?v=1.11.0#ico-chevron");
 }
 .utd-icone-svg.chevron-bleu-piv {
   background-image: url("../images/utd-sprite.svg?v=1.11.0#ico-chevron-bleu-piv");
@@ -2627,9 +2630,17 @@ utd-menu-horizontal, utd-menu-horizontal-item {
   visibility: hidden;
   max-height: 72px;
 }
-utd-menu-horizontal.mounted, utd-menu-horizontal-item.mounted {
+
+utd-menu-horizontal.mounted, utd-menu-horizontal.mounted utd-menu-horizontal-item {
   visibility: visible;
   max-height: inherit;
+}
+utd-menu-horizontal.ajustement-en-cours, utd-menu-horizontal.ajustement-en-cours utd-menu-horizontal-item {
+  visibility: hidden;
+  overflow: hidden;
+}
+utd-menu-horizontal.ajustement-en-cours2, utd-menu-horizontal.ajustement-en-cours2 utd-menu-horizontal-item {
+  overflow: hidden;
 }
 
 .utd-menu-horizontal {
@@ -2676,6 +2687,22 @@ utd-menu-horizontal > utd-menu-horizontal-item:last-of-type {
 }
 .utd-menu-horizontal-item.niv1.active .bordure-bas {
   background-color: #909aa9;
+}
+.utd-menu-horizontal-item.niv1.menu-plus.visible {
+  background-color: var(--bleu-pale);
+}
+.utd-menu-horizontal-item.niv1.menu-plus.visible a {
+  color: var(--bleu-fonce);
+  font-family: OpenSans-SemiBold; /* TODO ici aucune idée pourquoi je dois le mettre plus gros, car sinon sort trop petit! Effet visuel seulement? */
+}
+.utd-menu-horizontal-item.niv1.menu-plus.visible a:hover ~ .bordure-bas, .utd-menu-horizontal-item.niv1.menu-plus.visible a:focus ~ .bordure-bas {
+  background-color: var(--bleu-fonce);
+}
+.utd-menu-horizontal-item.niv1.menu-plus.visible a.active ~ .bordure-bas {
+  background-color: var(--bleu-fonce);
+}
+.utd-menu-horizontal-item.niv1.menu-plus .sous-menu {
+  right: 0;
 }
 .utd-menu-horizontal-item.niv1 .sous-menu {
   position: absolute;

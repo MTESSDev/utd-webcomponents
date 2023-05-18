@@ -98,10 +98,13 @@
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-xfermer-bleu");
     }
     
-    &.chevron-bleu-piv, &.chevron-blanc, &.chevron-bleu-texte {
+    &.chevron-bleu-piv, &.chevron-blanc, &.chevron {
         width: 16px;
         min-width: 16px;
         height: 10px;
+    }    
+    &.chevron {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-chevron");
     }    
     &.chevron-bleu-piv {
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-chevron-bleu-piv");

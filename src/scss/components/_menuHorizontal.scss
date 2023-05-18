@@ -72,27 +72,52 @@ utd-menu-horizontal > utd-menu-horizontal-item {
 
         &.active {
             a {
-                font-family: OpenSans-Bold;
+                font-family: OpenSans-Bold;   
             }
             .bordure-bas{
                 background-color: #909aa9;                
             }
         }             
-    
+
+        &.menu-plus {
+            &.visible {
+                background-color: var(--bleu-pale);
+                
+                a {
+                    color: var(--bleu-fonce);
+                    font-family: OpenSans-SemiBold; /* TODO ici aucune idée pourquoi je dois le mettre plus gros, car sinon sort trop petit! Effet visuel seulement? */
+   
+                    &.bordure-bas, &:focus~.bordure-bas {
+                        background-color: var(--bleu-fonce);
+                        width: calc(100% - 8px);
+                        position: relative;
+                        left: 4px;                       
+                    }    
+                    .chevron-blanc {
+                        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-chevron");
+                    }           
+                }
+            }
+            .sous-menu {
+               right: 0;
+               background: var(--bleu-pale) 0% 0% no-repeat padding-box;
+            }
+
+
+            
+        }
+
         .sous-menu {
             position: absolute;
             top: 100%;
             min-width: 200px;
-            padding: 8px 0;
+            padding: 4px 0;
             background: #FFFFFF 0% 0% no-repeat padding-box;
             box-shadow: 0px 4px 16px #2236543D;
             opacity: 1;  
-            z-index: 9999;     
-            
-            &.menu-plus {
-                right: 0;
-            }
+            z-index: 9999;                 
         }
+
         a {
             height: 100%;
             justify-content: flex-start;
@@ -111,6 +136,8 @@ utd-menu-horizontal > utd-menu-horizontal-item {
                 margin-left: 8px;
             }
         }
+
+
         .bordure-bas{
             display: block;
             height: 4px;
@@ -119,22 +146,54 @@ utd-menu-horizontal > utd-menu-horizontal-item {
         }    
         
     }    
-}
 
-/* Niveaux 2 et + */
-.utd-menu-horizontal-item:not(.niv1) a {
-    &:hover, &:focus{
-        text-decoration: underline;
-        color: var(--couleur-liens);
+    /* Niveaux 2 et + */
+    &:not(.niv1) {
+    
+        a {             
+            &:hover {
+                text-decoration: underline;
+            }
+
+            &:hover, &:focus{
+                color: var(--couleur-liens);
+            }
+        }        
     }
-    font-family: OpenSans-SemiBold;    
+    /* Niveau 2*/
+    &.niv2 {
+        
+        & > a {
+            padding: 12px 16px;
+        }
+        
+        &.visible {
+            background-color: #fff;
+
+            & > a {
+                font-family: OpenSans-Bold;
+                padding-bottom: 16px;
+            }
+        }
+
+        .sous-menu {
+            padding-bottom: 16px;
+        }        
+    }
+
+    /* Niveau 3 */
+    &.niv3 {
+
+        & > a {
+            padding: 8px 24px;
+            font-size: 14px;
+            font-family: OpenSans-SemiBold;
+        }
+    }
 }
 
-/* Niveau 3 */
-.utd-menu-horizontal-item.niv3 a {
-    padding: 8px 32px;
-    font-size: 14px;
-}
+
+
 
 
 
