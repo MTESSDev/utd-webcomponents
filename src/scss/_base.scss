@@ -862,11 +862,6 @@ label + .utd-erreur-champ{
     margin-top: 4px;
 }
 
-textarea.utd-form-control{
-    height: auto;
-    width: 100%;
-}
-
 .utd-form-control:focus,
 input.utd-form-control:focus,
 textarea.utd-form-control:focus,
@@ -881,17 +876,17 @@ select.utd-form-control:focus {
 -Z20A- Forms (Champs largeurs)  
 ====================================================================================================*/
 
-input.utd-form-control
+input.utd-form-control,
+select.utd-form-control
 {
     /* On applique une largeur xl à tous les contrôles par défaut */
     width: 528px;
     max-width: 100%;
 }
 
-select.utd-form-control
-{
-    width: auto;
-    max-width: 100%;
+textarea.utd-form-control{
+    height: auto;
+    width: 100%;
 }
 
 input[type="number"].utd-form-control,
