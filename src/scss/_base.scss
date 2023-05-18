@@ -851,6 +851,11 @@ input.utd-form-control[type="search"]{
     outline-offset: 0;
 }
 
+select.utd-form-control:not([size]), select.utd-form-control[size="1"] {
+    max-height: 40px;
+    height: 40px;
+}
+
 .utd-erreur-champ {
     display: block;
     margin-top: 8px;
