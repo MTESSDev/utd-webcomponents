@@ -784,6 +784,11 @@ input.utd-form-control[type=search] {
   outline-offset: 0;
 }
 
+select.utd-form-control:not([size]), select.utd-form-control[size="1"] {
+  max-height: 40px;
+  height: 40px;
+}
+
 .utd-erreur-champ {
   display: block;
   margin-top: 8px;
@@ -793,11 +798,6 @@ input.utd-form-control[type=search] {
 /* Une erreur qui est immédiatement après un label (ex. un checkbox-seul) */
 label + .utd-erreur-champ {
   margin-top: 4px;
-}
-
-textarea.utd-form-control {
-  height: auto;
-  width: 100%;
 }
 
 .utd-form-control:focus,
@@ -812,15 +812,16 @@ select.utd-form-control:focus {
 /*====================================================================================================
 -Z20A- Forms (Champs largeurs)  
 ====================================================================================================*/
-input.utd-form-control {
+input.utd-form-control,
+select.utd-form-control {
   /* On applique une largeur xl à tous les contrôles par défaut */
   width: 528px;
   max-width: 100%;
 }
 
-select.utd-form-control {
-  width: auto;
-  max-width: 100%;
+textarea.utd-form-control {
+  height: auto;
+  width: 100%;
 }
 
 input[type=number].utd-form-control,
@@ -2671,6 +2672,7 @@ utd-menu-horizontal > utd-menu-horizontal-item:last-of-type {
 
 .utd-menu-horizontal-item {
   display: flex;
+  position: relative;
   flex-direction: column;
   height: 100%;
   /* Niveaux 2 et + */
@@ -2700,31 +2702,35 @@ utd-menu-horizontal > utd-menu-horizontal-item:last-of-type {
   background-color: var(--bleu-pale);
 }
 .utd-menu-horizontal-item.niv1.menu-plus.visible a {
-  color: var(--bleu-fonce);
+  color: var(--bleu-moyen);
   font-family: OpenSans-SemiBold; /* TODO ici aucune idée pourquoi je dois le mettre plus gros, car sinon sort trop petit! Effet visuel seulement? */
-}
-.utd-menu-horizontal-item.niv1.menu-plus.visible a.bordure-bas, .utd-menu-horizontal-item.niv1.menu-plus.visible a:focus ~ .bordure-bas {
-  background-color: var(--bleu-fonce);
-  width: calc(100% - 8px);
-  position: relative;
-  left: 4px;
 }
 .utd-menu-horizontal-item.niv1.menu-plus.visible a .chevron-blanc {
   background-image: url("../images/utd-sprite.svg?v=1.11.0#ico-chevron");
 }
+.utd-menu-horizontal-item.niv1.menu-plus.visible .bordure-bas {
+  background-color: var(--bleu-moyen);
+  width: calc(100% - 8px);
+  position: relative;
+  left: 4px;
+}
 .utd-menu-horizontal-item.niv1.menu-plus .sous-menu {
   right: 0;
   background: var(--bleu-pale) 0% 0% no-repeat padding-box;
+  padding: 0;
 }
 .utd-menu-horizontal-item.niv1 .sous-menu {
   position: absolute;
   top: 100%;
   min-width: 200px;
-  padding: 4px 0;
   background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 4px 16px rgba(34, 54, 84, 0.2392156863);
   opacity: 1;
   z-index: 9999;
+  padding: 8px 0;
+  border-left: 1px solid var(--gris-clair);
+  border-right: 1px solid var(--gris-clair);
+  border-bottom: 1px solid var(--gris-clair);
 }
 .utd-menu-horizontal-item.niv1 a {
   height: 100%;
@@ -2749,21 +2755,58 @@ utd-menu-horizontal > utd-menu-horizontal-item:last-of-type {
   width: 100%;
   background-color: transparent;
 }
-.utd-menu-horizontal-item:not(.niv1) a:hover {
-  text-decoration: underline;
+.utd-menu-horizontal-item:not(.niv1) a {
+  font-size: 14px;
 }
 .utd-menu-horizontal-item:not(.niv1) a:hover, .utd-menu-horizontal-item:not(.niv1) a:focus {
   color: var(--couleur-liens);
 }
-.utd-menu-horizontal-item.niv2 > a {
-  padding: 12px 16px;
+.utd-menu-horizontal-item:not(.niv1) a:hover {
+  text-decoration: underline;
 }
-.utd-menu-horizontal-item.niv2.visible {
+.utd-menu-horizontal-item.niv2 > a {
+  padding: 8px 16px;
+  font-family: OpenSans-SemiBold;
+}
+.utd-menu-horizontal-item.niv2.menu-plus {
+  border-bottom: 1px solid var(--gris-clair);
+}
+.utd-menu-horizontal-item.niv2.menu-plus.visible {
   background-color: #fff;
 }
-.utd-menu-horizontal-item.niv2.visible > a {
+.utd-menu-horizontal-item.niv2.menu-plus.visible > a {
   font-family: OpenSans-Bold;
-  padding-bottom: 16px;
+}
+.utd-menu-horizontal-item.niv2.menu-plus.visible > a:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 16px;
+  height: calc(100% - 32px);
+  width: 3px;
+  background-color: var(--bleu-fonce);
+}
+.utd-menu-horizontal-item.niv2.menu-plus.dernier {
+  border-bottom: 0;
+}
+.utd-menu-horizontal-item.niv2.menu-plus a {
+  position: relative;
+  color: var(--bleu-moyen);
+  font-family: OpenSans-Regular;
+  font-size: 16px;
+  padding: 16px;
+}
+.utd-menu-horizontal-item.niv2.menu-plus a:hover {
+  text-decoration: none;
+}
+.utd-menu-horizontal-item.niv2.menu-plus a:hover:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 16px;
+  height: calc(100% - 32px);
+  width: 3px;
+  background-color: var(--bleu-fonce);
 }
 .utd-menu-horizontal-item.niv2 .sous-menu {
   padding-bottom: 16px;

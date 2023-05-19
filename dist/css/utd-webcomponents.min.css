@@ -784,6 +784,11 @@ input.utd-form-control[type=search] {
   outline-offset: 0;
 }
 
+select.utd-form-control:not([size]), select.utd-form-control[size="1"] {
+  max-height: 40px;
+  height: 40px;
+}
+
 .utd-erreur-champ {
   display: block;
   margin-top: 8px;
@@ -793,11 +798,6 @@ input.utd-form-control[type=search] {
 /* Une erreur qui est immédiatement après un label (ex. un checkbox-seul) */
 label + .utd-erreur-champ {
   margin-top: 4px;
-}
-
-textarea.utd-form-control {
-  height: auto;
-  width: 100%;
 }
 
 .utd-form-control:focus,
@@ -812,15 +812,16 @@ select.utd-form-control:focus {
 /*====================================================================================================
 -Z20A- Forms (Champs largeurs)  
 ====================================================================================================*/
-input.utd-form-control {
+input.utd-form-control,
+select.utd-form-control {
   /* On applique une largeur xl à tous les contrôles par défaut */
   width: 528px;
   max-width: 100%;
 }
 
-select.utd-form-control {
-  width: auto;
-  max-width: 100%;
+textarea.utd-form-control {
+  height: auto;
+  width: 100%;
 }
 
 input[type=number].utd-form-control,

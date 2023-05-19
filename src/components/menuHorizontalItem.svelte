@@ -16,6 +16,7 @@
   export let focus = 'false'
   export let actif = 'false'
   export let estMenuPlus = 'false'
+  export let estDernier = 'false'
 
   let possedeEnfants = false
   let niveau = 1
@@ -209,7 +210,7 @@
   }
 
 </script>
-<div class="utd-menu-horizontal-item niv{niveau}{afficher === 'true' ? ' visible' : ''}{actif === 'true' ? ' active' : ''}{estMenuPlus === 'true' ? ' menu-plus' : ''}" role="listitem">
+<div class="utd-menu-horizontal-item niv{niveau}{afficher === 'true' ? ' visible' : ''}{actif === 'true' ? ' active' : ''}{estMenuPlus === 'true' ? ' menu-plus' : ''}{estDernier === 'true' ? ' dernier' : ''}" role="listitem">
   {#if possedeEnfants}    
     <a role="button" href="{href}" aria-expanded="{afficher}" aria-controls="{idSousMenu}" on:click|preventDefault={toggleAfficher} on:keydown={onKeyDown} on:blur={onBlur} >
       <span>{libelle}</span>

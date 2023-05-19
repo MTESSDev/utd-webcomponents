@@ -91,6 +91,12 @@
 
     for (let i = dernierIndexeVisible + 1; i < thisComponent.children.length; i++) {
       const cln = thisComponent.children[i].cloneNode(true);
+      cln.setAttribute('est-menu-plus', 'true')
+
+      if(i === thisComponent.children.length - 1) {
+        cln.setAttribute('est-dernier','true')
+      }
+
       menuPlus.appendChild(cln)            
       thisComponent.children[i].classList.add('utd-d-none')      
     }
