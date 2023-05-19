@@ -100,12 +100,15 @@ utd-menu-horizontal > utd-menu-horizontal-item {
                     left: 4px;                       
                 }    
             }
-            .sous-menu {
+
+            &:not(.menu-burger) .sous-menu {
                right: 0;
+            }
+
+            .sous-menu {
                background: var(--bleu-pale) 0% 0% no-repeat padding-box;
                padding: 0;
             }
-
 
             
         }

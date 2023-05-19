@@ -10,12 +10,14 @@
   export let libelle = ''
   export let href = ''
 
-  /* Propriétés "internes" */
+    /* Propriétés "internes" */
+  export let srLibelle = ''
   export let afficher = 'false'
   export let animer = 'true'
   export let focus = 'false'
   export let actif = 'false'
   export let estMenuPlus = 'false'
+  export let estMenuBurger = 'false'
   export let estDernier = 'false'
 
   let possedeEnfants = false
@@ -204,16 +206,19 @@
     if(!utdMenuHorizontalParent.contains(e.relatedTarget)){
       const itemsMenu = utdMenuHorizontalParent.querySelectorAll('utd-menu-horizontal-item')
       itemsMenu.forEach((item) => {
-        item.setAttribute('afficher', 'false')
+//        item.setAttribute('afficher', 'false')
       })
     }
   }
 
 </script>
-<div class="utd-menu-horizontal-item niv{niveau}{afficher === 'true' ? ' visible' : ''}{actif === 'true' ? ' active' : ''}{estMenuPlus === 'true' ? ' menu-plus' : ''}{estDernier === 'true' ? ' dernier' : ''}" role="listitem">
+<div class="utd-menu-horizontal-item niv{niveau}{afficher === 'true' ? ' visible' : ''}{actif === 'true' ? ' active' : ''}{estMenuPlus === 'true' ? ' menu-plus' : ''}{estMenuPlus === 'true' ? ' menu-burger' : ''}{estDernier === 'true' ? ' dernier' : ''}" role="listitem">
   {#if possedeEnfants}    
     <a role="button" href="{href}" aria-expanded="{afficher}" aria-controls="{idSousMenu}" on:click|preventDefault={toggleAfficher} on:keydown={onKeyDown} on:blur={onBlur} >
       <span>{libelle}</span>
+      {#if srLibelle}    
+        <span class="utd-sr-only">{srLibelle}</span>
+      {/if}
       <span aria-hidden="true" class="utd-icone-svg {niveau === 1 ? 'chevron-blanc' : 'chevron-bleu-piv'}"/>
     </a>
     {#if afficher === 'true'}
@@ -224,6 +229,9 @@
   {:else}
     <a href="{href}" aria-current="{actif === 'true' ? 'page' : null}" on:keydown={onKeyDown} on:blur={onBlur}>
       <span>{libelle}</span>
+      {#if srLibelle}    
+        <span class="utd-sr-only">{srLibelle}</span>
+      {/if}
     </a>    
   {/if}
   {#if niveau === 1}

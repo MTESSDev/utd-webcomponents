@@ -5,25 +5,31 @@
   import { get_current_component } from "svelte/internal"  
 
   export let titre = Utils.obtenirLanguePage() === 'en' ? 'Main navigation menu' : 'Menu principal de navigation'
+  export let largeurViewportMenuBurger = 475
 
   let afficher = false
 
   const idMenu = Utils.genererId()
   const idTitreMenu = Utils.genererId()
   const srTexteSortirMenu = Utils.obtenirLanguePage() === "en" ?  "Press ESC key to exit menu." : "Appuyez sur la touche Échappe pour sortir du menu."
+  const texteMenuPlus = Utils.obtenirLanguePage() === "en" ?  "More" : "Plus"
+  const texteSrMenuPlus = Utils.obtenirLanguePage() === "en" ?  ". Show remaining menu items." : ". Afficher les éléments de menu restants."
+  const texteMenuBurger = Utils.obtenirLanguePage() === "en" ?  "Menu" : "Menu"
   const thisComponent = get_current_component()
   let controleMenu
   let controleMenuItemPlus 
   let largeurConteneur = 0
   let largeurMenu = 0
+  let largeurViewport = 0
   let menuOriginal = []
   let dernierIndexeVisible = 0
-  let estAjustementAffichageEnCours = true
+
   // Références pour accessibilité
   // https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation/
 
 
   ajouterElementsMenuAuMenuOriginal(menuOriginal, thisComponent)
+  largeurViewport = window.innerWidth
 
   onMount(() => {      
     controleMenu = thisComponent.shadowRoot.getElementById(idMenu)
@@ -35,38 +41,50 @@
   const ecranRedimensionneDebounced = Utils.debounce(() => ajusterAffichageControle(), 100)
 
   function ajusterAffichageControle() {
-
+    largeurViewport = window.innerWidth
     thisComponent.classList.add('ajustement-en-cours')
     console.log('ajusterAffichageControle')
     supprimerMenuPlus()
     afficherTousMenusNiveau1()
 
     //TODO fermer tous les menus
-    //TODO css du plus (hover, active, etc.)
+    //TODO css du plus (active)
     //TODO navigation au clavier comme w3c
     
     setTimeout(() => {
 
-      if(contientMenusNonVisibles()) {        
-        ajouterMenuPlusTemporaire()
+      if(estAffichageMenuBurger()) {
+        setTimeout(() => {
+          dernierIndexeVisible = -1          
+          masquerMenusExcedentaires()
+
+          setTimeout(() => {
+            thisComponent.classList.remove('ajustement-en-cours')
+            Utils.reafficherApresChargement(thisComponent)                 
+          }, 100)
+        })
+      } else {
+        if(contientMenusNonVisibles()) {        
+          ajouterMenuPlusTemporaire()
           setTimeout(() => {
             //On enlève 1, car notre menuPlus temporaire ne doit pas compter
             dernierIndexeVisible = obtenirDernierIndexeVisible() - 1          
             thisComponent.children[0].remove()
             masquerMenusExcedentaires()
 
-//            console.log('dernier indexe visible -> ' + dernierIndexeVisible)          
+  //            console.log('dernier indexe visible -> ' + dernierIndexeVisible)          
             setTimeout(() => {
               thisComponent.classList.remove('ajustement-en-cours')
               Utils.reafficherApresChargement(thisComponent)                 
             }, 100)
           })
-      } else {
+        } else {
 //        console.log('Le menu fit, rien à faire!')
         thisComponent.classList.remove('ajustement-en-cours')
         Utils.reafficherApresChargement(thisComponent)
-      }
+        }
 
+      } 
 //      console.log(menuOriginal)
     })
   }
@@ -85,13 +103,25 @@
   }
 
   function masquerMenusExcedentaires() {
+    const estMenuBurger = estAffichageMenuBurger()    
+
     const menuPlus = document.createElement('utd-menu-horizontal-item')
-    menuPlus.setAttribute('libelle', 'Plus')
+    menuPlus.setAttribute('libelle', estMenuBurger ? texteMenuBurger : texteMenuPlus)
+    menuPlus.setAttribute('sr-libelle', texteSrMenuPlus)
     menuPlus.setAttribute('est-menu-plus', 'true')
+
+    if(estMenuBurger){
+      menuPlus.setAttribute('est-menu-burger', 'true')
+    }
 
     for (let i = dernierIndexeVisible + 1; i < thisComponent.children.length; i++) {
       const cln = thisComponent.children[i].cloneNode(true);
       cln.setAttribute('est-menu-plus', 'true')
+
+      if(estMenuBurger){
+        cln.setAttribute('est-menu-burger', 'true')
+      }
+
 
       if(i === thisComponent.children.length - 1) {
         cln.setAttribute('est-dernier','true')
@@ -126,9 +156,13 @@
   }
 
   function contientMenusNonVisibles() {
-    largeurConteneur = thisComponent.getBoundingClientRect().right
-    largeurMenu = thisComponent.children[thisComponent.children.length - 1].getBoundingClientRect().right
-    return largeurMenu > largeurConteneur
+      largeurConteneur = thisComponent.getBoundingClientRect().right
+      largeurMenu = thisComponent.children[thisComponent.children.length - 1].getBoundingClientRect().right
+      return largeurMenu > largeurConteneur
+  }
+
+  function estAffichageMenuBurger() {
+    return largeurViewport <= largeurViewportMenuBurger
   }
 
   function obtenirDernierIndexeVisible(){
@@ -155,7 +189,7 @@
 
   function ajouterMenuPlusTemporaire(){
     const menuPlusTemp = document.createElement('utd-menu-horizontal-item')
-    menuPlusTemp.setAttribute('libelle', 'Plus')
+    menuPlusTemp.setAttribute('libelle', texteMenuPlus)
 
     const elementTemp = document.createElement('utd-menu-horizontal-item')
     elementTemp.setAttribute('libelle', 'Temporaire')
@@ -163,19 +197,6 @@
 
     thisComponent.prepend(menuPlusTemp)
     controleMenuItemPlus = menuPlusTemp
-  }
-
-  function ajouterMenuPlus(){
-    const menuPlus = document.createElement('utd-menu-horizontal-item')
-    menuPlus.setAttribute('libelle', 'Plus')
-      
-    thisComponent.childNodes.forEach(function(item){
-      const cln = item.cloneNode(true);
-      menuPlus.appendChild(cln);
-    })
-
-    thisComponent.appendChild(menuPlus)
-    controleMenuItemPlus = menuPlus
   }
 
 </script>
