@@ -212,14 +212,19 @@
   }
 
 </script>
-<div class="utd-menu-horizontal-item niv{niveau}{afficher === 'true' ? ' visible' : ''}{actif === 'true' ? ' active' : ''}{estMenuPlus === 'true' ? ' menu-plus' : ''}{estMenuPlus === 'true' ? ' menu-burger' : ''}{estDernier === 'true' ? ' dernier' : ''}" role="listitem">
+<div class="utd-menu-horizontal-item niv{niveau}{afficher === 'true' ? ' visible' : ''}{actif === 'true' ? ' active' : ''}{estMenuPlus === 'true' ? ' menu-plus' : ''}{estMenuBurger === 'true' ? ' menu-burger' : ''}{estDernier === 'true' ? ' dernier' : ''}" role="listitem">
   {#if possedeEnfants}    
     <a role="button" href="{href}" aria-expanded="{afficher}" aria-controls="{idSousMenu}" on:click|preventDefault={toggleAfficher} on:keydown={onKeyDown} on:blur={onBlur} >
+      {#if niveau === 1 && estMenuBurger === 'true'}    
+        <span aria-hidden="true" class="utd-icone-svg{afficher === 'true' ?  ' x-fermer-bleu-moyen' : ' burger'}"/>
+      {/if}      
       <span>{libelle}</span>
       {#if srLibelle}    
         <span class="utd-sr-only">{srLibelle}</span>
       {/if}
-      <span aria-hidden="true" class="utd-icone-svg {niveau === 1 ? 'chevron-blanc' : 'chevron-bleu-piv'}"/>
+      {#if estMenuBurger !== 'true'}    
+        <span aria-hidden="true" class="utd-icone-svg {niveau === 1 ? 'chevron-blanc' : 'chevron-bleu-moyen'}"/>
+      {/if}      
     </a>
     {#if afficher === 'true'}
       <div id="{idSousMenu}" role="list" class="sous-menu" transition:slide="{{duration: animer ==='true' ? 250: 0}}">
@@ -233,9 +238,6 @@
         <span class="utd-sr-only">{srLibelle}</span>
       {/if}
     </a>    
-  {/if}
-  {#if niveau === 1}
-    <span class="bordure-bas"></span>                  
   {/if}
 
 </div>

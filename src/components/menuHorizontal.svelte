@@ -6,6 +6,8 @@
 
   export let titre = Utils.obtenirLanguePage() === 'en' ? 'Main navigation menu' : 'Menu principal de navigation'
   export let largeurViewportMenuBurger = 475
+  export let afficherIconeAccueil = 'false'
+  export let urlAccueil = '/'
 
   let afficher = false
 
@@ -23,12 +25,14 @@
   let largeurViewport = 0
   let menuOriginal = []
   let dernierIndexeVisible = 0
+  let accueilActif = false
 
   // Références pour accessibilité
   // https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation/
 
 
   ajouterElementsMenuAuMenuOriginal(menuOriginal, thisComponent)
+
   largeurViewport = window.innerWidth
 
   onMount(() => {      
@@ -211,6 +215,14 @@
   </a>
 
   <div id={idMenu} role="list" class="menu" class:visible={afficher}>
+    <div class="utd-menu-horizontal-item niv1 accueil {accueilActif ? ' active' : ''}" role="listitem">
+      {#if afficherIconeAccueil === 'true'}    
+        <a href="{urlAccueil}">
+          <span aria-hidden="true" class="utd-icone-svg maison"/>
+        </a>
+        <span class="bordure-bas"></span>
+      {/if}
+    </div>
     <slot></slot>
   </div>  
 </nav>
