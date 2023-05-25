@@ -36,7 +36,7 @@ utd-pied-page-site [slot="contenu"]{
 /*====================================================================================================*/
 
 .conteneur-menu-identification {
-    background-color: var(--couleur-texte-base);
+    background-color: var(--bleu-moyen);
     color: #fff;
 }
 

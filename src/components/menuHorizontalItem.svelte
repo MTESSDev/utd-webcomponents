@@ -27,7 +27,7 @@
   const idSousMenu = Utils.genererId()
  
   onMount(() => {
-    actif = estElementActif()
+//    actif = estElementActif()
     niveau = obtenirNiveau()
     possedeEnfants = !!thisComponent.querySelector('utd-menu-horizontal-item')
 
@@ -222,7 +222,7 @@
       {#if srLibelle}    
         <span class="utd-sr-only">{srLibelle}</span>
       {/if}
-      {#if estMenuBurger !== 'true'}    
+      {#if niveau !== 1 || estMenuBurger !== 'true'}    
         <span aria-hidden="true" class="utd-icone-svg {niveau === 1 ? 'chevron-blanc' : 'chevron-bleu-moyen'}"/>
       {/if}      
     </a>

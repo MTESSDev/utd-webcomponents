@@ -8,6 +8,7 @@
   export let largeurViewportMenuBurger = 475
   export let afficherIconeAccueil = 'false'
   export let urlAccueil = '/'
+  export let gererElementsActifs = 'true'
 
   let afficher = false
 
@@ -31,7 +32,10 @@
   // https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation/
 
 
-  ajouterElementsMenuAuMenuOriginal(menuOriginal, thisComponent)
+  //ajouterElementsMenuAuMenuOriginal(menuOriginal, thisComponent)
+  if(gererElementsActifs === 'true') {
+    definirElementsActifs()
+  }
 
   largeurViewport = window.innerWidth
 
@@ -47,7 +51,6 @@
   function ajusterAffichageControle() {
     largeurViewport = window.innerWidth
     thisComponent.classList.add('ajustement-en-cours')
-    console.log('ajusterAffichageControle')
     supprimerMenuPlus()
     afficherTousMenusNiveau1()
 
@@ -76,7 +79,6 @@
             thisComponent.children[0].remove()
             masquerMenusExcedentaires()
 
-  //            console.log('dernier indexe visible -> ' + dernierIndexeVisible)          
             setTimeout(() => {
               thisComponent.classList.remove('ajustement-en-cours')
               Utils.reafficherApresChargement(thisComponent)                 
@@ -84,14 +86,50 @@
           })
         } else {
 //        console.log('Le menu fit, rien à faire!')
-        thisComponent.classList.remove('ajustement-en-cours')
-        Utils.reafficherApresChargement(thisComponent)
+          thisComponent.classList.remove('ajustement-en-cours')
+          Utils.reafficherApresChargement(thisComponent)
         }
-
       } 
-//      console.log(menuOriginal)
     })
   }
+
+  
+  function definirElementsActifs() {
+    
+    const itemsMenu = document.querySelectorAll('utd-menu-horizontal-item')
+    let elementActif
+
+    for (let i = 0; i < itemsMenu.length; i++) {
+      const itemMenu = itemsMenu[i]
+      const href = itemMenu.getAttribute('href')
+      
+      if(href) {    
+        if(window.location.pathname === href) {
+          elementActif = itemMenu
+          break
+        } else if(window.location.pathname.startsWith(href)) { 
+          elementActif = itemMenu
+        }
+      }    
+    }  
+
+    if(elementActif) {
+      const parents = Utils.obtenirParents(elementActif)
+      
+      for (let i = 0; i < parents.length; i++) {
+        const parent = parents[i];
+
+        if(parent.tagName === 'UTD-MENU-HORIZONTAL-ITEM') {
+          parent.setAttribute('actif', 'true')
+        } else if (parent.tagName === 'UTD-MENU-HORIZONTAL') {
+          break
+        }      
+      }
+    }
+  }
+
+  
+
   function supprimerMenuPlus() {
       const menuPlus = thisComponent.querySelector('utd-menu-horizontal-item[est-menu-plus]')
       if(menuPlus) {
@@ -114,18 +152,23 @@
     menuPlus.setAttribute('sr-libelle', texteSrMenuPlus)
     menuPlus.setAttribute('est-menu-plus', 'true')
 
-    if(estMenuBurger){
+    if(estMenuBurger) {
       menuPlus.setAttribute('est-menu-burger', 'true')
     }
+
+    let contientElementActif = false
 
     for (let i = dernierIndexeVisible + 1; i < thisComponent.children.length; i++) {
       const cln = thisComponent.children[i].cloneNode(true);
       cln.setAttribute('est-menu-plus', 'true')
 
-      if(estMenuBurger){
+      if(estMenuBurger) {
         cln.setAttribute('est-menu-burger', 'true')
       }
 
+      if(cln.getAttribute('actif') === 'true') {
+        contientElementActif = true
+      }
 
       if(i === thisComponent.children.length - 1) {
         cln.setAttribute('est-dernier','true')
@@ -135,20 +178,24 @@
       thisComponent.children[i].classList.add('utd-d-none')      
     }
 
+    if (gererElementsActifs === 'true' && contientElementActif) {
+      menuPlus.setAttribute('actif', 'true')
+    }
+
     thisComponent.appendChild(menuPlus)    
   }
 
   function ajouterElementsMenuAuMenuOriginal(elementMenuItem, parent) {
+
     Array.from(parent.children).forEach((child) => {
       const elementMenu = {
         libelle: child.getAttribute('libelle'),
         href: child.getAttribute('href'),
         children : []
       }
-
+  
       elementMenuItem.push(elementMenu)
 
-      //
       if(child.childNodes.length) {
         ajouterElementsMenuAuMenuOriginal(elementMenu.children, child)
       }
