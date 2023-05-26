@@ -1,0 +1,125 @@
+/*====================================================================================================
+  -900- Icônes svg 
+====================================================================================================*/
+/* Taille par défaut des icônes svg */
+.utd-icone-svg {
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% auto;
+    min-width: 32px;
+    height: 32px;
+
+
+    /* Icônes svg small (sm) */
+    &.sm {
+        min-width: 12px;
+        height: 12px;
+    }
+
+    /* Icônes svg medium (md) */
+    &.md {
+        min-width: 20px;
+        height: 20px;
+    }
+
+    /* Icônes svg large (large) */
+    &.lg {
+        min-width: 40px;
+        height: 40px;
+    }
+
+    &.avertissement {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-avertissement");
+    }
+    
+    &.astuce {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-ampoule");
+    }
+    
+    &.fleche-haut-blanche {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-fleche-haut-blanche");
+    }
+    
+    &.clipboard {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-clipboard");
+    }
+    
+    &.erreur {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-erreur");
+    }
+    
+    &.erreur-blanc {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-erreur-blanc");
+    }
+    
+    &.information {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-information");
+    }
+    
+    &.information-blanc {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-information-blanc");
+    }
+    
+    &.moins {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-moins");
+    }
+    
+    &.plus {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-plus");
+    }
+    
+    &.question {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-question");
+    }
+    
+    &.rappel {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-rappel");
+    }
+    
+    &.succes {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-succes");
+    }
+    &.succes-blanc {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-succes-blanc");
+    }
+    
+    &.x-fermer-blanc {
+        width: 16px;
+        height: 16px;
+        min-width: 16px;
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-xfermer-blanc");
+    }
+    &.x-fermer-bleu {
+        width: 16px;
+        height: 16px;
+        min-width: 16px;
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-xfermer-bleu");
+    }
+    
+    &.chevron-bleu-piv, &.chevron-blanc, &.chevron-bleu-texte {
+        width: 16px;
+        min-width: 16px;
+        height: 10px;
+    }    
+    &.chevron-bleu-piv {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-chevron-bleu-piv");
+    }    
+    &.chevron-blanc {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-chevron-blanc");
+    }    
+    &.facebook {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-facebook");
+    }    
+    &.linkedin {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-linkedin");
+        height: 30px;
+    }    
+    &.twitter {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-twitter");
+    }    
+    &.youtube {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-youtube");
+    }    
+}

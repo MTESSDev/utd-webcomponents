@@ -224,7 +224,7 @@ export const traitementEnCours = (function () {
 
         avecOverlay = avecOverlay !== undefined ? avecOverlay : true;
 
-        if (element) {
+        if (element && !element.getAttribute('overlay')) {
 
             //Ajouter un overlay global pendant le traitement en cours s'il y a lieu (défaut oui)  
             if (avecOverlay) {

@@ -14,7 +14,7 @@
 
     function obtenirTableauParametres() {
         return [
-            {nom: "type", type: "String (Optionnel)", description: `Type de l'avis (icône/couleur). Valeurs possibles : <span class="utd-emphase-gris">information</span>, <span class="utd-emphase-gris">avertissement</span>, <span class="utd-emphase-gris">succes</span>, <span class="utd-emphase-gris">erreur</span>. Défaut "information".`},
+            {nom: "type", type: "String (Optionnel)", description: `Type de l'avis (icône/couleur). Valeurs possibles : <span class="utd-emphase-gris">information</span>, <span class="utd-emphase-gris">avertissement</span>, <span class="utd-emphase-gris">succes</span>, <span class="utd-emphase-gris">erreur</span>, ou <span class="utd-emphase-gris">complementaire</span>. Défaut "information".`},
             {nom: "titre", type: "String (Optionnel)", description: `Titre affiché dans l'avis.`},
             {nom: "contenu", type: "String (Optionnel)", description: `Texte à afficher dans l'avis.`}
         ];
@@ -90,9 +90,9 @@
     <utd-avis type="avertissement" titre="Les informations suivantes pourraient vous sauver la vie.">
         <span>Certains faits importants à savoir à propos de Chuck Norris :</span>
         <ul>
-            <li>Un jour Chuck Norris a eu un zero en latin, depuis c'est une langue morte;</li>
-            <li>Chuck Norris a déjà compté jusqu'à l'infini. Deux fois;</li>
-            <li>C'est Chuck Norris qui a décidé que toute phrase se terminait par un poing;</li>
+            <li>Un jour Chuck Norris a eu un zero en latin, depuis c'est une langue morte.</li>
+            <li>Chuck Norris a déjà compté jusqu'à l'infini. Deux fois.</li>
+            <li>C'est Chuck Norris qui a décidé que toute phrase se terminait par un poing.</li>
         </ul>
     </utd-avis>    
 </div>
@@ -113,9 +113,9 @@
     <utd-avis type="succes" titre="Chuck Norris a été élu être humain le plus extraordinaire de tous les temps.">
         <span>Certains faits importants à savoir à propos de Chuck Norris :</span>
         <ul>
-            <li>Un jour Chuck Norris a eu un zero en latin, depuis c'est une langue morte;</li>
-            <li>Chuck Norris a déjà compté jusqu'à l'infini. Deux fois;</li>
-            <li>C'est Chuck Norris qui a décidé que toute phrase se terminait par un poing;</li>
+            <li>Un jour Chuck Norris a eu un zero en latin, depuis c'est une langue morte.</li>
+            <li>Chuck Norris a déjà compté jusqu'à l'infini. Deux fois.</li>
+            <li>C'est Chuck Norris qui a décidé que toute phrase se terminait par un poing.</li>
         </ul>
     </utd-avis>    
 </div>
@@ -148,6 +148,34 @@
     </utd-avis>    
 </div>
 <CodeSource idElementCodeSource="exempleErreur2">
+</CodeSource>
+
+<h3>Avis complémentaire</h3>
+<p>Le type d'avis <span class="utd-emphase-gris">complementaire</span> doit être précisé (sous-type). Valeurs possibles: <span class="utd-emphase-gris">astuce</span> et <span class="utd-emphase-gris">rappel</span>.
+<h4>9- Avec attribut "contenu" </h4>
+<div id="exempleComplementaire1">
+    <utd-avis type="complementaire astuce" titre="Saviez-vous que..." contenu="Chuck Norris a déjà compté jusqu'à l'infini. Deux fois!"></utd-avis>
+</div>
+<CodeSource idElementCodeSource="exempleComplementaire1">
+</CodeSource>
+
+<h4>10- Avec slot par défaut</h4>
+<div id="exempleComplementaire2">
+    <utd-avis type="complementaire rappel" titre="Ne pas oublier">
+        <ul>
+            <li>
+                compléter le formulaire A38;
+            </li>
+            <li>
+                armez-vous de patience;
+            </li>
+            <li>
+                apporter le formulaire complété à la capitainerie du port.
+            </li>
+        </ul>
+    </utd-avis>    
+</div>
+<CodeSource idElementCodeSource="exempleComplementaire2">
 </CodeSource>
 
 

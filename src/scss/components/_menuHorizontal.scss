@@ -1,0 +1,129 @@
+/*====================================================================================================*/
+/*  -15- Menu principal (desktop)
+/*====================================================================================================*/
+
+utd-menu-horizontal, utd-menu-horizontal-item {
+    display: block;
+    visibility: hidden;
+    max-height: 72px;
+
+    &.mounted{
+        visibility: visible;
+        max-height: inherit;
+    }    
+}
+
+.utd-menu-horizontal {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+    max-width: calc(100vw - 16px);
+    /*overflow-x: hidden;*/
+
+    div[role="list"] {
+        display: flex;
+        padding: 0;
+        margin: 0;
+        height: 100%;
+    }
+}
+
+
+utd-menu-horizontal > utd-menu-horizontal-item {
+    margin-right: 32px;
+
+    &:last-of-type{
+        margin-right: 0;
+    }
+}
+
+.utd-menu-horizontal-item {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    &:not(.visible) .utd-icone-svg{
+        transform: rotate(-180deg);
+    }
+    
+    a {
+        padding: 8px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-decoration: none;
+    }
+
+    &.niv1 {
+        position: relative;
+
+        &.active {
+            a {
+                font-family: OpenSans-Bold;
+            }
+            .bordure-bas{
+                background-color: #909aa9;                
+            }
+        }             
+    
+        .sous-menu {
+            position: absolute;
+            top: 100%;
+            min-width: 200px;
+            padding: 8px 0;
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            box-shadow: 0px 4px 16px #2236543D;
+            opacity: 1;  
+            z-index: 9999;          
+        }
+        a {
+            height: 100%;
+            justify-content: flex-start;
+            color: #fff;
+            font-family: 'OpenSans-Regular', sans-serif;
+            font-size: var(--tc-18-16-val);
+            padding: 8px 8px 4px 8px;
+            
+            &:hover~.bordure-bas, &:focus~.bordure-bas {
+                background-color: #909aa9;
+            }    
+            &.active~.bordure-bas {
+                background-color: #909aa9;                
+            }            
+            .utd-icone-svg {
+                margin-left: 8px;
+            }
+        }
+        .bordure-bas{
+            display: block;
+            height: 4px;
+            width: 100%;
+            background-color: transparent;
+        }    
+        
+    }    
+}
+
+/* Niveaux 2 et + */
+.utd-menu-horizontal-item:not(.niv1) a {
+    &:hover, &:focus{
+        text-decoration: underline;
+        color: var(--couleur-liens);
+    }
+    font-family: OpenSans-SemiBold;    
+}
+
+/* Niveau 3 */
+.utd-menu-horizontal-item.niv3 a {
+    padding: 8px 32px;
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+
+

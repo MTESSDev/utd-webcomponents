@@ -22,6 +22,7 @@
     import ChampObligatoire from './pages/ChampObligatoire.svelte';
     import ChampErreur from './pages/ChampErreur.svelte';
     import MenuVertical from './pages/MenuVertical.svelte';
+    import MenuHorizontal from './pages/MenuHorizontal.svelte';
     import MenuAncres from './pages/MenuAncres.svelte';
     import PivEntete from './pages/PivEntete.svelte';
   import PivPiedPage from './pages/PivPiedPage.svelte';
@@ -29,6 +30,8 @@
   import NousJoindre from './pages/NousJoindre.svelte';
   import ListeDeroulante from './pages/ListeDeroulante.svelte';
   import ReglesInterfaces from './pages/ReglesInterfaces.svelte';
+  import PointsSuspension from './pages/PointsSuspension.svelte';
+
 
     onMount(() => {  
         document.getElementById('pivEntete').addEventListener("clickLien", () => {       
@@ -77,7 +80,7 @@
 
             <div slot="liens">
                 <ul>
-                    {#if $router.path.indexOf('/composants/entetepiedpage/piventete') >= 0}
+                    {#if $router.path.indexOf('/composants/navigation/menuhorizontal') >= 0}
                         <li><a href="#fakeEnglish">English</a></li>
                     {/if}
                     <li><a href="/base/nousjoindre">Nous joindre</a></li>
@@ -101,19 +104,47 @@
 
         <div class="conteneur-menu-identification">
             <div class="utd-container zone-menu-identification">
-                <h2 id="titreMenuPrincipal" class="utd-sr-only">Menu principal de navigation</h2>
-                <nav class="menu-principal" aria-labelledby="titreMenuPrincipal">
-                    <ul>
-                        <li>
-                            <a href="/base" use:active>Base</a>
-                        </li>
-                        <li>
-                            <a href="/composants" on:click={clickMenuComposants} use:active>Composants</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="container zone-menu-principal">
+                <utd-menu-horizontal>
+                    <utd-menu-horizontal-item libelle="Base" href="/base"></utd-menu-horizontal-item>
+                    <utd-menu-horizontal-item libelle="Composants" href="/composants" on:click={clickMenuComposants}></utd-menu-horizontal-item>
+                    {#if $router.path.indexOf('/composants/navigation/menuhorizontal') >= 0}                    
+                        <utd-menu-horizontal-item libelle="Menu 3">
+                            <utd-menu-horizontal-item libelle="Élément 1" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Élément 2" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Élément 3" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Élément 4" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Élément 5" href="#"></utd-menu-horizontal-item>
+                        </utd-menu-horizontal-item>
+                        <utd-menu-horizontal-item libelle="Menu 4">
+                            <utd-menu-horizontal-item libelle="Élément 1" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Élément 2" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Élément 3" href="#"></utd-menu-horizontal-item>
+                        </utd-menu-horizontal-item>
+                        <utd-menu-horizontal-item libelle="Menu 5">
+                            <utd-menu-horizontal-item libelle="Élément 1" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Élément 2" href="#"></utd-menu-horizontal-item>
+                        </utd-menu-horizontal-item>
+
+                        <utd-menu-horizontal-item libelle="Menu 6">
+                            <utd-menu-horizontal-item libelle="Élément 1" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Élément 2" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Élément 3" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Élément 4" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Élément 5" href="#"></utd-menu-horizontal-item>
+                        </utd-menu-horizontal-item>
+                        <utd-menu-horizontal-item libelle="Menu 7">
+                            <utd-menu-horizontal-item libelle="Élément 1" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Élément 2" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Élément 3" href="#"></utd-menu-horizontal-item>
+                        </utd-menu-horizontal-item>
+                        <utd-menu-horizontal-item libelle="Menu 8">
+                            <utd-menu-horizontal-item libelle="Élément 1" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Élément 2" href="#"></utd-menu-horizontal-item>
+                        </utd-menu-horizontal-item>    
+
+
+                    {/if}
+                </utd-menu-horizontal>                
             </div>
         </div>
 
@@ -136,6 +167,7 @@
                             <utd-menu-vertical-item libelle="Accordéon" href="/composants/affichagecontenu/accordeon"></utd-menu-vertical-item>
                             <utd-menu-vertical-item libelle="Avis" href="/composants/affichagecontenu/avis"></utd-menu-vertical-item>
                             <utd-menu-vertical-item libelle="Infobulle" href="/composants/affichagecontenu/infobulle"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item libelle="Points de suspension" href="/composants/affichagecontenu/pointssuspension"></utd-menu-vertical-item>
                             <utd-menu-vertical-item libelle="Section" href="/composants/affichagecontenu/section"></utd-menu-vertical-item>
                         </utd-menu-vertical-item>
                         <utd-menu-vertical-item libelle="Formulaire">    
@@ -147,7 +179,7 @@
                             <utd-menu-vertical-item libelle="Erreurs" href="/composants/formulaire/champerreur"></utd-menu-vertical-item>                                 
                             <utd-menu-vertical-item libelle="Liste déroulante" href="/composants/formulaire/listederoulante"></utd-menu-vertical-item>                                 
                         </utd-menu-vertical-item>
-                        <utd-menu-vertical-item libelle="Navigation">                                
+                        <utd-menu-vertical-item libelle="Navigation">       
                             <utd-menu-vertical-item libelle="Haut de page" href="/composants/navigation/hautpage"></utd-menu-vertical-item>
                             <utd-menu-vertical-item libelle="Menu d'ancres" href="/composants/navigation/menuancres"></utd-menu-vertical-item>
                             <utd-menu-vertical-item libelle="Menu vertical" href="/composants/navigation/menuvertical"></utd-menu-vertical-item>
@@ -193,6 +225,7 @@
                             <Route path="/accordeon" ><Accordeon /></Route>
                             <Route path="/avis" ><Avis /></Route>
                             <Route path="/infobulle" ><Infobulle /></Route>    
+                            <Route path="/pointssuspension" ><PointsSuspension /></Route>    
                             <Route path="/section" ><Section /></Route>    
                         </Route>
                         <Route path="/formulaire/*">                    
@@ -207,6 +240,7 @@
                         <Route path="/navigation/*">                    
                             <Route path="/hautpage" ><HautPage /></Route>
                             <Route path="/menuancres" ><MenuAncres /></Route>
+                            <Route path="/menuhorizontal" ><MenuHorizontal /></Route>
                             <Route path="/menuvertical" ><MenuVertical /></Route>
                         </Route>                            
                         <Route path="/entetepiedpage/*">                    

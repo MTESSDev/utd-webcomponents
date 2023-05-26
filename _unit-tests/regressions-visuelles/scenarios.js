@@ -672,6 +672,42 @@ scenarios : [
         removeSelectors: [".no-test", "#colonneGauche"],
         shadowClickSelectors: [{domSelector: "utd-menu-ancres", shadowDomSelector: 'a[href="#exemple"]'}]
     },
+    //Menu horizontal (Base)        
+    {
+        label: "Menu_horizontal (Base)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: [".conteneur-menu-identification"],
+        removeSelectors: [".no-test"]
+    },    
+    //Menu horizontal (Base mobile)        
+/*    {
+        label: "Menu_horizontal (Base-mobile)", 
+        url: "/composants/navigation/menuhorizontal",
+        viewports: viewports.vTabletPhone,
+        selectors: [".conteneur-menu-identification"],  
+        removeSelectors: [".no-test"],      
+        shadowClickSelectors: [{domSelector: "utd-menu-horizontal", shadowDomSelector: "a.toggle"}]
+    },    */
+    //Menu horizontal (Hover niveau 1 sans enfants - Desktop)        
+    {
+        label: "Menu_horizontal (Hover niveau 1 sans enfants)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: [".conteneur-menu-identification"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktop, 
+        hoverSelectors: ['utd-menu-horizontal-item[href="/base"]']
+    },    
+    //Menu horizontal (Hover niveau 1 sans enfants - Mobile)        
+/*    {
+        label: "Menu_horizontal (Hover niveau 1 sans enfants - Mobile)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: [".conteneur-menu-identification"], 
+        removeSelectors: [".no-test"],
+        viewports: viewports.vTabletPhone,
+        shadowClickSelectors: [{domSelector: "utd-menu-horizontal", shadowDomSelector: "a.toggle"}],
+        hoverSelectors2: ['utd-menu-horizontal-item[href="/base"]']
+    },    */
+
     //Menu vertical (Base)        
     {
         label: "Menu_vertical (Base)", 
@@ -681,7 +717,7 @@ scenarios : [
     },    
     //Menu vertical (Base mobile)        
     {
-        label: "Menu_vertical (Base)", 
+        label: "Menu_vertical (Base-mobile)", 
         url: "/composants/navigation/menuvertical",
         viewports: viewports.vTabletPhone,
         selectors: ["utd-menu-vertical"],        
@@ -904,7 +940,32 @@ scenarios : [
         url: "/composants/entetepiedpage/pivpiedpage",
         selectors: ["footer"],  
         removeSelectors: [".no-test"]
+    },
+    //Points suspension (Base)
+    {
+        label: "Points_suspension (Base)", 
+        viewports: viewports.vDesktopPhones,
+        selectors: [".backstop-test"],
+        url: "/composants/affichagecontenu/pointssuspension"
     },    
+    //Points suspension (Click ...)
+    {
+        label: "Points_suspension (Click ...)",
+        viewports: viewports.vDesktopPhones,
+        selectors: [".backstop-test"],         
+        url: "/composants/affichagecontenu/pointssuspension",
+        shadowClickSelectors: [{domSelector: "#exemplePointsSuspension1 utd-points-suspension", shadowDomSelector: 'a'}, {domSelector: "#exemplePointsSuspension2 utd-points-suspension", shadowDomSelector: 'a'}, {domSelector: "#exemplePointsSuspension3 utd-points-suspension", shadowDomSelector: 'a'}, {domSelector: "#exemplePointsSuspension4 utd-points-suspension", shadowDomSelector: 'a'}, {domSelector: "#exemplePointsSuspension5 utd-points-suspension", shadowDomSelector: 'a'}, {domSelector: "#exemplePointsSuspension6 utd-points-suspension", shadowDomSelector: 'a'}, {domSelector: "#exemplePointsSuspension7 utd-points-suspension", shadowDomSelector: 'a'}]
+    },    
+    //Points suspension (reinitialisation ...)
+    {
+        label: "Points_suspension (Reinitialisation)",
+        viewports: viewports.vPhone,
+        selectors: ["#exemplePointsSuspension6"],         
+        url: "/composants/affichagecontenu/pointssuspension",
+        shadowClickSelectors: [{domSelector: "#exemplePointsSuspension6 utd-points-suspension", shadowDomSelector: 'a'}],
+        clickSelectors2: ["#btnTest6"]
+    },    
+
     //Section (base)
     {
         label: "Section (Base)", 

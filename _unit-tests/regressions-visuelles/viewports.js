@@ -33,5 +33,6 @@ module.exports = {
     vDesktop : [desktopData],
     vTablet : [tabletData],
     vPhone : [phoneData],
+    vDesktopPhones : [desktopData, phoneData, largePhoneData],
     vLargePhone : [largePhoneData]
 };
