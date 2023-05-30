@@ -37,7 +37,6 @@
   // https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation/
 
     //TODO ajouter un event pour forcer la redéfinition des éléments actifs
-    //TODO textes longs
 
   //ajouterElementsMenuAuMenuOriginal(menuOriginal, thisComponent)
 
@@ -56,12 +55,25 @@
   
     ajusterAffichageControle()
     window.addEventListener("resize", ecranRedimensionneDebounced)
-    window.addEventListener("resize", () => {thisComponent.classList.add('ajustement-en-cours')})
+    window.addEventListener("resize", () => {indiquerAjustementEnCours()})
   })
 
   const ecranRedimensionneDebounced = Utils.debounce(() => ajusterAffichageControle(), 200)
 
+  function estLargeurConteneurModifiee() {
+    return thisComponent.getBoundingClientRect().right !== largeurConteneur
+  }
+  function indiquerAjustementEnCours() {
+    // Si la largeur du conteneur n'a pas changé on ne fait rien (ex. dans IOS, un resize est lancé au scroll... on veut éviter ça.)
+    if(estLargeurConteneurModifiee()){
+      thisComponent.classList.add('ajustement-en-cours')
+    }
+  }
   function ajusterAffichageControle() {
+    // Si la largeur du conteneur n'a pas changé on ne fait rien (ex. dans IOS, un resize est lancé au scroll... on veut éviter ça.)
+    if(!estLargeurConteneurModifiee()){
+      return
+    }
 
     largeurViewport = window.innerWidth
     thisComponent.classList.add('ajustement-en-cours')
