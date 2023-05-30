@@ -10,7 +10,7 @@
   export let libelle = ''
   export let href = ''
 
-    /* Propriétés "internes" */
+  /* Propriétés "internes" */
   export let srLibelle = ''
   export let afficher = 'false'
   export let animer = 'true'
@@ -24,12 +24,15 @@
   let possedeEnfants = false
   let niveau = 1
   
-  const thisComponent = get_current_component()  
+  const thisComponent = get_current_component()
+  const utdMenuHorizontalParent = thisComponent.closest('utd-menu-horizontal')
   const idSousMenu = Utils.genererId()
  
   onMount(() => {
+    actif = estElementActif()
     niveau = obtenirNiveau()
     possedeEnfants = !!thisComponent.querySelector('utd-menu-horizontal-item')
+
     Utils.reafficherApresChargement(thisComponent)
   })
 
@@ -94,6 +97,14 @@
     return null      
   }
 
+
+  function estElementActif(){
+    if(href){
+      return (window.location.pathname.startsWith(href)).toString()
+      // return (window.location.pathname === href).toString()
+    }    
+  }
+
   function obtenirNiveau(){
     let niveau = 1
     let elementParent = thisComponent.parentElement
@@ -104,6 +115,16 @@
     }
 
     return niveau
+  }
+
+  function obtenirMenuHorizontal(){
+    let elementParent = thisComponent.parentElement
+    
+    while (elementParent.tagName.toLowerCase() !== 'utd-menu-horizontal') {
+        elementParent = elementParent.parentElement
+    }
+
+    return elementParent
   }
 
   function fermerMenus() {
@@ -175,7 +196,7 @@
         }
 
         e.preventDefault()        
-        break;       
+        break;        
 		 }
 	}
 
@@ -224,6 +245,12 @@
     }
   }
 
+
+  function estMenuItem(element){
+    return element && element.tagName.toLowerCase() === 'utd-menu-horizontal-item'
+  }
+
+
   function onBlur(e){
     const utdMenuHorizontalParent = thisComponent.closest('utd-menu-horizontal')
     if(!utdMenuHorizontalParent.contains(e.relatedTarget)){
@@ -259,12 +286,15 @@
       {#if estMenuAccueil === 'true'}    
         <span aria-hidden="true" class="utd-icone-svg maison"/>
       {:else}
-        <span>{libelle}</span>
+      <span>{libelle}</span>
       {/if}        
       {#if srLibelle}    
         <span class="utd-sr-only">{srLibelle}</span>
       {/if}
     </a>    
+  {/if}
+  {#if niveau === 1}
+    <span class="bordure-bas"></span>                  
   {/if}
 
 </div>

@@ -3,7 +3,7 @@
   import { onMount } from "svelte";
   import { Utils } from "./js/utils"
   import { get_current_component } from "svelte/internal"  
-  
+
   const languePage = Utils.obtenirLanguePage()
 
   export let titre = languePage === 'en' ? 'Main navigation menu' : 'Menu principal de navigation'
@@ -53,7 +53,7 @@
     if(gererElementsActifs === 'true') {
       definirElementsActifs()
     }
-
+  
     ajusterAffichageControle()
     window.addEventListener("resize", ecranRedimensionneDebounced)
     window.addEventListener("resize", () => {thisComponent.classList.add('ajustement-en-cours')})
@@ -80,24 +80,26 @@
           }, 100)
         })
       } else {
-        if(contientMenusNonVisibles()) {        
-          ajouterMenuPlusTemporaire()
+      if(contientMenusNonVisibles()) {        
+        ajouterMenuPlusTemporaire()
           setTimeout(() => {
             //On enlève 1, car notre menuPlus temporaire ne doit pas compter
             dernierIndexeVisible = obtenirDernierIndexeVisible() - 1          
             thisComponent.children[0].remove()
             masquerMenusExcedentaires()
 
+            masquerMenusExcedentaires()
+//            console.log('dernier indexe visible -> ' + dernierIndexeVisible)          
             setTimeout(() => {
               thisComponent.classList.remove('ajustement-en-cours')
-              Utils.reafficherApresChargement(thisComponent)                 
+              Utils.reafficherApresChargement(thisComponent)              
             }, 100)
           })
-        } else {
+      } else {
           // Le menu fit, rien à faire!
           thisComponent.classList.remove('ajustement-en-cours')
-          Utils.reafficherApresChargement(thisComponent)
-        }
+        Utils.reafficherApresChargement(thisComponent)
+      }
       } 
     })
   }
@@ -217,9 +219,10 @@
         href: child.getAttribute('href'),
         children : []
       }
-  
+
       elementMenuItem.push(elementMenu)
 
+      //
       if(child.childNodes.length) {
         ajouterElementsMenuAuMenuOriginal(elementMenu.children, child)
       }
@@ -231,8 +234,9 @@
   }
 
   function contientMenusNonVisibles() {
-      largeurConteneur = thisComponent.getBoundingClientRect().right
-      largeurMenu = thisComponent.children[thisComponent.children.length - 1].getBoundingClientRect().right
+
+    largeurConteneur = thisComponent.getBoundingClientRect().right
+    largeurMenu = thisComponent.children[thisComponent.children.length - 1].getBoundingClientRect().right
       return largeurMenu > largeurConteneur
   }
 
@@ -272,6 +276,19 @@
 
     thisComponent.prepend(menuPlusTemp)
     controleMenuItemPlus = menuPlusTemp
+  }
+
+  function ajouterMenuPlus(){
+    const menuPlus = document.createElement('utd-menu-horizontal-item')
+    menuPlus.setAttribute('libelle', 'Plus')
+      
+    thisComponent.childNodes.forEach(function(item){
+      const cln = item.cloneNode(true);
+      menuPlus.appendChild(cln);
+    })
+
+    thisComponent.appendChild(menuPlus)
+    controleMenuItemPlus = menuPlus
   }
 
 </script>
