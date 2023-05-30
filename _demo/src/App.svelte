@@ -111,7 +111,7 @@
                         <utd-menu-horizontal-item libelle="Menu 3">
                             <utd-menu-horizontal-item libelle="Élément 1" href="#"></utd-menu-horizontal-item>
                             <utd-menu-horizontal-item libelle="Élément 2" href="#"></utd-menu-horizontal-item>
-                            <utd-menu-horizontal-item libelle="Menu horizontal" href="/composants/navigation/menuhorizontal"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Élément 3" href="#"></utd-menu-horizontal-item>
                             <utd-menu-horizontal-item libelle="Élément 4" href="#"></utd-menu-horizontal-item>
                             <utd-menu-horizontal-item libelle="Élément 5" href="#"></utd-menu-horizontal-item>
                         </utd-menu-horizontal-item>
@@ -128,7 +128,7 @@
                         <utd-menu-horizontal-item libelle="Menu 6">
                             <utd-menu-horizontal-item libelle="Élément 1" href="#"></utd-menu-horizontal-item>
                             <utd-menu-horizontal-item libelle="Élément 2" href="#"></utd-menu-horizontal-item>
-                            <utd-menu-horizontal-item libelle="Élément 3" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Menu horizontal" href="/composants/navigation/menuhorizontal"></utd-menu-horizontal-item>
                             <utd-menu-horizontal-item libelle="Élément 4" href="#"></utd-menu-horizontal-item>
                             <utd-menu-horizontal-item libelle="Élément 5" href="#"></utd-menu-horizontal-item>
                         </utd-menu-horizontal-item>
