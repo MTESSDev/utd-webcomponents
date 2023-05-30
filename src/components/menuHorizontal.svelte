@@ -3,21 +3,27 @@
   import { onMount } from "svelte";
   import { Utils } from "./js/utils"
   import { get_current_component } from "svelte/internal"  
+  
+  const languePage = Utils.obtenirLanguePage()
 
-  export let titre = Utils.obtenirLanguePage() === 'en' ? 'Main navigation menu' : 'Menu principal de navigation'
+  export let titre = languePage === 'en' ? 'Main navigation menu' : 'Menu principal de navigation'
   export let largeurViewportMenuBurger = 475
   export let afficherIconeAccueil = 'false'
+  export let titreAccueil = languePage === 'en' ? 'Home' : 'Accueil'
   export let urlAccueil = '/'
-  export let gererElementsActifs = 'true'
+
+  /* Paramètre non diffusé pour le moment. À voir si on veut aller vers là */
+  export let gererElementsActifs = 'true' // 
+
 
   let afficher = false
 
   const idMenu = Utils.genererId()
   const idTitreMenu = Utils.genererId()
-  const srTexteSortirMenu = Utils.obtenirLanguePage() === "en" ?  "Press ESC key to exit menu." : "Appuyez sur la touche Échappe pour sortir du menu."
-  const texteMenuPlus = Utils.obtenirLanguePage() === "en" ?  "More" : "Plus"
-  const texteSrMenuPlus = Utils.obtenirLanguePage() === "en" ?  ". Show remaining menu items." : ". Afficher les éléments de menu restants."
-  const texteMenuBurger = Utils.obtenirLanguePage() === "en" ?  "Menu" : "Menu"
+  const srTexteSortirMenu = languePage === "en" ?  "Press ESC key to exit menu." : "Appuyez sur la touche Échappe pour sortir du menu."
+  const texteMenuPlus = languePage === "en" ?  "More" : "Plus"
+  const texteSrMenuPlus = languePage === "en" ?  ". Show remaining menu items." : ". Afficher les éléments de menu restants."
+  const texteMenuBurger = languePage === "en" ?  "Menu" : "Menu"
   const thisComponent = get_current_component()
   let controleMenu
   let controleMenuItemPlus 
@@ -26,21 +32,28 @@
   let largeurViewport = 0
   let menuOriginal = []
   let dernierIndexeVisible = 0
-  let accueilActif = false
 
   // Références pour accessibilité
   // https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation/
 
+    //TODO ajouter un event pour forcer la redéfinition des éléments actifs
+    //TODO textes longs
 
   //ajouterElementsMenuAuMenuOriginal(menuOriginal, thisComponent)
-  if(gererElementsActifs === 'true') {
-    definirElementsActifs()
-  }
 
   largeurViewport = window.innerWidth
 
   onMount(() => {      
     controleMenu = thisComponent.shadowRoot.getElementById(idMenu)
+        
+    if(afficherIconeAccueil === 'true') {
+      ajouterElementMenuAccueil()
+    }
+
+    if(gererElementsActifs === 'true') {
+      definirElementsActifs()
+    }
+
     ajusterAffichageControle()
     window.addEventListener("resize", ecranRedimensionneDebounced)
     window.addEventListener("resize", () => {thisComponent.classList.add('ajustement-en-cours')})
@@ -54,15 +67,11 @@
     supprimerMenuPlus()
     afficherTousMenusNiveau1()
 
-    //TODO fermer tous les menus
-    //TODO css du plus (active)
-    //TODO navigation au clavier comme w3c
-    
     setTimeout(() => {
-
       if(estAffichageMenuBurger()) {
         setTimeout(() => {
-          dernierIndexeVisible = -1          
+          //Si icône accueil doit être affichée, elle ne doit pas se retrouver dans le menu plus (elle doit TOUJOURS être affichée en plus du menu burger). On ajuste l'indexe du dernier élément visible. 
+          dernierIndexeVisible = afficherIconeAccueil ? 0 : -1          
           masquerMenusExcedentaires()
 
           setTimeout(() => {
@@ -85,7 +94,7 @@
             }, 100)
           })
         } else {
-//        console.log('Le menu fit, rien à faire!')
+          // Le menu fit, rien à faire!
           thisComponent.classList.remove('ajustement-en-cours')
           Utils.reafficherApresChargement(thisComponent)
         }
@@ -125,10 +134,16 @@
           break
         }      
       }
+    } 
+
+    if(afficherIconeAccueil === 'true') {    
+      if(!elementActif && window.location.pathname.startsWith(urlAccueil)) {
+      //  controleAccueil.classList.add('active')
+      } else {
+      //  controleAccueil.classList.remove('active')
+      }    
     }
   }
-
-  
 
   function supprimerMenuPlus() {
       const menuPlus = thisComponent.querySelector('utd-menu-horizontal-item[est-menu-plus]')
@@ -166,7 +181,7 @@
         cln.setAttribute('est-menu-burger', 'true')
       }
 
-      if(cln.getAttribute('actif') === 'true') {
+      if(gererElementsActifs === 'true' && cln.getAttribute('actif') === 'true') {
         contientElementActif = true
       }
 
@@ -178,11 +193,20 @@
       thisComponent.children[i].classList.add('utd-d-none')      
     }
 
-    if (gererElementsActifs === 'true' && contientElementActif) {
+    if (contientElementActif) {
       menuPlus.setAttribute('actif', 'true')
     }
 
     thisComponent.appendChild(menuPlus)    
+  }
+
+  function ajouterElementMenuAccueil() {
+    const menuAccueil = document.createElement('utd-menu-horizontal-item')
+    menuAccueil.setAttribute('libelle', titreAccueil)
+    menuAccueil.setAttribute('href', urlAccueil)  
+    menuAccueil.setAttribute('est-menu-accueil', 'true')
+
+    thisComponent.prepend(menuAccueil)
   }
 
   function ajouterElementsMenuAuMenuOriginal(elementMenuItem, parent) {
@@ -262,14 +286,6 @@
   </a>
 
   <div id={idMenu} role="list" class="menu" class:visible={afficher}>
-    <div class="utd-menu-horizontal-item niv1 accueil {accueilActif ? ' active' : ''}" role="listitem">
-      {#if afficherIconeAccueil === 'true'}    
-        <a href="{urlAccueil}">
-          <span aria-hidden="true" class="utd-icone-svg maison"/>
-        </a>
-        <span class="bordure-bas"></span>
-      {/if}
-    </div>
     <slot></slot>
   </div>  
 </nav>

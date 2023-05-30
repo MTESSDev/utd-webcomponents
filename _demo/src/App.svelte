@@ -104,8 +104,8 @@
 
         <div class="conteneur-menu-identification">
             <div class="utd-container zone-menu-identification">
-                <utd-menu-horizontal afficher-icone-accueil="true">
-                    <utd-menu-horizontal-item libelle="Base" href="/base"></utd-menu-horizontal-item>
+                <utd-menu-horizontal id="menuHorizontal" afficher-icone-accueil="true">
+                    <!--<utd-menu-horizontal-item libelle="Base" href="/base"></utd-menu-horizontal-item>-->
                     <utd-menu-horizontal-item libelle="Composants" href="/composants" on:click={clickMenuComposants}></utd-menu-horizontal-item>
                     {#if $router.path.indexOf('/composants/navigation/menuhorizontal') >= 0}                    
                         <utd-menu-horizontal-item libelle="Menu 3">

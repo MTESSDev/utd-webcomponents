@@ -17,13 +17,17 @@
   function obtenirTableauParametres() {
       return [
           {nom: "titre", type: "String (Optionnel)", description: `Titre lu au lecteur écran seulement. Défaut : "Menu principal de navigation" / "Main navigation menu".`},
+          {nom: "largeur-viewport-menu-burger", type: "Integer (Optionnel)", description: `Largeur d'écran à partir de laquelle l'affichage du menu est forcé en mobile, i.e Affichage d'un seul élément de menu (menu burger) nommé "Menu". Défaut : 475.`},          
+          {nom: "afficher-icone-accueil", type: "Booléen (Optionnel)", description: `Indique si le lien "accueil/home" (icône "maison") doit être affiché ou non. Défaut : false.`},          
+          {nom: "titre-accueil", type: "String (Optionnel)", description: `Title associé au lien "accueil" si affiché. Défaut : Accueil / Home.`},          
+          {nom: "url-accueil", type: "String (Optionnel)", description: `Url vers laquelle le lien "accueil" doit rediriger. Défaut : "/".`}
       ];
   }
 
   function obtenirTableauParametres2() {
       return [
           {nom: "libelle", type: "String", description: `Texte du lien associé à l'item de menu.`},
-          {nom: "href", type: "String", description: `Valeur de l'attribut "href" du lien dans l'item de menu.`},
+          {nom: "href", type: "String (Optionnel)", description: `Valeur de l'attribut "href" du lien dans l'item de menu.`},
       ];
   }
 
@@ -65,7 +69,7 @@
 <h2>Exemple</h2>
 <p>L'exemple contient le menu horizontal du présent site de démonstration avec quelques éléments fictifs supplémentaires visibles uniquement dans la présente page.</p>
 
-<CodeSource idElementCodeSource="menuVertical" outerhtml="true">
+<CodeSource idElementCodeSource="menuHorizontal" outerhtml="true">
 </CodeSource>
 
 

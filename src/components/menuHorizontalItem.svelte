@@ -4,7 +4,7 @@
   import { onMount } from "svelte";
   import { Utils } from "./js/utils"
   import { slide } from "svelte/transition"
-  import { current_component, get_current_component } from "svelte/internal"  
+  import { current_component, element, get_current_component } from "svelte/internal"  
 
   /* Propriétés "publiques" */
   export let libelle = ''
@@ -18,6 +18,7 @@
   export let actif = 'false'
   export let estMenuPlus = 'false'
   export let estMenuBurger = 'false'
+  export let estMenuAccueil = 'false'
   export let estDernier = 'false'
 
   let possedeEnfants = false
@@ -27,10 +28,8 @@
   const idSousMenu = Utils.genererId()
  
   onMount(() => {
-//    actif = estElementActif()
     niveau = obtenirNiveau()
     possedeEnfants = !!thisComponent.querySelector('utd-menu-horizontal-item')
-
     Utils.reafficherApresChargement(thisComponent)
   })
 
@@ -69,12 +68,18 @@
       thisComponent.parentElement.setAttribute('afficher', 'false')
   }
 
+  function fermerTousMenus() {
+    Array.from(document.querySelector('utd-menu-horizontal').children).forEach((elementMenu) => {
+      elementMenu.setAttribute('afficher', 'false')
+    })
+  }
   function obtenirElementsNiveauCourant() {
     if(thisComponent){
             
-      return Array.from(thisComponent.parentElement.children).filter((enfant) => {
-        return enfant.matches('utd-menu-horizontal-item')
+      const items = Array.from(thisComponent.parentElement.children).filter((enfant) => {
+        return enfant.matches('utd-menu-horizontal-item:not(.utd-d-none)')
       })
+      return items
     }          
     return null      
   }
@@ -89,14 +94,6 @@
     return null      
   }
 
-
-  function estElementActif(){
-    if(href){
-      return (window.location.pathname.startsWith(href)).toString()
-      // return (window.location.pathname === href).toString()
-    }    
-  }
-
   function obtenirNiveau(){
     let niveau = 1
     let elementParent = thisComponent.parentElement
@@ -109,24 +106,16 @@
     return niveau
   }
 
-  function obtenirMenuHorizontal(){
-    let elementParent = thisComponent.parentElement
-    
-    while (elementParent.tagName.toLowerCase() !== 'utd-menu-horizontal') {
-        elementParent = elementParent.parentElement
-    }
-
-    return elementParent
-  }
-
   function fermerMenus() {
-    if(possedeEnfants && afficher === 'true'){
-      fermerMenusNiveauCourant()      
+    if(niveau === 1) {
+      fermerTousMenus()
     } else {
+      fermerMenusNiveauCourant()
       fermerMenuParent()
       thisComponent.parentElement.setAttribute('focus', 'true')
     }
   }
+  
   function onKeyDown(e) {
     const parent = thisComponent.parentElement
 
@@ -146,11 +135,11 @@
       case "ArrowLeft":              
         donnerFocusElementPrecedent(obtenirElementsNiveauCourant())  
         e.preventDefault()
-        break;
+        break
       case "ArrowDown":        
       case "ArrowRight":
         if(possedeEnfants){
-          if(e.key === "ArrowDown" && afficher === 'true'){
+          if(afficher === 'true'){
             donnerFocusElementSuivant(obtenirElementsNiveauSuivant())           
           } else {
             donnerFocusElementSuivant(obtenirElementsNiveauCourant())
@@ -158,9 +147,35 @@
         } else {
           donnerFocusElementSuivant(obtenirElementsNiveauCourant())
         }
-
         e.preventDefault()        
         break;        
+
+      case "Home":        
+        if(possedeEnfants){
+          if(afficher === 'true'){
+            donnerFocusPremierElement(obtenirElementsNiveauSuivant())           
+          } else {
+            donnerFocusPremierElement(obtenirElementsNiveauCourant())
+          }
+        } else {
+          donnerFocusPremierElement(obtenirElementsNiveauCourant())
+        }
+        e.preventDefault()        
+        break;       
+
+      case "End":        
+        if(possedeEnfants){
+          if(afficher === 'true'){
+            donnerFocusDernierElement(obtenirElementsNiveauSuivant())           
+          } else {
+            donnerFocusDernierElement(obtenirElementsNiveauCourant())
+          }
+        } else {
+          donnerFocusDernierElement(obtenirElementsNiveauCourant())
+        }
+
+        e.preventDefault()        
+        break;       
 		 }
 	}
 
@@ -179,6 +194,20 @@
     }
   }
 
+  function donnerFocusDernierElement(elements) {
+    if(!elements.length){
+      return
+    }
+    elements[elements.length - 1].setAttribute('focus', 'true')
+  }
+
+  function donnerFocusPremierElement(elements) {
+    if(!elements.length){
+      return
+    }
+    elements[0].setAttribute('focus', 'true')
+  }
+
   function donnerFocusElementPrecedent(elements) {
     
     if(!elements.length){
@@ -195,18 +224,12 @@
     }
   }
 
-
-  function estMenuItem(element){
-    return element && element.tagName.toLowerCase() === 'utd-menu-horizontal-item'
-  }
-
-
   function onBlur(e){
     const utdMenuHorizontalParent = thisComponent.closest('utd-menu-horizontal')
     if(!utdMenuHorizontalParent.contains(e.relatedTarget)){
       const itemsMenu = utdMenuHorizontalParent.querySelectorAll('utd-menu-horizontal-item')
       itemsMenu.forEach((item) => {
-//        item.setAttribute('afficher', 'false')
+        item.setAttribute('afficher', 'false')
       })
     }
   }
@@ -232,8 +255,12 @@
       </div>
     {/if}
   {:else}
-    <a href="{href}" aria-current="{actif === 'true' ? 'page' : null}" on:keydown={onKeyDown} on:blur={onBlur}>
-      <span>{libelle}</span>
+    <a href="{href}" title="{estMenuAccueil ? libelle : null}" aria-current="{actif === 'true' ? 'page' : null}" on:keydown={onKeyDown} on:blur={onBlur}>
+      {#if estMenuAccueil === 'true'}    
+        <span aria-hidden="true" class="utd-icone-svg maison"/>
+      {:else}
+        <span>{libelle}</span>
+      {/if}        
       {#if srLibelle}    
         <span class="utd-sr-only">{srLibelle}</span>
       {/if}

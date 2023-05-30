@@ -43,7 +43,7 @@ utd-menu-horizontal {
 
 
 utd-menu-horizontal > utd-menu-horizontal-item  {
-    margin-right: 32px;
+    margin-right: 16px;
 
     &:last-of-type{
         margin-right: 0;
@@ -55,10 +55,6 @@ utd-menu-horizontal > utd-menu-horizontal-item  {
     position: relative;
     flex-direction: column;
     height: 100%;
-
-    &.accueil {
-        margin-right: 32px;
-    }
 
     &:not(.visible) .utd-icone-svg{
         transform: rotate(-180deg);

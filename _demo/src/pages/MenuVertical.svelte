@@ -24,7 +24,7 @@
   function obtenirTableauParametres2() {
       return [
           {nom: "libelle", type: "String", description: `Texte du lien associé à l'item de menu.`},
-          {nom: "href", type: "String", description: `Valeur de l'attribut "href" du lien dans l'item de menu.`},
+          {nom: "href", type: "String (Optionnel)", description: `Valeur de l'attribut "href" du lien dans l'item de menu.`},
       ];
   }
 
