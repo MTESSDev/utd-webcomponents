@@ -24,12 +24,10 @@
   let possedeEnfants = false
   let niveau = 1
   
-  const thisComponent = get_current_component()
-  const utdMenuHorizontalParent = thisComponent.closest('utd-menu-horizontal')
+  const thisComponent = get_current_component()  
   const idSousMenu = Utils.genererId()
  
   onMount(() => {
-    actif = estElementActif()
     niveau = obtenirNiveau()
     possedeEnfants = !!thisComponent.querySelector('utd-menu-horizontal-item')
 
@@ -95,14 +93,6 @@
       })
     }          
     return null      
-  }
-
-
-  function estElementActif(){
-    if(href){
-      return (window.location.pathname.startsWith(href)).toString()
-      // return (window.location.pathname === href).toString()
-    }    
   }
 
   function obtenirNiveau(){

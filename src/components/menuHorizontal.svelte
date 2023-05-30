@@ -62,7 +62,7 @@
   const ecranRedimensionneDebounced = Utils.debounce(() => ajusterAffichageControle(), 200)
 
   function ajusterAffichageControle() {
-    console.log('regénérer menu')
+
     largeurViewport = window.innerWidth
     thisComponent.classList.add('ajustement-en-cours')
     supprimerMenuPlus()
@@ -89,7 +89,7 @@
             thisComponent.children[0].remove()
 
             masquerMenusExcedentaires()
-//            console.log('dernier indexe visible -> ' + dernierIndexeVisible)          
+
             setTimeout(() => {
               thisComponent.classList.remove('ajustement-en-cours')
               Utils.reafficherApresChargement(thisComponent)              
@@ -137,14 +137,6 @@
         }      
       }
     } 
-
-    if(afficherIconeAccueil === 'true') {    
-      if(!elementActif && window.location.pathname.startsWith(urlAccueil)) {
-      //  controleAccueil.classList.add('active')
-      } else {
-      //  controleAccueil.classList.remove('active')
-      }    
-    }
   }
 
   function supprimerMenuPlus() {
@@ -251,7 +243,7 @@
 
     const menuPlus = thisComponent.children[thisComponent.children.length - 1]
     const largeurMenuPlus = menuPlus.getBoundingClientRect().right - menuPlus.getBoundingClientRect().left
-//    console.log('Largeur menu plus -> ' + largeurMenuPlus)
+
     while (menuVisible && i <= thisComponent.children.length - 1) {
       const item = thisComponent.children[i]
 
