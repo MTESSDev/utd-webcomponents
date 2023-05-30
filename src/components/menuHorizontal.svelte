@@ -40,7 +40,7 @@
 
   //ajouterElementsMenuAuMenuOriginal(menuOriginal, thisComponent)
 
-  largeurViewport = window.innerWidth
+  //largeurViewport = window.innerWidth
 
   onMount(() => {      
     controleMenu = thisComponent.shadowRoot.getElementById(idMenu)
@@ -61,7 +61,8 @@
   const ecranRedimensionneDebounced = Utils.debounce(() => ajusterAffichageControle(), 200)
 
   function estLargeurConteneurModifiee() {
-    return thisComponent.getBoundingClientRect().right !== largeurConteneur
+    return largeurViewport !== window.innerWidth
+    //return thisComponent.getBoundingClientRect().right !== largeurConteneur
   }
   function indiquerAjustementEnCours() {
     // Si la largeur du conteneur n'a pas changé on ne fait rien (ex. dans IOS, un resize est lancé au scroll... on veut éviter ça.)
