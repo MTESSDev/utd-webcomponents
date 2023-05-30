@@ -59,9 +59,10 @@
     window.addEventListener("resize", () => {thisComponent.classList.add('ajustement-en-cours')})
   })
 
-  const ecranRedimensionneDebounced = Utils.debounce(() => ajusterAffichageControle(), 100)
+  const ecranRedimensionneDebounced = Utils.debounce(() => ajusterAffichageControle(), 200)
 
   function ajusterAffichageControle() {
+    console.log('regénérer menu')
     largeurViewport = window.innerWidth
     thisComponent.classList.add('ajustement-en-cours')
     supprimerMenuPlus()
@@ -86,7 +87,6 @@
             //On enlève 1, car notre menuPlus temporaire ne doit pas compter
             dernierIndexeVisible = obtenirDernierIndexeVisible() - 1          
             thisComponent.children[0].remove()
-            masquerMenusExcedentaires()
 
             masquerMenusExcedentaires()
 //            console.log('dernier indexe visible -> ' + dernierIndexeVisible)          
