@@ -17,7 +17,7 @@ utd-menu-horizontal {
     &.ajustement-en-cours, &.ajustement-en-cours utd-menu-horizontal-item{
         visibility: hidden;
         overflow: hidden;
-}
+    }
 
     &.ajustement-en-cours2, &.ajustement-en-cours2 utd-menu-horizontal-item{
         overflow: hidden;
@@ -61,7 +61,7 @@ utd-menu-horizontal > utd-menu-horizontal-item  {
 
         &.maison {
             transform: none;
-    }
+        }
     }
     
     a {
@@ -80,21 +80,19 @@ utd-menu-horizontal > utd-menu-horizontal-item  {
                 font-family: OpenSans-Bold;
                 border-bottom: 4px solid  #909aa9;   
             }
-            .bordure-bas{
-                background-color: #909aa9;                
-            }
+        }             
 
         &.menu-plus {
             &:not(.menu-burger) {
                 background-color: var(--bleu-fonce);
-        }             
-    
+            }
+
             &.visible {
                 background-color: var(--bleu-pale);
                 
                 a {
                     color: var(--bleu-moyen);
-                    font-family: OpenSans-SemiBold; /* TODO ici aucune id�e pourquoi je dois le mettre plus gros, car sinon sort trop petit! Effet visuel seulement? */
+                    font-family: OpenSans-SemiBold; /* TODO ici aucune idée pourquoi je dois le mettre plus gros, car sinon sort trop petit! Effet visuel seulement? */
                     border-bottom: 4px solid var(--bleu-moyen);
 
                     .chevron-blanc {
@@ -116,7 +114,7 @@ utd-menu-horizontal > utd-menu-horizontal-item  {
                right: 0;
             }
 
-        .sous-menu {
+            .sous-menu {
                background: var(--bleu-pale) 0% 0% no-repeat padding-box;
                padding: 0;
             }
@@ -134,11 +132,10 @@ utd-menu-horizontal > utd-menu-horizontal-item  {
             position: absolute;
             top: 100%;
             min-width: 200px;
-            padding: 8px 0;
             background: #FFFFFF 0% 0% no-repeat padding-box;
             box-shadow: 0px 4px 16px #2236543D;
             opacity: 1;  
-            z-index: 9999;          
+            z-index: 9999;     
             padding: 8px 0;
             border-left: 1px solid var(--gris-clair);
             border-right: 1px solid var(--gris-clair);
@@ -154,44 +151,41 @@ utd-menu-horizontal > utd-menu-horizontal-item  {
             margin: 8px 8px 0 8px;
             padding: 0;
             border-bottom: 4px solid transparent;
-            
+
             &:hover, &:focus {
                 border-bottom: 4px solid  #909aa9;
             }    
-            &.active~.bordure-bas {
-                background-color: #909aa9;                
-            }            
             .utd-icone-svg {
                 margin-left: 8px;
 
                 &.maison {
                     margin-left: 0;
-            }
+                }
 
                 &.burger {
                     margin-left: 0;
                     margin-right: 8px;
-        }
+                }
                 &.x-fermer-bleu-moyen {
                     margin: 0 9px 0 8px
-        }    
-        
-    }    
-}
+                }
+
+            }
+        }        
     }    
 
-/* Niveaux 2 et + */
+    /* Niveaux 2 et + */
     &:not(.niv1) {
     
         a {     
             font-size: 14px;
 
-    &:hover, &:focus{
+            &:hover, &:focus{
                 color: var(--couleur-liens);
             }
 
             &:hover {
-        text-decoration: underline;
+                text-decoration: underline;
             }   
 
         }        
@@ -208,9 +202,9 @@ utd-menu-horizontal > utd-menu-horizontal-item  {
         
         & > a {
             padding: 8px 16px;
-    font-family: OpenSans-SemiBold;    
-}
-
+            font-family: OpenSans-SemiBold;
+        }
+                
         &.menu-plus {
             border-bottom: 1px solid var(--gris-clair);
 
@@ -270,12 +264,12 @@ utd-menu-horizontal > utd-menu-horizontal-item  {
         }        
     }
 
-/* Niveau 3 */
+    /* Niveau 3 */
     &.niv3 {
 
         & > a {
             padding: 8px 24px;
-    font-size: 14px;
+            font-size: 14px;
             font-family: OpenSans-SemiBold;
         }
     }

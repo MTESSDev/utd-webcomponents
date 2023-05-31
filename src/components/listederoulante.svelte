@@ -872,7 +872,6 @@ function majActiveDescendant() {
 
 function definirAfficherOptions(doitAfficherOptions) {
   if(doitAfficherOptions){
-    console.log(controleConteneur.offsetHeight)
     controleEspaceur.style.height = controleConteneur.offsetHeight + "px"
     afficherOptions = true
   } else {

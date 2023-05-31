@@ -41,13 +41,15 @@
   //ajouterElementsMenuAuMenuOriginal(menuOriginal, thisComponent)
 
   //largeurViewport = window.innerWidth
-  document.body.addEventListener('click', () => {
-      console.log('click')
-      console.log('activeElement')
-      console.log(document.activeElement)
-  })
 
   onMount(() => {      
+    
+    document.body.addEventListener('click', (e) => {      
+      Array.from(document.querySelector('utd-menu-horizontal').children).forEach((elementMenu) => {
+        elementMenu.setAttribute('afficher', 'false')
+      })
+    })
+
     controleMenu = thisComponent.shadowRoot.getElementById(idMenu)
         
     if(afficherIconeAccueil === 'true') {

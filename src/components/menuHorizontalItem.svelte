@@ -47,7 +47,7 @@
     }
   }
 
-  function toggleAfficher(){    
+  function toggleAfficher(e){    
     
     // Lorsqu'on doit afficher un sous menu, on doit tous les fermer d'abord.
     if(afficher === 'false'){
@@ -55,6 +55,10 @@
     }
 
     afficher = afficher === 'true' ? 'false' : 'true'
+    
+    if(e){
+      e.stopPropagation()          
+    }    
   }
 
   function fermerMenusNiveauCourant() {
