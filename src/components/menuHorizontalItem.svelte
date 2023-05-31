@@ -248,8 +248,31 @@
     console.log(e.currentTarget)
   }
 
+  function touchend(e) {
+    console.log("touchend")
+    console.log('relatedTarget')
+    console.log(e.relatedTarget)
+    console.log('currentTarget')
+    console.log(e.currentTarget)
+  }
+
+  function touchcancel(e) {
+    console.log("touchcancel")
+    console.log('relatedTarget')
+    console.log(e.relatedTarget)
+    console.log('currentTarget')
+    console.log(e.currentTarget)
+  }
+
+  function touchstart(e) {
+    console.log("touchstart")
+    console.log('relatedTarget')
+    console.log(e.relatedTarget)
+    console.log('currentTarget')
+    console.log(e.currentTarget)
+  }
+
   function onBlur(e){
-    debugger
     console.log('blur')
     console.log('relatedTarget')
     console.log(e.relatedTarget)
@@ -287,7 +310,7 @@
       </div>
     {/if}
   {:else}
-    <a href="{href}" title="{estMenuAccueil ? libelle : null}" aria-current="{actif === 'true' ? 'page' : null}" on:keydown={onKeyDown} on:blur={onBlur} on:touchleave={touchleave}>
+    <a href="{href}" title="{estMenuAccueil ? libelle : null}" aria-current="{actif === 'true' ? 'page' : null}" on:keydown={onKeyDown} on:blur={onBlur} on:touchleave={touchleave} on:touchcancel={touchcancel} on:touchstart={touchstart} on:touchend={touchend}>
       {#if estMenuAccueil === 'true'}    
         <span aria-hidden="true" class="utd-icone-svg maison"/>
       {:else}
