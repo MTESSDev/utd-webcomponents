@@ -243,6 +243,11 @@
 
   function onBlur(e){
     const utdMenuHorizontalParent = thisComponent.closest('utd-menu-horizontal')
+    console.log('relatedTarget')
+    console.log(e.relatedTarget)
+    console.log('currentTarget')
+    console.log(e.currentTarget)
+
     if(!utdMenuHorizontalParent.contains(e.relatedTarget)){
       const itemsMenu = utdMenuHorizontalParent.querySelectorAll('utd-menu-horizontal-item')
       itemsMenu.forEach((item) => {
