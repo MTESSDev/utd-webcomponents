@@ -42,10 +42,10 @@
 
   //largeurViewport = window.innerWidth
   document.body.addEventListener('click', () => {
-/*      console.log('click')
+      console.log('click')
       console.log('activeElement')
-      console.log(document.activeElement)*/
-    })
+      console.log(document.activeElement)
+  })
 
   onMount(() => {      
     controleMenu = thisComponent.shadowRoot.getElementById(idMenu)
