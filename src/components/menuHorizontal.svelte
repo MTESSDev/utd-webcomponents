@@ -41,7 +41,11 @@
   //ajouterElementsMenuAuMenuOriginal(menuOriginal, thisComponent)
 
   //largeurViewport = window.innerWidth
-  document.body.onclick = function() {console.log('click')}
+  document.body.addEventListener('click', () => {
+/*      console.log('click')
+      console.log('activeElement')
+      console.log(document.activeElement)*/
+    })
 
   onMount(() => {      
     controleMenu = thisComponent.shadowRoot.getElementById(idMenu)

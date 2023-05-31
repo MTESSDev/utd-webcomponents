@@ -240,44 +240,12 @@
     return element && element.tagName.toLowerCase() === 'utd-menu-horizontal-item'
   }
 
-  function touchleave(e) {
-    console.log("touchleave")
-    console.log('relatedTarget')
-    console.log(e.relatedTarget)
-    console.log('currentTarget')
-    console.log(e.currentTarget)
-  }
-
-  function touchend(e) {
-    console.log("touchend")
-    console.log('relatedTarget')
-    console.log(e.relatedTarget)
-    console.log('currentTarget')
-    console.log(e.currentTarget)
-  }
-
-  function touchcancel(e) {
-    console.log("touchcancel")
-    console.log('relatedTarget')
-    console.log(e.relatedTarget)
-    console.log('currentTarget')
-    console.log(e.currentTarget)
-  }
-
-  function touchstart(e) {
-    console.log("touchstart")
-    console.log('relatedTarget')
-    console.log(e.relatedTarget)
-    console.log('currentTarget')
-    console.log(e.currentTarget)
-  }
-
   function onBlur(e){
-    console.log('blur')
+/*    console.log('blur')
     console.log('relatedTarget')
     console.log(e.relatedTarget)
     console.log('currentTarget')
-    console.log(e.currentTarget)
+    console.log(e.currentTarget)*/
 
     const utdMenuHorizontalParent = thisComponent.closest('utd-menu-horizontal')
 
@@ -292,7 +260,7 @@
 </script>
 <div class="utd-menu-horizontal-item niv{niveau}{afficher === 'true' ? ' visible' : ''}{actif === 'true' ? ' active' : ''}{estMenuPlus === 'true' ? ' menu-plus' : ''}{estMenuBurger === 'true' ? ' menu-burger' : ''}{estDernier === 'true' ? ' dernier' : ''}" role="listitem">
   {#if possedeEnfants}    
-    <a role="button" href="{href}" aria-expanded="{afficher}" aria-controls="{idSousMenu}" on:click|preventDefault={toggleAfficher} on:keydown={onKeyDown} on:blur={onBlur} on:touchleave={touchleave} on:touchcancel={touchcancel} on:touchstart={touchstart} on:touchend={touchend}>
+    <a role="button" href="{href}" aria-expanded="{afficher}" aria-controls="{idSousMenu}" on:click|preventDefault={toggleAfficher} on:keydown={onKeyDown} on:blur={onBlur}>
       {#if niveau === 1 && estMenuBurger === 'true'}    
         <span aria-hidden="true" class="utd-icone-svg{afficher === 'true' ?  ' x-fermer-bleu-moyen' : ' burger'}"/>
       {/if}      
@@ -310,7 +278,7 @@
       </div>
     {/if}
   {:else}
-    <a href="{href}" title="{estMenuAccueil ? libelle : null}" aria-current="{actif === 'true' ? 'page' : null}" on:keydown={onKeyDown} on:blur={onBlur} on:touchleave={touchleave} on:touchcancel={touchcancel} on:touchstart={touchstart} on:touchend={touchend}>
+    <a href="{href}" title="{estMenuAccueil ? libelle : null}" aria-current="{actif === 'true' ? 'page' : null}" on:keydown={onKeyDown} on:blur={onBlur}>
       {#if estMenuAccueil === 'true'}    
         <span aria-hidden="true" class="utd-icone-svg maison"/>
       {:else}
