@@ -56,6 +56,7 @@
 
     afficher = afficher === 'true' ? 'false' : 'true'
     
+    // Ici petite twist pour IOS afin de bloquer la propagation du click sur un élément de menu, car un click sur le body a été ajouté pour IOS (voir mount du composant menuHorizontal)
     if(e){
       e.stopPropagation()          
     }    
@@ -78,6 +79,7 @@
       elementMenu.setAttribute('afficher', 'false')
     })
   }
+
   function obtenirElementsNiveauCourant() {
     if(thisComponent){
             
@@ -109,16 +111,6 @@
     }
 
     return niveau
-  }
-
-  function obtenirMenuHorizontal(){
-    let elementParent = thisComponent.parentElement
-    
-    while (elementParent.tagName.toLowerCase() !== 'utd-menu-horizontal') {
-        elementParent = elementParent.parentElement
-    }
-
-    return elementParent
   }
 
   function fermerMenus() {
@@ -239,18 +231,7 @@
     }
   }
 
-
-  function estMenuItem(element){
-    return element && element.tagName.toLowerCase() === 'utd-menu-horizontal-item'
-  }
-
   function onBlur(e){
-/*    console.log('blur')
-    console.log('relatedTarget')
-    console.log(e.relatedTarget)
-    console.log('currentTarget')
-    console.log(e.currentTarget)*/
-
     const utdMenuHorizontalParent = thisComponent.closest('utd-menu-horizontal')
 
     if(!utdMenuHorizontalParent.contains(e.relatedTarget)){

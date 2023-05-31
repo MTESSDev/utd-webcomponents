@@ -43,11 +43,10 @@
   //largeurViewport = window.innerWidth
 
   onMount(() => {      
-    
-    document.body.addEventListener('click', (e) => {      
-      Array.from(document.querySelector('utd-menu-horizontal').children).forEach((elementMenu) => {
-        elementMenu.setAttribute('afficher', 'false')
-      })
+    // Événement nécessaire pour IOS... Car pour lui l'événement blur de l'élément de menu n'est pas exécuté. Permet de s'assurer que lorsque le menu perd le focus, tous les menus sont fermés.
+    // À noter que sur un click d'un élément de menu on stop la propagation du click (notre événement ici n'est donc pas exécuté)
+    document.body.addEventListener('click', () => {
+      fermerTousMenus()      
     })
 
     controleMenu = thisComponent.shadowRoot.getElementById(idMenu)
@@ -66,6 +65,13 @@
   })
 
   const ecranRedimensionneDebounced = Utils.debounce(() => ajusterAffichageControle(), 200)
+
+  function fermerTousMenus() {
+    //TODO éventuellement optimiser afin de ne boucler que dans les menus ouverts? (actuellement problème avec l'attribut afficher qui reste toujours à false)
+    Array.from(document.querySelector('utd-menu-horizontal').children).forEach((elementMenu) => {
+      elementMenu.setAttribute('afficher', 'false')
+    })
+  }
 
   function estLargeurConteneurModifiee() {
     return largeurViewport !== window.innerWidth
