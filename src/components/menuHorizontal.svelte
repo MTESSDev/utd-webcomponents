@@ -41,14 +41,9 @@
   //ajouterElementsMenuAuMenuOriginal(menuOriginal, thisComponent)
 
   //largeurViewport = window.innerWidth
+  document.body.onclick = function() {console.log('click')}
 
   onMount(() => {      
-    document.body.addEventListener('click', () => {
-      console.log('click')
-      console.log('activeElement')
-      console.log(document.activeElement)
-    })
-
     controleMenu = thisComponent.shadowRoot.getElementById(idMenu)
         
     if(afficherIconeAccueil === 'true') {
@@ -60,7 +55,7 @@
     }
   
     ajusterAffichageControle()
-    
+    window.addEventListener("resize", ecranRedimensionneDebounced)
     window.addEventListener("resize", () => {indiquerAjustementEnCours()})
   })
 
