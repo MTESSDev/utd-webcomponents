@@ -126,7 +126,7 @@
       thisComponent.parentElement.setAttribute('focus', 'true')
     }
   }
-  
+
   function onKeyDown(e) {
     const parent = thisComponent.parentElement
 
@@ -240,6 +240,13 @@
     return element && element.tagName.toLowerCase() === 'utd-menu-horizontal-item'
   }
 
+  function touchleave(e) {
+    console.log("touchleave")
+    console.log('relatedTarget')
+    console.log(e.relatedTarget)
+    console.log('currentTarget')
+    console.log(e.currentTarget)
+  }
 
   function onBlur(e){
     debugger
@@ -280,7 +287,7 @@
       </div>
     {/if}
   {:else}
-    <a href="{href}" title="{estMenuAccueil ? libelle : null}" aria-current="{actif === 'true' ? 'page' : null}" on:keydown={onKeyDown} on:blur={onBlur}>
+    <a href="{href}" title="{estMenuAccueil ? libelle : null}" aria-current="{actif === 'true' ? 'page' : null}" on:keydown={onKeyDown} on:blur={onBlur} on:touchleave={touchleave}>
       {#if estMenuAccueil === 'true'}    
         <span aria-hidden="true" class="utd-icone-svg maison"/>
       {:else}
