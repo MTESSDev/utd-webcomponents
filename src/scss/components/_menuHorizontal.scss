@@ -113,11 +113,11 @@ utd-menu-horizontal > utd-menu-horizontal-item  {
                 }
 
                 &.burger {
-                    margin-left: 0;
+                    margin-left: -6px;
                     margin-right: 8px;
                 }
                 &.x-fermer-bleu-moyen {
-                    margin: 0 6px 0 8px
+                    margin: 0 12px 0 0px
                 }
 
             }
@@ -142,7 +142,7 @@ utd-menu-horizontal > utd-menu-horizontal-item  {
 
             &.visible {
                 background-color: var(--bleu-pale);
-                
+
                 a {
                     color: var(--bleu-moyen);
                     font-family: OpenSans-SemiBold; /* TODO ici aucune idée pourquoi je dois le mettre plus gros, car sinon sort trop petit! Effet visuel seulement? */
@@ -155,6 +155,12 @@ utd-menu-horizontal > utd-menu-horizontal-item  {
                     & ~ .bordure-bas {
                         background-color: var(--bleu-moyen);
                     }    
+                }
+
+                &.active {
+                    a {
+                        font-family: OpenSans-Bold;    
+                    }
                 }
             }
 
@@ -219,7 +225,7 @@ utd-menu-horizontal > utd-menu-horizontal-item  {
         &.active:not(.menu-plus) {
             a {
                 font-family: OpenSans-Bold;
-                background-color: var(--gris-pale);
+                background-color: var(--gris-clair);
             }
         }
     }
