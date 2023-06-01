@@ -20,7 +20,6 @@
 
   const idMenu = Utils.genererId()
   const idTitreMenu = Utils.genererId()
-  const srTexteSortirMenu = languePage === "en" ?  "Press ESC key to exit menu." : "Appuyez sur la touche Échappe pour sortir du menu."
   const texteMenuPlus = languePage === "en" ?  "More" : "Plus"
   const texteSrMenuPlus = languePage === "en" ?  ". Show remaining menu items." : ". Afficher les éléments de menu restants."
   const texteMenuBurger = languePage === "en" ?  "Menu" : "Menu"
@@ -36,7 +35,7 @@
   // Références pour accessibilité
   // https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation/
 
-    //TODO ajouter un event pour forcer la redéfinition des éléments actifs
+  //TODO éventuellement ajouter un event pour forcer la redéfinition des éléments actifs
 
   //ajouterElementsMenuAuMenuOriginal(menuOriginal, thisComponent)
 
@@ -67,8 +66,7 @@
   const ecranRedimensionneDebounced = Utils.debounce(() => ajusterAffichageControle(), 200)
 
   function fermerTousMenus() {
-    //TODO éventuellement optimiser afin de ne boucler que dans les menus ouverts? (actuellement problème avec l'attribut afficher qui reste toujours à false)
-    Array.from(document.querySelector('utd-menu-horizontal').children).forEach((elementMenu) => {
+    document.querySelectorAll('utd-menu-horizontal[afficher="true"]').forEach((elementMenu) => {
       elementMenu.setAttribute('afficher', 'false')
     })
   }
@@ -97,8 +95,7 @@
     setTimeout(() => {
       if(estAffichageMenuBurger()) {
         setTimeout(() => {
-          //Si icône accueil doit être affichée, elle ne doit pas se retrouver dans le menu plus (elle doit TOUJOURS être affichée en plus du menu burger). On ajuste l'indexe du dernier élément visible. 
-          dernierIndexeVisible = afficherIconeAccueil ? 0 : -1          
+          dernierIndexeVisible = -1          
           masquerMenusExcedentaires()
 
           setTimeout(() => {
@@ -255,7 +252,7 @@
 
     largeurConteneur = thisComponent.getBoundingClientRect().right
     largeurMenu = thisComponent.children[thisComponent.children.length - 1].getBoundingClientRect().right
-      return largeurMenu > largeurConteneur
+    return largeurMenu > largeurConteneur
   }
 
   function estAffichageMenuBurger() {
@@ -313,13 +310,6 @@
 <h2 id="{idTitreMenu}" class="utd-sr-only">{titre}</h2>
 
 <nav class="utd-menu-horizontal" class:visible={afficher} aria-labelledby="{idTitreMenu}">
-  <a role="button" href="#{idMenu}" class="toggle utd-d-none" aria-controls="{idMenu}" on:click|preventDefault={toggleAfficher}>
-    <span aria-hidden="true" class="utd-icone-svg chevron-blanc"/>
-    <span class="utd-sr-only">
-        {srTexteSortirMenu}
-    </span>
-  </a>
-
   <div id={idMenu} role="list" class="menu" class:visible={afficher}>
     <slot></slot>
   </div>  

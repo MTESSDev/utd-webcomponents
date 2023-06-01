@@ -78,11 +78,64 @@ utd-menu-horizontal > utd-menu-horizontal-item  {
         &.active {
             a {
                 font-family: OpenSans-Bold;
-                border-bottom: 4px solid  #909aa9;   
+                & ~ .bordure-bas {
+                    background-color: #909aa9;
+                }    
             }
         }             
 
+        a {
+            height: 100%;
+            justify-content: flex-start;
+            color: #fff;
+            font-family: 'OpenSans-Regular', sans-serif;
+            font-size: var(--tc-18-16-val);
+            padding: 6px 8px 0 8px;
+
+            & ~ .bordure-bas {
+                width: 100%;
+                height: 6px;
+                background-color: transparent;
+                position: relative;
+            }    
+
+            &:hover, &:focus {
+                & ~ .bordure-bas {
+                    background-color: #909aa9;
+                }
+                
+            }    
+            .utd-icone-svg {
+                margin-left: 8px;
+
+                &.maison {
+                    margin-left: 0;
+                }
+
+                &.burger {
+                    margin-left: 0;
+                    margin-right: 8px;
+                }
+                &.x-fermer-bleu-moyen {
+                    margin: 0 6px 0 8px
+                }
+
+            }
+        }        
+
         &.menu-plus {
+            &.visible {
+                a {
+                    & ~ .bordure-bas {
+                        width: calc(100% - 8px);
+                        left: 4px;
+                    }    
+                }
+            }             
+    
+            a { 
+                padding: 6px 12px 0 12px;
+            }
             &:not(.menu-burger) {
                 background-color: var(--bleu-fonce);
             }
@@ -93,12 +146,15 @@ utd-menu-horizontal > utd-menu-horizontal-item  {
                 a {
                     color: var(--bleu-moyen);
                     font-family: OpenSans-SemiBold; /* TODO ici aucune idée pourquoi je dois le mettre plus gros, car sinon sort trop petit! Effet visuel seulement? */
-                    border-bottom: 4px solid var(--bleu-moyen);
+
 
                     .chevron-blanc {
                         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-chevron-bleu-moyen");
                     }           
 
+                    & ~ .bordure-bas {
+                        background-color: var(--bleu-moyen);
+                    }    
                 }
             }
 
@@ -124,7 +180,7 @@ utd-menu-horizontal > utd-menu-horizontal-item  {
 
         &:not(.menu-plus){
             .sous-menu {
-                left: 7px;
+                left: -1px;
             }
         }
 
@@ -142,36 +198,6 @@ utd-menu-horizontal > utd-menu-horizontal-item  {
             border-bottom: 1px solid var(--gris-clair);
         }
 
-        a {
-            height: 100%;
-            justify-content: flex-start;
-            color: #fff;
-            font-family: 'OpenSans-Regular', sans-serif;
-            font-size: var(--tc-18-16-val);
-            margin: 8px 8px 0 8px;
-            padding: 0;
-            border-bottom: 4px solid transparent;
-
-            &:hover, &:focus {
-                border-bottom: 4px solid  #909aa9;
-            }    
-            .utd-icone-svg {
-                margin-left: 8px;
-
-                &.maison {
-                    margin-left: 0;
-                }
-
-                &.burger {
-                    margin-left: 0;
-                    margin-right: 8px;
-                }
-                &.x-fermer-bleu-moyen {
-                    margin: 0 9px 0 8px
-                }
-
-            }
-        }        
     }    
 
     /* Niveaux 2 et + */

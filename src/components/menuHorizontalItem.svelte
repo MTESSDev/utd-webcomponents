@@ -54,8 +54,8 @@
       fermerMenusNiveauCourant()
     }
 
-    afficher = afficher === 'true' ? 'false' : 'true'
-    
+    thisComponent.setAttribute('afficher', afficher === 'true' ? 'false' : 'true')
+   
     // Ici petite twist pour IOS afin de bloquer la propagation du click sur un élément de menu, car un click sur le body a été ajouté pour IOS (voir mount du composant menuHorizontal)
     if(e){
       e.stopPropagation()          
@@ -75,7 +75,7 @@
   }
 
   function fermerTousMenus() {
-    Array.from(document.querySelector('utd-menu-horizontal').children).forEach((elementMenu) => {
+    document.querySelectorAll('utd-menu-horizontal[afficher="true"]').forEach((elementMenu) => {
       elementMenu.setAttribute('afficher', 'false')
     })
   }
@@ -237,7 +237,7 @@
     if(!utdMenuHorizontalParent.contains(e.relatedTarget)){
       const itemsMenu = utdMenuHorizontalParent.querySelectorAll('utd-menu-horizontal-item')
       itemsMenu.forEach((item) => {
-        item.setAttribute('afficher', 'false')
+//        item.setAttribute('afficher', 'false')
       })
     }
   }
@@ -264,10 +264,14 @@
     {/if}
   {:else}
     <a href="{href}" title="{estMenuAccueil ? libelle : null}" aria-current="{actif === 'true' ? 'page' : null}" on:keydown={onKeyDown} on:blur={onBlur}>
-      {#if estMenuAccueil === 'true'}    
-        <span aria-hidden="true" class="utd-icone-svg maison"/>
+      {#if estMenuAccueil === 'true'}
+        {#if estMenuBurger === 'true'}    
+          <span>{libelle}</span>        
+        {:else}
+          <span aria-hidden="true" class="utd-icone-svg maison"/>
+        {/if}                
       {:else}
-      <span>{libelle}</span>
+        <span>{libelle}</span>
       {/if}        
       {#if srLibelle}    
         <span class="utd-sr-only">{srLibelle}</span>
