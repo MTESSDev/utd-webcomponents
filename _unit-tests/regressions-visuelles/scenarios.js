@@ -679,15 +679,6 @@ scenarios : [
         selectors: [".conteneur-menu-identification"],
         removeSelectors: [".no-test"]
     },    
-    //Menu horizontal (Base mobile)        
-/*    {
-        label: "Menu_horizontal (Base-mobile)", 
-        url: "/composants/navigation/menuhorizontal",
-        viewports: viewports.vTabletPhone,
-        selectors: [".conteneur-menu-identification"],  
-        removeSelectors: [".no-test"],      
-        shadowClickSelectors: [{domSelector: "utd-menu-horizontal", shadowDomSelector: "a.toggle"}]
-    },    */
     //Menu horizontal (Hover niveau 1 sans enfants - Desktop)        
     {
         label: "Menu_horizontal (Hover niveau 1 sans enfants)", 
