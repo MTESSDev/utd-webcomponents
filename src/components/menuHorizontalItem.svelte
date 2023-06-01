@@ -47,7 +47,7 @@
     }
   }
 
-  function toggleAfficher(e){    
+  function toggleAfficher(e) {    
     
     // Lorsqu'on doit afficher un sous menu, on doit tous les fermer d'abord.
     if(afficher === 'false'){

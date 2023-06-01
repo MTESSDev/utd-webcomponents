@@ -225,10 +225,37 @@ utd-menu-horizontal > utd-menu-horizontal-item  {
         &.active:not(.menu-plus) {
             a {
                 font-family: OpenSans-Bold;
-                background-color: var(--gris-clair);
+                background-color: var(--gris-pale);
             }
         }
+
+        &.active {                
+            & > a {                 
+                &:before {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    top: 16px;
+                    height: calc(100% - 32px);
+                    width: 3px;
+                    background-color: var(--bleu-moyen);            
+                }
+            }
+
+            &.niv3 {
+                & > a {                 
+                    &:before {
+                        top: 8px;
+                        height: calc(100% - 16px);
+                        background-color: var(--couleur-liens);            
+                    }
+                }    
+            }
+        }
+
+
     }
+
     /* Niveau 2*/
     &.niv2 {
         
@@ -247,19 +274,6 @@ utd-menu-horizontal > utd-menu-horizontal-item  {
                 }
             }
 
-            &.visible, &.active {                
-                & > a {                 
-                    &:before {
-                        content: "";
-                        position: absolute;
-                        left: 0;
-                        top: 16px;
-                        height: calc(100% - 32px);
-                        width: 3px;
-                        background-color: var(--bleu-fonce);            
-                    }
-                }
-            }
             
             &.dernier {
                 border-bottom: 0;
