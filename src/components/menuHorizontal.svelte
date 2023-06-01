@@ -66,7 +66,8 @@
   const ecranRedimensionneDebounced = Utils.debounce(() => ajusterAffichageControle(), 200)
 
   function fermerTousMenus() {
-    document.querySelectorAll('utd-menu-horizontal[afficher="true"]').forEach((elementMenu) => {
+    console.log(document.querySelectorAll('utd-menu-horizontal-item[afficher="true"]'))
+    document.querySelectorAll('utd-menu-horizontal-item[afficher="true"]').forEach((elementMenu) => {
       elementMenu.setAttribute('afficher', 'false')
     })
   }

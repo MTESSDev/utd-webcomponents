@@ -75,7 +75,7 @@
   }
 
   function fermerTousMenus() {
-    document.querySelectorAll('utd-menu-horizontal[afficher="true"]').forEach((elementMenu) => {
+    document.querySelectorAll('utd-menu-horizontal-item[afficher="true"]').forEach((elementMenu) => {
       elementMenu.setAttribute('afficher', 'false')
     })
   }
