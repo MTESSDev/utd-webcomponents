@@ -128,8 +128,8 @@
                         <utd-menu-horizontal-item libelle="Menu 6">
                             <utd-menu-horizontal-item libelle="Élément 1" href="#"></utd-menu-horizontal-item>
                             <utd-menu-horizontal-item libelle="Élément 2" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Libellé ridiculement long long long comme on sait si bien les faire" href="#" id="menu6Element3"></utd-menu-horizontal-item>
                             <utd-menu-horizontal-item libelle="Menu horizontal" href="/composants/navigation/menuhorizontal"></utd-menu-horizontal-item>
-                            <utd-menu-horizontal-item libelle="Élément 4" href="#"></utd-menu-horizontal-item>
                             <utd-menu-horizontal-item libelle="Élément 5" href="#"></utd-menu-horizontal-item>
                         </utd-menu-horizontal-item>
                         <utd-menu-horizontal-item libelle="Menu 7">
@@ -139,10 +139,8 @@
                         </utd-menu-horizontal-item>
                         <utd-menu-horizontal-item libelle="Menu 8">
                             <utd-menu-horizontal-item libelle="Élément 1" href="#"></utd-menu-horizontal-item>
-                            <utd-menu-horizontal-item libelle="Élément 2" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Élément 2 du menu 8" href="#"></utd-menu-horizontal-item>
                         </utd-menu-horizontal-item>    
-
-
                     {/if}
                 </utd-menu-horizontal>                
             </div>

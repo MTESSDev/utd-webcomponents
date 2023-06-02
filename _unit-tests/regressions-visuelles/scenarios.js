@@ -673,21 +673,111 @@ scenarios : [
         shadowClickSelectors: [{domSelector: "utd-menu-ancres", shadowDomSelector: 'a[href="#exemple"]'}]
     },
     //Menu horizontal (Base)        
-    {
+/*    {
         label: "Menu_horizontal (Base)", 
         url: "/composants/navigation/menuhorizontal",
         selectors: [".conteneur-menu-identification"],
         removeSelectors: [".no-test"]
     },    
-    //Menu horizontal (Hover niveau 1 sans enfants - Desktop)        
+    //Menu horizontal (Hover niveau 1 sans enfants - Tablet)        
     {
         label: "Menu_horizontal (Hover niveau 1 sans enfants)", 
         url: "/composants/navigation/menuhorizontal",
         selectors: [".conteneur-menu-identification"],
         removeSelectors: [".no-test"],
-        viewports: viewports.vDesktop, 
-        hoverSelectors: ['utd-menu-horizontal-item[href="/base"]']
+        viewports: viewports.vTablet, 
+        hoverSelectors: ['utd-menu-horizontal-item[href="/"]']
     },    
+    //Menu horizontal (Hover niveau 1 avec enfants - Tablet)        
+    {
+        label: "Menu_horizontal (Hover niveau 1 avec enfants)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: [".conteneur-menu-identification"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vTablet, 
+        hoverSelectors: ['utd-menu-horizontal-item[libelle="Menu 4"]']
+    },    
+    //Menu horizontal (Hover niveau 1 Plus - Tablet)        
+    {
+        label: "Menu_horizontal (Hover niveau 1 Plus)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: [".conteneur-menu-identification"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vTablet, 
+        hoverSelectors: ['utd-menu-horizontal-item[libelle="Plus"]']
+    },    
+    //Menu horizontal (Click niveau 1 avec enfants - Tablet)        
+    {
+        label: "Menu_horizontal (Click niveau 1 avec enfants)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu 6"]', shadowDomSelector: "a"}]
+    },    
+    //Menu horizontal (Click niveau 1 avec enfants et hover niveau 2 - Tablet)        
+    {
+        label: "Menu_horizontal (Click niveau 1 avec enfants et hover niveau 2)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu 6"]', shadowDomSelector: "a"}],
+        shadowHoverSelectors2: [{domSelector: '#menu6Element3', shadowDomSelector: "a"}]
+    },    
+    //Menu horizontal (Click niveau 1 avec enfants et hover niveau 2 actif - Tablet)        
+    {
+        label: "Menu_horizontal (Click niveau 1 avec enfants et hover niveau 2 actif)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu 6"]', shadowDomSelector: "a"}],
+        shadowHoverSelectors2: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu horizontal"]', shadowDomSelector: "a"}]
+    },    */
+
+
+    //Menu horizontal (Click niveau 1 Plus - Tablet)        
+    {
+        label: "Menu_horizontal (Click Plus)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vTablet, 
+        shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Plus"]', shadowDomSelector: "a"}]
+    },    
+
+    //Menu horizontal (Click Plus et hover niveau 1 - Tablet)        
+    {
+        label: "Menu_horizontal (Click Plus et hover niveau 1)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vTablet, 
+        shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Plus"]', shadowDomSelector: "a"}],
+        shadowHoverSelectors2: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu 8"]:not(.utd-d-none)', shadowDomSelector: "a"}]        
+    },    
+
+    //Menu horizontal (Click Plus et click niveau 1 - Tablet)        
+    {
+        label: "Menu_horizontal (Click Plus et click niveau 1)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vTablet, 
+        shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Plus"]', shadowDomSelector: "a"}, {domSelector: 'utd-menu-horizontal-item[libelle="Menu 8"]:not(.utd-d-none)', shadowDomSelector: "a"}],
+    },    
+    //Menu horizontal (Click Plus et click niveau 1 et hover niveau 2 - Tablet)        
+    {
+        label: "Menu_horizontal (Click Plus et click niveau 1 et hover niveau 2)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vTablet, 
+        shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Plus"]', shadowDomSelector: "a"}, {domSelector: 'utd-menu-horizontal-item[libelle="Menu 8"]:not(.utd-d-none)', shadowDomSelector: "a"}],
+        shadowHoverSelectors2: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu 8"]:not(.utd-d-none) utd-menu-horizontal-item[libelle="Élément 2 du menu 8"]', shadowDomSelector: "a"}]        
+    },    
+    
     //Menu horizontal (Hover niveau 1 sans enfants - Mobile)        
 /*    {
         label: "Menu_horizontal (Hover niveau 1 sans enfants - Mobile)", 

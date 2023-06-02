@@ -29,7 +29,7 @@ module.exports = {
     },
     asyncCaptureLimit: 10,
     asyncCompareLimit: 100,
-    debug: false,
+    debug: true,
     debugWindow: false,
     scenarioLogsInReports: true
 };

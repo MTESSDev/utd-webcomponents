@@ -59,11 +59,13 @@
     }
   
     ajusterAffichageControle()
+
     window.addEventListener("resize", ecranRedimensionneDebounced)
-    window.addEventListener("resize", () => {indiquerAjustementEnCours()})
+    window.addEventListener("resize", () => {indiquerAjustementEnCours()})    
   })
 
-  const ecranRedimensionneDebounced = Utils.debounce(() => ajusterAffichageControle(), 200)
+  // Ajout du traitement au resize de l'interface s'il n'y a pas d'essais backstopJs en cours (sinon le screenshot se prend pendant le resize et on n'a pas le menu dans l'affichage)    
+  const ecranRedimensionneDebounced = Utils.debounce(() => {if(!estTestBackstopJsEnCours()){ajusterAffichageControle()}}, 200)
 
   function fermerTousMenus() {
     console.log(document.querySelectorAll('utd-menu-horizontal-item[afficher="true"]'))
@@ -77,10 +79,15 @@
     //return thisComponent.getBoundingClientRect().right !== largeurConteneur
   }
   function indiquerAjustementEnCours() {
-    // Si la largeur du conteneur n'a pas changé on ne fait rien (ex. dans IOS, un resize est lancé au scroll... on veut éviter ça.)
-    if(estLargeurConteneurModifiee()){
+    // Si un test backstopJs ou si la largeur du conteneur n'a pas changé on ne fait rien (ex. dans IOS, un resize est lancé au scroll... on veut éviter ça.)
+    // et si un test backstopJs est en cours, un resize estle screenshot se prend pendant le resize et on n'a pas le menu dans l'affichage
+    if(!estTestBackstopJsEnCours() && estLargeurConteneurModifiee()){
       thisComponent.classList.add('ajustement-en-cours')
     }
+  }
+
+  function estTestBackstopJsEnCours() {
+    return document.body.classList.contains('bs-test-in-progress')
   }
   function ajusterAffichageControle() {
     // Si la largeur du conteneur n'a pas changé on ne fait rien (ex. dans IOS, un resize est lancé au scroll... on veut éviter ça.)
@@ -243,10 +250,6 @@
         ajouterElementsMenuAuMenuOriginal(elementMenu.children, child)
       }
     })
-  }
-
-  function toggleAfficher(){
-    afficher = !afficher
   }
 
   function contientMenusNonVisibles() {

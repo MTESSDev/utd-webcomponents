@@ -92,7 +92,7 @@ module.exports = async (page, scenario) => {
   const shadowClickSelector = scenario.shadowClickSelectors || scenario.shadowClickSelector;
   const shadowClickSelector2 = scenario.shadowClickSelectors2 || scenario.shadowClickSelector2;
 
-  //Si un sélecteur est spécifié on ajoute la classe de test en cours sur le body
+  //Si un sélecteur est spécifié on ajoute la classe de test en cours sur le body  
   if(scenario.selectors.length){
     if(scenario.selectors[0] !== 'document'){
       await page.$eval('body', (b => b.classList.add("bs-test-in-progress")));
