@@ -263,7 +263,7 @@
       </div>
     {/if}
   {:else}
-    <a href="{href}" title="{estMenuAccueil ? libelle : null}" aria-current="{actif === 'true' ? 'page' : null}" on:keydown={onKeyDown} on:blur={onBlur}>
+    <a href="{href}" title="{estMenuAccueil === 'true' ? libelle : null}" aria-current="{actif === 'true' ? 'page' : null}" on:keydown={onKeyDown} on:blur={onBlur}>
       {#if estMenuAccueil === 'true'}
         {#if estMenuBurger === 'true'}    
           <span>{@html libelle}</span>        
