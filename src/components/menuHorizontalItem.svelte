@@ -237,7 +237,7 @@
     if(!utdMenuHorizontalParent.contains(e.relatedTarget)){
       const itemsMenu = utdMenuHorizontalParent.querySelectorAll('utd-menu-horizontal-item')
       itemsMenu.forEach((item) => {
-        item.setAttribute('afficher', 'false')
+        //item.setAttribute('afficher', 'false')
       })
     }
   }
@@ -249,7 +249,7 @@
       {#if niveau === 1 && estMenuBurger === 'true'}    
         <span aria-hidden="true" class="utd-icone-svg{afficher === 'true' ?  ' x-fermer-bleu-moyen' : ' burger'}"/>
       {/if}      
-      <span>{libelle}</span>
+      <span>{@html libelle}</span>
       {#if srLibelle}    
         <span class="utd-sr-only">{srLibelle}</span>
       {/if}
@@ -266,12 +266,12 @@
     <a href="{href}" title="{estMenuAccueil ? libelle : null}" aria-current="{actif === 'true' ? 'page' : null}" on:keydown={onKeyDown} on:blur={onBlur}>
       {#if estMenuAccueil === 'true'}
         {#if estMenuBurger === 'true'}    
-          <span>{libelle}</span>        
+          <span>{@html libelle}</span>        
         {:else}
           <span aria-hidden="true" class="utd-icone-svg maison"/>
         {/if}                
       {:else}
-        <span>{libelle}</span>
+        <span>{@html libelle}</span>
       {/if}        
       {#if srLibelle}    
         <span class="utd-sr-only">{srLibelle}</span>

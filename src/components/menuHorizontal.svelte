@@ -31,6 +31,7 @@
   let largeurViewport = 0
   let menuOriginal = []
   let dernierIndexeVisible = 0
+  let estTestBackstopJsEnCours = false
 
   // Références pour accessibilité
   // https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation/
@@ -42,6 +43,9 @@
   //largeurViewport = window.innerWidth
 
   onMount(() => {      
+
+    estTestBackstopJsEnCours = window.location.hash.indexOf('bs-test') >= 0
+
     // Événement nécessaire pour IOS... Car pour lui l'événement blur de l'élément de menu n'est pas exécuté. Permet de s'assurer que lorsque le menu perd le focus, tous les menus sont fermés.
     // À noter que sur un click d'un élément de menu on stop la propagation du click (notre événement ici n'est donc pas exécuté)
     document.body.addEventListener('click', () => {
@@ -62,34 +66,39 @@
 
     window.addEventListener("resize", ecranRedimensionneDebounced)
     window.addEventListener("resize", () => {indiquerAjustementEnCours()})    
+
+    //Particularité lors des essais avec BackstopJs. On doit forcer un réajustement de l'affichage.
+    if(estTestBackstopJsEnCours) {
+      setTimeout(() => {
+        ajusterAffichageControle()
+      }, 500);
+    }
   })
 
   // Ajout du traitement au resize de l'interface s'il n'y a pas d'essais backstopJs en cours (sinon le screenshot se prend pendant le resize et on n'a pas le menu dans l'affichage)    
-  const ecranRedimensionneDebounced = Utils.debounce(() => {if(!estTestBackstopJsEnCours()){ajusterAffichageControle()}}, 200)
+  const ecranRedimensionneDebounced = Utils.debounce(() => {ajusterAffichageControle()}, 200)
+
 
   function fermerTousMenus() {
-    console.log(document.querySelectorAll('utd-menu-horizontal-item[afficher="true"]'))
     document.querySelectorAll('utd-menu-horizontal-item[afficher="true"]').forEach((elementMenu) => {
       elementMenu.setAttribute('afficher', 'false')
     })
   }
 
   function estLargeurConteneurModifiee() {
-    return largeurViewport !== window.innerWidth
-    //return thisComponent.getBoundingClientRect().right !== largeurConteneur
+    return estTestBackstopJsEnCours || largeurViewport !== window.innerWidth
   }
+
   function indiquerAjustementEnCours() {
     // Si un test backstopJs ou si la largeur du conteneur n'a pas changé on ne fait rien (ex. dans IOS, un resize est lancé au scroll... on veut éviter ça.)
-    // et si un test backstopJs est en cours, un resize estle screenshot se prend pendant le resize et on n'a pas le menu dans l'affichage
-    if(!estTestBackstopJsEnCours() && estLargeurConteneurModifiee()){
+    // et si un test backstopJs est en cours, on ne fait rien car il semble y avoir un resize et le screenshot se prend pendant le resize et on n'a pas le menu dans l'affichage
+    if(!estTestBackstopJsEnCours && estLargeurConteneurModifiee()){
       thisComponent.classList.add('ajustement-en-cours')
     }
   }
 
-  function estTestBackstopJsEnCours() {
-    return document.body.classList.contains('bs-test-in-progress')
-  }
   function ajusterAffichageControle() {
+
     // Si la largeur du conteneur n'a pas changé on ne fait rien (ex. dans IOS, un resize est lancé au scroll... on veut éviter ça.)
     if(!estLargeurConteneurModifiee()){
       return
@@ -97,6 +106,7 @@
 
     largeurViewport = window.innerWidth
     thisComponent.classList.add('ajustement-en-cours')
+
     supprimerMenuPlus()
     afficherTousMenusNiveau1()
 

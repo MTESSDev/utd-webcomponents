@@ -2671,7 +2671,6 @@ utd-menu-horizontal.ajustement-en-cours2, utd-menu-horizontal.ajustement-en-cour
   display: flex;
   align-items: flex-end;
   height: 100%;
-  max-width: calc(100vw - 16px);
   /*overflow-x: hidden;*/
 }
 .utd-menu-horizontal div[role=list] {
@@ -2704,6 +2703,7 @@ utd-menu-horizontal > utd-menu-horizontal-item:last-of-type {
   transform: none;
 }
 .utd-menu-horizontal-item a {
+  line-height: 1.35;
   padding: 8px 16px;
   display: flex;
   align-items: center;
@@ -2720,6 +2720,7 @@ utd-menu-horizontal > utd-menu-horizontal-item:last-of-type {
   background-color: #909aa9;
 }
 .utd-menu-horizontal-item.niv1 a {
+  white-space: nowrap;
   height: 100%;
   justify-content: flex-start;
   color: #fff;

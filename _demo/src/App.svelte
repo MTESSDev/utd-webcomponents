@@ -108,28 +108,27 @@
                     <!--<utd-menu-horizontal-item libelle="Base" href="/base"></utd-menu-horizontal-item>-->
                     <utd-menu-horizontal-item libelle="Composants" href="/composants" on:click={clickMenuComposants}></utd-menu-horizontal-item>
                     {#if $router.path.indexOf('/composants/navigation/menuhorizontal') >= 0}                    
-                        <utd-menu-horizontal-item libelle="Menu 3">
-                            <utd-menu-horizontal-item libelle="Élément 1" href="#"></utd-menu-horizontal-item>
-                            <utd-menu-horizontal-item libelle="Élément 2" href="#"></utd-menu-horizontal-item>
-                            <utd-menu-horizontal-item libelle="Élément 3" href="#"></utd-menu-horizontal-item>
-                            <utd-menu-horizontal-item libelle="Élément 4" href="#"></utd-menu-horizontal-item>
-                            <utd-menu-horizontal-item libelle="Élément 5" href="#"></utd-menu-horizontal-item>
+                        <utd-menu-horizontal-item libelle="Recherche de documents<br/>confidentiels et sensibles">
+                            <utd-menu-horizontal-item libelle="Documents non associés à un prestataire (dépôt)" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Rechercher dans les boîtes" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Numériser et admirer" href="#"></utd-menu-horizontal-item>
                         </utd-menu-horizontal-item>
                         <utd-menu-horizontal-item libelle="Menu 4">
                             <utd-menu-horizontal-item libelle="Élément 1" href="#"></utd-menu-horizontal-item>
                             <utd-menu-horizontal-item libelle="Élément 2" href="#"></utd-menu-horizontal-item>
-                            <utd-menu-horizontal-item libelle="Élément 3" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Menu horizontal" href="/composants/navigation/menuhorizontal" id="menu4Element3"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Élément 4" href="#"></utd-menu-horizontal-item>
                         </utd-menu-horizontal-item>
-                        <utd-menu-horizontal-item libelle="Menu 5">
-                            <utd-menu-horizontal-item libelle="Élément 1" href="#"></utd-menu-horizontal-item>
-                            <utd-menu-horizontal-item libelle="Élément 2" href="#"></utd-menu-horizontal-item>
+                        <utd-menu-horizontal-item libelle="Facturation">
+                            <utd-menu-horizontal-item libelle="Validation de la facture" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Pénalités au fournisseur" href="#"></utd-menu-horizontal-item>
                         </utd-menu-horizontal-item>
 
                         <utd-menu-horizontal-item libelle="Menu 6">
                             <utd-menu-horizontal-item libelle="Élément 1" href="#"></utd-menu-horizontal-item>
                             <utd-menu-horizontal-item libelle="Élément 2" href="#"></utd-menu-horizontal-item>
                             <utd-menu-horizontal-item libelle="Libellé ridiculement long long long comme on sait si bien les faire" href="#" id="menu6Element3"></utd-menu-horizontal-item>
-                            <utd-menu-horizontal-item libelle="Menu horizontal" href="/composants/navigation/menuhorizontal"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Élément 4" href="#"></utd-menu-horizontal-item>
                             <utd-menu-horizontal-item libelle="Élément 5" href="#"></utd-menu-horizontal-item>
                         </utd-menu-horizontal-item>
                         <utd-menu-horizontal-item libelle="Menu 7">

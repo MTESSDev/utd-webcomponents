@@ -20,7 +20,8 @@ paramsDefaut : {
     misMatchThreshold: 0.05,
     requireSameDimensions: true,
     onBeforeScript: "puppet/onBefore.js",
-    onReadyScript: "puppet/onReady.js"  
+    onReadyScript: "puppet/onReady.js", 
+    appendBsTestHash : false  
 },
 scenarios : [   
     //Toujours utiliser url relative dans les scénarios. L'url de base va lui être ajoutée.
@@ -672,12 +673,14 @@ scenarios : [
         removeSelectors: [".no-test", "#colonneGauche"],
         shadowClickSelectors: [{domSelector: "utd-menu-ancres", shadowDomSelector: 'a[href="#exemple"]'}]
     },
+    
     //Menu horizontal (Base)        
-    {
+   {
         label: "Menu_horizontal (Base)", 
         url: "/composants/navigation/menuhorizontal",
         selectors: [".conteneur-menu-identification"],
-        removeSelectors: [".no-test"]
+        removeSelectors: [".no-test"],
+        appendBsTestHash: true
     },    
     //Menu horizontal (Hover niveau 1 sans enfants)        
     {
@@ -686,7 +689,8 @@ scenarios : [
         selectors: [".conteneur-menu-identification"],
         removeSelectors: [".no-test"],
         viewports: viewports.vTablet, 
-        hoverSelectors: ['utd-menu-horizontal-item[href="/"]']
+        hoverSelectors: ['utd-menu-horizontal-item[href="/"]'],
+        appendBsTestHash: true
     },    
     //Menu horizontal (Hover niveau 1 avec enfants)        
     {
@@ -695,7 +699,8 @@ scenarios : [
         selectors: [".conteneur-menu-identification"],
         removeSelectors: [".no-test"],
         viewports: viewports.vTablet, 
-        hoverSelectors: ['utd-menu-horizontal-item[libelle="Menu 4"]']
+        hoverSelectors: ['utd-menu-horizontal-item[libelle="Recherche de documents<br/>confidentiels et sensibles"]'],
+        appendBsTestHash: true
     },    
     //Menu horizontal (Hover niveau 1 Plus)        
     {
@@ -704,7 +709,8 @@ scenarios : [
         selectors: [".conteneur-menu-identification"],
         removeSelectors: [".no-test"],
         viewports: viewports.vTablet, 
-        hoverSelectors: ['utd-menu-horizontal-item[libelle="Plus"]']
+        hoverSelectors: ['utd-menu-horizontal-item[libelle="Plus"]'],
+        appendBsTestHash: true
     },    
     //Menu horizontal (Click niveau 1 avec enfants)        
     {
@@ -713,8 +719,21 @@ scenarios : [
         selectors: ["viewport"],
         removeSelectors: [".no-test"],
         viewports: viewports.vTablet,
-        shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu 6"]', shadowDomSelector: "a"}]
+        shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu 4"]', shadowDomSelector: "a"}],
+        appendBsTestHash: true
     },    
+    //Menu horizontal (Click niveau 1 avec enfants et fermeture via Escape)        
+    {
+        label: "Menu_horizontal (Click niveau 1 avec enfants et fermeture via Escape)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu 4"]', shadowDomSelector: "a"}],
+        keyPressKeyCode: ["Escape"],       
+        appendBsTestHash: true
+    },    
+
     //Menu horizontal (Click niveau 1 avec enfants et fermeture via click body)        
     {
         label: "Menu_horizontal (Click niveau 1 avec enfants et fermeture via click body)", 
@@ -722,7 +741,8 @@ scenarios : [
         selectors: ["viewport"],
         removeSelectors: [".no-test"],
         viewports: viewports.vTablet,
-        shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu 6"]', shadowDomSelector: "a"}, {domSelector: 'utd-menu-vertical', shadowDomSelector: "a"}],
+        shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu 4"]', shadowDomSelector: "a"}, {domSelector: 'utd-menu-vertical', shadowDomSelector: "a"}],
+        appendBsTestHash: true
     },    
 
     //Menu horizontal (Click niveau 1 avec enfants et hover niveau 2)        
@@ -732,8 +752,9 @@ scenarios : [
         selectors: ["viewport"],
         removeSelectors: [".no-test"],
         viewports: viewports.vTablet,
-        shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu 6"]', shadowDomSelector: "a"}],
-        shadowHoverSelectors2: [{domSelector: '#menu6Element3', shadowDomSelector: "a"}]
+        shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu 4"]', shadowDomSelector: "a"}],
+        shadowHoverSelectors2: [{domSelector: 'utd-menu-horizontal-item[libelle="Élément 1"]', shadowDomSelector: "a"}],
+        appendBsTestHash: true
     },    
     //Menu horizontal (Click niveau 1 avec enfants et hover niveau 2 actif)        
     {
@@ -742,20 +763,35 @@ scenarios : [
         selectors: ["viewport"],
         removeSelectors: [".no-test"],
         viewports: viewports.vTablet,
-        shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu 6"]', shadowDomSelector: "a"}],
-        shadowHoverSelectors2: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu horizontal"]', shadowDomSelector: "a"}]
+        shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu 4"]', shadowDomSelector: "a"}],
+        shadowHoverSelectors2: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu horizontal"]', shadowDomSelector: "a"}],
+        appendBsTestHash: true
     },    
 
 
-    //Menu horizontal (Click niveau 1 Plus)        
+    //Menu horizontal (Click Plus)        
     {
         label: "Menu_horizontal (Click Plus)", 
         url: "/composants/navigation/menuhorizontal",
         selectors: ["viewport"],
         removeSelectors: [".no-test"],
         viewports: viewports.vTablet, 
-        shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Plus"]', shadowDomSelector: "a"}]
+        shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Plus"]', shadowDomSelector: "a"}],
+        appendBsTestHash: true
     },    
+
+    //Menu horizontal (Click Plus et fermeture via Escape)        
+    {
+        label: "Menu_horizontal (Click Plus et fermeture via Escape)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vTablet, 
+        shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Plus"]', shadowDomSelector: "a"}],
+        keyPressKeyCode: ["Escape"],       
+        appendBsTestHash: true
+    },    
+
 
     //Menu horizontal (Click Plus et hover niveau 1)        
     {
@@ -765,7 +801,8 @@ scenarios : [
         removeSelectors: [".no-test"],
         viewports: viewports.vTablet, 
         shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Plus"]', shadowDomSelector: "a"}],
-        shadowHoverSelectors2: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu 8"]:not(.utd-d-none)', shadowDomSelector: "a"}]        
+        shadowHoverSelectors2: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu 8"]:not(.utd-d-none)', shadowDomSelector: "a"}],
+        appendBsTestHash: true
     },    
 
     //Menu horizontal (Click Plus et click niveau 1)        
@@ -776,7 +813,20 @@ scenarios : [
         removeSelectors: [".no-test"],
         viewports: viewports.vTablet, 
         shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Plus"]', shadowDomSelector: "a"}, {domSelector: 'utd-menu-horizontal-item[libelle="Menu 8"]:not(.utd-d-none)', shadowDomSelector: "a"}],
+        appendBsTestHash: true
     },    
+    //Menu horizontal (Click Plus et click niveau 1 et fermeture via Escape)        
+    {
+        label: "Menu_horizontal (Click Plus et click niveau 1 et fermeture via Escape)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vTablet, 
+        shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Plus"]', shadowDomSelector: "a"}, {domSelector: 'utd-menu-horizontal-item[libelle="Menu 8"]:not(.utd-d-none)', shadowDomSelector: "a"}],
+        keyPressKeyCode: ["Escape"], 
+        appendBsTestHash: true
+    },    
+
     //Menu horizontal (Click Plus et click niveau 1 et hover niveau 2)        
     {
         label: "Menu_horizontal (Click Plus et click niveau 1 et hover niveau 2)", 
@@ -785,7 +835,8 @@ scenarios : [
         removeSelectors: [".no-test"],
         viewports: viewports.vTablet, 
         shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Plus"]', shadowDomSelector: "a"}, {domSelector: 'utd-menu-horizontal-item[libelle="Menu 8"]:not(.utd-d-none)', shadowDomSelector: "a"}],
-        shadowHoverSelectors2: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu 8"]:not(.utd-d-none) utd-menu-horizontal-item[libelle="Élément 2 du menu 8"]', shadowDomSelector: "a"}]        
+        shadowHoverSelectors2: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu 8"]:not(.utd-d-none) utd-menu-horizontal-item[libelle="Élément 2 du menu 8"]', shadowDomSelector: "a"}],
+        appendBsTestHash: true
     },        
     //Menu horizontal (Click Burger)        
     {
@@ -795,6 +846,7 @@ scenarios : [
         removeSelectors: [".no-test"],
         viewports: viewports.vPhone, 
         shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu"]', shadowDomSelector: "a"}],
+        appendBsTestHash: true
     },    
     //Menu horizontal (Burger click menu fermeture)        
     {
@@ -804,6 +856,7 @@ scenarios : [
         removeSelectors: [".no-test"],
         viewports: viewports.vPhone, 
         shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu"]', shadowDomSelector: "a"}, {domSelector: 'utd-menu-horizontal-item[libelle="Menu"]', shadowDomSelector: "a"}],
+        appendBsTestHash: true
     },    
     //Menu horizontal (Burger fermeture via click body)        
     {
@@ -812,7 +865,10 @@ scenarios : [
         selectors: ["viewport"],
         removeSelectors: [".no-test"],
         viewports: viewports.vPhone, 
-        shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu"]', shadowDomSelector: "a"}, {domSelector: 'utd-menu-vertical', shadowDomSelector: "a"}]        
+        shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu"]', shadowDomSelector: "a"}],
+        scrollToSelector2: "#exemple",
+        shadowClickSelectors2: [{domSelector: "utd-hautpage", shadowDomSelector: "button"}],
+        appendBsTestHash: true        
     },    
 
     //Menu horizontal (Click Burger et click niveau 1)        
@@ -823,6 +879,7 @@ scenarios : [
         removeSelectors: [".no-test"],
         viewports: viewports.vPhone, 
         shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu"]', shadowDomSelector: "a"}, {domSelector: 'utd-menu-horizontal-item[libelle="Menu 8"]:not(.utd-d-none)', shadowDomSelector: "a"}],
+        appendBsTestHash: true
     },    
     //Menu horizontal (Click Burger et click niveau 1 et hover niveau 2)        
     {
@@ -832,7 +889,8 @@ scenarios : [
         removeSelectors: [".no-test"],
         viewports: viewports.vPhone, 
         shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu"]', shadowDomSelector: "a"}, {domSelector: 'utd-menu-horizontal-item[libelle="Menu 8"]:not(.utd-d-none)', shadowDomSelector: "a"}],
-        shadowHoverSelectors2: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu 8"]:not(.utd-d-none) utd-menu-horizontal-item[libelle="Élément 2 du menu 8"]', shadowDomSelector: "a"}]                
+        shadowHoverSelectors2: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu 8"]:not(.utd-d-none) utd-menu-horizontal-item[libelle="Élément 2 du menu 8"]', shadowDomSelector: "a"}],
+        appendBsTestHash: true
     },    
 
     //Menu horizontal (Click Burger et click niveau 1 actif)        
@@ -842,7 +900,8 @@ scenarios : [
         selectors: ["viewport"],
         removeSelectors: [".no-test"],
         viewports: viewports.vPhone, 
-        shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu"]', shadowDomSelector: "a"}, {domSelector: 'utd-menu-horizontal-item[libelle="Menu 6"]:not(.utd-d-none)', shadowDomSelector: "a"}],
+        shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu"]', shadowDomSelector: "a"}, {domSelector: 'utd-menu-horizontal-item[libelle="Menu 4"]:not(.utd-d-none)', shadowDomSelector: "a"}],
+        appendBsTestHash: true
     },    
     //Menu horizontal (Click Burger et click niveau 1 actif et hover niveau 2)        
     {
@@ -851,8 +910,9 @@ scenarios : [
         selectors: ["viewport"],
         removeSelectors: [".no-test"],
         viewports: viewports.vPhone, 
-        shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu"]', shadowDomSelector: "a"}, {domSelector: 'utd-menu-horizontal-item[libelle="Menu 6"]:not(.utd-d-none)', shadowDomSelector: "a"}],
-        shadowHoverSelectors2: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu 6"]:not(.utd-d-none) utd-menu-horizontal-item[libelle="Élément 1"]', shadowDomSelector: "a"}]                    
+        shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu"]', shadowDomSelector: "a"}, {domSelector: 'utd-menu-horizontal-item[libelle="Menu 4"]:not(.utd-d-none)', shadowDomSelector: "a"}],
+        shadowHoverSelectors2: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu 4"]:not(.utd-d-none) utd-menu-horizontal-item[libelle="Élément 1"]', shadowDomSelector: "a"}],
+        appendBsTestHash: true
     },    
     //Menu horizontal (Click Burger et click niveau 1 actif et hover niveau 2 actif)        
     {
@@ -861,8 +921,9 @@ scenarios : [
         selectors: ["viewport"],
         removeSelectors: [".no-test"],
         viewports: viewports.vPhone, 
-        shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu"]', shadowDomSelector: "a"}, {domSelector: 'utd-menu-horizontal-item[libelle="Menu 6"]:not(.utd-d-none)', shadowDomSelector: "a"}],
-        shadowHoverSelectors2: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu 6"]:not(.utd-d-none) utd-menu-horizontal-item[libelle="Menu horizontal"]', shadowDomSelector: "a"}]                    
+        shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu"]', shadowDomSelector: "a"}, {domSelector: 'utd-menu-horizontal-item[libelle="Menu 4"]:not(.utd-d-none)', shadowDomSelector: "a"}],
+        shadowHoverSelectors2: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu 4"]:not(.utd-d-none) utd-menu-horizontal-item[libelle="Menu horizontal"]', shadowDomSelector: "a"}],
+        appendBsTestHash: true
     },    
     
 

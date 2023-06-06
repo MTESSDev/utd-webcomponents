@@ -6,7 +6,7 @@ const obtenirScenarios = function(){
 
     return scenarios.scenarios.map(s => {
         const scenario = {...scenarios.paramsDefaut, ...s};
-        scenario.url = scenarios.urlBase + scenario.url;
+        scenario.url = scenarios.urlBase + scenario.url + '#bs-test';
         return scenario;        
     });      
 }
@@ -29,7 +29,7 @@ module.exports = {
     },
     asyncCaptureLimit: 10,
     asyncCompareLimit: 100,
-    debug: true,
+    debug: false,
     debugWindow: false,
     scenarioLogsInReports: true
 };

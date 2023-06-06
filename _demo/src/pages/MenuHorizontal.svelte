@@ -26,7 +26,7 @@
 
   function obtenirTableauParametres2() {
       return [
-          {nom: "libelle", type: "String", description: `Texte du lien associé à l'item de menu.`},
+          {nom: "libelle", type: "String", description: `Texte du lien associé à l'item de menu. Il est possible d'ajouter "<br/>" afin de forcer un saut de ligne dans le texte.`},
           {nom: "href", type: "String (Optionnel)", description: `Valeur de l'attribut "href" du lien dans l'item de menu.`},
       ];
   }
@@ -66,7 +66,7 @@
 <h3>Référence système de design Quebec.ca</h3>
 <p>Non disponible.</p>
 
-<h2>Exemple</h2>
+<h2 id="exemple">Exemple</h2>
 <p>L'exemple contient le menu horizontal du présent site de démonstration avec quelques éléments fictifs supplémentaires visibles uniquement dans la présente page.</p>
 
 <CodeSource idElementCodeSource="menuHorizontal" outerhtml="true">
