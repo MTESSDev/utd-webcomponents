@@ -26,7 +26,7 @@
 
   function obtenirTableauParametres2() {
       return [
-          {nom: "libelle", type: "String", description: `Texte du lien associé à l'item de menu. Il est possible d'ajouter "<br/>" afin de forcer un saut de ligne dans le texte.`},
+          {nom: "libelle", type: "String", description: `Texte du lien associé à l'item de menu. Il est possible d'ajouter "&lt;br/&gt;" afin de forcer un saut de ligne dans le texte.`},
           {nom: "href", type: "String (Optionnel)", description: `Valeur de l'attribut "href" du lien dans l'item de menu.`},
       ];
   }
