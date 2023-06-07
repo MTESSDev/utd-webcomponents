@@ -20,6 +20,7 @@
   export let estMenuBurger = 'false'
   export let estMenuAccueil = 'false'
   export let estDernier = 'false'
+  export let estOuvertureGauche = 'false'
 
   let possedeEnfants = false
   let niveau = 1
@@ -237,13 +238,13 @@
     if(!utdMenuHorizontalParent.contains(e.relatedTarget)){
       const itemsMenu = utdMenuHorizontalParent.querySelectorAll('utd-menu-horizontal-item')
       itemsMenu.forEach((item) => {
-        item.setAttribute('afficher', 'false')
+        //item.setAttribute('afficher', 'false')
       })
     }
   }
 
 </script>
-<div class="utd-menu-horizontal-item niv{niveau}{afficher === 'true' ? ' visible' : ''}{actif === 'true' ? ' active' : ''}{estMenuPlus === 'true' ? ' menu-plus' : ''}{estMenuBurger === 'true' ? ' menu-burger' : ''}{estDernier === 'true' ? ' dernier' : ''}" role="listitem">
+<div class="utd-menu-horizontal-item niv{niveau}{afficher === 'true' ? ' visible' : ''}{actif === 'true' ? ' active' : ''}{estMenuPlus === 'true' ? ' menu-plus' : ''}{estMenuBurger === 'true' ? ' menu-burger' : ''}{estDernier === 'true' ? ' dernier' : ''}{estOuvertureGauche === 'true' ? ' ouverture-gauche' : ''}" role="listitem">
   {#if possedeEnfants}    
     <a role="button" href="{href}" aria-expanded="{afficher}" aria-controls="{idSousMenu}" on:click|preventDefault={toggleAfficher} on:keydown={onKeyDown} on:blur={onBlur}>
       {#if niveau === 1 && estMenuBurger === 'true'}    

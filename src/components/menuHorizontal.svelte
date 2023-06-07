@@ -29,6 +29,7 @@
   let largeurConteneur = 0
   let largeurMenu = 0
   let largeurViewport = 0
+  let largeurMinimaleSousMenu = 200
   let menuOriginal = []
   let dernierIndexeVisible = 0
   let estTestBackstopJsEnCours = false
@@ -40,7 +41,6 @@
 
   //ajouterElementsMenuAuMenuOriginal(menuOriginal, thisComponent)
 
-  //largeurViewport = window.innerWidth
 
   onMount(() => {      
 
@@ -86,7 +86,7 @@
   }
 
   function estLargeurConteneurModifiee() {
-    return estTestBackstopJsEnCours || largeurViewport !== window.innerWidth
+    return estTestBackstopJsEnCours || largeurViewport !== document.body.offsetWidth
   }
 
   function indiquerAjustementEnCours() {
@@ -104,7 +104,7 @@
       return
     }
 
-    largeurViewport = window.innerWidth
+    largeurViewport = document.body.offsetWidth
     thisComponent.classList.add('ajustement-en-cours')
 
     supprimerMenuPlus()
@@ -121,9 +121,11 @@
             Utils.reafficherApresChargement(thisComponent)                 
           }, 100)
         })
-      } else {
-      if(contientMenusNonVisibles()) {        
-        ajouterMenuPlusTemporaire()
+      } 
+      else {
+        if(contientMenusNonVisibles()) {        
+          ajouterMenuPlusTemporaire()
+          
           setTimeout(() => {
             //On enlève 1, car notre menuPlus temporaire ne doit pas compter
             dernierIndexeVisible = obtenirDernierIndexeVisible() - 1          
@@ -136,13 +138,33 @@
               Utils.reafficherApresChargement(thisComponent)              
             }, 100)
           })
-      } else {
-          // Le menu fit, rien à faire!
-          thisComponent.classList.remove('ajustement-en-cours')
-        Utils.reafficherApresChargement(thisComponent)
-      }
+        } else {
+            // Le menu fit, rien à faire!
+            determinerOuvertureGaucheDernierMenuNiveau1()
+
+            thisComponent.classList.remove('ajustement-en-cours')
+            Utils.reafficherApresChargement(thisComponent)
+        }
       } 
     })
+  }
+
+  function determinerOuvertureGaucheDernierMenuNiveau1() {
+    // Vérifier si sous menu dernier élément sera pleinement visible (gauche + largeurMinimaleSousMenu), sinon lui ajouter une classe pour qu'il ouvre à gauche...
+    const dernierMenuNiveau1 = thisComponent.querySelector(':scope > utd-menu-horizontal-item:last-child')
+    if(dernierMenuNiveau1) {
+      const positionDroite = dernierMenuNiveau1.getBoundingClientRect().left + largeurMinimaleSousMenu
+
+      if(positionDroite > largeurViewport) {
+        dernierMenuNiveau1.setAttribute('est-ouverture-gauche', 'true')
+      } else {
+        reinitialiserOuvertureGaucheMenu(dernierMenuNiveau1)
+      }
+    }    
+  }
+
+  function reinitialiserOuvertureGaucheMenu(element) {
+    element.removeAttribute('est-ouverture-gauche')
   }
 
   
@@ -209,6 +231,7 @@
     let contientElementActif = false
 
     for (let i = dernierIndexeVisible + 1; i < thisComponent.children.length; i++) {
+
       const cln = thisComponent.children[i].cloneNode(true);
       cln.setAttribute('est-menu-plus', 'true')
 
@@ -222,6 +245,10 @@
 
       if(i === thisComponent.children.length - 1) {
         cln.setAttribute('est-dernier','true')
+
+        //On retire la classe indiquant une ouverture à gauche (impossible dans la situation présente car le dernier menu est nécéssairement "masqué" et inclu dans le PLUS ou le menu burger )
+        reinitialiserOuvertureGaucheMenu(thisComponent.children[i])
+        reinitialiserOuvertureGaucheMenu(cln)
       }
 
       menuPlus.appendChild(cln)            

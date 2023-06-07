@@ -66,6 +66,10 @@
 <h3>Référence système de design Quebec.ca</h3>
 <p>Non disponible.</p>
 
+<h3>Références d'accessibilité</h3>
+<p>Le "disclosure pattern" <a href="https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation/" target="_blank">tel que défini au W3C</a> a été utilisé.</p>
+
+
 <h2 id="exemple">Exemple</h2>
 <p>L'exemple contient le menu horizontal du présent site de démonstration avec quelques éléments fictifs supplémentaires visibles uniquement dans la présente page.</p>
 

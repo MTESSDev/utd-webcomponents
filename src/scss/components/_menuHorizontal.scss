@@ -185,11 +185,17 @@ utd-menu-horizontal > utd-menu-horizontal-item  {
             
         }
 
-        &:not(.menu-plus){
+        &:not(.menu-plus):not(.ouverture-gauche){            
             .sous-menu {
                 left: -1px;
             }
         }
+
+        &.ouverture-gauche {
+            .sous-menu {
+                right: 0;
+            }
+        }    
 
         .sous-menu {
             position: absolute;
