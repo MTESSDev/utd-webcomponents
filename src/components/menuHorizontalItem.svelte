@@ -238,7 +238,7 @@
     if(!utdMenuHorizontalParent.contains(e.relatedTarget)){
       const itemsMenu = utdMenuHorizontalParent.querySelectorAll('utd-menu-horizontal-item')
       itemsMenu.forEach((item) => {
-        //item.setAttribute('afficher', 'false')
+        item.setAttribute('afficher', 'false')
       })
     }
   }

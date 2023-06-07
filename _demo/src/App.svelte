@@ -142,6 +142,16 @@
                         </utd-menu-horizontal-item>    
                     {/if}
                 </utd-menu-horizontal>                
+                <div class="utd-zone-raccourcis-connexion utd-d-none">
+                    <div class="utd-zone-raccourcis">
+                        Raccourcis
+                    </div>
+
+                    <div class="utd-zone-connexion">
+                        Connexion
+                    </div>
+                </div>
+    
             </div>
         </div>
 
