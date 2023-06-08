@@ -102,7 +102,7 @@
         <!--Javascript désactivé-->
 
 
-        <div class="utd-bandeau-principal">
+        <div class="utd-bandeau-principal" id="bandeauPrincipal">
             <div class="utd-container">
                 <utd-menu-horizontal id="menuHorizontal" afficher-icone-accueil="true">
                     <!--<utd-menu-horizontal-item libelle="Base" href="/base"></utd-menu-horizontal-item>-->
@@ -134,19 +134,22 @@
                     {/if}
                 </utd-menu-horizontal>    
                 {#if $router.path.indexOf('/composants/navigation/menuhorizontal') >= 0}                                                
+                    <!-- Retirer si non requis -->    
                     <div class="utd-zone-raccourcis-connexion">
+                        <!-- Retirer si non requis -->
                         <div class="utd-zone-raccourcis">
                             <a href="#">
                                 <span id="envelopeCommunications" aria-hidden="true" class="utd-icone-svg enveloppe-blanc"></span>
                                 <span class="utd-sr-only">Accéder à vos communications</span>
                             </a>
-
+                            
                             <a href="#">
                                 <span aria-hidden="true" class="utd-icone-svg utilisateur-blanc"></span>
                                 <span class="utd-sr-only">Accéder à votre profil</span>
                             </a>
                         </div>
 
+                        <!-- Retirer si non requis -->
                         <div class="utd-zone-connexion">
                             <button type="button" class="utd-btn secondaire option-1 compact utd-text-sm" id="btnDeconnexion">Déconnexion</button>
                         </div>

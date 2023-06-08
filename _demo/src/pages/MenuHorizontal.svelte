@@ -51,6 +51,16 @@
 <p>Le composant <span class="utd-emphase-gris">utd-menu-horizontal-item</span> correspond à un élément du menu et peut contenir d'autres composants <span class="utd-emphase-gris">utd-menu-horizontal-item</span> (menu/sous-menu).</p>
 <p>Pour le moment seuls deux niveaux sont supportés.</p>
 
+<h3>Référence système de design Quebec.ca</h3>
+<p>Non disponible.</p>
+
+<h3>Références d'accessibilité</h3>
+<p>Le "disclosure pattern" <a href="https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation/" target="_blank">tel que défini au W3C</a> a été utilisé.</p>
+
+<h3>Particularités</h3>
+<p>La section de droite contenant les icônes de raccourcis et le bouton de connexion/déconnexion ne fait pas partie du menu et son contenu devrait se restreindre à quelques icônes de raccourcis et un bouton de connexion/déconnexion.</p>
+<p>Cependant les deux doivent être intégrés dans une structure html particulière. Voir les éléments de classe <span class="utd-emphase-gris">utd-bandeau-principal</span>, <span class="utd-emphase-gris">utd-container</span> et <span class="utd-emphase-gris">utd-zone-raccourcis-connexion</span> dans l'<a href="#exemple">exemple</a>.</p>
+
 <h2>utd-menu-horizontal - Attributs disponibles</h2>
 <TableauParams parametres="{tableauParametres}">
 </TableauParams>
@@ -63,17 +73,15 @@
 <TableauSlots parametres="{tableauSlots}">
 </TableauSlots>
 
-<h3>Référence système de design Quebec.ca</h3>
-<p>Non disponible.</p>
-
-<h3>Références d'accessibilité</h3>
-<p>Le "disclosure pattern" <a href="https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation/" target="_blank">tel que défini au W3C</a> a été utilisé.</p>
 
 
 <h2 id="exemple">Exemple</h2>
 <p>L'exemple contient le menu horizontal du présent site de démonstration avec quelques éléments fictifs supplémentaires visibles uniquement dans la présente page.</p>
 
-<CodeSource idElementCodeSource="menuHorizontal" outerhtml="true">
+<utd-avis titre="Important!">
+    <p>Le menu horizontal doit être intégré dans une structure html particulière. Voir les éléments de classe <span class="utd-emphase-gris">utd-bandeau-principal</span> et <span class="utd-emphase-gris">utd-container</span> dans l'exemple.</p>
+</utd-avis>
+<CodeSource idElementCodeSource="bandeauPrincipal" outerhtml="true">
 </CodeSource>
 
 

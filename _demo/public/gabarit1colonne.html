@@ -31,17 +31,57 @@
     <header>
       <utd-piv-entete id="pivEntete" titre-site1="Système de design MESS" alt-logo="Signature du gouvernement du Québec. Accédez à Système de design MESS.">
       </utd-piv-entete>
-      <!--
-        Ici votre menu principal
-        <utd-navigation-principale></utd-navigation-principale> Composant à venir...
-      -->
+
+      <!-- Bandeau principal contenant le menu horizontal et la zone de raccourcis et de connexion -->
+      <div class="utd-bandeau-principal" id="bandeauPrincipal">
+        <div class="utd-container">
+          <utd-menu-horizontal id="menuHorizontal" afficher-icone-accueil="true">
+            <utd-menu-horizontal-item libelle="Base" href="/base"></utd-menu-horizontal-item>
+
+            <utd-menu-horizontal-item libelle="Composants" href="/composants" on:click={clickMenuComposants}></utd-menu-horizontal-item>
+
+            <utd-menu-horizontal-item libelle="Versions" href="/composants/versions">
+            </utd-menu-horizontal-item>
+
+            <utd-menu-horizontal-item libelle="Navigation">
+                <utd-menu-horizontal-item libelle="Haut de page" href="/composants/navigation/hautpage"></utd-menu-horizontal-item>
+                <utd-menu-horizontal-item libelle="Menu d'ancres" href="/composants/navigation/menuancres"></utd-menu-horizontal-item>
+                <utd-menu-horizontal-item libelle="Menu vertical" href="/composants/navigation/menuvertical"></utd-menu-horizontal-item>
+                <utd-menu-horizontal-item libelle="Menu horizontal" href="/composants/navigation/menuhorizontal"></utd-menu-horizontal-item>
+                <utd-menu-horizontal-item libelle="Élément 5" href="#"></utd-menu-horizontal-item>
+            </utd-menu-horizontal-item>
+          </utd-menu-horizontal>    
+
+          <!-- Retirer si non requis -->    
+          <div class="utd-zone-raccourcis-connexion">
+            <!-- Retirer si non requis -->
+            <div class="utd-zone-raccourcis">
+                <a href="#">
+                    <span id="envelopeCommunications" aria-hidden="true" class="utd-icone-svg enveloppe-blanc"></span>
+                    <span class="utd-sr-only">Accéder à vos communications</span>
+                </a>
+                
+                <a href="#">
+                    <span aria-hidden="true" class="utd-icone-svg utilisateur-blanc"></span>
+                    <span class="utd-sr-only">Accéder à votre profil</span>
+                </a>
+            </div>
+
+            <!-- Retirer si non requis -->
+            <div class="utd-zone-connexion">
+                <button type="button" class="utd-btn secondaire option-1 compact utd-text-sm" id="btnDeconnexion">Déconnexion</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
     </header>
     <div class="utd-container">
       <main id="main">
         <h1>Gabarit 1 colonne</h1>
         <p>La présente page est une simple page HTML contenant le markup essentiel pour l'utilisation des composants UTD dans un contexte de gabarit 1 colonne.</p>
         <p>Inspecter la source de la page afin de voir le HTML requis.</p>
-        <p>Vous devrez évidemment paramétrer les composants utd de base (utd-piv-entete, utd-piv-pied-page, ainsi que utd-menu-vertical et utd-pied-page-site au besoin. Les pages d'aide de ces composants sont dans le menu à gauche.</p>
+        <p>Vous devrez évidemment paramétrer les composants utd de base (utd-piv-entete, utd-piv-pied-page, utd-menu-horizontal, ainsi que utd-menu-vertical et utd-pied-page-site au besoin. Les pages d'aide de ces composants sont dans le menu à gauche.</p>
       </main>
     </div>
   </div>
