@@ -135,6 +135,7 @@
             masquerMenusExcedentaires()
 
             setTimeout(() => {
+              determinerOuvertureGaucheDernierMenuNiveau1()
               thisComponent.classList.remove('ajustement-en-cours')
               Utils.reafficherApresChargement(thisComponent)              
             }, 100)
