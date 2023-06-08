@@ -78,7 +78,41 @@ button, input[type="submit"] {
             border-color: #9ca5b2;
             background-color: #9ca5b2;
         }
-    
+
+        /*** Boutons inversés ***/
+        &.option-1 {
+            color: #223654;
+            border-color: #ffffff;
+            background-color: #ffffff;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+        }
+        
+        &.option-2 {
+            color: #223654;
+            border-color: #89bce5;
+            background-color: #89bce5;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+        }
+        
+        &.option-1:hover,
+        &.option-2:hover {
+            border-color: #b8d7ef;
+            background-color: #b8d7ef;
+        }
+        &.option-1:focus,
+        &.option-2:focus {
+            border-color: #223654;
+            background-color: #b8d7ef;
+            box-shadow: 
+                0 3px 6px rgba(0, 0, 0, 0.16), 
+                0 0 0 2px #4a98d9;
+        }
+        &.option-1:active,
+        &.option-2:active {
+            border-color: #f0f6fc;
+            background-color: #f0f6fc;
+        }
+        
     }
 
     /* ==================== Bouton secondaire ==================== */
@@ -102,7 +136,37 @@ button, input[type="submit"] {
         &[disabled] {
             color: #9ca5b2;
             border-color: #9ca5b2;
-        }        
+        }       
+        
+        /*** Boutons inversés ***/      
+
+        &.option-1 {
+            color: #ffffff;
+            border-color: #ffffff;
+            background: transparent;
+        }
+        
+        &.option-2 {
+            color: #89bce5;
+            border-color: #89bce5;
+            background: transparent;
+        }
+        
+        &.option-1:hover, 
+        &.option-2:hover {
+            background-color: rgba(218, 230, 240, 0.08);
+        }
+        &.option-1:focus,
+        &.option-2:focus {
+            border-color: #223654;
+            background-color: rgba(218, 230, 240, 0.08);
+            box-shadow: 0 0 0 2px #4a98d9;
+        }
+        &.option-1:active,
+        &.option-2:active {
+            background-color: rgba(218, 230, 240, 0.16);
+        }
+                
     }
 
     /* ==================== Bouton tertiaire ==================== */
@@ -140,6 +204,34 @@ button, input[type="submit"] {
                 background-color: transparent;
             }
         }    
+
+        /*** Boutons inversés ***/
+    
+        &.option-1 {
+            color: #ffffff;
+        }
+
+        &.option-2 {
+            color: #89bce5;
+        }
+
+        &.option-1:hover,
+        &.option-2:hover {
+            text-decoration: underline;
+            background-color: rgba(197, 202, 210, 0.16);
+        }
+        &.option-1:focus,
+        &.option-2:focus {
+            border-color: #223654;
+            background-color: rgba(197, 202, 210, 0.16);
+            box-shadow: 0 0 0 2px #4a98d9;
+        }
+        &.option-1:active,
+        &.option-2:active {
+            background-color: rgba(197, 202, 210, 0.24);
+        }
+
+
     }
     /* ==================== Bouton avertissement ==================== */
     &.avertissement {
@@ -165,7 +257,28 @@ button, input[type="submit"] {
             color: var(--gris-moyen);
             border-color: #9ca5b2;
             background-color: #9ca5b2;
-        }    
+        }  
+        
+        /*** Boutons inversés ***/
+
+        &.option-1 {
+            color: #223654;
+            border-color: #e58271;
+            background-color: #e58271;
+        }
+        &.option-1:hover {
+            border-color: #efa598;
+            background-color: #efa598;
+        }
+        &.option-1:focus {
+            border-color: #223654;
+            background-color: #efa598;
+            box-shadow: 0 0 0 2px #4a98d9;
+        }
+        &.option-1:active {
+            border-color: #f6cec7;
+            background-color: #f6cec7;
+        }        
     }    
 }
 
@@ -229,4 +342,3 @@ button.utd-btn.utd-traitement-en-cours, input[type="submit"].utd-btn.utd-traitem
 .utd-btn[disabled] .utd-icone-svg {
     opacity: .5;
 }
-

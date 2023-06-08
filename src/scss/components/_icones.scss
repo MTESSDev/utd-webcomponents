@@ -68,7 +68,11 @@
     &.clipboard {
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-clipboard");
     }
-    
+
+    &.enveloppe-blanc {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-enveloppe-blanc");
+    }
+
     &.erreur {
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-erreur");
     }
@@ -114,6 +118,10 @@
     }
     &.succes-blanc {
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-succes-blanc");
+    }
+
+    &.utilisateur-blanc {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-utilisateur-blanc");
     }
     
     &.x-fermer-blanc {

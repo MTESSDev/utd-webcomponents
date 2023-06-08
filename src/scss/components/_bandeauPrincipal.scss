@@ -27,5 +27,33 @@ Bandeau principal
         & > *:last-child {
             margin-right: 0;
         }
+
+        .utd-zone-raccourcis {
+            display: flex;
+
+            a {
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                margin-right: 16px;
+                
+                &:last-of-type {
+                    margin-right: 0;
+                }
+
+                .utd-icone-svg.enveloppe-blanc {
+                    min-width: 24px;
+                    height: 24px;
+                }
+                .utd-icone-svg.utilisateur-blanc {
+                    min-width: 24px;
+                    height: 24px;
+                }
+
+            }
+        }
     }
 }

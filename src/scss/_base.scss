@@ -606,31 +606,31 @@ ul.utd  {
 /* -02A- Tailles de textes adaptatives                                                                                  
 /*====================================================================================================*/
 .utd-text-xs {
-    font-size: 0.8rem; /*12.8*/
+    font-size: 0.8rem!important; /*12.8*/
 }
 
 .utd-text-sm {
-    font-size: 0.875rem; /*14*/
+    font-size: 0.875rem!important; /*14*/
 }
 
 .utd-text-base {
-    font-size: var(--tc-16-14-val);
+    font-size: var(--tc-16-14-val)!important;
 }
 
 .utd-text-lg {
-    font-size: var(--tc-18-17-val);
+    font-size: var(--tc-18-17-val)!important;
 }
 
 .utd-text-xl {
-    font-size: var(--tc-21-18-val);
+    font-size: var(--tc-21-18-val)!important;
 }
 
 .utd-text-xxl {
-    font-size: var(--tc-24-20-val);
+    font-size: var(--tc-24-20-val)!important;
 }
 
 .utd-text-xxxl {
-    font-size: var(--tc-32-22-val);
+    font-size: var(--tc-32-22-val)!important;
 }
 
 /*====================================================================================================

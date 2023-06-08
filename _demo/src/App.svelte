@@ -135,11 +135,19 @@
                 </utd-menu-horizontal>                
                 <div class="utd-zone-raccourcis-connexion">
                     <div class="utd-zone-raccourcis">
-                        Zone Raccourcis<br/>(À venir)
+                        <a href="#">
+                            <span id="envelopeCommunications" aria-hidden="true" class="utd-icone-svg enveloppe-blanc"></span>
+                            <span class="sr-only">Accéder à vos communications</span>
+                        </a>
+
+                        <a href="#">
+                            <span aria-hidden="true" class="utd-icone-svg utilisateur-blanc"></span>
+                            <span class="sr-only">Accéder à votre profil</span>
+                        </a>
                     </div>
 
                     <div class="utd-zone-connexion">
-                        Zone Connexion<br/>(À venir)
+                        <button type="button" class="utd-btn secondaire option-1 compact utd-text-sm" id="btnDeconnexion">Déconnexion</button>
                     </div>
                 </div>
     
