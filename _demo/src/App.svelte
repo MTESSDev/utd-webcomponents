@@ -132,25 +132,26 @@
                         </utd-menu-horizontal-item>
 
                     {/if}
-                </utd-menu-horizontal>                
-                <div class="utd-zone-raccourcis-connexion">
-                    <div class="utd-zone-raccourcis">
-                        <a href="#">
-                            <span id="envelopeCommunications" aria-hidden="true" class="utd-icone-svg enveloppe-blanc"></span>
-                            <span class="sr-only">Accéder à vos communications</span>
-                        </a>
+                </utd-menu-horizontal>    
+                {#if $router.path.indexOf('/composants/navigation/menuhorizontal') >= 0}                                                
+                    <div class="utd-zone-raccourcis-connexion">
+                        <div class="utd-zone-raccourcis">
+                            <a href="#">
+                                <span id="envelopeCommunications" aria-hidden="true" class="utd-icone-svg enveloppe-blanc"></span>
+                                <span class="utd-sr-only">Accéder à vos communications</span>
+                            </a>
 
-                        <a href="#">
-                            <span aria-hidden="true" class="utd-icone-svg utilisateur-blanc"></span>
-                            <span class="sr-only">Accéder à votre profil</span>
-                        </a>
-                    </div>
+                            <a href="#">
+                                <span aria-hidden="true" class="utd-icone-svg utilisateur-blanc"></span>
+                                <span class="utd-sr-only">Accéder à votre profil</span>
+                            </a>
+                        </div>
 
-                    <div class="utd-zone-connexion">
-                        <button type="button" class="utd-btn secondaire option-1 compact utd-text-sm" id="btnDeconnexion">Déconnexion</button>
+                        <div class="utd-zone-connexion">
+                            <button type="button" class="utd-btn secondaire option-1 compact utd-text-sm" id="btnDeconnexion">Déconnexion</button>
+                        </div>
                     </div>
-                </div>
-    
+                {/if}
             </div>
         </div>
 
