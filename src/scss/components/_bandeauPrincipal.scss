@@ -39,7 +39,22 @@ Bandeau principal
                 width: 40px;
                 height: 40px;
                 margin-right: 16px;
+                                 
+                &:hover {
+                    background-color: rgba(218, 230, 240, 0.08);
+                }
                 
+                &:focus {
+                    border-color: var(--bleu-fonce);
+                    background-color: rgba(218, 230, 240, 0.08);
+                    box-shadow: 0 0 0 2px #4a98d9;
+                }
+
+                &:active {
+                    background-color: rgba(218, 230, 240, 0.16);
+                }
+        
+                        
                 &:last-of-type {
                     margin-right: 0;
                 }
