@@ -19,7 +19,7 @@
           {nom: "titre", type: "String (Optionnel)", description: `Titre lu au lecteur écran seulement. Défaut : "Menu principal de navigation" / "Main navigation menu".`},
           {nom: "largeur-viewport-menu-burger", type: "Integer (Optionnel)", description: `Largeur d'écran à partir de laquelle l'affichage du menu est forcé en mobile, i.e Affichage d'un seul élément de menu (menu burger) nommé "Menu". Défaut : 475.`},          
           {nom: "afficher-icone-accueil", type: "Booléen (Optionnel)", description: `Indique si le lien "accueil/home" (icône "maison") doit être affiché ou non. Défaut : false.`},          
-          {nom: "titre-accueil", type: "String (Optionnel)", description: `Title associé au lien "accueil" si affiché. Défaut : Accueil / Home.`},          
+          {nom: "titre-accueil", type: "String (Optionnel)", description: `Title (icône maison) et texte (dans le menu burger) associé au lien "accueil" si affiché. Sera aussi le texte affiché  Défaut : Accueil / Home.`},          
           {nom: "url-accueil", type: "String (Optionnel)", description: `Url vers laquelle le lien "accueil" doit rediriger. Défaut : "/".`}
       ];
   }
@@ -58,7 +58,8 @@
 <p>Le "disclosure pattern" <a href="https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation/" target="_blank">tel que défini au W3C</a> a été utilisé.</p>
 
 <h3>Particularités</h3>
-<p>La section de droite contenant les icônes de raccourcis et le bouton de connexion/déconnexion ne fait pas partie du menu et son contenu devrait se restreindre à quelques icônes de raccourcis et un bouton de connexion/déconnexion.</p>
+<p>Le menu horizontal faire partie du "bandeau principal" qui est constitué du menu principal (le présent) et d'une zone de raccourcis et d'éléments liés à la connexion.</p>
+<p>La zone de raccourcis et d'éléments liés à la connexion/déconnexion ne fait pas partie du menu horizontal, et son contenu devrait se restreindre à quelques icônes de raccourcis et un bouton de connexion/déconnexion.</p>
 <p>Cependant les deux doivent être intégrés dans une structure html particulière. Voir les éléments de classe <span class="utd-emphase-gris">utd-bandeau-principal</span>, <span class="utd-emphase-gris">utd-container</span> et <span class="utd-emphase-gris">utd-zone-raccourcis-connexion</span> dans l'<a href="#exemple">exemple</a>.</p>
 
 <h2>utd-menu-horizontal - Attributs disponibles</h2>
