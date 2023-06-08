@@ -25,7 +25,6 @@
   const texteMenuBurger = languePage === "en" ?  "Menu" : "Menu"
   const thisComponent = get_current_component()
   let controleMenu
-  let controleMenuItemPlus 
   let largeurConteneur = 0
   let largeurMenu = 0
   let largeurViewport = 0
@@ -129,6 +128,8 @@
           setTimeout(() => {
             //On enlève 1, car notre menuPlus temporaire ne doit pas compter
             dernierIndexeVisible = obtenirDernierIndexeVisible() - 1          
+            
+            //Retrait du menu Plus temporaire
             thisComponent.children[0].remove()
 
             masquerMenusExcedentaires()
@@ -307,45 +308,28 @@
     let i = 0
     let indexeDernierElementVisible = 0
 
-    const menuPlus = thisComponent.children[0]
-    const largeurMenuPlus = menuPlus.getBoundingClientRect().right - menuPlus.getBoundingClientRect().left
-
     while (menuVisible && i <= thisComponent.children.length - 1) {
       const item = thisComponent.children[i]
-      if((item.getBoundingClientRect().right + largeurMenuPlus) <= largeurConteneur){
+      if(item.getBoundingClientRect().right <= largeurConteneur) {
         indexeDernierElementVisible = i
         i++        
       } else {
         menuVisible = false
       }      
     }
-
     return indexeDernierElementVisible   
   }
 
   function ajouterMenuPlusTemporaire(){
     const menuPlusTemp = document.createElement('utd-menu-horizontal-item')
     menuPlusTemp.setAttribute('libelle', texteMenuPlus)
+    menuPlusTemp.setAttribute('est-menu-plus', 'true')
 
     const elementTemp = document.createElement('utd-menu-horizontal-item')
     elementTemp.setAttribute('libelle', 'Temporaire')
     menuPlusTemp.appendChild(elementTemp)
 
     thisComponent.prepend(menuPlusTemp)
-    controleMenuItemPlus = menuPlusTemp
-  }
-
-  function ajouterMenuPlus(){
-    const menuPlus = document.createElement('utd-menu-horizontal-item')
-    menuPlus.setAttribute('libelle', 'Plus')
-      
-    thisComponent.childNodes.forEach(function(item){
-      const cln = item.cloneNode(true);
-      menuPlus.appendChild(cln);
-    })
-
-    thisComponent.appendChild(menuPlus)
-    controleMenuItemPlus = menuPlus
   }
 
 </script>
