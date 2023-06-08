@@ -1,0 +1,31 @@
+/*====================================================================================================
+Bandeau principal
+====================================================================================================*/
+.utd-bandeau-principal {
+    background-color: var(--bleu-moyen);
+    color: #fff;
+    line-height: 1.35;
+
+    & > .utd-container {
+        display: flex;
+        min-height: 72px;
+        max-height: 72px;
+        justify-content: space-between;
+        width: 100%;
+    }    
+
+    .utd-zone-raccourcis-connexion {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        margin-left: 32px;
+
+        & > * {
+            margin-right: 32px;
+        }
+
+        & > *:last-child {
+            margin-right: 0;
+        }
+    }
+}

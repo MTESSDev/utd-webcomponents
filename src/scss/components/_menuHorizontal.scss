@@ -9,6 +9,8 @@ utd-menu-horizontal, utd-menu-horizontal-item {
 }
 
 utd-menu-horizontal {
+    width: 100%;
+
     &.mounted, &.mounted utd-menu-horizontal-item {
         visibility: visible;
         max-height: inherit;
@@ -22,7 +24,6 @@ utd-menu-horizontal {
     &.ajustement-en-cours2, &.ajustement-en-cours2 utd-menu-horizontal-item{
         overflow: hidden;
     }
-
 }
 
 .utd-menu-horizontal {
@@ -64,7 +65,6 @@ utd-menu-horizontal > utd-menu-horizontal-item  {
     }
     
     a {
-        line-height: 1.35;
         padding: 8px 16px;
         display: flex;
         align-items: center;

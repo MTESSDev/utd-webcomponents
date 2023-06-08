@@ -34,20 +34,16 @@ utd-pied-page-site [slot="contenu"]{
 /*====================================================================================================*/
 /*  -15- Menu principal (desktop)
 /*====================================================================================================*/
-
-.conteneur-menu-identification {
-    background-color: var(--bleu-moyen);
-    color: #fff;
+.utd-zone-raccourcis-connexion {
+    min-width: 250px;
+    font-size: 14px;
 }
 
-
-.zone-menu-identification {
-    display: flex;
-    min-height: 72px;
-    max-height: 72px;
-    justify-content: space-between;
+@media screen and (max-width:425px) {
+    .utd-zone-raccourcis-connexion {
+        min-width: 200px;
+    }
 }
-
 /*====================================================================================================
   -10- Layout
 ====================================================================================================*/

@@ -292,8 +292,10 @@
   function contientMenusNonVisibles() {
 
     largeurConteneur = thisComponent.getBoundingClientRect().right
+//    largeurMenu = thisComponent.children[thisComponent.children.length - 1].getBoundingClientRect().right - 0.5
     largeurMenu = thisComponent.children[thisComponent.children.length - 1].getBoundingClientRect().right
-    return largeurMenu > largeurConteneur
+
+    return largeurMenu > largeurConteneur 
   }
 
   function estAffichageMenuBurger() {
@@ -305,12 +307,11 @@
     let i = 0
     let indexeDernierElementVisible = 0
 
-    const menuPlus = thisComponent.children[thisComponent.children.length - 1]
+    const menuPlus = thisComponent.children[0]
     const largeurMenuPlus = menuPlus.getBoundingClientRect().right - menuPlus.getBoundingClientRect().left
 
     while (menuVisible && i <= thisComponent.children.length - 1) {
       const item = thisComponent.children[i]
-
       if((item.getBoundingClientRect().right + largeurMenuPlus) <= largeurConteneur){
         indexeDernierElementVisible = i
         i++        
