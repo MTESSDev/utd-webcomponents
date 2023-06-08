@@ -35,15 +35,11 @@ utd-pied-page-site [slot="contenu"]{
 /*  -15- Menu principal (desktop)
 /*====================================================================================================*/
 .utd-zone-raccourcis-connexion {
-    min-width: 250px;
+    /*width: 250px;
+    min-width: 250px;*/
     font-size: 14px;
 }
 
-@media screen and (max-width:425px) {
-    .utd-zone-raccourcis-connexion {
-        min-width: 200px;
-    }
-}
 /*====================================================================================================
   -10- Layout
 ====================================================================================================*/

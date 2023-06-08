@@ -139,7 +139,7 @@
               thisComponent.classList.remove('ajustement-en-cours')
               Utils.reafficherApresChargement(thisComponent)              
             }, 100)
-          })
+          }, 100)
         } else {
             // Le menu fit, rien à faire!
             determinerOuvertureGaucheDernierMenuNiveau1()

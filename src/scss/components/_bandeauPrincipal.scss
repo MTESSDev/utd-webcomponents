@@ -72,3 +72,22 @@ Bandeau principal
         }
     }
 }
+
+
+@media screen and (max-width:475px) {
+    .utd-bandeau-principal  {
+        .utd-zone-raccourcis-connexion {
+            margin-left: 16px; 
+            
+            & > * {
+                margin-right: 16px;
+            }
+    
+            .utd-zone-raccourcis {
+                a {
+                    margin-right: 4px;
+                }
+            }
+        }
+    }
+}
