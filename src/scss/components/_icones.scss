@@ -38,20 +38,51 @@
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-ampoule");
     }
     
-    &.fleche-haut-blanche {
-        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-fleche-haut-blanche");
+    &.burger {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-burger");
+    }    
+
+    &.burger-blanc {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-burger-blanc");
+    }    
+
+    &.chevron-bleu-piv, &.chevron-blanc, &.chevron, &.chevron-bleu-moyen {
+        width: 16px;
+        min-width: 16px;
+        height: 10px;
+    }    
+    &.chevron {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-chevron");
+    }    
+    &.chevron-bleu-piv {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-chevron-bleu-piv");
+    }    
+    &.chevron-bleu-moyen {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-chevron-bleu-moyen");
+    }    
+
+    &.chevron-blanc {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-chevron-blanc");
     }
     
     &.clipboard {
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-clipboard");
     }
-    
+
+    &.enveloppe-blanc {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-enveloppe-blanc");
+    }
+
     &.erreur {
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-erreur");
     }
     
     &.erreur-blanc {
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-erreur-blanc");
+    }
+    
+    &.fleche-haut-blanche {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-fleche-haut-blanche");
     }
     
     &.information {
@@ -61,6 +92,10 @@
     &.information-blanc {
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-information-blanc");
     }
+    
+    &.maison {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-maison");
+    }    
     
     &.moins {
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-moins");
@@ -84,6 +119,10 @@
     &.succes-blanc {
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-succes-blanc");
     }
+
+    &.utilisateur-blanc {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-utilisateur-blanc");
+    }
     
     &.x-fermer-blanc {
         width: 16px;
@@ -98,17 +137,13 @@
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-xfermer-bleu");
     }
     
-    &.chevron-bleu-piv, &.chevron-blanc, &.chevron-bleu-texte {
-        width: 16px;
-        min-width: 16px;
-        height: 10px;
+    &.x-fermer-bleu-moyen {
+        width: 22px;
+        height: 22px;
+        min-width: 22px;
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-xfermer-bleu-moyen");
     }    
-    &.chevron-bleu-piv {
-        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-chevron-bleu-piv");
-    }    
-    &.chevron-blanc {
-        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-chevron-blanc");
-    }    
+
     &.facebook {
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-facebook");
     }    

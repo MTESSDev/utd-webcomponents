@@ -137,6 +137,16 @@ export class Utils {
         return attribut && attribut !== true
     }    
 
+    static obtenirParents(element) {            
+        const parents = []
+            
+        for ( ; element && element !== document; element = element.parentNode ) {
+            parents.push(element)
+        }
+    
+        return parents       
+    }        
+
     /**
      * Permet de debouncer une fonction.
      * @param {Object} func Fonction à debouncer.

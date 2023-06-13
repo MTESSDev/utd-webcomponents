@@ -127,7 +127,7 @@ function ajouterCodeDialogue4() {
 <a href="https://design.quebec.ca/composantes/action/dialog-modal" target="_blank">Voir les spécifications sur le site de design Quebec.ca</a>
 
 <h3>Particularités vs. le système de design Quebec.ca</h3>
-<p>Le composant <strong>dialogue d'alerte</strong> a été remplacé par notre composant <strong><a href="/composants/message">message</a></strong> (seulement le nom est différent, il a les mêmes caractéristiques).</p>
+<p>Le composant <strong>dialogue d'alerte</strong> a été remplacé par notre composant <strong><a href="/composants/actions/message">message</a></strong> (seulement le nom est différent, il a les mêmes caractéristiques).</p>
 
 <h2>Attributs disponibles</h2>
 <TableauParams parametres="{tableauParametres}">

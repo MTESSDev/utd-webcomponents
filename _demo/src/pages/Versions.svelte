@@ -7,6 +7,19 @@
 </utd-menu-ancres>
 
 <utd-accordeon reduit="false">
+    <div slot="titre"><h2>1.12.0 (2023-06-13)</h2></div>       
+    <h3>Correction d'anomalies</h3>
+    <ul class="utd">
+        <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/formulaire/listederoulante">Liste déroulante</a>, si une option était sélectionnée par défaut (via son attribut "selected") elle n'était pas considérée. C'était toujours le placeholder qui était affiché (Effectuer une sélection).</li>
+    </ul>            
+
+    <h3>Améliorations</h3>
+    <ul class="utd">
+        <li>Ajout du composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/navigation/menuhorizontal">Menu horizontal</a>.</li>
+    </ul>    
+</utd-accordeon>
+
+<utd-accordeon reduit="true">
     <div slot="titre"><h2>1.11.0 (2023-05-26)</h2></div>
     <h3>Correction d'anomalies</h3>
     <ul class="utd">

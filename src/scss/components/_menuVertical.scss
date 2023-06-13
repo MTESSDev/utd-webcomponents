@@ -1,11 +1,11 @@
 /*====================================================================================================
   -15- Menu vertical
 ====================================================================================================*/
-utd-menu-vertical{
+utd-menu-vertical, utd-menu-vertical-item {
     display: block;
     visibility: hidden;
 
-    &.mounted{
+    &.mounted, &.mounted utd-menu-vertical-item.mounted {
         visibility: visible;
     }    
 }

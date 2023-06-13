@@ -6,7 +6,7 @@ const obtenirScenarios = function(){
 
     return scenarios.scenarios.map(s => {
         const scenario = {...scenarios.paramsDefaut, ...s};
-        scenario.url = scenarios.urlBase + scenario.url;
+        scenario.url = scenarios.urlBase + scenario.url + '#bs-test';
         return scenario;        
     });      
 }

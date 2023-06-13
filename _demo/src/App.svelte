@@ -102,49 +102,59 @@
         <!--Javascript désactivé-->
 
 
-        <div class="conteneur-menu-identification">
-            <div class="utd-container zone-menu-identification">
-                <utd-menu-horizontal>
-                    <utd-menu-horizontal-item libelle="Base" href="/base"></utd-menu-horizontal-item>
-                    <utd-menu-horizontal-item libelle="Composants" href="/composants" on:click={clickMenuComposants}></utd-menu-horizontal-item>
-                    {#if $router.path.indexOf('/composants/navigation/menuhorizontal') >= 0}                    
-                        <utd-menu-horizontal-item libelle="Menu 3">
-                            <utd-menu-horizontal-item libelle="Élément 1" href="#"></utd-menu-horizontal-item>
-                            <utd-menu-horizontal-item libelle="Élément 2" href="#"></utd-menu-horizontal-item>
-                            <utd-menu-horizontal-item libelle="Élément 3" href="#"></utd-menu-horizontal-item>
-                            <utd-menu-horizontal-item libelle="Élément 4" href="#"></utd-menu-horizontal-item>
-                            <utd-menu-horizontal-item libelle="Élément 5" href="#"></utd-menu-horizontal-item>
-                        </utd-menu-horizontal-item>
-                        <utd-menu-horizontal-item libelle="Menu 4">
-                            <utd-menu-horizontal-item libelle="Élément 1" href="#"></utd-menu-horizontal-item>
-                            <utd-menu-horizontal-item libelle="Élément 2" href="#"></utd-menu-horizontal-item>
-                            <utd-menu-horizontal-item libelle="Élément 3" href="#"></utd-menu-horizontal-item>
-                        </utd-menu-horizontal-item>
-                        <utd-menu-horizontal-item libelle="Menu 5">
-                            <utd-menu-horizontal-item libelle="Élément 1" href="#"></utd-menu-horizontal-item>
-                            <utd-menu-horizontal-item libelle="Élément 2" href="#"></utd-menu-horizontal-item>
+        <div class="utd-bandeau-principal" id="bandeauPrincipal">
+            <div class="utd-container">
+                <utd-menu-horizontal id="menuHorizontal" afficher-icone-accueil="true">
+                    <!--<utd-menu-horizontal-item libelle="Base" href="/base"></utd-menu-horizontal-item>-->
+                    {#if $router.path.indexOf('/composants/navigation/menuhorizontal') < 0}                    
+                        <utd-menu-horizontal-item libelle="Composants" href="/composants" on:click={clickMenuComposants}></utd-menu-horizontal-item>
+                    {:else}                                        
+
+                        <utd-menu-horizontal-item libelle="Versions" href="/composants/versions">
                         </utd-menu-horizontal-item>
 
-                        <utd-menu-horizontal-item libelle="Menu 6">
-                            <utd-menu-horizontal-item libelle="Élément 1" href="#"></utd-menu-horizontal-item>
-                            <utd-menu-horizontal-item libelle="Élément 2" href="#"></utd-menu-horizontal-item>
-                            <utd-menu-horizontal-item libelle="Élément 3" href="#"></utd-menu-horizontal-item>
-                            <utd-menu-horizontal-item libelle="Élément 4" href="#"></utd-menu-horizontal-item>
+                        <utd-menu-horizontal-item libelle="Navigation">
+                            <utd-menu-horizontal-item libelle="Haut de page" href="/composants/navigation/hautpage"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Menu d'ancres" href="/composants/navigation/menuancres"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Menu vertical" href="/composants/navigation/menuvertical"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Menu horizontal" href="/composants/navigation/menuhorizontal"></utd-menu-horizontal-item>
                             <utd-menu-horizontal-item libelle="Élément 5" href="#"></utd-menu-horizontal-item>
                         </utd-menu-horizontal-item>
-                        <utd-menu-horizontal-item libelle="Menu 7">
-                            <utd-menu-horizontal-item libelle="Élément 1" href="#"></utd-menu-horizontal-item>
-                            <utd-menu-horizontal-item libelle="Élément 2" href="#"></utd-menu-horizontal-item>
-                            <utd-menu-horizontal-item libelle="Élément 3" href="#"></utd-menu-horizontal-item>
+                        <utd-menu-horizontal-item libelle="Facturation">
+                            <utd-menu-horizontal-item libelle="Validation de la facture" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Pénalité au fournisseur" href="#"></utd-menu-horizontal-item>
                         </utd-menu-horizontal-item>
-                        <utd-menu-horizontal-item libelle="Menu 8">
-                            <utd-menu-horizontal-item libelle="Élément 1" href="#"></utd-menu-horizontal-item>
-                            <utd-menu-horizontal-item libelle="Élément 2" href="#"></utd-menu-horizontal-item>
-                        </utd-menu-horizontal-item>    
 
+                        <utd-menu-horizontal-item libelle="Recherche de documents<br/>confidentiels et sensibles">
+                            <utd-menu-horizontal-item libelle="Documents non associés à un prestataire (dépôt)" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Rechercher dans les boîtes" href="#"></utd-menu-horizontal-item>
+                            <utd-menu-horizontal-item libelle="Numériser et admirer" href="#"></utd-menu-horizontal-item>
+                        </utd-menu-horizontal-item>
 
                     {/if}
-                </utd-menu-horizontal>                
+                </utd-menu-horizontal>    
+                {#if $router.path.indexOf('/composants/navigation/menuhorizontal') >= 0}                                                
+                    <!-- Retirer si non requis -->    
+                    <div class="utd-zone-raccourcis-connexion">
+                        <!-- Retirer si non requis -->
+                        <div class="utd-zone-raccourcis">
+                            <a href="#">
+                                <span id="envelopeCommunications" aria-hidden="true" class="utd-icone-svg enveloppe-blanc"></span>
+                                <span class="utd-sr-only">Accéder à vos communications</span>
+                            </a>
+                            
+                            <a href="#">
+                                <span aria-hidden="true" class="utd-icone-svg utilisateur-blanc"></span>
+                                <span class="utd-sr-only">Accéder à votre profil</span>
+                            </a>
+                        </div>
+
+                        <!-- Retirer si non requis -->
+                        <div class="utd-zone-connexion">
+                            <button type="button" class="utd-btn secondaire option-1 compact utd-text-sm" id="btnDeconnexion">Déconnexion</button>
+                        </div>
+                    </div>
+                {/if}
             </div>
         </div>
 
@@ -182,6 +192,7 @@
                         <utd-menu-vertical-item libelle="Navigation">       
                             <utd-menu-vertical-item libelle="Haut de page" href="/composants/navigation/hautpage"></utd-menu-vertical-item>
                             <utd-menu-vertical-item libelle="Menu d'ancres" href="/composants/navigation/menuancres"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item libelle="Menu horizontal" href="/composants/navigation/menuhorizontal"></utd-menu-vertical-item>
                             <utd-menu-vertical-item libelle="Menu vertical" href="/composants/navigation/menuvertical"></utd-menu-vertical-item>
                         </utd-menu-vertical-item>
                         <utd-menu-vertical-item libelle="Entête et pied de page">                                
