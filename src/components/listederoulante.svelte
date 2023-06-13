@@ -83,18 +83,18 @@ onMount(() => {
   }
 
 
-  mounted = true
-  html = thisComponent.getRootNode().getElementsByTagName("html")[0]
-  composant = thisComponent.shadowRoot.querySelector('.utd-liste-deroulante')
-  controleConteneur = thisComponent.shadowRoot.querySelector('.conteneur')
-  controleEspaceur = thisComponent.shadowRoot.querySelector('.espaceur')
-  controleSelection = thisComponent.shadowRoot.querySelector('.selection')
-  controleZoneNotificationLecteurEcran = thisComponent.shadowRoot.getElementById(idControleZoneNotificationLecteurEcran)
-  controleRecherche = thisComponent.shadowRoot.getElementById(idControleRecherche)
-  controleConteneurResultats = thisComponent.shadowRoot.querySelector('.resultats')
-  
-
+    mounted = true
+    html = thisComponent.getRootNode().getElementsByTagName("html")[0]
+    composant = thisComponent.shadowRoot.querySelector('.utd-liste-deroulante')
+    controleConteneur = thisComponent.shadowRoot.querySelector('.conteneur')
+    controleEspaceur = thisComponent.shadowRoot.querySelector('.espaceur')
+    controleSelection = thisComponent.shadowRoot.querySelector('.selection')
+    controleZoneNotificationLecteurEcran = thisComponent.shadowRoot.getElementById(idControleZoneNotificationLecteurEcran)
+    controleRecherche = thisComponent.shadowRoot.getElementById(idControleRecherche)
+    controleConteneurResultats = thisComponent.shadowRoot.querySelector('.resultats')
+    
     ajusterControleSelectOriginal()
+
     if(!controleSelect){
       return
     }
@@ -165,7 +165,6 @@ function definirAttributsInitiauxControles(){
 
 function definirAriaLabelConteneur(){
   
-
   //1 - aria-label sur le select
   if(controleSelect && controleSelect.getAttribute('aria-label')) {
     ariaLabel = controleSelect.getAttribute('aria-label')
@@ -442,13 +441,16 @@ function ajusterControleSelectOriginal() {
   }
 }
 
+function possedeOptionSelectionneeDefaut() {
+  return Array.from(controleSelect.options).findIndex((option) => option.defaultSelected) >= 0
+}
 function ajouterPlaceholderSelectOriginal(){
   
-  if(controleSelect.options[0].value !== '' ){
+  if(controleSelect.options[0].value !== ''){
     const optionPlaceholder = new Option(placeholder,'')
     optionPlaceholder.disabled = true
     optionPlaceholder.hidden = true
-    optionPlaceholder.selected = true
+//    optionPlaceholder.selected = true
 
     controleSelect.options.add(optionPlaceholder, 0)
   }
@@ -616,7 +618,6 @@ function majOptionsSelectionees(indexe){
 
 function definirOptionsSelectionnees(){
   optionsSelectionnees = []
-
   for (let i = 0; i < controleSelect.selectedOptions.length; i++) {  
     const option = controleSelect.selectedOptions[i]   
     if(option.value){ 

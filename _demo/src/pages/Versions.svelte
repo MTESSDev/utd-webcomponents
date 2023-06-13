@@ -6,6 +6,14 @@
 <utd-menu-ancres selecteur="#main h2">
 </utd-menu-ancres>
 
+<utd-accordeon reduit="true">
+    <div slot="titre"><h2>1.12.0 (2023-06-13)</h2></div>       
+    <h3>Améliorations</h3>
+    <ul class="utd">
+        <li>Ajout du composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/navigation/menuhorizontal">Menu horizontal</a>.</li>
+    </ul>    
+</utd-accordeon>
+
 <utd-accordeon reduit="false">
     <div slot="titre"><h2>1.11.0 (2023-05-26)</h2></div>
     <h3>Correction d'anomalies</h3>

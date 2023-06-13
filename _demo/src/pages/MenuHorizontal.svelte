@@ -46,10 +46,10 @@
 </utd-menu-ancres>
 
 <h2>Description</h2>
-<p>Menu de navigation horizontal à deux niveaux. Il est généré à partir de deux composants, soit <span class="utd-emphase-gris">utd-menu-horizontal</span> et <span class="utd-emphase-gris">utd-menu-horizontal-item</span>.</p>
+<p>Menu de navigation horizontal applicatif à deux niveaux. Il est généré à partir de deux composants, soit <span class="utd-emphase-gris">utd-menu-horizontal</span> et <span class="utd-emphase-gris">utd-menu-horizontal-item</span>.</p>
 <p>Le composant <span class="utd-emphase-gris">utd-menu-horizontal</span> contient l'ensemble du menu.</p>
 <p>Le composant <span class="utd-emphase-gris">utd-menu-horizontal-item</span> correspond à un élément du menu et peut contenir d'autres composants <span class="utd-emphase-gris">utd-menu-horizontal-item</span> (menu/sous-menu).</p>
-<p>Pour le moment seuls deux niveaux sont supportés.</p>
+<p>Comme il s'agit d'un menu horizontal "applicatif" et non "informationnel", seuls deux niveaux sont supportés.</p>
 
 <h3>Référence système de design Quebec.ca</h3>
 <p>Non disponible.</p>

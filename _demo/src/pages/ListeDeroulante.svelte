@@ -11,7 +11,7 @@
     onMount(() => {
         tableauParametres = obtenirTableauParametres();
         tableauSlots = obtenirTableauSlots();
-        ajouterCodeExemple4();
+//        ajouterCodeExemple4();
     })
 
     function obtenirTableauParametres() {
@@ -56,10 +56,10 @@
     <p>La <strong>boîte combinée</strong> est une liste à sélection unique ou multiple qui comprend un outil de recherche. Par défaut la recherche permet un certain flou (Voir paramètres "recherche-floue" et "precision-recherche").</p>
     <p>Cette liste est utilisée pour faciliter la sélection d'éléments lorsque la liste est très longue, par exemple une liste de ministères et organismes.</p>
 
-    <h3>Référence système de design Quebec.ca</h3>
-    <a href="https://design.quebec.ca/composantes/formulaire/liste-deroulante" target="_blank">Voir les spécifications sur le site de design Quebec.ca</a>
+    <h3>Référence système de design Québec.ca</h3>
+    <a href="https://design.Québec.ca/composantes/formulaire/liste-deroulante" target="_blank">Voir les spécifications sur le site de design Québec.ca</a>
 
-    <h3>Particularités vs. le système de design Quebec.ca</h3>
+    <h3>Particularités vs. le système de design Québec.ca</h3>
     <p>Un filet gris pâle a été ajouté sous le placeholder lorsqu'une liste à sélection simple sans recherche est ouverte afin de mieux distinguer les choix possibles de l'élément sélectionné.</p>
 
     <h3>Particularités techniques</h3>
@@ -88,7 +88,7 @@
             <option value="NS">Nouvelle-Écosse</option>
             <option value="ON">Ontario</option>
             <option value="PE">Île-du-Prince-Édouard</option>
-            <option value="QC">Quebec</option>
+            <option value="QC" selected>Québec</option>
             <option value="SK">Saskatchewan</option>
             <option value="NT">Territoires du Nord-Ouest</option>
             <option value="NU">Nunavut</option>
@@ -108,7 +108,7 @@
             <option value="NS">Nouvelle-Écosse</option>
             <option value="ON">Ontario</option>
             <option value="PE">Île-du-Prince-Édouard</option>
-            <option value="QC">Quebec</option>
+            <option value="QC">Québec</option>
             <option value="SK">Saskatchewan</option>
             <option value="NT">Territoires du Nord-Ouest</option>
             <option value="NU">Nunavut</option>
@@ -116,13 +116,15 @@
         </select>          
     </utd-champ-form>
 </div>
+
+<!--
 <h3>2a- Liste déroulante à sélection simple</h3>
-<div id="exemple2" class="bs-test">
+<div id="exemple2a" class="bs-test">
     <utd-champ-form precision="Ne soyez pas timide et assumez-vous.">
         <utd-liste-deroulante>
             <label>Sélectionnez votre province canadienne préférée</label>
-            <select id="select2">                
-                <option value="AB">Alberta</option>
+            <select id="select2a">                
+                <option value="AB" selected>Alberta</option>
                 <option value="BC">Colombie-Britannique</option>
                 <option value="MB">Manitoba</option>
                 <option value="NB">Nouveau-Brunswick</option>
@@ -130,7 +132,7 @@
                 <option value="NS">Nouvelle-Écosse</option>
                 <option value="ON">Ontario</option>
                 <option value="PE">Île-du-Prince-Édouard</option>
-                <option value="QC">Quebec</option>
+                <option value="QC">Québec</option>
                 <option value="SK">Saskatchewan</option>
                 <option value="NT">Territoires du Nord-Ouest</option>
                 <option value="NU">Nunavut</option>
@@ -140,27 +142,46 @@
     </utd-champ-form>
 </div>
 
-<CodeSource idElementCodeSource="exemple2">
+<CodeSource idElementCodeSource="exemple2a">
 </CodeSource>
-
+-->
 <h3>2b- Liste déroulante à sélection simple (avec peu de choix donc sans barre de défilement)</h3>
-<div id="exemple2a" class="bs-test">
+<div id="exemple2b" class="bs-test">
     <utd-champ-form precision="Ne soyez pas timide et assumez-vous.">
         <utd-liste-deroulante>
             <label>Sélectionnez votre province canadienne préférée</label>
-            <select id="select2a">
-                <option value="" hidden="hidden" disabled="disabled" selected>Veuillez faire un choix</option>
-                <option value="AB">Alberta</option>
+            <select id="select2b">
+                <option value="" disabled hidden>Effectuer un choix</option>
+                <option value="AB" selected>Alberta</option>
                 <option value="BC">Colombie-Britannique</option>
-                <option value="QC">Quebec</option>
+                <option value="QC">Québec</option>
                 <option value="SK">Saskatchewan</option>
             </select>          
         </utd-liste-deroulante>
     </utd-champ-form>
 </div>
 
-<CodeSource idElementCodeSource="exemple2a">
+<CodeSource idElementCodeSource="exemple2b">
 </CodeSource>
+<!--
+<h3>2c- Liste déroulante à sélection simple et un élément sélectionné par défaut</h3>
+<div id="exemple2c" class="bs-test">
+    <utd-champ-form precision="Ne soyez pas timide et assumez-vous.">
+        <utd-liste-deroulante>
+            <label>Sélectionnez votre province canadienne préférée</label>
+            <select id="select2c">
+                <option value="AB" toto="tata">Alberta</option>
+                <option value="BC">Colombie-Britannique</option>
+                <option value="QC" selected>Québec</option>
+                <option value="SK">Saskatchewan</option>
+            </select>          
+        </utd-liste-deroulante>
+    </utd-champ-form>
+</div>
+
+<CodeSource idElementCodeSource="exemple2c">
+</CodeSource>
+
 
 <h3>3- Liste déroulante à sélection multiple</h3>
 <div id="exemple3" class="bs-test">
@@ -168,7 +189,6 @@
         <utd-liste-deroulante>
             <label>Sélectionnez vos provinces canadiennes préférées</label>
             <select id="select3" multiple>
-                <option value="" hidden="hidden" disabled="disabled" selected>Veuillez faire un choix</option>
                 <option value="AB">Alberta</option>
                 <option value="BC">Colombie-Britannique</option>
                 <option value="MB">Manitoba</option>
@@ -177,7 +197,7 @@
                 <option value="NS">Nouvelle-Écosse</option>
                 <option value="ON">Ontario</option>
                 <option value="PE">Île-du-Prince-Édouard</option>
-                <option value="QC">Quebec</option>
+                <option value="QC">Québec</option>
                 <option value="SK">Saskatchewan</option>
                 <option value="NT">Territoires du Nord-Ouest</option>
                 <option value="NU">Nunavut</option>
@@ -195,7 +215,6 @@
     <utd-champ-form id="champUtd4" libelle="Sélectionnez votre état américain préféré" precision="Ne soyez pas timide et assumez-vous." obligatoire="true" invalide="true" message-erreur="Le champ «Sélectionnez votre état américain préféré» est obligatoire.">
         <utd-liste-deroulante recherchable="true">
             <select id="select4">
-                <option value="" hidden="hidden" disabled="disabled" selected>Veuillez faire un choix</option>
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
                 <option value="AZ">Arizona</option>
@@ -261,7 +280,6 @@
     <utd-champ-form libelle="Sélectionnez vos états américains préférés" precision="Ne soyez pas timide et assumez-vous.">
         <utd-liste-deroulante recherchable="true">
             <select id="select5" multiple>
-                <option value="" hidden="hidden" disabled="disabled" selected>Veuillez faire un choix</option>
                 <option value="AL">Alabama</option>
                 <option value="AK" mots-cles="freeze">Alaska</option>
                 <option value="AZ">Arizona</option>
@@ -327,7 +345,6 @@
     <utd-champ-form libelle="Sélectionnez vos états américains préférés" precision="Ne soyez pas timide et assumez-vous.">
         <utd-liste-deroulante recherchable="true" recherche-floue="false" multiple="true">
             <select id="select6" multiple>
-                <option value="" hidden="hidden" disabled="disabled" selected>Veuillez faire un choix</option>
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
                 <option value="AZ">Arizona</option>
@@ -386,3 +403,4 @@
 
 <CodeSource idElementCodeSource="exemple6">
 </CodeSource>
+-->
