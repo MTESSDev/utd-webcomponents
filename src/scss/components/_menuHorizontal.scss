@@ -11,7 +11,7 @@ utd-menu-horizontal, utd-menu-horizontal-item {
 utd-menu-horizontal {
     width: 100%;
 
-    &.mounted, &.mounted utd-menu-horizontal-item {
+    &.mounted, &.mounted utd-menu-horizontal-item.mounted {
         visibility: visible;
         max-height: inherit;
     }    
