@@ -444,13 +444,14 @@ function ajusterControleSelectOriginal() {
 function possedeOptionSelectionneeDefaut() {
   return Array.from(controleSelect.options).findIndex((option) => option.defaultSelected) >= 0
 }
+
 function ajouterPlaceholderSelectOriginal(){
   
   if(controleSelect.options[0].value !== ''){
     const optionPlaceholder = new Option(placeholder,'')
     optionPlaceholder.disabled = true
     optionPlaceholder.hidden = true
-//    optionPlaceholder.selected = true
+    optionPlaceholder.selected = !possedeOptionSelectionneeDefaut()
 
     controleSelect.options.add(optionPlaceholder, 0)
   }

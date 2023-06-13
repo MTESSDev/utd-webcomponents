@@ -11,7 +11,7 @@
     onMount(() => {
         tableauParametres = obtenirTableauParametres();
         tableauSlots = obtenirTableauSlots();
-//        ajouterCodeExemple4();
+        ajouterCodeExemple4();
     })
 
     function obtenirTableauParametres() {
@@ -117,7 +117,7 @@
     </utd-champ-form>
 </div>
 
-<!--
+
 <h3>2a- Liste déroulante à sélection simple</h3>
 <div id="exemple2a" class="bs-test">
     <utd-champ-form precision="Ne soyez pas timide et assumez-vous.">
@@ -144,15 +144,14 @@
 
 <CodeSource idElementCodeSource="exemple2a">
 </CodeSource>
--->
+
 <h3>2b- Liste déroulante à sélection simple (avec peu de choix donc sans barre de défilement)</h3>
 <div id="exemple2b" class="bs-test">
     <utd-champ-form precision="Ne soyez pas timide et assumez-vous.">
         <utd-liste-deroulante>
             <label>Sélectionnez votre province canadienne préférée</label>
             <select id="select2b">
-                <option value="" disabled hidden>Effectuer un choix</option>
-                <option value="AB" selected>Alberta</option>
+                <option value="AB">Alberta</option>
                 <option value="BC">Colombie-Britannique</option>
                 <option value="QC">Québec</option>
                 <option value="SK">Saskatchewan</option>
@@ -163,25 +162,6 @@
 
 <CodeSource idElementCodeSource="exemple2b">
 </CodeSource>
-<!--
-<h3>2c- Liste déroulante à sélection simple et un élément sélectionné par défaut</h3>
-<div id="exemple2c" class="bs-test">
-    <utd-champ-form precision="Ne soyez pas timide et assumez-vous.">
-        <utd-liste-deroulante>
-            <label>Sélectionnez votre province canadienne préférée</label>
-            <select id="select2c">
-                <option value="AB" toto="tata">Alberta</option>
-                <option value="BC">Colombie-Britannique</option>
-                <option value="QC" selected>Québec</option>
-                <option value="SK">Saskatchewan</option>
-            </select>          
-        </utd-liste-deroulante>
-    </utd-champ-form>
-</div>
-
-<CodeSource idElementCodeSource="exemple2c">
-</CodeSource>
-
 
 <h3>3- Liste déroulante à sélection multiple</h3>
 <div id="exemple3" class="bs-test">
@@ -403,4 +383,3 @@
 
 <CodeSource idElementCodeSource="exemple6">
 </CodeSource>
--->
