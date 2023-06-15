@@ -2,7 +2,7 @@
 <script>
   import { onMount } from "svelte";
   import { Utils } from "./js/utils"
-  import { get_current_component } from "svelte/internal"  
+  import { get_current_component } from "svelte/internal"
 
   const languePage = Utils.obtenirLanguePage()
 

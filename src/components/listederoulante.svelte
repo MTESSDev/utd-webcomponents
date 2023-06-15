@@ -24,7 +24,6 @@ export let placeholder = languePage === 'fr' ? "Effectuer un choix" : "Make a se
 const thisComponent = get_current_component()
 const idControleRecherche = Utils.genererId()
 const idControleResultats = Utils.genererId()
-const idControleZoneNotificationLecteurEcran = Utils.genererId()
 
 const titleEtiquette = languePage === 'fr' ? "Supprimer" : "Delete"
 const descriptionEtiquette = languePage === 'fr' ? "Déselectionner" : "Unselect"
@@ -53,7 +52,6 @@ let ariaDescriptionRecherche = null
 let controleRecherche
 let controleSelect
 let controleEspaceur
-let controleZoneNotificationLecteurEcran
 let controleConteneurResultats
 let afficherOptions = false
 let indexeFocusSuggestion = null
@@ -89,7 +87,6 @@ onMount(() => {
     controleConteneur = thisComponent.shadowRoot.querySelector('.conteneur')
     controleEspaceur = thisComponent.shadowRoot.querySelector('.espaceur')
     controleSelection = thisComponent.shadowRoot.querySelector('.selection')
-    controleZoneNotificationLecteurEcran = thisComponent.shadowRoot.getElementById(idControleZoneNotificationLecteurEcran)
     controleRecherche = thisComponent.shadowRoot.getElementById(idControleRecherche)
     controleConteneurResultats = thisComponent.shadowRoot.querySelector('.resultats')
     
@@ -1076,7 +1073,7 @@ function assurerControleVisible() {
 <div class="utd-component utd-liste-deroulante {largeur}{multiple ? ' multiple' : ''}{recherchable === 'true' ? ' recherchable' : ''}">
   <slot></slot>
 
-    <span aria-live="polite" id="{idControleZoneNotificationLecteurEcran}" class="utd-sr-only" tabindex="-1">{texteNotificationLecteurEcran}</span>
+    <span aria-live="polite" class="utd-sr-only" tabindex="-1">{texteNotificationLecteurEcran}</span>
 
     <span class="conteneur utd-form-control{afficherOptions ? ' ouvert' : ''}" dir="ltr" on:blur={blurConteneur}  role="{afficherOptions ? null : 'listbox'}" aria-expanded="{afficherOptions ? 'true' : 'false'}" tabindex="{afficherOptions ? '-1' : '0'}" on:keydown={onKeyDown} aria-disabled="false" aria-label="{ariaLabel}" aria-description="{ariaDescriptionConteneur}" aria-owns="{recherchable === 'false' ? idControleResultats : null}" aria-multiselectable="{multiple && recherchable === 'false' ? 'true' : null}" aria-activedescendant="{recherchable === 'false' && afficherOptions ? idActiveDescendant : null}">
       <span class="selection {multiple  && optionsSelectionnees.length > 0 ? 'contient-etiquettes': ''}" on:click={clickSelection} on:mousedown={selectionMouseDown}>

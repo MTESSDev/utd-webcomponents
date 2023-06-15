@@ -1,0 +1,55 @@
+/*====================================================================================================*/
+/*  Barre de recherche
+/*====================================================================================================*/
+utd-barre-recherche {
+    display: block;
+    min-height: 40px;
+    max-height: 40px;
+    visibility: hidden;
+    width: 100%;
+
+    &.mounted {
+        min-height: inherit;
+        max-height: inherit;
+        visibility: visible;
+    }    
+} 
+  
+.utd-barre-recherche {
+    .controle-recherche {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        width: 100%;
+
+        .utd-form-control {
+            position: relative;
+            flex: 1 1 auto;
+            width: 1%;
+            margin-bottom: 0;
+            border: 1px solid #000;
+            border-right: 0;                        
+
+            &:focus {
+                border: 2px solid #000;
+            }
+        }
+
+        .reinitialiser-recherche {
+            height: 40px;
+            width: 40px;
+            min-width: 40px;
+            padding: 0;
+            min-height: 40px;
+            background-color: #fff;
+            border: 1px solid #000;
+            border-left: 0;
+            background-clip: padding-box;     
+            display: flex;
+            justify-content: center;
+            align-items: center;       
+        }
+    }
+}
+  
