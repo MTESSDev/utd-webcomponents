@@ -23,6 +23,7 @@ export let passerContenu = 'true'
 export let urlPasserContenu = '#main'
 export let textePasserContenu = Utils.obtenirLanguePage() === 'fr' ? 'Passer au contenu' : 'Skip to content'
 export let afficherRecherche = 'false'
+export let urlContenuRecherche = ''
 
 const srcImageBoutonToggleRecherche = `${Utils.imagesRelativePath}utd-sprite.svg_versionUtd_#ico-loupe-piv-droite`
 
@@ -121,7 +122,7 @@ function clickToggleRecherche(){
 
 
     <div id="recherchePIV" transition:slide="{{duration:250}}" class="{estZoneRechercheVisible ? null : 'utd-d-none'}" >
-        <utd-barre-recherche focus="{focusControleRecherche ? 'true' : null}"></utd-barre-recherche>
+        <utd-barre-recherche focus="{focusControleRecherche ? 'true' : null}" url-contenu-recherche="{urlContenuRecherche}"></utd-barre-recherche>
     </div>
 
   </div>
