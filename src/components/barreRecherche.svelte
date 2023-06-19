@@ -41,6 +41,7 @@ let miniSearch
 let optionsMiniSearch
 let contenuRecherche = []
 let resultatsRecherche = null
+let resultatsRechercheFlat = null
 let indexeFocusResultat = null
 let texteRecherche = ""
 let texteNotificationLecteurEcran = ""
@@ -83,7 +84,7 @@ function toggleFocus() {
 }
 
 function traiterSaisieRecherche(){  
-  console.log('saisie recherche')
+
   // Empêche le traitement si simplement un focus ou un blur (l'événement input est lancé sur focus et blur)
   if( texteRecherche === controleRecherche.value ){
     return
@@ -99,8 +100,9 @@ const rechercherDebounced = Utils.debounce(() => {
     obtenirContenuRecherche()
       .then((contenu) => {
 
-        const contenuAvecId = contenu.map((c) => {
+        const contenuAvecId = contenu.map((c, i) => {
           c.id = Utils.genererId()
+          c.indexe = i
           return c
         })
 
@@ -121,7 +123,9 @@ function rechercher(doitNotifierLecteurEcran) {
 
   const texteRechercheSansEspace = texteRecherche.trim()
   if(texteRechercheSansEspace !== "" && texteRechercheSansEspace.length >= nbCaracteresMinimalRecherche){
-    resultatsRecherche = definirResultats(miniSearch.search(texteRechercheSansEspace, optionsRecherche))
+
+    resultatsRechercheFlat = miniSearch.search(texteRechercheSansEspace, optionsRecherche)
+    resultatsRecherche = definirResultatsGroupes(resultatsRechercheFlat)
   } else {
     resultatsRecherche = []
   }
@@ -139,7 +143,7 @@ function rechercher(doitNotifierLecteurEcran) {
   //definirPresenceScrollbarResultats()
 }
 
-function definirResultats(retourMiniSearch) {
+function definirResultatsGroupes(retourMiniSearch) {
   if(nbNiveaux === '1'){
     return retourMiniSearch
   } else if(nbNiveaux === '2') {
@@ -172,10 +176,22 @@ function regrouper(source, propriete) {
     }, [])
 }
 
-function reinitialiserRecherche() {
-  controleRecherche.value = ""
+function clickBoutonReinitialiser() {
+  reinitialiserRecherche(true, true)
+}
+
+function reinitialiserRecherche(donnerFocusControleRecherche, initialiserValeurControleRecherche) {
+    
   resultatsRecherche = null
-  controleRecherche.focus()
+  idActiveDescendant = null
+
+  if(donnerFocusControleRecherche) {
+    controleRecherche.focus()
+  }
+
+  if(initialiserValeurControleRecherche) {
+    controleRecherche.value = ""
+  }
 }
 
 function notifierLecteurEcran(texte){
@@ -212,12 +228,95 @@ function mouseoverResultat(e) {
     return Utils.normaliserChaineCaracteres(terme)
 }
 
+function onKeyDownRecherche(e){
+  switch(e.key) {
+    case "Enter":
+    case " ":
+   
+      if(idActiveDescendant === null) {
+        if(e.key === "Enter") {
+          reinitialiserRecherche()
+        }
+      } else {
+        // Le focus visuel est dans la liste de résultats. Si ENTER ou SPACE on doit accéder au résultat.
+        // TODO
+      }
+      e.preventDefault()
+
+      break
+    case "Escape":
+      reinitialiserRecherche(true, resultatsRecherche === null)
+      break        
+    case "ArrowDown":
+      e.preventDefault()
+
+      if(resultatsRecherche !== null) {
+        //Les résultats sont visibles, on donne le focus au résultat suivant
+        definirProchainActiveDescendant(1)
+//      assurerOptionCouranteVisible()
+      }
+
+      break      
+    case "ArrowUp":
+      e.preventDefault()
+
+      if(resultatsRecherche !== null) {
+        //Les résultats sont visibles, on donne le focus au résultat précédent
+        definirProchainActiveDescendant(-1)
+        //      assurerOptionCouranteVisible()
+      }
+      break
+
+    case "ArrowLeft":
+    case "ArrowRight":
+    case "Home":
+    case "End":
+      if(resultatsRecherche !== null) {
+        reinitialiserRecherche()
+      }
+
+      break
+  }
+}
+
+function definirProchainActiveDescendant(step) {
+  let indexeActiveDescendant = resultatsRechercheFlat.findIndex((r) => r.id === idActiveDescendant)
+  
+  if(indexeActiveDescendant >= 0){
+
+    if(step === 1) {
+      if(indexeActiveDescendant < resultatsRechercheFlat.length - 1) {
+        idActiveDescendant = resultatsRechercheFlat[indexeActiveDescendant + 1].id
+      } else {
+        idActiveDescendant = resultatsRechercheFlat[0].id
+      }
+    } else {
+      if(indexeActiveDescendant > 0) {
+        idActiveDescendant = resultatsRechercheFlat[indexeActiveDescendant - 1].id
+      } else {
+        idActiveDescendant = resultatsRechercheFlat[resultatsRechercheFlat.length - 1].id
+      }
+    }
+  } else {
+    if(step === 1) {
+      idActiveDescendant = resultatsRechercheFlat[0].id
+    } else {
+      idActiveDescendant = resultatsRechercheFlat[resultatsRechercheFlat.length - 1].id
+    }
+  }
+}
+
+function onBlurRecherche() {
+  reinitialiserRecherche()
+}
+
+
 </script>
 
 <div class="utd-barre-recherche">
   <div class="controle-recherche">
-      <input id="{idControleRecherche}" type="text" autocomplete="off" autocapitalize="none" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="{idControleResultats}" aria-activedescendant="{afficherResultats ? idActiveDescendant : null}" placeholder="{placeholder}" aria-description="{ariaDescriptionRecherche}" on:input={traiterSaisieRecherche} class="utd-form-control xxl texte-recherche">
-      <button class="reinitialiser-recherche" type="button" title="{titleBoutonReinitialiserRecherche}" on:click={reinitialiserRecherche}>
+      <input id="{idControleRecherche}" type="text" autocomplete="off" autocapitalize="none" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="{idControleResultats}" aria-activedescendant="{afficherResultats ? idActiveDescendant : null}" placeholder="{placeholder}" aria-description="{ariaDescriptionRecherche}" on:input={traiterSaisieRecherche} class="utd-form-control xxl texte-recherche" on:keydown={onKeyDownRecherche} on:blur={onBlurRecherche}>
+      <button class="reinitialiser-recherche" type="button" title="{titleBoutonReinitialiserRecherche}" on:click={clickBoutonReinitialiser}>
           <img aria-hidden="true" src="{`${srcBaseImage}ico-xfermer-bleu-moyen`}" width="16" height="16">
       </button>
   </div>
@@ -250,7 +349,7 @@ function mouseoverResultat(e) {
                     {#each resultat.values as sousCategorie, j}
                     <span class="titre-niveau2">{sousCategorie.sc}</span>      
                     <ul role="none">
-                      {#each sousCategorie.values as valeur, j}
+                      {#each sousCategorie.values as valeur, k}
                         <li class="lien-resultat" role="option" aria-selected="{valeur.id === idActiveDescendant ? 'true' : 'false'}">
                           <a href="#" id="{valeur.id}" on:mouseover={mouseoverResultat}><span class="texte-option">{valeur.r}</span></a>
                         </li>

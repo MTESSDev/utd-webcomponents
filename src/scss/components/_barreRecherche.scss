@@ -16,6 +16,9 @@ utd-barre-recherche {
 } 
   
 .utd-barre-recherche {
+
+    position: relative;
+    
     .controle-recherche {
         position: relative;
         display: flex;

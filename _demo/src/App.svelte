@@ -31,6 +31,7 @@
   import ListeDeroulante from './pages/ListeDeroulante.svelte';
   import ReglesInterfaces from './pages/ReglesInterfaces.svelte';
   import PointsSuspension from './pages/PointsSuspension.svelte';
+  import BarreRecherche from './pages/BarreRecherche.svelte';
 
 
     onMount(() => {  
@@ -167,6 +168,7 @@
                     {#if $router.path.indexOf('/composants') >= 0}                                
                         <utd-menu-vertical-item href="/composants/versions" libelle="Historique des versions"></utd-menu-vertical-item>
                         <utd-menu-vertical-item libelle="Action">                                
+                            <utd-menu-vertical-item libelle="Barre de recherche" href="/composants/actions/barrerecherche"></utd-menu-vertical-item>
                             <utd-menu-vertical-item libelle="Boutons" href="/composants/actions/boutons"></utd-menu-vertical-item>
                             <utd-menu-vertical-item libelle="Dialogue modal" href="/composants/actions/dialogue"></utd-menu-vertical-item>
                             <utd-menu-vertical-item libelle="Message" href="/composants/actions/message"></utd-menu-vertical-item>
@@ -226,6 +228,7 @@
                     <Route path="/composants/*">
                         <Route path="/versions" ><Versions /></Route>
                         <Route path="/actions/*">
+                            <Route path="/barrerecherche" ><BarreRecherche /></Route>
                             <Route path="/boutons" ><Boutons /></Route>
                             <Route path="/dialogue" ><Dialogue /></Route>
                             <Route path="/message" ><Message /></Route>                            
