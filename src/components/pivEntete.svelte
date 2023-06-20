@@ -120,10 +120,11 @@ function clickToggleRecherche(){
       {/if}    
     </div>          
 
-
-    <div id="recherchePIV" transition:slide="{{duration:250}}" class="{estZoneRechercheVisible ? null : 'utd-d-none'}" >
-        <utd-barre-recherche focus="{focusControleRecherche ? 'true' : null}" url-contenu-recherche="{urlContenuRecherche}"></utd-barre-recherche>
-    </div>
+    {#if afficherRecherche === 'true'}
+      <div id="recherchePIV" transition:slide="{{duration:250}}" class="{estZoneRechercheVisible ? null : 'utd-d-none'}" >
+          <utd-barre-recherche focus="{focusControleRecherche ? 'true' : null}" url-contenu-recherche="{urlContenuRecherche}" contexte-piv="true"></utd-barre-recherche>
+      </div>
+    {/if}    
 
   </div>
 </div>

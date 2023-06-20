@@ -2,10 +2,8 @@
     import CodeSource from '../components/CodeSource.svelte'; 
     import { onMount } from 'svelte';
     import TableauParams from '../components/TableauParams.svelte'; 
-    import TableauSlots from '../components/TableauSlots.svelte'; 
 
     let tableauParametres = [];
-    let tableauSlots = [];
     let tableauRetourEvenementChangementEtat = [];
     let mounted = false;
 
@@ -91,7 +89,7 @@
 <h2>Exemples</h2>
 <h3>1- Un niveau</h3>
 <div class="mb-32 bs-test" id="exemple1">
-    <utd-barre-recherche url-contenu-recherche="/testsLocaux/recherche.json" nb-niveaux="1"></utd-barre-recherche>
+    <utd-barre-recherche url-contenu-recherche="/testsLocaux/recherche.json"></utd-barre-recherche>
 </div>
 <CodeSource idElementCodeSource="exemple1">
 </CodeSource>   
@@ -99,14 +97,14 @@
 
 <h3>2- Deux niveaux</h3>
 <div class="mb-32 bs-test" id="exemple2">
-    <utd-barre-recherche url-contenu-recherche="/testsLocaux/recherche.json" nb-niveaux="2"></utd-barre-recherche>
+    <utd-barre-recherche url-contenu-recherche="/testsLocaux/recherche2Niveaux.json"></utd-barre-recherche>
 </div>
 <CodeSource idElementCodeSource="exemple2">
 </CodeSource>   
 
 <h3>3- Trois niveaux</h3>
 <div class="mb-32 bs-test" id="exemple3">
-    <utd-barre-recherche url-contenu-recherche="/testsLocaux/recherche3Niveaux.json" nb-niveaux="3"></utd-barre-recherche>
+    <utd-barre-recherche url-contenu-recherche="/testsLocaux/recherche3Niveaux.json"></utd-barre-recherche>
 </div>
 <CodeSource idElementCodeSource="exemple3">
 </CodeSource>   

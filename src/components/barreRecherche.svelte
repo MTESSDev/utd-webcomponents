@@ -12,12 +12,15 @@ import MiniSearch from 'minisearch'
 
 const languePage = Utils.obtenirLanguePage()
 
-export let placeholder = languePage === 'fr' ? "Rechercher..." : "Search..."
-export let focus = 'false'
+/* Attributs publics */
 export let urlContenuRecherche = ''
-export let rechercheFloue = "true"
+export let placeholder = languePage === 'fr' ? "Rechercher..." : "Search..."
+
+/* Attributs privés */
+export let focus = 'false'
+export let rechercheFloue = 'true'
 export let precisionRecherche = "0.2"
-export let nbNiveaux = '2'
+export let contextePiv = 'false'
 
 
 const ariaDescriptionRecherche = languePage === 'fr' ? "Saisir le terme recherché, puis utilisez les touches flèches haut et bas pour naviguer dans la liste des résultats, et ensuite Entrée ou Espace pour accéder au résultat désiré" : "Enter the search term, then use the up and down arrow keys to navigate the list of results, and then Enter or Space to access the desired result"
@@ -35,14 +38,13 @@ const thisComponent = get_current_component()
 const nbCaracteresMinimalRecherche = 3
 
 let mounted = false
+let nbNiveaux = 1
 let afficherResultats = false
 let idActiveDescendant = null
 let miniSearch
 let optionsMiniSearch
-let contenuRecherche = []
 let resultatsRecherche = null
 let resultatsRechercheFlat = null
-let indexeFocusResultat = null
 let texteRecherche = ""
 let texteNotificationLecteurEcran = ""
 
@@ -58,7 +60,7 @@ onMount(() => {
     fuzzy: rechercheFloue === 'true' ? parseFloat(precisionRecherche) : null,
     prefix: true,
     fields: ['c', 'sc', 't', 'mc'],
-    storeFields: ['id', 'c', 'sc', 'r', 't'],
+    storeFields: ['id', 'c', 'sc', 'r', 't', 'h'],
     stopWords: new Set([]),
     combineWith: 'OR',
     filter: null,
@@ -109,6 +111,8 @@ const rechercherDebounced = Utils.debounce(() => {
         miniSearch = new MiniSearch(optionsMiniSearch)    
         miniSearch.addAll(contenuAvecId)   
 
+        nbNiveaux = obtenirNombreNiveaux(contenuAvecId)
+
         rechercher(true)
       })
   } else {
@@ -116,56 +120,86 @@ const rechercherDebounced = Utils.debounce(() => {
   }
 }, 750)
 
+function obtenirNombreNiveaux(contenuRecherche) {
+  if(contenuRecherche && contenuRecherche.length > 0){
+    if(contenuRecherche[0].sc && contenuRecherche[0].sc !== '') {
+      return 3
+    } else if(contenuRecherche[0].c && contenuRecherche[0].c !== '') {
+      return 2
+    } else {
+      return 1
+    }
+  }
+
+}
+
 function rechercher(doitNotifierLecteurEcran) {
 
   //TODO retirer? si tjrs 3 caractères minimal
   const optionsRecherche = {...optionsMiniSearch, ...{fuzzy: term => term.length > nbCaracteresMinimalRecherche ? optionsMiniSearch.fuzzy : null}}
 
   const texteRechercheSansEspace = texteRecherche.trim()
-  if(texteRechercheSansEspace !== "" && texteRechercheSansEspace.length >= nbCaracteresMinimalRecherche){
+  if(texteRechercheSansEspace !== "" && texteRechercheSansEspace.length >= nbCaracteresMinimalRecherche){    
+    const resultats = obtenirResultatsGroupes(miniSearch.search(texteRechercheSansEspace, optionsRecherche))
+    applatirResultatRecherche(resultats)
+    resultatsRecherche = resultats
 
-    resultatsRechercheFlat = miniSearch.search(texteRechercheSansEspace, optionsRecherche)
-    resultatsRecherche = definirResultatsGroupes(resultatsRechercheFlat)
+    if(doitNotifierLecteurEcran){
+      if(resultatsRecherche.length === 0){
+        notifierLecteurEcran(srAucunResultat)
+      } else {
+        notifierLecteurEcran(srResultatsTrouves.replace("{x}", resultatsRecherche.length))      
+      }    
+    }
   } else {
-    resultatsRecherche = []
+    resultatsRecherche = null
   }
 
-  if(doitNotifierLecteurEcran){
-    if(resultatsRecherche.length === 0){
-      notifierLecteurEcran(srAucunResultat)
-    } else {
-      notifierLecteurEcran(srResultatsTrouves.replace("{x}", resultatsRecherche.length))      
-      indexeFocusResultat = null
-    }    
-  }
 
   //Vérifier si scrollbar visible ou non (servira a ajouter une marge de droite afin que la scrollbar ne soit pas collée sur la bordure du contrôle)
   //definirPresenceScrollbarResultats()
 }
 
-function definirResultatsGroupes(retourMiniSearch) {
-  if(nbNiveaux === '1'){
+function obtenirResultatsGroupes(retourMiniSearch) {
+  resultatsRechercheFlat = []
+
+  if(nbNiveaux === 1){
     return retourMiniSearch
-  } else if(nbNiveaux === '2') {
+  } else if(nbNiveaux === 2) {    
     return regrouper(retourMiniSearch, "c")
   } else {
     // 3 niveaux
+    resultatsRechercheFlat = []    
     const niveau1 = regrouper(retourMiniSearch, "c")
     if(niveau1) {
       niveau1.forEach((item) => {
-        const test = regrouper(item.values, "sc")
-        item.values = test
+        item.values = regrouper(item.values, "sc")
       })
     }
     return niveau1
   }
 }
 
+function applatirResultatRecherche(tableau) {
+  if(nbNiveaux === 1) {
+    resultatsRechercheFlat = tableau
+    return 
+  }
+
+  tableau.forEach((item) => {
+    if(item.values){
+      applatirResultatRecherche(item.values)
+    } else {
+      resultatsRechercheFlat.push(item)
+    }
+  })
+}
+
 function regrouper(source, propriete) {
   return source.reduce((final, val) => {
-      let niveau1 = final.find(r => r[propriete] === `${val[propriete]}`)
-      if (niveau1) {
-        niveau1.values.push(val)
+      let groupe = final.find(r => r[propriete] === `${val[propriete]}`)
+      if (groupe) {
+        groupe.values.push(val)
       } else {
         const obj = {}
         obj[propriete] = val[propriete]
@@ -239,9 +273,13 @@ function onKeyDownRecherche(e){
         }
       } else {
         // Le focus visuel est dans la liste de résultats. Si ENTER ou SPACE on doit accéder au résultat.
-        // TODO
+        e.preventDefault()
+        const activeDescendant = thisComponent.shadowRoot.getElementById(idActiveDescendant)
+        controleRecherche.value = activeDescendant.innerText
+        reinitialiserRecherche()
+        activeDescendant.click()
+
       }
-      e.preventDefault()
 
       break
     case "Escape":
@@ -310,34 +348,42 @@ function onBlurRecherche() {
   reinitialiserRecherche()
 }
 
+/**
+ * Petite twist permettant de ne pas avoir de blur sur le contrôle de recherche lors d'un click dans les résultats.
+ * @param e
+ */
+function mouseDownResultatsRecherche(e) {
+  e.preventDefault()
+}
+
 
 </script>
 
 <div class="utd-barre-recherche">
-  <div class="controle-recherche">
+  <div class="controle-recherche {contextePiv === 'true' ? ' contexte-piv' : ''}">
       <input id="{idControleRecherche}" type="text" autocomplete="off" autocapitalize="none" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="{idControleResultats}" aria-activedescendant="{afficherResultats ? idActiveDescendant : null}" placeholder="{placeholder}" aria-description="{ariaDescriptionRecherche}" on:input={traiterSaisieRecherche} class="utd-form-control xxl texte-recherche" on:keydown={onKeyDownRecherche} on:blur={onBlurRecherche}>
       <button class="reinitialiser-recherche" type="button" title="{titleBoutonReinitialiserRecherche}" on:click={clickBoutonReinitialiser}>
           <img aria-hidden="true" src="{`${srcBaseImage}ico-xfermer-bleu-moyen`}" width="16" height="16">
       </button>
   </div>
 
-  <div class="resultats-recherche {resultatsRecherche === null ? 'utd-d-none' : null}">
+  <div class="resultats-recherche {resultatsRecherche === null ? ' utd-d-none' : ''}" on:mousedown={mouseDownResultatsRecherche}>
     {#if resultatsRecherche && resultatsRecherche.length > 0}  
       <ul id="{idControleResultats}" role="listbox" class="liste-resultats {'nb-niveaux-' + nbNiveaux}" transition:slide="{{duration:250}}" >
 
         {#each resultatsRecherche as resultat, i}
-          {#if nbNiveaux === '1'}  
+          {#if nbNiveaux === 1}  
             <li class="lien-resultat" role="option" aria-selected="{resultat.id === idActiveDescendant ? 'true' : 'false'}">
-              <a href="#" id="{resultat.id}" on:mouseover={mouseoverResultat}><span class="texte-option">{resultat.r}</span></a>
+              <a href="{resultat.h}" id="{resultat.id}" on:mouseover={mouseoverResultat}><span class="texte-option">{resultat.r}</span></a>
             </li>
           {:else}
-            {#if nbNiveaux === '2'}  
+            {#if nbNiveaux === 2}  
               <li role="group">
                 <span class="titre-niveau1">{resultat.c}</span>      
                 <ul role="none">
                   {#each resultat.values as valeur, j}
                     <li class="lien-resultat" role="option" aria-selected="{valeur.id === idActiveDescendant ? 'true' : 'false'}">
-                      <a href="#" id="{valeur.id}" on:mouseover={mouseoverResultat}><span class="texte-option">{valeur.r}</span></a>
+                      <a href="{valeur.h}" id="{valeur.id}" on:mouseover={mouseoverResultat}><span class="texte-option">{valeur.r}</span></a>
                     </li>
                   {/each}           
                 </ul>
@@ -351,7 +397,7 @@ function onBlurRecherche() {
                     <ul role="none">
                       {#each sousCategorie.values as valeur, k}
                         <li class="lien-resultat" role="option" aria-selected="{valeur.id === idActiveDescendant ? 'true' : 'false'}">
-                          <a href="#" id="{valeur.id}" on:mouseover={mouseoverResultat}><span class="texte-option">{valeur.r}</span></a>
+                          <a href="{valeur.h}" id="{valeur.id}" on:mouseover={mouseoverResultat}><span class="texte-option">{valeur.r}</span></a>
                         </li>
                       {/each}           
                     </ul>

@@ -18,7 +18,7 @@ utd-barre-recherche {
 .utd-barre-recherche {
 
     position: relative;
-    
+
     .controle-recherche {
         position: relative;
         display: flex;
@@ -31,12 +31,12 @@ utd-barre-recherche {
             flex: 1 1 auto;
             width: 1%;
             margin-bottom: 0;
-            border: 1px solid #000;
-            border-right: 0;                        
+            border-right-width: 0;                        
 
             &:focus {
-                border: 2px solid #000;
+                border-right-width: 2px;
             }
+
         }
 
         .reinitialiser-recherche {
@@ -46,12 +46,27 @@ utd-barre-recherche {
             padding: 0;
             min-height: 40px;
             background-color: #fff;
-            border: 1px solid #000;
+            border: 1px solid #808A9D;
             border-left: 0;
             background-clip: padding-box;     
             display: flex;
             justify-content: center;
-            align-items: center;       
+            align-items: center;  
+            
+        }
+
+        &.contexte-piv {
+            .utd-form-control {
+                border: 1px solid #000;
+
+                &:focus {
+                    border: 2px solid #000;
+                }
+    
+            }            
+            .reinitialiser-recherche {
+                border: 1px solid #000;
+            }
         }
     }
 
