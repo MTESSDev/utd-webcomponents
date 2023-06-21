@@ -58,9 +58,11 @@ utd-barre-recherche {
         &.contexte-piv {
             .utd-form-control {
                 border: 1px solid #000;
+                border-right-width: 0;
 
                 &:focus {
                     border: 2px solid #000;
+                    border-right-width: 2px;
                 }
     
             }            

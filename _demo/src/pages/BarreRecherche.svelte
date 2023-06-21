@@ -10,38 +10,85 @@
     onMount(() => {
         tableauParametres = obtenirTableauParametres()
         tableauRetourEvenementChangementEtat = obtenirTableauRetourEvenementChangementEtat()
+        chargerContenuRechercheExemple1b()
+        chargerContenuRechercheExemple2b()
+        chargerContenuRechercheExemple3b()
         mounted = true
     })
 
+    function chargerContenuRechercheExemple1b() {
+        document.querySelector("#exemple1b utd-barre-recherche").addEventListener("initialiser", e => {
+
+            //Ici votre code pour obtenir le contenu de recherche (Appel à un api ou autre)
+            const monContenuRecherche = [
+                {"r": "Groupe de sections",
+                 "h": "#groupesection",
+                 "t": "Un formulaire est divise en groupes de sections chaque groupe de sections peut avoir...",    
+                 "mc": "découpage"
+                },
+                {"r": "Section",
+                 "h": "#section",
+                 "t": "Un groupe de sections est divisé en sections le menu de gauche liste...",    
+                },
+            ]
+
+            //Appel à la méthode permettant de définir le contenu de recherche (important d'utiliser le bon nom de méthode et de propriété dans l'objet)
+            e.detail.definirContenuRecherche({contenu: monContenuRecherche})                    
+        })
+    }
+
+    function chargerContenuRechercheExemple2b() {
+        document.querySelector("#exemple2b utd-barre-recherche").addEventListener("initialiser", e => {
+
+            //Ici votre code pour obtenir le contenu de recherche (Appel à un api ou autre)
+            const monContenuRecherche = [
+                {"c": "Navigation",
+                 "r": "Groupe de sections",
+                 "h": "#groupesection",
+                 "t": "Un formulaire est divise en groupes de sections chaque groupe de sections peut avoir...",    
+                 "mc": "découpage"
+                },
+                {"c": "Navigation",
+                 "r": "Section",
+                 "h": "#section",
+                 "t": "Un groupe de sections est divisé en sections le menu de gauche liste...",    
+                },
+            ]
+
+            //Appel à la méthode permettant de définir le contenu de recherche (important d'utiliser le bon nom de méthode et de propriété dans l'objet)
+            e.detail.definirContenuRecherche({contenu: monContenuRecherche})                    
+        })
+    }
+
+    function chargerContenuRechercheExemple3b() {
+        document.querySelector("#exemple3b utd-barre-recherche").addEventListener("initialiser", e => {
+
+            //Ici votre code pour obtenir le contenu de recherche
+            fetch('/testsLocaux/recherche3Niveaux.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("HTTP error " + response.status)
+                    }
+                    response.json().then((monContenuRecherche) => {
+                        //Appel à la méthode permettant de définir le contenu de recherche
+                        e.detail.definirContenuRecherche({contenu: monContenuRecherche})                    
+                    })
+            })                    
+        })
+    }
 
     function obtenirTableauParametres() {
         return [
-            {nom: "extensible", type: "Boolean (Optionnel)", description: `Indique si la section doit être extensible ou non. Défaut "true" (extensible).`},        
-            {nom: "reduit", type: "Boolean (Optionnel)", description: `Indique si la section doit être réduite ou développée. Peut être mis à jour une fois le contrôle généré afin de modifier son état d'affichage (développée/réduite). Défaut "true" (réduite).`},    
-            {nom: "bordure", type: "Boolean (Optionnel)", description: `Indique si la section doit être affichée avec bordure ou non. Défaut "true" (avec bordure).`},    
-            {nom: "titre", type: "String (Optionnel)", description: `Titre affiché dans l'entête de la section.`},
-            {nom: "tag-titre", type: "String (Optionnel)", description: `Balise html à utiliser pour le titre de l'entête. Défaut "h2".`},
-            {nom: "conserver-etat-affichage", type: "Boolean (Optionnel)", description: `<p>Indique si l'état d'affichage (développé/réduit) de la section doit être conservé pendant la session (tant que le fureteur est ouvert). Défaut "false".</p><p>IMPORTANT! Afin que la fonctionnalité de conservation d'état d'affichage fonctionne, le composant utd-section doit avoir un id.</p>`}
+            {nom: "placeholder", type: "String (Optionnel)", description: `Texte (placeholder) à afficher dans le contrôle tant qu'aucune saisie n'est effectuée. Défaut "Rechercher..." et "Search...".`},        
+            {nom: "url-contenu-recherche", type: "String (Optionnel)", description: `Si spécifié, url à laquelle un appel (fetch) sera effectué afin d'obtenir le contenu de recherche au format attendu en JSON.`}
         ];
     }
 
 
     function obtenirTableauRetourEvenementChangementEtat() {
         return [
-            {nom: "reduit", type: "Boolean (Optionnel)", description: `Indique si la section est réduite. Il s'agit du nouvel état suite au changement d'état d'affichage.`},    
+            {nom: "definirContenuRecherche", type: "Fonction", description: `Fonction (callback) ayant en paramètre un objet qui doit posséder une propriété "contenu", laquelle doit contenir le contenu de recherche qui respecte le format requis.`},    
         ];
-    }
-
-    function controlerSection7() {
-        document.getElementById('btnControleExemple7').addEventListener('click', () => {
-            
-            const section = document.getElementById('utdSection7')
-            section.setAttribute('reduit', section.getAttribute('reduit') === 'false' ? 'true' : 'false')
-        })
-
-        document.getElementById("utdSection7").addEventListener("changementEtat", e => {
-            document.getElementById('resultat7').innerText = `État d'affichage = ${e.detail.reduit ? 'réduit' : 'développé'}`;
-        })
     }
 
     //TODO faire une méthode générique et ajouter dans utils afin de patcher le problème d'ancres avec tinro
@@ -80,32 +127,72 @@
     </TableauParams>
 
     <h2>Événements disponibles</h2>
-    <h3>changementEtat</h3>
-    <p>Est exécuté lorsque l'état d'affichage (développé/réduit) de la section change. Voir exemple <a href="#exempleSectionJs" on:click="{clickAncre}">7- Section contrôlée par javascript</a>.</p>
+    <h3>initialiser</h3>
+    <p>Est exécuté uniquement si le paramètre <span class="utd-emphase-gris">url-contenu-recherche</span> n'est pas spécifié.</p>
+    <p>Son exécution se produit lorsque le contrôle de recherche est initialisé (lors d'une première tentative de recherche).</p>
+    <p> Voir exemple <a href="#exemple1b" on:click="{clickAncre}">1b- Un niveau (callback)</a> ou n'importe quel exemple (callback).</p>
     <h4>Retour</h4>
     <TableauParams parametres="{tableauRetourEvenementChangementEtat}">
     </TableauParams>
 </div>
 <h2>Exemples</h2>
-<h3>1- Un niveau</h3>
-<div class="mb-32 bs-test" id="exemple1">
+<h3>1a- Un niveau (url de contenu)</h3>
+<div class="mb-32 bs-test" id="exemple1a">
     <utd-barre-recherche url-contenu-recherche="/testsLocaux/recherche.json"></utd-barre-recherche>
 </div>
-<CodeSource idElementCodeSource="exemple1">
+<CodeSource idElementCodeSource="exemple1a" titre="Code source (Html)">
 </CodeSource>   
 
+<h3>1b- Un niveau (callback)</h3>
+<div class="mb-32 bs-test" id="exemple1b">
+    <utd-barre-recherche></utd-barre-recherche>
+</div>
+<CodeSource idElementCodeSource="exemple1b" titre="Code source (Html)">
+</CodeSource>   
 
-<h3>2- Deux niveaux</h3>
-<div class="mb-32 bs-test" id="exemple2">
+{#if mounted}
+    <CodeSource codeSource="{chargerContenuRechercheExemple1b.toString()}" titre="Code source (js)" language="language-javascript">
+    </CodeSource>   
+{/if}   
+
+
+<h3>2a- Deux niveaux (url de contenu)</h3>
+<div class="mb-32 bs-test" id="exemple2a">
     <utd-barre-recherche url-contenu-recherche="/testsLocaux/recherche2Niveaux.json"></utd-barre-recherche>
 </div>
-<CodeSource idElementCodeSource="exemple2">
+<CodeSource idElementCodeSource="exemple2a" titre="Code source (Html)">
 </CodeSource>   
 
-<h3>3- Trois niveaux</h3>
-<div class="mb-32 bs-test" id="exemple3">
+<h3>2b- Deux niveaux (callback)</h3>
+<div class="mb-32 bs-test" id="exemple2b">
+    <utd-barre-recherche></utd-barre-recherche>
+</div>
+<CodeSource idElementCodeSource="exemple2b" titre="Code source (Html)">
+</CodeSource>   
+
+{#if mounted}
+    <CodeSource codeSource="{chargerContenuRechercheExemple2b.toString()}" titre="Code source (js)" language="language-javascript">
+    </CodeSource>   
+{/if}   
+
+
+<h3>3- Trois niveaux (url de contenu)</h3>
+<div class="mb-32 bs-test" id="exemple3a">
     <utd-barre-recherche url-contenu-recherche="/testsLocaux/recherche3Niveaux.json"></utd-barre-recherche>
 </div>
-<CodeSource idElementCodeSource="exemple3">
+
+<CodeSource idElementCodeSource="exemple3a" titre="Code source (Html)">
 </CodeSource>   
 
+<h3>3- Trois niveaux (callback asynchrone)</h3>
+<div class="mb-32 bs-test" id="exemple3b">
+    <utd-barre-recherche></utd-barre-recherche>
+</div>
+
+<CodeSource idElementCodeSource="exemple3b" titre="Code source (Html)">
+</CodeSource>   
+
+{#if mounted}
+    <CodeSource codeSource="{chargerContenuRechercheExemple3b.toString()}" titre="Code source (js)" language="language-javascript">
+    </CodeSource>   
+{/if}   

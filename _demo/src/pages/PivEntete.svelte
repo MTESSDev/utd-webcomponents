@@ -26,7 +26,9 @@
         {nom: "texte-nous-joindre", type: "String (Optionnel)", description: `Texte du lien "Nous joindre". Défaut "Nous joindre" / "Contact us".`},     
         {nom: "passer-contenu", type: "Boolean (Optionnel)", description: `Indique si le lien "Passer au contenu" est intégré ou non. Défaut "true".`},     
         {nom: "url-passer-contenu", type: "String (Optionnel)", description: `Url vers laquelle rediriger lorsque l'utilisateur clique sur le lien. Devrait être une ancre de la page. Défaut "#main".`},     
-        {nom: "texte-passer-contenu", type: "String (Optionnel)", description: `Texte du lien. Défaut "Passer au contenu" / "Skip to content".`}        
+        {nom: "texte-passer-contenu", type: "String (Optionnel)", description: `Texte du lien. Défaut "Passer au contenu" / "Skip to content".`},
+        {nom: "afficher-recherche", type: "Boolean (Optionnel)", description: `Indique s'il faut afficher ou non le contrôle de recherche (Loupe + contrôle de saisie du texte recherché). Défaut "false".`},                
+        {nom: "url-contenu-recherche", type: "String (Optionnel)", description: `Si spécifié, url à laquelle un appel (fetch) sera effectué afin d'obtenir le contenu de recherche au format attendu en JSON.`}                
       ]
   }
 
@@ -45,7 +47,7 @@
 </utd-menu-ancres>
 
 <h2>Description</h2>
-<p>PIV d'entête gouvernemental. Il inclu le lien "Passer au contenu" (possible de ne pas le générer au besoin).</p>
+<p>PIV d'entête gouvernemental. Il inclu le lien "Passer au contenu" (possible de ne pas le générer au besoin), ainsi qu'une barre de recherche si requis.</p>
 
 <h3>Référence système de design Quebec.ca</h3>
 <p>Non disponible. <a href="https://xd.adobe.com/view/b098e26e-f500-4d59-b2cb-48ef475bbab3-e5cb/screen/130e1bf9-39c8-454f-bd97-f076a698361a/specs/" target="_blank">Voir les spécifications sur le XD de design Quebec.ca</a>.</p>

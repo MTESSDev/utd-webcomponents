@@ -7,7 +7,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 import { onMount } from "svelte";
 import { Utils } from "./js/utils";
 import { slide } from "svelte/transition";
-import { escape, get_current_component } from "svelte/internal";
+import { get_current_component } from "svelte/internal";
 import MiniSearch from 'minisearch'
 
 const languePage = Utils.obtenirLanguePage()
@@ -32,7 +32,6 @@ const titleBoutonReinitialiserRecherche = languePage === 'fr' ? "Réinitialiser 
 const srcBaseImage = `${Utils.imagesRelativePath}utd-sprite.svg_versionUtd_#`
 const idControleRecherche = Utils.genererId()
 const idControleResultats = Utils.genererId()
-const idControleZoneNotificationLecteurEcran = Utils.genererId()
 const thisComponent = get_current_component()
 
 const nbCaracteresMinimalRecherche = 3
@@ -43,6 +42,7 @@ let afficherResultats = false
 let idActiveDescendant = null
 let miniSearch
 let optionsMiniSearch
+let contenuRecherche = null
 let resultatsRecherche = null
 let resultatsRechercheFlat = null
 let texteRecherche = ""
@@ -75,6 +75,7 @@ onMount(() => {
 /* ============== Watches ============== */
   // Watch sur la prop focus
   $: toggleFocus(focus) 
+  $: majContenuRecherche(contenuRecherche) 
 
 
 function toggleFocus() {
@@ -82,6 +83,24 @@ function toggleFocus() {
   if(focus === 'true'){
     controleRecherche.focus()
     thisComponent.setAttribute('focus', 'false')
+  }
+}
+
+function majContenuRecherche() {
+  if(contenuRecherche && contenuRecherche.length > 0) {
+
+    const contenuAvecId = contenuRecherche.map((c, i) => {
+        c.id = Utils.genererId()
+        c.indexe = i
+        return c
+    })
+
+    miniSearch = new MiniSearch(optionsMiniSearch)    
+    miniSearch.addAll(contenuAvecId)   
+
+    nbNiveaux = obtenirNombreNiveaux(contenuAvecId)
+
+    rechercher(true)
   }
 }
 
@@ -99,26 +118,35 @@ function traiterSaisieRecherche(){
 const rechercherDebounced = Utils.debounce(() => {
   
   if(resultatsRecherche === null) {
-    obtenirContenuRecherche()
-      .then((contenu) => {
-
-        const contenuAvecId = contenu.map((c, i) => {
-          c.id = Utils.genererId()
-          c.indexe = i
-          return c
-        })
-
-        miniSearch = new MiniSearch(optionsMiniSearch)    
-        miniSearch.addAll(contenuAvecId)   
-
-        nbNiveaux = obtenirNombreNiveaux(contenuAvecId)
-
-        rechercher(true)
-      })
+    initialiserRecherche()    
   } else {
     rechercher(true)
   }
 }, 750)
+
+function initialiserRecherche() {
+
+  if(urlContenuRecherche) {
+    obtenirContenuRechercheViaUrl()
+      .then((contenu) => {
+        contenuRecherche = contenu
+    })
+  }
+  else {
+    Utils.dispatchWcEvent(thisComponent, "initialiser", {definirContenuRecherche: (donnees) => { contenuRecherche = donnees.contenu }})
+  }
+}
+
+
+function obtenirContenuRechercheViaUrl () {   
+   return fetch(urlContenuRecherche)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("HTTP error " + response.status)
+        }
+        return response.json()
+    })
+}
 
 function obtenirNombreNiveaux(contenuRecherche) {
   if(contenuRecherche && contenuRecherche.length > 0){
@@ -224,6 +252,7 @@ function reinitialiserRecherche(donnerFocusControleRecherche, initialiserValeurC
   }
 
   if(initialiserValeurControleRecherche) {
+    texteRecherche = ""
     controleRecherche.value = ""
   }
 }
@@ -235,17 +264,6 @@ function notifierLecteurEcran(texte){
   setTimeout(() => {
     texteNotificationLecteurEcran = ""
   }, 400);
-}
-
-function obtenirContenuRecherche () {
-   
-   return fetch(urlContenuRecherche)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error("HTTP error " + response.status)
-        }
-        return response.json()
-    })
 }
 
 function mouseoverResultat(e) {
@@ -356,15 +374,21 @@ function mouseDownResultatsRecherche(e) {
   e.preventDefault()
 }
 
+function afficherBoutonReinitialiserRecherche() {
+  return true
+  //contextePiv === 'true' || (texteRecherche !== '' && texteRecherche.length >= nbCaracteresMinimalRecherche)
+}
 
 </script>
 
 <div class="utd-barre-recherche">
   <div class="controle-recherche {contextePiv === 'true' ? ' contexte-piv' : ''}">
       <input id="{idControleRecherche}" type="text" autocomplete="off" autocapitalize="none" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="{idControleResultats}" aria-activedescendant="{afficherResultats ? idActiveDescendant : null}" placeholder="{placeholder}" aria-description="{ariaDescriptionRecherche}" on:input={traiterSaisieRecherche} class="utd-form-control xxl texte-recherche" on:keydown={onKeyDownRecherche} on:blur={onBlurRecherche}>
-      <button class="reinitialiser-recherche" type="button" title="{titleBoutonReinitialiserRecherche}" on:click={clickBoutonReinitialiser}>
-          <img aria-hidden="true" src="{`${srcBaseImage}ico-xfermer-bleu-moyen`}" width="16" height="16">
-      </button>
+      {#if afficherBoutonReinitialiserRecherche()}
+        <button class="reinitialiser-recherche" type="button" title="{titleBoutonReinitialiserRecherche}" on:click={clickBoutonReinitialiser}>
+            <img aria-hidden="true" src="{`${srcBaseImage}ico-xfermer-bleu-moyen`}" width="16" height="16">
+        </button>
+      {/if} 
   </div>
 
   <div class="resultats-recherche {resultatsRecherche === null ? ' utd-d-none' : ''}" on:mousedown={mouseDownResultatsRecherche}>
