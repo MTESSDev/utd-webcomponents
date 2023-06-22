@@ -6,11 +6,29 @@
 
   let tableauParametres = [];
   let tableauSlots = [];
+  let mounted = false;
 
   onMount(() => {
       tableauParametres = obtenirTableauParametres()
       tableauSlots = obtenirTableauSlots()
+      mounted = true
   })
+
+  function chargerContenuRecherche() {
+        document.querySelector("utd-piv-entete").addEventListener("initialiser", e => {
+            //Ici votre code pour obtenir le contenu de recherche
+            fetch('/testsLocaux/recherche2Niveaux.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("HTTP error " + response.status)
+                    }                
+                    response.json().then((monContenuRecherche) => {
+                        //Appel à la méthode permettant de définir le contenu de recherche
+                        e.detail.definirContenuRecherche({contenu: monContenuRecherche})                    
+                    })
+            })                    
+        })
+    }
 
   function obtenirTableauParametres() {
       return [
@@ -28,7 +46,7 @@
         {nom: "url-passer-contenu", type: "String (Optionnel)", description: `Url vers laquelle rediriger lorsque l'utilisateur clique sur le lien. Devrait être une ancre de la page. Défaut "#main".`},     
         {nom: "texte-passer-contenu", type: "String (Optionnel)", description: `Texte du lien. Défaut "Passer au contenu" / "Skip to content".`},
         {nom: "afficher-recherche", type: "Boolean (Optionnel)", description: `Indique s'il faut afficher ou non le contrôle de recherche (Loupe + contrôle de saisie du texte recherché). Défaut "false".`},                
-        {nom: "url-contenu-recherche", type: "String (Optionnel)", description: `Si spécifié, url à laquelle un appel (fetch) sera effectué afin d'obtenir le contenu de recherche au format attendu en JSON.`}                
+        {nom: "url-contenu-recherche", type: "String (Optionnel)", description: `Si spécifié, url à laquelle un appel (fetch) sera effectué afin d'obtenir le contenu de recherche au format attendu en JSON. Voir le composant <a href="/composants/actions/barrerecherche">barre de recherche</a> pour plus de détails.`}                
       ]
   }
 
@@ -63,11 +81,21 @@
 <TableauSlots parametres="{tableauSlots}">
 </TableauSlots>
 
+<h2>Événements disponibles</h2>
+<p>Aucun événement spécifique au contrôle de piv d'entête. Cependant l'événement <span class="utd-emphase-gris">initialiser</span> du contrôle barre de recherche peut être nécessaire si la recherche à l'intérieur du PIV est activée.</p>
+<p>Le code source de la section "Exemple" de la présente page contient un exemple de définition du contenu de recherche avec un callback.</p>
+<p>Voir le composant <a href="/composants/actions/barrerecherche">barre de recherche</a> pour plus de détails.</p>
+
 <h2>Exemple</h2>
 <p>L'exemple contient le piv d'entête du présent site de démonstration.</p>
 
-<CodeSource idElementCodeSource="pivEntete" outerhtml="true">
+<CodeSource idElementCodeSource="pivEntete" outerhtml="true" titre="Code source (Html)">
 </CodeSource>
+
+{#if mounted}
+    <CodeSource codeSource="{chargerContenuRecherche.toString()}" titre="Code source (js pour la recherche)" language="language-javascript">
+    </CodeSource>   
+{/if}   
 
 
 <style>

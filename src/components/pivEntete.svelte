@@ -35,6 +35,7 @@ let focusControleRecherche = false
 
 onMount(() => {  
   slots = Array.from(thisComponent.querySelectorAll('[slot]'))    
+  
   mounted = true
   Utils.reafficherApresChargement(thisComponent)
 })
@@ -122,7 +123,7 @@ function clickToggleRecherche(){
 
     {#if afficherRecherche === 'true'}
       <div id="recherchePIV" transition:slide="{{duration:250}}" class="{estZoneRechercheVisible ? null : 'utd-d-none'}" >
-          <utd-barre-recherche focus="{focusControleRecherche ? 'true' : null}" url-contenu-recherche="{urlContenuRecherche}" contexte-piv="true"></utd-barre-recherche>
+        <utd-barre-recherche focus="{focusControleRecherche ? 'true' : null}" url-contenu-recherche="{urlContenuRecherche || null}" contexte-piv="true"></utd-barre-recherche>
       </div>
     {/if}    
 

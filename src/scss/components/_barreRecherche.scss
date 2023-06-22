@@ -31,7 +31,10 @@ utd-barre-recherche {
             flex: 1 1 auto;
             width: 1%;
             margin-bottom: 0;
-            border-right-width: 0;                        
+            
+            &:not(:last-child) {
+                border-right-width: 0;                        
+            }
 
             &:focus {
                 border-right-width: 2px;
@@ -58,7 +61,6 @@ utd-barre-recherche {
         &.contexte-piv {
             .utd-form-control {
                 border: 1px solid #000;
-                border-right-width: 0;
 
                 &:focus {
                     border: 2px solid #000;

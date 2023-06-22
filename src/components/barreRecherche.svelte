@@ -374,17 +374,12 @@ function mouseDownResultatsRecherche(e) {
   e.preventDefault()
 }
 
-function afficherBoutonReinitialiserRecherche() {
-  return true
-  //contextePiv === 'true' || (texteRecherche !== '' && texteRecherche.length >= nbCaracteresMinimalRecherche)
-}
-
 </script>
 
 <div class="utd-barre-recherche">
   <div class="controle-recherche {contextePiv === 'true' ? ' contexte-piv' : ''}">
       <input id="{idControleRecherche}" type="text" autocomplete="off" autocapitalize="none" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="{idControleResultats}" aria-activedescendant="{afficherResultats ? idActiveDescendant : null}" placeholder="{placeholder}" aria-description="{ariaDescriptionRecherche}" on:input={traiterSaisieRecherche} class="utd-form-control xxl texte-recherche" on:keydown={onKeyDownRecherche} on:blur={onBlurRecherche}>
-      {#if afficherBoutonReinitialiserRecherche()}
+      {#if (texteRecherche !== '' && texteRecherche.length >= nbCaracteresMinimalRecherche)}
         <button class="reinitialiser-recherche" type="button" title="{titleBoutonReinitialiserRecherche}" on:click={clickBoutonReinitialiser}>
             <img aria-hidden="true" src="{`${srcBaseImage}ico-xfermer-bleu-moyen`}" width="16" height="16">
         </button>
@@ -405,7 +400,7 @@ function afficherBoutonReinitialiserRecherche() {
               <li role="group">
                 <span class="titre-niveau1">{resultat.c}</span>      
                 <ul role="none">
-                  {#each resultat.values as valeur, j}
+                  {#each resultat.values as valeur}
                     <li class="lien-resultat" role="option" aria-selected="{valeur.id === idActiveDescendant ? 'true' : 'false'}">
                       <a href="{valeur.h}" id="{valeur.id}" on:mouseover={mouseoverResultat}><span class="texte-option">{valeur.r}</span></a>
                     </li>
@@ -416,10 +411,10 @@ function afficherBoutonReinitialiserRecherche() {
                 <li role="group">
                   <span class="titre-niveau1">{resultat.c}</span>      
                   <ul role="none">
-                    {#each resultat.values as sousCategorie, j}
+                    {#each resultat.values as sousCategorie}
                     <span class="titre-niveau2">{sousCategorie.sc}</span>      
                     <ul role="none">
-                      {#each sousCategorie.values as valeur, k}
+                      {#each sousCategorie.values as valeur}
                         <li class="lien-resultat" role="option" aria-selected="{valeur.id === idActiveDescendant ? 'true' : 'false'}">
                           <a href="{valeur.h}" id="{valeur.id}" on:mouseover={mouseoverResultat}><span class="texte-option">{valeur.r}</span></a>
                         </li>

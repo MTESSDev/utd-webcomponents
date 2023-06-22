@@ -38,7 +38,25 @@
         document.getElementById('pivEntete').addEventListener("clickLien", () => {       
             accederContenuPrincipal()
         })
+        
+        chargerContenuRecherche()
     })
+
+    function chargerContenuRecherche() {
+        document.querySelector("utd-piv-entete").addEventListener("initialiser", e => {
+            //Ici votre code pour obtenir le contenu de recherche
+            fetch('/testsLocaux/recherche2Niveaux.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("HTTP error " + response.status)
+                    }                
+                    response.json().then((monContenuRecherche) => {
+                        //Appel à la méthode permettant de définir le contenu de recherche
+                        e.detail.definirContenuRecherche({contenu: monContenuRecherche})                    
+                    })
+            })                    
+        })
+    }
 
 
     //Patch afin de faire fonctionner le bouton "Passer au contenu", semble y avoir un problème avec le router tinro
@@ -77,8 +95,7 @@
             </div>
         </noscript>
         <img id="pivLogoGouvernementPrint" alt="Logo du gouvernement du Québec." src="/images/quebecPrint.gif" width="199" height="60">
-        <utd-piv-entete id="pivEntete" titre-site1="Composants du système de design – MESS" titre-site2="{$router.path.indexOf('/composants/entetepiedpage/piventete') >= 0 ? 'Description supplémentaire du site' : null}" alt-logo="Signature du gouvernement du Québec. Accédez à Système de design MESS." afficher-recherche="true" url-contenu-recherche="/testsLocaux/recherche2Niveaux.json">
-
+        <utd-piv-entete id="pivEntete" titre-site1="Composants du système de design – MESS" titre-site2="{$router.path.indexOf('/composants/entetepiedpage/piventete') >= 0 ? 'Description supplémentaire du site' : null}" alt-logo="Signature du gouvernement du Québec. Accédez à Système de design MESS." afficher-recherche="true">
             <div slot="liens">
                 <ul>
                     {#if $router.path.indexOf('/composants/navigation/menuhorizontal') >= 0}
