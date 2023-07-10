@@ -7,6 +7,16 @@
 </utd-menu-ancres>
 
 <utd-accordeon reduit="false">
+    <div slot="titre"><h2>1.12.1 (2023-07-12)</h2></div>       
+    <h3>Correction d'anomalies</h3>
+    <ul class="utd">
+        <li><p>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/formulaire/listederoulante">Liste déroulante</a> gère maintenant l'état désactivé (disabled ou readonly).</p>
+            <p>Si le select à la source de la liste déroulante avait l'attribut "disabled" ou "readonly", ce dernier n'était pas considéré et la liste était toujours active.</p>
+        </li>
+    </ul>            
+</utd-accordeon>
+
+<utd-accordeon reduit="true">
     <div slot="titre"><h2>1.12.0 (2023-06-13)</h2></div>       
     <h3>Correction d'anomalies</h3>
     <ul class="utd">

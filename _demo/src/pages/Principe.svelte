@@ -17,28 +17,28 @@
 
 <h4>Préchargement des fonts</h4>
 <p>Précharger les fonts dans la balise <span class="utd-emphase-gris">head</span> de votre projet.</p>
-<CodeSource codeSource="<link rel='preload' as='font' href='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.12.0/dist/fonts/open-sans-v18-latin-regular.woff2' type='font/woff2' crossorigin='anonymous'>
-    <link rel='preload' as='font' href='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.12.0/dist/fonts/open-sans-v18-latin-600.woff2' type='font/woff2' crossorigin='anonymous'>
-    <link rel='preload' as='font' href='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.12.0/dist/fonts/open-sans-v18-latin-700.woff2' type='font/woff2' crossorigin='anonymous'>
-    <link rel='preload' as='font' href='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.12.0/dist/fonts/roboto-v20-latin-regular.woff2' type='font/woff2' crossorigin='anonymous'>
-    <link rel='preload' as='font' href='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.12.0/dist/fonts/roboto-v20-latin-500.woff2' type='font/woff2' crossorigin='anonymous'>
-    <link rel='preload' as='font' href='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.12.0/dist/fonts/roboto-v20-latin-700.woff2' type='font/woff2' crossorigin='anonymous'>    
+<CodeSource codeSource="<link rel='preload' as='font' href='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.12.1/dist/fonts/open-sans-v18-latin-regular.woff2' type='font/woff2' crossorigin='anonymous'>
+    <link rel='preload' as='font' href='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.12.1/dist/fonts/open-sans-v18-latin-600.woff2' type='font/woff2' crossorigin='anonymous'>
+    <link rel='preload' as='font' href='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.12.1/dist/fonts/open-sans-v18-latin-700.woff2' type='font/woff2' crossorigin='anonymous'>
+    <link rel='preload' as='font' href='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.12.1/dist/fonts/roboto-v20-latin-regular.woff2' type='font/woff2' crossorigin='anonymous'>
+    <link rel='preload' as='font' href='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.12.1/dist/fonts/roboto-v20-latin-500.woff2' type='font/woff2' crossorigin='anonymous'>
+    <link rel='preload' as='font' href='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.12.1/dist/fonts/roboto-v20-latin-700.woff2' type='font/woff2' crossorigin='anonymous'>    
 ">
 </CodeSource>   
 
 <h4>Chargement du css</h4>
 <p>Charger le css dans la balise <span class="utd-emphase-gris">head</span> <strong>avant</strong> le css de votre projet.</p>
-<CodeSource codeSource="<link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.12.0/dist/css/utd-webcomponents.min.css'>">
+<CodeSource codeSource="<link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.12.1/dist/css/utd-webcomponents.min.css'>">
 </CodeSource>   
 
 <h4>Chargement du javascript</h4>
 <p>Charger le script à la fin du <span class="utd-emphase-gris">body</span> de la page.</p>
-<CodeSource codeSource="<script src='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.12.0/dist/js/utd-webcomponents.min.js' relative-base-path='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.12.0/dist'></script>">
+<CodeSource codeSource="<script src='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.12.1/dist/js/utd-webcomponents.min.js' relative-base-path='https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@1.12.1/dist'></script>">
 </CodeSource>   
 
 <div class="mt-48">
     <utd-avis titre="Utiliser un alias de version">
-        <span>Il est possible de ne pas spécifier de numéro de version précis remplaçant le numéro de version (ex. @1.12.0) par  :</span>
+        <span>Il est possible de ne pas spécifier de numéro de version précis remplaçant le numéro de version (ex. @1.12.1) par  :</span>
         <ul>
             <li><span class="utd-emphase-gris">@latest</span> afin d'obtenir la version la plus récente (Attention! Pourrait contenir un "breaking change");</li>
             <li><span class="utd-emphase-gris">@1.9</span> afin d'obtenir la version la plus récente 1.9.x;</li>
@@ -67,16 +67,16 @@
 
 <h4>Chargement du css</h4>
 <p>Charger le css dans la balise <span class="utd-emphase-gris">head</span> <strong>avant</strong> le css de votre projet.</p>
-<CodeSource codeSource="<link rel='stylesheet' href='/css/utd-webcomponents.min.css?v=1.12.0'>">
+<CodeSource codeSource="<link rel='stylesheet' href='/css/utd-webcomponents.min.css?v=1.12.1'>">
 </CodeSource>
 
 <h4>Chargement du javascript</h4>
 <p>Charger le script à la fin du <span class="utd-emphase-gris">body</span> de la page.</p>
 <p>Il est possible de spécifier le chemin relatif pour atteindre le dossier contenant les éléments utd si ce dernier n'est pas "/" (ex. racine wwwroot). Il suffit d'ajouter l'attribut "relative-base-path" à la balise script.</p>
-<CodeSource titre="Code source" codeSource="<script src='/js/utd-webcomponents.min.js?v=1.12.0'></script>">
+<CodeSource titre="Code source" codeSource="<script src='/js/utd-webcomponents.min.js?v=1.12.1'></script>">
 </CodeSource>   
 
-<CodeSource titre="Code source (avec chemin relatif)" codeSource="<script src='/js/utd-webcomponents.min.js?v=1.12.0' relative-base-path='/utd/'></script>">
+<CodeSource titre="Code source (avec chemin relatif)" codeSource="<script src='/js/utd-webcomponents.min.js?v=1.12.1' relative-base-path='/utd/'></script>">
 </CodeSource>   
 
 <style>

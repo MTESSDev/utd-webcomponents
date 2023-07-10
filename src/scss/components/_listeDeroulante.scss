@@ -74,7 +74,7 @@ utd-liste-deroulante {
         }
         .selection {
             position: relative;
-            cursor: pointer;
+            cursor: default;
             padding: 6px 31px 6px 7px;
             display: block;
 
@@ -200,7 +200,7 @@ utd-liste-deroulante {
                     margin: 0;
 
                     &:hover{
-                        cursor: pointer;
+                        cursor: default;
                     }                    
 
                     &.focus, &:hover{
