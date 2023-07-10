@@ -133,7 +133,7 @@ function clickToggleRecherche(){
       </div>
       
       {#if afficherRecherche === 'true' && window.contenuRecherchePiv !== null}
-        <button type="button" class="bouton-toggle-recherche visible" id="btnToggleRecherchePIVmobile" aria-expanded="false" aria-controls="recherchePIV" title="Afficher ou masquer la zone de recherche">
+        <button type="button" class="bouton-toggle-recherche visible" id="btnToggleRecherchePIVmobile" aria-expanded="{estZoneRechercheVisible ? 'true' : 'false'}" aria-controls="recherchePIV" title="Afficher ou masquer la zone de recherche" on:click={clickToggleRecherche}>
           <img aria-hidden="true" src="{srcImageBoutonToggleRecherche}" width="24" height="24">
         </button>            
       {/if}    
