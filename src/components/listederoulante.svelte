@@ -1020,14 +1020,14 @@ function assurerOptionCouranteVisible() {
 
     if(option.offsetTop + hauteurOption > offsetConteneur){
       if(option.offsetTop + hauteurOption > (offsetConteneur + hauteurOption)){
-        //Ici on traite le cas ou le user aurait modifié la position du scroll (ex. avec la souris), dans ce cas on remet l'option courant en au de liste
+        //Ici on traite le cas ou le user aurait modifié la position du scroll (ex. avec la souris), dans ce cas on remet l'option courant en haut de liste
         controleConteneurResultats.scroll({top: option.offsetTop});
       } else {
         controleConteneurResultats.scroll({top: controleConteneurResultats.scrollTop + hauteurOption});
       }
     } else if(option.offsetTop < (offsetConteneur - hauteurConteneur)){
       if(option.offsetTop < (offsetConteneur - hauteurOption)){
-        //Ici on traite le cas ou le user aurait modifié la position du scroll (ex. avec la souris), dans ce cas on remet l'option courant en au de liste
+        //Ici on traite le cas ou le user aurait modifié la position du scroll (ex. avec la souris), dans ce cas on remet l'option courant en haut de liste
         controleConteneurResultats.scroll({top: option.offsetTop});
       } else {
         controleConteneurResultats.scroll({top: controleConteneurResultats.scrollTop - hauteurOption});

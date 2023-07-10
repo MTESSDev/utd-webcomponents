@@ -34,6 +34,7 @@ const idControleRecherche = Utils.genererId()
 const idControleResultats = Utils.genererId()
 const thisComponent = get_current_component()
 
+
 const nbCaracteresMinimalRecherche = 3
 
 let mounted = false
@@ -42,6 +43,7 @@ let afficherResultats = false
 let idActiveDescendant = null
 let miniSearch
 let optionsMiniSearch
+let controleConteneurResultats
 let contenuRecherche = null
 let resultatsRecherche = null
 let resultatsRechercheFlat = null
@@ -67,6 +69,7 @@ onMount(() => {
     processTerm: (term, _fieldName) => indexerTerme(term)
   }
 
+  controleConteneurResultats = thisComponent.shadowRoot.querySelector('.resultats-recherche')
 
   mounted = true  
   Utils.reafficherApresChargement(thisComponent)
@@ -116,8 +119,7 @@ function traiterSaisieRecherche(){
 }
 
 const rechercherDebounced = Utils.debounce(() => {
-  
-  if(resultatsRecherche === null) {
+  if(resultatsRecherche === null && contenuRecherche === null) {
     initialiserRecherche()    
   } else {
     rechercher(true)
@@ -125,7 +127,8 @@ const rechercherDebounced = Utils.debounce(() => {
 }, 750)
 
 function initialiserRecherche() {
-
+  // console.log('initialiserRecherche ' + urlContenuRecherche)
+  
   if(urlContenuRecherche) {
     obtenirContenuRechercheViaUrl()
       .then((contenu) => {
@@ -167,8 +170,10 @@ function rechercher(doitNotifierLecteurEcran) {
   const optionsRecherche = {...optionsMiniSearch, ...{fuzzy: term => term.length > nbCaracteresMinimalRecherche ? optionsMiniSearch.fuzzy : null}}
 
   const texteRechercheSansEspace = texteRecherche.trim()
+
   if(texteRechercheSansEspace !== "" && texteRechercheSansEspace.length >= nbCaracteresMinimalRecherche){    
     const resultats = obtenirResultatsGroupes(miniSearch.search(texteRechercheSansEspace, optionsRecherche))
+    
     applatirResultatRecherche(resultats)
     resultatsRecherche = resultats
 
@@ -180,6 +185,7 @@ function rechercher(doitNotifierLecteurEcran) {
       }    
     }
   } else {
+    // console.log('rechercher -> réinitialiser à null')
     resultatsRecherche = null
   }
 
@@ -190,6 +196,11 @@ function rechercher(doitNotifierLecteurEcran) {
 
 function obtenirResultatsGroupes(retourMiniSearch) {
   resultatsRechercheFlat = []
+
+  //Ajouter un indexe (i). Servira lors de la navigation au clavier pour savoir si nous sommes sur le 1er ou dernier élément (même s'ils sont regroupés)
+  for (let i = 0; i < retourMiniSearch.length; i++) {
+    retourMiniSearch[i].i = i    
+  }
 
   if(nbNiveaux === 1){
     return retourMiniSearch
@@ -309,7 +320,7 @@ function onKeyDownRecherche(e){
       if(resultatsRecherche !== null) {
         //Les résultats sont visibles, on donne le focus au résultat suivant
         definirProchainActiveDescendant(1)
-//      assurerOptionCouranteVisible()
+        assurerOptionCouranteVisible()
       }
 
       break      
@@ -319,7 +330,7 @@ function onKeyDownRecherche(e){
       if(resultatsRecherche !== null) {
         //Les résultats sont visibles, on donne le focus au résultat précédent
         definirProchainActiveDescendant(-1)
-        //      assurerOptionCouranteVisible()
+        assurerOptionCouranteVisible()
       }
       break
 
@@ -362,8 +373,49 @@ function definirProchainActiveDescendant(step) {
   }
 }
 
+//TODO éventuellement vérifier pour faire une fonction réutilisable dans Utils. Est utilisé aussi dans liste déroulante. Seul le bout du premier et dernier élément est différent... À regarder éventuellement.
+function assurerOptionCouranteVisible() {  
+  //SetTimeout nécessaire afin que le paint de la page soit fait et qu'on puisse travailler avec l'option qui vient de recevoir le focus.
+  setTimeout(() => {
+    const option = thisComponent.shadowRoot.querySelector('.lien-resultat[aria-selected="true"]')
+
+    if(!option){
+      return
+    }
+
+    const hauteurConteneur = controleConteneurResultats.getBoundingClientRect().height
+    const hauteurOption = option.getBoundingClientRect().height
+    const offsetConteneur = controleConteneurResultats.scrollTop + hauteurConteneur
+
+    //Si nous sommes sur la 1ere ou la dernière suggestion on gère manuellement le scroll
+    if(option.classList.contains('premier')){
+      controleConteneurResultats.scroll({top: 0})
+      return
+    } else if(option.classList.contains('dernier')){      
+      controleConteneurResultats.scroll({top: option.offsetTop})
+      return
+    }
+
+    if(option.offsetTop + hauteurOption > offsetConteneur){
+      if(option.offsetTop + hauteurOption > (offsetConteneur + hauteurOption)){
+        //Ici on traite le cas ou le user aurait modifié la position du scroll (ex. avec la souris), dans ce cas on remet l'option courant en haut de liste
+        controleConteneurResultats.scroll({top: option.offsetTop});
+      } else {
+        controleConteneurResultats.scroll({top: controleConteneurResultats.scrollTop + hauteurOption});
+      }
+    } else if(option.offsetTop < (offsetConteneur - hauteurConteneur)){
+      if(option.offsetTop < (offsetConteneur - hauteurOption)){
+        //Ici on traite le cas ou le user aurait modifié la position du scroll (ex. avec la souris), dans ce cas on remet l'option courant en haut de liste
+        controleConteneurResultats.scroll({top: option.offsetTop});
+      } else {
+        controleConteneurResultats.scroll({top: controleConteneurResultats.scrollTop - hauteurOption});
+      }
+    }
+  })
+}
+
 function onBlurRecherche() {
-  reinitialiserRecherche()
+  //reinitialiserRecherche()
 }
 
 /**
@@ -390,9 +442,9 @@ function mouseDownResultatsRecherche(e) {
     {#if resultatsRecherche && resultatsRecherche.length > 0}  
       <ul id="{idControleResultats}" role="listbox" class="liste-resultats {'nb-niveaux-' + nbNiveaux}" transition:slide="{{duration:250}}" >
 
-        {#each resultatsRecherche as resultat, i}
+        {#each resultatsRecherche as resultat}
           {#if nbNiveaux === 1}  
-            <li class="lien-resultat" role="option" aria-selected="{resultat.id === idActiveDescendant ? 'true' : 'false'}">
+            <li class="lien-resultat{resultat.i === 0 ? ' premier' : ''}{resultat.i === resultatsRechercheFlat.length - 1  ? ' dernier' : ''}" role="option" aria-selected="{resultat.id === idActiveDescendant ? 'true' : 'false'}">
               <a href="{resultat.h}" id="{resultat.id}" on:mouseover={mouseoverResultat}><span class="texte-option">{resultat.r}</span></a>
             </li>
           {:else}
@@ -401,7 +453,7 @@ function mouseDownResultatsRecherche(e) {
                 <span class="titre-niveau1">{resultat.c}</span>      
                 <ul role="none">
                   {#each resultat.values as valeur}
-                    <li class="lien-resultat" role="option" aria-selected="{valeur.id === idActiveDescendant ? 'true' : 'false'}">
+                    <li class="lien-resultat{valeur.i === 0 ? ' premier' : ''}{valeur.i === resultatsRechercheFlat.length - 1  ? ' dernier' : ''}" role="option" aria-selected="{valeur.id === idActiveDescendant ? 'true' : 'false'}">
                       <a href="{valeur.h}" id="{valeur.id}" on:mouseover={mouseoverResultat}><span class="texte-option">{valeur.r}</span></a>
                     </li>
                   {/each}           
@@ -415,7 +467,7 @@ function mouseDownResultatsRecherche(e) {
                     <span class="titre-niveau2">{sousCategorie.sc}</span>      
                     <ul role="none">
                       {#each sousCategorie.values as valeur}
-                        <li class="lien-resultat" role="option" aria-selected="{valeur.id === idActiveDescendant ? 'true' : 'false'}">
+                        <li class="lien-resultat{valeur.i === 0 ? ' premier' : ''}{valeur.i === resultatsRechercheFlat.length - 1  ? ' dernier' : ''}" role="option" aria-selected="{valeur.id === idActiveDescendant ? 'true' : 'false'}">
                           <a href="{valeur.h}" id="{valeur.id}" on:mouseover={mouseoverResultat}><span class="texte-option">{valeur.r}</span></a>
                         </li>
                       {/each}           

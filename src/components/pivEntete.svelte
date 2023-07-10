@@ -33,12 +33,29 @@ let mounted = false
 let estZoneRechercheVisible = false
 let focusControleRecherche = false
 
+
 onMount(() => {  
   slots = Array.from(thisComponent.querySelectorAll('[slot]'))    
   
   mounted = true
+  
+  if(afficherRecherche === 'true') {
+
+    //Ici on utilise l'objet global window, car pour une raison inconnue, impossible de rafraichir l'écran avec l'utilisation d'une variable svelte... Tout essayé, avec une watch et tout... rien à faire. C'est un peu un mystère. La seule solution trouvée pour le moment est d'utiliser l'objet global "window". Comme il n'y a qu'un seul contrôle PIV entête dans une page c'est correct.
+    Utils.dispatchWcEvent(thisComponent, "initialiserRecherche", {definirContenuRecherche: (donnees) => { window.contenuRecherchePiv = donnees.contenu }})
+
+
+    thisComponent.shadowRoot.querySelector("utd-barre-recherche").addEventListener("initialiser", e => {
+//      console.log('contenuRecherchePiv transmis barre recherche')  
+//      console.log(window.contenuRecherchePiv)  
+      e.detail.definirContenuRecherche({contenu: window.contenuRecherchePiv})    
+    })      
+  }
+  
   Utils.reafficherApresChargement(thisComponent)
 })
+
+
 
 function clickLien(){
   Utils.dispatchWcEvent(thisComponent, "clickLien")
@@ -84,11 +101,12 @@ function clickToggleRecherche(){
       </div>
 
       <div class="section-droite">
-        {#if afficherRecherche === 'true'}
+          
+        {#if afficherRecherche === 'true' && window.contenuRecherchePiv !== null}
           <button type="button" class="bouton-toggle-recherche" aria-expanded="{estZoneRechercheVisible ? 'true' : 'false'}" aria-controls="recherchePIV" title="Afficher ou masquer la zone de recherche" on:click={clickToggleRecherche}>
             <img aria-hidden="true" src="{srcImageBoutonToggleRecherche}" width="24" height="24">
           </button>            
-        {/if}    
+        {/if}
 
         {#if Utils.slotExiste(slots, 'liens')}
           <slot name="liens" />
@@ -113,8 +131,8 @@ function clickToggleRecherche(){
           <span class="description">{titreSite2}</span>  
         {/if}
       </div>
-
-      {#if afficherRecherche === 'true'}
+      
+      {#if afficherRecherche === 'true' && window.contenuRecherchePiv !== null}
         <button type="button" class="bouton-toggle-recherche visible" id="btnToggleRecherchePIVmobile" aria-expanded="false" aria-controls="recherchePIV" title="Afficher ou masquer la zone de recherche">
           <img aria-hidden="true" src="{srcImageBoutonToggleRecherche}" width="24" height="24">
         </button>            
@@ -122,7 +140,7 @@ function clickToggleRecherche(){
     </div>          
 
     {#if afficherRecherche === 'true'}
-      <div id="recherchePIV" transition:slide="{{duration:250}}" class="{estZoneRechercheVisible ? null : 'utd-d-none'}" >
+      <div id="recherchePIV" class="{estZoneRechercheVisible ? null : 'utd-d-none'}" >
         <utd-barre-recherche focus="{focusControleRecherche ? 'true' : null}" url-contenu-recherche="{urlContenuRecherche || null}" contexte-piv="true"></utd-barre-recherche>
       </div>
     {/if}    

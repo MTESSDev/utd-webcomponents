@@ -39,13 +39,16 @@
             accederContenuPrincipal()
         })
         
-        chargerContenuRecherche()
+        chargerContenuRecherche()            
     })
 
     function chargerContenuRecherche() {
-        document.querySelector("utd-piv-entete").addEventListener("initialiser", e => {
+
+        document.querySelector("utd-piv-entete").addEventListener("initialiserRecherche", e => {
+
             //Ici votre code pour obtenir le contenu de recherche
-            fetch('/testsLocaux/recherche2Niveaux.json')
+            setTimeout(() => {
+                fetch('/testsLocaux/recherche2Niveaux.json')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error("HTTP error " + response.status)
@@ -55,6 +58,8 @@
                         e.detail.definirContenuRecherche({contenu: monContenuRecherche})                    
                     })
             })                    
+                
+            });
         })
     }
 
