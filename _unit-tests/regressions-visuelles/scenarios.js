@@ -1145,42 +1145,44 @@ scenarios : [
         url: "/composants/entetepiedpage/piedpagesite",
         removeSelectors: [".no-test"]
     },    
-    //Piv entête (Base - 2 lignes MO, 2 liens langue et nous joindre)
-    {
-        label: "Piv_entete (Base)", 
-        url: "/composants/entetepiedpage/piventete",
-        selectors: ["utd-piv-entete"],  
-        removeSelectors: [".no-test"]
-    },    
-    //Piv entête (1 ligne MO, 1 lien nous joindre)
-    {
-        label: "Piv_entete (1 ligne MO, 1 lien nous joindre)", 
-        url: "/composants/entetepiedpage/pivpiedpage",
-        selectors: ["utd-piv-entete"],
-        removeSelectors: [".no-test"]  
-    },    
-    //Piv entête (1 ligne MO, Aucun lien)
-    {
-        label: "Piv_entete (1 ligne MO, Aucun lien)", 
-        url: "/gabarit1colonne",
-        selectors: ["utd-piv-entete"],
-        removeSelectors: [".no-test"]  
-    },    
+    // //Piv entête (Base - 2 lignes MO, 2 liens langue et nous joindre)
+    // {
+    //     label: "Piv_entete (Base)", 
+    //     url: "/composants/entetepiedpage/piventete",
+    //     selectors: ["utd-piv-entete"],  
+    //     removeSelectors: [".no-test"]
+    // },    
+    // //Piv entête (1 ligne MO, 1 lien nous joindre)
+    // {
+    //     label: "Piv_entete (1 ligne MO, 1 lien nous joindre)", 
+    //     url: "/composants/entetepiedpage/pivpiedpage",
+    //     selectors: ["utd-piv-entete"],
+    //     removeSelectors: [".no-test"]  
+    // },    
+    // //Piv entête (1 ligne MO, Aucun lien)
+    // {
+    //     label: "Piv_entete (1 ligne MO, Aucun lien)", 
+    //     url: "/gabarit1colonne",
+    //     selectors: ["utd-piv-entete"],
+    //     removeSelectors: [".no-test"]  
+    // },    
 
     //Piv entête avec barre de recherche (base)
-    {
-        label: "Piv_entete avec barre recherche (Base)", 
-        url: "/composants/entetepiedpage/piventete",
-        selectors: ["utd-piv-entete"],  
-        removeSelectors: [".no-test"]
-    },
+    // {
+    //     label: "Piv_entete avec barre recherche (Base)", 
+    //     url: "/composants/entetepiedpage/piventete",
+    //     selectors: ["utd-piv-entete"],  
+    //     removeSelectors: [".no-test"]
+    // },
 
-    //Piv entête afficher recherche
+    //Piv entête afficher recherche (hover)
     {
-        label: "Piv_entete avec barre recherche (Base)", 
+        label: "Piv_entete avec barre recherche (hover)", 
         url: "/composants/entetepiedpage/piventete",
+        viewports: viewports.vDesktopTablet,
         selectors: ["utd-piv-entete"],  
-        removeSelectors: [".no-test"]
+        removeSelectors: [".no-test"],
+        shadowHoverSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}]
     },
     
     //Piv pied page (Base)
