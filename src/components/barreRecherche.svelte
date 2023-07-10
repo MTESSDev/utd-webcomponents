@@ -415,7 +415,7 @@ function assurerOptionCouranteVisible() {
 }
 
 function onBlurRecherche() {
-  //reinitialiserRecherche()
+  reinitialiserRecherche()
 }
 
 /**
