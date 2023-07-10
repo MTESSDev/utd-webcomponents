@@ -83,14 +83,14 @@
         <p>Cette page "statique" est utilisée afin de tester une sélection par défaut dans le contrôle de liste déroulante.</p>
         <p>Il semble exister un bug avec notre site démo qui utilise SVELTE. L'attribut "selected" dans les éléments "option" semble retiré par SVELTE, ce qui cause problème pour les essais d'assignation d'une valeur par défaut à une liste déroulante.</p>
 
-        <h3>2c- Liste déroulante à sélection simple avec une option sélectionnée par défaut</h3>
+        <h3>1- Liste déroulante à sélection simple avec une option sélectionnée par défaut</h3>
         <p>L'option sélectionnée par défaut devrait être "Québec".</p>
 
-        <div id="exemple2c" class="bs-test">
+        <div id="exemple1" class="bs-test">
             <utd-champ-form precision="Ne soyez pas timide et assumez-vous.">
                 <utd-liste-deroulante>
                     <label>Sélectionnez votre province canadienne préférée</label>
-                    <select id="select2b">
+                    <select id="select1">
                         <option value="AB">Alberta</option>
                         <option value="BC">Colombie-Britannique</option>
                         <option value="QC" selected>Québec</option>
@@ -99,7 +99,25 @@
                 </utd-liste-deroulante>
             </utd-champ-form>
         </div>
- 
+
+        <h3>2- Liste déroulante à sélection simple en lecture seule avec une option sélectionnée par défaut</h3>
+        <p>L'option sélectionnée par défaut devrait être "Québec" et le champ non modifiable.</p>
+
+        <div id="exemple2" class="bs-test">
+          <utd-champ-form precision="Ne soyez pas timide et assumez-vous.">
+              <utd-liste-deroulante>
+                  <label>Sélectionnez votre province canadienne préférée</label>
+                  <select id="select2" readonly="true">
+                      <option value="AB">Alberta</option>
+                      <option value="BC">Colombie-Britannique</option>
+                      <option value="QC" selected>Québec</option>
+                      <option value="SK">Saskatchewan</option>
+                  </select>          
+              </utd-liste-deroulante>
+          </utd-champ-form>
+        </div>
+
+
       </main>
     </div>
   </div>
