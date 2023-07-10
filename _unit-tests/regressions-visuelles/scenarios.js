@@ -79,6 +79,13 @@ scenarios : [
         label: "Avis", 
         url: "/composants/affichagecontenu/avis"
     },
+
+    //Barre de recherche (base)
+    {
+        label: "Barre_recherche (Base)", 
+        url: "/composants/actions/barrerecherche"
+    },
+
     //Boutons
     {
         label: "Boutons base", 
@@ -1159,6 +1166,23 @@ scenarios : [
         selectors: ["utd-piv-entete"],
         removeSelectors: [".no-test"]  
     },    
+
+    //Piv entête avec barre de recherche (base)
+    {
+        label: "Piv_entete avec barre recherche (Base)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],  
+        removeSelectors: [".no-test"]
+    },
+
+    //Piv entête afficher recherche
+    {
+        label: "Piv_entete avec barre recherche (Base)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],  
+        removeSelectors: [".no-test"]
+    },
+    
     //Piv pied page (Base)
     {
         label: "Piv_pied_page (Base)", 
