@@ -67,13 +67,28 @@
         </div>
 
         <h3>2- Liste déroulante à sélection simple en lecture seule avec une option sélectionnée par défaut</h3>
-        <p>L'option sélectionnée par défaut devrait être "Québec" et le champ non modifiable.</p>
+        <p>La première liste est "disabled", la seconde est "readonly".</p>
+        <p>Le comportement attendu est le même, l'option sélectionnée par défaut devrait être "Québec" et le champ non modifiable.</p>
 
-        <div id="exemple2" class="bs-test mb-48">
+        <div id="exemple2" class="bs-test">
           <utd-champ-form precision="Ne soyez pas timide et assumez-vous.">
               <utd-liste-deroulante>
                   <label>Sélectionnez votre province canadienne préférée</label>
-                  <select id="select2" readonly>
+                  <select id="select2" disabled>
+                      <option value="AB">Alberta</option>
+                      <option value="BC">Colombie-Britannique</option>
+                      <option value="QC" selected>Québec</option>
+                      <option value="SK">Saskatchewan</option>
+                  </select>          
+              </utd-liste-deroulante>
+          </utd-champ-form>
+        </div>
+
+        <div id="exemple2b" class="bs-test mb-48">
+          <utd-champ-form precision="Ne soyez pas timide et assumez-vous.">
+              <utd-liste-deroulante>
+                  <label>Sélectionnez votre province canadienne préférée</label>
+                  <select id="select2b" readonly>
                       <option value="AB">Alberta</option>
                       <option value="BC">Colombie-Britannique</option>
                       <option value="QC" selected>Québec</option>

@@ -156,9 +156,9 @@ function definirAttributsInitiauxControles(){
   //Settimeout important afin de s'assurer que le paint et autres traitements sont complétés (ex. avec VueFormulate)
   setTimeout(() => {
     majAttributControle(controleConteneur, 'aria-invalid', controleSelect.getAttribute('aria-invalid'))
-    majAttributControle(controleConteneur, 'aria-required', controleSelect.getAttribute('aria-required'))    
-    majAttributControle(controleConteneur, 'aria-disabled', controleSelect.getAttribute('disabled') !== null ? 'true' : null)
-    majAttributControle(controleConteneur, 'aria-readonly', controleSelect.getAttribute('readonly') !== null ? 'true' : null)
+    majAttributControle(controleConteneur, 'aria-required', controleSelect.getAttribute('aria-required'))      
+    majAttributControle(controleConteneur, 'aria-disabled', estControleSelectInactif() ? 'true' : null)
+
     definirAriaLabelConteneur()
     definirAriaDescriptionConteneur()
     definirAriaDescriptionRecherche()
@@ -237,7 +237,7 @@ function observerAttributsSelectOriginal(){
             nomAttributMaj = 'aria-disabled'            
             break;
           case 'readonly':
-            nomAttributMaj = 'aria-readonly'            
+            nomAttributMaj = 'aria-disabled'            
             break;
         
           default:
