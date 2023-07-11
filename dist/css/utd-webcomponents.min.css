@@ -2337,6 +2337,9 @@ button.utd-btn.utd-traitement-en-cours, input[type=submit].utd-btn.utd-traitemen
 .utd-icone-svg.chevron-bleu-piv {
   background-image: url("../images/utd-sprite.svg?v=1.12.1#ico-chevron-bleu-piv");
 }
+.utd-icone-svg.chevron-gris {
+  background-image: url("../images/utd-sprite.svg?v=1.12.1#ico-chevron-gris");
+}
 .utd-icone-svg.chevron-bleu-moyen {
   background-image: url("../images/utd-sprite.svg?v=1.12.1#ico-chevron-bleu-moyen");
 }
@@ -2653,6 +2656,9 @@ utd-liste-deroulante.mounted {
   position: absolute;
   width: 100%;
   z-index: 9000;
+}
+.utd-liste-deroulante .conteneur.utd-form-control[aria-disabled] .selection .utd-icone-svg.chevron-bleu-piv, .utd-liste-deroulante .conteneur.utd-form-control[aria-readonly] .selection .utd-icone-svg.chevron-bleu-piv {
+  background-image: url("../images/utd-sprite.svg?v=1.12.1#ico-chevron-gris");
 }
 .utd-liste-deroulante .conteneur.utd-form-control:focus {
   padding: 0;

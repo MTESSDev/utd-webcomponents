@@ -62,6 +62,17 @@ utd-liste-deroulante {
                 width: 100%;
                 z-index: 9000;
             }
+
+            &[aria-disabled], &[aria-readonly] {
+                .selection {
+                    .utd-icone-svg {
+                        &.chevron-bleu-piv {
+                            background-image: url("../images/utd-sprite.svg_versionUtd_#ico-chevron-gris");
+                        }    
+                    
+                    }                    
+                }
+            }
         }
 
         &.utd-form-control:focus{
@@ -72,6 +83,7 @@ utd-liste-deroulante {
         &:not(.ouvert) .selection .utd-icone-svg.developper {            
             transform: rotate(-180deg);
         }
+        
         .selection {
             position: relative;
             cursor: default;
