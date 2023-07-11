@@ -383,3 +383,7 @@
 
 <CodeSource idElementCodeSource="exemple6">
 </CodeSource>
+
+
+<h3>7- Valeur par défaut et état inactif</h3>
+<p>Compte tenu de certaines contraintes techniques, les exemples de définition d'une valeur par défaut et d'état inactif sont dans une autre page. <a href="https://lively-cliff-018a9540f.azurestaticapps.net/essaisListeDeroulante">Accéder à cette page</a>.</p>
