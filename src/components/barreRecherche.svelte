@@ -39,6 +39,7 @@ const nbCaracteresMinimalRecherche = 3
 
 let mounted = false
 let nbNiveaux = 1
+let afficherResultats = false
 let idActiveDescendant = null
 let miniSearch
 let optionsMiniSearch
@@ -79,6 +80,7 @@ onMount(() => {
   $: toggleFocus(focus) 
   $: majContenuRecherche(contenuRecherche) 
   $: doitAfficherResultatsRecherche = resultatsRecherche && resultatsRecherche.length > 0
+
 
 function toggleFocus() {
 
@@ -478,8 +480,10 @@ function mouseDownResultatsRecherche(e) {
                 </li>
             {/if}  
           {/if}  
-        {/each}               
+        {/each}       
+        
       </ul>
+
     {:else}
       <span class="texte-aucun-resultat" aria-hidden="true">{texteAucunResultat}</span>  
     {/if}  
@@ -487,6 +491,7 @@ function mouseDownResultatsRecherche(e) {
   <span role="status" class="utd-sr-only" tabindex="-1">{texteNotificationLecteurEcran}</span>
 
 </div>
+
 
 
 <link rel='stylesheet' href='{Utils.cssFullPath}'>
