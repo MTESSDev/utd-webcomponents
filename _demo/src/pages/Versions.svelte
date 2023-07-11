@@ -7,7 +7,7 @@
 </utd-menu-ancres>
 
 <utd-accordeon reduit="false">
-    <div slot="titre"><h2>1.12.1 (2023-07-12)</h2></div>       
+    <div slot="titre"><h2>1.12.1 (2023-07-11)</h2></div>       
     <h3>Correction d'anomalies</h3>
     <ul class="utd">
         <li><p>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/formulaire/listederoulante">Liste déroulante</a> gère maintenant l'état désactivé (disabled ou readonly).</p>
