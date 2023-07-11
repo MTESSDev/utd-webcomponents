@@ -1145,308 +1145,532 @@ scenarios : [
         url: "/composants/entetepiedpage/piedpagesite",
         removeSelectors: [".no-test"]
     },    
-    // //Piv entête (Base - 2 lignes MO, 2 liens langue et nous joindre)
-    // {
-    //     label: "Piv_entete (Base)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     selectors: ["utd-piv-entete"],  
-    //     removeSelectors: [".no-test"]
-    // },    
-    // //Piv entête (1 ligne MO, 1 lien nous joindre)
-    // {
-    //     label: "Piv_entete (1 ligne MO, 1 lien nous joindre)", 
-    //     url: "/composants/entetepiedpage/pivpiedpage",
-    //     selectors: ["utd-piv-entete"],
-    //     removeSelectors: [".no-test"]  
-    // },    
-    // //Piv entête (1 ligne MO, Aucun lien)
-    // {
-    //     label: "Piv_entete (1 ligne MO, Aucun lien)", 
-    //     url: "/gabarit1colonne",
-    //     selectors: ["utd-piv-entete"],
-    //     removeSelectors: [".no-test"]  
-    // },    
-    // //Piv entête avec barre de recherche (base)
-    // {
-    //     label: "Piv_entete avec barre recherche (Base)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     selectors: ["utd-piv-entete"],  
-    //     removeSelectors: [".no-test"]
-    // },
-    // //Piv entête afficher recherche (hover de la loupe)
-    // {
-    //     label: "Piv_entete avec barre recherche (hover de la loupe)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     viewports: viewports.vDesktopTablet,
-    //     selectors: ["utd-piv-entete"],  
-    //     removeSelectors: [".no-test"],
-    //     shadowHoverSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}]
-    // },
-    // //Piv entête afficher recherche (hover de la loupe mobile)
-    // {
-    //     label: "Piv_entete avec barre recherche (hover de la loupe mobile)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     viewports: viewports.vPhone,
-    //     selectors: ["utd-piv-entete"],  
-    //     removeSelectors: [".no-test"],
-    //     shadowHoverSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}]
-    // },
-    // //Piv entête afficher recherche (clique loupe)
-    // {
-    //     label: "Piv_entete avec barre recherche (clique loupe)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     selectors: ["utd-piv-entete"],
-    //     viewports: viewports.vDesktopTablet,
-    //     removeSelectors: [".no-test"],
-    //     shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}]
-    // },
-    // //Piv entête afficher recherche (clique loupe mobile) A VERIFIER
-    // {
-    //     label: "Piv_entete avec barre recherche (clique loupe mobile)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     selectors: ["utd-piv-entete"],
-    //     viewports: viewports.vPhone,
-    //     removeSelectors: [".no-test"],
-    //     shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}]
-    // },
-    // //Piv entête afficher recherche (deux clique loupe)
-    // {
-    //     label: "Piv_entete avec barre recherche (deux clique loupe)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     selectors: ["utd-piv-entete"],
-    //     viewports: viewports.vDesktopTablet,
-    //     removeSelectors: [".no-test"],
-    //     shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"},{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}]
-    // },
-    // //Piv entête afficher recherche (deux clique loupe mobile)
-    // {
-    //     label: "Piv_entete avec barre recherche (deux clique loupe mobile)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     selectors: ["utd-piv-entete"],
-    //     viewports: viewports.vPhone,
-    //     removeSelectors: [".no-test"],
-    //     shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"},{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}]
-    // },
-    // //Piv entête afficher recherche (clique loupe puis clique body)
-    // {
-    //     label: "Piv_entete avec barre recherche (clique loupe puis clique body)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     selectors: ["utd-piv-entete"],
-    //     viewports: viewports.vDesktopTablet,
-    //     removeSelectors: [".no-test"],
-    //     shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"},{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"}]
-    // },
-    // //Piv entête afficher recherche (clique loupe puis clique body mobile)
-    // {
-    //     label: "Piv_entete avec barre recherche (clique loupe puis clique body mobile)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     selectors: ["utd-piv-entete"],
-    //     viewports: viewports.vPhone,
-    //     removeSelectors: [".no-test"],
-    //     shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"},{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"}]
-    // },
-    // //Piv entête afficher recherche (clique loupe puis clique body puis clique barre de recherche)
-    // {
-    //     label: "Piv_entete avec barre recherche (clique loupe puis clique body puis clique barre de recherche)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     selectors: ["utd-piv-entete"],
-    //     viewports: viewports.vDesktopTablet,
-    //     removeSelectors: [".no-test"],
-    //     shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"},{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"},{domSelector: "utd-piv-entete", shadowDomSelector: ".controle-recherche"}]
-    // },
-    // //Piv entête afficher recherche (clique loupe puis clique body puis clique barre de recherche mobile)
-    // {
-    //     label: "Piv_entete avec barre recherche (clique loupe puis clique body puis clique barre de recherche mobile)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     selectors: ["utd-piv-entete"],
-    //     viewports: viewports.vPhone,
-    //     removeSelectors: [".no-test"],
-    //     shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"},{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"},{domSelector: "utd-piv-entete", shadowDomSelector: ".controle-recherche"}]
-    // },
-    // //Piv entête afficher recherche (clique loupe puis tab)
-    // {
-    //     label: "Piv_entete avec barre recherche (clique loupe puis tab)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     selectors: ["utd-piv-entete"],
-    //     viewports: viewports.vDesktopTablet,
-    //     removeSelectors: [".no-test"],
-    //     shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
-    //     keyPressKeyCode: ["Tab"]
-    // },
-    // //Piv entête afficher recherche (clique loupe puis tab mobile)
-    // {
-    //     label: "Piv_entete avec barre recherche (clique loupe puis tab mobile)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     selectors: ["utd-piv-entete"],
-    //     viewports: viewports.vPhone,
-    //     removeSelectors: [".no-test"],
-    //     shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
-    //     keyPressKeyCode: ["Tab"]
-    // },
-    // //Piv entête afficher recherche (clique loupe puis ecrire s)
-    // {
-    //     label: "Piv_entete avec barre recherche (clique loupe puis ecrire s)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     selectors: ["utd-piv-entete"],
-    //     viewports: viewports.vDesktopTablet,
-    //     removeSelectors: [".no-test"],
-    //     shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
-    //     keyPressKeyCode: ["s"]
-    // },
-    // //Piv entête afficher recherche (clique loupe puis ecrire s mobile)
-    // {
-    //     label: "Piv_entete avec barre recherche (clique loupe puis ecrire s mobile)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     selectors: ["utd-piv-entete"],
-    //     viewports: viewports.vPhone,
-    //     removeSelectors: [".no-test"],
-    //     shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
-    //     keyPressKeyCode: ["s"]
-    // },
-    // //Piv entête afficher recherche (clique loupe puis ecrire se)
-    // {
-    //     label: "Piv_entete avec barre recherche (clique loupe puis ecrire se)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     selectors: ["utd-piv-entete"],
-    //     viewports: viewports.vDesktopTablet,
-    //     removeSelectors: [".no-test"],
-    //     shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
-    //     keyPressKeyCode: ["s","e"]
-    // },
-    // //Piv entête afficher recherche (clique loupe puis ecrire se mobile)
-    // {
-    //     label: "Piv_entete avec barre recherche (clique loupe puis ecrire se mobile)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     selectors: ["utd-piv-entete"],
-    //     viewports: viewports.vPhone,
-    //     removeSelectors: [".no-test"],
-    //     shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
-    //     keyPressKeyCode: ["s","e"]
-    // },
-    // //Piv entête afficher recherche (clique loupe puis ecrire sec)
-    // {
-    //     label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     selectors: ["viewport"],
-    //     viewports: viewports.vDesktopTablet,
-    //     removeSelectors: [".no-test"],
-    //     shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
-    //     keyPressKeyCode: ["s","e","c"]
-    // },
-    // //Piv entête afficher recherche (clique loupe puis ecrire sec mobile)
-    // {
-    //     label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec mobile)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     selectors: ["viewport"],
-    //     viewports: viewports.vPhone,
-    //     removeSelectors: [".no-test"],
-    //     shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
-    //     keyPressKeyCode: ["s","e","c"]
-    // },
-    // //Piv entête afficher recherche (clique loupe puis ecrire sec puis clique body)
-    // {
-    //     label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis clique body)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     selectors: ["viewport"],
-    //     viewports: viewports.vDesktopTablet,
-    //     removeSelectors: [".no-test"],
-    //     shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
-    //     keyPressKeyCode: ["s","e","c"],
-    //     shadowClickSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"}],
-    // },
-    // //Piv entête afficher recherche (clique loupe puis ecrire sec puis clique body mobile)
-    // {
-    //     label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis clique body mobile)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     selectors: ["viewport"],
-    //     viewports: viewports.vPhone,
-    //     removeSelectors: [".no-test"],
-    //     shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
-    //     keyPressKeyCode: ["s","e","c"],
-    //     shadowClickSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"}],
-    // },
-    // //Piv entête afficher recherche (clique loupe puis ecrire sec puis escape)
-    // {
-    //     label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis escape)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     selectors: ["viewport"],
-    //     viewports: viewports.vDesktopTablet,
-    //     removeSelectors: [".no-test"],
-    //     shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
-    //     keyPressKeyCode: ["s","e","c","Escape"]
-    // },
-    // //Piv entête afficher recherche (clique loupe puis ecrire sec puis escape mobile)
-    // {
-    //     label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis escape mobile)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     selectors: ["viewport"],
-    //     viewports: viewports.vPhone,
-    //     removeSelectors: [".no-test"],
-    //     shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
-    //     keyPressKeyCode: ["s","e","c","Escape"]
-    // },
-    // //Piv entête afficher recherche (clique loupe puis ecrire sec puis tab)
-    // {
-    //     label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis tab)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     selectors: ["viewport"],
-    //     viewports: viewports.vDesktopTablet,
-    //     removeSelectors: [".no-test"],
-    //     shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
-    //     keyPressKeyCode: ["s","e","c","Tab"]
-    // },
-    // //Piv entête afficher recherche (clique loupe puis ecrire sec puis tab mobile)
-    // {
-    //     label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis tab mobile)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     selectors: ["viewport"],
-    //     viewports: viewports.vPhone,
-    //     removeSelectors: [".no-test"],
-    //     shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
-    //     keyPressKeyCode: ["s","e","c","Tab"]
-    // },
-    // //Piv entête afficher recherche (clique loupe puis ecrire ahm)
-    // {
-    //     label: "Piv_entete avec barre recherche (clique loupe puis ecrire ahm)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     selectors: ["viewport"],
-    //     viewports: viewports.vDesktopTablet,
-    //     removeSelectors: [".no-test"],
-    //     shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
-    //     keyPressKeyCode: ["a","h","m"]
-    // },
-    // //Piv entête afficher recherche (clique loupe puis ecrire ahm mobile)
-    // {
-    //     label: "Piv_entete avec barre recherche (clique loupe puis ecrire ahm mobile)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     selectors: ["viewport"],
-    //     viewports: viewports.vPhone,
-    //     removeSelectors: [".no-test"],
-    //     shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
-    //     keyPressKeyCode: ["a","h","m"]
-    // },
-    // //Piv entête afficher recherche (clique loupe puis ecrire sec puis clique croix)
-    // {
-    //     label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis clique croix)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     selectors: ["viewport"],
-    //     viewports: viewports.vDesktopTablet,
-    //     removeSelectors: [".no-test"],
-    //     shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
-    //     keyPressKeyCode: ["s","e","c"],
-    //     shadowClickSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".reinitialiser-recherche"}],
-    // },
-    // //Piv entête afficher recherche (clique loupe puis ecrire sec puis clique croix mobile)
-    // {
-    //     label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis clique croix mobile)", 
-    //     url: "/composants/entetepiedpage/piventete",
-    //     selectors: ["viewport"],
-    //     viewports: viewports.vPhone,
-    //     removeSelectors: [".no-test"],
-    //     shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
-    //     keyPressKeyCode: ["s","e","c"],
-    //     shadowClickSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".reinitialiser-recherche"}],
-    // },
+    //Piv entête (Base - 2 lignes MO, 2 liens langue et nous joindre)
+    {
+        label: "Piv_entete (Base)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],  
+        removeSelectors: [".no-test"]
+    },    
+    //Piv entête (1 ligne MO, 1 lien nous joindre)
+    {
+        label: "Piv_entete (1 ligne MO, 1 lien nous joindre)", 
+        url: "/composants/entetepiedpage/pivpiedpage",
+        selectors: ["utd-piv-entete"],
+        removeSelectors: [".no-test"]  
+    },    
+    //Piv entête (1 ligne MO, Aucun lien)
+    {
+        label: "Piv_entete (1 ligne MO, Aucun lien)", 
+        url: "/gabarit1colonne",
+        selectors: ["utd-piv-entete"],
+        removeSelectors: [".no-test"]  
+    },
+    //Piv entête avec barre de recherche (base)
+    {
+        label: "Piv_entete avec barre recherche (Base)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],  
+        removeSelectors: [".no-test"]
+    },
+    //Piv entête afficher recherche (hover de la loupe)
+    {
+        label: "Piv_entete avec barre recherche (hover de la loupe)", 
+        url: "/composants/entetepiedpage/piventete",
+        viewports: viewports.vDesktopTablet,
+        selectors: ["utd-piv-entete"],  
+        removeSelectors: [".no-test"],
+        shadowHoverSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}]
+    },
+    //Piv entête afficher recherche (hover de la loupe mobile)
+    {
+        label: "Piv_entete avec barre recherche (hover de la loupe mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        viewports: viewports.vPhone,
+        selectors: ["utd-piv-entete"],  
+        removeSelectors: [".no-test"],
+        shadowHoverSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}]
+    },
+    //Piv entête afficher recherche (clique loupe)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}]
+    },
+    //Piv entête afficher recherche (clique loupe mobile) A VERIFIER
+    {
+        label: "Piv_entete avec barre recherche (clique loupe mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}]
+    },
+    //Piv entête afficher recherche (deux clique loupe)
+    {
+        label: "Piv_entete avec barre recherche (deux clique loupe)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"},{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}]
+    },
+    //Piv entête afficher recherche (deux clique loupe mobile)
+    {
+        label: "Piv_entete avec barre recherche (deux clique loupe mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"},{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}]
+    },
+    //Piv entête afficher recherche (clique loupe puis clique body)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis clique body)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"},{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"}]
+    },
+    //Piv entête afficher recherche (clique loupe puis clique body mobile)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis clique body mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"},{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"}]
+    },
+    //Piv entête afficher recherche (clique loupe puis clique body puis clique barre de recherche)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis clique body puis clique barre de recherche)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"},{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"},{domSelector: "utd-piv-entete", shadowDomSelector: ".controle-recherche"}]
+    },
+    //Piv entête afficher recherche (clique loupe puis clique body puis clique barre de recherche mobile)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis clique body puis clique barre de recherche mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"},{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"},{domSelector: "utd-piv-entete", shadowDomSelector: ".controle-recherche"}]
+    },
+    //Piv entête afficher recherche (clique loupe puis tab)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis tab)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["Tab"]
+    },
+    //Piv entête afficher recherche (clique loupe puis tab mobile)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis tab mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["Tab"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire s)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire s)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire s mobile)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire s mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire se)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire se)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire se mobile)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire se mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec mobile)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis clique body)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis clique body)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c"],
+        shadowClickSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"}]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis clique body mobile)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis clique body mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c"],
+        shadowClickSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"}]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis escape)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis escape)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c","Escape"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis escape mobile)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis escape mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c","Escape"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis tab)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis tab)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c","Tab"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis tab mobile)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis tab mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c","Tab"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire ahm)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire ahm)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["a","h","m"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire ahm mobile)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire ahm mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["a","h","m"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis clique croix)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis clique croix)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c"],
+        shadowClickSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".reinitialiser-recherche"}]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis clique croix mobile)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis clique croix mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c"],
+        shadowClickSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".reinitialiser-recherche"}]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis hover resultat)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis hover resultat)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c"],
+        shadowHoverSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".lien-resultat"}]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis hover resultat mobile)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis hover resultat mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c"],
+        shadowHoverSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".lien-resultat"}]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis hover resultat puis hover body)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis hover resultat puis hover body)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c"],
+        shadowHoverSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".lien-resultat"},{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"}]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis hover resultat puis hover body mobile)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis hover resultat puis hover body mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c"],
+        shadowHoverSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".lien-resultat"},{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"}]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis fleche bas)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis fleche bas)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c","ArrowDown"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis fleche bas mobile)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis fleche bas mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c","ArrowDown"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis double fleche bas)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis double fleche bas)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c","ArrowDown","ArrowDown"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis double fleche bas mobile)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis double fleche bas mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c","ArrowDown","ArrowDown"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis fleche haut)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis fleche haut)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c","ArrowUp"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis fleche haut mobile)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis fleche haut mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c","ArrowUp"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis double fleche haut)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis double fleche haut)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c","ArrowUp","ArrowUp"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis double fleche haut mobile)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis double fleche haut mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c","ArrowUp","ArrowUp"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis fleche bas puis fleche haut)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis fleche bas puis fleche haut)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c","ArrowDown","ArrowUp"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis fleche bas puis fleche haut mobile)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis fleche bas puis fleche haut mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c","ArrowDown","ArrowUp"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis fleche gauche)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis fleche gauche)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c","ArrowLeft"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis fleche gauche mobile)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis fleche gauche mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c","ArrowLeft"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis fleche droite)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis fleche droite)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c","ArrowRight"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis fleche droite mobile)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis fleche droite mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c","ArrowRight"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis cinq fleche bas)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis cinq fleche bas)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis cinq fleche bas mobile)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis cinq fleche bas mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis cinq fleche haut)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis cinq fleche haut)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp"]
+    },
+    //Piv entête afficher recherche (clique loupe puis ecrire sec puis cinq fleche haut mobile)
+    {
+        label: "Piv_entete avec barre recherche (clique loupe puis ecrire sec puis cinq fleche haut mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp"]
+    },
     //Piv pied page (Base)
     {
         label: "Piv_pied_page (Base)", 
