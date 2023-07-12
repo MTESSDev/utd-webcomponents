@@ -30,6 +30,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   let body
   let slots = []
   let mounted = false
+  let currentTargetMouseDown = null
 
   onMount(() => {
     html = thisComponent.getRootNode().getElementsByTagName("html")[0]
@@ -90,10 +91,16 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     }
   }
 
-  function clickModale(e) {
-    if(e.target === e.currentTarget){
+  function mouseDownConteneur(e) {
+    currentTargetMouseDown = e.currentTarget
+  }
+
+  function mouseUpModale(e) {
+    if(currentTargetMouseDown === null || e.target === currentTargetMouseDown) {
       masquerModale('clickBackdrop')
     }
+
+    currentTargetMouseDown = null
   }
 
   function finAnimationFermeture(e) {
@@ -169,13 +176,13 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 </script>
 
 {#if estModaleAffichee}
-  <div class="utd-backdrop" on:click={() => masquerModale('clickBackdrop')} />
-  <div
+  <div class="utd-backdrop" />
+  <div 
     aria-labelledby={idEntete}
     aria-describedby={estfenetremessage === 'true' ? idCorps : null}
-    class="utd-component utd-dialog {estfenetremessage === 'true' ? 'fenetre-message' : ''} {boutonsTexteLong === 'true' ? 'boutons-texte-long' : ''} {affichageLateral === 'true' ? 'affichage-lateral' : ''} {forcerBoutonsInline === 'true' ? 'boutons-inline' : ''}"
+    class="utd-component utd-dialog{estfenetremessage === 'true' ? ' fenetre-message' : ''}{boutonsTexteLong === 'true' ? ' boutons-texte-long' : ''}{affichageLateral === 'true' ? ' affichage-lateral' : ''}{forcerBoutonsInline === 'true' ? ' boutons-inline' : ''}"
     id={idModale}
-    on:click={clickModale}
+    on:mouseup={mouseUpModale}
     on:keydown={keydown}
     in:animationAffichageOuverture
     out:animationAffichageFermeture
@@ -186,7 +193,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     role="dialog"
   >
 
-    <div class="conteneur">
+  <div class="conteneur" on:mousedown={mouseDownConteneur}>      
         <button
         type="button"
         class="close"

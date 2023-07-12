@@ -4,6 +4,7 @@
     import { onMount } from "svelte";
     import Principe from './pages/Principe.svelte'; 
     import Versions from './pages/Versions.svelte'; 
+    import VersionsAnciennes from './pages/VersionsAnciennes.svelte'; 
     import Accordeon from './pages/Accordeon.svelte'; 
     import Infobulle from './pages/Infobulle.svelte'; 
     import Section from './pages/Section.svelte'; 
@@ -238,6 +239,7 @@
                     <Route path="/composants" redirect="/composants/versions"></Route>
                     <Route path="/composants/*">
                         <Route path="/versions" ><Versions /></Route>
+                        <Route path="/versionsanciennes" ><VersionsAnciennes /></Route>
                         <Route path="/actions/*">
                             <Route path="/barrerecherche" ><BarreRecherche /></Route>
                             <Route path="/boutons" ><Boutons /></Route>
