@@ -79,6 +79,7 @@ onMount(() => {
   // Watch sur la prop focus
   $: toggleFocus(focus) 
   $: majContenuRecherche(contenuRecherche) 
+  $: doitAfficherResultatsRecherche = resultatsRecherche && resultatsRecherche.length > 0
 
 
 function toggleFocus() {
@@ -170,6 +171,7 @@ function rechercher(doitNotifierLecteurEcran) {
   const optionsRecherche = {...optionsMiniSearch, ...{fuzzy: term => term.length > nbCaracteresMinimalRecherche ? optionsMiniSearch.fuzzy : null}}
 
   const texteRechercheSansEspace = texteRecherche.trim()
+  idActiveDescendant = null
 
   if(texteRechercheSansEspace !== "" && texteRechercheSansEspace.length >= nbCaracteresMinimalRecherche){    
     const resultats = obtenirResultatsGroupes(miniSearch.search(texteRechercheSansEspace, optionsRecherche))
@@ -181,7 +183,7 @@ function rechercher(doitNotifierLecteurEcran) {
       if(resultatsRecherche.length === 0){
         notifierLecteurEcran(srAucunResultat)
       } else {
-        notifierLecteurEcran(srResultatsTrouves.replace("{x}", resultatsRecherche.length))      
+        notifierLecteurEcran(srResultatsTrouves.replace("{x}", resultatsRechercheFlat.length))      
       }    
     }
   } else {
@@ -418,6 +420,7 @@ function onBlurRecherche() {
   reinitialiserRecherche()
 }
 
+
 /**
  * Petite twist permettant de ne pas avoir de blur sur le contrôle de recherche lors d'un click dans les résultats.
  * @param e
@@ -430,7 +433,7 @@ function mouseDownResultatsRecherche(e) {
 
 <div class="utd-barre-recherche">
   <div class="controle-recherche {contextePiv === 'true' ? ' contexte-piv' : ''}">
-      <input id="{idControleRecherche}" type="text" autocomplete="off" autocapitalize="none" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="{idControleResultats}" aria-activedescendant="{afficherResultats ? idActiveDescendant : null}" placeholder="{placeholder}" aria-description="{ariaDescriptionRecherche}" on:input={traiterSaisieRecherche} class="utd-form-control xxl texte-recherche" on:keydown={onKeyDownRecherche} on:blur={onBlurRecherche}>
+      <input id="{idControleRecherche}" type="text" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="{doitAfficherResultatsRecherche ? 'true' : 'false'}" aria-controls="{idControleResultats}" aria-activedescendant="{doitAfficherResultatsRecherche && idActiveDescendant ? idActiveDescendant : null}" placeholder="{placeholder}" aria-description="{ariaDescriptionRecherche}" on:input={traiterSaisieRecherche} class="utd-form-control xxl texte-recherche" on:keydown={onKeyDownRecherche} on:blur={onBlurRecherche}>
       {#if (texteRecherche !== '' && texteRecherche.length >= nbCaracteresMinimalRecherche)}
         <button class="reinitialiser-recherche" type="button" title="{titleBoutonReinitialiserRecherche}" on:click={clickBoutonReinitialiser}>
             <img aria-hidden="true" src="{`${srcBaseImage}ico-xfermer-bleu-moyen`}" width="16" height="16">
@@ -439,36 +442,36 @@ function mouseDownResultatsRecherche(e) {
   </div>
 
   <div class="resultats-recherche {resultatsRecherche === null ? ' utd-d-none' : ''}" on:mousedown={mouseDownResultatsRecherche}>
-    {#if resultatsRecherche && resultatsRecherche.length > 0}  
-      <ul id="{idControleResultats}" role="listbox" class="liste-resultats {'nb-niveaux-' + nbNiveaux}" transition:slide="{{duration:250}}" >
+    {#if doitAfficherResultatsRecherche}  
+      <ul id="{idControleResultats}" role="listbox" class="liste-resultats {'nb-niveaux-' + nbNiveaux}" transition:slide="{{duration:250}}">
 
         {#each resultatsRecherche as resultat}
           {#if nbNiveaux === 1}  
-            <li class="lien-resultat{resultat.i === 0 ? ' premier' : ''}{resultat.i === resultatsRechercheFlat.length - 1  ? ' dernier' : ''}" role="option" aria-selected="{resultat.id === idActiveDescendant ? 'true' : 'false'}">
-              <a href="{resultat.h}" id="{resultat.id}" on:mouseover={mouseoverResultat}><span class="texte-option">{resultat.r}</span></a>
+            <li id="{resultat.id}" class="lien-resultat{resultat.i === 0 ? ' premier' : ''}{resultat.i === resultatsRechercheFlat.length - 1  ? ' dernier' : ''}" role="option" aria-selected="{resultat.id === idActiveDescendant ? 'true' : 'false'}">
+              <a href="{resultat.h}" on:mouseover={mouseoverResultat}><span class="texte-option">{resultat.r}</span></a>
             </li>
           {:else}
             {#if nbNiveaux === 2}  
-              <li role="group">
+              <li role="group" aria-label="{resultat.c}">
                 <span class="titre-niveau1">{resultat.c}</span>      
                 <ul role="none">
                   {#each resultat.values as valeur}
-                    <li class="lien-resultat{valeur.i === 0 ? ' premier' : ''}{valeur.i === resultatsRechercheFlat.length - 1  ? ' dernier' : ''}" role="option" aria-selected="{valeur.id === idActiveDescendant ? 'true' : 'false'}">
-                      <a href="{valeur.h}" id="{valeur.id}" on:mouseover={mouseoverResultat}><span class="texte-option">{valeur.r}</span></a>
+                    <li id="{valeur.id}" class="lien-resultat{valeur.i === 0 ? ' premier' : ''}{valeur.i === resultatsRechercheFlat.length - 1  ? ' dernier' : ''}" role="option" aria-selected="{valeur.id === idActiveDescendant ? 'true' : 'false'}">
+                      <a href="{valeur.h}" on:mouseover={mouseoverResultat}><span class="texte-option">{valeur.r}</span></a>
                     </li>
                   {/each}           
                 </ul>
               </li>
             {:else}
-                <li role="group">
+                <li role="group" aria-label="{resultat.c}">
                   <span class="titre-niveau1">{resultat.c}</span>      
                   <ul role="none">
                     {#each resultat.values as sousCategorie}
                     <span class="titre-niveau2">{sousCategorie.sc}</span>      
-                    <ul role="none">
+                    <ul role="group" aria-label="{sousCategorie.sc}">
                       {#each sousCategorie.values as valeur}
-                        <li class="lien-resultat{valeur.i === 0 ? ' premier' : ''}{valeur.i === resultatsRechercheFlat.length - 1  ? ' dernier' : ''}" role="option" aria-selected="{valeur.id === idActiveDescendant ? 'true' : 'false'}">
-                          <a href="{valeur.h}" id="{valeur.id}" on:mouseover={mouseoverResultat}><span class="texte-option">{valeur.r}</span></a>
+                        <li id="{valeur.id}" class="lien-resultat{valeur.i === 0 ? ' premier' : ''}{valeur.i === resultatsRechercheFlat.length - 1  ? ' dernier' : ''}" role="option" aria-selected="{valeur.id === idActiveDescendant ? 'true' : 'false'}">
+                          <a href="{valeur.h}" on:mouseover={mouseoverResultat}><span class="texte-option">{valeur.r}</span></a>
                         </li>
                       {/each}           
                     </ul>

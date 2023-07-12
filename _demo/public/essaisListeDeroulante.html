@@ -36,42 +36,8 @@
       <div class="utd-bandeau-principal" id="bandeauPrincipal">
         <div class="utd-container">
           <utd-menu-horizontal id="menuHorizontal" afficher-icone-accueil="true">
-            <utd-menu-horizontal-item libelle="Base" href="/base"></utd-menu-horizontal-item>
-
-            <utd-menu-horizontal-item libelle="Composants" href="/composants" on:click={clickMenuComposants}></utd-menu-horizontal-item>
-
-            <utd-menu-horizontal-item libelle="Versions" href="/composants/versions">
-            </utd-menu-horizontal-item>
-
-            <utd-menu-horizontal-item libelle="Navigation">
-                <utd-menu-horizontal-item libelle="Haut de page" href="/composants/navigation/hautpage"></utd-menu-horizontal-item>
-                <utd-menu-horizontal-item libelle="Menu d'ancres" href="/composants/navigation/menuancres"></utd-menu-horizontal-item>
-                <utd-menu-horizontal-item libelle="Menu vertical" href="/composants/navigation/menuvertical"></utd-menu-horizontal-item>
-                <utd-menu-horizontal-item libelle="Menu horizontal" href="/composants/navigation/menuhorizontal"></utd-menu-horizontal-item>
-                <utd-menu-horizontal-item libelle="Élément 5" href="#"></utd-menu-horizontal-item>
-            </utd-menu-horizontal-item>
+            <utd-menu-horizontal-item libelle="Composants" href="/composants"></utd-menu-horizontal-item>
           </utd-menu-horizontal>    
-
-          <!-- Retirer si non requis -->    
-          <div class="utd-zone-raccourcis-connexion">
-            <!-- Retirer si non requis -->
-            <div class="utd-zone-raccourcis">
-                <a href="#">
-                    <span id="envelopeCommunications" aria-hidden="true" class="utd-icone-svg enveloppe-blanc"></span>
-                    <span class="utd-sr-only">Accéder à vos communications</span>
-                </a>
-                
-                <a href="#">
-                    <span aria-hidden="true" class="utd-icone-svg utilisateur-blanc"></span>
-                    <span class="utd-sr-only">Accéder à votre profil</span>
-                </a>
-            </div>
-
-            <!-- Retirer si non requis -->
-            <div class="utd-zone-connexion">
-                <button type="button" class="utd-btn secondaire option-1 compact utd-text-sm" id="btnDeconnexion">Déconnexion</button>
-            </div>
-          </div>
         </div>
     </div>
 
@@ -83,14 +49,14 @@
         <p>Cette page "statique" est utilisée afin de tester une sélection par défaut dans le contrôle de liste déroulante.</p>
         <p>Il semble exister un bug avec notre site démo qui utilise SVELTE. L'attribut "selected" dans les éléments "option" semble retiré par SVELTE, ce qui cause problème pour les essais d'assignation d'une valeur par défaut à une liste déroulante.</p>
 
-        <h3>2c- Liste déroulante à sélection simple avec une option sélectionnée par défaut</h3>
+        <h3>1- Liste déroulante à sélection simple avec une option sélectionnée par défaut</h3>
         <p>L'option sélectionnée par défaut devrait être "Québec".</p>
 
-        <div id="exemple2c" class="bs-test">
+        <div id="exemple1" class="bs-test">
             <utd-champ-form precision="Ne soyez pas timide et assumez-vous.">
                 <utd-liste-deroulante>
                     <label>Sélectionnez votre province canadienne préférée</label>
-                    <select id="select2b">
+                    <select id="select1">
                         <option value="AB">Alberta</option>
                         <option value="BC">Colombie-Britannique</option>
                         <option value="QC" selected>Québec</option>
@@ -99,27 +65,48 @@
                 </utd-liste-deroulante>
             </utd-champ-form>
         </div>
- 
+
+        <h3>2- Liste déroulante à sélection simple en lecture seule avec une option sélectionnée par défaut</h3>
+        <p>La première liste est "disabled", la seconde est "readonly".</p>
+        <p>Le comportement attendu est le même, l'option sélectionnée par défaut devrait être "Québec" et le champ non modifiable.</p>
+
+        <div id="exemple2" class="bs-test">
+          <utd-champ-form precision="Ne soyez pas timide et assumez-vous.">
+              <utd-liste-deroulante>
+                  <label>Sélectionnez votre province canadienne préférée</label>
+                  <select id="select2" disabled>
+                      <option value="AB">Alberta</option>
+                      <option value="BC">Colombie-Britannique</option>
+                      <option value="QC" selected>Québec</option>
+                      <option value="SK">Saskatchewan</option>
+                  </select>          
+              </utd-liste-deroulante>
+          </utd-champ-form>
+        </div>
+
+        <div id="exemple2b" class="bs-test mb-48">
+          <utd-champ-form precision="Ne soyez pas timide et assumez-vous.">
+              <utd-liste-deroulante>
+                  <label>Sélectionnez votre province canadienne préférée</label>
+                  <select id="select2b" readonly>
+                      <option value="AB">Alberta</option>
+                      <option value="BC">Colombie-Britannique</option>
+                      <option value="QC" selected>Québec</option>
+                      <option value="SK">Saskatchewan</option>
+                  </select>          
+              </utd-liste-deroulante>
+          </utd-champ-form>
+        </div>
+
+        <a href="/composants/formulaire/listederoulante">Retour à la page principale du composant "Liste déroulante".</a>
+
+
       </main>
     </div>
   </div>
   <utd-hautpage id="hautPage"></utd-hautpage>
   <footer class="utd">
-    <utd-pied-page-site id="piedPageSite">
-        <div slot="contenu">
-          <span>Ici votre contenu de pied de page de site (C'est votre css qui devra le styler).</span>
-        </div>
-    </utd-pied-page-site>
-  
     <utd-piv-pied-page id="pivPiedPage">
-      <div slot="liens">
-          <ul>
-              <li><a href="#bidon">Accessibilité</a></li>
-              <li><a href="#bidon">Politique et conditions d'utilisation</a></li>
-              <li><a href="#bidon">S'informer sur clicSÉQUR - Citoyens</a></li>
-              <li><a href="#bidon">FAQ</a></li>                    
-          </ul>
-      </div>
     </utd-piv-pied-page>    
   </footer>      
   <script src='/js/utd-webcomponents.min.js?v=1.13.0'></script>  

@@ -23,6 +23,7 @@ export let passerContenu = 'true'
 export let urlPasserContenu = '#main'
 export let textePasserContenu = Utils.obtenirLanguePage() === 'fr' ? 'Passer au contenu' : 'Skip to content'
 export let afficherRecherche = 'false'
+export let titleBoutonRecherche = Utils.obtenirLanguePage() === 'fr' ? 'Afficher ou masquer la zone de recherche' : 'Display or hide the search box'
 export let urlContenuRecherche = ''
 
 const srcImageBoutonToggleRecherche = `${Utils.imagesRelativePath}utd-sprite.svg_versionUtd_#ico-loupe-piv-droite`
@@ -133,7 +134,7 @@ function clickToggleRecherche(){
       </div>
       
       {#if afficherRecherche === 'true' && window.contenuRecherchePiv !== null}
-        <button type="button" class="bouton-toggle-recherche visible" id="btnToggleRecherchePIVmobile" aria-expanded="{estZoneRechercheVisible ? 'true' : 'false'}" aria-controls="recherchePIV" title="Afficher ou masquer la zone de recherche" on:click={clickToggleRecherche}>
+        <button type="button" class="bouton-toggle-recherche visible" id="btnToggleRecherchePIVmobile" aria-expanded="{estZoneRechercheVisible ? 'true' : 'false'}" aria-controls="recherchePIV" title="{titleBoutonRecherche}" on:click={clickToggleRecherche}>
           <img aria-hidden="true" src="{srcImageBoutonToggleRecherche}" width="24" height="24">
         </button>            
       {/if}    

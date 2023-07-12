@@ -828,9 +828,13 @@ utd-accordeon .utd-form-group:last-child, utd-section .utd-form-group:last-child
     border-radius: 0;
     font-family: inherit;
 
-    &:disabled, &[read-only]{
+    &:disabled, &[readonly], &[aria-disabled="true"], &[aria-readonly="true"] {
         background-color: var(--gris-pale);
         color: var(--gris-fonce);
+    } 
+
+    &:disabled:hover, &[readonly]:hover, &[aria-disabled="true"]:hover, &[aria-readonly="true"]:hover {
+        cursor: default;
     } 
 
     &[aria-invalid="true"]{

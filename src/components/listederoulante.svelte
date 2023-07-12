@@ -153,7 +153,9 @@ function definirAttributsInitiauxControles(){
   //Settimeout important afin de s'assurer que le paint et autres traitements sont complétés (ex. avec VueFormulate)
   setTimeout(() => {
     majAttributControle(controleConteneur, 'aria-invalid', controleSelect.getAttribute('aria-invalid'))
-    majAttributControle(controleConteneur, 'aria-required', controleSelect.getAttribute('aria-required'))
+    majAttributControle(controleConteneur, 'aria-required', controleSelect.getAttribute('aria-required'))      
+    majAttributControle(controleConteneur, 'aria-disabled', estControleSelectInactif() ? 'true' : null)
+
     definirAriaLabelConteneur()
     definirAriaDescriptionConteneur()
     definirAriaDescriptionRecherche()
@@ -222,10 +224,26 @@ function observerAttributsSelectOriginal(){
         const nomAttribut = mutation.attributeName
         const nouvelleValeur = mutation.target.getAttribute(nomAttribut)
         
-        let nomAttributMaj = nomAttribut === 'aria-describedby' ? 'aria-description' : nomAttribut
+        let nomAttributMaj = ''
+
+        switch (nomAttribut) {
+          case 'aria-describedby':
+            nomAttributMaj = 'aria-description'            
+            break;
+          case 'disabled':
+            nomAttributMaj = 'aria-disabled'            
+            break;
+          case 'readonly':
+            nomAttributMaj = 'aria-disabled'            
+            break;
+        
+          default:
+            nomAttributMaj = nomAttribut
+            break;
+        }
 
         if(nomAttribut === 'aria-describedby'){
-          definirAriaDescriptionConteneur()
+          definirAriaDescriptionConteneur()        
         } else {
           majAttributControle(controleConteneur, nomAttributMaj, nouvelleValeur)
         }
@@ -233,7 +251,7 @@ function observerAttributsSelectOriginal(){
   })
 
   observer.observe(controleSelect, {
-    attributeFilter: ['aria-describedby', 'aria-required', 'aria-invalid', 'aria-label']
+    attributeFilter: ['aria-describedby', 'aria-required', 'aria-invalid', 'aria-label', 'disabled', 'readonly']
   })
 }
 
@@ -316,7 +334,7 @@ function obtenirTexteSelonAttributAria(controle, nomAttribut){
 
 //TODO déplacer dans utils?
 function majAttributControle(controle, nomAttribut, valeur){
-  if(valeur){
+  if(valeur !== null){
       controle.setAttribute(nomAttribut, valeur)
     } else{
       controle.removeAttribute(nomAttribut)
@@ -624,12 +642,23 @@ function definirOptionsSelectionnees(){
   }
 }
 
+function estControleSelectInactif() {
+  return controleSelect.getAttribute('readonly') !== null || controleSelect.disabled  
+}
+
 function onKeyDown(e){
-  switch(e.key) {
+
+  //Si le select est en lecture seule ou disabled, on ne fait rien (sauf pour un TAB)  
+  if(estControleSelectInactif()) {
+    if(e.key !== "Tab"){      
+      return
+    }
+  }
+
+  switch(e.key) {    
     case "Enter":
     case " ":
    
-
       //On conserve comportement natif si barre espace et contrôle courant est textbox de recherche
       if(e.key === " " && e.target == controleRecherche && indexeFocusSuggestion === null) {
         return  
@@ -843,7 +872,11 @@ function obtenirIndexeProchaineSuggestion(indexeCourantControleSelect, step){
 
 function clickSelection(e){
 
-  
+  //Si le select est en lecture seule ou disabled, on ne fait rien (sauf pour un TAB)  
+  if(estControleSelectInactif()) {
+    return
+  }
+
   definirAfficherOptions(!afficherOptions)
 
   if(recherchable === 'true' && afficherOptions){
@@ -1075,7 +1108,7 @@ function assurerControleVisible() {
 
     <span aria-live="polite" class="utd-sr-only" tabindex="-1">{texteNotificationLecteurEcran}</span>
 
-    <span class="conteneur utd-form-control{afficherOptions ? ' ouvert' : ''}" dir="ltr" on:blur={blurConteneur}  role="{afficherOptions ? null : 'listbox'}" aria-expanded="{afficherOptions ? 'true' : 'false'}" tabindex="{afficherOptions ? '-1' : '0'}" on:keydown={onKeyDown} aria-disabled="false" aria-label="{ariaLabel}" aria-description="{ariaDescriptionConteneur}" aria-owns="{recherchable === 'false' ? idControleResultats : null}" aria-multiselectable="{multiple && recherchable === 'false' ? 'true' : null}" aria-activedescendant="{recherchable === 'false' && afficherOptions ? idActiveDescendant : null}">
+    <span class="conteneur utd-form-control{afficherOptions ? ' ouvert' : ''}" dir="ltr" on:blur={blurConteneur} role="{afficherOptions ? null : 'listbox'}" aria-expanded="{afficherOptions ? 'true' : 'false'}" tabindex="{afficherOptions ? '-1' : '0'}" on:keydown={onKeyDown} aria-label="{ariaLabel}" aria-description="{ariaDescriptionConteneur}" aria-owns="{recherchable === 'false' ? idControleResultats : null}" aria-multiselectable="{multiple && recherchable === 'false' ? 'true' : null}" aria-activedescendant="{recherchable === 'false' && afficherOptions ? idActiveDescendant : null}">
       <span class="selection {multiple  && optionsSelectionnees.length > 0 ? 'contient-etiquettes': ''}" on:click={clickSelection} on:mousedown={selectionMouseDown}>
 
         {#if optionsSelectionnees.length === 0}

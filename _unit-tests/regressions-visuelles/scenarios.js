@@ -478,34 +478,66 @@ scenarios : [
         label: "Liste_deroulante (Base)", 
         url: "/composants/formulaire/listederoulante",
     },
-    //Liste déroulante (Simple ouverte)        
+    //Liste déroulante (Simple ouverte click)        
     {
-        label: "Liste_deroulante (Simple ouverte)", 
+        label: "Liste_deroulante (Simple ouverte click)", 
         url: "/composants/formulaire/listederoulante",
         viewports: viewports.vDefaults,
         shadowClickSelectors: [{domSelector: "#exemple2a utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
-    },    
-    //Liste déroulante (Multiple ouverte)        
+    },
+    //Liste déroulante (Simple ouverte clavier)        
     {
-        label: "Liste_deroulante (Multiple ouverte)", 
+        label: "Liste_deroulante (Simple ouverte clavier)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowFocusSelectors: [{domSelector: "#exemple2a utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["Enter"]
+    },
+    //Liste déroulante (Multiple ouverte click)        
+    {
+        label: "Liste_deroulante (Multiple ouverte click)", 
         url: "/composants/formulaire/listederoulante",
         viewports: viewports.vDefaults,
         shadowClickSelectors: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
-    },    
-    //Liste déroulante (Combinée simple ouverte)        
+    },
+    //Liste déroulante (Multiple ouverte clavier)        
     {
-        label: "Liste_deroulante (Combinée simple ouverte)", 
+        label: "Liste_deroulante (Multiple ouverte clavier)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowFocusSelectors: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["Enter"]
+    },       
+    //Liste déroulante (Combinée simple ouverte click)        
+    {
+        label: "Liste_deroulante (Combinée simple ouverte click)", 
         url: "/composants/formulaire/listederoulante",
         viewports: viewports.vDefaults,
         shadowClickSelectors: [{domSelector: "#exemple4 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
     },    
-    //Liste déroulante (Combinée multiple ouverte)        
+    //Liste déroulante (Combinée simple ouverte clavier)        
     {
-        label: "Liste_deroulante (Combinée multiple ouverte)", 
+        label: "Liste_deroulante (Combinée simple ouverte clavier)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowFocusSelectors: [{domSelector: "#exemple4 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["Enter"]
+    },     
+    //Liste déroulante (Combinée multiple ouverte click)        
+    {
+        label: "Liste_deroulante (Combinée multiple ouverte click)", 
         url: "/composants/formulaire/listederoulante",
         viewports: viewports.vDefaults,
         shadowClickSelectors: [{domSelector: "#exemple5 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
     },
+    //Liste déroulante (Combinée multiple ouverte clavier)        
+    {
+        label: "Liste_deroulante (Combinée multiple ouverte clavier)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowFocusSelectors: [{domSelector: "#exemple5 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["Enter"]
+    },   
     //Liste déroulante (Combinée multiple recherche precise ouverte)       
     {
         label: "Liste_deroulante (Combinée multiple recherche precise ouverte)", 
@@ -690,7 +722,7 @@ scenarios : [
         label: "Liste_deroulante (Option sélectionnée par défaut)", 
         url: "/essaislistederoulante",
         viewports: viewports.vTablet
-    },    
+    },
     //Liste déroulante (Multiple ouverte fleche bas)        
     {
         label: "Liste_deroulante (Multiple ouverte fleche bas)", 
