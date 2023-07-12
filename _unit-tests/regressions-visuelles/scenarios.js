@@ -477,41 +477,48 @@ scenarios : [
     {
         label: "Liste_deroulante (Base)", 
         url: "/composants/formulaire/listederoulante",
-    },        
+    },
     //Liste déroulante (Simple ouverte)        
     {
         label: "Liste_deroulante (Simple ouverte)", 
         url: "/composants/formulaire/listederoulante",
-        viewports: viewports.vTablet,
+        viewports: viewports.vDefaults,
         shadowClickSelectors: [{domSelector: "#exemple2a utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
     },    
     //Liste déroulante (Multiple ouverte)        
     {
         label: "Liste_deroulante (Multiple ouverte)", 
         url: "/composants/formulaire/listederoulante",
-        viewports: viewports.vTablet,
+        viewports: viewports.vDefaults,
         shadowClickSelectors: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
-//        shadowHoverSelectors2: [{domSelector: 'utd-menu-vertical-item[libelle="Navigation"]', shadowDomSelector: "a"}],
     },    
     //Liste déroulante (Combinée simple ouverte)        
     {
         label: "Liste_deroulante (Combinée simple ouverte)", 
         url: "/composants/formulaire/listederoulante",
-        viewports: viewports.vTablet,
+        viewports: viewports.vDefaults,
         shadowClickSelectors: [{domSelector: "#exemple4 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
     },    
     //Liste déroulante (Combinée multiple ouverte)        
     {
         label: "Liste_deroulante (Combinée multiple ouverte)", 
         url: "/composants/formulaire/listederoulante",
-        viewports: viewports.vTablet,
+        viewports: viewports.vDefaults,
         shadowClickSelectors: [{domSelector: "#exemple5 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
-    },    
+    },
+    //Liste déroulante (Combinée multiple recherche precise ouverte)       
+    {
+        label: "Liste_deroulante (Combinée multiple recherche precise ouverte)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vDefaults,
+        shadowClickSelectors: [{domSelector: "#exemple6 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        shadowHoverSelectors2: [{domSelector: "#exemple6 utd-liste-deroulante", shadowDomSelector: ".recherche"}]
+    },
     //Liste déroulante (Simple fermeture escape)        
     {
         label: "Liste_deroulante (fermeture escape)", 
         url: "/composants/formulaire/listederoulante",
-        viewports: viewports.vTablet,
+        viewports: viewports.vDefaults,
         selectors: ["#exemple2a"],
         shadowClickSelectors: [{domSelector: "#exemple2a utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
         keyPressKeyCode: ["Escape"]
@@ -542,7 +549,16 @@ scenarios : [
         selectors: ["#exemple5"],
         shadowClickSelectors: [{domSelector: "#exemple5 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
         keyPressKeyCode: ["Escape"]
-    },    
+    },
+    //Liste déroulante (Combinée multiple recherche precise fermeture escape)        
+    {
+        label: "Liste_deroulante (Combinée multiple recherche precise fermeture escape)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        selectors: ["#exemple6"],
+        shadowClickSelectors: [{domSelector: "#exemple6 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["Escape"]
+    },
     //Liste déroulante (Simple fermeture Tab)        
     {
         label: "Liste_deroulante (fermeture Tab)", 
@@ -578,7 +594,16 @@ scenarios : [
         selectors: ["#exemple5"],
         shadowClickSelectors: [{domSelector: "#exemple5 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
         keyPressKeyCode: ["Tab"]
-    },  
+    },
+    //Liste déroulante (Combinée multiple recherche precise fermeture Tab)        
+    {
+        label: "Liste_deroulante (Combinée multiple recherche precise fermeture Tab)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        selectors: ["#exemple6"],
+        shadowClickSelectors: [{domSelector: "#exemple6 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["Tab"]
+    },
     //Liste déroulante (Simple Hover item)        
     {
         label: "Liste_deroulante (Simple Hover item)", 
@@ -586,8 +611,7 @@ scenarios : [
         viewports: viewports.vTablet,
         shadowClickSelectors: [{domSelector: "#exemple2a utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
         shadowHoverSelectors2: [{domSelector: "#exemple2a utd-liste-deroulante", shadowDomSelector: 'li[aria-label="Manitoba"]'}]
-    },    
-    //TODO Non fonctionnel
+    },
     //Liste déroulante (Multiple Hover item)        
     {
         label: "Liste_deroulante (Multiple Hover item)", 
@@ -595,8 +619,7 @@ scenarios : [
         viewports: viewports.vTablet,
         shadowClickSelectors: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
         shadowHoverSelectors2: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: 'li[aria-label="Manitoba"]'}]
-    },    
-    //TODO Non fonctionnel
+    },
     //Liste déroulante (Combinée simple Hover item)        
     {
         label: "Liste_deroulante (Combinée simple Hover item)", 
@@ -606,7 +629,6 @@ scenarios : [
         shadowClickSelectors: [{domSelector: "#exemple4 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
         shadowHoverSelectors2: [{domSelector: "#exemple4 utd-liste-deroulante", shadowDomSelector: 'li[aria-label="Alaska"]'}]
     },
-    //TODO Non fonctionnel    
     //Liste déroulante (Combinée multiple Hover item)        
     {
         label: "Liste_deroulante (Combinée multiple Hover item)", 
@@ -668,7 +690,87 @@ scenarios : [
         label: "Liste_deroulante (Option sélectionnée par défaut)", 
         url: "/essaislistederoulante",
         viewports: viewports.vTablet
-    },     
+    },    
+    //Liste déroulante (Multiple ouverte fleche bas)        
+    {
+        label: "Liste_deroulante (Multiple ouverte fleche bas)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["ArrowDown"],
+        shadowHoverSelectors2: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-precision"}]
+    },
+    //Liste déroulante (Multiple ouverte double fleche bas)        
+    {
+        label: "Liste_deroulante (Multiple ouverte double fleche bas)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["ArrowDown","ArrowDown"],
+        shadowHoverSelectors2: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-precision"}]
+    },
+    //Liste déroulante (Multiple ouverte fleche haut)        
+    {
+        label: "Liste_deroulante (Multiple ouverte fleche haut)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["ArrowUp"],
+        shadowHoverSelectors2: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-precision"}]
+    },
+    //Liste déroulante (Multiple ouverte double fleche haut)        
+    {
+        label: "Liste_deroulante (Multiple ouverte double fleche haut)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["ArrowUp","ArrowUp"],
+        shadowHoverSelectors2: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-precision"}]
+    },
+    //Liste déroulante (Multiple ouverte fleche bas puis fleche haut)        
+    {
+        label: "Liste_deroulante (Multiple ouverte fleche bas puis fleche haut)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["ArrowDown","ArrowUp"],
+        shadowHoverSelectors2: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-precision"}]
+    },
+    //Liste déroulante (Multiple ouverte quatorze fleche bas)        
+    {
+        label: "Liste_deroulante (Multiple ouverte quatorze fleche bas)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown"],
+        shadowHoverSelectors2: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-precision"}]
+    },
+    //Liste déroulante (Multiple ouverte quatorze fleche haut)        
+    {
+        label: "Liste_deroulante (Multiple ouverte quatorze fleche haut)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp"],
+        shadowHoverSelectors2: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-precision"}]
+    },
+    //Liste déroulante (Multiple selection 1 item et hover autre item)        
+    {
+        label: "Liste_deroulante (Multiple selection 1 item et hover autre item)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"},{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: 'li[aria-label="Alberta"]'}],
+        shadowHoverSelectors2: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: 'li[aria-label="Manitoba"]'}]
+    },
+    //Liste déroulante (Multiple fleche bas et hover autre item)        
+    {
+        label: "Liste_deroulante (Multiple fleche bas et hover autre item)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["ArrowDown"],
+        shadowHoverSelectors2: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: 'li[aria-label="Manitoba"]'}]
+    },
 
     //Menu ancres (Base)        
     {
