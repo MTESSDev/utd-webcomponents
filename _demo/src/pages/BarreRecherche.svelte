@@ -1,4 +1,6 @@
 <script>
+    //Référence accessibilité : https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-autocomplete-list/
+
     import CodeSource from '../components/CodeSource.svelte'; 
     import { onMount } from 'svelte';
     import TableauParams from '../components/TableauParams.svelte'; 
@@ -12,7 +14,7 @@
         tableauRetourEvenementChangementEtat = obtenirTableauRetourEvenementChangementEtat()
         chargerContenuRechercheExemple1b()
         chargerContenuRechercheExemple2b()
-        chargerContenuRechercheExemple3b()
+        chargerContenuRechercheExemple3c()
         mounted = true
     })
 
@@ -60,7 +62,7 @@
         })
     }
 
-    function chargerContenuRechercheExemple3b() {
+    function chargerContenuRechercheExemple3c() {
         document.querySelector("#exemple3b utd-barre-recherche").addEventListener("initialiser", e => {
 
             //Ici votre code pour obtenir le contenu de recherche
@@ -80,7 +82,8 @@
     function obtenirTableauParametres() {
         return [
             {nom: "placeholder", type: "String (Optionnel)", description: `Texte (placeholder) à afficher dans le contrôle tant qu'aucune saisie n'est effectuée. Défaut "Rechercher..." et "Search...".`},        
-            {nom: "url-contenu-recherche", type: "String (Optionnel)", description: `Si spécifié, url à laquelle un appel (fetch) sera effectué afin d'obtenir le contenu de recherche au format attendu en JSON.`}
+            {nom: "url-contenu-recherche", type: "String (Optionnel)", description: `Si spécifié, url à laquelle un appel (fetch) sera effectué afin d'obtenir le contenu de recherche au format attendu en JSON.`},
+            {nom: "nb-max-resultats", type: "Integer (Optionnel)", description: `Nombre de résultats de recherche maximal à afficher. Défaut : 10.`}
         ];
     }
 
@@ -176,7 +179,7 @@
 {/if}   
 
 
-<h3>3- Trois niveaux (url de contenu)</h3>
+<h3>3a- Trois niveaux (url de contenu)</h3>
 <div class="mb-32 bs-test" id="exemple3a">
     <utd-barre-recherche url-contenu-recherche="/testsLocaux/recherche3Niveaux.json"></utd-barre-recherche>
 </div>
@@ -184,15 +187,23 @@
 <CodeSource idElementCodeSource="exemple3a" titre="Code source (Html)">
 </CodeSource>   
 
-<h3>3- Trois niveaux (callback asynchrone)</h3>
+<h3>3b- Trois niveaux (url de contenu et 3 résultats maximum)</h3>
 <div class="mb-32 bs-test" id="exemple3b">
-    <utd-barre-recherche></utd-barre-recherche>
+    <utd-barre-recherche url-contenu-recherche="/testsLocaux/recherche3Niveaux.json" nb-max-resultats="3"></utd-barre-recherche>
 </div>
 
 <CodeSource idElementCodeSource="exemple3b" titre="Code source (Html)">
 </CodeSource>   
 
+<h3>3c- Trois niveaux (callback asynchrone)</h3>
+<div class="mb-32 bs-test" id="exemple3c">
+    <utd-barre-recherche></utd-barre-recherche>
+</div>
+
+<CodeSource idElementCodeSource="exemple3c" titre="Code source (Html)">
+</CodeSource>   
+
 {#if mounted}
-    <CodeSource codeSource="{chargerContenuRechercheExemple3b.toString()}" titre="Code source (js)" language="language-javascript">
+    <CodeSource codeSource="{chargerContenuRechercheExemple3c.toString()}" titre="Code source (js)" language="language-javascript">
     </CodeSource>   
 {/if}   

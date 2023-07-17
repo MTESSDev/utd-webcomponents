@@ -36,7 +36,7 @@ utd-barre-recherche {
                 border-right-width: 0;                        
             }
 
-            &:focus {
+            &:focus:not([aria-activedescendant]) {
                 border-right-width: 2px;
             }
 
@@ -63,13 +63,18 @@ utd-barre-recherche {
                 border: 1px solid #000;
 
                 &:focus {
+                    padding: 8px;
+                }
+
+                &:focus:not([aria-activedescendant]) {
                     border: 2px solid #000;
                     border-right-width: 2px;
-                }
-    
+                    padding: 7px;
+                }    
             }            
             .reinitialiser-recherche {
                 border: 1px solid #000;
+                border-left: 0;
             }
         }
     }
@@ -122,22 +127,44 @@ utd-barre-recherche {
     
                     &[aria-selected="true"]{
                         background-color: var(--bleu-pale);
+
+                        .message-precision-recherche {
+                            background-color: inherit;
+                        }
                     }
-                    a {
-                        text-decoration: none;
+                    
+                    a, .message-precision-recherche {
                         display: block;
                         padding: 12px 8px 12px 8px;
                         width: 100%;
+                    }
+
+                    a {
+                        text-decoration: none;
     
                         &:hover, &:focus {
                             text-decoration: underline;
                         }        
                     }
+
+                    .message-precision-recherche {
+                        display: flex;
+                        align-items: center;
+                        font-size: 14px;
+                        font-family: OpenSans-SemiBold;
+                        background-color: #F4FFFF;
+
+                        .utd-icone-svg.information {
+                            min-width: 24px;
+                            height: 24px;
+                            margin-right: 8px;
+                        }
+                    }
                 } 
 
                 &.nb-niveaux-2 {
                     .lien-resultat {
-                        a {
+                        a, .message-precision-recherche {
                             padding: 12px 8px 12px 16px;
                         }
                     }
@@ -145,7 +172,7 @@ utd-barre-recherche {
 
                 &.nb-niveaux-3 {
                     .lien-resultat {
-                        a {
+                        a, .message-precision-recherche {
                             padding: 12px 8px 12px 24px;
                         }
                     }
