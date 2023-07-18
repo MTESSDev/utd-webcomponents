@@ -23,7 +23,6 @@ export let rechercheFloue = 'true'
 export let precisionRecherche = "0.2"
 export let contextePiv = 'false'
 
-
 const ariaDescriptionRecherche = languePage === 'fr' ? "Saisir le terme recherché, puis utilisez les touches flèches haut et bas pour naviguer dans la liste des résultats, et ensuite Entrée ou Espace pour accéder au résultat désiré" : "Enter the search term, then use the up and down arrow keys to navigate the list of results, and then Enter or Space to access the desired result"
 const srResultatsTrouves = languePage === 'fr' ? "{x} résultats trouvés" : "{x} results found."
 const texteAucunResultat = languePage === 'fr' ? "Aucun résultat trouvé." : "No result found."
@@ -439,7 +438,7 @@ function assurerOptionCouranteVisible() {
 }
 
 function onBlurRecherche() {
-//  reinitialiserRecherche()
+  reinitialiserRecherche()
 }
 
 

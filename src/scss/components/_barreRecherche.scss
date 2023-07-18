@@ -137,6 +137,7 @@ utd-barre-recherche {
                         display: block;
                         padding: 12px 8px 12px 8px;
                         width: 100%;
+                        color: var(--couleur-texte-base);
                     }
 
                     a {
@@ -152,7 +153,7 @@ utd-barre-recherche {
                         align-items: center;
                         font-size: 14px;
                         font-family: OpenSans-SemiBold;
-                        background-color: #F4FFFF;
+                        background-color: var(--bleu-pale-50);
 
                         .utd-icone-svg.information {
                             min-width: 24px;
@@ -164,7 +165,7 @@ utd-barre-recherche {
 
                 &.nb-niveaux-2 {
                     .lien-resultat {
-                        a, .message-precision-recherche {
+                        a {
                             padding: 12px 8px 12px 16px;
                         }
                     }
@@ -172,7 +173,7 @@ utd-barre-recherche {
 
                 &.nb-niveaux-3 {
                     .lien-resultat {
-                        a, .message-precision-recherche {
+                        a {
                             padding: 12px 8px 12px 24px;
                         }
                     }

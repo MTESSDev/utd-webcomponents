@@ -12,14 +12,14 @@
     onMount(() => {
         tableauParametres = obtenirTableauParametres()
         tableauRetourEvenementChangementEtat = obtenirTableauRetourEvenementChangementEtat()
-        chargerContenuRechercheExemple1b()
-        chargerContenuRechercheExemple2b()
+        chargerContenuRechercheExemple1c()
+        chargerContenuRechercheExemple2c()
         chargerContenuRechercheExemple3c()
         mounted = true
     })
 
-    function chargerContenuRechercheExemple1b() {
-        document.querySelector("#exemple1b utd-barre-recherche").addEventListener("initialiser", e => {
+    function chargerContenuRechercheExemple1c() {
+        document.querySelector("#exemple1c utd-barre-recherche").addEventListener("initialiser", e => {
 
             //Ici votre code pour obtenir le contenu de recherche (Appel à un api ou autre)
             const monContenuRecherche = [
@@ -39,8 +39,8 @@
         })
     }
 
-    function chargerContenuRechercheExemple2b() {
-        document.querySelector("#exemple2b utd-barre-recherche").addEventListener("initialiser", e => {
+    function chargerContenuRechercheExemple2c() {
+        document.querySelector("#exemple2c utd-barre-recherche").addEventListener("initialiser", e => {
 
             //Ici votre code pour obtenir le contenu de recherche (Appel à un api ou autre)
             const monContenuRecherche = [
@@ -63,7 +63,7 @@
     }
 
     function chargerContenuRechercheExemple3c() {
-        document.querySelector("#exemple3b utd-barre-recherche").addEventListener("initialiser", e => {
+        document.querySelector("#exemple3c utd-barre-recherche").addEventListener("initialiser", e => {
 
             //Ici votre code pour obtenir le contenu de recherche
             fetch('/testsLocaux/recherche3Niveaux.json')
@@ -146,15 +146,22 @@
 <CodeSource idElementCodeSource="exemple1a" titre="Code source (Html)">
 </CodeSource>   
 
-<h3>1b- Un niveau (callback)</h3>
+<h3>1b- Un niveau (url de contenu et 3 résultats maximum)</h3>
 <div class="mb-32 bs-test" id="exemple1b">
-    <utd-barre-recherche></utd-barre-recherche>
+    <utd-barre-recherche url-contenu-recherche="/testsLocaux/recherche.json" nb-max-resultats="3"></utd-barre-recherche>
 </div>
 <CodeSource idElementCodeSource="exemple1b" titre="Code source (Html)">
 </CodeSource>   
 
+<h3>1c- Un niveau (callback)</h3>
+<div class="mb-32 bs-test" id="exemple1c">
+    <utd-barre-recherche></utd-barre-recherche>
+</div>
+<CodeSource idElementCodeSource="exemple1c" titre="Code source (Html)">
+</CodeSource>   
+
 {#if mounted}
-    <CodeSource codeSource="{chargerContenuRechercheExemple1b.toString()}" titre="Code source (js)" language="language-javascript">
+    <CodeSource codeSource="{chargerContenuRechercheExemple1c.toString()}" titre="Code source (js)" language="language-javascript">
     </CodeSource>   
 {/if}   
 
@@ -166,15 +173,22 @@
 <CodeSource idElementCodeSource="exemple2a" titre="Code source (Html)">
 </CodeSource>   
 
-<h3>2b- Deux niveaux (callback)</h3>
+<h3>2b- Deux niveaux (url de contenu et 3 résultats maximum)</h3>
 <div class="mb-32 bs-test" id="exemple2b">
-    <utd-barre-recherche></utd-barre-recherche>
+    <utd-barre-recherche url-contenu-recherche="/testsLocaux/recherche2Niveaux.json" nb-max-resultats="3"></utd-barre-recherche>
 </div>
 <CodeSource idElementCodeSource="exemple2b" titre="Code source (Html)">
 </CodeSource>   
 
+<h3>2c- Deux niveaux (callback)</h3>
+<div class="mb-32 bs-test" id="exemple2c">
+    <utd-barre-recherche></utd-barre-recherche>
+</div>
+<CodeSource idElementCodeSource="exemple2c" titre="Code source (Html)">
+</CodeSource>   
+
 {#if mounted}
-    <CodeSource codeSource="{chargerContenuRechercheExemple2b.toString()}" titre="Code source (js)" language="language-javascript">
+    <CodeSource codeSource="{chargerContenuRechercheExemple2c.toString()}" titre="Code source (js)" language="language-javascript">
     </CodeSource>   
 {/if}   
 
