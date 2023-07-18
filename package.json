@@ -10,7 +10,8 @@
         "bs-test": "node ./_unit-tests/regressions-visuelles/backstopNodeJs.js --test",
         "bs-reference": "node backstopNodeJs.js --reference",
         "bs-approve": "node backstop.js --approve",
-        "bs-openReport": "node backstop.js --openReport"
+        "bs-openReport": "node backstop.js --openReport",
+		"indexation": "node ./_indexation/startWebScrapper.js"
     },
     "devDependencies": {
         "@rollup/plugin-commonjs": "^17.0.0",
