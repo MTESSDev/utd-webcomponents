@@ -4,6 +4,7 @@
     import CodeSource from '../components/CodeSource.svelte'; 
     import { onMount } from 'svelte';
     import TableauParams from '../components/TableauParams.svelte'; 
+    import { Utils } from '../../../src/components/js/utils';
 
     let tableauParametres = [];
     let tableauRetourEvenementChangementEtat = [];
@@ -15,6 +16,9 @@
         chargerContenuRechercheExemple1c()
         chargerContenuRechercheExemple2c()
         chargerContenuRechercheExemple3c()
+
+        Utils.definirEvenementClickAncre()
+
         mounted = true
     })
 
@@ -82,7 +86,7 @@
     function obtenirTableauParametres() {
         return [
             {nom: "placeholder", type: "String (Optionnel)", description: `Texte (placeholder) à afficher dans le contrôle tant qu'aucune saisie n'est effectuée. Défaut "Rechercher..." et "Search...".`},        
-            {nom: "url-contenu-recherche", type: "String (Optionnel)", description: `Si spécifié, url à laquelle un appel (fetch) sera effectué afin d'obtenir le contenu de recherche au format attendu en JSON.`},
+            {nom: "url-contenu-recherche", type: "String (Optionnel)", description: `Si spécifié, url à laquelle un appel (fetch) sera effectué afin d'obtenir le contenu de recherche au <a class="ancre" href="#formatattendu">format attendu en JSON</a>.`},
             {nom: "nb-max-resultats", type: "Integer (Optionnel)", description: `Nombre de résultats de recherche maximal à afficher. Défaut : 10.`}
         ];
     }
@@ -90,20 +94,9 @@
 
     function obtenirTableauRetourEvenementChangementEtat() {
         return [
-            {nom: "definirContenuRecherche", type: "Fonction", description: `Fonction (callback) ayant en paramètre un objet qui doit posséder une propriété "contenu", laquelle doit contenir le contenu de recherche qui respecte le format requis.`},    
+            {nom: "definirContenuRecherche", type: "Fonction", description: `Fonction (callback) ayant en paramètre un objet qui doit posséder une propriété "contenu", laquelle doit contenir le contenu de recherche qui respecte le <a class="ancre" href="#formatattendu">format requis</a>.`},    
         ];
     }
-
-    //TODO faire une méthode générique et ajouter dans utils afin de patcher le problème d'ancres avec tinro
-    function clickAncre(e) {
-        e.preventDefault();
-        location.hash = ''
-        location.hash = e.target.getAttribute('href')
-    }
-
-
-    
-
 </script>
 
 <style type="text/css">
@@ -120,7 +113,7 @@
 
     <h3>Référence système de design Quebec.ca</h3>
     <a href="https://design.quebec.ca/composantes/action/barre-recherche" target="_blank">Voir les spécifications sur le site de design Quebec.ca</a>
-    
+
     <h3>Particularités vs. le système de design Québec.ca</h3>
     <p>La barre de recherche ne mène pas à une page de résultats de recherche mais affiche les résultats au fur et à mesure de la saisie dans le champ ("search as you type").</p>
     <p>Les résultats sont affichés sous le champ et le click sur un résultat provoque la navigation vers ce dernier.</p>
@@ -133,10 +126,17 @@
     <h3>initialiser</h3>
     <p>Est exécuté uniquement si le paramètre <span class="utd-emphase-gris">url-contenu-recherche</span> n'est pas spécifié.</p>
     <p>Son exécution se produit lorsque le contrôle de recherche est initialisé (lors d'une première tentative de recherche).</p>
-    <p> Voir exemple <a href="#exemple1b" on:click="{clickAncre}">1b- Un niveau (callback)</a> ou n'importe quel exemple (callback).</p>
+    <p> Voir exemple <a href="#1c" class="ancre">1c- Un niveau (callback)</a> ou n'importe quel exemple (callback).</p>
     <h4>Retour</h4>
     <TableauParams parametres="{tableauRetourEvenementChangementEtat}">
     </TableauParams>
+
+    <h2 id="formatattendu">Format (JSON) du contenu de recherche attendu</h2>
+    TODO ici un tableau
+
+    <h2>Accessibilité</h2>
+    Inspiré du <a href="https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-autocomplete-none/" target="_blank">"combobox pattern" défini au W3C</a>, avec quelques légères différences pour adapter à notre besoin.
+    
 </div>
 <h2>Exemples</h2>
 <h3>1a- Un niveau (url de contenu)</h3>
@@ -153,7 +153,7 @@
 <CodeSource idElementCodeSource="exemple1b" titre="Code source (Html)">
 </CodeSource>   
 
-<h3>1c- Un niveau (callback)</h3>
+<h3 id="1c">1c- Un niveau (callback)</h3>
 <div class="mb-32 bs-test" id="exemple1c">
     <utd-barre-recherche></utd-barre-recherche>
 </div>

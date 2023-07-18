@@ -215,44 +215,20 @@ export class Utils {
         return texteNormalise.replace(/\W/g,'_')        
     }
 
-    /**
-     * Creates nested groups by object properties.
-     * `properties` array nest from highest(index = 0) to lowest level.
-     *
-     * @param {String[]} properties
-     * @returns {Object}
-     */
-    static nestGroupsBy(arr, properties) {
-        properties = Array.from(properties);
-        if (properties.length === 1) {
-            return this.groupBy(arr, properties[0]);
-        }
 
-        const property = properties.shift();
-        var grouped = this.groupBy(arr, property);
-        for (let key in grouped) {
-            grouped[key] = this.nestGroupsBy(grouped[key], Array.from(properties));
-        }
-        return grouped;
-    }
-  
-    /**
-     * Group objects by property.
-     * `nestGroupsBy` helper method.
-     *
-     * @param {String} property
-     * @param {Object[]} conversions
-     * @returns {Object}
-     */
-    static groupBy(conversions, property) {
-        return conversions.reduce((acc, obj) => {
-        let key = obj[property];
-        if (!acc[key]) {
-            acc[key] = [];
-        }
-        acc[key].push(obj);
-        return acc;
-        }, {});
+    static definirEvenementClickAncre(selecteur = '.ancre') {
+        setTimeout(() => {
+            const ancres = document.querySelectorAll(selecteur)
+            
+            for (let i = 0; i < ancres.length; i++) {            
+                
+                ancres[i].addEventListener("click", e => {
+                    e.preventDefault()
+                    location.hash = ''
+                    location.hash = e.target.getAttribute('href')
+                })
+            }            
+        })   
     }    
 }
 
