@@ -16,6 +16,14 @@
         "mc": ""
     },
     {
+        "c": "Navigation",
+        "sc": "Section",
+        "h": "#section2",
+        "r": "Texte résultat Section 2",
+        "t": "Un groupe de sections est divisé en sections le menu de gauche liste automatiquement les sections lorsqu'un groupe de sections est ouvert chaque section est automatiquement numérotée le numéro de la section courante est surligné après avoir été visitée si une section est complétée et ne contient pas d'erreur de validation, le numéro est remplacé par un crochet si une section contient une erreur de validation, le numéro est remplacé par un x rouge",    
+        "mc": ""
+    },
+    {
         "c": "Avancé",
         "sc": "Validations personnalisées",
         "r": "Texte résultat Validations personnalisées",
@@ -60,6 +68,14 @@
         "sc": "Domaines de valeurs",
         "r": "Texte résultat Domaines de valeurs",
         "h": "#domaine",
+        "t": "Qu'est-ce qu'un domaine de valeurs? Un domaine de valeurs correspond a une liste de valeurs reutilisables dans un formulaire precis, par tous les formulaires d'un systeme autorise ou meme par tout le systeme frw tout dependant a quel niveau il est configure. Les domaines peuvent etre utilises dans les controles suivants: case a cocher bouton radio liste deroulante hierarchie dans les domaines de valeurs lorsque le meme domaine de valeurs est defini dans plusieurs configurations, le niveau le plus precis a toujours preseance sur les autres. L'image suivante represente la hierarchie des configurations ou le niveau 'pre-remplissage' est le plus important. Definir un domaine via la configuration un domaine peut etre defini dans le bloc config d'un formulaire ou de votre systeme autorise en ajoutant une propriete domaines et en lui assignant les valeurs desirees pour chaque domaine. Definir un domaine via le pre-remplissage les domaines de valeurs fournis en pre-remplisssage ont preseance sur les domaines specifies au niveau de la configuration. Afin de fournir des domaines de valeurs en pre-remplissage, il faut ajouter au json une propriete domaine au meme niveau que form (qui contient les donnees pre-remplies du formulaire).",    
+        "mc": ""
+    },
+    {
+        "c": "Personnalisation des formulaires",
+        "sc": "Domaines de valeurs",
+        "r": "Texte résultat Domaines de valeurs 2",
+        "h": "#domaine2",
         "t": "Qu'est-ce qu'un domaine de valeurs? Un domaine de valeurs correspond a une liste de valeurs reutilisables dans un formulaire precis, par tous les formulaires d'un systeme autorise ou meme par tout le systeme frw tout dependant a quel niveau il est configure. Les domaines peuvent etre utilises dans les controles suivants: case a cocher bouton radio liste deroulante hierarchie dans les domaines de valeurs lorsque le meme domaine de valeurs est defini dans plusieurs configurations, le niveau le plus precis a toujours preseance sur les autres. L'image suivante represente la hierarchie des configurations ou le niveau 'pre-remplissage' est le plus important. Definir un domaine via la configuration un domaine peut etre defini dans le bloc config d'un formulaire ou de votre systeme autorise en ajoutant une propriete domaines et en lui assignant les valeurs desirees pour chaque domaine. Definir un domaine via le pre-remplissage les domaines de valeurs fournis en pre-remplisssage ont preseance sur les domaines specifies au niveau de la configuration. Afin de fournir des domaines de valeurs en pre-remplissage, il faut ajouter au json une propriete domaine au meme niveau que form (qui contient les donnees pre-remplies du formulaire).",    
         "mc": ""
     },
