@@ -1,10 +1,10 @@
 const puppeteer = require('puppeteer');
 
 async function startBrowser(){
-	let browser;
+	let navigateur;
 	try {
-	    console.log("Ouverture du navigateur......");
-	    browser = await puppeteer.launch({
+	    console.log("Ouverture du navigateur...");
+	    navigateur = await puppeteer.launch({
 	        headless: true,
 	        args: ["--disable-setuid-sandbox"],
 	        'ignoreHTTPSErrors': true
@@ -12,7 +12,7 @@ async function startBrowser(){
 	} catch (err) {
 	    console.log("Impossible de créer l'instance du navigateur => : ", err);
 	}
-	return browser;
+	return navigateur;
 }
 
 module.exports = {

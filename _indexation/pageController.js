@@ -2,20 +2,21 @@ const pageScraper = require('./pageScraper');
 const fs = require('fs');
 
 async function scrapeAll(browserInstance){
-	let browser;
+	let navigateur;
 	try{
-		browser = await browserInstance;
-		let scrapedData = await pageScraper.scraper(browser);
-		await browser.close();
-		fs.writeFile("donneesRecuperees.json", JSON.stringify(scrapedData, null, "\t"), 'utf8', function(err){
+		navigateur = await browserInstance;
+		let donneesExtraites = await pageScraper.scraper(navigateur);
+		console.log("Fermeture du navigateur...");
+		await navigateur.close();
+		fs.writeFile("donneesRecuperees.json", JSON.stringify(donneesExtraites, null, "\t"), 'utf8', function(err){
 			if(err){
-				return console.log(err);
+				return console.log("Erreur lors de l'enregistrement du fichier => " + err);
 			}
-			console.log("Les donnees ont été extirpées et mis dans le fichier ./donneesRecuperees.json");
+			console.log("Les donnees ont été extirpées avec succès et mises dans le fichier ./donneesRecuperees.json");
 		});
 	}
 	catch(err){
-		console.log("Impossible de trouve l'instance du navigateur => ", err);
+		console.log("Erreur lors des opérations de navigation => ", err);
 	}
 }
 
