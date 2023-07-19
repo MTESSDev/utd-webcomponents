@@ -3,6 +3,7 @@
   import CodeSource from '../components/CodeSource.svelte'; 
   import TableauParams from '../components/TableauParams.svelte'; 
   import TableauSlots from '../components/TableauSlots.svelte'; 
+  import { Utils } from '../../../src/components/js/utils';
 
   let tableauParametres = [];
   let tableauSlots = [];
@@ -11,6 +12,9 @@
   onMount(() => {
       tableauParametres = obtenirTableauParametres()
       tableauSlots = obtenirTableauSlots()
+
+      Utils.definirEvenementClickAncre()
+
       mounted = true
   })
 
@@ -46,7 +50,7 @@
         {nom: "url-passer-contenu", type: "String (Optionnel)", description: `Url vers laquelle rediriger lorsque l'utilisateur clique sur le lien. Devrait être une ancre de la page. Défaut "#main".`},     
         {nom: "texte-passer-contenu", type: "String (Optionnel)", description: `Texte du lien. Défaut "Passer au contenu" / "Skip to content".`},
         {nom: "afficher-recherche", type: "Boolean (Optionnel)", description: `Indique s'il faut afficher ou non le contrôle de recherche (Loupe + contrôle de saisie du texte recherché). Défaut "false".`},                
-        {nom: "url-contenu-recherche", type: "String (Optionnel)", description: `Si spécifié, url à laquelle un appel (fetch) sera effectué afin d'obtenir le contenu de recherche au format attendu en JSON. Voir le composant <a href="/composants/actions/barrerecherche">barre de recherche</a> pour plus de détails.`}                
+        {nom: "url-contenu-recherche", type: "String (Optionnel)", description: `Si spécifié, url à laquelle un appel (fetch) sera effectué afin d'obtenir le contenu de recherche au format attendu en JSON. Voir le composant <a class="ancre" href="/composants/actions/barrerecherche">Barre de recherche</a> pour plus de détails.`}                
       ]
   }
 
@@ -84,7 +88,10 @@
 <h2>Événements disponibles</h2>
 <p>Aucun événement spécifique au contrôle de piv d'entête. Cependant l'événement <span class="utd-emphase-gris">initialiser</span> du contrôle barre de recherche peut être nécessaire si la recherche à l'intérieur du PIV est activée.</p>
 <p>Le code source de la section "Exemple" de la présente page contient un exemple de définition du contenu de recherche avec un callback.</p>
-<p>Voir le composant <a href="/composants/actions/barrerecherche">barre de recherche</a> pour plus de détails.</p>
+<p>Voir le composant <a class="ancre" href="/composants/actions/barrerecherche">Barre de recherche</a> pour plus de détails.</p>
+
+<h2>Format (JSON) du contenu de recherche attendu</h2>
+<p>Pour plus de détail sur le format de données attendu consulter la fiche du composant <a class="ancre" href="/composants/actions/barrerecherche#formatAttendu">Barre de recherche</a>.</p>
 
 <h2>Exemple</h2>
 <p>L'exemple contient le piv d'entête du présent site de démonstration.</p>

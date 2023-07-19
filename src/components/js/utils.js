@@ -225,7 +225,7 @@ export class Utils {
                 ancres[i].addEventListener("click", e => {
                     e.preventDefault()
                     location.hash = ''
-                    location.hash = e.target.getAttribute('href')
+                    location.href = e.target.getAttribute('href')
                 })
             }            
         })   
