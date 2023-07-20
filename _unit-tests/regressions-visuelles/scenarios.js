@@ -219,7 +219,7 @@ scenarios : [
     {
         label: "Cases à cocher seule (Focus sur normal) (checkbox)", 
         url: "/composants/formulaire/casecocher",
-        viewports: viewports.vPhone,UTD_Piv_entete_avec_barre_recherche_ecrire_sec_puis_double_escape_ferme_les_resultats_de_recherche_et_ne_laisse_pas_sec_dans_le_champ_0_viewport_0_tablet.png
+        viewports: viewports.vPhone,
         selectors: ["#exemple5"],
         focusSelectors: ["#exemple5 input"]
     },
@@ -1425,81 +1425,81 @@ scenarios : [
         removeSelectors: [".no-test"],
         shadowHoverSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}]
     },
-    //Piv entête afficher recherche (clic loupe affiche la barre de recherche )
+    //Piv entête afficher recherche (clic loupe affiche barre de recherche )
     {
-        label: "Piv_entete avec barre recherche (clic loupe affiche la barre de recherche )", 
+        label: "Piv_entete avec barre recherche (clic loupe affiche barre de recherche )", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["utd-piv-entete"],
         viewports: viewports.vDesktopTablet,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}]
     },
-    //Piv entête afficher recherche (clic loupe affiche la barre de recherche mobile)
+    //Piv entête afficher recherche (clic loupe affiche barre de recherche mobile)
     {
-        label: "Piv_entete avec barre recherche (clic loupe affiche la barre de recherche mobile)", 
+        label: "Piv_entete avec barre recherche (clic loupe affiche barre de recherche mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["utd-piv-entete"],
         viewports: viewports.vPhone,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}]
     },
-    //Piv entête afficher recherche (deux clic loupe ferme ouvre et ferme recherche)
+    //Piv entête afficher recherche (deux clic loupe ferme ouvre ferme recherche)
     {
-        label: "Piv_entete avec barre recherche (deux clic loupe ouvre et ferme recherche)", 
+        label: "Piv_entete avec barre recherche (deux clic loupe ouvre ferme recherche)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["utd-piv-entete"],
         viewports: viewports.vDesktopTablet,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"},{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}]
     },
-    //Piv entête afficher recherche (deux clic loupe ouvre et ferme recherche mobile)
+    //Piv entête afficher recherche (deux clic loupe ouvre ferme recherche mobile)
     {
-        label: "Piv_entete avec barre recherche (deux clic loupe ouvre et ferme recherche mobile)", 
+        label: "Piv_entete avec barre recherche (deux clic loupe ouvre ferme recherche mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["utd-piv-entete"],
         viewports: viewports.vPhone,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"},{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}]
     },
-    //Piv entête afficher recherche (clic loupe puis clic body enleve le focus sur la recherche)
+    //Piv entête afficher recherche (clic loupe clic body enleve focus sur recherche)
     {
-        label: "Piv_entete avec barre recherche (clic loupe puis clic body enleve le focus sur la recherche)", 
+        label: "Piv_entete avec barre recherche (clic loupe clic body enleve focus sur recherche)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["utd-piv-entete"],
         viewports: viewports.vDesktopTablet,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"},{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"}]
     },
-    //Piv entête afficher recherche (clic loupe puis clic body enleve le focus sur la recherche mobile)
+    //Piv entête afficher recherche (clic loupe clic body enleve focus sur recherche mobile)
     {
-        label: "Piv_entete avec barre recherche (clic loupe puis clic body enleve le focus sur la recherche mobile)", 
+        label: "Piv_entete avec barre recherche (clic loupe clic body enleve focus sur recherche mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["utd-piv-entete"],
         viewports: viewports.vPhone,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"},{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"}]
     },
-    //Piv entête afficher recherche (loupe puis body puis barre de recherche remet focus sur barre de recherche)
+    //Piv entête afficher recherche (loupe body barre de recherche remet focus sur barre recherche)
     {
-        label: "Piv_entete avec barre recherche (loupe puis body puis barre de recherche remet focus sur barre de recherche)", 
+        label: "Piv_entete avec barre recherche (loupe body barre de recherche remet focus sur barre recherche)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["utd-piv-entete"],
         viewports: viewports.vDesktopTablet,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"},{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"},{domSelector: "utd-piv-entete", shadowDomSelector: ".controle-recherche"}]
     },
-    //Piv entête afficher recherche (loupe puis body puis barre de recherche remet focus sur barre de recherche mobile)
+    //Piv entête afficher recherche (loupe body barre de recherche remet focus sur barre recherche mobile)
     {
-        label: "Piv_entete avec barre recherche (loupe puis body puis barre de recherche remet focus sur barre de recherche mobile)", 
+        label: "Piv_entete avec barre recherche (loupe body barre de recherche remet focus sur barre recherche mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["utd-piv-entete"],
         viewports: viewports.vPhone,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"},{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"},{domSelector: "utd-piv-entete", shadowDomSelector: ".controle-recherche"}]
     },
-    //Piv entête afficher recherche (clic loupe puis tab donne focus controle suivant)
+    //Piv entête afficher recherche (clic loupe tab donne focus controle suivant)
     {
-        label: "Piv_entete avec barre recherche (clic loupe puis tab donne focus controle suivant)", 
+        label: "Piv_entete avec barre recherche (clic loupe tab donne focus controle suivant)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["utd-piv-entete"],
         viewports: viewports.vDesktopTablet,
@@ -1507,9 +1507,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
         keyPressKeyCode: ["Tab"]
     },
-    //Piv entête afficher recherche (clic loupe puis tab donne focus controle suivant mobile)
+    //Piv entête afficher recherche (clic loupe tab donne focus controle suivant mobile)
     {
-        label: "Piv_entete avec barre recherche (clic loupe puis tab donne focus controle suivant mobile)", 
+        label: "Piv_entete avec barre recherche (clic loupe tab donne focus controle suivant mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["utd-piv-entete"],
         viewports: viewports.vPhone,
@@ -1577,9 +1577,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
         keyPressKeyCode: ["s","e","c"]
     },
-    //Piv entête afficher recherche (ecrire sec puis body ferme resultats de recherche et laisse sec dans le champ)
+    //Piv entête afficher recherche (ecrire sec body ferme resultats recherche et laisse sec dans champ)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis body ferme resultats de recherche et laisse sec dans le champ)", 
+        label: "Piv_entete avec barre recherche (ecrire sec body ferme resultats recherche et laisse sec dans champ)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vDesktopTablet,
@@ -1588,9 +1588,9 @@ scenarios : [
         keyPressKeyCode: ["s","e","c"],
         shadowClickSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"}]
     },
-    //Piv entête afficher recherche (ecrire sec puis body ferme resultats de recherche et laisse sec dans le champ mobile)
+    //Piv entête afficher recherche (ecrire sec body ferme resultats recherche et laisse sec dans champ mobile)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis body ferme les resultats de recherche et laisse sec dans le champ mobile)", 
+        label: "Piv_entete avec barre recherche (ecrire sec body ferme resultats recherche et laisse sec dans champ mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vPhone,
@@ -1599,9 +1599,9 @@ scenarios : [
         keyPressKeyCode: ["s","e","c"],
         shadowClickSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"}]
     },
-    //Piv entête afficher recherche (ecrire sec puis escape ferme les resultats de recherche et laisse sec dans le champ)
+    //Piv entête afficher recherche (ecrire sec escape ferme resultats recherche et laisse sec dans champ)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis escape ferme les resultats de recherche et laisse sec dans le champ)", 
+        label: "Piv_entete avec barre recherche (ecrire sec escape ferme resultats recherche et laisse sec dans champ)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vDesktopTablet,
@@ -1609,9 +1609,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
         keyPressKeyCode: ["s","e","c","Escape"]
     },
-    //Piv entête afficher recherche (clic loupe puis ecrire sec puis escape ferme les resultats de recherche et laisse sec dans le champ mobile)
+    //Piv entête afficher recherche (ecrire sec escape ferme resultats recherche et laisse sec champ mobile)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis escape ferme les resultats de recherche et laisse sec dans le champ mobile)", 
+        label: "Piv_entete avec barre recherche (ecrire sec escape ferme resultats recherche et laisse sec champ mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vPhone,
@@ -1619,9 +1619,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
         keyPressKeyCode: ["s","e","c","Escape"]
     },
-    //Piv entête afficher recherche (sec puis double escape ferme resultats de recherche et laisse pas sec dans le champ)
+    //Piv entête afficher recherche (sec double escape ferme resultats recherche et laisse pas sec dans champ)
     {
-        label: "Piv_entete avec barre recherche (sec puis double escape ferme resultats de recherche et laisse pas sec dans le champ)", 
+        label: "Piv_entete avec barre recherche (sec double escape ferme resultats recherche et laisse pas sec dans champ)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vTablet,
@@ -1629,9 +1629,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
         keyPressKeyCode: ["s","e","c","Escape","Escape"]
     },
-    //Piv entête afficher recherche (sec puis double escape ferme resultats de recherche et laisse pas sec dans le champ mobile)
+    //Piv entête afficher recherche (sec double escape ferme resultats recherche et laisse pas sec dans champ mobile)
     {
-        label: "Piv_entete avec barre recherche (sec puis double escape ferme resultats de recherche et laisse pas sec dans le champ mobile)", 
+        label: "Piv_entete avec barre recherche (sec double escape ferme resultats recherche et laisse pas sec dans champ mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vPhone,
@@ -1639,9 +1639,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
         keyPressKeyCode: ["s","e","c","Escape","Escape"]
     },
-    //Piv entête afficher recherche (ecrire sec puis tab la recherche se ferme et on va sur le X)
+    //Piv entête afficher recherche (ecrire sec tab la recherche se ferme et on va sur X)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis tab la recherche se ferme et on va sur le X)", 
+        label: "Piv_entete avec barre recherche (ecrire sec tab la recherche se ferme et on va sur X)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vDesktopTablet,
@@ -1649,9 +1649,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
         keyPressKeyCode: ["s","e","c","Tab"]
     },
-    //Piv entête afficher recherche (clic loupe puis ecrire sec puis tab la recherche se ferme et on va sur le X mobile)
+    //Piv entête afficher recherche (ecrire sec tab la recherche se ferme et on va sur X mobile)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis tab la recherche se ferme et on va sur le X mobile)", 
+        label: "Piv_entete avec barre recherche (ecrire sec tab la recherche se ferme et on va sur X mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vPhone,
@@ -1701,9 +1701,9 @@ scenarios : [
         keyPressKeyCode: ["s","e","c"],
         shadowClickSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".reinitialiser-recherche"}]
     },
-    //Piv entête afficher recherche (ecrire sec puis hover resultat souligne et met un fond bleu)
+    //Piv entête afficher recherche (ecrire sec hover resultat souligne et met fond bleu)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis hover resultat souligne et met un fond bleu)", 
+        label: "Piv_entete avec barre recherche (ecrire sec hover resultat souligne et met fond bleu)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vDesktopTablet,
@@ -1712,9 +1712,9 @@ scenarios : [
         keyPressKeyCode: ["s","e","c"],
         shadowHoverSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".lien-resultat"}]
     },
-    //Piv entête afficher recherche (ecrire sec puis hover resultat souligne et met un fond bleu mobile)
+    //Piv entête afficher recherche (ecrire sec hover resultat souligne et met fond bleu mobile)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis hover resultat souligne et met un fond bleu mobile)", 
+        label: "Piv_entete avec barre recherche (ecrire sec hover resultat souligne et met fond bleu mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vPhone,
@@ -1723,9 +1723,9 @@ scenarios : [
         keyPressKeyCode: ["s","e","c"],
         shadowHoverSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".lien-resultat"}]
     },
-    //Piv entête afficher recherche (ecrire sec puis hover resultat puis hover body resultat plus souligne mais toujours fond bleu)
+    //Piv entête afficher recherche (ecrire sec hover resultat hover body resultat pas souligne mais fond bleu)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis hover resultat puis hover body resultat plus souligne mais toujours fond bleu)", 
+        label: "Piv_entete avec barre recherche (ecrire sec hover resultat hover body resultat pas souligne mais fond bleu)",
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vDesktopTablet,
@@ -1734,9 +1734,9 @@ scenarios : [
         keyPressKeyCode: ["s","e","c"],
         shadowHoverSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".lien-resultat"},{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"}]
     },
-    //Piv entête afficher recherche (ecrire sec puis hover resultat puis hover body resultat plus souligne mais toujours fond bleu mobile)
+    //Piv entête afficher recherche (ecrire sec hover resultat hover body resultat pas souligne mais fond bleu mobile)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis hover resultat puis hover body resultat plus souligne mais toujours fond bleu mobile)", 
+        label: "Piv_entete avec barre recherche (ecrire sec hover resultat hover body resultat pas souligne mais fond bleu mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vPhone,
@@ -1745,9 +1745,9 @@ scenarios : [
         keyPressKeyCode: ["s","e","c"],
         shadowHoverSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".lien-resultat"},{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"}]
     },
-    //Piv entête afficher recherche (ecrire sec puis fleche bas selection du premier resultat et fond bleu dessus)
+    //Piv entête afficher recherche (ecrire sec fleche bas selection premier resultat et fond bleu dessus)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis fleche bas selection du premier resultat et fond bleu dessus)", 
+        label: "Piv_entete avec barre recherche (ecrire sec fleche bas selection premier resultat et fond bleu dessus)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vDesktopTablet,
@@ -1755,9 +1755,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
         keyPressKeyCode: ["s","e","c","ArrowDown"]
     },
-    //Piv entête afficher recherche (ecrire sec puis fleche bas selection du premier resultat et fond bleu dessus mobile)
+    //Piv entête afficher recherche (ecrire sec fleche bas selection premier resultat et fond bleu mobile)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis fleche bas mobile selection du premier resultat et fond bleu dessus)", 
+        label: "Piv_entete avec barre recherche (ecrire sec fleche bas mobile selection premier resultat et fond bleu mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vPhone,
@@ -1765,9 +1765,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
         keyPressKeyCode: ["s","e","c","ArrowDown"]
     },
-    //Piv entête afficher recherche (ecrire sec puis double fleche bas selection du deuxieme resultat et fond bleu dessus)
+    //Piv entête afficher recherche (ecrire sec double fleche bas selection deuxieme resultat et fond bleu)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis double fleche bas selection du deuxieme resultat et fond bleu dessus)", 
+        label: "Piv_entete avec barre recherche (ecrire sec double fleche bas selection deuxieme resultat et fond bleu)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vDesktopTablet,
@@ -1775,9 +1775,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
         keyPressKeyCode: ["s","e","c","ArrowDown","ArrowDown"]
     },
-    //Piv entête afficher recherche (ecrire sec puis double fleche bas selection du deuxieme resultat et fond bleu dessus mobile)
+    //Piv entête afficher recherche (ecrire sec double fleche bas selection deuxieme resultat et fond bleu mobile)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis double fleche bas selection du deuxieme resultat et fond bleu dessus mobile)", 
+        label: "Piv_entete avec barre recherche (ecrire sec double fleche bas selection deuxieme resultat et fond bleu mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vPhone,
@@ -1785,9 +1785,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
         keyPressKeyCode: ["s","e","c","ArrowDown","ArrowDown"]
     },
-    //Piv entête afficher recherche (ecrire sec puis fleche haut selection du dernier resultat et fond bleu dessus)
+    //Piv entête afficher recherche (ecrire sec fleche haut selection dernier resultat et fond bleu)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis fleche haut selection du dernier resultat et fond bleu dessus)", 
+        label: "Piv_entete avec barre recherche (ecrire sec fleche haut selection dernier resultat et fond bleu)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vDesktopTablet,
@@ -1795,9 +1795,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
         keyPressKeyCode: ["s","e","c","ArrowUp"]
     },
-    //Piv entête afficher recherche (ecrire sec puis fleche haut selection du dernier resultat et fond bleu dessus mobile)
+    //Piv entête afficher recherche (ecrire sec fleche haut selection dernier resultat et fond bleu mobile)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis fleche haut selection du dernier resultat et fond bleu dessus mobile)", 
+        label: "Piv_entete avec barre recherche (ecrire sec fleche haut selection dernier resultat et fond bleu mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vPhone,
@@ -1805,9 +1805,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
         keyPressKeyCode: ["s","e","c","ArrowUp"]
     },
-    //Piv entête afficher recherche (ecrire sec puis double fleche haut selection de l'avant dernier resultat et fond bleu dessus)
+    //Piv entête afficher recherche (ecrire sec double fleche haut selection avant dernier resultat et fond bleu)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis double fleche haut selection de l'avant dernier resultat et fond bleu dessus)", 
+        label: "Piv_entete avec barre recherche (ecrire sec double fleche haut selection avant dernier resultat et fond bleu)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vDesktopTablet,
@@ -1815,9 +1815,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
         keyPressKeyCode: ["s","e","c","ArrowUp","ArrowUp"]
     },
-    //Piv entête afficher recherche (ecrire sec puis double fleche haut selection de l'avant dernier resultat et fond bleu dessus mobile)
+    //Piv entête afficher recherche (ecrire sec double fleche haut selection avant dernier resultat et fond bleu mobile)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis double fleche haut selection de l'avant dernier resultat et fond bleu dessus mobile)", 
+        label: "Piv_entete avec barre recherche (ecrire sec double fleche haut selection avant dernier resultat et fond bleu mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vPhone,
@@ -1825,9 +1825,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
         keyPressKeyCode: ["s","e","c","ArrowUp","ArrowUp"]
     },
-    //Piv entête afficher recherche (ecrire sec puis fleche bas puis fleche haut selection du dernier resultat et fond bleu dessus)
+    //Piv entête afficher recherche (ecrire sec fleche bas fleche haut selection dernier resultat et fond bleu)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis fleche bas puis fleche haut selection du dernier resultat et fond bleu dessus)", 
+        label: "Piv_entete avec barre recherche (ecrire sec fleche bas fleche haut selection dernier resultat et fond bleu)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vDesktopTablet,
@@ -1835,9 +1835,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
         keyPressKeyCode: ["s","e","c","ArrowDown","ArrowUp"]
     },
-    //Piv entête afficher recherche (ecrire sec puis fleche bas puis fleche haut selection du dernier resultat et fond bleu dessus mobile)
+    //Piv entête afficher recherche (ecrire sec fleche bas fleche haut selection dernier resultat et fond bleu mobile)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis fleche bas puis fleche haut selection du dernier resultat et fond bleu dessus mobile)", 
+        label: "Piv_entete avec barre recherche (ecrire sec fleche bas fleche haut selection dernier resultat et fond bleu mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vPhone,
@@ -1845,9 +1845,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
         keyPressKeyCode: ["s","e","c","ArrowDown","ArrowUp"]
     },
-    //Piv entête afficher recherche (ecrire sec puis fleche gauche deplace le curseur dans le texte)
+    //Piv entête afficher recherche (ecrire sec fleche gauche deplace curseur dans texte)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis fleche gauche deplace le curseur dans le texte)",
+        label: "Piv_entete avec barre recherche (ecrire sec fleche gauche deplace curseur dans texte)",
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vDesktopTablet,
@@ -1855,9 +1855,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
         keyPressKeyCode: ["s","e","c","ArrowLeft"]
     },
-    //Piv entête afficher recherche (ecrire sec puis fleche gauche deplace le curseur dans le texte mobile)
+    //Piv entête afficher recherche (ecrire sec fleche gauche deplace curseur dans texte mobile)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis fleche gauche deplace le curseur dans le texte mobile)", 
+        label: "Piv_entete avec barre recherche (ecrire sec fleche gauche deplace curseur dans texte mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vPhone,
@@ -1865,9 +1865,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
         keyPressKeyCode: ["s","e","c","ArrowLeft"]
     },
-    //Piv entête afficher recherche (ecrire sec puis fleche droite deplace le curseur dans le texte)
+    //Piv entête afficher recherche (ecrire sec fleche droite deplace curseur dans texte)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis fleche droite deplace le curseur dans le texte)", 
+        label: "Piv_entete avec barre recherche (ecrire sec fleche droite deplace curseur dans texte)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vDesktopTablet,
@@ -1875,9 +1875,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
         keyPressKeyCode: ["s","e","c","ArrowRight"]
     },
-    //Piv entête afficher recherche (ecrire sec puis fleche droite deplace le curseur dans le texte mobile)
+    //Piv entête afficher recherche (ecrire sec fleche droite deplace curseur dans texte mobile)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis fleche droite deplace le curseur dans le texte mobile)", 
+        label: "Piv_entete avec barre recherche (ecrire sec fleche droite deplace curseur dans texte mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vPhone,
@@ -1885,9 +1885,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
         keyPressKeyCode: ["s","e","c","ArrowRight"]
     },
-    //Piv entête afficher recherche (ecrire sec puis cinq fleche bas selection du premier resultat fond bleu)
+    //Piv entête afficher recherche (ecrire sec cinq fleche bas selection premier resultat fond bleu)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis cinq fleche bas selection du premier resultat fond bleu)", 
+        label: "Piv_entete avec barre recherche (ecrire sec cinq fleche bas selection premier resultat fond bleu)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vDesktopTablet,
@@ -1895,9 +1895,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
         keyPressKeyCode: ["s","e","c","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown"]
     },
-    //Piv entête afficher recherche (ecrire sec puis cinq fleche bas selection du premier resultat fond bleu mobile)
+    //Piv entête afficher recherche (ecrire sec cinq fleche bas selection premier resultat fond bleu mobile)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis cinq fleche bas selection du premier resultat fond bleu mobile)", 
+        label: "Piv_entete avec barre recherche (ecrire sec puis fleche bas selection premier resultat fond bleu mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vPhone,
@@ -1905,9 +1905,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
         keyPressKeyCode: ["s","e","c","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown"]
     },
-    //Piv entête afficher recherche (ecrire sec puis cinq fleche haut selection du dernier resultat fond bleu)
+    //Piv entête afficher recherche (ecrire sec cinq fleche haut selection dernier resultat fond bleu)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis cinq fleche haut selection du dernier resultat fond bleu)", 
+        label: "Piv_entete avec barre recherche (ecrire sec cinq fleche haut selection dernier resultat fond bleu)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vDesktopTablet,
@@ -1915,9 +1915,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
         keyPressKeyCode: ["s","e","c","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp"]
     },
-    //Piv entête afficher recherche (ecrire sec puis cinq fleche haut selection du dernier resultat fond bleu mobile)
+    //Piv entête afficher recherche (ecrire sec cinq fleche haut selection dernier resultat fond bleu mobile)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis cinq fleche haut selection du dernier resultat fond bleu mobile)", 
+        label: "Piv_entete avec barre recherche (ecrire sec cinq fleche haut selection dernier resultat fond bleu mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vPhone,
@@ -1925,9 +1925,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
         keyPressKeyCode: ["s","e","c","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp"]
     },
-    //Piv entête afficher recherche (ecrire sec puis Home deplace le curseur au debut du texte)
+    //Piv entête afficher recherche (ecrire sec Home deplace curseur au debut du texte)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis Home deplace le curseur au debut du texte)", 
+        label: "Piv_entete avec barre recherche (ecrire sec Home deplace curseur au debut du texte)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vTablet,
@@ -1935,9 +1935,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
         keyPressKeyCode: ["s","e","c","Home"]
     },
-    //Piv entête afficher recherche (ecrire sec puis Home deplace le curseur au debut du texte mobile)
+    //Piv entête afficher recherche (ecrire sec Home deplace curseur au debut texte mobile)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis Home deplace le curseur au debut du texte mobile)", 
+        label: "Piv_entete avec barre recherche (ecrire sec Home deplace curseur au debut texte mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vPhone,
@@ -1945,9 +1945,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
         keyPressKeyCode: ["s","e","c","Home"]
     },
-    //Piv entête afficher recherche (ecrire sec puis End deplace le curseur a la fin du texte)
+    //Piv entête afficher recherche (ecrire sec End deplace curseur a la fin texte)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis End deplace le curseur a la fin du texte)", 
+        label: "Piv_entete avec barre recherche (ecrire sec End deplace curseur a la fin texte)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vTablet,
@@ -1955,9 +1955,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
         keyPressKeyCode: ["s","e","c","End"]
     },
-    //Piv entête afficher recherche (ecrire sec puis End deplace le curseur a la fin du texte mobile)
+    //Piv entête afficher recherche (ecrire sec End deplace curseur a la fin texte mobile)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis End deplace le curseur a la fin du texte mobile)", 
+        label: "Piv_entete avec barre recherche (ecrire sec End deplace curseur a la fin texte mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vPhone,
