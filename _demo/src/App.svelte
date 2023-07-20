@@ -34,6 +34,7 @@
   import PointsSuspension from './pages/PointsSuspension.svelte';
   import BarreRecherche from './pages/BarreRecherche.svelte';
 
+    const estTestBackstopJsEnCours = window.location.hash.indexOf('bs-test') >= 0
 
     onMount(() => {  
         document.getElementById('pivEntete').addEventListener("clickLien", () => {       
@@ -46,10 +47,14 @@
     function chargerContenuRecherche() {
 
         document.querySelector("utd-piv-entete").addEventListener("initialiserRecherche", e => {
-
+        
+            //Ne pas considérer cette ligne, élément interne au site démo UTD
+            //TODO Lawrence remplacer l'url dans le else pour url de notre fichier de contenu de recherche complet
+            const urlContenuRecherche = estTestBackstopJsEnCours ? '/testsLocaux/recherche2Niveaux.json' : '/testsLocaux/recherche3Niveaux.json'
+            
             //Ici votre code pour obtenir le contenu de recherche
             setTimeout(() => {
-                fetch('/testsLocaux/recherche2Niveaux.json')
+                fetch(urlContenuRecherche)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error("HTTP error " + response.status)
@@ -58,8 +63,7 @@
                         //Appel à la méthode permettant de définir le contenu de recherche
                         e.detail.definirContenuRecherche({contenu: monContenuRecherche})                    
                     })
-            })                    
-                
+                })                                    
             });
         })
     }
