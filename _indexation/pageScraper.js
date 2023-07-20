@@ -4,8 +4,8 @@ const scraperObject = {
 	urlComposants: '/composants/versions',
 	
 	async scraper(browser){
-		let page = await browser.newPage();
-		let donneesExtraites = [];
+		const page = await browser.newPage();
+		const donneesExtraites = [];
 		
 		/**
 		 * Fonction permettant de recuprer le contenu textuel d'un page web
@@ -18,7 +18,7 @@ const scraperObject = {
 			// On attend que le DOM soit rendered
 			await currentPage.waitForSelector('#main');
 			await pauseTraitement(1000);
-			let texte = await currentPage.$$eval('#main', links => {
+			const texte = await currentPage.$$eval('#main', links => {
 				links = links.map(el => el.innerText)
 				return links;
 			});
@@ -34,19 +34,24 @@ const scraperObject = {
 		 */
 		async function extraireNiveaux(selecteurNiveau1, selecteurNiveau2){
 			const extraction = await page.evaluate((selecteurNiveau1, selecteurNiveau2) => {
-				let niveau1 = document.querySelectorAll(selecteurNiveau1);
-				let listeRetour = [];
+				const niveau1 = document.querySelectorAll(selecteurNiveau1);
+				const listeRetour = [];
+
 				for(i = 0; i < niveau1.length; i++){
-					if(niveau1.item(i).contains(niveau1.item(i).querySelector(selecteurNiveau2))){
+					const niveau1Courant = niveau1.item(i);
+					
+					if(niveau1Courant.querySelector(selecteurNiveau2)){
 						//On a des enfants, on va les chercher
-						let niveau2 = niveau1.item(i).querySelectorAll(selecteurNiveau2);
+						const niveau2 = niveau1Courant.querySelectorAll(selecteurNiveau2);
+
 						for(j = 0; j < niveau2.length; j++){
+							const niveau2Courant = niveau2.item(j);
 							//url - categorie - resultat
-							listeRetour.push([niveau2.item(j).getAttribute("href"), niveau1.item(i).getAttribute("libelle"), niveau2.item(j).getAttribute("libelle")]);
+							listeRetour.push([niveau2Courant.getAttribute("href"), niveau1Courant.getAttribute("libelle"), niveau2Courant.getAttribute("libelle")]);
 						}
 					}else{
 						//c est aussi r
-						listeRetour.push([niveau1.item(i).getAttribute("href"), niveau1.item(i).getAttribute("libelle"), niveau1.item(i).getAttribute("libelle")]);
+						listeRetour.push([niveau1Courant.getAttribute("href"), niveau1Courant.getAttribute("libelle"), niveau1Courant.getAttribute("libelle")]);
 					}
 				}
 				return listeRetour;
@@ -63,17 +68,21 @@ const scraperObject = {
 			await page.goto(`${urlMain + refPage}`);
 			await page.waitForSelector('#main');
 			await pauseTraitement(1000);
+
 			//On cherche le liens vers toute les pages, ainsi que leur categorie et resultat
-			let urls = await extraireNiveaux("utd-menu-vertical > utd-menu-vertical-item","utd-menu-vertical-item");
+			const urls = await extraireNiveaux("utd-menu-vertical > utd-menu-vertical-item","utd-menu-vertical-item");
 			await pauseTraitement(1000);
+
 			//On cherche le contenu de toute les pages
 			for(i = 0; i < urls.length; i++){
-				if(urls[i][0] !== null){
+				const urlActuel = urls[i];
+				if(urlActuel[0] !== null){
+					
 					//On a bien l'url (Sinon on a juste une categorie)
-					let urlPage = urlMain + urls[i][0];
+					const urlPage = urlMain + urlActuel[0];
 					console.log(`Navigation vers ${urlPage}...`);
 					await page.goto(`${urlPage}`);
-					await scrapCurrentPage(page, urls[i][1], urls[i][2], urlPage);
+					await scrapCurrentPage(page, urlActuel[1], urlActuel[2], urlPage);
 				}
 			}
 		}
