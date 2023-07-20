@@ -85,6 +85,7 @@ scenarios : [
         label: "Barre_recherche (Base)", 
         url: "/composants/actions/barrerecherche"
     },
+    //Barre de recherche (1b ecrire sec, 3 resultats max)
 
     //Boutons
     {
@@ -218,7 +219,7 @@ scenarios : [
     {
         label: "Cases à cocher seule (Focus sur normal) (checkbox)", 
         url: "/composants/formulaire/casecocher",
-        viewports: viewports.vPhone,
+        viewports: viewports.vPhone,UTD_Piv_entete_avec_barre_recherche_ecrire_sec_puis_double_escape_ferme_les_resultats_de_recherche_et_ne_laisse_pas_sec_dans_le_champ_0_viewport_0_tablet.png
         selectors: ["#exemple5"],
         focusSelectors: ["#exemple5 input"]
     },
@@ -1618,9 +1619,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
         keyPressKeyCode: ["s","e","c","Escape"]
     },
-    //Piv entête afficher recherche (ecrire sec puis double escape ferme les resultats de recherche et ne laisse pas sec dans le champ)
+    //Piv entête afficher recherche (sec puis double escape ferme resultats de recherche et laisse pas sec dans le champ)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis double escape ferme les resultats de recherche et ne laisse pas sec dans le champ)", 
+        label: "Piv_entete avec barre recherche (sec puis double escape ferme resultats de recherche et laisse pas sec dans le champ)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vTablet,
@@ -1628,9 +1629,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
         keyPressKeyCode: ["s","e","c","Escape","Escape"]
     },
-    //Piv entête afficher recherche (ecrire sec puis double escape ferme les resultats de recherche et ne laisse pas sec dans le champ mobile)
+    //Piv entête afficher recherche (sec puis double escape ferme resultats de recherche et laisse pas sec dans le champ mobile)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis double escape ferme les resultats de recherche et ne laisse pas sec dans le champ mobile)", 
+        label: "Piv_entete avec barre recherche (sec puis double escape ferme resultats de recherche et laisse pas sec dans le champ mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vPhone,
