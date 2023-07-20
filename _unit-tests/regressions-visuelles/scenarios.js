@@ -85,7 +85,6 @@ scenarios : [
         label: "Barre_recherche (Base)", 
         url: "/composants/actions/barrerecherche"
     },
-    //Barre de recherche (1b ecrire sec, 3 resultats max)
 
     //Boutons
     {
@@ -1965,7 +1964,67 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
         keyPressKeyCode: ["s","e","c","End"]
     },
-    //TODO ajouter test Piv entête afficher recherche nombre maximal atteint
+    //Piv entête afficher recherche (ecrire sec max 3 resultat) TODO changer url
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec max 3 resultat)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c"]
+    },
+    //Piv entête afficher recherche (ecrire sec max 3 resultat mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec max 3 resultat mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c"]
+    },
+    //Piv entête afficher recherche (ecrire sec max 3 resultat 4 fleche bas selection msg erreur)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec max 3 resultat 4 fleche bas selection msg erreur)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c","ArrowDown","ArrowDown","ArrowDown","ArrowDown"]
+    },
+    //Piv entête afficher recherche (ecrire sec max 3 resultat 4 fleche bas selection msg erreur mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec max 3 resultat 4 fleche bas selection msg erreur mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c","ArrowDown","ArrowDown","ArrowDown","ArrowDown"]
+    },
+    //Piv entête afficher recherche (ecrire sec max 3 resultat fleche haut selection msg erreur)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec max 3 resultat fleche haut selection msg erreur)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c","ArrowUp"]
+    },
+    //Piv entête afficher recherche (ecrire sec max 3 resultat fleche haut selection msg erreur mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec max 3 resultat fleche haut selection msg erreur mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c","ArrowUp"]
+    },
+
     //Piv pied page (Base)
     {
         label: "Piv_pied_page (Base)", 
