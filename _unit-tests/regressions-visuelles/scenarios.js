@@ -1884,45 +1884,45 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
         keyPressKeyCode: ["s","e","c","ArrowRight"]
     },
-    //Piv entête afficher recherche (ecrire sec cinq fleche bas selection premier resultat fond bleu)
+    //Piv entête afficher recherche (ecrire sec douze fleche bas selection premier resultat fond bleu)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec cinq fleche bas selection premier resultat fond bleu)", 
+        label: "Piv_entete avec barre recherche (ecrire sec douze fleche bas selection premier resultat fond bleu)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vDesktopTablet,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
-        keyPressKeyCode: ["s","e","c","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown"]
+        keyPressKeyCode: ["s","e","c","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown"]
     },
-    //Piv entête afficher recherche (ecrire sec cinq fleche bas selection premier resultat fond bleu mobile)
+    //Piv entête afficher recherche (ecrire sec douze fleche bas selection premier resultat fond bleu mobile)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec puis fleche bas selection premier resultat fond bleu mobile)", 
+        label: "Piv_entete avec barre recherche (ecrire sec douze fleche bas selection premier resultat fond bleu mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vPhone,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
-        keyPressKeyCode: ["s","e","c","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown"]
+        keyPressKeyCode: ["s","e","c","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown"]
     },
-    //Piv entête afficher recherche (ecrire sec cinq fleche haut selection dernier resultat fond bleu)
+    //Piv entête afficher recherche (ecrire sec douze fleche haut selection dernier resultat fond bleu)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec cinq fleche haut selection dernier resultat fond bleu)", 
+        label: "Piv_entete avec barre recherche (ecrire sec douze fleche haut selection dernier resultat fond bleu)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vDesktopTablet,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
-        keyPressKeyCode: ["s","e","c","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp"]
+        keyPressKeyCode: ["s","e","c","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp"]
     },
-    //Piv entête afficher recherche (ecrire sec cinq fleche haut selection dernier resultat fond bleu mobile)
+    //Piv entête afficher recherche (ecrire sec douze fleche haut selection dernier resultat fond bleu mobile)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec cinq fleche haut selection dernier resultat fond bleu mobile)", 
+        label: "Piv_entete avec barre recherche (ecrire sec douze fleche haut selection dernier resultat fond bleu mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vPhone,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
-        keyPressKeyCode: ["s","e","c","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp"]
+        keyPressKeyCode: ["s","e","c","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp"]
     },
     //Piv entête afficher recherche (ecrire sec Home deplace curseur au debut du texte)
     {
@@ -1964,65 +1964,65 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
         keyPressKeyCode: ["s","e","c","End"]
     },
-    //Piv entête afficher recherche (ecrire sec max 3 resultat) TODO changer url
+    //Piv entête afficher recherche (ecrire con max 10 resultat)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec max 3 resultat)", 
+        label: "Piv_entete avec barre recherche (ecrire con max 10 resultat)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vTablet,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
-        keyPressKeyCode: ["s","e","c"]
+        keyPressKeyCode: ["c","o","n"]
     },
-    //Piv entête afficher recherche (ecrire sec max 3 resultat mobile)
+    //Piv entête afficher recherche (ecrire con max 10 resultat mobile)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec max 3 resultat mobile)", 
+        label: "Piv_entete avec barre recherche (ecrire con max 10 resultat mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vPhone,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
-        keyPressKeyCode: ["s","e","c"]
+        keyPressKeyCode: ["c","o","n"]
     },
-    //Piv entête afficher recherche (ecrire sec max 3 resultat 4 fleche bas selection msg erreur)
+    //Piv entête afficher recherche (ecrire con max 10 resultat 11 fleche bas selection msg erreur)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec max 3 resultat 4 fleche bas selection msg erreur)", 
+        label: "Piv_entete avec barre recherche (ecrire con max 10 resultat 11 fleche bas selection msg erreur)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vTablet,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
-        keyPressKeyCode: ["s","e","c","ArrowDown","ArrowDown","ArrowDown","ArrowDown"]
+        keyPressKeyCode: ["c","o","n","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown"]
     },
-    //Piv entête afficher recherche (ecrire sec max 3 resultat 4 fleche bas selection msg erreur mobile)
+    //Piv entête afficher recherche (ecrire con max 10 resultat 11 fleche bas selection msg erreur mobile)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec max 3 resultat 4 fleche bas selection msg erreur mobile)", 
+        label: "Piv_entete avec barre recherche (ecrire con max 10 resultat 11 fleche bas selection msg erreur mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vPhone,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
-        keyPressKeyCode: ["s","e","c","ArrowDown","ArrowDown","ArrowDown","ArrowDown"]
+        keyPressKeyCode: ["c","o","n","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown"]
     },
-    //Piv entête afficher recherche (ecrire sec max 3 resultat fleche haut selection msg erreur)
+    //Piv entête afficher recherche (ecrire con max 10 resultat fleche haut selection msg erreur)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec max 3 resultat fleche haut selection msg erreur)", 
+        label: "Piv_entete avec barre recherche (ecrire con max 10 resultat fleche haut selection msg erreur)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vTablet,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
-        keyPressKeyCode: ["s","e","c","ArrowUp"]
+        keyPressKeyCode: ["c","o","n","ArrowUp"]
     },
-    //Piv entête afficher recherche (ecrire sec max 3 resultat fleche haut selection msg erreur mobile)
+    //Piv entête afficher recherche (ecrire con max 10 resultat fleche haut selection msg erreur mobile)
     {
-        label: "Piv_entete avec barre recherche (ecrire sec max 3 resultat fleche haut selection msg erreur mobile)", 
+        label: "Piv_entete avec barre recherche (ecrire con max 10 resultat fleche haut selection msg erreur mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vPhone,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
-        keyPressKeyCode: ["s","e","c","ArrowUp"]
+        keyPressKeyCode: ["c","o","n","ArrowUp"]
     },
 
     //Piv pied page (Base)
