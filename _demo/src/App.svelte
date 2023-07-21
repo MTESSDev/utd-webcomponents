@@ -49,8 +49,7 @@
         document.querySelector("utd-piv-entete").addEventListener("initialiserRecherche", e => {
         
             //Ne pas considérer cette ligne, élément interne au site démo UTD
-            //TODO Lawrence remplacer l'url dans le else pour url de notre fichier de contenu de recherche complet
-            const urlContenuRecherche = estTestBackstopJsEnCours ? '/testsLocaux/recherche2Niveaux.json' : '/testsLocaux/recherche3Niveaux.json'
+            const urlContenuRecherche = estTestBackstopJsEnCours ? '/testsLocaux/donneesSiteRecupereesStatic.json' : '/donneesSiteRecuperees.json'
             
             //Ici votre code pour obtenir le contenu de recherche
             setTimeout(() => {

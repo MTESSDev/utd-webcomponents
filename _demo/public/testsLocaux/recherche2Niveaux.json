@@ -47,5 +47,5 @@
         "h": "#revision",
         "t": "1- personnalisation du texte affiche avant les boutons \"valider\" et \"soumettre\" la personnalisation de ces textes peut etre effectuee dans le fichier de configuration d'un formulaire, plus precisement dans la section \"revision\". Il est important de ne rien modifier d'autre que les elements \"text\" des deux components de type \"dynamic\" de cette section. Dans l'image qui suit, les blocs en jaune sont des exemples de cette personnalisation. 2- validation automatique il est possible d'executer immediatement la validation des que la page revision est accedee. Le bouton \"valider\" et le texte de la page ne sont alors pas affiches et la validation s'effectue comme si l'utilisateur avait clique le bouton \"valider\". Utile lorsqu'aucune consigne particuliere ne doit etre affichee avant la validation. 3- personnalisation du texte du bouton \"soumettre\" la personnalisation de ce texte peut etre effectuee dans le fichier de configuration d'un formulaire, plus precisement dans la section \"soumission\". Voici un exemple dans un contexte de formulaire d'aiguillage :",    
         "mc": ""
-    }    
+    }
 ]
