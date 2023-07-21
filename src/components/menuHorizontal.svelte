@@ -39,8 +39,7 @@
   //TODO éventuellement ajouter un event pour forcer la redéfinition des éléments actifs
 
   //ajouterElementsMenuAuMenuOriginal(menuOriginal, thisComponent)
-
-
+ 
   onMount(() => {      
 
     estTestBackstopJsEnCours = window.location.hash.indexOf('bs-test') >= 0
@@ -235,6 +234,7 @@
     for (let i = dernierIndexeVisible + 1; i < thisComponent.children.length; i++) {
 
       const cln = thisComponent.children[i].cloneNode(true);
+
       cln.setAttribute('est-menu-plus', 'true')
 
       if(estMenuBurger) {
