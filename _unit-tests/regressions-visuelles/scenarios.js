@@ -321,7 +321,7 @@ scenarios : [
         selectors: ["viewport"],
         viewports: viewports.vTablet,
         removeSelectors: [".no-test"],  
-        clickSelectors: ["#btnTest1", "#btnVotreAvis"]
+        clickSelectors: ["#btnTest1", "#btnTest3"]
     },    
     //Dialogue modal (Fermeture via escape)
     {
