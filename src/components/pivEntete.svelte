@@ -33,11 +33,14 @@ let slots = []
 let mounted = false
 let estZoneRechercheVisible = false
 let focusControleRecherche = false
+let estAffichagePleineLargeur = false
 
 
 onMount(() => {  
   slots = Array.from(thisComponent.querySelectorAll('[slot]'))    
   
+  estAffichagePleineLargeur = document.getElementsByTagName('body')[0].classList.contains('utd-pleine-largeur')
+
   mounted = true
   
   if(afficherRecherche === 'true') {
@@ -84,7 +87,7 @@ function clickToggleRecherche(){
   </div>
 {/if}
 
-<div class="utd-piv-entete" class:utd-d-none={!mounted}>
+<div class="utd-piv-entete{!mounted ? ' utd-d-none' : ''}{estAffichagePleineLargeur ? ' utd-pleine-largeur': ''}">
   <div class="utd-container">
     <div class="conteneur-sections">
       <div class="section-gauche signature-gouvernement">

@@ -1312,11 +1312,19 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
     .utd-container {
         max-width: 1152px;
     }
+
+    .utd-pleine-largeur .utd-container, .utd-container.utd-pleine-largeur {
+        max-width: 100%;
+    }
 }
 
 @media (min-width: 1200px) {
     .utd-container {
         max-width: 1152px;
+    }
+
+    .utd-pleine-largeur .utd-container .utd-container.utd-pleine-largeur {
+        max-width: 100%;
     }
 }
 

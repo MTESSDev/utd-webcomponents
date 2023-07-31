@@ -23,19 +23,20 @@ export let urlCopyright = languePage === 'fr' ? 'https://www.quebec.ca/droit-aut
 export let texteSrOuvertureNouvelOnglet = textesDefaut.texteSrOuvertureNouvelOnglet
 
 const thisComponent = get_current_component()
-
+let estAffichagePleineLargeur = false
 
 let slots = []
 
 onMount(() => {  
-  slots = Array.from(thisComponent.querySelectorAll('[slot]'))    
+  slots = Array.from(thisComponent.querySelectorAll('[slot]'))   
+  estAffichagePleineLargeur = document.getElementsByTagName('body')[0].classList.contains('utd-pleine-largeur') 
   Utils.reafficherApresChargement(thisComponent)
 })
 
 
 </script>
 
-<div class="utd-container utd-piv-pied-page">
+<div class="utd-container utd-piv-pied-page{estAffichagePleineLargeur ? ' utd-pleine-largeur': ''}">
   
   {#if Utils.slotExiste(slots, 'liens')}
   <div class="liens">
