@@ -1658,6 +1658,26 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
         keyPressKeyCode: ["s","e","c","Tab"]
     },
+    //Piv entête afficher recherche (ecrire cont affiche resultat)
+    {
+        label: "Piv_entete avec barre recherche (ecrire cont affiche resultat)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["c","o","n","t"]
+    },
+    //Piv entête afficher recherche (ecrire cont affiche resultat mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire cont affiche resultat mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["c","o","n","t"]
+    },
     //Piv entête afficher recherche (ecrire ahm affiche Aucun resultat)
     {
         label: "Piv_entete avec barre recherche (ecrire ahm affiche Aucun resultat)", 
