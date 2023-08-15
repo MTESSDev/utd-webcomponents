@@ -83,11 +83,15 @@
     &.erreur-blanc {
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-erreur-blanc");
     }
-    
+
+    &.fleche-droite-cercle-bleu {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-fleche-droite-cercle-bleu");
+    }
+
     &.fleche-haut-blanche {
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-fleche-haut-blanche");
     }
-    
+
     &.information {
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-information");
     }
@@ -95,7 +99,11 @@
     &.information-blanc {
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-information-blanc");
     }
-    
+
+    &.loupe-blanche {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-loupe-piv-droite");
+    }    
+
     &.maison {
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-maison");
     }    

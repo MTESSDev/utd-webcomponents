@@ -145,7 +145,6 @@ function initialiserRecherche() {
   }
 }
 
-
 function obtenirContenuRechercheViaUrl () {   
    return fetch(urlContenuRecherche)
     .then(response => {
@@ -183,20 +182,18 @@ function rechercher(doitNotifierLecteurEcran) {
     
     if(retourMiniSearch.length > nombreMaxResultats) {
       retourMiniSearch.length = nombreMaxResultats
-      
-      //Deep copy, on veut un nouvel objet, pas une référence à celui copié
-      retourMiniSearch.push(JSON.parse(JSON.stringify(retourMiniSearch[nombreMaxResultats - 1])))
-
-      retourMiniSearch[nombreMaxResultats].r = "MessagePrecisionRecherche"
-      retourMiniSearch[nombreMaxResultats].id = Utils.genererId()
-
       doitAfficherMessagePreciserRecherche = true
     } 
 
     const resultats = obtenirResultatsGroupes(retourMiniSearch)
-    
+
+    if(doitAfficherMessagePreciserRecherche) {
+      ajouterMessagePrecisionRecherche(resultats)
+    }
+
     applatirResultatRecherche(resultats)
-    resultatsRecherche = resultats
+
+    resultatsRecherche = resultats 
 
     if(doitNotifierLecteurEcran){
       if(resultatsRecherche.length === 0){
@@ -210,9 +207,34 @@ function rechercher(doitNotifierLecteurEcran) {
     resultatsRecherche = null
   }
 
-
   //Vérifier si scrollbar visible ou non (servira a ajouter une marge de droite afin que la scrollbar ne soit pas collée sur la bordure du contrôle)
   //definirPresenceScrollbarResultats()
+}
+
+function ajouterMessagePrecisionRecherche(resultats) {
+
+  let parent = resultats
+
+  if(nbNiveaux === 1){
+    parent = resultats
+  } else if(nbNiveaux === 2) {    
+    parent = resultats[resultats.length - 1].values
+  } else {
+    // 3 niveaux
+    parent = resultats[resultats.length - 1].values
+    parent = parent[parent.length - 1].values
+  }
+
+  //Deep copy, on veut un nouvel objet, pas une référence à celui copié
+    parent.push(JSON.parse(JSON.stringify(parent[parent.length - 1])))
+
+    parent[parent.length - 1].r = "MessagePrecisionRecherche"
+    parent[parent.length - 1].id = Utils.genererId()
+    parent[parent.length - 1].i = nombreMaxResultats
+    parent[parent.length - 1].t = ''
+    parent[parent.length - 1].h = ''
+    parent[parent.length - 1].match = {}
+    parent[parent.length - 1].terms = {}
 }
 
 function obtenirResultatsGroupes(retourMiniSearch) {
