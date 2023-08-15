@@ -1678,6 +1678,46 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
         keyPressKeyCode: ["c","o","n","t"]
     },
+    //Piv entête afficher recherche (ecrire séct affiche resultat sect)
+    {
+        label: "Piv_entete avec barre recherche (ecrire séct affiche resultat sect)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","é","c","t"]
+    },
+    //Piv entête afficher recherche (ecrire séct affiche resultat sect mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire séct affiche resultat sect mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","é","c","t"]
+    },
+    //Piv entête afficher recherche (ecrire *c/on% affiche resultat con)
+    {
+        label: "Piv_entete avec barre recherche (ecrire *c/on% affiche resultat con)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["*","c","/","o","n","%"]
+    },
+    //Piv entête afficher recherche (ecrire *c/on% affiche resultat con mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire *c/on% affiche resultat con mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["*","c","/","o","n","%"]
+    },
     //Piv entête afficher recherche (ecrire ahm affiche Aucun resultat)
     {
         label: "Piv_entete avec barre recherche (ecrire ahm affiche Aucun resultat)", 
