@@ -1680,23 +1680,23 @@ scenarios : [
     },
     //Piv entête afficher recherche (ecrire séct affiche resultat sect)
     {
-        label: "Piv_entete avec barre recherche (ecrire séct affiche resultat sect)", 
+        label: "Piv_entete avec barre recherche (ecrire s\xE9ct affiche resultat sect)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vDesktopTablet,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
-        keyPressKeyCode: ["s","é","c","t"]
+        keyPressKeyCode: ["s","\xE9","c","t"]
     },
     //Piv entête afficher recherche (ecrire séct affiche resultat sect mobile)
     {
-        label: "Piv_entete avec barre recherche (ecrire séct affiche resultat sect mobile)", 
+        label: "Piv_entete avec barre recherche (ecrire s\xE9ct affiche resultat sect mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vPhone,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
-        keyPressKeyCode: ["s","é","c","t"]
+        keyPressKeyCode: ["s","\xE9","c","t"]
     },
     //Piv entête afficher recherche (ecrire *c/on% affiche resultat con)
     {
