@@ -1686,7 +1686,7 @@ scenarios : [
         viewports: viewports.vDesktopTablet,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
-        keyPressKeyCode: ["s","\xE9","c","t"]
+        textInput: ["séct"]
     },
     //Piv entête afficher recherche (ecrire séct affiche resultat sect mobile)
     {
@@ -1696,7 +1696,7 @@ scenarios : [
         viewports: viewports.vPhone,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
-        keyPressKeyCode: ["s","\xE9","c","t"]
+        textInput: ["séct"]
     },
     //Piv entête afficher recherche (ecrire *c/on% affiche resultat con)
     {
