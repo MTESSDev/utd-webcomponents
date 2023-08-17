@@ -881,7 +881,7 @@ scenarios : [
         url: "/composants/formulaire/listederoulante",
         viewports: viewports.vTablet,
         shadowClickSelectors: [{domSelector: "#exemple4 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
-        keyPressKeyCode: ["F","l","o","r","i","d","e"],
+        textInput: ["Floride"],
         shadowHoverSelectors2: [{domSelector: "#exemple4 utd-liste-deroulante", shadowDomSelector: ".utd-precision"}]
     },
     //Liste déroulante (Combine multiple ouverte ecrire Floride)        
@@ -890,7 +890,7 @@ scenarios : [
         url: "/composants/formulaire/listederoulante",
         viewports: viewports.vTablet,
         shadowClickSelectors: [{domSelector: "#exemple5 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
-        keyPressKeyCode: ["F","l","o","r","i","d","e"],
+        textInput: ["Floride"],
         shadowHoverSelectors2: [{domSelector: "#exemple5 utd-liste-deroulante", shadowDomSelector: ".utd-precision"}]
     },
     //Liste déroulante (Combine multiple recherche precise ouverte ecrire Floride)        
@@ -899,7 +899,7 @@ scenarios : [
         url: "/composants/formulaire/listederoulante",
         viewports: viewports.vTablet,
         shadowClickSelectors: [{domSelector: "#exemple6 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
-        keyPressKeyCode: ["F","l","o","r","i","d","e"],
+        textInput: ["Floride"],
         shadowHoverSelectors2: [{domSelector: "#exemple6 utd-liste-deroulante", shadowDomSelector: ".utd-precision"}]
     },
 
@@ -1544,7 +1544,7 @@ scenarios : [
         viewports: viewports.vDesktopTablet,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
-        keyPressKeyCode: ["s","e"]
+        textInput: ["se"]
     },
     //Piv entête afficher recherche (ecrire se aucune recherche executee mobile)
     {
@@ -1554,7 +1554,7 @@ scenarios : [
         viewports: viewports.vPhone,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
-        keyPressKeyCode: ["s","e"]
+        textInput: ["se"]
     },
     //Piv entête afficher recherche (ecrire sec trouve des resultats)
     {
@@ -1564,7 +1564,7 @@ scenarios : [
         viewports: viewports.vTablet,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
-        keyPressKeyCode: ["s","e","c"]
+        textInput: ["sec"]
     },
     //Piv entête afficher recherche (ecrire sec trouve des resultats mobile)
     {
@@ -1574,7 +1574,7 @@ scenarios : [
         viewports: viewports.vPhone,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
-        keyPressKeyCode: ["s","e","c"]
+        textInput: ["sec"]
     },
     //Piv entête afficher recherche (ecrire sec body ferme resultats recherche et laisse sec dans champ)
     {
@@ -1584,7 +1584,7 @@ scenarios : [
         viewports: viewports.vDesktopTablet,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
-        keyPressKeyCode: ["s","e","c"],
+        textInput: ["sec"],
         shadowClickSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"}]
     },
     //Piv entête afficher recherche (ecrire sec body ferme resultats recherche et laisse sec dans champ mobile)
@@ -1595,7 +1595,7 @@ scenarios : [
         viewports: viewports.vPhone,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
-        keyPressKeyCode: ["s","e","c"],
+        textInput: ["sec"],
         shadowClickSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"}]
     },
     //Piv entête afficher recherche (ecrire sec escape ferme resultats recherche et laisse sec dans champ)
@@ -1666,7 +1666,7 @@ scenarios : [
         viewports: viewports.vDesktopTablet,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
-        keyPressKeyCode: ["c","o","n","t"]
+        textInput: ["cont"]
     },
     //Piv entête afficher recherche (ecrire cont affiche resultat mobile)
     {
@@ -1676,11 +1676,11 @@ scenarios : [
         viewports: viewports.vPhone,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
-        keyPressKeyCode: ["c","o","n","t"]
+        textInput: ["cont"]
     },
-    //Piv entête afficher recherche (ecrire séct affiche resultat sect)
+    //Piv entête afficher recherche (ecrire sect accent affiche resultat sect)
     {
-        label: "Piv_entete avec barre recherche (ecrire s\xE9ct affiche resultat sect)", 
+        label: "Piv_entete avec barre recherche (ecrire sect accent affiche resultat sect)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vDesktopTablet,
@@ -1688,9 +1688,9 @@ scenarios : [
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
         textInput: ["séct"]
     },
-    //Piv entête afficher recherche (ecrire séct affiche resultat sect mobile)
+    //Piv entête afficher recherche (ecrire sect accent affiche resultat sect mobile)
     {
-        label: "Piv_entete avec barre recherche (ecrire s\xE9ct affiche resultat sect mobile)", 
+        label: "Piv_entete avec barre recherche (ecrire sect accent affiche resultat sect mobile)", 
         url: "/composants/entetepiedpage/piventete",
         selectors: ["viewport"],
         viewports: viewports.vPhone,
@@ -1706,7 +1706,7 @@ scenarios : [
         viewports: viewports.vDesktopTablet,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
-        keyPressKeyCode: ["*","c","/","o","n","%"]
+        textInput: ["*c/on%"]
     },
     //Piv entête afficher recherche (ecrire *c/on% affiche resultat con mobile)
     {
@@ -1716,7 +1716,7 @@ scenarios : [
         viewports: viewports.vPhone,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
-        keyPressKeyCode: ["*","c","/","o","n","%"]
+        textInput: ["*c/on%"]
     },
     //Piv entête afficher recherche (ecrire ahm affiche Aucun resultat)
     {
@@ -1726,7 +1726,7 @@ scenarios : [
         viewports: viewports.vDesktopTablet,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
-        keyPressKeyCode: ["a","h","m"]
+        textInput: ["ahm"]
     },
     //Piv entête afficher recherche (ecrire ahm affiche Aucun resultat mobile)
     {
@@ -1736,7 +1736,7 @@ scenarios : [
         viewports: viewports.vPhone,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
-        keyPressKeyCode: ["a","h","m"]
+        textInput: ["ahm"]
     },
     //Piv entête afficher recherche (ecrire sec clic X reset le champ)
     {
@@ -1746,7 +1746,7 @@ scenarios : [
         viewports: viewports.vDesktopTablet,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
-        keyPressKeyCode: ["s","e","c"],
+        textInput: ["sec"],
         shadowClickSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".reinitialiser-recherche"}]
     },
     //Piv entête afficher recherche (ecrire sec puis clic X reset le champ mobile)
@@ -1757,7 +1757,7 @@ scenarios : [
         viewports: viewports.vPhone,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
-        keyPressKeyCode: ["s","e","c"],
+        textInput: ["sec"],
         shadowClickSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".reinitialiser-recherche"}]
     },
     //Piv entête afficher recherche (ecrire sec hover resultat souligne et met fond bleu)
@@ -1768,7 +1768,7 @@ scenarios : [
         viewports: viewports.vDesktopTablet,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
-        keyPressKeyCode: ["s","e","c"],
+        textInput: ["sec"],
         shadowHoverSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".lien-resultat"}]
     },
     //Piv entête afficher recherche (ecrire sec hover resultat souligne et met fond bleu mobile)
@@ -1779,7 +1779,7 @@ scenarios : [
         viewports: viewports.vPhone,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
-        keyPressKeyCode: ["s","e","c"],
+        textInput: ["sec"],
         shadowHoverSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".lien-resultat"}]
     },
     //Piv entête afficher recherche (ecrire sec hover resultat hover body resultat pas souligne mais fond bleu)
@@ -1790,7 +1790,7 @@ scenarios : [
         viewports: viewports.vDesktopTablet,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
-        keyPressKeyCode: ["s","e","c"],
+        textInput: ["sec"],
         shadowHoverSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".lien-resultat"},{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"}]
     },
     //Piv entête afficher recherche (ecrire sec hover resultat hover body resultat pas souligne mais fond bleu mobile)
@@ -1801,7 +1801,7 @@ scenarios : [
         viewports: viewports.vPhone,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
-        keyPressKeyCode: ["s","e","c"],
+        textInput: ["sec"],
         shadowHoverSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".lien-resultat"},{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"}]
     },
     //Piv entête afficher recherche (ecrire sec fleche bas selection premier resultat et fond bleu dessus)
@@ -2032,7 +2032,7 @@ scenarios : [
         viewports: viewports.vTablet,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
-        keyPressKeyCode: ["c","o","n"]
+        textInput: ["con"]
     },
     //Piv entête afficher recherche (ecrire con max 10 resultat mobile)
     {
@@ -2042,7 +2042,7 @@ scenarios : [
         viewports: viewports.vPhone,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
-        keyPressKeyCode: ["c","o","n"]
+        textInput: ["con"]
     },
     //Piv entête afficher recherche (ecrire con max 10 resultat 11 fleche bas selection msg erreur)
     {
