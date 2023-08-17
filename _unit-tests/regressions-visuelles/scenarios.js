@@ -1686,7 +1686,7 @@ scenarios : [
         viewports: viewports.vDesktopTablet,
         removeSelectors: [".no-test"],
         shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
-        keyPressKeyCode: ["s","é","c","t"]
+        textInput: ["séct"]
     },
     //Piv entête afficher recherche (ecrire séct affiche resultat sect mobile)
     {
