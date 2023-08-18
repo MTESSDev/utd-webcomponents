@@ -35,46 +35,61 @@ utd-barre-recherche {
             &:not(:last-child) {
                 border-right-width: 0;                        
             }
-
-            &:focus:not([aria-activedescendant]) {
-                border-right-width: 2px;
+   
+            &:focus {
+                z-index: 999;
+                
+                &:not([aria-activedescendant]) {
+                    border-right-width: 2px;
+                }    
             }
-
         }
 
-        .reinitialiser-recherche {
+        .reinitialiser-recherche.utd-btn.secondaire {
             height: 40px;
             width: 40px;
             min-width: 40px;
             padding: 0;
             min-height: 40px;
-            background-color: #fff;
             border: 1px solid #808A9D;
-            border-left: 0;
+            border-left-width: 0;
             background-clip: padding-box;     
             display: flex;
             justify-content: center;
-            align-items: center;  
+            align-items: center;          
             
+            &:focus, &:hover  {
+                border-left-width: 1px;
+            }
+
+            &:focus, &:hover {
+                z-index: 999;
+            }
         }
+    
 
         &.contexte-piv {
             .utd-form-control {
-                border: 1px solid #000;
+                border: 1px solid #000;                
 
                 &:focus {
                     padding: 8px;
                 }
 
                 &:focus:not([aria-activedescendant]) {
-                    border: 2px solid #000;
+                    border: 2px solid #000; 
                     border-right-width: 2px;
                     padding: 7px;
                 }    
             }            
-            .reinitialiser-recherche {
+            .reinitialiser-recherche.utd-btn.secondaire {
                 border: 1px solid #000;
-                border-left: 0;
+                border-left-width: 0;
+
+                &:focus, &:hover  {
+                    border-left-width: 1px;
+                    background-color: var(--bleu-pale);
+                }
             }
         }
     }

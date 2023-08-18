@@ -91,16 +91,13 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     }
   }
 
-  function mouseDownConteneur(e) {
-    currentTargetMouseDown = e.currentTarget
-  }
-
-  function mouseUpModale(e) {
-    if(currentTargetMouseDown === null || e.target === currentTargetMouseDown) {
-      masquerModale('clickBackdrop')
+  // Si un clic a lieu a l'extérieur de la fenêtre modale, on annule tout, afin que le focus demeure dans la fenêtre modale.
+  // Sinon il était possible de cliquer à l'extérieur de la fenêtre, elle restait ouverte, mais notre fermeture avec ESC ne fonctionnait plus, jusqu'à ce que le focus revienne sur un contrôle à l'intérieur de la fenêtre modale.
+  function mouseDown(e) {
+    if(e.target === e.currentTarget){
+      e.preventDefault()
+      e.stopPropagation()      
     }
-
-    currentTargetMouseDown = null
   }
 
   function finAnimationFermeture(e) {
@@ -176,13 +173,13 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 </script>
 
 {#if estModaleAffichee}
-  <div class="utd-backdrop" />
+  <div class="utd-backdrop"/>
   <div 
     aria-labelledby={idEntete}
     aria-describedby={estfenetremessage === 'true' ? idCorps : null}
     class="utd-component utd-dialog{estfenetremessage === 'true' ? ' fenetre-message' : ''}{boutonsTexteLong === 'true' ? ' boutons-texte-long' : ''}{affichageLateral === 'true' ? ' affichage-lateral' : ''}{forcerBoutonsInline === 'true' ? ' boutons-inline' : ''}"
-    id={idModale}
-    on:mouseup={mouseUpModale}
+    id={idModale}    
+    on:mousedown={mouseDown}
     on:keydown={keydown}
     in:animationAffichageOuverture
     out:animationAffichageFermeture
@@ -193,7 +190,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     role="dialog"
   >
 
-  <div class="conteneur" on:mousedown={mouseDownConteneur}>      
+  <div class="conteneur">      
         <button
         type="button"
         class="close"

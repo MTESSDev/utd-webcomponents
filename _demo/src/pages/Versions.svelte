@@ -4,7 +4,7 @@
 <h1>Historique des versions récentes</h1>
 
 <utd-accordeon reduit="false">
-    <div slot="titre"><h2>1.13.0 (2023-07-??)</h2></div>       
+    <div slot="titre"><h2>1.13.0 (2023-08-??)</h2></div>       
     <h3>Correction d'anomalies</h3>
     <ul class="utd">
         <li><p>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/actions/dialogue">Dialogue modal</a>. Un clic initié à partir de la fenêtre modale ne ferme plus cette dernière si le bouton de la souris est relâché à l'extérieur de la fenêtre modale.</p>

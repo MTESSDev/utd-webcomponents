@@ -478,7 +478,7 @@ function mouseDownResultatsRecherche(e) {
   <div class="controle-recherche {contextePiv === 'true' ? ' contexte-piv' : ''}">
       <input id="{idControleRecherche}" type="text" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="{doitAfficherResultatsRecherche ? 'true' : 'false'}" aria-controls="{idControleResultats}" aria-activedescendant="{doitAfficherResultatsRecherche && idActiveDescendant ? idActiveDescendant : null}" placeholder="{placeholder}" aria-description="{ariaDescriptionRecherche}" on:input={traiterSaisieRecherche} class="utd-form-control xxl texte-recherche" on:keydown={onKeyDownRecherche} on:blur={onBlurRecherche}>
       {#if (texteRecherche !== '' && texteRecherche.length >= nbCaracteresMinimalRecherche)}
-        <button class="reinitialiser-recherche" type="button" title="{titleBoutonReinitialiserRecherche}" on:click={clickBoutonReinitialiser}>
+        <button class="reinitialiser-recherche utd-btn secondaire" type="button" title="{titleBoutonReinitialiserRecherche}" on:click={clickBoutonReinitialiser}>
             <img aria-hidden="true" src="{`${srcBaseImage}ico-xfermer-bleu-moyen`}" width="16" height="16">
         </button>
       {/if} 
