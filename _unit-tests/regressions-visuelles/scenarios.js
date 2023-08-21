@@ -1039,7 +1039,7 @@ scenarios : [
     },    
 
 
-    //Menu horizontal (Click Plus et hover niveau 1)        
+    // Menu horizontal (Click Plus et hover niveau 1)        
     {
         label: "Menu_horizontal (Click Plus et hover niveau 1)", 
         url: "/composants/navigation/menuhorizontal",
@@ -1170,8 +1170,167 @@ scenarios : [
         shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu"]', shadowDomSelector: "a"}, {domSelector: 'utd-menu-horizontal-item[libelle="Navigation"]:not(.utd-d-none)', shadowDomSelector: "a"}],
         shadowHoverSelectors2: [{domSelector: 'utd-menu-horizontal-item[libelle="Navigation"]:not(.utd-d-none) utd-menu-horizontal-item[libelle="Menu horizontal"]', shadowDomSelector: "a"}],
         appendBsTestHash: true
-    },    
-    
+    },
+    //Menu horizontal (tab 7 fois entre dans menu)        
+    {
+        label: "Menu_horizontal (tab 7 fois entre dans menu)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet, 
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (entre dans menu fleche droite select version)        
+    {
+        label: "Menu_horizontal (tab 7 fois entre dans menu fleche droite select version)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowRight"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (entre dans menu fleche bas select version)        
+    {
+        label: "Menu_horizontal (tab 7 fois entre dans menu fleche bas select version)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowDown"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (entre dans menu deux fleche droite select navigation)        
+    {
+        label: "Menu_horizontal (tab 7 fois entre dans menu deux fleche droite select navigation)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowRight","ArrowRight"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (entre dans menu deux fleche bas select navigation)        
+    {
+        label: "Menu_horizontal (tab 7 fois entre dans menu deux fleche bas select navigation)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowDown","ArrowDown"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (entre dans menu deux fleche bas un gauche select version)        
+    {
+        label: "Menu_horizontal (entre dans menu deux fleche bas un gauche select version)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowDown","ArrowDown","ArrowLeft"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (entre dans menu deux fleche droite un haut select version)        
+    {
+        label: "Menu_horizontal (entre dans menu deux fleche droite un haut select version)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowRight","ArrowRight","ArrowUp"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (entre dans menu deux fleche droite quatre gauche select home)        
+    {
+        label: "Menu_horizontal (entre dans menu deux fleche droite quatre gauche select home)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowRight","ArrowRight","ArrowLeft","ArrowLeft","ArrowLeft","ArrowLeft"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (entre dans menu une fleche droite deux gauche select home)        
+    {
+        label: "Menu_horizontal (entre dans menu une fleche droite deux gauche select home)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowRight","ArrowLeft","ArrowLeft"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (entre dans navigation enter ouvre navigation)        
+    {
+        label: "Menu_horizontal (entre dans navigation enter ouvre navigation)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowRight","ArrowRight","Enter"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (ouvre navigation clavier escape ferme navigation)        
+    {
+        label: "Menu_horizontal (ouvre navigation clavier escape ferme navigation)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowRight","ArrowRight","Enter","Escape"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (entre dans navigation fleche droite selection element un)        
+    {
+        label: "Menu_horizontal (entre dans navigation fleche droite selection element un)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowRight","ArrowRight","Enter","ArrowRight"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (entre dans navigation double fleche droite selection element deux)        
+    {
+        label: "Menu_horizontal (entre dans navigation double fleche droite selection element deux)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowRight","ArrowRight","Enter","ArrowRight","ArrowRight"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (entre dans navigation fleche double droite gauche selection element un)        
+    {
+        label: "Menu_horizontal (entre dans navigation fleche double droite gauche selection element un)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowRight","ArrowRight","Enter","ArrowRight","ArrowRight","ArrowLeft"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (entre dans navigation fleche bas selection element un)        
+    {
+        label: "Menu_horizontal (entre dans navigation fleche bas selection element un)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowRight","ArrowRight","Enter","ArrowDown"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (entre dans navigation fleche bas triple haut selection element un)        
+    {
+        label: "Menu_horizontal (entre dans navigation fleche bas triple haut selection element un)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowRight","ArrowRight","Enter","ArrowDown","ArrowUp","ArrowUp","ArrowUp"],
+        appendBsTestHash: true
+    },
 
     //Menu vertical (Base)        
     {
