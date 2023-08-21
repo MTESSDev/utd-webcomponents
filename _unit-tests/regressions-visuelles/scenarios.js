@@ -1443,6 +1443,70 @@ scenarios : [
         shadowClickSelectors: [{domSelector: "utd-menu-vertical", shadowDomSelector: "a.toggle"}],
         hoverSelectors2: ['utd-menu-vertical-item[libelle="Menu vertical"]']
     },    
+    //Menu vertical (fleche bas)        
+    {
+        label: "Menu_vertical (fleche bas)", 
+        url: "/composants/navigation/menuvertical",
+        selectors: ["utd-menu-vertical"],
+        viewports: viewports.vDesktop, 
+        removeSelectors: [".no-test"],
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowDown"]
+    },     
+    //Menu vertical (deux fleche bas)        
+    {
+        label: "Menu_vertical (deux fleche bas)", 
+        url: "/composants/navigation/menuvertical",
+        selectors: ["utd-menu-vertical"],
+        viewports: viewports.vDesktop, 
+        removeSelectors: [".no-test"],
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowDown","ArrowDown"]
+    },
+    //Menu vertical (deux fleche bas)        
+    {
+        label: "Menu_vertical (deux fleche bas)", 
+        url: "/composants/navigation/menuvertical",
+        selectors: ["utd-menu-vertical"],
+        viewports: viewports.vDesktop, 
+        removeSelectors: [".no-test"],
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowDown","ArrowDown"]
+    },
+    //Menu vertical (deux fleche bas fleche droite)        
+    {
+        label: "Menu_vertical (deux fleche bas fleche droite)", 
+        url: "/composants/navigation/menuvertical",
+        selectors: ["utd-menu-vertical"],
+        viewports: viewports.vDesktop, 
+        removeSelectors: [".no-test"],
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowDown","ArrowDown","ArrowRight"]
+    },
+    //Menu vertical (deux fleche bas fleche droite deux bas)        
+    {
+        label: "Menu_vertical (deux fleche bas fleche droite deux bas)", 
+        url: "/composants/navigation/menuvertical",
+        selectors: ["utd-menu-vertical"],
+        viewports: viewports.vDesktop, 
+        removeSelectors: [".no-test"],
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowDown","ArrowDown","ArrowRight","ArrowDown","ArrowDown"]
+    },
+    //Menu vertical (deux fleche bas droite deux bas une haut)        
+    {
+        label: "Menu_vertical (deux fleche bas droite deux bas une haut)", 
+        url: "/composants/navigation/menuvertical",
+        selectors: ["utd-menu-vertical"],
+        viewports: viewports.vDesktop, 
+        removeSelectors: [".no-test"],
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowDown","ArrowDown","ArrowRight","ArrowDown","ArrowDown","ArrowUp"]
+    },
+    //Menu vertical (deux fleche bas droite gauche ferme menu)        
+    {
+        label: "Menu_vertical (deux fleche bas droite gauche ferme menu)", 
+        url: "/composants/navigation/menuvertical",
+        selectors: ["utd-menu-vertical"],
+        viewports: viewports.vDesktop, 
+        removeSelectors: [".no-test"],
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowDown","ArrowDown","ArrowRight","ArrowLeft"]
+    },
+
     //Message (Base) avertissement avec 2 boutons
     {
         label: "Message (Base) avertissement avec 2 boutons", 
