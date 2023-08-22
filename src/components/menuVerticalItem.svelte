@@ -94,7 +94,7 @@
       case "Enter":
       case " ":
         if(possedeEnfants){
-          if(possedeEnfants === 'false'){
+          if(afficher === 'false'){
             afficher = 'true'                            
             thisComponent.querySelector('utd-menu-vertical-item').setAttribute('focus', 'true')
           }          

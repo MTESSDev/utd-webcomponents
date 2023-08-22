@@ -17,7 +17,6 @@
         mounted = true
     })
 
-
     function obtenirTableauParametres() {
         return [
             {nom: "extensible", type: "Boolean (Optionnel)", description: `Indique si la section doit être extensible ou non. Défaut "true" (extensible).`},        

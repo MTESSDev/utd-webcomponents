@@ -4,19 +4,23 @@
 <h1>Historique des versions récentes</h1>
 
 <utd-accordeon reduit="false">
-    <div slot="titre"><h2>1.13.0 (2023-08-??)</h2></div>       
+    <div slot="titre"><h2>1.13.0 (2023-08-18)</h2></div>       
     <h3>Correction d'anomalies</h3>
-    <ul class="utd">
-        <li><p>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/actions/dialogue">Dialogue modal</a>. Un clic initié à partir de la fenêtre modale ne ferme plus cette dernière si le bouton de la souris est relâché à l'extérieur de la fenêtre modale.</p>
-            <p><a href="https://github.com/MTESSDev/utd-webcomponents/issues/35">Voir l'issue dans Github</a></p>
-        </li>
-    </ul>
 
     <h3>Améliorations</h3>
     <ul class="utd">
-        <li>Ajout du composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/actions/barrerecherche">Barre de recherche</a> et intégration de ce dernier dans le composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/entetepiedpage/piventete">Entête PIV</a> via de nouveaux paramètres pour la recherche.</li>        
+        <li>Ajout du composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/actions/barrerecherche">Barre de recherche</a> et intégration de ce dernier dans le composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/entetepiedpage/piventete">Entête PIV</a> via de nouveaux paramètres pour la recherche et intégration de la recherche dans le site démo UTD.</li>        
     </ul>    
-    
+    <ul class="utd">
+        <li><p>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/actions/dialogue">Dialogue modal</a>. Mise à jour afin de se conformer aux nouvelles règles du système de design Québec.ca.</p>
+            <p>Un clic en dehors de la fenêtre modale ne ferme plus cette dernière. La règle ne semble pas encore diffusée sur leur site, mais elle nous a clairement été indiquée par courriel en réponse à une question sur le sujet.</p>
+        </li>
+    </ul>
+    <ul class="utd">
+        <li><p>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/actions/dialogue">Menu horizontal</a>. Modifications afin de supporter la définition de l'élément de menu actif et la navigation par routing dans une SPA (ex. Vue).</p>
+        </li>
+    </ul>
+
 </utd-accordeon>
 
 <utd-accordeon reduit="true">

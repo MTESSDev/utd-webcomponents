@@ -11,7 +11,6 @@
 
   onMount(() => {
       tableauParametres = obtenirTableauParametres()
-      tableauSlots = obtenirTableauSlots()
 
       Utils.definirEvenementClickAncre()
 
@@ -54,13 +53,6 @@
       ]
   }
 
-  function obtenirTableauSlots() {
-      return [
-        {nom: "boutonRecherche", description: `<p>Contenu html à insérer dans la zone prévue pour le bouton de recherche. Normalement un lien ou un bouton avec une loupe.</p>`},
-        {nom: "boutonRechercheMobile", description: `<p>Contenu html à insérer dans la zone prévue pour le bouton de recherche en mode mobile. Normalement un lien ou un bouton avec une loupe.</p>`},
-        {nom: "zoneRecherche", description: `<p>Contenu html à insérer dans la zone prévue pour la zone de recherche. Normalement une boîte de texte avec autocomplétion ou un bouton qui lance la recherche. Peut aussi contenir un contrôle permettant d'afficher les résultats de recherche.</p>`}            
-      ]
-  }
 </script>
 
 <h1>PIV entête</h1>
@@ -80,10 +72,6 @@
 <h2>Attributs disponibles</h2>
 <TableauParams parametres="{tableauParametres}">
 </TableauParams>
-
-<h2>Slots disponibles</h2>
-<TableauSlots parametres="{tableauSlots}">
-</TableauSlots>
 
 <h2>Événements disponibles</h2>
 <p>Aucun événement spécifique au contrôle de piv d'entête. Cependant l'événement <span class="utd-emphase-gris">initialiser</span> du contrôle barre de recherche peut être nécessaire si la recherche à l'intérieur du PIV est activée.</p>

@@ -8,6 +8,15 @@
   let tableauParametres2 = [];
   let tableauSlots = [];
 
+  const exempleHtmlVue = `
+  <utd-menu-horizontal id="menuHorizontal" afficher-icone-accueil="true" :path-courant="pathCourant">            
+    <router-link to="/">Accueil</router-link>
+    <utd-menu-horizontal-item libelle="Déposer un document" href="/depotdocument">
+        <router-link to="/depotdocument">Déposer un document</router-link>
+        </utd-menu-horizontal-item>
+    </utd-menu-horizontal>    
+  `;
+
   onMount(() => {
       tableauParametres = obtenirTableauParametres();
       tableauParametres2 = obtenirTableauParametres2();
@@ -20,7 +29,8 @@
           {nom: "largeur-viewport-menu-burger", type: "Integer (Optionnel)", description: `Largeur d'écran à partir de laquelle l'affichage du menu est forcé en mobile, i.e Affichage d'un seul élément de menu (menu burger) nommé "Menu". Défaut : 475.`},          
           {nom: "afficher-icone-accueil", type: "Booléen (Optionnel)", description: `Indique si le lien "accueil/home" (icône "maison") doit être affiché ou non. Défaut : false.`},          
           {nom: "titre-accueil", type: "String (Optionnel)", description: `Title (icône maison) et texte (dans le menu burger) associé au lien "accueil" si affiché. Sera aussi le texte affiché  Défaut : Accueil / Home.`},          
-          {nom: "url-accueil", type: "String (Optionnel)", description: `Url vers laquelle le lien "accueil" doit rediriger. Défaut : "/".`}
+          {nom: "url-accueil", type: "String (Optionnel)", description: `Url vers laquelle le lien "accueil" doit rediriger. Défaut : "/".`},
+          {nom: "path-courant", type: "String (Optionnel)", description: `À utiliser dans un contexte SPA (ex. Vue) afin d'indiquer les éléments actifs du menu. Indique la route de la page actuelle puisque l'url ne change pas vraiment. C'est ce path qui est utilisé lors de la définition des éléments actifs via leur attribut "href". Défaut : "".`}
       ];
   }
 
@@ -33,7 +43,10 @@
 
   function obtenirTableauSlots() {
       return [
-        {nom: "défaut", description: `<p>Slot par défaut. Aucun nom à fournir.</p><p>Contenu html entre les balises du contrôle. Ne devrait contenir que des composants <span class="utd-emphase-gris">utd-menu-horizontal-item</span>.</p>`}
+        {nom: "défaut", description: `
+        <p>Slot par défaut. Aucun nom à fournir.</p>
+        <p>Contenu html entre les balises du contrôle. Ne devrait contenir que des composants <span class="utd-emphase-gris">utd-menu-horizontal-item</span>, <b>sauf dans un contexte SPA</b> (ex. Vue).</p>
+        <p>Dans un contexte SPA, afin de faire fonctionner le routing correctement, il faut généralement insérer la balise contenant le lien de l'élément de menu (ex. &lt;router-link to="/monChemin"&gt;Texte du lien&lt;/router-link&gt; dans Vue).</p>`}
       ];
   }
 
@@ -76,7 +89,7 @@
 
 
 
-<h2 id="exemple">Exemple</h2>
+<h2 id="exemple">Exemple d'utilisation standard</h2>
 <p>L'exemple contient le menu horizontal du présent site de démonstration avec quelques éléments fictifs supplémentaires visibles uniquement dans la présente page.</p>
 
 <utd-avis titre="Important!">
@@ -85,6 +98,12 @@
 <CodeSource idElementCodeSource="bandeauPrincipal" outerhtml="true">
 </CodeSource>
 
+
+<h2>Exemple d'utilisation dans un contexte SPA</h2>
+<p>Ici un exemple très simpliste avec Vue Js.</p>
+
+<CodeSource codeSource="{exempleHtmlVue}">
+</CodeSource>
 
 <style>
 </style>
