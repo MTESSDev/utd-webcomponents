@@ -4,9 +4,9 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 <svelte:options tag="utd-dialog" />
 
 <script>
-  import { onMount } from "svelte";
+  import { onMount} from "svelte";
   import { fly, fade } from "svelte/transition"
-  import { get_current_component } from "svelte/internal"
+  import { get_current_component, tick } from "svelte/internal"
   import { Utils } from "./js/utils"
   export let afficher = 'false'
   export let type = ''
@@ -24,13 +24,16 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   const idEntete = Utils.genererId()
   const idCorps = Utils.genererId()
 
+  const dureeMsAnimationOuverture = 250;
+  const dureeMsAnimationFermeture = 250;
+
   let estModaleAffichee = afficher === 'true'
   const thisComponent = get_current_component()
   let html
   let body
   let slots = []
   let mounted = false
-  let currentTargetMouseDown = null
+  let controleFocusFermeture = null
 
   onMount(() => {
     html = thisComponent.getRootNode().getElementsByTagName("html")[0]
@@ -53,27 +56,43 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     //Si une raison de fermeture est reçue en param, on l'utilise sinon on prend la raison de fermeture qui est sur la modale "raisonFermeture" qui va contenir une raison de fermeture externe à la modale (ex. clic sur bouton primaire ou secondaire)
     const raison = raisonFermetureModale || raisonFermeture
 
-    //On redonne le focus au contrôle spécifié (normalement celui qui a initié l'affichage de la fenêtre modale)
-    const controleFocus = thisComponent.getRootNode().getElementById(idFocusFermeture)
-    if(controleFocus){
-      controleFocus.focus()
-    }
+    //On redonne le focus au contrôle spécifié (normalement celui qui a initié l'affichage de la fenêtre modale). Après l'animation de fermeture afin de s'assurer qu'il puisse recevoir le focus.
+    setTimeout(() => {
+
+      if(idFocusFermeture){
+        const controleFocus = thisComponent.getRootNode().getElementById(idFocusFermeture)
+        if(controleFocus){
+          controleFocus.focus()
+        }
+      } else if(controleFocusFermeture) {
+        controleFocusFermeture.focus()
+      }
+    }, dureeMsAnimationFermeture)
 
     Utils.dispatchWcEvent(thisComponent, "fermeture", {raisonFermeture: raison})
   }
   
   function animationAffichageOuverture(node) {
-		return affichageLateral === 'false' ? fade(node, { duration: 250 }) : fly(node, { x: 200, duration: 250 });  
+		return affichageLateral === 'false' ? fade(node, { duration: dureeMsAnimationOuverture }) : fly(node, { x: 200, duration: dureeMsAnimationOuverture });  
   }
 
   function animationAffichageFermeture(node) {
-		return affichageLateral === 'false' ? fade(node, { y: 200, duration: 250 }) : fly(node, { x: 200, duration: 250 });  
+		return affichageLateral === 'false' ? fade(node, { y: 200, duration: dureeMsAnimationFermeture }) : fly(node, { x: 200, duration: dureeMsAnimationFermeture });  
   }
 
   // Exécuté lorsque la valeur de la prop "afficher" change
   function toggleAfficher(){
     if(mounted){
       if(afficher === 'true'){
+
+        if(!idFocusFermeture){
+          if(document.activeElement){
+            controleFocusFermeture = document.activeElement
+          } else {
+            controleFocusFermeture = null
+          }
+        }
+
         raisonFermeture = ''       
         Utils.ajusterInterfaceAvantAffichageModale(html, body)
         estModaleAffichee = true       
@@ -118,7 +137,9 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     Utils.ajusterInterfacePendantAffichageModale(body, modale)
 
     //On force un scrollTop ici car Android ne semble pas supporter le preventScroll de la méthode focus (mais selon la doc il devrait). SOLUTION EN ATTENDANT MIEUX.
-    modale.scrollTop = 0      
+    if(Utils.estMobile()){
+      modale.scrollTop = 0      
+    }
   }
 
   function estBouton(element) {

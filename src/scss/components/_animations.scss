@@ -1,0 +1,26 @@
+/*====================================================================================================
+/*  Animations
+/*====================================================================================================*/
+/* Fond gris qui fade/in and out pour indiquer un élément en chargement */
+@keyframes utd-fond-element-chargement {
+    0% {
+        opacity: .1;
+    }
+
+    50% {
+        opacity: .25;
+    }
+
+    100% {
+        opacity: .1;
+    }
+} 
+
+.utd-fond-element-chargement {
+    display: block;
+    background-color: #444;
+    height: 100%;
+    width: 100%;
+    opacity: .1;
+    animation: utd-fond-element-chargement 1.5s infinite;
+}

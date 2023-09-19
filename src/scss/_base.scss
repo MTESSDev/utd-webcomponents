@@ -838,8 +838,8 @@ utd-accordeon .utd-form-group:last-child, utd-section .utd-form-group:last-child
         cursor: default;
     } 
 
-    &[aria-invalid="true"]{
-        border: 2px solid var(--couleur-erreur);
+    &[aria-invalid="true"], &[aria-invalid="true"]:focus{
+        border: 2px solid var(--couleur-erreur);        
     }        
 }
 
@@ -1323,10 +1323,25 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
         max-width: 1152px;
     }
 
-    .utd-pleine-largeur .utd-container .utd-container.utd-pleine-largeur {
+    .utd-pleine-largeur .utd-container, .utd-container.utd-pleine-largeur {
         max-width: 100%;
     }
 }
+
+@media (min-width: 768px) {
+    .utd-pleine-largeur .utd-container, .utd-container.utd-pleine-largeur {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .utd-pleine-largeur .utd-container, .utd-container.utd-pleine-largeur {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+}
+
 
 /* ---- Layout 2 colonnes ---- */
 #conteneur2Colonnes.utd {

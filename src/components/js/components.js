@@ -55,9 +55,7 @@ export const message = (function () {
         };
     
         parametres = extend(valeursDefaut, parametres);
-    
-        parametres.idControleFocusFermeture = parametres.idControleFocusFermeture || obtenirIdControleActif();
-    
+       
         const conteneurFenetreMessage = ajouterControle(parametres);
         const fenetreMessage = conteneurFenetreMessage.querySelector('utd-dialog');  
     
@@ -85,8 +83,10 @@ export const message = (function () {
     function ajouterControle(parametres) {
     //    var classeIcone = obtenirClasseIcone(parametres.type);
         const type = parametres.type ? ` type="${parametres.type}" ` : ''
+        const htmlIdControleFermeture = parametres.idControleFocusFermeture ? ` id-focus-fermeture="${parametres.idControleFocusFermeture}"` : ''
+
         let html = `
-        <utd-dialog titre="${parametres.titre}" id-focus-fermeture="${parametres.idControleFocusFermeture}" estfenetremessage="true" boutons-texte-long="${parametres.estBoutonsTexteLong}" ${type}>
+        <utd-dialog titre="${parametres.titre}" estfenetremessage="true" boutons-texte-long="${parametres.estBoutonsTexteLong}"${type}${htmlIdControleFermeture}">
             <div slot="contenu">
                 ${parametres.corps}
             </div>
@@ -167,8 +167,6 @@ export const dialogue = (function () {
             return;
         }
 
-        idControleFocusFermeture = idControleFocusFermeture || obtenirIdControleActif();
-
         const dialogue = document.getElementById(idDialogue);
 
         if(dialogue){
@@ -193,17 +191,6 @@ export const dialogue = (function () {
 
         if(dialogue){
             dialogue.setAttribute('afficher', 'false');    
-
-            const idFocus = dialogue.getAttribute('id-focus-fermeture');
-
-            if(idFocus){
-                const controleFocus = document.getElementById(idFocus);
-                if(controleFocus){
-                    controleFocus.focus();
-                } else {
-                    console.log(`utd.dialogue.masquer -> Contrôle "${idFocus}" à qui redonner le focus non trouvé.`);        
-                }
-            }   
         } else {
             console.error(`utd.dialogue.masquer -> Contrôle utd-dialog "${dialogue}" non trouvé.`);
         }
@@ -312,6 +299,14 @@ export const traitementEnCours = (function () {
             element.id = genererId();            
         }
 
+        let texte = "";
+
+        if(estTraitementTermine){
+            texte = obtenirLanguePage() === 'fr' ? "Traitement terminé." : "Processing complete."
+        } else {
+            texte = obtenirLanguePage() === 'fr' ? "Traitement en cours." : "Processing..."
+        }       
+
         const idZoneNotification = `zoneNotification_${element.id}`;
 
         //Ajouter la zone de notification hors écran si elle n'existe pas déjà.
@@ -319,19 +314,17 @@ export const traitementEnCours = (function () {
         if(!zoneNotificationsLecteurEcran){
             zoneNotificationsLecteurEcran = document.createElement("div");
             zoneNotificationsLecteurEcran.id = idZoneNotification;
+            zoneNotificationsLecteurEcran.setAttribute('role', 'status');
             zoneNotificationsLecteurEcran.classList.add('utd-sr-only');
             document.body.appendChild(zoneNotificationsLecteurEcran);
-        }
 
-        let texte = "";
-
-        if(estTraitementTermine){
-            texte = obtenirLanguePage() === 'fr' ? "Traitement terminé." : "Processing complete."
+            //setTimeout nécessaire pour le lecteur écran, sinon rien n'est lu la 1ère fois qu'un traitement en cours se fait sur un contrôle.
+            setTimeout(() => {
+                zoneNotificationsLecteurEcran.innerHTML = texte;            
+            }, 100);
         } else {
-            texte = obtenirLanguePage() === 'fr' ? "Traitement en cours." : "Processing..."
+            zoneNotificationsLecteurEcran.innerHTML = texte;            
         }
-
-        zoneNotificationsLecteurEcran.innerHTML = texte;
     }
 
     return elementsPublics;

@@ -19,6 +19,7 @@ export let rechercheFloue = "true"
 export let precisionRecherche = "0.2"
 export let largeur = "md" //Valeurs possible sm, md, lg
 export let placeholder = languePage === 'fr' ? "Effectuer un choix" : "Make a selection"
+export let refresh = "false"
 
 //Contrôles
 const thisComponent = get_current_component()
@@ -112,7 +113,7 @@ onMount(() => {
 // Watches
 $: toggleAfficherOptions(afficherOptions) 
 $: majActiveDescendant(indexeFocusSuggestion) 
-
+$: rafraichirOptionsSelectionnees(refresh)
 
 function initialiserOptionsSuggestionsEtRecherche(){
   options = obtenirOptions()
@@ -128,6 +129,17 @@ function initialiserOptionsSuggestionsEtRecherche(){
       miniSearch.addAll(options)   
     }
 }
+
+//Watch sur l'attribut "refresh", permet de mettre à jour les options sélectionnées si ces dernières ont été modifiées par code sur le select original (ex. un modèle vuejs ou une modification de la valeur en javascript)
+function rafraichirOptionsSelectionnees() {
+  if(refresh === 'true'){
+    definirOptionsSelectionnees()   
+    definirSuggestions()   
+    definirAriaDescriptionConteneur()
+    thisComponent.removeAttribute('refresh')
+  }
+}
+
 /**
  * Obtient le terme à indexer (normalisé et tout).
  * @param terme
@@ -702,6 +714,12 @@ function onKeyDown(e){
       break        
       
     case "Escape":
+      //Si les options sont actuellement afficher, on ne remonte pas l'événement (ex. si on est dans une modale, ca fermerait la modale. On veut fermer la liste des options seulement)
+      if(afficherOptions){
+        e.preventDefault()
+        e.stopPropagation()
+      }
+
       definirAfficherOptions(false)  
       controleConteneur.focus()
       break        
@@ -1129,6 +1147,7 @@ function assurerControleVisible() {
               </ul>     
           {/if}
         {/if}
+
         <span class="utd-icone-svg chevron-bleu-piv developper"></span>
       </span>
   

@@ -6,6 +6,10 @@
 <utd-accordeon reduit="false">
     <div slot="titre"><h2>1.13.0 (2023-08-18)</h2></div>       
     <h3>Correction d'anomalies</h3>
+    <ul class="utd">
+        <li><p>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/formulaire/listederoulante">Liste déroulante</a>. Lorsque le composant est utilisé dans un composant "Dialogue modale" la touche ESCAPE ferme maintenant uniquement la liste déroulante et non la fenêtre modale.</p>
+        </li>
+    </ul>
 
     <h3>Améliorations</h3>
     <ul class="utd">
@@ -20,6 +24,10 @@
         <li><p>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/actions/dialogue">Menu horizontal</a>. Modifications afin de supporter la définition de l'élément de menu actif et la navigation par routing dans une SPA (ex. Vue).</p>
         </li>
     </ul>
+    <ul class="utd">
+        <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/affichagecontenu/accordeon">Accordéon</a> modification des images "plus" et "moins" afin qu'elles soient conforment à ce qui est dans le système de design gouvernemental.</li>        
+    </ul>    
+
 
 </utd-accordeon>
 

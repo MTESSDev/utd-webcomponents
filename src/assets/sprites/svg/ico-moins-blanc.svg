@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
   <g id="Icône" transform="translate(0 -0.002)">
     <rect id="Support_à_icône" data-name="Support à icône" width="16" height="16" transform="translate(0 0.002)" fill="none"/>
-    <path id="icone-moins" d="M14,1H0A1,1,0,0,1-1,0,1,1,0,0,1,0-1H14a1,1,0,0,1,1,1A1,1,0,0,1,14,1Z" transform="translate(1 8.002)" fill="#223654"/>
+    <path id="icone-moins" d="M14,1H0A1,1,0,0,1-1,0,1,1,0,0,1,0-1H14a1,1,0,0,1,1,1A1,1,0,0,1,14,1Z" transform="translate(1 8.002)" fill="#fff"/>
   </g>
 </svg>

@@ -360,7 +360,9 @@
       idElementErreur = elementErreur.id      
       
       const attribut = typeChamp === 'checkbox' ? 'aria-labelledby' : 'aria-describedby'
-      const descByAvant = controle.getAttribute(attribut)
+      
+      //On conserve la valeur du aria-describedby avant la maj en lui retirant l'id de l'élément en erreur (évite d'avoir l'id du champ plusieurs fois dans l'attribut)
+      const descByAvant = controle.getAttribute(attribut) ? controle.getAttribute(attribut).replace(elementErreur.id, '') : null
 
       controle.setAttribute(attribut, elementErreur.id)
       
