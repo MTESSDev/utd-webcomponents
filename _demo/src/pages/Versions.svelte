@@ -31,7 +31,7 @@
         <li>Ajout du gabarit <a href="https://lively-cliff-018a9540f.azurestaticapps.net/gabaritpleinelargeur">pleine largeur</a>, qui comme son nom l'indique utilise la pleine largeur de l'écran. Il suffit d'ajouter la classe <span class="utd-emphase-gris">utd-pleine-largeur</span> sur la balise <span class="utd-emphase-gris">body</span> d'une page. À utiliser uniquement dans des cas très précis.</li>        
     </ul>    
     <ul class="utd">
-        <li>Ajout d'une <a href="https://lively-cliff-018a9540f.azurestaticapps.net/actions/animations">animation de chargement en cours</a>. Cette animation affiche un fond gris "flashy" (change de teinte de gris en boucle) afin d'indiquer un contenu en cours de chargement.
+        <li>Ajout d'une <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/actions/animations">animation de chargement en cours</a>. Cette animation affiche un fond gris "flashy" (change de teinte de gris en boucle) afin d'indiquer un contenu en cours de chargement.
         </li>
     </ul>
 
