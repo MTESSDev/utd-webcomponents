@@ -4,7 +4,7 @@
 <h1>Historique des versions récentes</h1>
 
 <utd-accordeon reduit="false">
-    <div slot="titre"><h2>1.13.0 (2023-08-18)</h2></div>       
+    <div slot="titre"><h2>1.13.0 (2023-09-20)</h2></div>       
     <h3>Correction d'anomalies</h3>
     <ul class="utd">
         <li><p>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/formulaire/listederoulante">Liste déroulante</a>. Lorsque le composant est utilisé dans un composant "Dialogue modale" la touche ESCAPE ferme maintenant uniquement la liste déroulante et non la fenêtre modale.</p>
@@ -25,10 +25,10 @@
         </li>
     </ul>
     <ul class="utd">
-        <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/affichagecontenu/accordeon">Accordéon</a> modification des images "plus" et "moins" afin qu'elles soient conforment à ce qui est dans le système de design gouvernemental.</li>        
+        <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/affichagecontenu/accordeon">Accordéon</a> modification des images "plus" et "moins" afin qu'elles soient conformes à ce qui est dans le système de design gouvernemental.</li>        
     </ul>    
     <ul class="utd">
-        <li>Ajout du gabarit <a href="https://lively-cliff-018a9540f.azurestaticapps.net/gabaritpleinelargeur">pleine largeur</a>, qui comme son nom l'inddique utilise la pleine largeur de l'écran. Il suffit d'ajouter la classe <span class="utd-emphase-gris">utd-pleine-largeur</span> sur la balise <span class="utd-emphase-gris">body</span> d'une page. À utiliser uniquement dans des cas très précis.</li>        
+        <li>Ajout du gabarit <a href="https://lively-cliff-018a9540f.azurestaticapps.net/gabaritpleinelargeur">pleine largeur</a>, qui comme son nom l'indique utilise la pleine largeur de l'écran. Il suffit d'ajouter la classe <span class="utd-emphase-gris">utd-pleine-largeur</span> sur la balise <span class="utd-emphase-gris">body</span> d'une page. À utiliser uniquement dans des cas très précis.</li>        
     </ul>    
     <ul class="utd">
         <li>Ajout d'une <a href="https://lively-cliff-018a9540f.azurestaticapps.net/actions/animations">animation de chargement en cours</a>. Cette animation affiche un fond gris "flashy" (change de teinte de gris en boucle) afin d'indiquer un contenu en cours de chargement.
