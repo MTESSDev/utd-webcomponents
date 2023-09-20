@@ -7,18 +7,23 @@
 
     let tableauParametres = [];
     let tableauSlots = [];
+    let mounted = false;
 
     onMount(() => {
         tableauParametres = obtenirTableauParametres();
         tableauSlots = obtenirTableauSlots();
+        ajouterCodeExemple2b();
+        ajouterCodeExemple3();
         ajouterCodeExemple4();
+        mounted = true;
     })
 
     function obtenirTableauParametres() {
         return [           
             {nom: "recherchable", type: "Booléen (Optionnel)", description: `Indique s'il est possible d'effectuer une recherche dans les valeurs possibles de la liste. (Défaut : "false")`},
             {nom: "largeur", type: "String (Optionnel)", description: `Largeur de la liste. Valeurs possibles : <span class="utd-emphase-gris">lg</span> (528px), <span class="utd-emphase-gris">md</span> (342px), <span class="utd-emphase-gris">sm</span> (156px). (Défaut : "md")`},
-            {nom: "recherche-floue", type: "Booléen (Optionnel)", description: `Indique si la recherche doit être précise ou non, i.e. doit contenir exactement le terme recherché. Si la recherche est floue, un certain niveau d'erreur est permis (ex. une faute de frappe). (Défaut : "true")`}
+            {nom: "recherche-floue", type: "Booléen (Optionnel)", description: `Indique si la recherche doit être précise ou non, i.e. doit contenir exactement le terme recherché. Si la recherche est floue, un certain niveau d'erreur est permis (ex. une faute de frappe). (Défaut : "true")`},
+            {nom: "refresh", type: "Booléen (Optionnel)", description: `Permet de rafraichir les options sélectionnées lorsque la valeur du select original est modifiée via du code (ex. un modèle vueJs ou du javascript vanille). À utiliser à chaque moment où la valeur est modifiée via du code. N'est pas nécessaire lors d'un modification effectuée par l'utilisateur. (Défaut : "false")`}
         ]
     }
 
@@ -28,6 +33,23 @@
         ]
     }
 
+    function ajouterCodeExemple2b() {
+        document.getElementById("btn2b").addEventListener('click', () => {
+            document.getElementById('select2b').value = 'QC'
+            document.getElementById("liste2b").setAttribute('refresh', 'true')
+        })
+    }
+
+    function ajouterCodeExemple3() {
+        document.getElementById("btn3").addEventListener('click', () => {
+            document.getElementById('select3').options[1].selected = true
+            document.getElementById('select3').options[2].selected = true
+            document.getElementById('select3').options[8].selected = true
+
+            document.getElementById("liste3").setAttribute('refresh', 'true')
+        })
+    }
+    
     function ajouterCodeExemple4() {   
         const controleUtd = document.getElementById('champUtd4')     
         document.getElementById('select4').addEventListener('change', (event) => {
@@ -148,7 +170,7 @@
 <h3>2b- Liste déroulante à sélection simple (avec peu de choix donc sans barre de défilement)</h3>
 <div id="exemple2b" class="bs-test">
     <utd-champ-form precision="Ne soyez pas timide et assumez-vous.">
-        <utd-liste-deroulante>
+        <utd-liste-deroulante id="liste2b">
             <label>Sélectionnez votre province canadienne préférée</label>
             <select id="select2b">
                 <option value="AB">Alberta</option>
@@ -160,13 +182,22 @@
     </utd-champ-form>
 </div>
 
-<CodeSource idElementCodeSource="exemple2b">
+<p>Exemple de mise à jour de l'option sélectionnée <b>par code</b> et de l'utilisation de l'attribut <span class="utd-emphase-gris">refresh</span> afin de mettre à jour la liste déroulante UTD.</p>
+<button type="button" id="btn2b" class="utd-btn secondaire compact mb-32">Modifier la valeur sélectionnée</button>
+
+<CodeSource idElementCodeSource="exemple2b" titre="Code source (Html)">
 </CodeSource>
+
+{#if mounted}
+    <CodeSource codeSource="{ajouterCodeExemple2b.toString()}" titre="Code source (js)" language="language-javascript">
+    </CodeSource>   
+{/if}   
+
 
 <h3>3- Liste déroulante à sélection multiple</h3>
 <div id="exemple3" class="bs-test">
     <utd-champ-form precision="Ne soyez pas timide et assumez-vous.">
-        <utd-liste-deroulante>
+        <utd-liste-deroulante id="liste3">
             <label>Sélectionnez vos provinces canadiennes préférées</label>
             <select id="select3" multiple>
                 <option value="AB">Alberta</option>
@@ -187,8 +218,17 @@
     </utd-champ-form>
 </div>
 
-<CodeSource idElementCodeSource="exemple3">
+<p>Exemple de mise à jour de l'option sélectionnée <b>par code</b> et de l'utilisation de l'attribut <span class="utd-emphase-gris">refresh</span> afin de mettre à jour la liste déroulante UTD.</p>
+<button type="button" id="btn3" class="utd-btn secondaire compact mb-32">Modifier la valeur sélectionnée</button>
+
+<CodeSource idElementCodeSource="exemple3" titre="Code source (Html)">
 </CodeSource>
+
+{#if mounted}
+    <CodeSource codeSource="{ajouterCodeExemple3.toString()}" titre="Code source (js)" language="language-javascript">
+    </CodeSource>   
+{/if}   
+
 
 <h3>4- Boîte combinée (sélection simple)</h3>
 <div id="exemple4" class="bs-test">

@@ -124,6 +124,8 @@ utd-accordeon + h2, utd-accordeon + h3, utd-accordeon + h4, utd-accordeon + h5 {
 }
 
 
+
+
 /*====================================================================================================
   -90- Particularités lors de l'exécution d'un test d'interface avec BackstopJs
 ====================================================================================================*/

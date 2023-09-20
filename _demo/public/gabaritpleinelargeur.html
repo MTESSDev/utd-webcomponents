@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width,initial-scale=1'>
+    <meta name="robots" content="noindex,nofollow">
+    <title>Composants UTD - Gabarit pleine largeur</title>
+   
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png">
+    <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#5bbad5">
+
+    <!-- Préchargement des fonts requises UTD -->
+    <link rel="preload" as="font" href="/fonts/open-sans-v18-latin-regular.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="/fonts/open-sans-v18-latin-600.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="/fonts/open-sans-v18-latin-700.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="/fonts/roboto-v20-latin-regular.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="/fonts/roboto-v20-latin-500.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="/fonts/roboto-v20-latin-700.woff2" type="font/woff2" crossorigin="anonymous">
+
+    <link rel='stylesheet' href='/css/utd-webcomponents.min.css?v=1.13.0'>
+    <link rel='stylesheet' href='/css/demo.css?v=1.13.0'> <!-- css spécifique de votre site. Charger APRÈS celui UTD. -->
+    
+</head>
+
+<body class="utd-pleine-largeur">
+  <noscript>Ici ce qu'il faut afficher si javascript désactivé.</noscript>
+  <div class="utd-conteneur-principal">
+    <header>
+      <utd-piv-entete id="pivEntete" titre-site1="Système de design MESS" alt-logo="Signature du gouvernement du Québec. Accédez à Système de design MESS.">
+      </utd-piv-entete>
+      <!-- Bandeau principal contenant le menu horizontal et la zone de raccourcis et de connexion -->
+      <div class="utd-bandeau-principal" id="bandeauPrincipal">
+        <div class="utd-container">
+          <utd-menu-horizontal id="menuHorizontal" afficher-icone-accueil="true">
+            <utd-menu-horizontal-item libelle="Base" href="/base"></utd-menu-horizontal-item>
+
+            <utd-menu-horizontal-item libelle="Composants" href="/composants" on:click={clickMenuComposants}></utd-menu-horizontal-item>
+
+            <utd-menu-horizontal-item libelle="Versions" href="/composants/versions">
+            </utd-menu-horizontal-item>
+
+            <utd-menu-horizontal-item libelle="Navigation">
+                <utd-menu-horizontal-item libelle="Haut de page" href="/composants/navigation/hautpage"></utd-menu-horizontal-item>
+                <utd-menu-horizontal-item libelle="Menu d'ancres" href="/composants/navigation/menuancres"></utd-menu-horizontal-item>
+                <utd-menu-horizontal-item libelle="Menu vertical" href="/composants/navigation/menuvertical"></utd-menu-horizontal-item>
+                <utd-menu-horizontal-item libelle="Menu horizontal" href="/composants/navigation/menuhorizontal"></utd-menu-horizontal-item>
+                <utd-menu-horizontal-item libelle="Élément 5" href="#"></utd-menu-horizontal-item>
+            </utd-menu-horizontal-item>
+          </utd-menu-horizontal>    
+
+          <!-- Retirer si non requis -->    
+          <div class="utd-zone-raccourcis-connexion">
+            <!-- Retirer si non requis -->
+            <div class="utd-zone-raccourcis">
+                <a href="#">
+                    <span id="envelopeCommunications" aria-hidden="true" class="utd-icone-svg enveloppe-blanc"></span>
+                    <span class="utd-sr-only">Accéder à vos communications</span>
+                </a>
+                
+                <a href="#">
+                    <span aria-hidden="true" class="utd-icone-svg utilisateur-blanc"></span>
+                    <span class="utd-sr-only">Accéder à votre profil</span>
+                </a>
+            </div>
+
+            <!-- Retirer si non requis -->
+            <div class="utd-zone-connexion">
+                <button type="button" class="utd-btn secondaire option-1 compact utd-text-sm" id="btnDeconnexion">Déconnexion</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Conteneur principal, sera utile si vous désirez que le pied de page soit toujours en bas de page même dans une page ayant très peu de contenu. -->
+    <div class="utd-container">
+      <div id="conteneur2Colonnes" class="utd contenu-principal-droite">
+          <div id="colonneGauche" class="utd">                
+              <utd-menu-vertical id="menuVertical" titre-visible="false" titre="Composants" sr-titre="Menu composants">
+                  <utd-menu-vertical-item href="/" libelle="Retour au site démo"></utd-menu-vertical-item>
+                  <utd-menu-vertical-item libelle="Navigation">                                
+                      <utd-menu-vertical-item libelle="Haut de page" href="/composants/navigation/hautpage"></utd-menu-vertical-item>
+                      <utd-menu-vertical-item libelle="Menu d'ancres" href="/composants/navigation/menuancres"></utd-menu-vertical-item>
+                      <utd-menu-vertical-item libelle="Menu vertical" href="/composants/navigation/menuvertical"></utd-menu-vertical-item>
+                      <utd-menu-vertical-item libelle="Pied de page de site" href="/composants/navigation/piedpagesite"></utd-menu-vertical-item>
+                  </utd-menu-vertical-item>
+                  <utd-menu-vertical-item libelle="PIV">                                
+                      <utd-menu-vertical-item libelle="Entête" href="/composants/piv/piventete"></utd-menu-vertical-item>
+                      <utd-menu-vertical-item libelle="Pied de page" href="/composants/piv/pivpiedpage"></utd-menu-vertical-item>
+                  </utd-menu-vertical-item>
+              </utd-menu-vertical> 
+          </div>
+      
+          <div id="colonneDroite" class="utd">
+            <main id="main">
+              <h1>Gabarit pleine largeur</h1>
+
+              <utd-avis type="avertissement" titre="Avertissement">
+                <p>L'utilisation d'un gabarit pleine largeur devrait se limiter à des cas très précis.</p>
+                <p>Ex. Une application interne qui utilise un tableau dynamique complexe, ou un affichage très particulier.</p>  
+              </utd-avis>
+
+              <p>La présente page est une simple page HTML contenant le markup essentiel pour l'utilisation des composants UTD dans un contexte de gabarit utilisant la pleine largeur de l'écran.</p>
+              <p>Tout est identique aux gabarits <a href="gabarit1colonne.html">1 colonne</a> et <a href="gabarit2colonnes.html">2 colonnes</a>.</p>
+              <p>La seule différence consiste en l'ajout de la classe <span class="utd-emphase-gris">utd-pleine-largeur</span> sur la balise <span class="utd-emphase-gris">body</span> de la page.</p>
+              <p>Inspecter la source de la page afin de voir le HTML requis au besoin.</p>
+            </main>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <utd-hautpage id="hautPage"></utd-hautpage>
+  <footer class="utd">
+    <utd-pied-page-site id="piedPageSite">
+        <div slot="contenu">
+          <span>Ici votre contenu de pied de page de site (C'est votre css qui devra le styler).</span>
+        </div>
+    </utd-pied-page-site>
+  
+    <utd-piv-pied-page id="pivPiedPage">
+      <div slot="liens">
+          <ul>
+              <li><a href="#bidon">Accessibilité</a></li>
+              <li><a href="#bidon">Politique et conditions d'utilisation</a></li>
+              <li><a href="#bidon">S'informer sur clicSÉQUR - Citoyens</a></li>
+              <li><a href="#bidon">FAQ</a></li>                    
+          </ul>
+      </div>
+    </utd-piv-pied-page>    
+  </footer>      
+  <script src='/js/utd-webcomponents.min.js?v=1.13.0'></script>  
+
+  <script>
+    //Ajoute automatiquement ce qu'il faut pour les liens externes
+    utd.ajusterAccessibiliteLiens();    
+  </script> 
+</body>
+
+</html>

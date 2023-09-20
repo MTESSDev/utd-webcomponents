@@ -8,7 +8,7 @@ paramsDefaut : {
     referenceUrl: "",
     readyEvent: "",
     readySelector: "",
-    delay: 1000,
+    delay: 2000,
     hideSelectors: [],
     removeSelectors: [".no-test", "header", "#colonneGauche", "utd-menu-ancres", ".documentation", "footer", "utd-hautpage"],
     postInteractionWait: 1000,
@@ -79,6 +79,13 @@ scenarios : [
         label: "Avis", 
         url: "/composants/affichagecontenu/avis"
     },
+
+    //Barre de recherche (base)
+    {
+        label: "Barre_recherche (Base)", 
+        url: "/composants/actions/barrerecherche"
+    },
+
     //Boutons
     {
         label: "Boutons base", 
@@ -314,7 +321,7 @@ scenarios : [
         selectors: ["viewport"],
         viewports: viewports.vTablet,
         removeSelectors: [".no-test"],  
-        clickSelectors: ["#btnTest1", "#btnVotreAvis"]
+        clickSelectors: ["#btnTest1", "#btnTest3"]
     },    
     //Dialogue modal (Fermeture via escape)
     {
@@ -364,6 +371,14 @@ scenarios : [
         removeSelectors: [".no-test"],
         clickSelectors: ["#btnTest4"],              
     },    
+    //Gabarit pleine largeur (Base)
+    {
+        label: "Gabarit_pleine_largeur (Base)", 
+        url: "/gabaritpleinelargeur",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"]
+    },    
+
     //Haut page (Base)
     {
         label: "Haut_page (Base)", 
@@ -470,14 +485,14 @@ scenarios : [
     {
         label: "Liste_deroulante (Base)", 
         url: "/composants/formulaire/listederoulante",
-    },        
+    },
     //Liste déroulante (Simple ouverte click)        
     {
         label: "Liste_deroulante (Simple ouverte click)", 
         url: "/composants/formulaire/listederoulante",
-        viewports: viewports.vTablet,
+        viewports: viewports.vDefaults,
         shadowClickSelectors: [{domSelector: "#exemple2a utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
-    },    
+    },
     //Liste déroulante (Simple ouverte clavier)        
     {
         label: "Liste_deroulante (Simple ouverte clavier)", 
@@ -485,14 +500,14 @@ scenarios : [
         viewports: viewports.vTablet,
         shadowFocusSelectors: [{domSelector: "#exemple2a utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
         keyPressKeyCode: ["Enter"]
-    },    
+    },
     //Liste déroulante (Multiple ouverte click)        
     {
         label: "Liste_deroulante (Multiple ouverte click)", 
         url: "/composants/formulaire/listederoulante",
-        viewports: viewports.vTablet,
+        viewports: viewports.vDefaults,
         shadowClickSelectors: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
-    },    
+    },
     //Liste déroulante (Multiple ouverte clavier)        
     {
         label: "Liste_deroulante (Multiple ouverte clavier)", 
@@ -500,28 +515,27 @@ scenarios : [
         viewports: viewports.vTablet,
         shadowFocusSelectors: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
         keyPressKeyCode: ["Enter"]
-    },    
-
+    },       
     //Liste déroulante (Combinée simple ouverte click)        
     {
         label: "Liste_deroulante (Combinée simple ouverte click)", 
         url: "/composants/formulaire/listederoulante",
-        viewports: viewports.vTablet,
+        viewports: viewports.vDefaults,
         shadowClickSelectors: [{domSelector: "#exemple4 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
-    },   
-    //Liste déroulante (Combinée simple ouverte clavier)        
+    },    
+    //Liste déroulante (Combinée simple ouverte clavier)
     {
         label: "Liste_deroulante (Combinée simple ouverte clavier)", 
         url: "/composants/formulaire/listederoulante",
         viewports: viewports.vTablet,
         shadowFocusSelectors: [{domSelector: "#exemple4 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
         keyPressKeyCode: ["Enter"]
-    },       
+    },     
     //Liste déroulante (Combinée multiple ouverte click)        
     {
         label: "Liste_deroulante (Combinée multiple ouverte click)", 
         url: "/composants/formulaire/listederoulante",
-        viewports: viewports.vTablet,
+        viewports: viewports.vDefaults,
         shadowClickSelectors: [{domSelector: "#exemple5 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
     },
     //Liste déroulante (Combinée multiple ouverte clavier)        
@@ -531,12 +545,20 @@ scenarios : [
         viewports: viewports.vTablet,
         shadowFocusSelectors: [{domSelector: "#exemple5 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
         keyPressKeyCode: ["Enter"]
-    },    
+    },   
+    //Liste déroulante (Combinée multiple recherche precise ouverte)       
+    {
+        label: "Liste_deroulante (Combinée multiple recherche precise ouverte)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vDefaults,
+        shadowClickSelectors: [{domSelector: "#exemple6 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        shadowHoverSelectors2: [{domSelector: "#exemple6 utd-liste-deroulante", shadowDomSelector: ".recherche"}]
+    },
     //Liste déroulante (Simple fermeture escape)        
     {
         label: "Liste_deroulante (fermeture escape)", 
         url: "/composants/formulaire/listederoulante",
-        viewports: viewports.vTablet,
+        viewports: viewports.vDefaults,
         selectors: ["#exemple2a"],
         shadowClickSelectors: [{domSelector: "#exemple2a utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
         keyPressKeyCode: ["Escape"]
@@ -567,7 +589,7 @@ scenarios : [
         selectors: ["#exemple5"],
         shadowClickSelectors: [{domSelector: "#exemple5 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
         keyPressKeyCode: ["Escape"]
-    },    
+    },
     //Liste déroulante (Simple fermeture Tab)        
     {
         label: "Liste_deroulante (fermeture Tab)", 
@@ -603,7 +625,7 @@ scenarios : [
         selectors: ["#exemple5"],
         shadowClickSelectors: [{domSelector: "#exemple5 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
         keyPressKeyCode: ["Tab"]
-    },  
+    },
     //Liste déroulante (Simple Hover item)        
     {
         label: "Liste_deroulante (Simple Hover item)", 
@@ -611,8 +633,7 @@ scenarios : [
         viewports: viewports.vTablet,
         shadowClickSelectors: [{domSelector: "#exemple2a utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
         shadowHoverSelectors2: [{domSelector: "#exemple2a utd-liste-deroulante", shadowDomSelector: 'li[aria-label="Manitoba"]'}]
-    },    
-    //TODO Non fonctionnel
+    },
     //Liste déroulante (Multiple Hover item)        
     {
         label: "Liste_deroulante (Multiple Hover item)", 
@@ -620,8 +641,7 @@ scenarios : [
         viewports: viewports.vTablet,
         shadowClickSelectors: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
         shadowHoverSelectors2: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: 'li[aria-label="Manitoba"]'}]
-    },    
-    //TODO Non fonctionnel
+    },
     //Liste déroulante (Combinée simple Hover item)        
     {
         label: "Liste_deroulante (Combinée simple Hover item)", 
@@ -631,7 +651,6 @@ scenarios : [
         shadowClickSelectors: [{domSelector: "#exemple4 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
         shadowHoverSelectors2: [{domSelector: "#exemple4 utd-liste-deroulante", shadowDomSelector: 'li[aria-label="Alaska"]'}]
     },
-    //TODO Non fonctionnel    
     //Liste déroulante (Combinée multiple Hover item)        
     {
         label: "Liste_deroulante (Combinée multiple Hover item)", 
@@ -648,6 +667,24 @@ scenarios : [
         selectors: ["#exemple2a"],
         shadowClickSelectors: [{domSelector: "#exemple2a utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}, {domSelector: "#exemple2a utd-liste-deroulante", shadowDomSelector: 'li[aria-label="Manitoba"]'}],
     },    
+    //Liste déroulante (Simple selection item avec espace)        
+    {
+        label: "Liste_deroulante (Simple selection item avec espace)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        selectors: ["#exemple2a"],
+        shadowClickSelectors: [{domSelector: "#exemple2a utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["ArrowDown","Space"]
+    },
+    //Liste déroulante (Simple selection item avec enter)        
+    {
+        label: "Liste_deroulante (Simple selection item avec enter)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        selectors: ["#exemple2a"],
+        shadowClickSelectors: [{domSelector: "#exemple2a utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["ArrowDown","Enter"]
+    },   
     //Liste déroulante (Multiple selection 3 items)        
     {
         label: "Liste_deroulante (Multiple selection 3 items)", 
@@ -692,44 +729,187 @@ scenarios : [
     {
         label: "Liste_deroulante (Option sélectionnée par défaut)", 
         url: "/essaislistederoulante",
-        selectors: ["#exemple1"],
         viewports: viewports.vTablet
-    },     
-
-    //Liste déroulante (inactive)        
+    },
+    //Liste déroulante (Multiple ouverte fleche bas)        
     {
-        label: "Liste_deroulante (inactive)", 
-        url: "/essaislistederoulante",
-        selectors: ["#exemple2"],
-        viewports: viewports.vTablet
-    },     
-
-    //Liste déroulante (inactive focus)        
-    {
-        label: "Liste_deroulante (inactive focus)", 
-        url: "/essaislistederoulante",
-        selectors: ["#exemple2"],
+        label: "Liste_deroulante (Multiple ouverte fleche bas)", 
+        url: "/composants/formulaire/listederoulante",
         viewports: viewports.vTablet,
-        shadowFocusSelectors: [{domSelector: "#exemple2 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}]
-    },        
-    //Liste déroulante (inactive ouverture click)        
+        shadowClickSelectors: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["ArrowDown"],
+        shadowHoverSelectors2: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-precision"}]
+    },
+    //Liste déroulante (Multiple ouverte double fleche bas)
     {
-        label: "Liste_deroulante (inactive ouverture click)", 
-        url: "/essaislistederoulante",
-        selectors: ["#exemple2"],
+        label: "Liste_deroulante (Multiple ouverte double fleche bas)", 
+        url: "/composants/formulaire/listederoulante",
         viewports: viewports.vTablet,
-        shadowClickSelectors: [{domSelector: "#exemple2 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
-    },    
-    //Liste déroulante (inactive focus et ouverture clavier)        
+        shadowClickSelectors: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["ArrowDown","ArrowDown"],
+        shadowHoverSelectors2: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-precision"}]
+    },
+    //Liste déroulante (Multiple ouverte fleche haut)        
     {
-        label: "Liste_deroulante (inactive focus et ouverture clavier)", 
-        url: "/essaislistederoulante",
-        selectors: ["#exemple2"],
+        label: "Liste_deroulante (Multiple ouverte fleche haut)", 
+        url: "/composants/formulaire/listederoulante",
         viewports: viewports.vTablet,
-        shadowFocusSelectors: [{domSelector: "#exemple2 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
-        keyPressKeyCode: ["Enter"]
-    },     
-
+        shadowClickSelectors: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["ArrowUp"],
+        shadowHoverSelectors2: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-precision"}]
+    },
+    //Liste déroulante (Multiple ouverte double fleche haut)        
+    {
+        label: "Liste_deroulante (Multiple ouverte double fleche haut)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["ArrowUp","ArrowUp"],
+        shadowHoverSelectors2: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-precision"}]
+    },
+    //Liste déroulante (Multiple ouverte fleche bas puis fleche haut)        
+    {
+        label: "Liste_deroulante (Multiple ouverte fleche bas puis fleche haut)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["ArrowDown","ArrowUp"],
+        shadowHoverSelectors2: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-precision"}]
+    },
+    //Liste déroulante (Simple ouverte cinq fleche bas)        
+    {
+        label: "Liste_deroulante (Simple ouverte cinq fleche bas)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: "#exemple2b utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown"],
+        shadowHoverSelectors2: [{domSelector: "#exemple2b utd-liste-deroulante", shadowDomSelector: ".utd-precision"}]
+    },
+    //Liste déroulante (Simple ouverte cinq fleche haut)        
+    {
+        label: "Liste_deroulante (Simple ouverte cinq fleche haut)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: "#exemple2b utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp"],
+        shadowHoverSelectors2: [{domSelector: "#exemple2b utd-liste-deroulante", shadowDomSelector: ".utd-precision"}]
+    },
+    //Liste déroulante (Simple ouverte fleche gauche)        
+    {
+        label: "Liste_deroulante (Simple ouverte fleche gauche)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: "#exemple2b utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["ArrowLeft"],
+        shadowHoverSelectors2: [{domSelector: "#exemple2b utd-liste-deroulante", shadowDomSelector: ".utd-precision"}]
+    },
+    //Liste déroulante (Simple ouverte double fleche gauche)        
+    {
+        label: "Liste_deroulante (Simple ouverte double fleche gauche)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: "#exemple2b utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["ArrowLeft","ArrowLeft"],
+        shadowHoverSelectors2: [{domSelector: "#exemple2b utd-liste-deroulante", shadowDomSelector: ".utd-precision"}]
+    },
+    //Liste déroulante (Simple ouverte fleche droite)        
+    {
+        label: "Liste_deroulante (Simple ouverte fleche droite)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: "#exemple2b utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["ArrowRight"],
+        shadowHoverSelectors2: [{domSelector: "#exemple2b utd-liste-deroulante", shadowDomSelector: ".utd-precision"}]
+    },
+    //Liste déroulante (Simple ouverte double fleche droite)        
+    {
+        label: "Liste_deroulante (Simple ouverte double fleche droite)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: "#exemple2b utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["ArrowRight","ArrowRight"],
+        shadowHoverSelectors2: [{domSelector: "#exemple2b utd-liste-deroulante", shadowDomSelector: ".utd-precision"}]
+    },
+    //Liste déroulante (Simple ouverte Home)        
+    {
+        label: "Liste_deroulante (Simple ouverte Home)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: "#exemple2b utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["Home"],
+        shadowHoverSelectors2: [{domSelector: "#exemple2b utd-liste-deroulante", shadowDomSelector: ".utd-precision"}]
+    },
+    //Liste déroulante (Multiple ouverte Home)        
+    {
+        label: "Liste_deroulante (Multiple ouverte Home)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["Home"],
+        shadowHoverSelectors2: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-precision"}]
+    },
+    //Liste déroulante (Simple ouverte End)        
+    {
+        label: "Liste_deroulante (Simple ouverte End)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: "#exemple2b utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["End"],
+        shadowHoverSelectors2: [{domSelector: "#exemple2b utd-liste-deroulante", shadowDomSelector: ".utd-precision"}]
+    },
+    //Liste déroulante (Multiple ouverte End)        
+    {
+        label: "Liste_deroulante (Multiple ouverte End)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["End"],
+        shadowHoverSelectors2: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-precision"}]
+    },
+    //Liste déroulante (Multiple selection 1 item et hover autre item)        
+    {
+        label: "Liste_deroulante (Multiple selection 1 item et hover autre item)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"},{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: 'li[aria-label="Alberta"]'}],
+        shadowHoverSelectors2: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: 'li[aria-label="Manitoba"]'}]
+    },
+    //Liste déroulante (Multiple fleche bas et hover autre item)        
+    {
+        label: "Liste_deroulante (Multiple fleche bas et hover autre item)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        keyPressKeyCode: ["ArrowDown"],
+        shadowHoverSelectors2: [{domSelector: "#exemple3 utd-liste-deroulante", shadowDomSelector: 'li[aria-label="Manitoba"]'}]
+    },
+    //Liste déroulante (Combine simple ouverte ecrire Floride)        
+    {
+        label: "Liste_deroulante (Combine simple ouverte ecrire Floride)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: "#exemple4 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        textInput: ["Floride"],
+        shadowHoverSelectors2: [{domSelector: "#exemple4 utd-liste-deroulante", shadowDomSelector: ".utd-precision"}]
+    },
+    //Liste déroulante (Combine multiple ouverte ecrire Floride)        
+    {
+        label: "Liste_deroulante (Combine multiple ouverte ecrire Floride)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: "#exemple5 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        textInput: ["Floride"],
+        shadowHoverSelectors2: [{domSelector: "#exemple5 utd-liste-deroulante", shadowDomSelector: ".utd-precision"}]
+    },
+    //Liste déroulante (Combine multiple recherche precise ouverte ecrire Floride)        
+    {
+        label: "Liste_deroulante (Combine multiple recherche precise ouverte ecrire Floride)", 
+        url: "/composants/formulaire/listederoulante",
+        viewports: viewports.vTablet,
+        shadowClickSelectors: [{domSelector: "#exemple6 utd-liste-deroulante", shadowDomSelector: ".utd-form-control"}],
+        textInput: ["Floride"],
+        shadowHoverSelectors2: [{domSelector: "#exemple6 utd-liste-deroulante", shadowDomSelector: ".utd-precision"}]
+    },
 
     //Menu ancres (Base)        
     {
@@ -867,7 +1047,7 @@ scenarios : [
     },    
 
 
-    //Menu horizontal (Click Plus et hover niveau 1)        
+    // Menu horizontal (Click Plus et hover niveau 1)        
     {
         label: "Menu_horizontal (Click Plus et hover niveau 1)", 
         url: "/composants/navigation/menuhorizontal",
@@ -998,8 +1178,167 @@ scenarios : [
         shadowClickSelectors: [{domSelector: 'utd-menu-horizontal-item[libelle="Menu"]', shadowDomSelector: "a"}, {domSelector: 'utd-menu-horizontal-item[libelle="Navigation"]:not(.utd-d-none)', shadowDomSelector: "a"}],
         shadowHoverSelectors2: [{domSelector: 'utd-menu-horizontal-item[libelle="Navigation"]:not(.utd-d-none) utd-menu-horizontal-item[libelle="Menu horizontal"]', shadowDomSelector: "a"}],
         appendBsTestHash: true
-    },    
-    
+    },
+    //Menu horizontal (tab 7 fois entre dans menu)        
+    {
+        label: "Menu_horizontal (tab 7 fois entre dans menu)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet, 
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (entre dans menu fleche droite select version)        
+    {
+        label: "Menu_horizontal (tab 7 fois entre dans menu fleche droite select version)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowRight"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (entre dans menu fleche bas select version)        
+    {
+        label: "Menu_horizontal (tab 7 fois entre dans menu fleche bas select version)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowDown"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (entre dans menu deux fleche droite select navigation)        
+    {
+        label: "Menu_horizontal (tab 7 fois entre dans menu deux fleche droite select navigation)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowRight","ArrowRight"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (entre dans menu deux fleche bas select navigation)        
+    {
+        label: "Menu_horizontal (tab 7 fois entre dans menu deux fleche bas select navigation)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowDown","ArrowDown"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (entre dans menu deux fleche bas un gauche select version)        
+    {
+        label: "Menu_horizontal (entre dans menu deux fleche bas un gauche select version)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowDown","ArrowDown","ArrowLeft"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (entre dans menu deux fleche droite un haut select version)        
+    {
+        label: "Menu_horizontal (entre dans menu deux fleche droite un haut select version)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowRight","ArrowRight","ArrowUp"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (entre dans menu deux fleche droite quatre gauche select home)        
+    {
+        label: "Menu_horizontal (entre dans menu deux fleche droite quatre gauche select home)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowRight","ArrowRight","ArrowLeft","ArrowLeft","ArrowLeft","ArrowLeft"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (entre dans menu une fleche droite deux gauche select home)        
+    {
+        label: "Menu_horizontal (entre dans menu une fleche droite deux gauche select home)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowRight","ArrowLeft","ArrowLeft"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (entre dans navigation enter ouvre navigation)        
+    {
+        label: "Menu_horizontal (entre dans navigation enter ouvre navigation)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowRight","ArrowRight","Enter"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (ouvre navigation clavier escape ferme navigation)        
+    {
+        label: "Menu_horizontal (ouvre navigation clavier escape ferme navigation)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowRight","ArrowRight","Enter","Escape"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (entre dans navigation fleche droite selection element un)        
+    {
+        label: "Menu_horizontal (entre dans navigation fleche droite selection element un)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowRight","ArrowRight","Enter","ArrowRight"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (entre dans navigation double fleche droite selection element deux)        
+    {
+        label: "Menu_horizontal (entre dans navigation double fleche droite selection element deux)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowRight","ArrowRight","Enter","ArrowRight","ArrowRight"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (entre dans navigation fleche double droite gauche selection element un)        
+    {
+        label: "Menu_horizontal (entre dans navigation fleche double droite gauche selection element un)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowRight","ArrowRight","Enter","ArrowRight","ArrowRight","ArrowLeft"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (entre dans navigation fleche bas selection element un)        
+    {
+        label: "Menu_horizontal (entre dans navigation fleche bas selection element un)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowRight","ArrowRight","Enter","ArrowDown"],
+        appendBsTestHash: true
+    },
+    //Menu horizontal (entre dans navigation fleche bas triple haut selection element un)        
+    {
+        label: "Menu_horizontal (entre dans navigation fleche bas triple haut selection element un)", 
+        url: "/composants/navigation/menuhorizontal",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"],
+        viewports: viewports.vDesktopTablet,
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowRight","ArrowRight","Enter","ArrowDown","ArrowUp","ArrowUp","ArrowUp"],
+        appendBsTestHash: true
+    },
 
     //Menu vertical (Base)        
     {
@@ -1112,6 +1451,70 @@ scenarios : [
         shadowClickSelectors: [{domSelector: "utd-menu-vertical", shadowDomSelector: "a.toggle"}],
         hoverSelectors2: ['utd-menu-vertical-item[libelle="Menu vertical"]']
     },    
+    //Menu vertical (fleche bas)        
+    {
+        label: "Menu_vertical (fleche bas)", 
+        url: "/composants/navigation/menuvertical",
+        selectors: ["utd-menu-vertical"],
+        viewports: viewports.vDesktop, 
+        removeSelectors: [".no-test"],
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowDown"]
+    },     
+    //Menu vertical (deux fleche bas)        
+    {
+        label: "Menu_vertical (deux fleche bas)", 
+        url: "/composants/navigation/menuvertical",
+        selectors: ["utd-menu-vertical"],
+        viewports: viewports.vDesktop, 
+        removeSelectors: [".no-test"],
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowDown","ArrowDown"]
+    },
+    //Menu vertical (deux fleche bas)        
+    {
+        label: "Menu_vertical (deux fleche bas)", 
+        url: "/composants/navigation/menuvertical",
+        selectors: ["utd-menu-vertical"],
+        viewports: viewports.vDesktop, 
+        removeSelectors: [".no-test"],
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowDown","ArrowDown"]
+    },
+    //Menu vertical (deux fleche bas fleche droite)        
+    {
+        label: "Menu_vertical (deux fleche bas fleche droite)", 
+        url: "/composants/navigation/menuvertical",
+        selectors: ["utd-menu-vertical"],
+        viewports: viewports.vDesktop, 
+        removeSelectors: [".no-test"],
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowDown","ArrowDown","ArrowRight"]
+    },
+    //Menu vertical (deux fleche bas fleche droite deux bas)        
+    {
+        label: "Menu_vertical (deux fleche bas fleche droite deux bas)", 
+        url: "/composants/navigation/menuvertical",
+        selectors: ["utd-menu-vertical"],
+        viewports: viewports.vDesktop, 
+        removeSelectors: [".no-test"],
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowDown","ArrowDown","ArrowRight","ArrowDown","ArrowDown"]
+    },
+    //Menu vertical (deux fleche bas droite deux bas une haut)        
+    {
+        label: "Menu_vertical (deux fleche bas droite deux bas une haut)", 
+        url: "/composants/navigation/menuvertical",
+        selectors: ["utd-menu-vertical"],
+        viewports: viewports.vDesktop, 
+        removeSelectors: [".no-test"],
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowDown","ArrowDown","ArrowRight","ArrowDown","ArrowDown","ArrowUp"]
+    },
+    //Menu vertical (deux fleche bas droite gauche ferme menu)        
+    {
+        label: "Menu_vertical (deux fleche bas droite gauche ferme menu)", 
+        url: "/composants/navigation/menuvertical",
+        selectors: ["utd-menu-vertical"],
+        viewports: viewports.vDesktop, 
+        removeSelectors: [".no-test"],
+        keyPressKeyCode: ["Tab","Tab","Tab","Tab","Tab","Tab","Tab","Tab","ArrowDown","ArrowDown","ArrowRight","ArrowLeft"]
+    },
+
     //Message (Base) avertissement avec 2 boutons
     {
         label: "Message (Base) avertissement avec 2 boutons", 
@@ -1226,7 +1629,693 @@ scenarios : [
         url: "/gabarit1colonne",
         selectors: ["utd-piv-entete"],
         removeSelectors: [".no-test"]  
-    },    
+    },
+    //Piv entête avec barre de recherche (base)
+    {
+        label: "Piv_entete avec barre recherche (Base)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],  
+        removeSelectors: [".no-test"]
+    },
+    //Piv entête afficher recherche (hover de la loupe)
+    {
+        label: "Piv_entete avec barre recherche (hover de la loupe)", 
+        url: "/composants/entetepiedpage/piventete",
+        viewports: viewports.vDesktopTablet,
+        selectors: ["utd-piv-entete"],  
+        removeSelectors: [".no-test"],
+        shadowHoverSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}]
+    },
+    //Piv entête afficher recherche (hover de la loupe mobile)
+    {
+        label: "Piv_entete avec barre recherche (hover de la loupe mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        viewports: viewports.vPhone,
+        selectors: ["utd-piv-entete"],  
+        removeSelectors: [".no-test"],
+        shadowHoverSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}]
+    },
+    //Piv entête afficher recherche (clic loupe affiche barre de recherche )
+    {
+        label: "Piv_entete avec barre recherche (clic loupe affiche barre de recherche )", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}]
+    },
+    //Piv entête afficher recherche (clic loupe affiche barre de recherche mobile)
+    {
+        label: "Piv_entete avec barre recherche (clic loupe affiche barre de recherche mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}]
+    },
+    //Piv entête afficher recherche (deux clic loupe ferme ouvre ferme recherche)
+    {
+        label: "Piv_entete avec barre recherche (deux clic loupe ouvre ferme recherche)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"},{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}]
+    },
+    //Piv entête afficher recherche (deux clic loupe ouvre ferme recherche mobile)
+    {
+        label: "Piv_entete avec barre recherche (deux clic loupe ouvre ferme recherche mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"},{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}]
+    },
+    //Piv entête afficher recherche (clic loupe clic body enleve focus sur recherche)
+    {
+        label: "Piv_entete avec barre recherche (clic loupe clic body enleve focus sur recherche)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"},{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"}]
+    },
+    //Piv entête afficher recherche (clic loupe clic body enleve focus sur recherche mobile)
+    {
+        label: "Piv_entete avec barre recherche (clic loupe clic body enleve focus sur recherche mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"},{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"}]
+    },
+    //Piv entête afficher recherche (loupe body barre de recherche remet focus sur barre recherche)
+    {
+        label: "Piv_entete avec barre recherche (loupe body barre de recherche remet focus sur barre recherche)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"},{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"},{domSelector: "utd-piv-entete", shadowDomSelector: ".controle-recherche"}]
+    },
+    //Piv entête afficher recherche (loupe body barre de recherche remet focus sur barre recherche mobile)
+    {
+        label: "Piv_entete avec barre recherche (loupe body barre de recherche remet focus sur barre recherche mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"},{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"},{domSelector: "utd-piv-entete", shadowDomSelector: ".controle-recherche"}]
+    },
+    //Piv entête afficher recherche (clic loupe tab donne focus controle suivant)
+    {
+        label: "Piv_entete avec barre recherche (clic loupe tab donne focus controle suivant)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["Tab"]
+    },
+    //Piv entête afficher recherche (clic loupe tab donne focus controle suivant mobile)
+    {
+        label: "Piv_entete avec barre recherche (clic loupe tab donne focus controle suivant mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["Tab"]
+    },
+    //Piv entête afficher recherche (ecrire s aucune recherche executee)
+    {
+        label: "Piv_entete avec barre recherche (ecrire s aucune recherche executee)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s"]
+    },
+    //Piv entête afficher recherche (ecrire s aucune recherche executee mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire s aucune recherche executee mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s"]
+    },
+    //Piv entête afficher recherche (ecrire se aucune recherche executee)
+    {
+        label: "Piv_entete avec barre recherche (ecrire se aucune recherche executee)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        textInput: ["se"]
+    },
+    //Piv entête afficher recherche (ecrire se aucune recherche executee mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire se aucune recherche executee mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["utd-piv-entete"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        textInput: ["se"]
+    },
+    //Piv entête afficher recherche (ecrire sec trouve des resultats)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec trouve des resultats)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        textInput: ["sec"]
+    },
+    //Piv entête afficher recherche (ecrire sec trouve des resultats mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec trouve des resultats mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        textInput: ["sec"]
+    },
+    //Piv entête afficher recherche (ecrire sec body ferme resultats recherche et laisse sec dans champ)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec body ferme resultats recherche et laisse sec dans champ)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        textInput: ["sec"],
+        shadowClickSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"}]
+    },
+    //Piv entête afficher recherche (ecrire sec body ferme resultats recherche et laisse sec dans champ mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec body ferme resultats recherche et laisse sec dans champ mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        textInput: ["sec"],
+        shadowClickSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"}]
+    },
+    //Piv entête afficher recherche (ecrire sec escape ferme resultats recherche et laisse sec dans champ)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec escape ferme resultats recherche et laisse sec dans champ)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c","Escape"]
+    },
+    //Piv entête afficher recherche (ecrire sec escape ferme resultats recherche et laisse sec champ mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec escape ferme resultats recherche et laisse sec champ mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c","Escape"]
+    },
+    //Piv entête afficher recherche (sec double escape ferme resultats recherche et laisse pas sec dans champ)
+    {
+        label: "Piv_entete avec barre recherche (sec double escape ferme resultats recherche et laisse pas sec dans champ)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c","Escape","Escape"]
+    },
+    //Piv entête afficher recherche (sec double escape ferme resultats recherche et laisse pas sec dans champ mobile)
+    {
+        label: "Piv_entete avec barre recherche (sec double escape ferme resultats recherche et laisse pas sec dans champ mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c","Escape","Escape"]
+    },
+    //Piv entête afficher recherche (ecrire sec tab la recherche se ferme et on va sur X)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec tab la recherche se ferme et on va sur X)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c","Tab"]
+    },
+    //Piv entête afficher recherche (ecrire sec tab la recherche se ferme et on va sur X mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec tab la recherche se ferme et on va sur X mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c","Tab"]
+    },
+    //Piv entête afficher recherche (ecrire cont affiche resultat)
+    {
+        label: "Piv_entete avec barre recherche (ecrire cont affiche resultat)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        textInput: ["cont"]
+    },
+    //Piv entête afficher recherche (ecrire cont affiche resultat mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire cont affiche resultat mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        textInput: ["cont"]
+    },
+    //Piv entête afficher recherche (ecrire sect accent affiche resultat sect)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sect accent affiche resultat sect)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        textInput: ["séct"]
+    },
+    //Piv entête afficher recherche (ecrire sect accent affiche resultat sect mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sect accent affiche resultat sect mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        textInput: ["séct"]
+    },
+    //Piv entête afficher recherche (ecrire *c/on% affiche resultat con)
+    {
+        label: "Piv_entete avec barre recherche (ecrire *c/on% affiche resultat con)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        textInput: ["*c/on%"]
+    },
+    //Piv entête afficher recherche (ecrire *c/on% affiche resultat con mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire *c/on% affiche resultat con mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        textInput: ["*c/on%"]
+    },
+    //Piv entête afficher recherche (ecrire ahm affiche Aucun resultat)
+    {
+        label: "Piv_entete avec barre recherche (ecrire ahm affiche Aucun resultat)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        textInput: ["ahm"]
+    },
+    //Piv entête afficher recherche (ecrire ahm affiche Aucun resultat mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire ahm affiche Aucun resultat mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        textInput: ["ahm"]
+    },
+    //Piv entête afficher recherche (ecrire sec clic X reset le champ)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec puis clic X reset le champ)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        textInput: ["sec"],
+        shadowClickSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".reinitialiser-recherche"}]
+    },
+    //Piv entête afficher recherche (ecrire sec puis clic X reset le champ mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec puis clic X reset le champ mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        textInput: ["sec"],
+        shadowClickSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".reinitialiser-recherche"}]
+    },
+    //Piv entête afficher recherche (ecrire sec hover resultat souligne et met fond bleu)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec hover resultat souligne et met fond bleu)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        textInput: ["sec"],
+        shadowHoverSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".lien-resultat"}]
+    },
+    //Piv entête afficher recherche (ecrire sec hover resultat souligne et met fond bleu mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec hover resultat souligne et met fond bleu mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        textInput: ["sec"],
+        shadowHoverSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".lien-resultat"}]
+    },
+    //Piv entête afficher recherche (ecrire sec hover resultat hover body resultat pas souligne mais fond bleu)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec hover resultat hover body resultat pas souligne mais fond bleu)",
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        textInput: ["sec"],
+        shadowHoverSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".lien-resultat"},{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"}]
+    },
+    //Piv entête afficher recherche (ecrire sec hover resultat hover body resultat pas souligne mais fond bleu mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec hover resultat hover body resultat pas souligne mais fond bleu mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        textInput: ["sec"],
+        shadowHoverSelectors2:[{domSelector: "utd-piv-entete", shadowDomSelector: ".lien-resultat"},{domSelector: "utd-piv-entete", shadowDomSelector: ".utd-piv-entete"}]
+    },
+    //Piv entête afficher recherche (ecrire sec fleche bas selection premier resultat et fond bleu dessus)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec fleche bas selection premier resultat et fond bleu dessus)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c","ArrowDown"]
+    },
+    //Piv entête afficher recherche (ecrire sec fleche bas selection premier resultat et fond bleu mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec fleche bas mobile selection premier resultat et fond bleu mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c","ArrowDown"]
+    },
+    //Piv entête afficher recherche (ecrire sec double fleche bas selection deuxieme resultat et fond bleu)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec double fleche bas selection deuxieme resultat et fond bleu)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c","ArrowDown","ArrowDown"]
+    },
+    //Piv entête afficher recherche (ecrire sec double fleche bas selection deuxieme resultat et fond bleu mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec double fleche bas selection deuxieme resultat et fond bleu mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c","ArrowDown","ArrowDown"]
+    },
+    //Piv entête afficher recherche (ecrire sec fleche haut selection dernier resultat et fond bleu)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec fleche haut selection dernier resultat et fond bleu)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c","ArrowUp"]
+    },
+    //Piv entête afficher recherche (ecrire sec fleche haut selection dernier resultat et fond bleu mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec fleche haut selection dernier resultat et fond bleu mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c","ArrowUp"]
+    },
+    //Piv entête afficher recherche (ecrire sec double fleche haut selection avant dernier resultat et fond bleu)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec double fleche haut selection avant dernier resultat et fond bleu)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c","ArrowUp","ArrowUp"]
+    },
+    //Piv entête afficher recherche (ecrire sec double fleche haut selection avant dernier resultat et fond bleu mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec double fleche haut selection avant dernier resultat et fond bleu mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c","ArrowUp","ArrowUp"]
+    },
+    //Piv entête afficher recherche (ecrire sec fleche bas fleche haut selection dernier resultat et fond bleu)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec fleche bas fleche haut selection dernier resultat et fond bleu)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c","ArrowDown","ArrowUp"]
+    },
+    //Piv entête afficher recherche (ecrire sec fleche bas fleche haut selection dernier resultat et fond bleu mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec fleche bas fleche haut selection dernier resultat et fond bleu mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c","ArrowDown","ArrowUp"]
+    },
+    //Piv entête afficher recherche (ecrire sec fleche gauche deplace curseur dans texte)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec fleche gauche deplace curseur dans texte)",
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c","ArrowLeft"]
+    },
+    //Piv entête afficher recherche (ecrire sec fleche gauche deplace curseur dans texte mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec fleche gauche deplace curseur dans texte mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c","ArrowLeft"]
+    },
+    //Piv entête afficher recherche (ecrire sec fleche droite deplace curseur dans texte)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec fleche droite deplace curseur dans texte)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c","ArrowRight"]
+    },
+    //Piv entête afficher recherche (ecrire sec fleche droite deplace curseur dans texte mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec fleche droite deplace curseur dans texte mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c","ArrowRight"]
+    },
+    //Piv entête afficher recherche (ecrire sec douze fleche bas selection premier resultat fond bleu)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec douze fleche bas selection premier resultat fond bleu)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown"]
+    },
+    //Piv entête afficher recherche (ecrire sec douze fleche bas selection premier resultat fond bleu mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec douze fleche bas selection premier resultat fond bleu mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown"]
+    },
+    //Piv entête afficher recherche (ecrire sec douze fleche haut selection dernier resultat fond bleu)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec douze fleche haut selection dernier resultat fond bleu)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vDesktopTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp"]
+    },
+    //Piv entête afficher recherche (ecrire sec douze fleche haut selection dernier resultat fond bleu mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec douze fleche haut selection dernier resultat fond bleu mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp","ArrowUp"]
+    },
+    //Piv entête afficher recherche (ecrire sec Home deplace curseur au debut du texte)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec Home deplace curseur au debut du texte)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c","Home"]
+    },
+    //Piv entête afficher recherche (ecrire sec Home deplace curseur au debut texte mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec Home deplace curseur au debut texte mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c","Home"]
+    },
+    //Piv entête afficher recherche (ecrire sec End deplace curseur a la fin texte)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec End deplace curseur a la fin texte)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["s","e","c","End"]
+    },
+    //Piv entête afficher recherche (ecrire sec End deplace curseur a la fin texte mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire sec End deplace curseur a la fin texte mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["s","e","c","End"]
+    },
+    //Piv entête afficher recherche (ecrire con max 10 resultat)
+    {
+        label: "Piv_entete avec barre recherche (ecrire con max 10 resultat)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        textInput: ["con"]
+    },
+    //Piv entête afficher recherche (ecrire con max 10 resultat mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire con max 10 resultat mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        textInput: ["con"]
+    },
+    //Piv entête afficher recherche (ecrire con max 10 resultat 11 fleche bas selection msg erreur)
+    {
+        label: "Piv_entete avec barre recherche (ecrire con max 10 resultat 11 fleche bas selection msg erreur)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["c","o","n","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown"]
+    },
+    //Piv entête afficher recherche (ecrire con max 10 resultat 11 fleche bas selection msg erreur mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire con max 10 resultat 11 fleche bas selection msg erreur mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["c","o","n","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown","ArrowDown"]
+    },
+    //Piv entête afficher recherche (ecrire con max 10 resultat fleche haut selection msg erreur)
+    {
+        label: "Piv_entete avec barre recherche (ecrire con max 10 resultat fleche haut selection msg erreur)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vTablet,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: ".bouton-toggle-recherche"}],
+        keyPressKeyCode: ["c","o","n","ArrowUp"]
+    },
+    //Piv entête afficher recherche (ecrire con max 10 resultat fleche haut selection msg erreur mobile)
+    {
+        label: "Piv_entete avec barre recherche (ecrire con max 10 resultat fleche haut selection msg erreur mobile)", 
+        url: "/composants/entetepiedpage/piventete",
+        selectors: ["viewport"],
+        viewports: viewports.vPhone,
+        removeSelectors: [".no-test"],
+        shadowClickSelectors:[{domSelector: "utd-piv-entete", shadowDomSelector: "#btnToggleRecherchePIVmobile"}],
+        keyPressKeyCode: ["c","o","n","ArrowUp"]
+    },
+
     //Piv pied page (Base)
     {
         label: "Piv_pied_page (Base)", 

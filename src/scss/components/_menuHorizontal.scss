@@ -26,6 +26,11 @@ utd-menu-horizontal {
     }
 }
 
+/* Masquer les liens d'applications SPA. Ils doivent être là pour que le SPA fonctionne bien ex. <router-link> dans vue qui génère un a, mais ils ne doivent pas être visibles. */
+utd-menu-horizontal > a, utd-menu-horizontal-item > a {
+    display: none;
+}
+
 .utd-menu-horizontal {
     display: flex;
     align-items: flex-end;

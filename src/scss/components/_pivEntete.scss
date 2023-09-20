@@ -46,6 +46,12 @@ utd-piv-entete {
             width: 200px;
         }        
     }
+
+    #recherchePIV {
+        position: relative; /* Important sinon glitch avec animation */
+        padding-bottom: 24px;
+    }
+    
       
     /* ========== Section du centre ==========*/
     .section-centre {
@@ -150,15 +156,27 @@ utd-piv-entete {
     padding-bottom: 0;
 }
 
-.utd-piv-entete .bouton-recherche {
-    min-width: 32px;
-    min-height: 32px;
+
+.utd-piv-entete {
+    .section-droite {
+        button.bouton-toggle-recherche {
+            margin-right: 8px;
+        }
+    }
 }
 
-.utd-piv-entete .section-droite .bouton-recherche {
-    margin-right: 16px;
+.utd-piv-entete {
+    button.bouton-toggle-recherche {
+        min-width: 32px;
+        min-height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border:0;
+        background-color: transparent;
+    }
 }
-  
+
 
 /* ========== Logo gouvernement (téléphone) ==========*/  
 @media screen and (max-width:403px) {
@@ -176,39 +194,44 @@ utd-piv-entete {
         max-height: 99px;   
     } 
     
-    .utd-piv-entete .section-centre {
-        margin-top: 0;
-    }
+    .utd-piv-entete {
+        .signature-gouvernement img {
+            margin-left: -3px;
+        }
+    
+        .titre-site {
+            display: none;
+        }
+    
+        .section-centre {
+            margin-top: 0;
+        }
 
-    .utd-piv-entete .section-droite{
-        min-width: 130px;
-    }
+        .section-droite {
+            min-width: 130px;
 
-    .utd-piv-entete .section-droite .bouton-recherche{
-        display: none;
-    }
+            button.bouton-toggle-recherche {
+                display: none;
+            }
+        
+        }
 
-    .utd-piv-entete .signature-gouvernement img{
-        margin-left: -3px;
-    }
+        .zone-titre-recherche {
+            display: flex;
+            justify-content: space-between;
 
-    .utd-piv-entete .titre-site {
-        display: none;
-    }
-
-    .utd-piv-entete .zone-titre-recherche {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .utd-piv-entete .zone-titre-recherche .titre-site {
-        display: flex;
-    }
+            .titre-site {
+                display: flex;
+            }
+            
+            .bouton-toggle-recherche {
+                margin-right: -8px;
+                margin-left: 8px;
+            }
+        }    
+    } 
 }
   
-utd-piv-entete [slot="zoneRecherche"] > *:first-child {
-    padding: 8px 0 24px 0;
-}
 
 header {
     margin-bottom: var(--tc-48-40-val);

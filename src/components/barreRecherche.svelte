@@ -15,6 +15,7 @@ const languePage = Utils.obtenirLanguePage()
 /* Attributs publics */
 export let urlContenuRecherche = ''
 export let placeholder = languePage === 'fr' ? "Rechercher..." : "Search..."
+export let nbMaxResultats = '10'
 
 /* Attributs privés */
 export let focus = 'false'
@@ -22,12 +23,12 @@ export let rechercheFloue = 'true'
 export let precisionRecherche = "0.2"
 export let contextePiv = 'false'
 
-
 const ariaDescriptionRecherche = languePage === 'fr' ? "Saisir le terme recherché, puis utilisez les touches flèches haut et bas pour naviguer dans la liste des résultats, et ensuite Entrée ou Espace pour accéder au résultat désiré" : "Enter the search term, then use the up and down arrow keys to navigate the list of results, and then Enter or Space to access the desired result"
 const srResultatsTrouves = languePage === 'fr' ? "{x} résultats trouvés" : "{x} results found."
-const texteAucunResultat = languePage === 'fr' ? "Aucun résultat trouvé." : "No results found."
+const texteAucunResultat = languePage === 'fr' ? "Aucun résultat trouvé." : "No result found."
 const srAucunResultat = texteAucunResultat
 const titleBoutonReinitialiserRecherche = languePage === 'fr' ? "Réinitialiser la recherche" : "Reset search"
+let textePrecisionRecherche
 
 const srcBaseImage = `${Utils.imagesRelativePath}utd-sprite.svg_versionUtd_#`
 const idControleRecherche = Utils.genererId()
@@ -39,7 +40,6 @@ const nbCaracteresMinimalRecherche = 3
 
 let mounted = false
 let nbNiveaux = 1
-let afficherResultats = false
 let idActiveDescendant = null
 let miniSearch
 let optionsMiniSearch
@@ -49,12 +49,16 @@ let resultatsRecherche = null
 let resultatsRechercheFlat = null
 let texteRecherche = ""
 let texteNotificationLecteurEcran = ""
+let doitAfficherMessagePreciserRecherche = false
+
 
 
 /* Contrôles */
 let controleRecherche
 
 onMount(() => {  
+
+  textePrecisionRecherche = languePage === 'fr' ? `Seuls les ${nbMaxResultats} premiers résultats sont affichés. Précisez votre recherche au besoin.` : `(en)Seuls les ${nbMaxResultats} premiers résultats sont affichés. Précisez votre recherche au besoin.`
 
   controleRecherche = thisComponent.shadowRoot.getElementById(idControleRecherche)  
 
@@ -79,7 +83,8 @@ onMount(() => {
   // Watch sur la prop focus
   $: toggleFocus(focus) 
   $: majContenuRecherche(contenuRecherche) 
-
+  $: doitAfficherResultatsRecherche = resultatsRecherche && resultatsRecherche.length > 0
+  $: nombreMaxResultats = parseInt(nbMaxResultats)
 
 function toggleFocus() {
 
@@ -140,7 +145,6 @@ function initialiserRecherche() {
   }
 }
 
-
 function obtenirContenuRechercheViaUrl () {   
    return fetch(urlContenuRecherche)
     .then(response => {
@@ -165,23 +169,37 @@ function obtenirNombreNiveaux(contenuRecherche) {
 }
 
 function rechercher(doitNotifierLecteurEcran) {
+  doitAfficherMessagePreciserRecherche = false
 
   //TODO retirer? si tjrs 3 caractères minimal
   const optionsRecherche = {...optionsMiniSearch, ...{fuzzy: term => term.length > nbCaracteresMinimalRecherche ? optionsMiniSearch.fuzzy : null}}
 
   const texteRechercheSansEspace = texteRecherche.trim()
+  idActiveDescendant = null
 
   if(texteRechercheSansEspace !== "" && texteRechercheSansEspace.length >= nbCaracteresMinimalRecherche){    
-    const resultats = obtenirResultatsGroupes(miniSearch.search(texteRechercheSansEspace, optionsRecherche))
+    const retourMiniSearch = miniSearch.search(texteRechercheSansEspace, optionsRecherche)      
     
+    if(retourMiniSearch.length > nombreMaxResultats) {
+      retourMiniSearch.length = nombreMaxResultats
+      doitAfficherMessagePreciserRecherche = true
+    } 
+
+    const resultats = obtenirResultatsGroupes(retourMiniSearch)
+
+    if(doitAfficherMessagePreciserRecherche) {
+      ajouterMessagePrecisionRecherche(resultats)
+    }
+
     applatirResultatRecherche(resultats)
-    resultatsRecherche = resultats
+
+    resultatsRecherche = resultats 
 
     if(doitNotifierLecteurEcran){
       if(resultatsRecherche.length === 0){
         notifierLecteurEcran(srAucunResultat)
       } else {
-        notifierLecteurEcran(srResultatsTrouves.replace("{x}", resultatsRecherche.length))      
+        notifierLecteurEcran(srResultatsTrouves.replace("{x}", resultatsRechercheFlat.length))      
       }    
     }
   } else {
@@ -189,9 +207,34 @@ function rechercher(doitNotifierLecteurEcran) {
     resultatsRecherche = null
   }
 
-
   //Vérifier si scrollbar visible ou non (servira a ajouter une marge de droite afin que la scrollbar ne soit pas collée sur la bordure du contrôle)
   //definirPresenceScrollbarResultats()
+}
+
+function ajouterMessagePrecisionRecherche(resultats) {
+
+  let parent = resultats
+
+  if(nbNiveaux === 1){
+    parent = resultats
+  } else if(nbNiveaux === 2) {    
+    parent = resultats[resultats.length - 1].values
+  } else {
+    // 3 niveaux
+    parent = resultats[resultats.length - 1].values
+    parent = parent[parent.length - 1].values
+  }
+
+  //Deep copy, on veut un nouvel objet, pas une référence à celui copié
+    parent.push(JSON.parse(JSON.stringify(parent[parent.length - 1])))
+
+    parent[parent.length - 1].r = "MessagePrecisionRecherche"
+    parent[parent.length - 1].id = Utils.genererId()
+    parent[parent.length - 1].i = nombreMaxResultats
+    parent[parent.length - 1].t = ''
+    parent[parent.length - 1].h = ''
+    parent[parent.length - 1].match = {}
+    parent[parent.length - 1].terms = {}
 }
 
 function obtenirResultatsGroupes(retourMiniSearch) {
@@ -208,7 +251,6 @@ function obtenirResultatsGroupes(retourMiniSearch) {
     return regrouper(retourMiniSearch, "c")
   } else {
     // 3 niveaux
-    resultatsRechercheFlat = []    
     const niveau1 = regrouper(retourMiniSearch, "c")
     if(niveau1) {
       niveau1.forEach((item) => {
@@ -278,7 +320,7 @@ function notifierLecteurEcran(texte){
 }
 
 function mouseoverResultat(e) {
-  idActiveDescendant = this.id
+  idActiveDescendant = this.parentNode.id
 }
 /**
  * Obtient le terme à indexer (normalisé et tout).
@@ -303,11 +345,13 @@ function onKeyDownRecherche(e){
       } else {
         // Le focus visuel est dans la liste de résultats. Si ENTER ou SPACE on doit accéder au résultat.
         e.preventDefault()
-        const activeDescendant = thisComponent.shadowRoot.getElementById(idActiveDescendant)
-        controleRecherche.value = activeDescendant.innerText
-        reinitialiserRecherche()
-        activeDescendant.click()
-
+        const lienActiveDescendant = thisComponent.shadowRoot.getElementById(idActiveDescendant).querySelector('a')
+        
+        if(lienActiveDescendant){
+          controleRecherche.value = lienActiveDescendant.innerText
+          reinitialiserRecherche()
+          lienActiveDescendant.click()
+        }
       }
 
       break
@@ -339,7 +383,8 @@ function onKeyDownRecherche(e){
     case "Home":
     case "End":
       if(resultatsRecherche !== null) {
-        reinitialiserRecherche()
+        controleRecherche.focus()
+        idActiveDescendant = null
       }
 
       break
@@ -418,6 +463,7 @@ function onBlurRecherche() {
   reinitialiserRecherche()
 }
 
+
 /**
  * Petite twist permettant de ne pas avoir de blur sur le contrôle de recherche lors d'un click dans les résultats.
  * @param e
@@ -430,46 +476,74 @@ function mouseDownResultatsRecherche(e) {
 
 <div class="utd-barre-recherche">
   <div class="controle-recherche {contextePiv === 'true' ? ' contexte-piv' : ''}">
-      <input id="{idControleRecherche}" type="text" autocomplete="off" autocapitalize="none" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="{idControleResultats}" aria-activedescendant="{afficherResultats ? idActiveDescendant : null}" placeholder="{placeholder}" aria-description="{ariaDescriptionRecherche}" on:input={traiterSaisieRecherche} class="utd-form-control xxl texte-recherche" on:keydown={onKeyDownRecherche} on:blur={onBlurRecherche}>
+      <input id="{idControleRecherche}" type="text" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="{doitAfficherResultatsRecherche ? 'true' : 'false'}" aria-controls="{idControleResultats}" aria-activedescendant="{doitAfficherResultatsRecherche && idActiveDescendant ? idActiveDescendant : null}" placeholder="{placeholder}" aria-description="{ariaDescriptionRecherche}" on:input={traiterSaisieRecherche} class="utd-form-control xxl texte-recherche" on:keydown={onKeyDownRecherche} on:blur={onBlurRecherche}>
       {#if (texteRecherche !== '' && texteRecherche.length >= nbCaracteresMinimalRecherche)}
-        <button class="reinitialiser-recherche" type="button" title="{titleBoutonReinitialiserRecherche}" on:click={clickBoutonReinitialiser}>
+        <button class="reinitialiser-recherche utd-btn secondaire" type="button" title="{titleBoutonReinitialiserRecherche}" on:click={clickBoutonReinitialiser}>
             <img aria-hidden="true" src="{`${srcBaseImage}ico-xfermer-bleu-moyen`}" width="16" height="16">
         </button>
       {/if} 
   </div>
 
   <div class="resultats-recherche {resultatsRecherche === null ? ' utd-d-none' : ''}" on:mousedown={mouseDownResultatsRecherche}>
-    {#if resultatsRecherche && resultatsRecherche.length > 0}  
-      <ul id="{idControleResultats}" role="listbox" class="liste-resultats {'nb-niveaux-' + nbNiveaux}" transition:slide="{{duration:250}}" >
+    {#if doitAfficherResultatsRecherche}  
+      <ul id="{idControleResultats}" role="listbox" class="liste-resultats {'nb-niveaux-' + nbNiveaux}" transition:slide="{{duration:250}}">
 
         {#each resultatsRecherche as resultat}
-          {#if nbNiveaux === 1}  
-            <li class="lien-resultat{resultat.i === 0 ? ' premier' : ''}{resultat.i === resultatsRechercheFlat.length - 1  ? ' dernier' : ''}" role="option" aria-selected="{resultat.id === idActiveDescendant ? 'true' : 'false'}">
-              <a href="{resultat.h}" id="{resultat.id}" on:mouseover={mouseoverResultat}><span class="texte-option">{resultat.r}</span></a>
-            </li>
+          {#if nbNiveaux === 1}
+            {#if doitAfficherMessagePreciserRecherche && resultat.i === resultatsRechercheFlat.length - 1 }  
+              <li id="{resultat.id}" class="lien-resultat{resultat.i === 0 ? ' premier' : ''}{resultat.i === resultatsRechercheFlat.length - 1  ? ' dernier' : ''}" role="option" aria-selected="{resultat.id === idActiveDescendant ? 'true' : 'false'}">
+                <span class="message-precision-recherche">
+                  <span aria-hidden="true" class="utd-icone-svg information"></span>
+                  <span>{textePrecisionRecherche}</span>
+                </span>
+              </li>  
+            {:else}
+              <li id="{resultat.id}" class="lien-resultat{resultat.i === 0 ? ' premier' : ''}{resultat.i === resultatsRechercheFlat.length - 1  ? ' dernier' : ''}" role="option" aria-selected="{resultat.id === idActiveDescendant ? 'true' : 'false'}">
+                <a href="{resultat.h}" on:mouseover={mouseoverResultat}><span class="texte-option">{resultat.r}</span></a>
+              </li>
+            {/if} 
           {:else}
             {#if nbNiveaux === 2}  
-              <li role="group">
+              <li role="group" aria-label="{resultat.c}">
                 <span class="titre-niveau1">{resultat.c}</span>      
                 <ul role="none">
                   {#each resultat.values as valeur}
-                    <li class="lien-resultat{valeur.i === 0 ? ' premier' : ''}{valeur.i === resultatsRechercheFlat.length - 1  ? ' dernier' : ''}" role="option" aria-selected="{valeur.id === idActiveDescendant ? 'true' : 'false'}">
-                      <a href="{valeur.h}" id="{valeur.id}" on:mouseover={mouseoverResultat}><span class="texte-option">{valeur.r}</span></a>
-                    </li>
-                  {/each}           
+                    {#if doitAfficherMessagePreciserRecherche && valeur.i === resultatsRechercheFlat.length - 1 }
+                      <li id="{valeur.id}" class="lien-resultat{valeur.i === 0 ? ' premier' : ''}{valeur.i === resultatsRechercheFlat.length - 1  ? ' dernier' : ''}" role="option" aria-selected="{valeur.id === idActiveDescendant ? 'true' : 'false'}">
+                        <span class="message-precision-recherche">
+                          <span aria-hidden="true" class="utd-icone-svg information"></span>
+                          <span>{textePrecisionRecherche}</span>
+                        </span>
+                      </li>
+                    {:else}
+                      <li id="{valeur.id}" class="lien-resultat{valeur.i === 0 ? ' premier' : ''}{valeur.i === resultatsRechercheFlat.length - 1  ? ' dernier' : ''}" role="option" aria-selected="{valeur.id === idActiveDescendant ? 'true' : 'false'}">
+                        <a href="{valeur.h}" on:mouseover={mouseoverResultat}><span class="texte-option">{valeur.r}</span></a>
+                      </li>
+                    {/if}  
+
+                  {/each}        
                 </ul>
               </li>
             {:else}
-                <li role="group">
+                <li role="group" aria-label="{resultat.c}">
                   <span class="titre-niveau1">{resultat.c}</span>      
                   <ul role="none">
                     {#each resultat.values as sousCategorie}
-                    <span class="titre-niveau2">{sousCategorie.sc}</span>      
-                    <ul role="none">
+                      <span class="titre-niveau2">{sousCategorie.sc}</span>      
+                      <ul role="group" aria-label="{sousCategorie.sc}">
                       {#each sousCategorie.values as valeur}
-                        <li class="lien-resultat{valeur.i === 0 ? ' premier' : ''}{valeur.i === resultatsRechercheFlat.length - 1  ? ' dernier' : ''}" role="option" aria-selected="{valeur.id === idActiveDescendant ? 'true' : 'false'}">
-                          <a href="{valeur.h}" id="{valeur.id}" on:mouseover={mouseoverResultat}><span class="texte-option">{valeur.r}</span></a>
-                        </li>
+                        {#if doitAfficherMessagePreciserRecherche && valeur.i === resultatsRechercheFlat.length - 1 }
+                          <li id="{valeur.id}" class="lien-resultat{valeur.i === 0 ? ' premier' : ''}{valeur.i === resultatsRechercheFlat.length - 1  ? ' dernier' : ''}" role="option" aria-selected="{valeur.id === idActiveDescendant ? 'true' : 'false'}">
+                            <span class="message-precision-recherche">
+                              <span aria-hidden="true" class="utd-icone-svg information"></span>
+                              <span>{textePrecisionRecherche}</span>
+                            </span>
+                          </li>  
+                        {:else}
+                          <li id="{valeur.id}" class="lien-resultat{valeur.i === 0 ? ' premier' : ''}{valeur.i === resultatsRechercheFlat.length - 1  ? ' dernier' : ''}" role="option" aria-selected="{valeur.id === idActiveDescendant ? 'true' : 'false'}">
+                            <a href="{valeur.h}" on:mouseover={mouseoverResultat}><span class="texte-option">{valeur.r}</span></a>
+                          </li>
+                        {/if}  
                       {/each}           
                     </ul>
                     {/each}           

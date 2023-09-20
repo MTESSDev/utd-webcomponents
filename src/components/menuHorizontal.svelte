@@ -2,7 +2,7 @@
 <script>
   import { onMount } from "svelte";
   import { Utils } from "./js/utils"
-  import { get_current_component } from "svelte/internal"  
+  import { element, get_current_component } from "svelte/internal"
 
   const languePage = Utils.obtenirLanguePage()
 
@@ -11,6 +11,7 @@
   export let afficherIconeAccueil = 'false'
   export let titreAccueil = languePage === 'en' ? 'Home' : 'Accueil'
   export let urlAccueil = '/'
+  export let pathCourant = null
 
   /* Paramètre non diffusé pour le moment. À voir si on veut aller vers là */
   export let gererElementsActifs = 'true' // 
@@ -32,6 +33,7 @@
   let menuOriginal = []
   let dernierIndexeVisible = 0
   let estTestBackstopJsEnCours = false
+  let mounted = false
 
   // Références pour accessibilité
   // https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation/
@@ -39,8 +41,7 @@
   //TODO éventuellement ajouter un event pour forcer la redéfinition des éléments actifs
 
   //ajouterElementsMenuAuMenuOriginal(menuOriginal, thisComponent)
-
-
+ 
   onMount(() => {      
 
     estTestBackstopJsEnCours = window.location.hash.indexOf('bs-test') >= 0
@@ -66,6 +67,8 @@
     window.addEventListener("resize", ecranRedimensionneDebounced)
     window.addEventListener("resize", () => {indiquerAjustementEnCours()})    
 
+    mounted = true
+
     //Particularité lors des essais avec BackstopJs. On doit forcer un réajustement de l'affichage.
     if(estTestBackstopJsEnCours) {
       setTimeout(() => {
@@ -74,9 +77,18 @@
     }
   })
 
+  // Watch le path courant (nécessaire pour détermination élément actif des SPA)
+  $: changementPathCourant(pathCourant) 
+
   // Ajout du traitement au resize de l'interface s'il n'y a pas d'essais backstopJs en cours (sinon le screenshot se prend pendant le resize et on n'a pas le menu dans l'affichage)    
   const ecranRedimensionneDebounced = Utils.debounce(() => {ajusterAffichageControle()}, 200)
 
+
+  function changementPathCourant() {
+    if(mounted) {
+      definirElementsActifs()
+    }
+  }
 
   function fermerTousMenus() {
     document.querySelectorAll('utd-menu-horizontal-item[afficher="true"]').forEach((elementMenu) => {
@@ -171,23 +183,10 @@
 
   
   function definirElementsActifs() {
-    
-    const itemsMenu = document.querySelectorAll('utd-menu-horizontal-item')
-    let elementActif
 
-    for (let i = 0; i < itemsMenu.length; i++) {
-      const itemMenu = itemsMenu[i]
-      const href = itemMenu.getAttribute('href')
-      
-      if(href) {    
-        if(window.location.pathname === href) {
-          elementActif = itemMenu
-          break
-        } else if(window.location.pathname.startsWith(href)) { 
-          elementActif = itemMenu
-        }
-      }    
-    }  
+    definirTousMenusInactifs()
+
+    const elementActif = obtenirElementActif()
 
     if(elementActif) {
       const parents = Utils.obtenirParents(elementActif)
@@ -202,6 +201,40 @@
         }      
       }
     } 
+  }
+
+  function obtenirElementActif() {
+    const itemsMenu = document.querySelectorAll('utd-menu-horizontal-item')
+    
+    let elementActif
+
+    const path = pathCourant !== null ? pathCourant : window.location.pathname
+
+    for (let i = 0; i < itemsMenu.length; i++) {
+      const itemMenu = itemsMenu[i]
+      const href = itemMenu.getAttribute('href')
+            
+      if(href) {    
+        if(path === href) {
+          elementActif = itemMenu
+          break
+        } else if(path.startsWith(href)) { 
+          elementActif = itemMenu
+        }
+      }    
+    }  
+
+    return elementActif
+  }
+
+  function definirTousMenusInactifs() {
+    const itemsMenuActifs = document.querySelectorAll('utd-menu-horizontal-item[actif="true"]')
+    
+    if(itemsMenuActifs.length > 0) {
+      for (let i = 0; i < itemsMenuActifs.length; i++) {
+        itemsMenuActifs[i].removeAttribute('actif')
+      }  
+    }
   }
 
   function supprimerMenuPlus() {
@@ -235,6 +268,7 @@
     for (let i = dernierIndexeVisible + 1; i < thisComponent.children.length; i++) {
 
       const cln = thisComponent.children[i].cloneNode(true);
+
       cln.setAttribute('est-menu-plus', 'true')
 
       if(estMenuBurger) {

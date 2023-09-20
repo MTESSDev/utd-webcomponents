@@ -214,4 +214,21 @@ export class Utils {
         const texteNormalise = this.normaliserChaineCaracteres(texte)
         return texteNormalise.replace(/\W/g,'_')        
     }
+
+
+    static definirEvenementClickAncre(selecteur = '.ancre') {
+        setTimeout(() => {
+            const ancres = document.querySelectorAll(selecteur)
+            
+            for (let i = 0; i < ancres.length; i++) {            
+                
+                ancres[i].addEventListener("click", e => {
+                    e.preventDefault()
+                    location.hash = ''
+                    location.href = e.target.getAttribute('href')
+                })
+            }            
+        })   
+    }    
 }
+

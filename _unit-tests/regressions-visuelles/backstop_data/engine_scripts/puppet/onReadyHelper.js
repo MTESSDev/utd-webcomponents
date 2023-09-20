@@ -83,6 +83,7 @@ module.exports = async (page, scenario) => {
   const scrollToSelector2 = scenario.scrollToSelector2;
   const postInteractionWait = scenario.postInteractionWait; // selector [str] | ms [int]
   const keyPressKeyCode = scenario.keyPressKeyCodes || scenario.keyPressKeyCode;
+  const textInput = scenario.textInputs || scenario.textInput;
   const focusSelector = scenario.focusSelectors || scenario.focusSelector;
   const focusSelector2 = scenario.focusSelectors2 || scenario.focusSelector2;
   const shadowHoverSelector = scenario.shadowHoverSelectors || scenario.shadowHoverSelector;
@@ -124,12 +125,18 @@ module.exports = async (page, scenario) => {
   if (keyPressKeyCode) {
     for (const keyPressKeyCodeIndex of [].concat(keyPressKeyCode)) {
       page.keyboard.press(keyPressKeyCodeIndex);
-//      await page.waitForSelector(keyPressSelectorItem.selector);
-//      await page.type(keyPressSelectorItem.selector, keyPressSelectorItem.keyPress);
       await handlePostInteractionWait(page, postInteractionWait);    
     }    
   }
-  
+
+  //Ajout MESS
+  if (textInput) {
+    for (const text of [].concat(textInput)) {
+      page.keyboard.type(text);
+      await handlePostInteractionWait(page, postInteractionWait);    
+    }    
+  }
+
   //Phase 2
 
   //Dom events

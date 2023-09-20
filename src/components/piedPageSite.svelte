@@ -10,14 +10,16 @@ import { get_current_component } from "svelte/internal"
 
 const thisComponent = get_current_component()
 let slots = []
+let estAffichagePleineLargeur = false
 
 onMount(() => {  
+  estAffichagePleineLargeur = document.getElementsByTagName('body')[0].classList.contains('utd-pleine-largeur')  
   slots = Array.from(thisComponent.querySelectorAll('[slot]'))    
 })
 
 </script>
 
-<div class="utd-pied-page-site">
+<div class="utd-pied-page-site{estAffichagePleineLargeur ? ' utd-pleine-largeur': ''}">
   <div class="utd-container">
     {#if Utils.slotExiste(slots, 'contenu')}
       <slot name="contenu" />

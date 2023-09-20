@@ -5,8 +5,9 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
 <script>
 import { onMount } from "svelte";
-import { Utils } from "./js/utils"
-import { get_current_component } from "svelte/internal"  
+import { Utils } from "./js/utils";
+import { slide } from "svelte/transition";
+import { get_current_component } from "svelte/internal";
 
 export let urlLogo = '/'
 export let srcLogo = `${Utils.imagesRelativePath}utd-sprite.svg_versionUtd_#QUEBEC_blanc`   
@@ -21,19 +22,59 @@ export let urlNousJoindre = ''
 export let passerContenu = 'true'
 export let urlPasserContenu = '#main'
 export let textePasserContenu = Utils.obtenirLanguePage() === 'fr' ? 'Passer au contenu' : 'Skip to content'
+export let afficherRecherche = 'false'
+export let titleBoutonRecherche = Utils.obtenirLanguePage() === 'fr' ? 'Afficher ou masquer la zone de recherche' : 'Display or hide the search box'
+export let urlContenuRecherche = ''
+
+const srcImageBoutonToggleRecherche = `${Utils.imagesRelativePath}utd-sprite.svg_versionUtd_#ico-loupe-piv-droite`
 
 const thisComponent = get_current_component()
 let slots = []
 let mounted = false
+let estZoneRechercheVisible = false
+let focusControleRecherche = false
+let estAffichagePleineLargeur = false
+
 
 onMount(() => {  
   slots = Array.from(thisComponent.querySelectorAll('[slot]'))    
+  
+  estAffichagePleineLargeur = document.getElementsByTagName('body')[0].classList.contains('utd-pleine-largeur')
+
   mounted = true
+  
+  if(afficherRecherche === 'true') {
+
+    //Ici on utilise l'objet global window, car pour une raison inconnue, impossible de rafraichir l'écran avec l'utilisation d'une variable svelte... Tout essayé, avec une watch et tout... rien à faire. C'est un peu un mystère. La seule solution trouvée pour le moment est d'utiliser l'objet global "window". Comme il n'y a qu'un seul contrôle PIV entête dans une page c'est correct.
+    Utils.dispatchWcEvent(thisComponent, "initialiserRecherche", {definirContenuRecherche: (donnees) => { window.contenuRecherchePiv = donnees.contenu }})
+
+
+    thisComponent.shadowRoot.querySelector("utd-barre-recherche").addEventListener("initialiser", e => {
+//      console.log('contenuRecherchePiv transmis barre recherche')  
+//      console.log(window.contenuRecherchePiv)  
+      e.detail.definirContenuRecherche({contenu: window.contenuRecherchePiv})    
+    })      
+  }
+  
   Utils.reafficherApresChargement(thisComponent)
 })
 
+
+
 function clickLien(){
   Utils.dispatchWcEvent(thisComponent, "clickLien")
+}
+
+function clickToggleRecherche(){
+  estZoneRechercheVisible = !estZoneRechercheVisible
+
+  setTimeout(() => {
+    focusControleRecherche = true
+    
+    setTimeout(() => {
+      focusControleRecherche = null
+    })
+  })
 }
 
 </script>
@@ -46,7 +87,7 @@ function clickLien(){
   </div>
 {/if}
 
-<div class="utd-piv-entete" class:utd-d-none={!mounted}>
+<div class="utd-piv-entete{!mounted ? ' utd-d-none' : ''}{estAffichagePleineLargeur ? ' utd-pleine-largeur': ''}">
   <div class="utd-container">
     <div class="conteneur-sections">
       <div class="section-gauche signature-gouvernement">
@@ -64,12 +105,12 @@ function clickLien(){
       </div>
 
       <div class="section-droite">
-        {#if Utils.slotExiste(slots, 'boutonRecherche')}
-          <div class="bouton-recherche">
-            <slot name="boutonRecherche" />
-          </div>    
-        {/if}    
-
+          
+        {#if afficherRecherche === 'true' && window.contenuRecherchePiv !== null}
+          <button type="button" class="bouton-toggle-recherche" aria-expanded="{estZoneRechercheVisible ? 'true' : 'false'}" aria-controls="recherchePIV" title="Afficher ou masquer la zone de recherche" on:click={clickToggleRecherche}>
+            <img aria-hidden="true" src="{srcImageBoutonToggleRecherche}" width="24" height="24">
+          </button>            
+        {/if}
 
         {#if Utils.slotExiste(slots, 'liens')}
           <slot name="liens" />
@@ -94,17 +135,18 @@ function clickLien(){
           <span class="description">{titreSite2}</span>  
         {/if}
       </div>
-
-      {#if Utils.slotExiste(slots, 'boutonRechercheMobile')}
-        <div class="bouton-recherche">
-          <slot name="boutonRechercheMobile" />
-        </div>    
+      
+      {#if afficherRecherche === 'true' && window.contenuRecherchePiv !== null}
+        <button type="button" class="bouton-toggle-recherche visible" id="btnToggleRecherchePIVmobile" aria-expanded="{estZoneRechercheVisible ? 'true' : 'false'}" aria-controls="recherchePIV" title="{titleBoutonRecherche}" on:click={clickToggleRecherche}>
+          <img aria-hidden="true" src="{srcImageBoutonToggleRecherche}" width="24" height="24">
+        </button>            
       {/if}    
     </div>          
-    {#if Utils.slotExiste(slots, 'zoneRecherche')}
-      <div class="zone-recherche">
-        <slot name="zoneRecherche" />
-      </div>    
+
+    {#if afficherRecherche === 'true'}
+      <div id="recherchePIV" class="{estZoneRechercheVisible ? null : 'utd-d-none'}" >
+        <utd-barre-recherche focus="{focusControleRecherche ? 'true' : null}" url-contenu-recherche="{urlContenuRecherche || null}" contexte-piv="true"></utd-barre-recherche>
+      </div>
     {/if}    
 
   </div>

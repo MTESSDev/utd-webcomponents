@@ -4,6 +4,7 @@
     import { onMount } from "svelte";
     import Principe from './pages/Principe.svelte'; 
     import Versions from './pages/Versions.svelte'; 
+    import VersionsAnciennes from './pages/VersionsAnciennes.svelte'; 
     import Accordeon from './pages/Accordeon.svelte'; 
     import Infobulle from './pages/Infobulle.svelte'; 
     import Section from './pages/Section.svelte'; 
@@ -31,13 +32,41 @@
   import ListeDeroulante from './pages/ListeDeroulante.svelte';
   import ReglesInterfaces from './pages/ReglesInterfaces.svelte';
   import PointsSuspension from './pages/PointsSuspension.svelte';
+  import BarreRecherche from './pages/BarreRecherche.svelte';
+  import Animations from './pages/Animations.svelte';
 
+    const estTestBackstopJsEnCours = window.location.hash.indexOf('bs-test') >= 0
 
     onMount(() => {  
         document.getElementById('pivEntete').addEventListener("clickLien", () => {       
             accederContenuPrincipal()
         })
+        
+        chargerContenuRecherche()            
     })
+
+    function chargerContenuRecherche() {
+
+        document.querySelector("utd-piv-entete").addEventListener("initialiserRecherche", e => {
+        
+            //Ne pas considérer cette ligne, élément interne au site démo UTD
+            const urlContenuRecherche = estTestBackstopJsEnCours ? '/testsLocaux/donneesSiteRecupereesStatic.json' : '/donneesSiteRecuperees.json'
+            
+            //Ici votre code pour obtenir le contenu de recherche
+            setTimeout(() => {
+                fetch(urlContenuRecherche)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("HTTP error " + response.status)
+                    }                
+                    response.json().then((monContenuRecherche) => {
+                        //Appel à la méthode permettant de définir le contenu de recherche
+                        e.detail.definirContenuRecherche({contenu: monContenuRecherche})                    
+                    })
+                })                                    
+            });
+        })
+    }
 
 
     //Patch afin de faire fonctionner le bouton "Passer au contenu", semble y avoir un problème avec le router tinro
@@ -76,8 +105,7 @@
             </div>
         </noscript>
         <img id="pivLogoGouvernementPrint" alt="Logo du gouvernement du Québec." src="/images/quebecPrint.gif" width="199" height="60">
-        <utd-piv-entete id="pivEntete" titre-site1="Composants du système de design – MESS" titre-site2="{$router.path.indexOf('/composants/entetepiedpage/piventete') >= 0 ? 'Description supplémentaire du site' : null}" alt-logo="Signature du gouvernement du Québec. Accédez à Système de design MESS.">
-
+        <utd-piv-entete id="pivEntete" titre-site1="Composants du système de design – MESS" titre-site2="{$router.path.indexOf('/composants/entetepiedpage/piventete') >= 0 ? 'Description supplémentaire du site' : null}" alt-logo="Signature du gouvernement du Québec. Accédez à Système de design MESS." afficher-recherche="true">
             <div slot="liens">
                 <ul>
                     {#if $router.path.indexOf('/composants/navigation/menuhorizontal') >= 0}
@@ -86,17 +114,6 @@
                     <li><a href="/base/nousjoindre">Nous joindre</a></li>
                 </ul>
             </div>
-            
-
-            <!--            <div slot="boutonRecherche">
-                <button type="button">RD</button>
-            </div>
-            <div slot="boutonRechercheMobile">
-                <button type="button">RM</button>
-            </div>
-            <div slot="zoneRecherche">
-                <div><input type="text"/></div>
-            </div>            -->
         </utd-piv-entete>
 
         <!--Javascript désactivé-->
@@ -167,6 +184,8 @@
                     {#if $router.path.indexOf('/composants') >= 0}                                
                         <utd-menu-vertical-item href="/composants/versions" libelle="Historique des versions"></utd-menu-vertical-item>
                         <utd-menu-vertical-item libelle="Action">                                
+                            <utd-menu-vertical-item libelle="Animations" href="/composants/actions/animations"></utd-menu-vertical-item>
+                            <utd-menu-vertical-item libelle="Barre de recherche" href="/composants/actions/barrerecherche"></utd-menu-vertical-item>
                             <utd-menu-vertical-item libelle="Boutons" href="/composants/actions/boutons"></utd-menu-vertical-item>
                             <utd-menu-vertical-item libelle="Dialogue modal" href="/composants/actions/dialogue"></utd-menu-vertical-item>
                             <utd-menu-vertical-item libelle="Message" href="/composants/actions/message"></utd-menu-vertical-item>
@@ -209,6 +228,7 @@
                             <utd-menu-vertical-item href="/gabarit1colonneCdn" libelle="Gabarit 1 colonne (cdn)"></utd-menu-vertical-item>
                             <utd-menu-vertical-item href="/gabarit2colonnes" libelle="Gabarit 2 colonnes"></utd-menu-vertical-item>
                             <utd-menu-vertical-item href="/gabarit2colonnesCdn" libelle="Gabarit 2 colonnes (cdn)"></utd-menu-vertical-item>    
+                            <utd-menu-vertical-item href="/gabaritpleinelargeur" libelle="Gabarits pleine largeur"></utd-menu-vertical-item>
                         </utd-menu-vertical-item>
                         <utd-menu-vertical-item href="/base/nousjoindre" libelle="Nous joindre"></utd-menu-vertical-item>
                     {/if}
@@ -225,7 +245,10 @@
                     <Route path="/composants" redirect="/composants/versions"></Route>
                     <Route path="/composants/*">
                         <Route path="/versions" ><Versions /></Route>
+                        <Route path="/versionsanciennes" ><VersionsAnciennes /></Route>
                         <Route path="/actions/*">
+                            <Route path="/animations" ><Animations /></Route>
+                            <Route path="/barrerecherche" ><BarreRecherche /></Route>
                             <Route path="/boutons" ><Boutons /></Route>
                             <Route path="/dialogue" ><Dialogue /></Route>
                             <Route path="/message" ><Message /></Route>                            

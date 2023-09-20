@@ -67,6 +67,10 @@
     &.chevron-blanc {
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-chevron-blanc");
     }
+
+    &.chevron-cercle-blanc {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-chevron-cercle-blanc");
+    }
     
     &.clipboard {
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-clipboard");
@@ -83,11 +87,15 @@
     &.erreur-blanc {
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-erreur-blanc");
     }
-    
+
+    &.fleche-droite-cercle-bleu {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-fleche-droite-cercle-bleu");
+    }
+
     &.fleche-haut-blanche {
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-fleche-haut-blanche");
     }
-    
+
     &.information {
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-information");
     }
@@ -95,7 +103,11 @@
     &.information-blanc {
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-information-blanc");
     }
-    
+
+    &.loupe-blanche {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-loupe-piv-droite");
+    }    
+
     &.maison {
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-maison");
     }    
@@ -103,11 +115,27 @@
     &.moins {
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-moins");
     }
-    
+
+    &.moins-blanc {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-moins-blanc");
+    }
+
+    &.papier-crayon {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-papier-crayon");
+    }
+
+    &.papier-crayon-bleu-piv {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-papier-crayon-bleu-piv");
+    }
+
     &.plus {
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-plus");
     }
-    
+
+    &.plus-blanc {
+        background-image: url("../images/utd-sprite.svg_versionUtd_#ico-plus-blanc");
+    }
+
     &.question {
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-question");
     }

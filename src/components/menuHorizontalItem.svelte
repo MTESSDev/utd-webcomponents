@@ -24,13 +24,24 @@
 
   let possedeEnfants = false
   let niveau = 1
+  let utdMenuHorizontalParent
   
   const thisComponent = get_current_component()  
+  const idComposant = thisComponent.getAttribute('idutd') || Utils.genererId()
   const idSousMenu = Utils.genererId()
  
   onMount(() => {
+
+    thisComponent.setAttribute('idutd', idComposant)
+    
+    //Patch pour Vue js qui flush les attributs spécifiés dans le modèle (en les remplacants par des props). On remet nos attributs.
+    thisComponent.setAttribute('libelle', libelle)
+    thisComponent.setAttribute('href', href)
+
     niveau = obtenirNiveau()
     possedeEnfants = !!thisComponent.querySelector('utd-menu-horizontal-item')
+
+    utdMenuHorizontalParent = thisComponent.closest('utd-menu-horizontal')
 
     Utils.reafficherApresChargement(thisComponent)
   })
@@ -60,6 +71,47 @@
     // Ici petite twist pour IOS afin de bloquer la propagation du click sur un élément de menu, car un click sur le body a été ajouté pour IOS (voir mount du composant menuHorizontal)
     if(e){
       e.stopPropagation()          
+    }    
+  }
+
+  function clickLien(e) {
+
+    if(estMenuAccueil === 'true'){
+      clickAccueil(e)
+      return
+    }
+
+    //Si un lien existe dans notre élément de menu (il a donc été spécifié dans la slot par défaut, ex. pour des SPA avec VueJs)
+    //on doit utiliser l'événement click de ce lien.  
+
+    const lien = thisComponent.querySelector('a')
+        
+    if(lien) {
+      e.preventDefault()
+
+      //On vérifie s'il existe un élément de menu caché avec un id identique au nôtre, si c'est le cas, c'est le lien de cet élément qu'on doit utiliser.
+      //Cet élément est l'élément original que nous avons pe caché pour affichage mobile, et lui seul contient l'événement original.
+      const slotOriginale = utdMenuHorizontalParent.querySelector(`utd-menu-horizontal-item[idutd="${idComposant}"].utd-d-none`)
+
+      let lienSlotOriginale
+      if(slotOriginale) {
+        lienSlotOriginale = slotOriginale.querySelector('a')
+      }
+      
+      if(lienSlotOriginale) {
+        lienSlotOriginale.click()
+      } else {
+        lien.click()
+      }
+    }
+  }
+
+  function clickAccueil(e) {   
+    const lienAccueil = utdMenuHorizontalParent.querySelector('a')
+
+    if(lienAccueil) {
+      e.preventDefault()
+      lienAccueil.click()
     }    
   }
 
@@ -233,8 +285,6 @@
   }
 
   function onBlur(e){
-    const utdMenuHorizontalParent = thisComponent.closest('utd-menu-horizontal')
-
     if(!utdMenuHorizontalParent.contains(e.relatedTarget)){
       const itemsMenu = utdMenuHorizontalParent.querySelectorAll('utd-menu-horizontal-item')
       itemsMenu.forEach((item) => {
@@ -264,7 +314,7 @@
       </div>
     {/if}
   {:else}
-    <a href="{href}" title="{estMenuAccueil === 'true' ? libelle : null}" aria-current="{actif === 'true' ? 'page' : null}" on:keydown={onKeyDown} on:blur={onBlur}>
+    <a href="{href}" title="{estMenuAccueil === 'true' ? libelle : null}" on:click={clickLien} aria-current="{actif === 'true' ? 'page' : null}" on:keydown={onKeyDown} on:blur={onBlur}>
       {#if estMenuAccueil === 'true'}
         {#if estMenuBurger === 'true'}    
           <span>{@html libelle}</span>        

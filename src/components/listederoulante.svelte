@@ -19,12 +19,12 @@ export let rechercheFloue = "true"
 export let precisionRecherche = "0.2"
 export let largeur = "md" //Valeurs possible sm, md, lg
 export let placeholder = languePage === 'fr' ? "Effectuer un choix" : "Make a selection"
+export let refresh = "false"
 
 //Contrôles
 const thisComponent = get_current_component()
 const idControleRecherche = Utils.genererId()
 const idControleResultats = Utils.genererId()
-const idControleZoneNotificationLecteurEcran = Utils.genererId()
 
 const titleEtiquette = languePage === 'fr' ? "Supprimer" : "Delete"
 const descriptionEtiquette = languePage === 'fr' ? "Déselectionner" : "Unselect"
@@ -53,7 +53,6 @@ let ariaDescriptionRecherche = null
 let controleRecherche
 let controleSelect
 let controleEspaceur
-let controleZoneNotificationLecteurEcran
 let controleConteneurResultats
 let afficherOptions = false
 let indexeFocusSuggestion = null
@@ -89,7 +88,6 @@ onMount(() => {
     controleConteneur = thisComponent.shadowRoot.querySelector('.conteneur')
     controleEspaceur = thisComponent.shadowRoot.querySelector('.espaceur')
     controleSelection = thisComponent.shadowRoot.querySelector('.selection')
-    controleZoneNotificationLecteurEcran = thisComponent.shadowRoot.getElementById(idControleZoneNotificationLecteurEcran)
     controleRecherche = thisComponent.shadowRoot.getElementById(idControleRecherche)
     controleConteneurResultats = thisComponent.shadowRoot.querySelector('.resultats')
     
@@ -115,7 +113,7 @@ onMount(() => {
 // Watches
 $: toggleAfficherOptions(afficherOptions) 
 $: majActiveDescendant(indexeFocusSuggestion) 
-
+$: rafraichirOptionsSelectionnees(refresh)
 
 function initialiserOptionsSuggestionsEtRecherche(){
   options = obtenirOptions()
@@ -131,6 +129,17 @@ function initialiserOptionsSuggestionsEtRecherche(){
       miniSearch.addAll(options)   
     }
 }
+
+//Watch sur l'attribut "refresh", permet de mettre à jour les options sélectionnées si ces dernières ont été modifiées par code sur le select original (ex. un modèle vuejs ou une modification de la valeur en javascript)
+function rafraichirOptionsSelectionnees() {
+  if(refresh === 'true'){
+    definirOptionsSelectionnees()   
+    definirSuggestions()   
+    definirAriaDescriptionConteneur()
+    thisComponent.removeAttribute('refresh')
+  }
+}
+
 /**
  * Obtient le terme à indexer (normalisé et tout).
  * @param terme
@@ -705,6 +714,12 @@ function onKeyDown(e){
       break        
       
     case "Escape":
+      //Si les options sont actuellement afficher, on ne remonte pas l'événement (ex. si on est dans une modale, ca fermerait la modale. On veut fermer la liste des options seulement)
+      if(afficherOptions){
+        e.preventDefault()
+        e.stopPropagation()
+      }
+
       definirAfficherOptions(false)  
       controleConteneur.focus()
       break        
@@ -1056,14 +1071,14 @@ function assurerOptionCouranteVisible() {
 
     if(option.offsetTop + hauteurOption > offsetConteneur){
       if(option.offsetTop + hauteurOption > (offsetConteneur + hauteurOption)){
-        //Ici on traite le cas ou le user aurait modifié la position du scroll (ex. avec la souris), dans ce cas on remet l'option courant en au de liste
+        //Ici on traite le cas ou le user aurait modifié la position du scroll (ex. avec la souris), dans ce cas on remet l'option courant en haut de liste
         controleConteneurResultats.scroll({top: option.offsetTop});
       } else {
         controleConteneurResultats.scroll({top: controleConteneurResultats.scrollTop + hauteurOption});
       }
     } else if(option.offsetTop < (offsetConteneur - hauteurConteneur)){
       if(option.offsetTop < (offsetConteneur - hauteurOption)){
-        //Ici on traite le cas ou le user aurait modifié la position du scroll (ex. avec la souris), dans ce cas on remet l'option courant en au de liste
+        //Ici on traite le cas ou le user aurait modifié la position du scroll (ex. avec la souris), dans ce cas on remet l'option courant en haut de liste
         controleConteneurResultats.scroll({top: option.offsetTop});
       } else {
         controleConteneurResultats.scroll({top: controleConteneurResultats.scrollTop - hauteurOption});
@@ -1109,7 +1124,7 @@ function assurerControleVisible() {
 <div class="utd-component utd-liste-deroulante {largeur}{multiple ? ' multiple' : ''}{recherchable === 'true' ? ' recherchable' : ''}">
   <slot></slot>
 
-    <span aria-live="polite" id="{idControleZoneNotificationLecteurEcran}" class="utd-sr-only" tabindex="-1">{texteNotificationLecteurEcran}</span>
+    <span aria-live="polite" class="utd-sr-only" tabindex="-1">{texteNotificationLecteurEcran}</span>
 
     <span class="conteneur utd-form-control{afficherOptions ? ' ouvert' : ''}" dir="ltr" on:blur={blurConteneur} role="{afficherOptions ? null : 'listbox'}" aria-expanded="{afficherOptions ? 'true' : 'false'}" tabindex="{afficherOptions ? '-1' : '0'}" on:keydown={onKeyDown} aria-label="{ariaLabel}" aria-description="{ariaDescriptionConteneur}" aria-owns="{recherchable === 'false' ? idControleResultats : null}" aria-multiselectable="{multiple && recherchable === 'false' ? 'true' : null}" aria-activedescendant="{recherchable === 'false' && afficherOptions ? idActiveDescendant : null}">
       <span class="selection {multiple  && optionsSelectionnees.length > 0 ? 'contient-etiquettes': ''}" on:click={clickSelection} on:mousedown={selectionMouseDown}>
@@ -1132,6 +1147,7 @@ function assurerControleVisible() {
               </ul>     
           {/if}
         {/if}
+
         <span class="utd-icone-svg chevron-bleu-piv developper"></span>
       </span>
   
