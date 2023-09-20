@@ -8,7 +8,7 @@ paramsDefaut : {
     referenceUrl: "",
     readyEvent: "",
     readySelector: "",
-    delay: 1000,
+    delay: 2000,
     hideSelectors: [],
     removeSelectors: [".no-test", "header", "#colonneGauche", "utd-menu-ancres", ".documentation", "footer", "utd-hautpage"],
     postInteractionWait: 1000,
@@ -371,6 +371,14 @@ scenarios : [
         removeSelectors: [".no-test"],
         clickSelectors: ["#btnTest4"],              
     },    
+    //Gabarit pleine largeur (Base)
+    {
+        label: "Gabarit_pleine_largeur (Base)", 
+        url: "/gabaritpleinelargeur",
+        selectors: ["viewport"],
+        removeSelectors: [".no-test"]
+    },    
+
     //Haut page (Base)
     {
         label: "Haut_page (Base)", 

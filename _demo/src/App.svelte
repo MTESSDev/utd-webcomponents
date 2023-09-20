@@ -33,6 +33,7 @@
   import ReglesInterfaces from './pages/ReglesInterfaces.svelte';
   import PointsSuspension from './pages/PointsSuspension.svelte';
   import BarreRecherche from './pages/BarreRecherche.svelte';
+  import Animations from './pages/Animations.svelte';
 
     const estTestBackstopJsEnCours = window.location.hash.indexOf('bs-test') >= 0
 
@@ -183,6 +184,7 @@
                     {#if $router.path.indexOf('/composants') >= 0}                                
                         <utd-menu-vertical-item href="/composants/versions" libelle="Historique des versions"></utd-menu-vertical-item>
                         <utd-menu-vertical-item libelle="Action">                                
+                            <utd-menu-vertical-item libelle="Animations" href="/composants/actions/animations"></utd-menu-vertical-item>
                             <utd-menu-vertical-item libelle="Barre de recherche" href="/composants/actions/barrerecherche"></utd-menu-vertical-item>
                             <utd-menu-vertical-item libelle="Boutons" href="/composants/actions/boutons"></utd-menu-vertical-item>
                             <utd-menu-vertical-item libelle="Dialogue modal" href="/composants/actions/dialogue"></utd-menu-vertical-item>
@@ -226,6 +228,7 @@
                             <utd-menu-vertical-item href="/gabarit1colonneCdn" libelle="Gabarit 1 colonne (cdn)"></utd-menu-vertical-item>
                             <utd-menu-vertical-item href="/gabarit2colonnes" libelle="Gabarit 2 colonnes"></utd-menu-vertical-item>
                             <utd-menu-vertical-item href="/gabarit2colonnesCdn" libelle="Gabarit 2 colonnes (cdn)"></utd-menu-vertical-item>    
+                            <utd-menu-vertical-item href="/gabaritpleinelargeur" libelle="Gabarits pleine largeur"></utd-menu-vertical-item>
                         </utd-menu-vertical-item>
                         <utd-menu-vertical-item href="/base/nousjoindre" libelle="Nous joindre"></utd-menu-vertical-item>
                     {/if}
@@ -244,6 +247,7 @@
                         <Route path="/versions" ><Versions /></Route>
                         <Route path="/versionsanciennes" ><VersionsAnciennes /></Route>
                         <Route path="/actions/*">
+                            <Route path="/animations" ><Animations /></Route>
                             <Route path="/barrerecherche" ><BarreRecherche /></Route>
                             <Route path="/boutons" ><Boutons /></Route>
                             <Route path="/dialogue" ><Dialogue /></Route>

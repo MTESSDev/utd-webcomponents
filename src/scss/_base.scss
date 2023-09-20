@@ -1354,6 +1354,10 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
     max-width: var(--largeur-max-zone-texte);
 }
 
+.utd-pleine-largeur .contenu-principal-gauche #colonneGauche.utd, .utd-pleine-largeur .contenu-principal-droite #colonneDroite.utd {
+    max-width: 100%;
+}
+
 /* Colonne secondaire */
 .contenu-principal-gauche #colonneDroite.utd, .contenu-principal-droite #colonneGauche.utd {
     width: 100%;

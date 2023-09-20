@@ -19,6 +19,7 @@
         "bs-test-champsAutomatiques": "node backstop.js --test --filter=Champs_gestion_automatique",
         "bs-test-dialogue": "node backstop.js --test --filter=Dialogue",
         "bs-test-hautPage": "node backstop.js --test --filter=Haut_page",
+        "bs-test-gabaritPleineLargeur": "node backstop.js --test --filter=Gabarit_pleine_largeur",
         "bs-test-infobulle": "node backstop.js --test --filter=Infobulle",
         "bs-test-listeDeroulante": "node backstop.js --test --filter=Liste_deroulante",
         "bs-test-menuAncres": "node backstop.js --test --filter=Menu_ancres",
