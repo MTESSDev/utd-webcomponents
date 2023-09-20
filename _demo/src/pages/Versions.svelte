@@ -7,21 +7,21 @@
     <div slot="titre"><h2>1.13.0 (2023-09-20)</h2></div>       
     <h3>Correction d'anomalies</h3>
     <ul class="utd">
-        <li><p>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/formulaire/listederoulante">Liste déroulante</a>. Lorsque le composant est utilisé dans un composant "Dialogue modale" la touche ESCAPE ferme maintenant uniquement la liste déroulante et non la fenêtre modale.</p>
+        <li><p>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/formulaire/listederoulante">Liste déroulante</a>. Lorsque le composant est utilisé dans un composant "Dialogue modale" la touche ESCAPE ferme maintenant uniquement la liste déroulante et non la fenêtre modale.</p>
         </li>
     </ul>
 
     <h3>Améliorations</h3>
     <ul class="utd">
-        <li>Ajout du composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/actions/barrerecherche">Barre de recherche</a> et intégration de ce dernier dans le composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/entetepiedpage/piventete">Entête PIV</a> via de nouveaux paramètres pour la recherche et intégration de la recherche dans le site démo UTD.</li>        
+        <li>Ajout du composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/actions/barrerecherche">Barre de recherche</a> et intégration de ce dernier dans le composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/entetepiedpage/piventete">Entête PIV</a> via de nouveaux paramètres pour la recherche et intégration de la recherche dans le site démo UTD.</li>        
     </ul>    
     <ul class="utd">
-        <li><p>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/actions/dialogue">Dialogue modal</a>. Mise à jour afin de se conformer aux nouvelles règles du système de design Québec.ca.</p>
+        <li><p>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/actions/dialogue">Dialogue modal</a>. Mise à jour afin de se conformer aux nouvelles règles du système de design Québec.ca.</p>
             <p>Un clic en dehors de la fenêtre modale ne ferme plus cette dernière. La règle ne semble pas encore diffusée sur leur site, mais elle nous a clairement été indiquée par courriel en réponse à une question sur le sujet.</p>
         </li>
     </ul>
     <ul class="utd">
-        <li><p>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/actions/dialogue">Menu horizontal</a>. Modifications afin de supporter la définition de l'élément de menu actif et la navigation par routing dans une SPA (ex. Vue).</p>
+        <li><p>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/actions/dialogue">Menu horizontal</a>. Modifications afin de supporter la définition de l'élément de menu actif et la navigation par routing dans une SPA (ex. Vue).</p>
         </li>
     </ul>
     <ul class="utd">
