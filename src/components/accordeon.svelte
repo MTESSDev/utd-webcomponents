@@ -9,6 +9,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   import { Utils } from "./js/utils"
   import { get_current_component } from "svelte/internal" 
   export let reduit = "true"
+  export let type = ""
   export let titre = ""
   export let contenu = ""
   export let tagTitre = "h2"
@@ -75,11 +76,14 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   //TODO trouver le moyen d'obtenir le niveau de titre par défaut...
 </script>
 
-<div class="utd-component utd-accordeon {!estReduit ? 'ouvert' : ''}" >
+<div class="utd-component utd-accordeon {type}{!estReduit ? ' ouvert' : ''}" >
   <div class="entete">
     <svelte:element this={tagTitre} class="titre"> 
       <button type="button" class="" aria-controls="{idContenu}" aria-expanded="{!estReduit}" on:click={toggleAffichageContenu}>
         <span class="titre">
+          {#if type && type !== 'general'}
+            <span class="utd-icone-svg {type}" aria-hidden="true"></span>
+          {/if}
           {#if titre}
             {titre}
           {/if}

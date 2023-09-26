@@ -26,6 +26,10 @@ utd-avis{
             background-size: 100% auto;
             min-width: 24px;
             height: 24px;
+
+            &.avertissement {
+                height: 23px;
+            }
         }      
     }
 
