@@ -78,7 +78,7 @@
     <a href="https://design.quebec.ca/composantes/affichage-de-contenu/accordeon" target="_blank">Voir les spécifications sur le site de design Quebec.ca</a>
 
     <h3>Particularités vs. le système de design Québec.ca</h3>
-    <p>La notion de "type" n'existe pas dans le système de design Québec.ca. Il s'agit d'une particularité MESS qui doit être utilisée avec jugement (ex. Ne pas avoir de multiples accordéons typés dans une même page).</p>
+    <p>La notion de "type" n'existe pas dans le système de design Québec.ca. Il s'agit d'une particularité MESS qui doit être utilisée avec <b>jugement et parcimonie</b> (ex. Ne pas avoir de multiples accordéons typés dans une même page).</p>
 
     <h2>Attributs disponibles</h2>
     <TableauParams parametres="{tableauParametres}">
