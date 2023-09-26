@@ -21,6 +21,7 @@
     function obtenirTableauParametres() {
         return [
             {nom: "reduit", type: "Boolean (Optionnel)", description: `Indique si l'accordéon doit être réduit ou développé. Peut être mis à jour une fois le contrôle généré afin de modifier son état d'affichage (développé/réduit). Défaut "true" (réduit).`},    
+            {nom: "type", type: "String (Optionnel)", description: `Type de l'accordéon (icône/couleur). Valeurs possibles : <span class="utd-emphase-gris">information</span>, <span class="utd-emphase-gris">avertissement</span>, <span class="utd-emphase-gris">succes</span>, <span class="utd-emphase-gris">erreur</span>, ou <span class="utd-emphase-gris">general</span>. Défaut "general".`},            
             {nom: "titre", type: "String (Optionnel)", description: `Titre affiché dans l'entête de l'accordéon.`},
             {nom: "tag-titre", type: "String (Optionnel)", description: `Balise html à utiliser pour le titre de l'entête. Défaut "h2".`},
             {nom: "contenu", type: "String (Optionnel)", description: `Texte à afficher dans la zone de contenu de l'accordéon.`},
@@ -75,6 +76,9 @@
 
     <h3>Référence système de design Quebec.ca</h3>
     <a href="https://design.quebec.ca/composantes/affichage-de-contenu/accordeon" target="_blank">Voir les spécifications sur le site de design Quebec.ca</a>
+
+    <h3>Particularités vs. le système de design Québec.ca</h3>
+    <p>La notion de "type" n'existe pas dans le système de design Québec.ca. Il s'agit d'une particularité MESS qui doit être utilisée avec jugement (ex. Ne pas avoir de multiples accordéons typés dans une même page).</p>
 
     <h2>Attributs disponibles</h2>
     <TableauParams parametres="{tableauParametres}">
@@ -170,4 +174,28 @@
         <CodeSource codeSource="{controlerAccordeon5.toString()}" titre="Code source (js)" language="language-javascript">
         </CodeSource>   
     {/if}   
+
+    <h3>6- Accordéons avec type spécifié</h3>
+
+    <div class="mb-32 bs-test" id="exempleAccordeon6">
+        <utd-accordeon class="mb-32" titre="Exemple type information" type="information">
+            <p>Ici un texte incroyable.</p>
+            <p>Qui peut même contenir du html.</p>
+        </utd-accordeon>
+        <utd-accordeon class="mb-32" titre="Exemple type avertissement" type="avertissement">
+            <p>Ici un texte incroyable.</p>
+            <p>Qui peut même contenir du html.</p>
+        </utd-accordeon>
+        <utd-accordeon class="mb-32" titre="Exemple type succès" type="succes">
+            <p>Ici un texte incroyable.</p>
+            <p>Qui peut même contenir du html.</p>
+        </utd-accordeon>
+        <utd-accordeon class="mb-32" titre="Exemple type erreur" type="erreur">
+            <p>Ici un texte incroyable.</p>
+            <p>Qui peut même contenir du html.</p>
+        </utd-accordeon>
+    </div>
+    <CodeSource idElementCodeSource="exempleAccordeon6">
+    </CodeSource>   
+
 </div>

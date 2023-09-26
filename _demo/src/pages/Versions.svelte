@@ -4,6 +4,14 @@
 <h1>Historique des versions récentes</h1>
 
 <utd-accordeon reduit="false">
+    <div slot="titre"><h2>1.14.0 (2023-09-27)</h2></div>       
+    <h3>Améliorations</h3>
+    <ul class="utd">
+        <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/affichagecontenu/accordeon">Accordéon</a> modification des images "plus" et "moins" afin qu'elles soient conformes à ce qui est dans le système de design gouvernemental.</li>        
+    </ul>            
+</utd-accordeon>
+
+<utd-accordeon reduit="true">
     <div slot="titre"><h2>1.13.0 (2023-09-20)</h2></div>       
     <h3>Correction d'anomalies</h3>
     <ul class="utd">
