@@ -154,7 +154,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     } else {
 
       if(idFocusOuverture){
-        const controleFocusOuverture = document.getElementById(idFocusOuverture)
+        const controleFocusOuverture = thisComponent.querySelector(`#${idFocusOuverture}`)
         if(controleFocusOuverture){
           premierElementFocusable = controleFocusOuverture
         }
@@ -186,9 +186,8 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
         }
       }     
     }
-    
-    premierElementFocusable.focus({preventScroll: true})      
-    //premierElementFocusable.focus()    
+        
+      premierElementFocusable.focus({preventScroll: true})            
   }
 
 </script>
