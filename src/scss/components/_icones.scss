@@ -11,7 +11,10 @@
     min-width: 32px;
     height: 32px;
 
-
+    &.avertissement{
+        height: 31px;
+    }
+    
     /* Icônes svg small (sm) */
     &.sm {
         min-width: 12px;
