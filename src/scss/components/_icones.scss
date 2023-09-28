@@ -11,6 +11,9 @@
     min-width: 32px;
     height: 32px;
 
+    &.avertissement {
+        height: 31px;
+    }
 
     /* Icônes svg small (sm) */
     &.sm {
@@ -31,6 +34,8 @@
     }
 
     &.avertissement {
+        /* Particularité pour la hauteur, sinon un petit px est en surplus */
+        height: 31px;
         background-image: url("../images/utd-sprite.svg_versionUtd_#ico-avertissement");
     }
     
