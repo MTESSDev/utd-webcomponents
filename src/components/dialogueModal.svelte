@@ -6,7 +6,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 <script>
   import { onMount} from "svelte";
   import { fly, fade } from "svelte/transition"
-  import { get_current_component, tick } from "svelte/internal"
+  import { get_current_component } from "svelte/internal"
   import { Utils } from "./js/utils"
   export let afficher = 'false'
   export let type = ''
@@ -110,7 +110,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     }
   }
 
-  // Si un clic a lieu a l'extérieur de la fenêtre modale, on annule tout, afin que le focus demeure dans la fenêtre modale.
+  // Si un clic autre qu'un clic sur un élément qui est a l'extérieur de la fenêtre modale, on annule tout, afin que le focus demeure dans la fenêtre modale.
   // Sinon il était possible de cliquer à l'extérieur de la fenêtre, elle restait ouverte, mais notre fermeture avec ESC ne fonctionnait plus, jusqu'à ce que le focus revienne sur un contrôle à l'intérieur de la fenêtre modale.
   function mouseDown(e) {
     if(e.target === e.currentTarget){
@@ -193,7 +193,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 </script>
 
 {#if estModaleAffichee}
-  <div class="utd-backdrop"/>
+  <div class="utd-backdrop" on:mousedown={mouseDown}/>
   <div 
     aria-labelledby={idEntete}
     aria-describedby={estfenetremessage === 'true' ? idCorps : null}
@@ -210,7 +210,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     role="dialog"
   >
 
-  <div class="conteneur">      
+  <div class="conteneur" on:mousedown={mouseDown}>      
         <button
         type="button"
         class="close"
@@ -222,8 +222,8 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
           class="utd-icone-svg x-fermer-bleu"
         />
       </button>
-      <div class="principal">
-        <div class="entete {type ? 'avec-type' : ''}">
+      <div class="principal" on:mousedown={mouseDown}>
+        <div class="entete {type ? 'avec-type' : ''}" on:mousedown={mouseDown}>
           {#if type}
             <span class="utd-icone-svg {type}" aria-hidden="true"></span>
           {/if}   
@@ -231,12 +231,12 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
             {titre}
           </h1>
         </div> 
-        <div class="corps" id={idCorps}>
+        <div class="corps" id={idCorps} on:mousedown={mouseDown}>
           <slot/>
           <slot name="contenu" />
         </div>
         {#if Utils.slotExiste(slots, 'pied')}
-          <div class="pied">
+          <div class="pied" on:mousedown={mouseDown}>
             <slot name="pied" />
           </div>    
         {/if}    
