@@ -343,8 +343,8 @@ p {
 
 
 /* Listes */
-ul.utd  {
-    padding-left: 20px;
+ul.utd, ol.utd, .utd-page-texte ul, .utd-page-texte ol  {
+    padding-left: 32px;
 
     li {
         margin-bottom: 16px;
@@ -666,14 +666,21 @@ h1:not(.titre-dialog)::after, h1:not(.modal-title)::after {
 
 h2 {
     margin-bottom: 16px;
-    font-size: var(--utd-text-xxl);
+    font-size: var(--utd-text-xxl);    
 }
 
+.utd-page-texte h2 {
+    margin-top: 48px;
+}
 
 h3 {
     font-family: 'Roboto-Medium';
     margin-bottom: 16px;
     font-size: var(--utd-text-xl);
+}
+
+.utd-page-texte h3, .utd-page-texte h4 {
+    margin-top: 32px;
 }
 
 h4 {
@@ -684,6 +691,10 @@ h4 {
 h5 {
     font-size: 1rem;
     margin-bottom: 8px; /*Quebec.ca = 0, Il me semble que ça ne fait pas de sens...*/
+}
+
+.utd-page-texte h5, .utd-page-texte h6 {
+    margin-top: 24px; /*Quebec.ca = 16px, pas de sens, c'est moins que marge d'un paragraphe.*/
 }
 
 h6 {
@@ -1433,6 +1444,20 @@ table.utd-table.bordures-cellules>tbody, table.utd-table.bordures-cellules>tfoot
 }
 .utd-d-inline-block{
     display: inline-block!important;
+}
+
+
+
+.utd-d-table {
+	display: table !important
+}
+.utd-d-table-row {
+	display: table-row !important;
+}
+.utd-d-table-cell {
+	display: table-cell !important;
+	padding: 12px;
+    vertical-align: middle;
 }
 
 .utd-emphase{

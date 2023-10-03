@@ -317,14 +317,20 @@ export const traitementEnCours = (function () {
             zoneNotificationsLecteurEcran.setAttribute('role', 'status');
             zoneNotificationsLecteurEcran.classList.add('utd-sr-only');
             document.body.appendChild(zoneNotificationsLecteurEcran);
-
-            //setTimeout nécessaire pour le lecteur écran, sinon rien n'est lu la 1ère fois qu'un traitement en cours se fait sur un contrôle.
-            setTimeout(() => {
-                zoneNotificationsLecteurEcran.innerHTML = texte;            
-            }, 100);
-        } else {
-            zoneNotificationsLecteurEcran.innerHTML = texte;            
         }
+
+        //setTimeout nécessaire pour le lecteur écran
+        const timeout = estTraitementTermine ? 250 : 100;
+        setTimeout(() => {
+            zoneNotificationsLecteurEcran.innerHTML = texte;  
+
+            setTimeout(() => {
+                if(estTraitementTermine) {
+                    zoneNotificationsLecteurEcran.remove();
+                }
+            }, 250);
+        }, timeout);
+
     }
 
     return elementsPublics;
@@ -421,7 +427,7 @@ export const notification = (function () {
                 <span class="utd-sr-only">${parametres.texteBoutonFermer}</span>
                 <span class="utd-icone-svg x-fermer-blanc" aria-hidden="true"></span>
             </button>
-            <div role="alert">`
+            <div class="zone-alerte">`
         
             
         if(possedeTitre){
@@ -463,7 +469,8 @@ export const notification = (function () {
     function afficherNotification(notification) {
         setTimeout(() => {
             notification.classList.add('visible'); 
-         }, 10); 
+            notification.querySelector('.zone-alerte').setAttribute('role', 'alert')
+         }, 100); 
     }
     /**
      * Retire la notification après le délai prévu.

@@ -4,6 +4,20 @@
 <h1>Historique des versions récentes</h1>
 
 <utd-accordeon reduit="false">
+    <div slot="titre"><h2>1.15.0 (2023-10-??)</h2></div>       
+    <h3>Correction d'anomalies</h3>
+    <ul class="utd">
+        <li><p>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/actions/dialogue">Dialogue modal</a>. La touche Escape ferme maintenant la fenêtre modale même si le focus n'est pas directement sur un contrôle de cette dernière. (Ex. Si on cliquait à côté d'un champ, le focus n'était plus sur contrôle de la fenêtre modale et la fermeture avec la touche Escape ne fonctionnait pas.)</p>
+        </li>
+    </ul>
+
+    <h3>Améliorations</h3>
+    <ul class="utd">
+        <li>Composant <a href="https://lively-cliff-018a9540f.azurestaticapps.net/composants/affichagecontenu/accordeon">Accordéon</a>, ajout de types (icône/couleur).</li>        
+    </ul>            
+</utd-accordeon>
+
+<utd-accordeon reduit="true">
     <div slot="titre"><h2>1.14.0 (2023-09-29)</h2></div>       
     <h3>Améliorations</h3>
     <ul class="utd">

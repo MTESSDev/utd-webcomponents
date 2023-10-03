@@ -95,7 +95,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 
         raisonFermeture = ''       
         Utils.ajusterInterfaceAvantAffichageModale(html, body)
-        estModaleAffichee = true       
+        estModaleAffichee = true      
       } else {
         if(estModaleAffichee){
           masquerModale()
@@ -115,7 +115,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
   function mouseDown(e) {
     if(e.target === e.currentTarget){
       e.preventDefault()
-      e.stopPropagation()      
+      e.stopPropagation()
     }
   }
 
@@ -193,7 +193,7 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
 </script>
 
 {#if estModaleAffichee}
-  <div class="utd-backdrop" on:mousedown={mouseDown}/>
+  <div class="utd-backdrop"/>
   <div 
     aria-labelledby={idEntete}
     aria-describedby={estfenetremessage === 'true' ? idCorps : null}
@@ -208,9 +208,10 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
     on:outroend={finAnimationFermeture}
     aria-modal="true"
     role="dialog"
+    tabindex="-1"
   >
 
-  <div class="conteneur" on:mousedown={mouseDown}>      
+  <div class="conteneur">      
         <button
         type="button"
         class="close"
@@ -222,8 +223,8 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
           class="utd-icone-svg x-fermer-bleu"
         />
       </button>
-      <div class="principal" on:mousedown={mouseDown}>
-        <div class="entete {type ? 'avec-type' : ''}" on:mousedown={mouseDown}>
+      <div class="principal">
+        <div class="entete {type ? 'avec-type' : ''}" >
           {#if type}
             <span class="utd-icone-svg {type}" aria-hidden="true"></span>
           {/if}   
@@ -231,12 +232,12 @@ Le tag est nécessaire afin que le compilateur svelte sache qu'on veut batîr un
             {titre}
           </h1>
         </div> 
-        <div class="corps" id={idCorps} on:mousedown={mouseDown}>
+        <div class="corps" id={idCorps}>
           <slot/>
           <slot name="contenu" />
         </div>
         {#if Utils.slotExiste(slots, 'pied')}
-          <div class="pied" on:mousedown={mouseDown}>
+          <div class="pied">
             <slot name="pied" />
           </div>    
         {/if}    
