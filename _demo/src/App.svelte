@@ -34,6 +34,7 @@
   import PointsSuspension from './pages/PointsSuspension.svelte';
   import BarreRecherche from './pages/BarreRecherche.svelte';
   import Animations from './pages/Animations.svelte';
+  import PosteCanada from './pages/PosteCanada.svelte';
 
     const estTestBackstopJsEnCours = window.location.hash.indexOf('bs-test') >= 0
 
@@ -246,6 +247,7 @@
                     <Route path="/composants/*">
                         <Route path="/versions" ><Versions /></Route>
                         <Route path="/versionsanciennes" ><VersionsAnciennes /></Route>
+                        <Route path="/postecanada" ><PosteCanada /></Route>
                         <Route path="/actions/*">
                             <Route path="/animations" ><Animations /></Route>
                             <Route path="/barrerecherche" ><BarreRecherche /></Route>
