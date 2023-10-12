@@ -40,7 +40,7 @@
 
         const options = {
                 key: "XA73-JP73-YJ98-CB75",
-                name: "PosteCanada",
+                name: `pc_${idControleAdresse}`,
                 suppressAutocomplete: true,
                 setCountryByIP: false,
                 culture: "fr-ca",
@@ -122,10 +122,6 @@ EcouteurSurAdresseEtPays: function() {
 
 <utd-menu-ancres selecteur="#main h2">
 </utd-menu-ancres>
-
-<h2>Pour des questions de design</h2>
-<p>Contacter l'équipe UI/UX. (Infos à venir)</p>
-
 
 <h2>Adresse 1</h2>
 <div class="utd-form-group">
