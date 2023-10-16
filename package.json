@@ -1,0 +1,11 @@
+{
+    "name": "utd-webcomponents",
+    "version": "1.14.0",
+    "private": false,
+    "scripts": {},
+    "devDependencies": {},
+    "dependencies": {},
+    "files": [
+        "dist/*"
+    ]
+}
