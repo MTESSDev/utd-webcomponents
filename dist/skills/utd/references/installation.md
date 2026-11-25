@@ -1,4 +1,4 @@
-# Installation et gabarits UTD 5.0.0
+# Installation et gabarits UTD 5.1.0b
 
 ## Fichiers
 
@@ -15,12 +15,12 @@ Le JS calcule l'adresse du CSS, des images et du module carte à partir de son p
 ## Par CDN
 
 ```html
-<link rel="preload" as="font" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@5.0.0/dist/fonts/open-sans-variable-latin.woff2" type="font/woff2" crossorigin="anonymous">
-<link rel="preload" as="font" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@5.0.0/dist/fonts/roboto-variable-latin.woff2" type="font/woff2" crossorigin="anonymous">
-<link rel="preload" as="font" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@5.0.0/dist/fonts/utd-material-symbols-rounded-composants.woff2" type="font/woff2" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@5.0.0/dist/css/utd-webcomponents.min.css">
+<link rel="preload" as="font" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@5.1.0b/dist/fonts/open-sans-variable-latin.woff2" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" as="font" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@5.1.0b/dist/fonts/roboto-variable-latin.woff2" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" as="font" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@5.1.0b/dist/fonts/utd-material-symbols-rounded-composants.woff2" type="font/woff2" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@5.1.0b/dist/css/utd-webcomponents.min.css">
 <!-- … fin du body : -->
-<script src="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@5.0.0/dist/js/utd-webcomponents.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@5.1.0b/dist/js/utd-webcomponents.min.js"></script>
 ```
 
 Le CDN exige un accès Internet pour les utilisateurs. Sinon, copier les fichiers.
@@ -33,8 +33,8 @@ Copier le contenu de `dist/` (release GitHub `MTESSDev/utd-webcomponents` ou paq
 <link rel="preload" as="font" href="/fonts/open-sans-variable-latin.woff2" type="font/woff2" crossorigin="anonymous">
 <link rel="preload" as="font" href="/fonts/roboto-variable-latin.woff2" type="font/woff2" crossorigin="anonymous">
 <link rel="preload" as="font" href="/fonts/utd-material-symbols-rounded-composants.woff2" type="font/woff2" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/utd-webcomponents.min.css?v=5.0.0">
-<script src="/js/utd-webcomponents.min.js?v=5.0.0"></script>
+<link rel="stylesheet" href="/css/utd-webcomponents.min.css?v=5.1.0b">
+<script src="/js/utd-webcomponents.min.js?v=5.1.0b"></script>
 ```
 
 Versionner les URL du CSS et du JS (`?v=`) à chaque mise à jour d'UTD. Les images internes portent déjà `?v=<version>`.
@@ -103,7 +103,7 @@ Copier le dossier `dist/skills/utd/` de la version utilisée :
 Depuis le paquet npm : copier `node_modules/utd-webcomponents/dist/skills/utd/`. Sans npm :
 
 ```sh
-npx degit MTESSDev/utd-webcomponents/dist/skills/utd#5.0.0 .claude/skills/utd
+npx degit MTESSDev/utd-webcomponents/dist/skills/utd#5.1.0b .claude/skills/utd
 ```
 
 Remplacer le dossier à chaque mise à jour d'UTD. Si le dépôt central des skills de l'équipe est déjà installé, il contient `utd` pour toutes les versions : ne pas installer ce dossier en plus.

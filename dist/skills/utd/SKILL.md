@@ -1,11 +1,11 @@
 ---
 name: utd
-description: Système de design UTD 5.0.0 (utd-webcomponents, MESS, basé sur Québec.ca). À utiliser pour écrire ou modifier une page, un gabarit, un formulaire ou un composant d'interface qui utilise les balises utd-* (utd-champ-form, utd-liste-deroulante, utd-dialog, utd-piv-entete…), les classes UTD (utd-btn, utd-table, utd-row, utd-col-*, utd-icone-ms…) ou l'API JS window.utd (message, dialogue, notification, traitementEnCours, filAriane), en HTML, Vue, Svelte ou .NET/Razor. Aussi pour relire ou auditer une page qui les utilise. Prime sur toute skill CSS ou UI générique (Bootstrap, Tailwind, bibliothèques de composants) dès que la page est destinée au gouvernement du Québec. Ne couvre ni le backend, ni le routage, ni les essais automatisés, ni les conventions de code d'une équipe.
+description: Système de design UTD 5.1.0b (utd-webcomponents, MESS, basé sur Québec.ca). À utiliser pour écrire ou modifier une page, un gabarit, un formulaire ou un composant d'interface qui utilise les balises utd-* (utd-champ-form, utd-liste-deroulante, utd-dialog, utd-piv-entete…), les classes UTD (utd-btn, utd-table, utd-row, utd-col-*, utd-icone-ms…) ou l'API JS window.utd (message, dialogue, notification, traitementEnCours, filAriane), en HTML, Vue, Svelte ou .NET/Razor. Aussi pour relire ou auditer une page qui les utilise. Prime sur toute skill CSS ou UI générique (Bootstrap, Tailwind, bibliothèques de composants) dès que la page est destinée au gouvernement du Québec. Ne couvre ni le backend, ni le routage, ni les essais automatisés, ni les conventions de code d'une équipe.
 metadata:
-  version: 5.0.0
+  version: 5.1.0b
 ---
 
-# UTD — composants web du MESS (version 5.0.0)
+# UTD — composants web du MESS (version 5.1.0b)
 
 Composants web accessibles (WCAG 2.1 AA) et classes CSS conformes au système de design Québec.ca. Aucune dépendance. Démo : https://lively-cliff-018a9540f.azurestaticapps.net
 
@@ -47,10 +47,10 @@ Composants web accessibles (WCAG 2.1 AA) et classes CSS conformes au système de
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Titre de la page - Nom du site</title>
-    <link rel="preload" as="font" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@5.0.0/dist/fonts/open-sans-variable-latin.woff2" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" as="font" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@5.0.0/dist/fonts/roboto-variable-latin.woff2" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" as="font" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@5.0.0/dist/fonts/utd-material-symbols-rounded-composants.woff2" type="font/woff2" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@5.0.0/dist/css/utd-webcomponents.min.css">
+    <link rel="preload" as="font" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@5.1.0b/dist/fonts/open-sans-variable-latin.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@5.1.0b/dist/fonts/roboto-variable-latin.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" as="font" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@5.1.0b/dist/fonts/utd-material-symbols-rounded-composants.woff2" type="font/woff2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@5.1.0b/dist/css/utd-webcomponents.min.css">
     <!-- CSS du site ici, après celui d'UTD -->
 </head>
 <body>
@@ -68,7 +68,7 @@ Composants web accessibles (WCAG 2.1 AA) et classes CSS conformes au système de
     <footer class="utd">
         <utd-piv-pied-page></utd-piv-pied-page>
     </footer>
-    <script src="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@5.0.0/dist/js/utd-webcomponents.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/MTESSDev/utd-webcomponents@5.1.0b/dist/js/utd-webcomponents.min.js"></script>
 </body>
 </html>
 ```
@@ -119,7 +119,7 @@ Gabarits 2 colonnes, pleine largeur, menu horizontal et copie locale : [installa
 | Animations | [animations.md](references/patrons/animations.md) | Zone en cours de chargement : `utd-fond-element-chargement`. |
 | Bouton radio | [bouton-radio.md](references/patrons/bouton-radio.md) | Choix unique : `input radio` dans `utd-champ-form`. |
 | Boutons | [boutons.md](references/patrons/boutons.md) | Classes `utd-btn` : primaire, secondaire, tertiaire, avertissement ; compact, icône. |
-| Boutons de sélection | [boutons-selection.md](references/patrons/boutons-selection.md) | Radio ou case à cocher présentée en tuile cliquable pleine largeur. |
+| Boutons de sélection | [boutons-selection.md](references/patrons/boutons-selection.md) | Radio ou case à cocher en tuile cliquable : 1, 2 ou 3 colonnes, ou horizontale. |
 | Case à cocher | [case-cocher.md](references/patrons/case-cocher.md) | Choix multiple ou confirmation : `checkbox` dans `utd-champ-form`. |
 | Champs avec bouton | [champs-avec-bouton.md](references/patrons/champs-avec-bouton.md) | Bouton accolé à droite d'un champ (valider, rechercher). |
 | Champs combinés | [champs-combines.md](references/patrons/champs-combines.md) | Champs côte à côte avec un message d'erreur commun (ex. période). |

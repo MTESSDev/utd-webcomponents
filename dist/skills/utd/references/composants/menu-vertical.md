@@ -4,7 +4,7 @@ Démo : https://lively-cliff-018a9540f.azurestaticapps.net/composants/navigation
 
 Navigation latérale, deux niveaux.
 
-Un item sans `href` porte un sous-menu. En SPA, mettre le lien du routeur dans chaque item et lier `path-courant` à la route.
+Un item sans `href` porte un sous-menu. Trois niveaux au plus. En SPA, mettre le lien du routeur dans chaque item et lier `path-courant` à la route.
 
 ## `utd-menu-vertical`
 
@@ -51,6 +51,20 @@ Un item sans `href` porte un sous-menu. En SPA, mettre le lien du routeur dans c
 </utd-menu-vertical>
 ```
 
+### Menu à trois niveaux
+
+```html
+<utd-menu-vertical titre="Composants" titre-visible="false">
+    <utd-menu-vertical-item libelle="Formulaires">
+        <utd-menu-vertical-item libelle="Champs texte" href="/formulaires/champs"></utd-menu-vertical-item>
+        <utd-menu-vertical-item libelle="Listes">
+            <utd-menu-vertical-item libelle="Liste simple" href="/formulaires/listes/simple"></utd-menu-vertical-item>
+            <utd-menu-vertical-item libelle="Liste multiple" href="/formulaires/listes/multiple"></utd-menu-vertical-item>
+        </utd-menu-vertical-item>
+    </utd-menu-vertical-item>
+</utd-menu-vertical>
+```
+
 ### SPA (Vue)
 
 ```html
@@ -60,5 +74,3 @@ Un item sans `href` porte un sous-menu. En SPA, mettre le lien du routeur dans c
     </utd-menu-vertical-item>
 </utd-menu-vertical>
 ```
-
-Autres exemples : https://lively-cliff-018a9540f.azurestaticapps.net/composants/navigation/menuvertical
